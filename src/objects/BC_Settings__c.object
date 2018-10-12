@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>Hierarchy</customSettingsType>
+    <description>Custom Settings Brunello Cucinelli</description>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>BC_Ecommerce_ProfileId__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>BC_Ecommerce_ProfileId</label>
+        <length>18</length>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Default_Customer_OwnerId__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Default Customer OwnerId</label>
+        <length>18</length>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Default_Transaction_OwnerId__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Default Transaction OwnerId</label>
+        <length>18</length>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>BC - Settings</label>
+    <visibility>Protected</visibility>
+</CustomObject>

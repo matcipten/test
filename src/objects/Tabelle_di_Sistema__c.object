@@ -1,0 +1,597 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableChangeDataCapture>false</enableChangeDataCapture>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Causale__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Causale</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Chiave_Codice_Sconto_ETL__c</fullName>
+        <externalId>false</externalId>
+        <formula>Causale__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Chiave Codice Sconto ETL</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Chiave_Record__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <encrypted>false</encrypted>
+        <externalId>true</externalId>
+        <label>Chiave Record</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>Codice__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Codice</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Data_Fine__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Data Fine</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Data_Inizio__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Data Inizio</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Descrizione_ENG__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Descrizione ENG</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Descrizione__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Descrizione</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Motivazioni_di_reso__c</fullName>
+        <externalId>false</externalId>
+        <label>Motivazioni di reso</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>La taglia del prodotto non corrisponde alle aspettative</fullName>
+                    <default>false</default>
+                    <label>La taglia del prodotto non corrisponde alle aspettative</label>
+                </value>
+                <value>
+                    <fullName>Il prodotto ricevuto è diverso da quello ordinato</fullName>
+                    <default>false</default>
+                    <label>Il prodotto ricevuto è diverso da quello ordinato</label>
+                </value>
+                <value>
+                    <fullName>Il colore non corrisponde alle aspettative</fullName>
+                    <default>false</default>
+                    <label>Il colore non corrisponde alle aspettative</label>
+                </value>
+                <value>
+                    <fullName>Il modello non corrisponde alle aspettative</fullName>
+                    <default>false</default>
+                    <label>Il modello non corrisponde alle aspettative</label>
+                </value>
+                <value>
+                    <fullName>Il tessuto non corrisponde alle aspettative</fullName>
+                    <default>false</default>
+                    <label>Il tessuto non corrisponde alle aspettative</label>
+                </value>
+                <value>
+                    <fullName>Prodotto difettoso</fullName>
+                    <default>false</default>
+                    <label>Prodotto difettoso</label>
+                </value>
+                <value>
+                    <fullName>La consegna è avvenuta in ritardo</fullName>
+                    <default>false</default>
+                    <label>La consegna è avvenuta in ritardo</label>
+                </value>
+                <value>
+                    <fullName>Sto rendendo un regalo</fullName>
+                    <default>false</default>
+                    <label>Sto rendendo un regalo</label>
+                </value>
+                <value>
+                    <fullName>Non voglio fornire alcuna motivazione</fullName>
+                    <default>false</default>
+                    <label>Non voglio fornire alcuna motivazione</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Numero_Stagione__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Numero Stagione</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Ordine_Stagione__c</fullName>
+        <externalId>false</externalId>
+        <label>Ordine Stagione</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Stagione Attuale</fullName>
+                    <default>false</default>
+                    <label>Stagione Attuale</label>
+                </value>
+                <value>
+                    <fullName>Stagione Precedente</fullName>
+                    <default>false</default>
+                    <label>Stagione Precedente</label>
+                </value>
+                <value>
+                    <fullName>Due Stagioni Precedenti</fullName>
+                    <default>false</default>
+                    <label>Due Stagioni Precedenti</label>
+                </value>
+                <value>
+                    <fullName>Tre Stagioni Precedenti</fullName>
+                    <default>false</default>
+                    <label>Tre Stagioni Precedenti</label>
+                </value>
+                <value>
+                    <fullName>Quattro Stagioni Precedenti</fullName>
+                    <default>false</default>
+                    <label>Quattro Stagioni Precedenti</label>
+                </value>
+                <value>
+                    <fullName>Cinque Stagioni Precedenti</fullName>
+                    <default>false</default>
+                    <label>Cinque Stagioni Precedenti</label>
+                </value>
+                <value>
+                    <fullName>Sei Stagioni Precedenti</fullName>
+                    <default>false</default>
+                    <label>Sei Stagioni Precedenti</label>
+                </value>
+                <value>
+                    <fullName>Sette Stagioni Precedenti</fullName>
+                    <default>false</default>
+                    <label>Sette Stagioni Precedenti</label>
+                </value>
+                <value>
+                    <fullName>Otto Stagioni Precedenti</fullName>
+                    <default>false</default>
+                    <label>Otto Stagioni Precedenti</label>
+                </value>
+                <value>
+                    <fullName>Nove Stagioni Precedenti</fullName>
+                    <default>false</default>
+                    <label>Nove Stagioni Precedenti</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <gender>Feminine</gender>
+    <label>Tabella di Sistema</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>RECORDTYPE</columns>
+        <columns>NAME</columns>
+        <columns>Causale__c</columns>
+        <columns>Codice__c</columns>
+        <columns>Descrizione__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>Causali_Sconto</fullName>
+        <columns>RECORDTYPE</columns>
+        <columns>NAME</columns>
+        <columns>Causale__c</columns>
+        <columns>Codice__c</columns>
+        <columns>Descrizione__c</columns>
+        <columns>Chiave_Record__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>Tabelle_di_Sistema__c.Causali_Sconto</value>
+        </filters>
+        <label>Causali Sconto</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>Motivazioni_Reso</fullName>
+        <columns>RECORDTYPE</columns>
+        <columns>NAME</columns>
+        <columns>Codice__c</columns>
+        <columns>Motivazioni_di_reso__c</columns>
+        <columns>Chiave_Record__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>Tabelle_di_Sistema__c.Motivazioni_Reso</value>
+        </filters>
+        <label>Motivazioni Reso</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>Stagioni</fullName>
+        <columns>RECORDTYPE</columns>
+        <columns>NAME</columns>
+        <columns>Ordine_Stagione__c</columns>
+        <columns>Numero_Stagione__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>Tabelle_di_Sistema__c.Stagioni_Prodotti</value>
+        </filters>
+        <label>Stagioni Prodotti</label>
+        <language>en_US</language>
+    </listViews>
+    <nameField>
+        <displayFormat>S-{0000}</displayFormat>
+        <label>Tabella di Sistems Name</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Tabelle di Sistema</pluralLabel>
+    <recordTypes>
+        <fullName>Causali_Sconto</fullName>
+        <active>true</active>
+        <label>Causali Sconto</label>
+        <picklistValues>
+            <picklist>Motivazioni_di_reso__c</picklist>
+            <values>
+                <fullName>Il colore non corrisponde alle aspettative</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Il modello non corrisponde alle aspettative</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Il prodotto ricevuto è diverso da quello ordinato</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Il tessuto non corrisponde alle aspettative</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>La consegna è avvenuta in ritardo</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>La taglia del prodotto non corrisponde alle aspettative</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Non voglio fornire alcuna motivazione</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Prodotto difettoso</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sto rendendo un regalo</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Ordine_Stagione__c</picklist>
+            <values>
+                <fullName>Cinque Stagioni Precedenti</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Due Stagioni Precedenti</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Otto Stagioni Precedenti</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Quattro Stagioni Precedenti</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sei Stagioni Precedenti</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sette Stagioni Precedenti</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Stagione Attuale</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Stagione Precedente</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tre Stagioni Precedenti</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Motivazioni_Reso</fullName>
+        <active>true</active>
+        <label>Motivazioni Reso</label>
+        <picklistValues>
+            <picklist>Motivazioni_di_reso__c</picklist>
+            <values>
+                <fullName>Il colore non corrisponde alle aspettative</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Il modello non corrisponde alle aspettative</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Il prodotto ricevuto è diverso da quello ordinato</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Il tessuto non corrisponde alle aspettative</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>La consegna è avvenuta in ritardo</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>La taglia del prodotto non corrisponde alle aspettative</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Non voglio fornire alcuna motivazione</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Prodotto difettoso</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sto rendendo un regalo</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Ordine_Stagione__c</picklist>
+            <values>
+                <fullName>Cinque Stagioni Precedenti</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Due Stagioni Precedenti</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Otto Stagioni Precedenti</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Quattro Stagioni Precedenti</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sei Stagioni Precedenti</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sette Stagioni Precedenti</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Stagione Attuale</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Stagione Precedente</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tre Stagioni Precedenti</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Stagioni_Prodotti</fullName>
+        <active>true</active>
+        <label>Stagioni Prodotti</label>
+        <picklistValues>
+            <picklist>Motivazioni_di_reso__c</picklist>
+            <values>
+                <fullName>Il colore non corrisponde alle aspettative</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Il modello non corrisponde alle aspettative</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Il prodotto ricevuto è diverso da quello ordinato</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Il tessuto non corrisponde alle aspettative</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>La consegna è avvenuta in ritardo</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>La taglia del prodotto non corrisponde alle aspettative</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Non voglio fornire alcuna motivazione</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Prodotto difettoso</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sto rendendo un regalo</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Ordine_Stagione__c</picklist>
+            <values>
+                <fullName>Cinque Stagioni Precedenti</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Due Stagioni Precedenti</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Nove Stagioni Precedenti</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Otto Stagioni Precedenti</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Quattro Stagioni Precedenti</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sei Stagioni Precedenti</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sette Stagioni Precedenti</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Stagione Attuale</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Stagione Precedente</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tre Stagioni Precedenti</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+    <visibility>Public</visibility>
+</CustomObject>

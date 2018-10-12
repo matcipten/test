@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Tessuto_Colore_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableChangeDataCapture>false</enableChangeDataCapture>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>false</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Codice_Colore__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Codice Colore</label>
+        <length>50</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Codice_Tessuto_Colore__c</fullName>
+        <externalId>false</externalId>
+        <formula>Tessuto__r.Codice__c &amp; &quot;-&quot; &amp; Codice_Colore__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Codice Tessuto Colore</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Descrizione_Colore__c</fullName>
+        <externalId>false</externalId>
+        <label>Descrizione Colore</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>ANTRACITE</fullName>
+                    <default>false</default>
+                    <label>ANTRACITE</label>
+                </value>
+                <value>
+                    <fullName>ANTRACITE/CRUMBLE/SASSO</fullName>
+                    <default>false</default>
+                    <label>ANTRACITE/CRUMBLE/SASSO</label>
+                </value>
+                <value>
+                    <fullName>ARDESIA</fullName>
+                    <default>false</default>
+                    <label>ARDESIA</label>
+                </value>
+                <value>
+                    <fullName>BLU</fullName>
+                    <default>false</default>
+                    <label>BLU</label>
+                </value>
+                <value>
+                    <fullName>BLU COLORATO</fullName>
+                    <default>false</default>
+                    <label>BLU COLORATO</label>
+                </value>
+                <value>
+                    <fullName>CABERNET</fullName>
+                    <default>false</default>
+                    <label>CABERNET</label>
+                </value>
+                <value>
+                    <fullName>CAMEL</fullName>
+                    <default>false</default>
+                    <label>CAMEL</label>
+                </value>
+                <value>
+                    <fullName>CAMEL/CRUMBLE/CABERNET</fullName>
+                    <default>false</default>
+                    <label>CAMEL/CRUMBLE/CABERNET</label>
+                </value>
+                <value>
+                    <fullName>DENIM</fullName>
+                    <default>false</default>
+                    <label>DENIM</label>
+                </value>
+                <value>
+                    <fullName>GRGIO MEDIO</fullName>
+                    <default>false</default>
+                    <label>GRGIO MEDIO</label>
+                </value>
+                <value>
+                    <fullName>GRIGIO</fullName>
+                    <default>false</default>
+                    <label>GRIGIO</label>
+                </value>
+                <value>
+                    <fullName>GRIGIO CHIARO</fullName>
+                    <default>false</default>
+                    <label>GRIGIO CHIARO</label>
+                </value>
+                <value>
+                    <fullName>GRIGIO MEDIO</fullName>
+                    <default>false</default>
+                    <label>GRIGIO MEDIO</label>
+                </value>
+                <value>
+                    <fullName>GRIGIO SCURO</fullName>
+                    <default>false</default>
+                    <label>GRIGIO SCURO</label>
+                </value>
+                <value>
+                    <fullName>MARRONE</fullName>
+                    <default>false</default>
+                    <label>MARRONE</label>
+                </value>
+                <value>
+                    <fullName>MIELE</fullName>
+                    <default>false</default>
+                    <label>MIELE</label>
+                </value>
+                <value>
+                    <fullName>NAVY</fullName>
+                    <default>false</default>
+                    <label>NAVY</label>
+                </value>
+                <value>
+                    <fullName>NAVY MELANGE</fullName>
+                    <default>false</default>
+                    <label>NAVY MELANGE</label>
+                </value>
+                <value>
+                    <fullName>NERO</fullName>
+                    <default>false</default>
+                    <label>NERO</label>
+                </value>
+                <value>
+                    <fullName>SABBIA</fullName>
+                    <default>false</default>
+                    <label>SABBIA</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Descrizione_Tessuto__c</fullName>
+        <externalId>false</externalId>
+        <formula>Tessuto__r.Descrizione_Tessuto__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Descrizione Tessuto</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Disponibilit_Magazzino_Reale_metri__c</fullName>
+        <externalId>false</externalId>
+        <formula>Disponibilit_Magazzino_metri__c -  Ordinato_metri__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Disponibilità Magazzino Reale (metri)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Disponibilit_Magazzino_metri__c</fullName>
+        <externalId>false</externalId>
+        <label>Disponibilità Magazzino (metri)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Ordinato_metri__c</fullName>
+        <externalId>false</externalId>
+        <label>Ordinato (metri)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Ricalcola_Ordinato__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Ricalcola Ordinato</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Tessuto__c</fullName>
+        <externalId>false</externalId>
+        <label>Tessuto</label>
+        <referenceTo>Tessuto__c</referenceTo>
+        <relationshipLabel>Tessuti - Colori</relationshipLabel>
+        <relationshipName>Tessuti_Colori</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <gender>Feminine</gender>
+    <label>Tessuto - Colore</label>
+    <nameField>
+        <encrypted>false</encrypted>
+        <label>Tessuto - Colore Name</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Tessuti - Colori</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+    <visibility>Public</visibility>
+</CustomObject>

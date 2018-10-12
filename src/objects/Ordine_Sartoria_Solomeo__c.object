@@ -1,0 +1,543 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableChangeDataCapture>false</enableChangeDataCapture>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Area_MTM__c</fullName>
+        <externalId>false</externalId>
+        <formula>text(Associate__r.Location__r.Area_MTM__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Area MTM</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Associate__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Associate</label>
+        <referenceTo>Associated__c</referenceTo>
+        <relationshipLabel>Ordini Sartoria Solomeo</relationshipLabel>
+        <relationshipName>Ordini_Sartoria_Solomeo</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Bottone__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Bottone</label>
+        <referenceTo>Bottone__c</referenceTo>
+        <relationshipLabel>Ordini Sartoria Solomeo</relationshipLabel>
+        <relationshipName>Ordini_Sartoria_Solomeo</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Capo_Tessuto__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Capo - Tessuto</label>
+        <referenceTo>Capo_Tessuto__c</referenceTo>
+        <relationshipLabel>Ordini Sartoria Solomeo</relationshipLabel>
+        <relationshipName>Ordini_Sartoria_Solomeo</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Capo__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Capo</label>
+        <referenceTo>Capo__c</referenceTo>
+        <relationshipLabel>Ordini Sartoria Solomeo</relationshipLabel>
+        <relationshipName>Ordini_Sartoria_Solomeo</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Cliente__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Cliente</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Ordini Sartoria Solomeo</relationshipLabel>
+        <relationshipName>Ordini_Sartoria_Solomeo</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Cognome_Associate__c</fullName>
+        <externalId>false</externalId>
+        <formula>Associate__r.Cognome__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Cognome Associate</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Cognome_Cliente__c</fullName>
+        <externalId>false</externalId>
+        <formula>Cliente__r.LastName</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Cognome Cliente</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Completato__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Completato</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Conteggia__c</fullName>
+        <defaultValue>true</defaultValue>
+        <externalId>false</externalId>
+        <label>Conteggia</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Data_approvazione_ordine_1_livello__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Data approvazione ordine 1 livello</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Data_approvazione_ordine_2_livello__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Data approvazione ordine 2 livello</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Data_consegna_a_cliente__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Data consegna a cliente</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Data_consegna_in_negozio__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Data consegna in negozio</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Descrizione_Colore__c</fullName>
+        <externalId>false</externalId>
+        <formula>text(Tessuto_Colore__r.Descrizione_Colore__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Descrizione Colore</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Descrizione_Tessuto__c</fullName>
+        <externalId>false</externalId>
+        <formula>Tessuto__r.Descrizione_Tessuto__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Descrizione Tessuto</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Fodera__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Fodera</label>
+        <referenceTo>Fodera__c</referenceTo>
+        <relationshipLabel>Ordini Sartoria Solomeo</relationshipLabel>
+        <relationshipName>Ordini_Sartoria_Solomeo</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Misure_Giacca__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Misure Giacca</label>
+        <referenceTo>Account_Misure_Sartoriali__c</referenceTo>
+        <relationshipLabel>Ordini Sartoria Solomeo</relationshipLabel>
+        <relationshipName>Ordini_Sartoria_Solomeo</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Misure_Pantaloni__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Misure Pantaloni</label>
+        <referenceTo>Account_Misure_Sartoriali__c</referenceTo>
+        <relationshipLabel>Ordini Sartoria Solomeo (Misure Pantaloni)</relationshipLabel>
+        <relationshipName>Ordini_Sartoria_Solomeo1</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Nome_Associate__c</fullName>
+        <externalId>false</externalId>
+        <formula>Associate__r.Nome__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Nome Associate</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Nome_Cliente__c</fullName>
+        <externalId>false</externalId>
+        <formula>Cliente__r.FirstName</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Nome Cliente</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Nota_approvatore_1_livello__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Nota approvatore 1 livello</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Nota_di_consegna_al_cliente__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Nota di consegna al cliente</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Nota_negozio__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Nota negozio</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Nota_sarto__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Nota sarto</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Prezzo_number__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF ( CreatedBy.Country = &quot;IT&quot;, Capo_Tessuto__r.Prezzo_ITA__c,
+
+CASE( CreatedBy.CurrencyISOcode__c , 
+&quot;EUR&quot;, Capo_Tessuto__r.Prezzo_EUR__c , 
+&quot;USD&quot;, Capo_Tessuto__r.Prezzo_USD__c, 
+&quot;CHF&quot;, Capo_Tessuto__r.Prezzo_CHF__c, 
+&quot;CNY&quot;, Capo_Tessuto__r.Prezzo_CNY__c, 
+&quot;GBP&quot;, Capo_Tessuto__r.Prezzo_GBP__c, 
+&quot;JPY&quot;, Capo_Tessuto__r.Prezzo_JPY__c, 
+&quot;RUB&quot;, Capo_Tessuto__r.Prezzo_RUB__c, 
+&quot;CAD&quot;, Capo_Tessuto__r.Prezzo_CAD__c, 
+&quot;HKD&quot;, Capo_Tessuto__r.Prezzo_HKD__c, 
+&quot;MOP&quot;, Capo_Tessuto__r.Prezzo_MOP__c, 
+Capo_Tessuto__r.Prezzo_EUR__c)
+
+* Quantit__c )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Prezzo (number)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Prezzo_valuta__c</fullName>
+        <externalId>false</externalId>
+        <formula>CASE(CreatedBy.CurrencyISOcode__c, 
+&quot;EUR&quot;, &quot;EUR&quot;, 
+&quot;USD&quot;, &quot;USD&quot;, 
+&quot;CHF&quot;, &quot;CHF&quot;, 
+&quot;CNY&quot;, &quot;CNY&quot;, 
+&quot;GBP&quot;, &quot;GBP&quot;, 
+&quot;JPY&quot;, &quot;JPY&quot;, 
+&quot;RUB&quot;, &quot;RUB&quot;, 
+&quot;CAD&quot;, &quot;CAD&quot;, 
+&quot;HKD&quot;, &quot;HKD&quot;, 
+&quot;MOP&quot;, &quot;MOP&quot;, 
+&quot;EUR&quot;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Prezzo (valuta)</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Quantit__c</fullName>
+        <externalId>false</externalId>
+        <label>Quantità</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Status</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>In editing</fullName>
+                    <default>false</default>
+                    <label>In editing</label>
+                </value>
+                <value>
+                    <fullName>In revisione 1 livello</fullName>
+                    <default>false</default>
+                    <label>In revisione 1 livello</label>
+                </value>
+                <value>
+                    <fullName>Rifiutato 1 livello</fullName>
+                    <default>false</default>
+                    <label>Rifiutato 1 livello</label>
+                </value>
+                <value>
+                    <fullName>In revisione dal sarto</fullName>
+                    <default>false</default>
+                    <label>In revisione dal sarto</label>
+                </value>
+                <value>
+                    <fullName>Rifiutato dal sarto</fullName>
+                    <default>false</default>
+                    <label>Rifiutato dal sarto</label>
+                </value>
+                <value>
+                    <fullName>Approvato dal sarto</fullName>
+                    <default>false</default>
+                    <label>Approvato dal sarto</label>
+                </value>
+                <value>
+                    <fullName>Ricevuto in negozio</fullName>
+                    <default>false</default>
+                    <label>Ricevuto in negozio</label>
+                </value>
+                <value>
+                    <fullName>Consegnato al Cliente</fullName>
+                    <default>false</default>
+                    <label>Consegnato al Cliente</label>
+                </value>
+                <value>
+                    <fullName>Annullato</fullName>
+                    <default>false</default>
+                    <label>Annullato</label>
+                </value>
+                <value>
+                    <fullName>Approvato 1 livello</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Approvato 1 livello</label>
+                </value>
+                <value>
+                    <fullName>Approvato con modifiche 1 livello</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Approvato con modifiche 1 livello</label>
+                </value>
+                <value>
+                    <fullName>Approvato con modifiche dal sarto</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Approvato con modifiche dal sarto</label>
+                </value>
+                <value>
+                    <fullName>In modifica</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>In modifica</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Tessuto_Colore__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Tessuto Colore</label>
+        <referenceTo>Tessuto_Colore__c</referenceTo>
+        <relationshipLabel>Ordini Sartoria Solomeo</relationshipLabel>
+        <relationshipName>Ordini_Sartoria_Solomeo</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Tessuto__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Tessuto</label>
+        <referenceTo>Tessuto__c</referenceTo>
+        <relationshipLabel>Ordini Sartoria Solomeo</relationshipLabel>
+        <relationshipName>Ordini_Sartoria_Solomeo</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Tessuto_utilizzato_metri__c</fullName>
+        <externalId>false</externalId>
+        <label>Tessuto utilizzato (metri)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <gender>Feminine</gender>
+    <label>Ordine Sartoria Solomeo</label>
+    <nameField>
+        <displayFormat>O-{000000}</displayFormat>
+        <label>Nome Ordine Sartoria Solomeo</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Ordini Sartoria Solomeo</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+    <visibility>Public</visibility>
+</CustomObject>

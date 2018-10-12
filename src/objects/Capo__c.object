@@ -1,0 +1,494 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Capo_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableChangeDataCapture>false</enableChangeDataCapture>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Codice_Abito__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Codice Abito</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Codice_Giacca__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Codice Giacca</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Codice_Pantalone__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Codice Pantalone</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Codice_Stagionale_Abito__c</fullName>
+        <externalId>false</externalId>
+        <formula>Stagione__r.Codice_Stagione__c   &amp; Codice_Abito__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Codice Stagionale Abito</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Codice_Stagionale_Giacca__c</fullName>
+        <externalId>false</externalId>
+        <formula>Stagione__r.Codice_Stagione__c &amp; Codice_Giacca__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Codice Stagionale Giacca</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Codice_Stagionale_Pantalone__c</fullName>
+        <externalId>false</externalId>
+        <formula>Stagione__r.Codice_Stagione__c &amp; Codice_Pantalone__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Codice Stagionale Pantalone</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Descrizione_Modello_Giacca__c</fullName>
+        <externalId>false</externalId>
+        <label>Descrizione Modello Giacca</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>CAVALLO REVER GRANDE</fullName>
+                    <default>false</default>
+                    <label>CAVALLO REVER GRANDE</label>
+                </value>
+                <value>
+                    <fullName>REVER A LANCIA</fullName>
+                    <default>false</default>
+                    <label>REVER A LANCIA</label>
+                </value>
+                <value>
+                    <fullName>REVER A LANCIA GRANDE</fullName>
+                    <default>false</default>
+                    <label>REVER A LANCIA GRANDE</label>
+                </value>
+                <value>
+                    <fullName>REVER A SPECCHIO 3 TASCHE A TOPPA</fullName>
+                    <default>false</default>
+                    <label>REVER A SPECCHIO 3 TASCHE A TOPPA</label>
+                </value>
+                <value>
+                    <fullName>TRADIZIONALE</fullName>
+                    <default>false</default>
+                    <label>TRADIZIONALE</label>
+                </value>
+                <value>
+                    <fullName>UN PETTO E MEZZO</fullName>
+                    <default>false</default>
+                    <label>UN PETTO E MEZZO</label>
+                </value>
+                <value>
+                    <fullName>UN PETTO E MEZZO TASCHE A TOPPA</fullName>
+                    <default>false</default>
+                    <label>UN PETTO E MEZZO TASCHE A TOPPA</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Descrizione_Modello_Pantalone__c</fullName>
+        <externalId>false</externalId>
+        <label>Descrizione Modello Pantalone</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Flat Fondo 19,5</fullName>
+                    <default>false</default>
+                    <label>Flat Fondo 19,5</label>
+                </value>
+                <value>
+                    <fullName>Pince Fondo 19,5</fullName>
+                    <default>false</default>
+                    <label>Pince Fondo 19,5</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Modello_Giacca__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Modello Giacca</label>
+        <length>50</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Posizione__c</fullName>
+        <externalId>false</externalId>
+        <label>Posizione</label>
+        <precision>10</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Record_Type_Label__c</fullName>
+        <externalId>false</externalId>
+        <formula>RecordType.Name</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Record Type Label</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Stagione__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Stagione</label>
+        <referenceTo>Stagione__c</referenceTo>
+        <relationshipLabel>Capi</relationshipLabel>
+        <relationshipName>Capi</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Tipo_Filato__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Tipo Filato</label>
+        <length>50</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Tipo_Giacca__c</fullName>
+        <externalId>false</externalId>
+        <label>Tipo Giacca</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Giacca_un_petto</fullName>
+                    <default>false</default>
+                    <label>Giacca_un_petto</label>
+                </value>
+                <value>
+                    <fullName>Giacca_un_petto_e_mezzo</fullName>
+                    <default>false</default>
+                    <label>Giacca un petto e mezzo</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Tipologia_MTM__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Tipologia MTM</label>
+        <length>50</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Tipologia_Pantalone__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Tipologia Pantalone</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Tipologia_costruzione_MTM__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Tipologia costruzione MTM</label>
+        <length>50</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <gender>Masculine</gender>
+    <label>Capo</label>
+    <nameField>
+        <encrypted>false</encrypted>
+        <label>Capo Name</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Capi</pluralLabel>
+    <recordTypes>
+        <fullName>Abito</fullName>
+        <active>true</active>
+        <label>Abito</label>
+        <picklistValues>
+            <picklist>Descrizione_Modello_Giacca__c</picklist>
+            <values>
+                <fullName>CAVALLO REVER GRANDE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>REVER A LANCIA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>REVER A LANCIA GRANDE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>REVER A SPECCHIO 3 TASCHE A TOPPA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>TRADIZIONALE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>UN PETTO E MEZZO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>UN PETTO E MEZZO TASCHE A TOPPA</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Descrizione_Modello_Pantalone__c</picklist>
+            <values>
+                <fullName>Flat Fondo 19%2C5</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pince Fondo 19%2C5</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Tipo_Giacca__c</picklist>
+            <values>
+                <fullName>Giacca_un_petto</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Giacca_un_petto_e_mezzo</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Giacca</fullName>
+        <active>true</active>
+        <label>Giacca</label>
+        <picklistValues>
+            <picklist>Descrizione_Modello_Giacca__c</picklist>
+            <values>
+                <fullName>CAVALLO REVER GRANDE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>REVER A LANCIA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>REVER A LANCIA GRANDE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>REVER A SPECCHIO 3 TASCHE A TOPPA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>TRADIZIONALE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>UN PETTO E MEZZO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>UN PETTO E MEZZO TASCHE A TOPPA</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Descrizione_Modello_Pantalone__c</picklist>
+            <values>
+                <fullName>Flat Fondo 19%2C5</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pince Fondo 19%2C5</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Tipo_Giacca__c</picklist>
+            <values>
+                <fullName>Giacca_un_petto</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Giacca_un_petto_e_mezzo</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Pantalone</fullName>
+        <active>true</active>
+        <label>Pantalone</label>
+        <picklistValues>
+            <picklist>Descrizione_Modello_Giacca__c</picklist>
+            <values>
+                <fullName>CAVALLO REVER GRANDE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>REVER A LANCIA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>REVER A LANCIA GRANDE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>REVER A SPECCHIO 3 TASCHE A TOPPA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>TRADIZIONALE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>UN PETTO E MEZZO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>UN PETTO E MEZZO TASCHE A TOPPA</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Descrizione_Modello_Pantalone__c</picklist>
+            <values>
+                <fullName>Flat Fondo 19%2C5</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pince Fondo 19%2C5</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Tipo_Giacca__c</picklist>
+            <values>
+                <fullName>Giacca_un_petto</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Giacca_un_petto_e_mezzo</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+    <visibility>Public</visibility>
+</CustomObject>

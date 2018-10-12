@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableChangeDataCapture>false</enableChangeDataCapture>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Associate__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Associate</label>
+        <referenceTo>Associated__c</referenceTo>
+        <relationshipName>Marketing_Activities</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Cliente__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Account</label>
+        <lookupFilter>
+            <active>false</active>
+            <booleanFilter>1 OR 2 OR 3</booleanFilter>
+            <filterItems>
+                <field>Account.Privacy_1__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </filterItems>
+            <filterItems>
+                <field>Account.Privacy2__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </filterItems>
+            <filterItems>
+                <field>Account.Privacy1__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Gift</relationshipLabel>
+        <relationshipName>Attivit_Marketing</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Data__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Data</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Dati_Deduplica__c</fullName>
+        <externalId>false</externalId>
+        <formula>Cliente__c &amp;  Tipologia_Attivita__r.Name</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Dati Deduplica</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Descrizione__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Descrizione</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Dettaglio_Transazione__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Dettaglio Transazione</label>
+        <referenceTo>Transaction_Detail__c</referenceTo>
+        <relationshipName>Attivit_Marketing</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Gift__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Gift</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Nota_BC__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Nota BC</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Note__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Note</label>
+        <length>32768</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Product__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Prodotto</label>
+        <referenceTo>Product__c</referenceTo>
+        <relationshipName>Attivit_Marketing</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Tipologia_Attivit_picklist__c</fullName>
+        <externalId>false</externalId>
+        <label>Gift Type</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Holiday Gifting</fullName>
+                    <default>false</default>
+                    <label>Holiday Gifting</label>
+                </value>
+                <value>
+                    <fullName>Bottle of wine</fullName>
+                    <default>false</default>
+                    <label>Bottle of wine</label>
+                </value>
+                <value>
+                    <fullName>Bottle of olive oil</fullName>
+                    <default>false</default>
+                    <label>Bottle of olive oil</label>
+                </value>
+                <value>
+                    <fullName>Flowers</fullName>
+                    <default>false</default>
+                    <label>Flowers</label>
+                </value>
+                <value>
+                    <fullName>Tickets</fullName>
+                    <default>false</default>
+                    <label>Tickets</label>
+                </value>
+                <value>
+                    <fullName>Cigars</fullName>
+                    <default>false</default>
+                    <label>Cigars</label>
+                </value>
+                <value>
+                    <fullName>Styling emails</fullName>
+                    <default>false</default>
+                    <label>Styling emails</label>
+                </value>
+                <value>
+                    <fullName>Very Special Gift</fullName>
+                    <default>false</default>
+                    <label>Very Special Gift</label>
+                </value>
+                <value>
+                    <fullName>Serie Delighting</fullName>
+                    <default>true</default>
+                    <label>Serie Delighting</label>
+                </value>
+                <value>
+                    <fullName>Other (insert a detailed description)</fullName>
+                    <default>false</default>
+                    <label>Other (insert a detailed description)</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Tipologia_Attivita__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Tipologia Attività</label>
+        <lookupFilter>
+            <active>true</active>
+            <filterItems>
+                <field>Pannello_Amministrazione_Marketing__c.Gift__c</field>
+                <operation>equals</operation>
+                <valueField>$Source.Gift__c</valueField>
+            </filterItems>
+            <filterItems>
+                <field>Pannello_Amministrazione_Marketing__c.Attiva__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </filterItems>
+            <filterItems>
+                <field>Pannello_Amministrazione_Marketing__c.RecordType.DeveloperName</field>
+                <operation>notEqual</operation>
+                <value>Evento</value>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>Pannello_Amministrazione_Marketing__c</referenceTo>
+        <relationshipName>Attivita_Marketing</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <gender>Masculine</gender>
+    <label>Gift</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Data__c</columns>
+        <columns>Tipologia_Attivita__c</columns>
+        <columns>Product__c</columns>
+        <columns>RECORDTYPE</columns>
+        <filterScope>Everything</filterScope>
+        <label>Tutto</label>
+        <language>it</language>
+    </listViews>
+    <nameField>
+        <displayFormat>A-{0000}</displayFormat>
+        <label>Gift Name</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Gift</pluralLabel>
+    <recordTypes>
+        <fullName>Direct_Marketing</fullName>
+        <active>false</active>
+        <label>Direct Marketing</label>
+        <picklistValues>
+            <picklist>Tipologia_Attivit_picklist__c</picklist>
+            <values>
+                <fullName>Bottle of olive oil</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Bottle of wine</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cigars</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Flowers</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Holiday Gifting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other %28insert a detailed description%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Styling emails</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tickets</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Gift_Collection</fullName>
+        <active>true</active>
+        <label>Gift Collection</label>
+        <picklistValues>
+            <picklist>Tipologia_Attivit_picklist__c</picklist>
+            <values>
+                <fullName>Bottle of olive oil</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Bottle of wine</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cigars</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Flowers</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Holiday Gifting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other %28insert a detailed description%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Serie Delighting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Styling emails</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tickets</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Very Special Gift</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <searchLayouts/>
+    <sharingModel>Read</sharingModel>
+    <visibility>Public</visibility>
+</CustomObject>

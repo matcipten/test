@@ -1,0 +1,603 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableChangeDataCapture>false</enableChangeDataCapture>
+    <enableFeeds>true</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Area__c</fullName>
+        <externalId>false</externalId>
+        <label>Area</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>true</sorted>
+                <value>
+                    <fullName>Customer Care</fullName>
+                    <default>false</default>
+                    <label>Customer Care</label>
+                </value>
+                <value>
+                    <fullName>Deduplica</fullName>
+                    <default>false</default>
+                    <label>Deduplica</label>
+                </value>
+                <value>
+                    <fullName>Eventi / Campagne</fullName>
+                    <default>false</default>
+                    <label>Eventi / Campagne</label>
+                </value>
+                <value>
+                    <fullName>Flussi Batch</fullName>
+                    <default>false</default>
+                    <label>Flussi Batch</label>
+                </value>
+                <value>
+                    <fullName>Formazione</fullName>
+                    <default>false</default>
+                    <label>Formazione</label>
+                </value>
+                <value>
+                    <fullName>Implementazione Oggetti - Utenti</fullName>
+                    <default>false</default>
+                    <label>Implementazione Oggetti - Utenti</label>
+                </value>
+                <value>
+                    <fullName>Impostazioni Generali</fullName>
+                    <default>false</default>
+                    <label>Impostazioni Generali</label>
+                </value>
+                <value>
+                    <fullName>Integrazioni Realtime E-commerce</fullName>
+                    <default>false</default>
+                    <label>Integrazioni Realtime E-commerce</label>
+                </value>
+                <value>
+                    <fullName>Integrazioni Realtime Xstore</fullName>
+                    <default>false</default>
+                    <label>Integrazioni Realtime Xstore</label>
+                </value>
+                <value>
+                    <fullName>Layout di pagina</fullName>
+                    <default>false</default>
+                    <label>Layout di pagina</label>
+                </value>
+                <value>
+                    <fullName>Reports e Dashboards</fullName>
+                    <default>false</default>
+                    <label>Reports e Dashboards</label>
+                </value>
+                <value>
+                    <fullName>Scheda Cliente</fullName>
+                    <default>false</default>
+                    <label>Scheda Cliente</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Data_Completamento_Attivit__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Data Completamento Attività</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Data_Consegna_Prevista__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Data Consegna Prevista</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Data_Consegna_Richiesta__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Data Consegna Richiesta</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Giorni_consuntivati__c</fullName>
+        <externalId>false</externalId>
+        <label>Giorni consuntivati</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Giorni_stimati__c</fullName>
+        <externalId>false</externalId>
+        <label>Giorni stimati</label>
+        <precision>5</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Link_Issue_Jira__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Link Issue Jira</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>Macro_Area__c</fullName>
+        <externalId>false</externalId>
+        <label>Macro Area</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Sales Cloud</fullName>
+                    <default>false</default>
+                    <label>Sales Cloud</label>
+                </value>
+                <value>
+                    <fullName>Service Cloud</fullName>
+                    <default>false</default>
+                    <label>Service Cloud</label>
+                </value>
+                <value>
+                    <fullName>Salesforce1</fullName>
+                    <default>false</default>
+                    <label>Salesforce1</label>
+                </value>
+                <value>
+                    <fullName>Marketing Cloud</fullName>
+                    <default>false</default>
+                    <label>Marketing Cloud</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Note_Brunello_Cucinelli__c</fullName>
+        <externalId>false</externalId>
+        <label>Note Brunello Cucinelli</label>
+        <length>32768</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Note_Ten__c</fullName>
+        <externalId>false</externalId>
+        <label>Note Ten</label>
+        <length>32768</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Oggetto__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Oggetto</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Priority__c</fullName>
+        <externalId>false</externalId>
+        <label>Priority</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Alta</fullName>
+                    <default>false</default>
+                    <label>Alta</label>
+                </value>
+                <value>
+                    <fullName>Media</fullName>
+                    <default>true</default>
+                    <label>Media</label>
+                </value>
+                <value>
+                    <fullName>Bassa</fullName>
+                    <default>false</default>
+                    <label>Bassa</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Richiesta__c</fullName>
+        <externalId>false</externalId>
+        <label>Richiesta</label>
+        <length>32768</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Status</label>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Nuova</fullName>
+                    <default>true</default>
+                    <label>Nuova</label>
+                </value>
+                <value>
+                    <fullName>Da Quotare</fullName>
+                    <default>false</default>
+                    <label>Da Quotare</label>
+                </value>
+                <value>
+                    <fullName>Da Approvare</fullName>
+                    <default>false</default>
+                    <label>Da Approvare</label>
+                </value>
+                <value>
+                    <fullName>Approvata</fullName>
+                    <default>false</default>
+                    <label>Approvata</label>
+                </value>
+                <value>
+                    <fullName>In Sviluppo</fullName>
+                    <default>false</default>
+                    <label>In Sviluppo</label>
+                </value>
+                <value>
+                    <fullName>Sospesa</fullName>
+                    <default>false</default>
+                    <label>Sospesa</label>
+                </value>
+                <value>
+                    <fullName>Completata</fullName>
+                    <default>false</default>
+                    <label>Completata</label>
+                </value>
+                <value>
+                    <fullName>Annullata</fullName>
+                    <default>false</default>
+                    <label>Annullata</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <gender>Feminine</gender>
+    <label>Issue Desk</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Oggetto__c</columns>
+        <columns>Macro_Area__c</columns>
+        <columns>Priority__c</columns>
+        <columns>Data_Consegna_Prevista__c</columns>
+        <columns>Status__c</columns>
+        <columns>Area__c</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <columns>Giorni_stimati__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+        <language>it</language>
+    </listViews>
+    <listViews>
+        <fullName>Da_Quotare</fullName>
+        <columns>NAME</columns>
+        <columns>Giorni_stimati__c</columns>
+        <columns>Oggetto__c</columns>
+        <columns>Priority__c</columns>
+        <columns>Status__c</columns>
+        <columns>Macro_Area__c</columns>
+        <columns>Area__c</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <columns>Data_Consegna_Prevista__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Da Quotare</value>
+        </filters>
+        <label>02 - Da Quotare</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>X01_Nuovi</fullName>
+        <columns>NAME</columns>
+        <columns>Oggetto__c</columns>
+        <columns>Priority__c</columns>
+        <columns>Status__c</columns>
+        <columns>Macro_Area__c</columns>
+        <columns>Area__c</columns>
+        <columns>Data_Consegna_Richiesta__c</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <columns>Giorni_stimati__c</columns>
+        <columns>Data_Consegna_Prevista__c</columns>
+        <columns>CREATED_DATE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Nuova</value>
+        </filters>
+        <label>01 - Nuovi</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>X03_Da_approvare</fullName>
+        <columns>NAME</columns>
+        <columns>Oggetto__c</columns>
+        <columns>Priority__c</columns>
+        <columns>Status__c</columns>
+        <columns>Macro_Area__c</columns>
+        <columns>Area__c</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <columns>Giorni_stimati__c</columns>
+        <columns>Data_Consegna_Prevista__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Da Approvare</value>
+        </filters>
+        <label>03 - Da Approvare</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>X04_Approvati</fullName>
+        <columns>NAME</columns>
+        <columns>Oggetto__c</columns>
+        <columns>Priority__c</columns>
+        <columns>Status__c</columns>
+        <columns>Data_Consegna_Prevista__c</columns>
+        <columns>Macro_Area__c</columns>
+        <columns>Area__c</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <columns>Giorni_stimati__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Approvata</value>
+        </filters>
+        <label>04 - Approvati</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>X05_In_Sviluppo</fullName>
+        <columns>NAME</columns>
+        <columns>Oggetto__c</columns>
+        <columns>Priority__c</columns>
+        <columns>Status__c</columns>
+        <columns>Macro_Area__c</columns>
+        <columns>Area__c</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <columns>Giorni_stimati__c</columns>
+        <columns>Data_Consegna_Prevista__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>In Sviluppo</value>
+        </filters>
+        <label>05 - In Sviluppo</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>X06_Sospesi</fullName>
+        <columns>NAME</columns>
+        <columns>Oggetto__c</columns>
+        <columns>Priority__c</columns>
+        <columns>Status__c</columns>
+        <columns>Macro_Area__c</columns>
+        <columns>Area__c</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <columns>Giorni_stimati__c</columns>
+        <columns>Data_Consegna_Prevista__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Sospesa</value>
+        </filters>
+        <label>06 - Sospesi</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>X07_Completati</fullName>
+        <columns>NAME</columns>
+        <columns>Oggetto__c</columns>
+        <columns>Priority__c</columns>
+        <columns>Status__c</columns>
+        <columns>Giorni_stimati__c</columns>
+        <columns>Area__c</columns>
+        <columns>Macro_Area__c</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <columns>Data_Consegna_Prevista__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Completata</value>
+        </filters>
+        <label>07 - Completati</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>X08_Annullati</fullName>
+        <columns>NAME</columns>
+        <columns>Oggetto__c</columns>
+        <columns>Priority__c</columns>
+        <columns>Status__c</columns>
+        <columns>Macro_Area__c</columns>
+        <columns>Area__c</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <columns>Giorni_stimati__c</columns>
+        <columns>Data_Consegna_Prevista__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Annullata</value>
+        </filters>
+        <label>08 - Annullati</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>X12_Marketing_Cloud</fullName>
+        <columns>NAME</columns>
+        <columns>Oggetto__c</columns>
+        <columns>Priority__c</columns>
+        <columns>Status__c</columns>
+        <columns>Giorni_stimati__c</columns>
+        <columns>Area__c</columns>
+        <columns>Macro_Area__c</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <columns>Data_Consegna_Prevista__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Macro_Area__c</field>
+            <operation>equals</operation>
+            <value>Marketing Cloud</value>
+        </filters>
+        <label>09 - Marketing Cloud</label>
+        <language>en_US</language>
+    </listViews>
+    <nameField>
+        <displayFormat>I-{0000}</displayFormat>
+        <label>Numero Attività</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Issues Desk</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>Oggetto__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Status__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Area__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Macro_Area__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Priority__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>UPDATEDBY_USER</customTabListAdditionalFields>
+        <excludedStandardButtons>Accept</excludedStandardButtons>
+        <excludedStandardButtons>ChangeOwner</excludedStandardButtons>
+        <listViewButtons>Issues_report</listViewButtons>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+    <startsWith>Vowel</startsWith>
+    <visibility>Public</visibility>
+    <webLinks>
+        <fullName>Issues_report</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <linkType>url</linkType>
+        <masterLabel>Issues report</masterLabel>
+        <openType>replace</openType>
+        <protected>false</protected>
+        <requireRowSelection>false</requireRowSelection>
+        <url>https://eu11.salesforce.com/00O0Y000001zEe3</url>
+    </webLinks>
+</CustomObject>

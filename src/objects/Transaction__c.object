@@ -1,0 +1,2224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Transazioni Xstore / E-Commerce</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableChangeDataCapture>false</enableChangeDataCapture>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Account__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Cliente</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Transazioni</relationshipLabel>
+        <relationshipName>Transazioni</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Citta_Fatturazione__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Città Fatturazione</label>
+        <length>40</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Citta_Spedizione__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Città Spedizione</label>
+        <length>40</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Codice_Cassa__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Codice Cassa</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Codice_Nazione_Fatturazione__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Codice Nazione Fatturazione</label>
+        <length>15</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Codice_Nazione_Spedizione__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Codice Nazione Spedizione</label>
+        <length>15</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Codice_Postale_Fatturazione__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Codice Postale Fatturazione</label>
+        <length>15</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Codice_Postale_Spedizione__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Codice Postale Spedizione</label>
+        <length>15</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Codice_Stato_Fatturazione__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Codice Stato Fatturazione</label>
+        <length>15</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Codice_Stato_Spedizione__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Codice Stato Spedizione</label>
+        <length>15</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Cognome_Fatturazione__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Cognome Fatturazione</label>
+        <length>40</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Cognome_Spedizione__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Cognome Spedizione</label>
+        <length>40</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Data_Scontrino__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Data Scontrino</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Data_Spedizione__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Data Spedizione</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Email_Fatturazione__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Email Fatturazione</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Email_Spedizione__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Email Spedizione</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ID_Store_Xchannel__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>ID Store Xchannel</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Id_Cliente_DW__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Id Cliente DW</label>
+        <length>40</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Id_Cliente_Micros__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Id Cliente Micros</label>
+        <length>40</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Id_Cliente_Relate__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Id Cliente Relate</label>
+        <length>40</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Id_Cliente__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Id Cliente</label>
+        <length>40</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Id_Location_Micros__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Id Location Micros</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Id_Location__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Id Location</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Id_Transazione_originaria_Ecommerce__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Id Transazione originaria Ecommerce</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Importo_Iva__c</fullName>
+        <externalId>false</externalId>
+        <label>Importo Iva</label>
+        <summarizedField>Transaction_Detail__c.Importo_IVA__c</summarizedField>
+        <summaryForeignKey>Transaction_Detail__c.Transaction__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Importo_Sconto__c</fullName>
+        <externalId>false</externalId>
+        <formula>if ( 
+
+Or (Prezzo_di_Listino__c - Prezzo_di_Vendita__c=0, (And (Prezzo_di_Listino__c &lt; Prezzo_di_Vendita__c, Prezzo_di_Listino__c&gt;0  ))), 
+
+
+0 , 
+
+Prezzo_di_Listino__c - Prezzo_di_Vendita__c 
+
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Importo Sconto (Sede)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Importo_Sconto_formula__c</fullName>
+        <externalId>false</externalId>
+        <formula>CASE($User.CurrencyISOcode__c, 
+&quot;BRL&quot;, Sconto_EUR__c, 
+&quot;CAD&quot;, Sconto_CAD__c, 
+&quot;CHF&quot;, Sconto_CHF__c, 
+&quot;CNY&quot;, Sconto_CNY__c, 
+&quot;EUR&quot;, Sconto_EUR__c, 
+&quot;GBP&quot;, Sconto_GBP__c, 
+&quot;HKD&quot;, Sconto_HKD__c, 
+&quot;JPY&quot;, Sconto_JPY__c, 
+&quot;USD&quot;, Sconto_USD__c,
+&quot;MOP&quot;, Sconto_MOP__c,
+Importo_Sconto__c)</formula>
+        <label>Importo Sconto</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Indirizzo_Fatturazione__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Indirizzo Fatturazione</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Indirizzo_Spedizione__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Indirizzo Spedizione</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Iva__c</fullName>
+        <externalId>false</externalId>
+        <formula>if (Prezzo_Netto_IVA__c=0, 0,
+((Prezzo_di_Vendita__c - Prezzo_Netto_IVA__c)/Prezzo_Netto_IVA__c))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Weighted average with regard to line</inlineHelpText>
+        <label>Iva</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Key_Transazione__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <encrypted>false</encrypted>
+        <externalId>true</externalId>
+        <label>Key Transazione</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>Key__c</fullName>
+        <externalId>false</externalId>
+        <formula>Name &amp;  Id_Location_Micros__c &amp; Codice_Cassa__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Key</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Location__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Location</label>
+        <referenceTo>Location__c</referenceTo>
+        <relationshipLabel>Transazioni</relationshipLabel>
+        <relationshipName>Transazioni</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Nome_Fatturazione__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Nome Fatturazione</label>
+        <length>40</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Nome_Spedizione__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Nome Spedizione</label>
+        <length>40</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Note_Upselling__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Note Upselling</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>PSconto_BRL__c</fullName>
+        <externalId>false</externalId>
+        <label>% di Sconto (BRL)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>PSconto_CAD__c</fullName>
+        <externalId>false</externalId>
+        <label>% di Sconto (CAD)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>PSconto_CHF__c</fullName>
+        <externalId>false</externalId>
+        <label>% di Sconto (CHF)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>PSconto_CNY__c</fullName>
+        <externalId>false</externalId>
+        <label>% di Sconto (CNY)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>PSconto_EUR__c</fullName>
+        <externalId>false</externalId>
+        <label>% di Sconto (EUR)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>PSconto_GBP__c</fullName>
+        <externalId>false</externalId>
+        <label>% di Sconto (GBP)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>PSconto_HKD__c</fullName>
+        <externalId>false</externalId>
+        <label>% di Sconto (HKD)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>PSconto_JPY__c</fullName>
+        <externalId>false</externalId>
+        <label>% di Sconto (JPY)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>PSconto_MOP__c</fullName>
+        <externalId>false</externalId>
+        <label>% di Sconto (MOP)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>PSconto_USD__c</fullName>
+        <externalId>false</externalId>
+        <label>% di Sconto (USD)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>PSconto__c</fullName>
+        <externalId>false</externalId>
+        <formula>if 
+( OR( Prezzo_di_Listino__c=0.00, ISBLANK(Prezzo_di_Listino__c )), 0, 
+
+if ( 
+(Importo_Sconto__c / Prezzo_di_Listino__c)&lt;0, 
+0, 
+Importo_Sconto__c/ Prezzo_di_Listino__c 
+) 
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>% sconto (Sede)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>PostVoidComment__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>PostVoidComment</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>PostVoidReasonCode__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>PostVoidReasonCode</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Prezzo_Netto_IVA__c</fullName>
+        <externalId>false</externalId>
+        <label>Prezzo Netto IVA</label>
+        <summarizedField>Transaction_Detail__c.Prezzo_Netto_Iva__c</summarizedField>
+        <summaryForeignKey>Transaction_Detail__c.Transaction__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Prezzo_Netto_IVA_formula__c</fullName>
+        <externalId>false</externalId>
+        <formula>CASE($User.CurrencyISOcode__c, 
+&quot;BRL&quot;, Prezzo_netto_IVA_BRL__c, 
+&quot;CAD&quot;, Prezzo_netto_IVA_CAD__c, 
+&quot;CHF&quot;, Prezzo_netto_IVA_CHF__c, 
+&quot;CNY&quot;, Prezzo_netto_IVA_CNY__c, 
+&quot;EUR&quot;, Prezzo_netto_IVA_EUR__c, 
+&quot;GBP&quot;, Prezzo_netto_IVA_GBP__c, 
+&quot;HKD&quot;, Prezzo_netto_IVA_HKD__c, 
+&quot;JPY&quot;, Prezzo_netto_IVA_JPY__c, 
+&quot;USD&quot;, Prezzo_netto_IVA_USD__c, 
+&quot;MOP&quot;, Prezzo_netto_IVA_MOP__c,
+Prezzo_Netto_IVA__c)</formula>
+        <label>Prezzo Netto IVA (formula)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Prezzo_di_Listino__c</fullName>
+        <externalId>false</externalId>
+        <label>Prezzo di Listino (Sede)</label>
+        <summarizedField>Transaction_Detail__c.Prezzo_di_Listino__c</summarizedField>
+        <summaryForeignKey>Transaction_Detail__c.Transaction__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Prezzo_di_Listino_formula__c</fullName>
+        <externalId>false</externalId>
+        <formula>CASE($User.CurrencyISOcode__c, 
+&quot;BRL&quot;, Prezzo_di_listino_BRL__c, 
+&quot;CAD&quot;, Prezzo_di_listino_CAD__c, 
+&quot;CHF&quot;, Prezzo_di_listino_CHF__c, 
+&quot;CNY&quot;, Prezzo_di_listino_CNY__c, 
+&quot;EUR&quot;, Prezzo_di_listino_EUR__c, 
+&quot;GBP&quot;, Prezzo_di_listino_GBP__c, 
+&quot;HKD&quot;, Prezzo_di_listino_HKD__c, 
+&quot;JPY&quot;, Prezzo_di_listino_JPY__c, 
+&quot;USD&quot;, Prezzo_di_listino_USD__c,
+&quot;MOP&quot;, Prezzo_di_listino_MOP__c, 
+Prezzo_di_Listino__c)</formula>
+        <label>Prezzo di Listino</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Prezzo_di_Vendita__c</fullName>
+        <externalId>false</externalId>
+        <label>Prezzo di Vendita (Sede)</label>
+        <summarizedField>Transaction_Detail__c.Prezzo_di_Vendita__c</summarizedField>
+        <summaryForeignKey>Transaction_Detail__c.Transaction__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Prezzo_di_Vendita_formula__c</fullName>
+        <externalId>false</externalId>
+        <formula>CASE($User.CurrencyISOcode__c, 
+&quot;BRL&quot;, Prezzo_di_vendita_BRL__c, 
+&quot;CAD&quot;, Prezzo_di_vendita_CAD__c, 
+&quot;CHF&quot;, Prezzo_di_vendita_CHF__c, 
+&quot;CNY&quot;, Prezzo_di_vendita_CNY__c, 
+&quot;EUR&quot;, Prezzo_di_vendita_EUR__c, 
+&quot;GBP&quot;, Prezzo_di_vendita_GBP__c, 
+&quot;HKD&quot;, Prezzo_di_vendita_HKD__c, 
+&quot;JPY&quot;, Prezzo_di_vendita_JPY__c, 
+&quot;USD&quot;, Prezzo_di_vendita_USD__c,
+&quot;MOP&quot;, Prezzo_di_vendita_MOP__c, 
+Prezzo_di_Vendita__c)</formula>
+        <label>Prezzo di Vendita</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Prezzo_di_listino_BRL__c</fullName>
+        <externalId>false</externalId>
+        <label>Prezzo di listino (BRL)</label>
+        <summarizedField>Transaction_Detail__c.Prezzo_di_listino_BRL__c</summarizedField>
+        <summaryForeignKey>Transaction_Detail__c.Transaction__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Prezzo_di_listino_CAD__c</fullName>
+        <externalId>false</externalId>
+        <label>Prezzo di listino (CAD)</label>
+        <summarizedField>Transaction_Detail__c.Prezzo_di_listino_CAD__c</summarizedField>
+        <summaryForeignKey>Transaction_Detail__c.Transaction__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Prezzo_di_listino_CHF__c</fullName>
+        <externalId>false</externalId>
+        <label>Prezzo di listino (CHF)</label>
+        <summarizedField>Transaction_Detail__c.Prezzo_di_listino_CHF__c</summarizedField>
+        <summaryForeignKey>Transaction_Detail__c.Transaction__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Prezzo_di_listino_CNY__c</fullName>
+        <externalId>false</externalId>
+        <label>Prezzo di listino (CNY)</label>
+        <summarizedField>Transaction_Detail__c.Prezzo_di_listino_CNY__c</summarizedField>
+        <summaryForeignKey>Transaction_Detail__c.Transaction__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Prezzo_di_listino_EUR__c</fullName>
+        <externalId>false</externalId>
+        <label>Prezzo di listino (EUR)</label>
+        <summarizedField>Transaction_Detail__c.Prezzo_di_Listino_EUR__c</summarizedField>
+        <summaryForeignKey>Transaction_Detail__c.Transaction__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Prezzo_di_listino_GBP__c</fullName>
+        <externalId>false</externalId>
+        <label>Prezzo di listino (GBP)</label>
+        <summarizedField>Transaction_Detail__c.Prezzo_di_listino_GBP__c</summarizedField>
+        <summaryForeignKey>Transaction_Detail__c.Transaction__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Prezzo_di_listino_HKD__c</fullName>
+        <externalId>false</externalId>
+        <label>Prezzo di listino (HKD)</label>
+        <summarizedField>Transaction_Detail__c.Prezzo_di_listino_HKD__c</summarizedField>
+        <summaryForeignKey>Transaction_Detail__c.Transaction__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Prezzo_di_listino_JPY__c</fullName>
+        <externalId>false</externalId>
+        <label>Prezzo di listino (JPY)</label>
+        <summarizedField>Transaction_Detail__c.Prezzo_di_listino_JPY__c</summarizedField>
+        <summaryForeignKey>Transaction_Detail__c.Transaction__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Prezzo_di_listino_MOP__c</fullName>
+        <externalId>false</externalId>
+        <label>Prezzo di listino (MOP)</label>
+        <summarizedField>Transaction_Detail__c.Prezzo_di_listino_MOP__c</summarizedField>
+        <summaryForeignKey>Transaction_Detail__c.Transaction__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Prezzo_di_listino_USD__c</fullName>
+        <externalId>false</externalId>
+        <label>Prezzo di listino (USD)</label>
+        <summarizedField>Transaction_Detail__c.Prezzo_di_listino_USD__c</summarizedField>
+        <summaryForeignKey>Transaction_Detail__c.Transaction__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Prezzo_di_vendita_BRL__c</fullName>
+        <externalId>false</externalId>
+        <label>Prezzo di vendita (BRL)</label>
+        <summarizedField>Transaction_Detail__c.Prezzo_di_vendita_BRL__c</summarizedField>
+        <summaryForeignKey>Transaction_Detail__c.Transaction__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Prezzo_di_vendita_CAD__c</fullName>
+        <externalId>false</externalId>
+        <label>Prezzo di vendita (CAD)</label>
+        <summarizedField>Transaction_Detail__c.Prezzo_di_vendita_CAD__c</summarizedField>
+        <summaryForeignKey>Transaction_Detail__c.Transaction__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Prezzo_di_vendita_CHF__c</fullName>
+        <externalId>false</externalId>
+        <label>Prezzo di vendita (CHF)</label>
+        <summarizedField>Transaction_Detail__c.Prezzo_di_vendita_CHF__c</summarizedField>
+        <summaryForeignKey>Transaction_Detail__c.Transaction__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Prezzo_di_vendita_CNY__c</fullName>
+        <externalId>false</externalId>
+        <label>Prezzo di vendita (CNY)</label>
+        <summarizedField>Transaction_Detail__c.Prezzo_di_vendita_CNY__c</summarizedField>
+        <summaryForeignKey>Transaction_Detail__c.Transaction__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Prezzo_di_vendita_EUR__c</fullName>
+        <externalId>false</externalId>
+        <label>Prezzo di vendita (EUR)</label>
+        <summarizedField>Transaction_Detail__c.Prezzo_di_Vendita_EUR__c</summarizedField>
+        <summaryForeignKey>Transaction_Detail__c.Transaction__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Prezzo_di_vendita_GBP__c</fullName>
+        <externalId>false</externalId>
+        <label>Prezzo di vendita (GBP)</label>
+        <summarizedField>Transaction_Detail__c.Prezzo_di_vendita_GBP__c</summarizedField>
+        <summaryForeignKey>Transaction_Detail__c.Transaction__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Prezzo_di_vendita_HKD__c</fullName>
+        <externalId>false</externalId>
+        <label>Prezzo di vendita (HKD)</label>
+        <summarizedField>Transaction_Detail__c.Prezzo_di_vendita_HKD__c</summarizedField>
+        <summaryForeignKey>Transaction_Detail__c.Transaction__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Prezzo_di_vendita_JPY__c</fullName>
+        <externalId>false</externalId>
+        <label>Prezzo di vendita (JPY)</label>
+        <summarizedField>Transaction_Detail__c.Prezzo_di_vendita_JPY__c</summarizedField>
+        <summaryForeignKey>Transaction_Detail__c.Transaction__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Prezzo_di_vendita_MOP__c</fullName>
+        <externalId>false</externalId>
+        <label>Prezzo di vendita (MOP)</label>
+        <summarizedField>Transaction_Detail__c.Prezzo_di_vendita_MOP__c</summarizedField>
+        <summaryForeignKey>Transaction_Detail__c.Transaction__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Prezzo_di_vendita_USD__c</fullName>
+        <externalId>false</externalId>
+        <label>Prezzo di vendita (USD)</label>
+        <summarizedField>Transaction_Detail__c.Prezzo_di_vendita_USD__c</summarizedField>
+        <summaryForeignKey>Transaction_Detail__c.Transaction__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Prezzo_netto_IVA_BRL__c</fullName>
+        <externalId>false</externalId>
+        <label>Prezzo netto IVA (BRL)</label>
+        <summarizedField>Transaction_Detail__c.Prezzo_netto_IVA_BRL__c</summarizedField>
+        <summaryForeignKey>Transaction_Detail__c.Transaction__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Prezzo_netto_IVA_CAD__c</fullName>
+        <externalId>false</externalId>
+        <label>Prezzo netto IVA (CAD)</label>
+        <summarizedField>Transaction_Detail__c.Prezzo_netto_IVA_CAD__c</summarizedField>
+        <summaryForeignKey>Transaction_Detail__c.Transaction__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Prezzo_netto_IVA_CHF__c</fullName>
+        <externalId>false</externalId>
+        <label>Prezzo netto IVA (CHF)</label>
+        <summarizedField>Transaction_Detail__c.Prezzo_netto_IVA_CHF__c</summarizedField>
+        <summaryForeignKey>Transaction_Detail__c.Transaction__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Prezzo_netto_IVA_CNY__c</fullName>
+        <externalId>false</externalId>
+        <label>Prezzo netto IVA (CNY)</label>
+        <summarizedField>Transaction_Detail__c.Prezzo_netto_IVA_CNY__c</summarizedField>
+        <summaryForeignKey>Transaction_Detail__c.Transaction__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Prezzo_netto_IVA_EUR__c</fullName>
+        <externalId>false</externalId>
+        <label>Prezzo netto IVA (EUR)</label>
+        <summarizedField>Transaction_Detail__c.Prezzo_netto_iva_EUR__c</summarizedField>
+        <summaryForeignKey>Transaction_Detail__c.Transaction__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Prezzo_netto_IVA_GBP__c</fullName>
+        <externalId>false</externalId>
+        <label>Prezzo netto IVA (GBP)</label>
+        <summarizedField>Transaction_Detail__c.Prezzo_netto_IVA_GBP__c</summarizedField>
+        <summaryForeignKey>Transaction_Detail__c.Transaction__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Prezzo_netto_IVA_HKD__c</fullName>
+        <externalId>false</externalId>
+        <label>Prezzo netto IVA (HKD)</label>
+        <summarizedField>Transaction_Detail__c.Prezzo_netto_IVA_HKD__c</summarizedField>
+        <summaryForeignKey>Transaction_Detail__c.Transaction__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Prezzo_netto_IVA_JPY__c</fullName>
+        <externalId>false</externalId>
+        <label>Prezzo netto IVA (JPY)</label>
+        <summarizedField>Transaction_Detail__c.Prezzo_netto_IVA_JPY__c</summarizedField>
+        <summaryForeignKey>Transaction_Detail__c.Transaction__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Prezzo_netto_IVA_MOP__c</fullName>
+        <externalId>false</externalId>
+        <label>Prezzo netto IVA (MOP)</label>
+        <summarizedField>Transaction_Detail__c.Prezzo_netto_IVA_MOP__c</summarizedField>
+        <summaryForeignKey>Transaction_Detail__c.Transaction__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Prezzo_netto_IVA_USD__c</fullName>
+        <externalId>false</externalId>
+        <label>Prezzo netto IVA (USD)</label>
+        <summarizedField>Transaction_Detail__c.Prezzo_Netto_Iva_USD__c</summarizedField>
+        <summaryForeignKey>Transaction_Detail__c.Transaction__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Proprieta_Cross_Selling__c</fullName>
+        <description>Tag che indica  il fattore scatenante l&apos;upselling</description>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Proprietà Cross Selling</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Proprieta_Ecommerce__c</fullName>
+        <externalId>false</externalId>
+        <label>Proprietà Ecommerce</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Online sale</fullName>
+                    <default>false</default>
+                    <label>Online sale</label>
+                </value>
+                <value>
+                    <fullName>Online Return</fullName>
+                    <default>false</default>
+                    <label>Online Return</label>
+                </value>
+                <value>
+                    <fullName>Online Exchange</fullName>
+                    <default>false</default>
+                    <label>Online Exchange</label>
+                </value>
+                <value>
+                    <fullName>In store Pick up (whs)</fullName>
+                    <default>false</default>
+                    <label>In store Pick up (whs)</label>
+                </value>
+                <value>
+                    <fullName>In store Pick up (store)</fullName>
+                    <default>false</default>
+                    <label>In store Pick up (store)</label>
+                </value>
+                <value>
+                    <fullName>Return in store (whs)</fullName>
+                    <default>false</default>
+                    <label>Return in store (whs)</label>
+                </value>
+                <value>
+                    <fullName>Return in store (store)</fullName>
+                    <default>false</default>
+                    <label>Return in store (store)</label>
+                </value>
+                <value>
+                    <fullName>Online Return and Exchange</fullName>
+                    <default>false</default>
+                    <label>Online Return and Exchange</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Quantita__c</fullName>
+        <externalId>false</externalId>
+        <label>Quantità</label>
+        <summarizedField>Transaction_Detail__c.Quantita__c</summarizedField>
+        <summaryForeignKey>Transaction_Detail__c.Transaction__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Sconto_BRL__c</fullName>
+        <externalId>false</externalId>
+        <formula>if ( 
+Or (Prezzo_di_listino_BRL__c - Prezzo_di_vendita_BRL__c =0, (And (Prezzo_di_listino_BRL__c &lt; Prezzo_di_vendita_BRL__c , Prezzo_di_listino_BRL__c &gt;0 )), 
+(And (Prezzo_di_listino_BRL__c &gt; Prezzo_di_vendita_BRL__c , Prezzo_di_listino_BRL__c &lt;0 )) 
+), 
+0 , 
+Prezzo_di_listino_BRL__c - Prezzo_di_vendita_BRL__c 
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Sconto (BRL)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sconto_CAD__c</fullName>
+        <externalId>false</externalId>
+        <formula>if ( 
+Or (Prezzo_di_listino_CAD__c   - Prezzo_di_vendita_CAD__c  =0, (And (Prezzo_di_listino_CAD__c   &lt; Prezzo_di_vendita_CAD__c  , Prezzo_di_listino_CAD__c  &gt;0  )),
+(And (Prezzo_di_listino_CAD__c   &gt; Prezzo_di_vendita_CAD__c  , Prezzo_di_listino_CAD__c  &lt;0  ))
+), 
+0 , 
+Prezzo_di_listino_CAD__c   - Prezzo_di_vendita_CAD__c   
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Sconto (CAD)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sconto_CHF__c</fullName>
+        <externalId>false</externalId>
+        <formula>if ( 
+Or (Prezzo_di_listino_CHF__c   - Prezzo_di_vendita_CHF__c  =0, (And (Prezzo_di_listino_CHF__c   &lt; Prezzo_di_vendita_CHF__c  , Prezzo_di_listino_CHF__c  &gt;0  )),
+(And (Prezzo_di_listino_CHF__c   &gt; Prezzo_di_vendita_CHF__c  , Prezzo_di_listino_CHF__c  &lt;0  ))
+), 
+0 , 
+Prezzo_di_listino_CHF__c   - Prezzo_di_vendita_CHF__c   
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Sconto (CHF)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sconto_CNY__c</fullName>
+        <externalId>false</externalId>
+        <formula>if ( 
+Or (Prezzo_di_listino_CNY__c   - Prezzo_di_vendita_CNY__c  =0, (And (Prezzo_di_listino_CNY__c   &lt; Prezzo_di_vendita_CNY__c  , Prezzo_di_listino_CNY__c  &gt;0  )),
+(And (Prezzo_di_listino_CNY__c   &gt; Prezzo_di_vendita_CNY__c  , Prezzo_di_listino_CNY__c  &lt;0  ))
+), 
+0 , 
+Prezzo_di_listino_CNY__c   - Prezzo_di_vendita_CNY__c   
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Sconto (CNY)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sconto_EUR__c</fullName>
+        <externalId>false</externalId>
+        <formula>if ( 
+Or (Prezzo_di_listino_EUR__c   - Prezzo_di_vendita_EUR__c  =0, (And (Prezzo_di_listino_EUR__c   &lt; Prezzo_di_vendita_EUR__c  , Prezzo_di_listino_EUR__c  &gt;0  )),
+(And (Prezzo_di_listino_EUR__c   &gt; Prezzo_di_vendita_EUR__c  , Prezzo_di_listino_EUR__c  &lt;0  ))
+), 
+0 , 
+Prezzo_di_listino_EUR__c   - Prezzo_di_vendita_EUR__c   
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Sconto (EUR)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sconto_GBP__c</fullName>
+        <externalId>false</externalId>
+        <formula>if ( 
+Or (Prezzo_di_listino_GBP__c   - Prezzo_di_vendita_GBP__c  =0, (And (Prezzo_di_listino_GBP__c   &lt; Prezzo_di_vendita_GBP__c  , Prezzo_di_listino_GBP__c  &gt;0  )),
+(And (Prezzo_di_listino_GBP__c   &gt; Prezzo_di_vendita_GBP__c  , Prezzo_di_listino_GBP__c  &lt;0  ))
+), 
+0 , 
+Prezzo_di_listino_GBP__c   - Prezzo_di_vendita_GBP__c   
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Sconto (GBP)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sconto_HKD__c</fullName>
+        <externalId>false</externalId>
+        <formula>if ( 
+Or (Prezzo_di_listino_HKD__c   - Prezzo_di_vendita_HKD__c  =0, (And (Prezzo_di_listino_HKD__c   &lt; Prezzo_di_vendita_HKD__c  , Prezzo_di_listino_HKD__c  &gt;0  )),
+(And (Prezzo_di_listino_HKD__c   &gt; Prezzo_di_vendita_HKD__c  , Prezzo_di_listino_HKD__c  &lt;0  ))
+), 
+0 , 
+Prezzo_di_listino_HKD__c   - Prezzo_di_vendita_HKD__c   
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Sconto (HKD)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sconto_JPY__c</fullName>
+        <externalId>false</externalId>
+        <formula>if ( 
+Or (Prezzo_di_listino_JPY__c   - Prezzo_di_vendita_JPY__c  =0, (And (Prezzo_di_listino_JPY__c   &lt; Prezzo_di_vendita_JPY__c  , Prezzo_di_listino_JPY__c  &gt;0  )),
+(And (Prezzo_di_listino_JPY__c   &gt; Prezzo_di_vendita_JPY__c  , Prezzo_di_listino_JPY__c  &lt;0  ))
+), 
+0 , 
+Prezzo_di_listino_JPY__c   - Prezzo_di_vendita_JPY__c   
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Sconto (JPY)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sconto_MOP__c</fullName>
+        <externalId>false</externalId>
+        <label>Sconto (MOP)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sconto_USD__c</fullName>
+        <externalId>false</externalId>
+        <formula>if ( 
+Or (Prezzo_di_listino_USD__c   - Prezzo_di_vendita_USD__c  =0, (And (Prezzo_di_listino_USD__c   &lt; Prezzo_di_vendita_USD__c  , Prezzo_di_listino_USD__c  &gt;0  )),
+(And (Prezzo_di_listino_USD__c   &gt; Prezzo_di_vendita_USD__c  , Prezzo_di_listino_USD__c  &lt;0  ))
+), 
+0 , 
+Prezzo_di_listino_USD__c   - Prezzo_di_vendita_USD__c   
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Sconto (USD)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sconto_formula__c</fullName>
+        <externalId>false</externalId>
+        <formula>CASE($User.CurrencyISOcode__c, 
+&quot;BRL&quot;, PSconto_BRL__c, 
+&quot;CAD&quot;, PSconto_CAD__c, 
+&quot;CHF&quot;, PSconto_CHF__c, 
+&quot;CNY&quot;, PSconto_CNY__c, 
+&quot;EUR&quot;, PSconto_EUR__c, 
+&quot;GBP&quot;, PSconto_GBP__c, 
+&quot;HKD&quot;, PSconto_HKD__c, 
+&quot;JPY&quot;, PSconto_JPY__c, 
+&quot;USD&quot;, PSconto_USD__c, 
+&quot;MOP&quot;, PSconto_MOP__c,
+PSconto__c)</formula>
+        <label>% Sconto</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Stato_ordine_Ecommerce__c</fullName>
+        <externalId>false</externalId>
+        <label>Stato ordine Ecommerce</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>TO_BE_APPROVED</fullName>
+                    <default>false</default>
+                    <label>TO_BE_APPROVED</label>
+                </value>
+                <value>
+                    <fullName>CONFIRMED</fullName>
+                    <default>false</default>
+                    <label>CONFIRMED</label>
+                </value>
+                <value>
+                    <fullName>CONFIRMED_BOUTIQUE</fullName>
+                    <default>false</default>
+                    <label>CONFIRMED_BOUTIQUE</label>
+                </value>
+                <value>
+                    <fullName>ACCEPTED</fullName>
+                    <default>false</default>
+                    <label>ACCEPTED</label>
+                </value>
+                <value>
+                    <fullName>SUSPENDED</fullName>
+                    <default>false</default>
+                    <label>SUSPENDED</label>
+                </value>
+                <value>
+                    <fullName>ALMOST_COMPLETE</fullName>
+                    <default>false</default>
+                    <label>ALMOST_COMPLETE</label>
+                </value>
+                <value>
+                    <fullName>READY_FOR_SHIPPMENT</fullName>
+                    <default>false</default>
+                    <label>READY_FOR_SHIPPMENT</label>
+                </value>
+                <value>
+                    <fullName>SHIPPED</fullName>
+                    <default>false</default>
+                    <label>SHIPPED</label>
+                </value>
+                <value>
+                    <fullName>SHIPPED_BOUTIQUE</fullName>
+                    <default>false</default>
+                    <label>SHIPPED_BOUTIQUE</label>
+                </value>
+                <value>
+                    <fullName>READY_FOR_THE_PICKUP</fullName>
+                    <default>false</default>
+                    <label>READY_FOR_THE_PICKUP</label>
+                </value>
+                <value>
+                    <fullName>COMPLETED</fullName>
+                    <default>false</default>
+                    <label>COMPLETED</label>
+                </value>
+                <value>
+                    <fullName>CANCELLED</fullName>
+                    <default>false</default>
+                    <label>CANCELLED</label>
+                </value>
+                <value>
+                    <fullName>REFUSED</fullName>
+                    <default>false</default>
+                    <label>REFUSED</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Stato_reso_cambio_Ecommerce__c</fullName>
+        <externalId>false</externalId>
+        <label>Stato Reso/Cambio Ecommerce</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>CREATED</fullName>
+                    <default>false</default>
+                    <label>CREATED</label>
+                </value>
+                <value>
+                    <fullName>SHIPPED</fullName>
+                    <default>false</default>
+                    <label>SHIPPED</label>
+                </value>
+                <value>
+                    <fullName>WORK_IN_PROGRESS</fullName>
+                    <default>false</default>
+                    <label>WORK_IN_PROGRESS</label>
+                </value>
+                <value>
+                    <fullName>ACCEPTED</fullName>
+                    <default>false</default>
+                    <label>ACCEPTED</label>
+                </value>
+                <value>
+                    <fullName>CANCELLED</fullName>
+                    <default>false</default>
+                    <label>CANCELLED</label>
+                </value>
+                <value>
+                    <fullName>SUSPENDED</fullName>
+                    <default>false</default>
+                    <label>SUSPENDED</label>
+                </value>
+                <value>
+                    <fullName>REFUSED</fullName>
+                    <default>false</default>
+                    <label>REFUSED</label>
+                </value>
+                <value>
+                    <fullName>CONCLUDED</fullName>
+                    <default>false</default>
+                    <label>CONCLUDED</label>
+                </value>
+                <value>
+                    <fullName>COMPLETED</fullName>
+                    <default>false</default>
+                    <label>COMPLETED</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Tasso_di_Cambio__c</fullName>
+        <externalId>false</externalId>
+        <label>Tasso di Cambio (EUR)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>6</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Tasso_di_cambio_BRL__c</fullName>
+        <externalId>false</externalId>
+        <label>Tasso di cambio (BRL)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>6</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Tasso_di_cambio_CAD__c</fullName>
+        <externalId>false</externalId>
+        <label>Tasso di cambio (CAD)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>6</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Tasso_di_cambio_CHF__c</fullName>
+        <externalId>false</externalId>
+        <label>Tasso di cambio (CHF)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>6</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Tasso_di_cambio_CNY__c</fullName>
+        <externalId>false</externalId>
+        <label>Tasso di cambio (CNY)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>6</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Tasso_di_cambio_GBP__c</fullName>
+        <externalId>false</externalId>
+        <label>Tasso di cambio (GBP)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>6</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Tasso_di_cambio_HKD__c</fullName>
+        <externalId>false</externalId>
+        <label>Tasso di cambio (HKD)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>6</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Tasso_di_cambio_JPY__c</fullName>
+        <externalId>false</externalId>
+        <label>Tasso di cambio (JPY)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>6</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Tasso_di_cambio_USD__c</fullName>
+        <externalId>false</externalId>
+        <label>Tasso di cambio (USD)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>6</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Telefono_Fatturazione__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Telefono Fatturazione</label>
+        <length>30</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Telefono_Spedizione__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Telefono Spedizione</label>
+        <length>30</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Tipo_Documento__c</fullName>
+        <externalId>false</externalId>
+        <label>Tipo Documento</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Fattura</fullName>
+                    <default>false</default>
+                    <label>Fattura</label>
+                </value>
+                <value>
+                    <fullName>Scontrino</fullName>
+                    <default>false</default>
+                    <label>Scontrino</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Tipo_Ordine__c</fullName>
+        <externalId>false</externalId>
+        <label>Tipo Ordine</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Ordine Ecommerce</fullName>
+                    <default>false</default>
+                    <label>Ordine Ecommerce</label>
+                </value>
+                <value>
+                    <fullName>Vendita Ecommerce</fullName>
+                    <default>false</default>
+                    <label>Vendita Ecommerce</label>
+                </value>
+                <value>
+                    <fullName>Vendita Oracle</fullName>
+                    <default>false</default>
+                    <label>Vendita Oracle</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Tipo_Store__c</fullName>
+        <externalId>false</externalId>
+        <formula>text (Location__r.Tipo_Store__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Tipo Store</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Tipo_Vendita__c</fullName>
+        <description>Flag che indica se è una vendita o un reso (valorizzato con s= sale, r= return, e= exchange) alimentato sia da Micros sia da Ecommerce</description>
+        <externalId>false</externalId>
+        <label>Tipo Vendita</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>S</fullName>
+                    <default>false</default>
+                    <label>S</label>
+                </value>
+                <value>
+                    <fullName>R</fullName>
+                    <default>false</default>
+                    <label>R</label>
+                </value>
+                <value>
+                    <fullName>E</fullName>
+                    <default>false</default>
+                    <label>E</label>
+                </value>
+                <value>
+                    <fullName>N</fullName>
+                    <default>false</default>
+                    <label>N</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Titolare_per_report__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF($User.Codice_Boutique__c = Id_Location_Micros__c,true,false)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Titolare per report</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Upselling__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Upselling</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Valuta_store__c</fullName>
+        <externalId>false</externalId>
+        <formula>$User.CurrencyISOcode__c</formula>
+        <label>Valuta store</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Voided_BusinessDayDate__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Voided_BusinessDayDate</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Voided_RetailStoreID__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Voided RetailStoreID</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Voided_SequenceNumber__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Voided SequenceNumber</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Voided_WorkstationID__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Voided WorkstationID</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <gender>Masculine</gender>
+    <label>Transazione</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>Data_Scontrino__c</columns>
+        <columns>Account__c</columns>
+        <columns>Location__c</columns>
+        <columns>Prezzo_di_Listino_formula__c</columns>
+        <columns>Prezzo_di_Vendita_formula__c</columns>
+        <columns>Sconto_formula__c</columns>
+        <columns>Codice_Nazione_Fatturazione__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+        <language>it</language>
+    </listViews>
+    <listViews>
+        <fullName>Store_Firenze</fullName>
+        <columns>NAME</columns>
+        <columns>Data_Scontrino__c</columns>
+        <columns>Id_Cliente__c</columns>
+        <columns>CURRENCY_ISO_CODE</columns>
+        <columns>Prezzo_di_vendita_EUR__c</columns>
+        <columns>Sconto_EUR__c</columns>
+        <columns>Id_Cliente_Relate__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Id_Location_Micros__c</field>
+            <operation>equals</operation>
+            <value>62</value>
+        </filters>
+        <label>Store Firenze</label>
+        <language>it</language>
+        <sharedTo>
+            <role>Sede</role>
+        </sharedTo>
+    </listViews>
+    <nameField>
+        <encrypted>false</encrypted>
+        <label>Numero Transazione</label>
+        <trackHistory>true</trackHistory>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Transazioni</pluralLabel>
+    <recordTypeTrackHistory>false</recordTypeTrackHistory>
+    <recordTypes>
+        <fullName>Boutique</fullName>
+        <active>true</active>
+        <description>Boutique</description>
+        <label>Boutique</label>
+        <picklistValues>
+            <picklist>Proprieta_Ecommerce__c</picklist>
+            <values>
+                <fullName>In store Pick up %28store%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>In store Pick up %28whs%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Online Exchange</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Online Return</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Online sale</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Return in store %28store%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Return in store %28whs%29</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Stato_ordine_Ecommerce__c</picklist>
+            <values>
+                <fullName>ACCEPTED</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ALMOST_COMPLETE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CANCELLED</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>COMPLETED</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CONFIRMED</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CONFIRMED_BOUTIQUE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>READY_FOR_SHIPPMENT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>READY_FOR_THE_PICKUP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SHIPPED</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SHIPPED_BOUTIQUE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SUSPENDED</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>TO_BE_APPROVED</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Stato_reso_cambio_Ecommerce__c</picklist>
+            <values>
+                <fullName>ACCEPTED</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CANCELLED</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>COMPLETED</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CONCLUDED</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CREATED</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>REFUSED</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SHIPPED</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SUSPENDED</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WORK_IN_PROGRESS</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Tipo_Documento__c</picklist>
+            <values>
+                <fullName>Fattura</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Scontrino</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Tipo_Ordine__c</picklist>
+            <values>
+                <fullName>Vendita Oracle</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Tipo_Vendita__c</picklist>
+            <values>
+                <fullName>E</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>N</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>R</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>S</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>E_commerce</fullName>
+        <active>true</active>
+        <description>E-commerce</description>
+        <label>E-commerce</label>
+        <picklistValues>
+            <picklist>Proprieta_Ecommerce__c</picklist>
+            <values>
+                <fullName>In store Pick up %28store%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>In store Pick up %28whs%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Online Exchange</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Online Return</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Online Return and Exchange</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Online sale</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Return in store %28store%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Return in store %28whs%29</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Stato_ordine_Ecommerce__c</picklist>
+            <values>
+                <fullName>ACCEPTED</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ALMOST_COMPLETE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CANCELLED</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>COMPLETED</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CONFIRMED</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CONFIRMED_BOUTIQUE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>READY_FOR_SHIPPMENT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>READY_FOR_THE_PICKUP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>REFUSED</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SHIPPED</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SHIPPED_BOUTIQUE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SUSPENDED</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>TO_BE_APPROVED</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Stato_reso_cambio_Ecommerce__c</picklist>
+            <values>
+                <fullName>ACCEPTED</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CANCELLED</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>COMPLETED</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CONCLUDED</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CREATED</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>REFUSED</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SHIPPED</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SUSPENDED</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WORK_IN_PROGRESS</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Tipo_Documento__c</picklist>
+            <values>
+                <fullName>Fattura</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Scontrino</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Tipo_Ordine__c</picklist>
+            <values>
+                <fullName>Ordine Ecommerce</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Vendita Ecommerce</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Tipo_Vendita__c</picklist>
+            <values>
+                <fullName>E</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>N</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>R</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>S</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+    <visibility>Public</visibility>
+</CustomObject>

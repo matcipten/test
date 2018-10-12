@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>List</customSettingsType>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>OMS_Endpoint__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>OMS Endpoint</label>
+        <length>255</length>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>OMS_Enviroment__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <inlineHelpText>INT = Integration test, 
+‘blank’ = Production</inlineHelpText>
+        <label>OMS Enviroment</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>OMS_Task_Parameter__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>OMS Task Parameter</label>
+        <length>255</length>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>TenderDetailPostRecordLimit__c</fullName>
+        <externalId>false</externalId>
+        <label>TenderDetailPostRecordLimit</label>
+        <precision>18</precision>
+        <required>true</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>TransactionDetailPostRecordLimit__c</fullName>
+        <externalId>false</externalId>
+        <label>TransactionDetailPostRecordLimit</label>
+        <precision>18</precision>
+        <required>true</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <label>WebService Settings</label>
+    <visibility>Public</visibility>
+</CustomObject>
