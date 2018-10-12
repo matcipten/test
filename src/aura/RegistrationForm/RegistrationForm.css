@@ -1,0 +1,393 @@
+.THIS {
+    margin: 50px 25px;
+}
+
+@media (min-width: 740px) { 
+	.THIS {
+        margin: 50px 100px;
+	}
+}
+
+.THIS .thanks {
+        margin: 220px 100px !important;
+}
+
+.THIS .spinnerDiv {
+    position: fixed !important;
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+}
+
+.THIS .slds-spinner_container{
+    position: fixed !important;
+}
+
+.THIS .header {
+    text-align: center;
+    margin: 50px auto;
+}
+
+.THIS .image-header {
+    width: 240px;
+}
+
+.THIS .image-header-thanks {
+        height: 180px;
+}
+
+.THIS .header-text {
+    margin: 10px;
+    font-style: italic;
+    color: rgba(17, 17, 17, 0.9);
+    font-size: 12px;
+}
+.THIS .header-text-thanks {
+    margin: 12px;
+    font-style: italic;
+    color: rgba(17, 17, 17, 0.9);
+    font-size: 16px;
+}
+
+.THIS .text-thanks {
+    margin: 0 10px;
+        font-size: 18px;
+}
+
+.THIS .header-text-policy {
+    margin: 10px;
+    font-weight: bold;
+    color: rgba(17, 17, 17, 0.9);
+}
+
+.THIS .header-logo-privacy {
+    max-width: 180px;
+    padding-bottom: 10px;
+    margin: auto;
+}
+
+.THIS .row {
+	margin: 10px 0;
+}
+
+.THIS .slds-form-element__control {
+        padding: 0 5px;
+}
+
+.THIS .slds-form-element__legend {
+        width: 100%;
+}
+
+.THIS .notShowPicklist {
+    display: none;
+}
+
+.THIS .slds-form_stacked .slds-form-element .slds-checkbox {
+    display: inline-block;
+}
+.THIS .input-no-label {
+	margin-top: 17.6px;
+}
+
+.THIS .datePicker-openIcon {
+	position: absolute;
+    margin: 9px -25px;
+    left: auto;
+}
+
+.THIS .privacy-police {
+    margin: 50px auto;
+}
+
+.THIS .privacy-police-title {
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 20px !important;
+}
+
+.THIS .footer-privacy-police {
+    margin-top: 25px;
+}
+
+.THIS .text-privacy-checkbox {
+    margin-left: 35px;
+}
+
+.THIS .border-bottom {
+    border-bottom: 1px solid darkgray;
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+}
+
+.THIS .signature-component {
+  text-align: left;
+  display: inline-block;
+  max-width: 100%;
+}
+.THIS .signature-component canvas {
+  display: block;
+  position: relative;
+  border: 1px solid;
+}
+.THIS .signature-component img {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.THIS ::placeholder { /* Most modern browsers support this now. */
+    color: #787878;
+    opacity: 0.5;
+}
+
+.THIS .align {
+    text-align: right;
+}
+
+.THIS canvas {
+    background-image: url(/resource/sPad_line);
+    background-size: contain; 
+    background-repeat: no-repeat;
+    border: 1px dashed #000000;
+    background-position: right 0 bottom 20px;
+    padding: 2px;
+}
+
+.THIS .canvas_spad {
+    margin: 5px;
+}
+
+.THIS .margin-cn {
+    margin-bottom: 10px;
+}
+
+.THIS.text-update {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+@media (max-width: 400px) { 
+	.THIS canvas {
+    	background-position: right 0 bottom 60px;
+	}
+}
+
+.THIS .button-registration {
+    margin: 50px auto 0;
+}
+
+.THIS input.error, .THIS select.error {
+    background-color: rgb(255, 255, 255);
+    border-color: rgb(194, 57, 52);
+    box-shadow: rgb(194, 57, 52) 0 0 0 1px inset;
+    background-clip: padding-box;
+}
+
+.THIS .uiInputDefaultError {
+    display: none;
+}
+
+.THIS .changeMe {
+	border: 1.5px solid rgb(194, 57, 52);
+    box-shadow: rgb(194, 57, 52) 0 0 0 1px inset;
+}
+
+.THIS .changeMeLabel {
+    color: rgb(194, 57, 52);
+    font-weight: bold;
+}
+
+.THIS .language-picker {
+    position: absolute;
+    top: 50px;
+    right: 100px;
+}
+
+/*
+.THIS .prova::after {
+    content: none !important;
+}
+*/
+
+.THIS .slds-modal__container {
+    position: relative;
+    width: 75%;
+    max-width: none; 
+    margin: auto;
+    margin-top: 50px;
+    height: 85%;
+}
+
+.THIS .padding {
+    padding: 10px;
+}
+
+.THIS .privacy {
+    display: none;
+}
+
+.THIS .text-rich-privacy {
+    text-align: justify;
+    text-justify: inter-word;
+    font-size: 8px;
+}
+
+.THIS legend.slds-form-element__legend.slds-form-element__label {
+    margin-bottom: 8px;
+}
+
+.THIS .text-bold {
+    font-weight: bold;
+}
+
+.THIS .text-bold span.slds-form-element__label {
+    font-size: 14px;
+}
+
+.THIS .slds-form-element {
+    margin-bottom: 0;
+}
+
+@page {
+    size:  auto;   /* auto is the initial value */
+    margin: 0mm 12mm 0mm 12mm;  /* this affects the margin in the printer settings */
+}
+
+@media print { 
+    /* All your print styles go here */
+    .THIS .noPrint {
+        display: none;
+    }
+
+    .THIS .page-break { display: block; page-break-before: always; }
+
+    .THIS {
+        margin: 25px 15px;
+	}
+
+    .THIS .row {
+        margin: 0;
+    }
+    
+    .THIS .header {
+        margin: 0 auto 30px;
+    }
+
+    .THIS .language-picker {
+        display: none !important;
+    }
+    
+    .THIS canvas {
+        width: 300px;
+        border: none;
+    }
+    
+    .THIS .privacy-police {
+        margin: 20px auto;
+    }
+    
+    .THIS .privacy-police-title {
+        width: 95%;
+        font-size: 8px !important;
+        margin-bottom: 10px;
+    }
+
+    .THIS .privacy-police {
+        font-size: 6px; 
+    }
+
+    .THIS .border-bottom {
+        margin-bottom: 5px;
+    }
+
+    .THIS span.slds-checkbox_faux {
+        width: 8px !important;
+        height: 8px !important;
+        margin-right: 2px !important;
+    }
+
+    .THIS span.slds-checkbox_faux:after {
+        border-color: rgb(3, 3, 3) !important;
+    }
+    
+
+    .THIS .margin-b {
+        margin-bottom: 1px;
+    }
+    
+    .THIS .slds-form-element__label span {
+        font-size: 7px;
+    }
+
+    .THIS .slds-form-element__label {
+        font-size: 7px; 
+        color: rgb(217, 219, 221); 
+        padding-top: 6px;
+        margin-right: 1px;
+    }
+
+    .THIS .slds-form-element__control {
+        color: rgb(3, 3, 3) !important;
+        -webkit-text-fill-color: rgb(3, 3, 3);
+    }
+
+    .THIS ::placeholder { /* Most modern browsers support this now. */
+        color: transparent;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .THIS .dynamic {
+        border: 1px solid rgb(217, 219, 221) !important;
+        opacity: 0.5;
+    }    
+
+    /*
+    .THIS .print {
+        -webkit-text-fill-color:#880000
+        page-break-after: auto;
+        margin-top: 2000mm !important;
+    }
+    */
+
+    .THIS .slds-modal__container {
+        width: 100%;
+        font-size: 8px;
+        text-align: justify;
+        text-justify: inter-word;
+    }
+
+    .THIS .changeMe {
+        border: 1px solid rgb(217, 219, 221);
+    }
+
+    .THIS .privacy {
+        display: block;
+    }
+
+    .THIS .slds-input {
+        min-height: 10px !important;
+        max-height: 20px !important;
+        font-size: 10px !important;
+        line-height: 1px;
+        padding: 4px 8px;
+    }
+
+    .THIS .slds-select {
+        min-height: 10px !important;
+        max-height: 20px !important;
+        font-size: 10px !important;
+        padding: 2px 8px;
+    }
+
+    .THIS .input-date {
+        min-height: 12px !important;
+    max-height: 20px !important;
+    font-size: 10px !important;
+    padding: 8px;
+    }
+    
+    .THIS .text-bold span.slds-form-element__label {
+        font-size: 11px;
+    }
+}

@@ -1,0 +1,21 @@
+<apex:page sidebar="false">
+<HTML>
+<script type="text/javascript" src="https://bc-developers.atlassian.net/s/12348d93089702082a3c68a635497789-T/-nibk9c/72002/8908af8657760ef8d2cf54a7975760a1/2.0.13/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?locale=en-US&collectorId=c70e17fc"></script>
+
+<body> 
+<script>
+// Requires jQuery!
+jQuery.ajax({
+    url: "https://bc-developers.atlassian.net/s/12348d93089702082a3c68a635497789-T/-nibk9c/72002/8908af8657760ef8d2cf54a7975760a1/2.0.13/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector-embededjs/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector-embededjs.js?locale=en-US&collectorId=c70e17fc",
+    type: "get",
+    cache: true,
+    dataType: "script"
+});
+                
+</script>
+<div style="text-align: center;">
+<apex:image value="{!$Resource.Jira_img}" />
+</div>
+</body>
+</HTML>
+</apex:page>

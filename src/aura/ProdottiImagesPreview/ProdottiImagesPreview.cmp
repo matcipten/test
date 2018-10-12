@@ -1,0 +1,121 @@
+<aura:component controller="ProdottiImagesPreviewController" access="global" 
+                implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:appHostable,force:LightningQuickAction" >
+    
+    <ltng:require scripts="/resource/masonry" />    
+    
+    <aura:attribute name="recordId" type="String"/>
+    <aura:attribute name="attachments" type="Object[]"/>
+    <aura:attribute name="index" type="Integer" default="0" />
+    <aura:attribute name="max_value" type="Integer" default="0" />
+    <aura:attribute name="isOpen" type="boolean" default="false"/>
+    <aura:attribute name="isButtonShownRight" type="boolean" default="false"/>
+    <aura:attribute name="isButtonShownleft" type="boolean" default="false"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <aura:renderIf isTrue="{!v.attachments.length > 0}">
+        <div class="component" style="border: 1px solid rgb(221, 219, 218);
+        border-radius: .25rem;">
+            
+            
+            <!-- HEADING AREA -->
+            <div class="headerStyle">
+                <header class="slds-media slds-media--center slds-has-flexi-truncate" data-aura-rendered-by="1243:0">
+                    <div class="slds-media slds-no-space slds-grow">
+                        <div class="slds-media__figure">
+                            <span class="slds-avatar slds-avatar--medium imgSize">
+                                <lightning:icon iconName="custom:custom18" class="" size="large" />
+                            </span>
+                        </div>
+                        
+                        <div class="slds-media__body">
+                            <h1 class="slds-page-header__title slds-m-right--small slds-align-middle slds-truncate" title="Signature List">Product List ({!v.attachments.length})</h1>
+                        </div>
+                    </div>
+                    
+                    <div class="slds-grid slds-wrap row slds-text-align_center">
+                        <div class="slds-col slds-size_12-of-12 slds-large-size_12-of-12">
+                            <div class="slds-form-element button-registration">
+                                <lightning:button label="Show All" onclick="{!c.openModel}"/>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </header>
+            </div>
+            
+            <div class="main-container">
+                <div id="container" class="container">
+                    <div class="slider">
+                        <div id="content" class="content">
+                            <aura:iteration items="{!v.attachments}" var="a" end="{!v.max_value}">
+                                <a href="{!'/'+a.productId}" target="_blank">
+                                    <div class="slide">
+                                        <div class="slide-content">
+                                            <img src="{!'/sfc/servlet.shepherd/version/download/'+a.imageId}" class="{!'image' + ' ' +  (a.productReso ? '' : '' )}" />
+                                            <div class="middle">
+                                                <div class="text">{! a.productSeason} - {! a.productModel}</div>
+                                            </div>
+                                            <aura:if isTrue="{!a.productReso}">
+                                                <div class="shadow"></div>
+                                                <div class="circle-number">R</div>
+                                            </aura:if>
+                                        </div>
+                                    </div>
+                                </a>
+                            </aura:iteration>
+                        </div>
+                    </div>
+                    <button id="{!v.isButtonShownleft ? 'prev' : 'hidebutton'}"  onclick="{! c.prevButton }">
+                        <lightning:icon iconName="utility:chevronleft" size="small" alternativeText="Indicates approval"/>
+                    </button>
+                    <button id="{!v.isButtonShownRight ? 'next' : 'hidebutton'}" onclick="{! c.nextButton }">
+                        <lightning:icon iconName="utility:chevronright" size="small" alternativeText="Indicates approval"/>
+                    </button>
+                </div>
+            </div>    
+            
+        </div>
+    </aura:renderIf> 
+    
+    <!--Use aura:if tag to display Model Box, on the bese of conditions. [isOpen boolean attribute] -->   
+    <aura:if isTrue="{!v.isOpen}">
+        <!--###### MODAL BOX Start From Here ######--> 
+        <div role="dialog" tabindex="-1" aria-labelledby="header99" class="slds-modal slds-fade-in-open ">
+            <div class="slds-modal__container" id="modal-container" aura:id="modal-container" >
+                <!-- ###### MODAL BOX HEADER Part Start From Here ######-->
+                <div class="slds-modal__header">
+                    <button class="slds-button slds-modal__close slds-button--icon-inverse" title="Close" onclick="{!c.closeModel}">
+                        X
+                        <span class="slds-assistive-text">Close</span>
+                    </button>
+                    <h2 id="header99" class="slds-text-heading--medium">All Products</h2>
+                </div>
+                <!--###### MODAL BOX BODY Part Start From Here ######-->
+                <div class="slds-modal__content slds-p-around--medium">
+                    <div class="grid masonry" id="mansory-grid" aura:id="mansory-grid">
+                        <aura:iteration items="{!v.attachments}" var="a" >
+                            <a href="{!'/'+a.productId}" target="_blank">
+                                <div class="grid-item item">
+                                    <div class="modal-content">
+                                            <img src="{!'/sfc/servlet.shepherd/version/download/'+a.imageId}" class="{!'image' + ' ' +  (a.productReso ? '' : '' )}" />
+                                            <div class="middle">
+                                                <div class="text">{! a.productSeason} - {! a.productModel}</div>
+                                            </div>
+                                            <aura:if isTrue="{!a.productReso}">
+                                                <div class="shadow"></div>
+                                                <div class="circle-number-modal">R</div>
+                                            </aura:if>
+                                        </div>
+                                </div>
+                            </a>
+                        </aura:iteration>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slds-backdrop slds-backdrop--open"></div>
+        <!--###### MODAL BOX Part END Here ######-->
+        
+    </aura:if>
+    
+</aura:component>
