@@ -64,6 +64,19 @@
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <fields>
+        <fullName>Boutique__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Boutique</label>
+        <referenceTo>Location__c</referenceTo>
+        <relationshipLabel>Contact Cards</relationshipLabel>
+        <relationshipName>Contact_Cards</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
         <fullName>Customer_ID__c</fullName>
         <externalId>false</externalId>
         <label>Customer</label>

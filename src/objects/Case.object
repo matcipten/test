@@ -33,6 +33,10 @@
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
         <actionName>List</actionName>
         <type>Default</type>
     </actionOverrides>
@@ -175,31 +179,26 @@
         <description>ATTENZIONE :  La modifica o l&apos;aggiunta di voci di elenco potrebbe avere impatti sulle regole di assegnazione dei casi</description>
         <externalId>false</externalId>
         <label>Area</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Commerciale Monomarca</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Commerciale Multimarca</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Gestione VIP</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
-        <valueSet>
-            <valueSetDefinition>
-                <sorted>false</sorted>
-                <value>
-                    <fullName>Commerciale Monomarca</fullName>
-                    <default>false</default>
-                    <label>Commerciale Monomarca</label>
-                </value>
-                <value>
-                    <fullName>Commerciale Multimarca</fullName>
-                    <default>false</default>
-                    <label>Commerciale Multimarca</label>
-                </value>
-                <value>
-                    <fullName>Gestione VIP</fullName>
-                    <default>false</default>
-                    <label>Gestione VIP</label>
-                </value>
-            </valueSetDefinition>
-        </valueSet>
     </fields>
     <fields>
         <fullName>AssetId</fullName>
@@ -219,77 +218,51 @@
         <fullName>Canale__c</fullName>
         <externalId>false</externalId>
         <label>Canale</label>
+        <picklist>
+            <controllingField>Entry_Point__c</controllingField>
+            <picklistValues>
+                <fullName>E-commerce</fullName>
+                <default>false</default>
+                <controllingFieldValues>OMS</controllingFieldValues>
+                <controllingFieldValues>Richieste Yoox</controllingFieldValues>
+                <controllingFieldValues>Sito E-commerce</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Monobrand</fullName>
+                <default>false</default>
+                <controllingFieldValues>Negozio</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Multibrand</fullName>
+                <default>false</default>
+                <controllingFieldValues>Negozio</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Franchising</fullName>
+                <default>false</default>
+                <controllingFieldValues>Negozio</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>BPS</fullName>
+                <default>false</default>
+                <controllingFieldValues>Negozio</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Non definito</fullName>
+                <default>false</default>
+                <controllingFieldValues>Amministrazione</controllingFieldValues>
+                <controllingFieldValues>Proposte collaborazione</controllingFieldValues>
+                <controllingFieldValues>Risorse umane</controllingFieldValues>
+                <controllingFieldValues>Sito Corporate/Investors</controllingFieldValues>
+                <controllingFieldValues>Spam/Scam</controllingFieldValues>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
-        <valueSet>
-            <controllingField>Entry_Point__c</controllingField>
-            <valueSetDefinition>
-                <sorted>false</sorted>
-                <value>
-                    <fullName>E-commerce</fullName>
-                    <default>false</default>
-                    <label>E-commerce</label>
-                </value>
-                <value>
-                    <fullName>Monobrand</fullName>
-                    <default>false</default>
-                    <label>Monobrand</label>
-                </value>
-                <value>
-                    <fullName>Multibrand</fullName>
-                    <default>false</default>
-                    <label>Multibrand</label>
-                </value>
-                <value>
-                    <fullName>Franchising</fullName>
-                    <default>false</default>
-                    <label>Franchising</label>
-                </value>
-                <value>
-                    <fullName>BPS</fullName>
-                    <default>false</default>
-                    <label>BPS</label>
-                </value>
-                <value>
-                    <fullName>Non definito</fullName>
-                    <default>false</default>
-                    <label>Non definito</label>
-                </value>
-            </valueSetDefinition>
-            <valueSettings>
-                <controllingFieldValue>Negozio</controllingFieldValue>
-                <valueName>Monobrand</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Negozio</controllingFieldValue>
-                <valueName>Multibrand</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Negozio</controllingFieldValue>
-                <valueName>Franchising</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Negozio</controllingFieldValue>
-                <valueName>BPS</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Sito E-commerce</controllingFieldValue>
-                <controllingFieldValue>Richieste Yoox</controllingFieldValue>
-                <controllingFieldValue>OMS</controllingFieldValue>
-                <valueName>E-commerce</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Sito Corporate/Investors</controllingFieldValue>
-                <controllingFieldValue>Spam/Scam</controllingFieldValue>
-                <controllingFieldValue>Proposte collaborazione</controllingFieldValue>
-                <controllingFieldValue>Risorse umane</controllingFieldValue>
-                <controllingFieldValue>Amministrazione</controllingFieldValue>
-                <valueName>Non definito</valueName>
-            </valueSettings>
-        </valueSet>
     </fields>
     <fields>
         <fullName>Cap_Cliente__c</fullName>
@@ -308,149 +281,91 @@
         <description>Categoria caso</description>
         <externalId>false</externalId>
         <label>Categoria</label>
+        <picklist>
+            <controllingField>Entry_Point__c</controllingField>
+            <picklistValues>
+                <fullName>Acquisti Negozio</fullName>
+                <default>false</default>
+                <controllingFieldValues>Negozio</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Acquisti E-commerce</fullName>
+                <default>false</default>
+                <controllingFieldValues>Contatto Customer Care</controllingFieldValues>
+                <controllingFieldValues>OMS</controllingFieldValues>
+                <controllingFieldValues>Sito E-commerce</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Acquisti Yoox</fullName>
+                <default>false</default>
+                <controllingFieldValues>Richieste Yoox</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Problematiche E-commerce</fullName>
+                <default>false</default>
+                <controllingFieldValues>Contatto Customer Care</controllingFieldValues>
+                <controllingFieldValues>Sito E-commerce</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Problematiche Segnalate</fullName>
+                <default>false</default>
+                <controllingFieldValues>Negozio</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Problematiche Yoox</fullName>
+                <default>false</default>
+                <controllingFieldValues>Richieste Yoox</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Cura prodotti</fullName>
+                <default>false</default>
+                <controllingFieldValues>Contatto Customer Care</controllingFieldValues>
+                <controllingFieldValues>Negozio</controllingFieldValues>
+                <controllingFieldValues>Richieste Yoox</controllingFieldValues>
+                <controllingFieldValues>Sito E-commerce</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Feedback del cliente</fullName>
+                <default>false</default>
+                <controllingFieldValues>Negozio</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Corporate</fullName>
+                <default>false</default>
+                <controllingFieldValues>Sito Corporate/Investors</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Spam</fullName>
+                <default>false</default>
+                <controllingFieldValues>Spam/Scam</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Comunicazione</fullName>
+                <default>false</default>
+                <controllingFieldValues>Sito Corporate/Investors</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Proposte collaborazione</fullName>
+                <default>false</default>
+                <controllingFieldValues>Proposte collaborazione</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Risorse umane</fullName>
+                <default>false</default>
+                <controllingFieldValues>Risorse umane</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Richieste amministrazione</fullName>
+                <default>false</default>
+                <controllingFieldValues>Amministrazione</controllingFieldValues>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
-        <valueSet>
-            <controllingField>Entry_Point__c</controllingField>
-            <valueSetDefinition>
-                <sorted>false</sorted>
-                <value>
-                    <fullName>Acquisti Negozio</fullName>
-                    <default>false</default>
-                    <label>Acquisti Negozio</label>
-                </value>
-                <value>
-                    <fullName>Acquisti E-commerce</fullName>
-                    <default>false</default>
-                    <label>Acquisti E-commerce</label>
-                </value>
-                <value>
-                    <fullName>Acquisti Yoox</fullName>
-                    <default>false</default>
-                    <label>Acquisti Yoox</label>
-                </value>
-                <value>
-                    <fullName>Problematiche E-commerce</fullName>
-                    <default>false</default>
-                    <label>Problematiche E-commerce</label>
-                </value>
-                <value>
-                    <fullName>Problematiche Segnalate</fullName>
-                    <default>false</default>
-                    <label>Problematiche Segnalate</label>
-                </value>
-                <value>
-                    <fullName>Problematiche Yoox</fullName>
-                    <default>false</default>
-                    <label>Problematiche Yoox</label>
-                </value>
-                <value>
-                    <fullName>Cura prodotti</fullName>
-                    <default>false</default>
-                    <label>Cura prodotti</label>
-                </value>
-                <value>
-                    <fullName>Feedback del cliente</fullName>
-                    <default>false</default>
-                    <label>Feedback del cliente</label>
-                </value>
-                <value>
-                    <fullName>Corporate</fullName>
-                    <default>false</default>
-                    <label>Corporate</label>
-                </value>
-                <value>
-                    <fullName>Spam</fullName>
-                    <default>false</default>
-                    <label>Spam</label>
-                </value>
-                <value>
-                    <fullName>Comunicazione</fullName>
-                    <default>false</default>
-                    <label>Comunicazione</label>
-                </value>
-                <value>
-                    <fullName>Proposte collaborazione</fullName>
-                    <default>false</default>
-                    <label>Proposte collaborazione</label>
-                </value>
-                <value>
-                    <fullName>Risorse umane</fullName>
-                    <default>false</default>
-                    <label>Risorse umane</label>
-                </value>
-                <value>
-                    <fullName>Richieste amministrazione</fullName>
-                    <default>false</default>
-                    <label>Richieste amministrazione</label>
-                </value>
-            </valueSetDefinition>
-            <valueSettings>
-                <controllingFieldValue>Negozio</controllingFieldValue>
-                <valueName>Acquisti Negozio</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Negozio</controllingFieldValue>
-                <valueName>Problematiche Segnalate</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Negozio</controllingFieldValue>
-                <controllingFieldValue>Sito E-commerce</controllingFieldValue>
-                <controllingFieldValue>Richieste Yoox</controllingFieldValue>
-                <controllingFieldValue>Contatto Customer Care</controllingFieldValue>
-                <valueName>Cura prodotti</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Negozio</controllingFieldValue>
-                <valueName>Feedback del cliente</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Sito E-commerce</controllingFieldValue>
-                <controllingFieldValue>OMS</controllingFieldValue>
-                <controllingFieldValue>Contatto Customer Care</controllingFieldValue>
-                <valueName>Acquisti E-commerce</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Sito E-commerce</controllingFieldValue>
-                <controllingFieldValue>Contatto Customer Care</controllingFieldValue>
-                <valueName>Problematiche E-commerce</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Sito Corporate/Investors</controllingFieldValue>
-                <valueName>Corporate</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Sito Corporate/Investors</controllingFieldValue>
-                <valueName>Comunicazione</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Spam/Scam</controllingFieldValue>
-                <valueName>Spam</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Proposte collaborazione</controllingFieldValue>
-                <valueName>Proposte collaborazione</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Risorse umane</controllingFieldValue>
-                <valueName>Risorse umane</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Richieste Yoox</controllingFieldValue>
-                <valueName>Acquisti Yoox</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Richieste Yoox</controllingFieldValue>
-                <valueName>Problematiche Yoox</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Amministrazione</controllingFieldValue>
-                <valueName>Richieste amministrazione</valueName>
-            </valueSettings>
-        </valueSet>
     </fields>
     <fields>
         <fullName>Chiuso_Automaticamente__c</fullName>
@@ -688,66 +603,54 @@
         <fullName>Entry_Point__c</fullName>
         <externalId>false</externalId>
         <label>Entry Point</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Negozio</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Sito E-commerce</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Sito Corporate/Investors</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Spam/Scam</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Proposte collaborazione</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Risorse umane</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Richieste Yoox</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Amministrazione</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>OMS</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Contatto Customer Care</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
-        <valueSet>
-            <valueSetDefinition>
-                <sorted>false</sorted>
-                <value>
-                    <fullName>Negozio</fullName>
-                    <default>false</default>
-                    <label>Negozio</label>
-                </value>
-                <value>
-                    <fullName>Sito E-commerce</fullName>
-                    <default>false</default>
-                    <label>Sito E-commerce</label>
-                </value>
-                <value>
-                    <fullName>Sito Corporate/Investors</fullName>
-                    <default>false</default>
-                    <label>Sito Corporate/Investors</label>
-                </value>
-                <value>
-                    <fullName>Spam/Scam</fullName>
-                    <default>false</default>
-                    <label>Spam/Scam</label>
-                </value>
-                <value>
-                    <fullName>Proposte collaborazione</fullName>
-                    <default>false</default>
-                    <label>Proposte collaborazione</label>
-                </value>
-                <value>
-                    <fullName>Risorse umane</fullName>
-                    <default>false</default>
-                    <label>Risorse umane</label>
-                </value>
-                <value>
-                    <fullName>Richieste Yoox</fullName>
-                    <default>false</default>
-                    <label>Richieste Yoox</label>
-                </value>
-                <value>
-                    <fullName>Amministrazione</fullName>
-                    <default>false</default>
-                    <label>Amministrazione</label>
-                </value>
-                <value>
-                    <fullName>OMS</fullName>
-                    <default>false</default>
-                    <label>OMS</label>
-                </value>
-                <value>
-                    <fullName>Contatto Customer Care</fullName>
-                    <default>false</default>
-                    <label>Contatto Customer Care</label>
-                </value>
-            </valueSetDefinition>
-        </valueSet>
     </fields>
     <fields>
         <fullName>Id_Cliente__c</fullName>
@@ -961,7 +864,7 @@
         <fullName>Nazione__c</fullName>
         <description>Nazione fatturazione del cliente</description>
         <externalId>false</externalId>
-        <formula>Account.BillingCountry</formula>
+        <formula>Account.PersonMailingCountry</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Nazione</label>
         <required>false</required>
@@ -1035,6 +938,25 @@
     </fields>
     <fields>
         <fullName>Origin</fullName>
+        <picklist>
+            <picklistValues>
+                <fullName>Email</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Phone</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Web</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Chatter Answers</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
@@ -1081,6 +1003,29 @@
     </fields>
     <fields>
         <fullName>Priority</fullName>
+        <picklist>
+            <picklistValues>
+                <fullName>Very High</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>High</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Medium</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Low</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Very Low</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
@@ -1142,6 +1087,34 @@
     </fields>
     <fields>
         <fullName>Reason</fullName>
+        <picklist>
+            <picklistValues>
+                <fullName>User didn&apos;t attend training</fullName>
+                <default>false</default>
+                <cssExposed>false</cssExposed>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Complex functionality</fullName>
+                <default>false</default>
+                <cssExposed>false</cssExposed>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Existing problem</fullName>
+                <default>false</default>
+                <cssExposed>false</cssExposed>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Instructions not clear</fullName>
+                <default>false</default>
+                <cssExposed>false</cssExposed>
+            </picklistValues>
+            <picklistValues>
+                <fullName>New problem</fullName>
+                <default>false</default>
+                <cssExposed>false</cssExposed>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
@@ -1201,543 +1174,322 @@
         <description>ATTENZIONE :  La modifica o l&apos;aggiunta di voci di elenco potrebbe avere impatti sulle regole di assegnazione dei casi</description>
         <externalId>false</externalId>
         <label>Sottoarea</label>
+        <picklist>
+            <controllingField>Area__c</controllingField>
+            <picklistValues>
+                <fullName>USA</fullName>
+                <default>false</default>
+                <controllingFieldValues>Commerciale Monomarca</controllingFieldValues>
+                <controllingFieldValues>Commerciale Multimarca</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Asia</fullName>
+                <default>false</default>
+                <controllingFieldValues>Commerciale Monomarca</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Europa</fullName>
+                <default>false</default>
+                <controllingFieldValues>Commerciale Monomarca</controllingFieldValues>
+                <controllingFieldValues>Commerciale Multimarca</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Italia</fullName>
+                <default>false</default>
+                <controllingFieldValues>Commerciale Multimarca</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Far East</fullName>
+                <default>false</default>
+                <controllingFieldValues>Commerciale Multimarca</controllingFieldValues>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
-        <valueSet>
-            <controllingField>Area__c</controllingField>
-            <valueSetDefinition>
-                <sorted>false</sorted>
-                <value>
-                    <fullName>USA</fullName>
-                    <default>false</default>
-                    <label>USA</label>
-                </value>
-                <value>
-                    <fullName>Asia</fullName>
-                    <default>false</default>
-                    <label>Asia</label>
-                </value>
-                <value>
-                    <fullName>Europa</fullName>
-                    <default>false</default>
-                    <label>Europa</label>
-                </value>
-                <value>
-                    <fullName>Italia</fullName>
-                    <default>false</default>
-                    <label>Italia</label>
-                </value>
-                <value>
-                    <fullName>Far East</fullName>
-                    <default>false</default>
-                    <label>Far East</label>
-                </value>
-            </valueSetDefinition>
-            <valueSettings>
-                <controllingFieldValue>Commerciale Monomarca</controllingFieldValue>
-                <controllingFieldValue>Commerciale Multimarca</controllingFieldValue>
-                <valueName>USA</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Commerciale Monomarca</controllingFieldValue>
-                <valueName>Asia</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Commerciale Monomarca</controllingFieldValue>
-                <controllingFieldValue>Commerciale Multimarca</controllingFieldValue>
-                <valueName>Europa</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Commerciale Multimarca</controllingFieldValue>
-                <valueName>Italia</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Commerciale Multimarca</controllingFieldValue>
-                <valueName>Far East</valueName>
-            </valueSettings>
-        </valueSet>
     </fields>
     <fields>
         <fullName>Sottocategoria__c</fullName>
         <externalId>false</externalId>
         <label>Sottocategoria</label>
+        <picklist>
+            <controllingField>Categoria__c</controllingField>
+            <picklistValues>
+                <fullName>Acquisti</fullName>
+                <default>false</default>
+                <controllingFieldValues>Acquisti Negozio</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Acquisti potenziali</fullName>
+                <default>false</default>
+                <controllingFieldValues>Acquisti E-commerce</controllingFieldValues>
+                <controllingFieldValues>Acquisti Negozio</controllingFieldValues>
+                <controllingFieldValues>Acquisti Yoox</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Altro</fullName>
+                <default>false</default>
+                <controllingFieldValues>Acquisti E-commerce</controllingFieldValues>
+                <controllingFieldValues>Acquisti Yoox</controllingFieldValues>
+                <controllingFieldValues>Corporate</controllingFieldValues>
+                <controllingFieldValues>Cura prodotti</controllingFieldValues>
+                <controllingFieldValues>Problematiche E-commerce</controllingFieldValues>
+                <controllingFieldValues>Problematiche Segnalate</controllingFieldValues>
+                <controllingFieldValues>Problematiche Yoox</controllingFieldValues>
+                <controllingFieldValues>Proposte collaborazione</controllingFieldValues>
+                <controllingFieldValues>Risorse umane</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Amministrazione</fullName>
+                <default>false</default>
+                <controllingFieldValues>Proposte collaborazione</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Assistenza generica prodotto</fullName>
+                <default>false</default>
+                <controllingFieldValues>Cura prodotti</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Boutique</fullName>
+                <default>false</default>
+                <controllingFieldValues>Proposte collaborazione</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Cambi e resi</fullName>
+                <default>false</default>
+                <controllingFieldValues>Acquisti Negozio</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Can&apos;t find my size</fullName>
+                <default>false</default>
+                <controllingFieldValues>Acquisti E-commerce</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Cancellazione Ordini</fullName>
+                <default>false</default>
+                <controllingFieldValues>Acquisti E-commerce</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Comunicazione</fullName>
+                <default>false</default>
+                <controllingFieldValues>Corporate</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Crosschannel</fullName>
+                <default>false</default>
+                <controllingFieldValues>Acquisti E-commerce</controllingFieldValues>
+                <controllingFieldValues>Acquisti Yoox</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Dati di login</fullName>
+                <default>false</default>
+                <controllingFieldValues>Problematiche E-commerce</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Digital &amp; ICT</fullName>
+                <default>false</default>
+                <controllingFieldValues>Proposte collaborazione</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Feedback negativi</fullName>
+                <default>false</default>
+                <controllingFieldValues>Feedback del cliente</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Feedback positivi</fullName>
+                <default>false</default>
+                <controllingFieldValues>Feedback del cliente</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Finanza</fullName>
+                <default>false</default>
+                <controllingFieldValues>Proposte collaborazione</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Frodi</fullName>
+                <default>false</default>
+                <controllingFieldValues>Acquisti E-commerce</controllingFieldValues>
+                <controllingFieldValues>Acquisti Negozio</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Info Generiche</fullName>
+                <default>false</default>
+                <controllingFieldValues>Cura prodotti</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Informazioni su care</fullName>
+                <default>false</default>
+                <controllingFieldValues>Cura prodotti</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Informazioni su composizione</fullName>
+                <default>false</default>
+                <controllingFieldValues>Cura prodotti</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Informazioni su ordini acquistati</fullName>
+                <default>false</default>
+                <controllingFieldValues>Acquisti E-commerce</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Informazioni su pagamento</fullName>
+                <default>false</default>
+                <controllingFieldValues>Acquisti E-commerce</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Invio candidatura</fullName>
+                <default>false</default>
+                <controllingFieldValues>Risorse umane</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Legale</fullName>
+                <default>false</default>
+                <controllingFieldValues>Proposte collaborazione</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Logistica</fullName>
+                <default>false</default>
+                <controllingFieldValues>Proposte collaborazione</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Pagamenti</fullName>
+                <default>false</default>
+                <controllingFieldValues>Acquisti Negozio</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Problematica tecnica</fullName>
+                <default>false</default>
+                <controllingFieldValues>Risorse umane</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Problemi di relazione</fullName>
+                <default>false</default>
+                <controllingFieldValues>Problematiche E-commerce</controllingFieldValues>
+                <controllingFieldValues>Problematiche Segnalate</controllingFieldValues>
+                <controllingFieldValues>Problematiche Yoox</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Problemi su ordini</fullName>
+                <default>false</default>
+                <controllingFieldValues>Problematiche E-commerce</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Problemi su pagamento</fullName>
+                <default>false</default>
+                <controllingFieldValues>Problematiche E-commerce</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Problemi su prodotto</fullName>
+                <default>false</default>
+                <controllingFieldValues>Problematiche E-commerce</controllingFieldValues>
+                <controllingFieldValues>Problematiche Segnalate</controllingFieldValues>
+                <controllingFieldValues>Problematiche Yoox</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Produzione</fullName>
+                <default>false</default>
+                <controllingFieldValues>Proposte collaborazione</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Promozioni</fullName>
+                <default>false</default>
+                <controllingFieldValues>Acquisti E-commerce</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Regali</fullName>
+                <default>false</default>
+                <controllingFieldValues>Acquisti E-commerce</controllingFieldValues>
+                <controllingFieldValues>Acquisti Negozio</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Resi e riaccrediti</fullName>
+                <default>false</default>
+                <controllingFieldValues>Acquisti E-commerce</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Richiesta informazioni Corporate</fullName>
+                <default>false</default>
+                <controllingFieldValues>Corporate</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Richiesta informazioni Investors</fullName>
+                <default>false</default>
+                <controllingFieldValues>Corporate</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Richiesta posizioni aperte</fullName>
+                <default>false</default>
+                <controllingFieldValues>Risorse umane</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Richiesta Riparazione</fullName>
+                <default>false</default>
+                <controllingFieldValues>Problematiche Segnalate</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Richieste amministrazione</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Segnalazione da magazzino</fullName>
+                <default>false</default>
+                <controllingFieldValues>Acquisti E-commerce</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Segreteria</fullName>
+                <default>false</default>
+                <controllingFieldValues>Comunicazione</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Servizi generali</fullName>
+                <default>false</default>
+                <controllingFieldValues>Proposte collaborazione</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Showroom</fullName>
+                <default>false</default>
+                <controllingFieldValues>Proposte collaborazione</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Spedizioni</fullName>
+                <default>false</default>
+                <controllingFieldValues>Acquisti E-commerce</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Stampa</fullName>
+                <default>false</default>
+                <controllingFieldValues>Comunicazione</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Stile</fullName>
+                <default>false</default>
+                <controllingFieldValues>Proposte collaborazione</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Stock</fullName>
+                <default>false</default>
+                <controllingFieldValues>Proposte collaborazione</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Supporto tecnico generico</fullName>
+                <default>false</default>
+                <controllingFieldValues>Problematiche E-commerce</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Visual Merchandising</fullName>
+                <default>false</default>
+                <controllingFieldValues>Proposte collaborazione</controllingFieldValues>
+            </picklistValues>
+            <sorted>true</sorted>
+        </picklist>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
-        <valueSet>
-            <controllingField>Categoria__c</controllingField>
-            <valueSetDefinition>
-                <sorted>true</sorted>
-                <value>
-                    <fullName>Acquisti</fullName>
-                    <default>false</default>
-                    <label>Acquisti</label>
-                </value>
-                <value>
-                    <fullName>Acquisti potenziali</fullName>
-                    <default>false</default>
-                    <label>Acquisti potenziali</label>
-                </value>
-                <value>
-                    <fullName>Altro</fullName>
-                    <default>false</default>
-                    <label>Altro</label>
-                </value>
-                <value>
-                    <fullName>Amministrazione</fullName>
-                    <default>false</default>
-                    <label>Amministrazione</label>
-                </value>
-                <value>
-                    <fullName>Assistenza generica prodotto</fullName>
-                    <default>false</default>
-                    <label>Assistenza generica prodotto</label>
-                </value>
-                <value>
-                    <fullName>Boutique</fullName>
-                    <default>false</default>
-                    <label>Boutique</label>
-                </value>
-                <value>
-                    <fullName>Cambi e resi</fullName>
-                    <default>false</default>
-                    <label>Cambi e resi</label>
-                </value>
-                <value>
-                    <fullName>Can&apos;t find my size</fullName>
-                    <default>false</default>
-                    <label>Can&apos;t find my size</label>
-                </value>
-                <value>
-                    <fullName>Cancellazione Ordini</fullName>
-                    <default>false</default>
-                    <label>Cancellazione Ordini</label>
-                </value>
-                <value>
-                    <fullName>Comunicazione</fullName>
-                    <default>false</default>
-                    <label>Comunicazione</label>
-                </value>
-                <value>
-                    <fullName>Crosschannel</fullName>
-                    <default>false</default>
-                    <label>Crosschannel</label>
-                </value>
-                <value>
-                    <fullName>Dati di login</fullName>
-                    <default>false</default>
-                    <label>Dati di login</label>
-                </value>
-                <value>
-                    <fullName>Digital &amp; ICT</fullName>
-                    <default>false</default>
-                    <label>Digital &amp; ICT</label>
-                </value>
-                <value>
-                    <fullName>Feedback negativi</fullName>
-                    <default>false</default>
-                    <label>Feedback negativi</label>
-                </value>
-                <value>
-                    <fullName>Feedback positivi</fullName>
-                    <default>false</default>
-                    <label>Feedback positivi</label>
-                </value>
-                <value>
-                    <fullName>Finanza</fullName>
-                    <default>false</default>
-                    <label>Finanza</label>
-                </value>
-                <value>
-                    <fullName>Frodi</fullName>
-                    <default>false</default>
-                    <label>Frodi</label>
-                </value>
-                <value>
-                    <fullName>Info Generiche</fullName>
-                    <default>false</default>
-                    <label>Info Generiche</label>
-                </value>
-                <value>
-                    <fullName>Informazioni su care</fullName>
-                    <default>false</default>
-                    <label>Informazioni su care</label>
-                </value>
-                <value>
-                    <fullName>Informazioni su composizione</fullName>
-                    <default>false</default>
-                    <label>Informazioni su composizione</label>
-                </value>
-                <value>
-                    <fullName>Informazioni su ordini acquistati</fullName>
-                    <default>false</default>
-                    <label>Informazioni su ordini acquistati</label>
-                </value>
-                <value>
-                    <fullName>Informazioni su pagamento</fullName>
-                    <default>false</default>
-                    <label>Informazioni su pagamento</label>
-                </value>
-                <value>
-                    <fullName>Invio candidatura</fullName>
-                    <default>false</default>
-                    <label>Invio candidatura</label>
-                </value>
-                <value>
-                    <fullName>Legale</fullName>
-                    <default>false</default>
-                    <label>Legale</label>
-                </value>
-                <value>
-                    <fullName>Logistica</fullName>
-                    <default>false</default>
-                    <label>Logistica</label>
-                </value>
-                <value>
-                    <fullName>Pagamenti</fullName>
-                    <default>false</default>
-                    <label>Pagamenti</label>
-                </value>
-                <value>
-                    <fullName>Problematica tecnica</fullName>
-                    <default>false</default>
-                    <label>Problematica tecnica</label>
-                </value>
-                <value>
-                    <fullName>Problemi di relazione</fullName>
-                    <default>false</default>
-                    <label>Problemi di relazione</label>
-                </value>
-                <value>
-                    <fullName>Problemi su ordini</fullName>
-                    <default>false</default>
-                    <label>Problemi su ordini</label>
-                </value>
-                <value>
-                    <fullName>Problemi su pagamento</fullName>
-                    <default>false</default>
-                    <label>Problemi su pagamento</label>
-                </value>
-                <value>
-                    <fullName>Problemi su prodotto</fullName>
-                    <default>false</default>
-                    <label>Problemi su prodotto</label>
-                </value>
-                <value>
-                    <fullName>Produzione</fullName>
-                    <default>false</default>
-                    <label>Produzione</label>
-                </value>
-                <value>
-                    <fullName>Promozioni</fullName>
-                    <default>false</default>
-                    <label>Promozioni</label>
-                </value>
-                <value>
-                    <fullName>Regali</fullName>
-                    <default>false</default>
-                    <label>Regali</label>
-                </value>
-                <value>
-                    <fullName>Resi e riaccrediti</fullName>
-                    <default>false</default>
-                    <label>Resi e riaccrediti</label>
-                </value>
-                <value>
-                    <fullName>Richiesta informazioni Corporate</fullName>
-                    <default>false</default>
-                    <label>Richiesta informazioni Corporate</label>
-                </value>
-                <value>
-                    <fullName>Richiesta informazioni Investors</fullName>
-                    <default>false</default>
-                    <label>Richiesta informazioni Investors</label>
-                </value>
-                <value>
-                    <fullName>Richiesta posizioni aperte</fullName>
-                    <default>false</default>
-                    <label>Richiesta posizioni aperte</label>
-                </value>
-                <value>
-                    <fullName>Richiesta Riparazione</fullName>
-                    <default>false</default>
-                    <label>Richiesta Riparazione</label>
-                </value>
-                <value>
-                    <fullName>Richieste amministrazione</fullName>
-                    <default>false</default>
-                    <label>Richieste amministrazione</label>
-                </value>
-                <value>
-                    <fullName>Segnalazione da magazzino</fullName>
-                    <default>false</default>
-                    <label>Segnalazione da magazzino</label>
-                </value>
-                <value>
-                    <fullName>Segreteria</fullName>
-                    <default>false</default>
-                    <label>Segreteria</label>
-                </value>
-                <value>
-                    <fullName>Servizi generali</fullName>
-                    <default>false</default>
-                    <label>Servizi generali</label>
-                </value>
-                <value>
-                    <fullName>Showroom</fullName>
-                    <default>false</default>
-                    <label>Showroom</label>
-                </value>
-                <value>
-                    <fullName>Spedizioni</fullName>
-                    <default>false</default>
-                    <label>Spedizioni</label>
-                </value>
-                <value>
-                    <fullName>Stampa</fullName>
-                    <default>false</default>
-                    <label>Stampa</label>
-                </value>
-                <value>
-                    <fullName>Stile</fullName>
-                    <default>false</default>
-                    <label>Stile</label>
-                </value>
-                <value>
-                    <fullName>Stock</fullName>
-                    <default>false</default>
-                    <label>Stock</label>
-                </value>
-                <value>
-                    <fullName>Supporto tecnico generico</fullName>
-                    <default>false</default>
-                    <label>Supporto tecnico generico</label>
-                </value>
-                <value>
-                    <fullName>Visual Merchandising</fullName>
-                    <default>false</default>
-                    <label>Visual Merchandising</label>
-                </value>
-            </valueSetDefinition>
-            <valueSettings>
-                <controllingFieldValue>Risorse umane</controllingFieldValue>
-                <valueName>Invio candidatura</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Risorse umane</controllingFieldValue>
-                <valueName>Richiesta posizioni aperte</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Risorse umane</controllingFieldValue>
-                <controllingFieldValue>Acquisti E-commerce</controllingFieldValue>
-                <controllingFieldValue>Acquisti Yoox</controllingFieldValue>
-                <controllingFieldValue>Problematiche E-commerce</controllingFieldValue>
-                <controllingFieldValue>Problematiche Segnalate</controllingFieldValue>
-                <controllingFieldValue>Problematiche Yoox</controllingFieldValue>
-                <controllingFieldValue>Cura prodotti</controllingFieldValue>
-                <controllingFieldValue>Corporate</controllingFieldValue>
-                <controllingFieldValue>Proposte collaborazione</controllingFieldValue>
-                <valueName>Altro</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Risorse umane</controllingFieldValue>
-                <valueName>Problematica tecnica</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Feedback del cliente</controllingFieldValue>
-                <valueName>Feedback negativi</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Feedback del cliente</controllingFieldValue>
-                <valueName>Feedback positivi</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Comunicazione</controllingFieldValue>
-                <valueName>Segreteria</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Comunicazione</controllingFieldValue>
-                <valueName>Stampa</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Acquisti Negozio</controllingFieldValue>
-                <controllingFieldValue>Acquisti E-commerce</controllingFieldValue>
-                <valueName>Frodi</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Acquisti Negozio</controllingFieldValue>
-                <controllingFieldValue>Acquisti E-commerce</controllingFieldValue>
-                <valueName>Regali</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Acquisti Negozio</controllingFieldValue>
-                <valueName>Cambi e resi</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Acquisti Negozio</controllingFieldValue>
-                <valueName>Pagamenti</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Acquisti Negozio</controllingFieldValue>
-                <controllingFieldValue>Acquisti E-commerce</controllingFieldValue>
-                <controllingFieldValue>Acquisti Yoox</controllingFieldValue>
-                <valueName>Acquisti potenziali</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Acquisti Negozio</controllingFieldValue>
-                <valueName>Acquisti</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Acquisti E-commerce</controllingFieldValue>
-                <valueName>Can&apos;t find my size</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Acquisti E-commerce</controllingFieldValue>
-                <controllingFieldValue>Acquisti Yoox</controllingFieldValue>
-                <valueName>Crosschannel</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Acquisti E-commerce</controllingFieldValue>
-                <valueName>Spedizioni</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Acquisti E-commerce</controllingFieldValue>
-                <valueName>Cancellazione Ordini</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Acquisti E-commerce</controllingFieldValue>
-                <valueName>Informazioni su pagamento</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Acquisti E-commerce</controllingFieldValue>
-                <valueName>Promozioni</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Acquisti E-commerce</controllingFieldValue>
-                <valueName>Informazioni su ordini acquistati</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Acquisti E-commerce</controllingFieldValue>
-                <valueName>Resi e riaccrediti</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Acquisti E-commerce</controllingFieldValue>
-                <valueName>Segnalazione da magazzino</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Problematiche E-commerce</controllingFieldValue>
-                <valueName>Dati di login</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Problematiche E-commerce</controllingFieldValue>
-                <controllingFieldValue>Problematiche Segnalate</controllingFieldValue>
-                <controllingFieldValue>Problematiche Yoox</controllingFieldValue>
-                <valueName>Problemi di relazione</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Problematiche E-commerce</controllingFieldValue>
-                <valueName>Supporto tecnico generico</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Problematiche E-commerce</controllingFieldValue>
-                <valueName>Problemi su ordini</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Problematiche E-commerce</controllingFieldValue>
-                <valueName>Problemi su pagamento</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Problematiche E-commerce</controllingFieldValue>
-                <controllingFieldValue>Problematiche Segnalate</controllingFieldValue>
-                <controllingFieldValue>Problematiche Yoox</controllingFieldValue>
-                <valueName>Problemi su prodotto</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Problematiche Segnalate</controllingFieldValue>
-                <valueName>Richiesta Riparazione</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cura prodotti</controllingFieldValue>
-                <valueName>Info Generiche</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cura prodotti</controllingFieldValue>
-                <valueName>Assistenza generica prodotto</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cura prodotti</controllingFieldValue>
-                <valueName>Informazioni su care</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Cura prodotti</controllingFieldValue>
-                <valueName>Informazioni su composizione</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Corporate</controllingFieldValue>
-                <valueName>Comunicazione</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Corporate</controllingFieldValue>
-                <valueName>Richiesta informazioni Corporate</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Corporate</controllingFieldValue>
-                <valueName>Richiesta informazioni Investors</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Proposte collaborazione</controllingFieldValue>
-                <valueName>Amministrazione</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Proposte collaborazione</controllingFieldValue>
-                <valueName>Boutique</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Proposte collaborazione</controllingFieldValue>
-                <valueName>Digital &amp; ICT</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Proposte collaborazione</controllingFieldValue>
-                <valueName>Finanza</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Proposte collaborazione</controllingFieldValue>
-                <valueName>Servizi generali</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Proposte collaborazione</controllingFieldValue>
-                <valueName>Legale</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Proposte collaborazione</controllingFieldValue>
-                <valueName>Logistica</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Proposte collaborazione</controllingFieldValue>
-                <valueName>Produzione</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Proposte collaborazione</controllingFieldValue>
-                <valueName>Showroom</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Proposte collaborazione</controllingFieldValue>
-                <valueName>Stock</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Proposte collaborazione</controllingFieldValue>
-                <valueName>Stile</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Proposte collaborazione</controllingFieldValue>
-                <valueName>Visual Merchandising</valueName>
-            </valueSettings>
-        </valueSet>
     </fields>
     <fields>
         <fullName>SourceId</fullName>
@@ -1750,86 +1502,70 @@
         <fullName>Stagione__c</fullName>
         <externalId>false</externalId>
         <label>Stagione</label>
+        <picklist>
+            <picklistValues>
+                <fullName>PE11</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>AI11</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>PE12</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>AI12</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>PE13</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>AI13</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>PE14</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>AI14</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>PE15</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>AI15</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>PE16</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>AI16</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>PE17</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>AI17</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
-        <valueSet>
-            <valueSetDefinition>
-                <sorted>false</sorted>
-                <value>
-                    <fullName>PE11</fullName>
-                    <default>false</default>
-                    <label>PE11</label>
-                </value>
-                <value>
-                    <fullName>AI11</fullName>
-                    <default>false</default>
-                    <label>AI11</label>
-                </value>
-                <value>
-                    <fullName>PE12</fullName>
-                    <default>false</default>
-                    <label>PE12</label>
-                </value>
-                <value>
-                    <fullName>AI12</fullName>
-                    <default>false</default>
-                    <label>AI12</label>
-                </value>
-                <value>
-                    <fullName>PE13</fullName>
-                    <default>false</default>
-                    <label>PE13</label>
-                </value>
-                <value>
-                    <fullName>AI13</fullName>
-                    <default>false</default>
-                    <label>AI13</label>
-                </value>
-                <value>
-                    <fullName>PE14</fullName>
-                    <default>false</default>
-                    <label>PE14</label>
-                </value>
-                <value>
-                    <fullName>AI14</fullName>
-                    <default>false</default>
-                    <label>AI14</label>
-                </value>
-                <value>
-                    <fullName>PE15</fullName>
-                    <default>false</default>
-                    <label>PE15</label>
-                </value>
-                <value>
-                    <fullName>AI15</fullName>
-                    <default>false</default>
-                    <label>AI15</label>
-                </value>
-                <value>
-                    <fullName>PE16</fullName>
-                    <default>false</default>
-                    <label>PE16</label>
-                </value>
-                <value>
-                    <fullName>AI16</fullName>
-                    <default>false</default>
-                    <label>AI16</label>
-                </value>
-                <value>
-                    <fullName>PE17</fullName>
-                    <default>false</default>
-                    <label>PE17</label>
-                </value>
-                <value>
-                    <fullName>AI17</fullName>
-                    <default>false</default>
-                    <label>AI17</label>
-                </value>
-            </valueSetDefinition>
-        </valueSet>
     </fields>
     <fields>
         <fullName>Stato_Provincia_Cliente__c</fullName>
@@ -1845,6 +1581,44 @@
     </fields>
     <fields>
         <fullName>Status</fullName>
+        <picklist>
+            <picklistValues>
+                <fullName>In attesa</fullName>
+                <default>false</default>
+                <closed>false</closed>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Riassegnato</fullName>
+                <default>false</default>
+                <closed>false</closed>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Chiuso</fullName>
+                <default>false</default>
+                <closed>true</closed>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Nuovo</fullName>
+                <default>true</default>
+                <closed>false</closed>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Risposta ricevuta</fullName>
+                <default>false</default>
+                <closed>false</closed>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Aperto</fullName>
+                <default>false</default>
+                <closed>false</closed>
+            </picklistValues>
+            <picklistValues>
+                <fullName>In Lavorazione</fullName>
+                <default>false</default>
+                <closed>false</closed>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
@@ -1989,6 +1763,17 @@
     </fields>
     <fields>
         <fullName>Type</fullName>
+        <picklist>
+            <picklistValues>
+                <fullName>Sample Cases</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Trial</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>

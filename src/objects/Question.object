@@ -40,6 +40,9 @@
     </fields>
     <fields>
         <fullName>Origin</fullName>
+        <picklist>
+            <sorted>false</sorted>
+        </picklist>
         <type>Picklist</type>
     </fields>
     <recordTypes>

@@ -1,0 +1,894 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <processMetadataValues>
+            <name>emailAlertSelection</name>
+            <value>
+                <stringValue>Auto_Reply_Customer_Care_ROW</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myRule_11_A1</name>
+        <label>Auto-Reply ROW</label>
+        <locationX>1100</locationX>
+        <locationY>200</locationY>
+        <actionName>Case.Auto_Reply_Customer_Care_ROW</actionName>
+        <actionType>emailAlert</actionType>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>myVariable_current.Id</elementReference>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <actionCalls>
+        <processMetadataValues>
+            <name>emailAlertSelection</name>
+            <value>
+                <stringValue>Auto_Reply_Notify_Me_Customer_Care_Francese</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myRule_13_A1</name>
+        <label>Auto-Reply Francese Notify Me</label>
+        <locationX>1300</locationX>
+        <locationY>200</locationY>
+        <actionName>Case.Auto_Reply_Notify_Me_Customer_Care_Francese</actionName>
+        <actionType>emailAlert</actionType>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>myVariable_current.Id</elementReference>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <actionCalls>
+        <processMetadataValues>
+            <name>emailAlertSelection</name>
+            <value>
+                <stringValue>Auto_Reply_Notify_Me_Customer_Care_Spagnolo</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myRule_15_A1</name>
+        <label>Auto-Reply Spagnolo Notify Me</label>
+        <locationX>1500</locationX>
+        <locationY>200</locationY>
+        <actionName>Case.Auto_Reply_Notify_Me_Customer_Care_Spagnolo</actionName>
+        <actionType>emailAlert</actionType>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>myVariable_current.Id</elementReference>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <actionCalls>
+        <processMetadataValues>
+            <name>emailAlertSelection</name>
+            <value>
+                <stringValue>Auto_Reply_Notify_Me_Customer_Care_Svizzera</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myRule_17_A1</name>
+        <label>Auto-Reply Svizzero Notify Me</label>
+        <locationX>1700</locationX>
+        <locationY>200</locationY>
+        <actionName>Case.Auto_Reply_Notify_Me_Customer_Care_Svizzera</actionName>
+        <actionType>emailAlert</actionType>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>myVariable_current.Id</elementReference>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <actionCalls>
+        <processMetadataValues>
+            <name>emailAlertSelection</name>
+            <value>
+                <stringValue>Auto_Reply_Notify_Me_Customer_Care_Giapponese</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myRule_19_A1</name>
+        <label>Auto-Reply Giapponese Notify Me</label>
+        <locationX>1900</locationX>
+        <locationY>200</locationY>
+        <actionName>Case.Auto_Reply_Notify_Me_Customer_Care_Giapponese</actionName>
+        <actionType>emailAlert</actionType>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>myVariable_current.Id</elementReference>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <actionCalls>
+        <processMetadataValues>
+            <name>emailAlertSelection</name>
+            <value>
+                <stringValue>Auto_Reply_Customer_Care_Francese</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myRule_1_A1</name>
+        <label>Auto-Reply Francese</label>
+        <locationX>100</locationX>
+        <locationY>200</locationY>
+        <actionName>Case.Auto_Reply_Customer_Care_Francese</actionName>
+        <actionType>emailAlert</actionType>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>myVariable_current.Id</elementReference>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <actionCalls>
+        <processMetadataValues>
+            <name>emailAlertSelection</name>
+            <value>
+                <stringValue>Auto_Reply_Notify_Me_Customer_Care_Americano</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myRule_21_A1</name>
+        <label>Auto-Reply Americano Notify Me</label>
+        <locationX>2100</locationX>
+        <locationY>200</locationY>
+        <actionName>Case.Auto_Reply_Notify_Me_Customer_Care_Americano</actionName>
+        <actionType>emailAlert</actionType>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>myVariable_current.Id</elementReference>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <actionCalls>
+        <processMetadataValues>
+            <name>emailAlertSelection</name>
+            <value>
+                <stringValue>Auto_Reply_Notify_Me_Customer_Care_ROW</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myRule_23_A1</name>
+        <label>Auto-Reply ROW Notify Me</label>
+        <locationX>2300</locationX>
+        <locationY>200</locationY>
+        <actionName>Case.Auto_Reply_Notify_Me_Customer_Care_ROW</actionName>
+        <actionType>emailAlert</actionType>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>myVariable_current.Id</elementReference>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <actionCalls>
+        <processMetadataValues>
+            <name>emailAlertSelection</name>
+            <value>
+                <stringValue>Auto_Reply_Customer_Care_Spagnolo</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myRule_3_A1</name>
+        <label>Auto-Reply Spagnolo</label>
+        <locationX>300</locationX>
+        <locationY>200</locationY>
+        <actionName>Case.Auto_Reply_Customer_Care_Spagnolo</actionName>
+        <actionType>emailAlert</actionType>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>myVariable_current.Id</elementReference>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <actionCalls>
+        <processMetadataValues>
+            <name>emailAlertSelection</name>
+            <value>
+                <stringValue>Auto_Reply_Customer_Care_Svizzera</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myRule_5_A1</name>
+        <label>Auto-Reply Svizzero</label>
+        <locationX>500</locationX>
+        <locationY>200</locationY>
+        <actionName>Case.Auto_Reply_Customer_Care_Svizzera</actionName>
+        <actionType>emailAlert</actionType>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>myVariable_current.Id</elementReference>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <actionCalls>
+        <processMetadataValues>
+            <name>emailAlertSelection</name>
+            <value>
+                <stringValue>Auto_Reply_Customer_Care_Giapponese</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myRule_7_A1</name>
+        <label>Auto-Reply Giapponese</label>
+        <locationX>700</locationX>
+        <locationY>200</locationY>
+        <actionName>Case.Auto_Reply_Customer_Care_Giapponese</actionName>
+        <actionType>emailAlert</actionType>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>myVariable_current.Id</elementReference>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <actionCalls>
+        <processMetadataValues>
+            <name>emailAlertSelection</name>
+            <value>
+                <stringValue>Auto_Reply_Customer_Care_Americano</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myRule_9_A1</name>
+        <label>Auto-Reply Americano</label>
+        <locationX>900</locationX>
+        <locationY>200</locationY>
+        <actionName>Case.Auto_Reply_Customer_Care_Americano</actionName>
+        <actionType>emailAlert</actionType>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>myVariable_current.Id</elementReference>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <assignments>
+        <name>myVariable_waitStartTimeAssignment</name>
+        <label>myVariable_waitStartTimeAssignment</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>myVariable_waitStartTimeVariable</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>myDecision</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <processMetadataValues>
+            <name>index</name>
+            <value>
+                <numberValue>0.0</numberValue>
+            </value>
+        </processMetadataValues>
+        <name>myDecision</name>
+        <label>myDecision</label>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>myDecision2</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myRule_1</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_1</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_1_A1</targetReference>
+            </connector>
+            <label>Francese</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <processMetadataValues>
+            <name>index</name>
+            <value>
+                <numberValue>5.0</numberValue>
+            </value>
+        </processMetadataValues>
+        <name>myDecision10</name>
+        <label>myDecision10</label>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>myDecision12</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myRule_11</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_11</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_11_A1</targetReference>
+            </connector>
+            <label>ROW</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <processMetadataValues>
+            <name>index</name>
+            <value>
+                <numberValue>6.0</numberValue>
+            </value>
+        </processMetadataValues>
+        <name>myDecision12</name>
+        <label>myDecision12</label>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>myDecision14</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myRule_13</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_13</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_13_A1</targetReference>
+            </connector>
+            <label>Notify me - Francese</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <processMetadataValues>
+            <name>index</name>
+            <value>
+                <numberValue>7.0</numberValue>
+            </value>
+        </processMetadataValues>
+        <name>myDecision14</name>
+        <label>myDecision14</label>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>myDecision16</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myRule_15</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_15</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_15_A1</targetReference>
+            </connector>
+            <label>Notify me - Spagnolo</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <processMetadataValues>
+            <name>index</name>
+            <value>
+                <numberValue>8.0</numberValue>
+            </value>
+        </processMetadataValues>
+        <name>myDecision16</name>
+        <label>myDecision16</label>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>myDecision18</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myRule_17</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_17</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_17_A1</targetReference>
+            </connector>
+            <label>Notify me - Svizzero</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <processMetadataValues>
+            <name>index</name>
+            <value>
+                <numberValue>9.0</numberValue>
+            </value>
+        </processMetadataValues>
+        <name>myDecision18</name>
+        <label>myDecision18</label>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>myDecision20</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myRule_19</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_19</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_19_A1</targetReference>
+            </connector>
+            <label>Notify me - Giapponese</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <processMetadataValues>
+            <name>index</name>
+            <value>
+                <numberValue>1.0</numberValue>
+            </value>
+        </processMetadataValues>
+        <name>myDecision2</name>
+        <label>myDecision2</label>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>myDecision4</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myRule_3</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_3</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_3_A1</targetReference>
+            </connector>
+            <label>Spagnolo</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <processMetadataValues>
+            <name>index</name>
+            <value>
+                <numberValue>10.0</numberValue>
+            </value>
+        </processMetadataValues>
+        <name>myDecision20</name>
+        <label>myDecision20</label>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>myDecision22</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myRule_21</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_21</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_21_A1</targetReference>
+            </connector>
+            <label>Notify me - Americano</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <processMetadataValues>
+            <name>index</name>
+            <value>
+                <numberValue>11.0</numberValue>
+            </value>
+        </processMetadataValues>
+        <name>myDecision22</name>
+        <label>myDecision22</label>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myRule_23</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_23</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_23_A1</targetReference>
+            </connector>
+            <label>Notify me - ROW</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <processMetadataValues>
+            <name>index</name>
+            <value>
+                <numberValue>2.0</numberValue>
+            </value>
+        </processMetadataValues>
+        <name>myDecision4</name>
+        <label>myDecision4</label>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>myDecision6</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myRule_5</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_5</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_5_A1</targetReference>
+            </connector>
+            <label>Svizzero</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <processMetadataValues>
+            <name>index</name>
+            <value>
+                <numberValue>3.0</numberValue>
+            </value>
+        </processMetadataValues>
+        <name>myDecision6</name>
+        <label>myDecision6</label>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>myDecision8</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myRule_7</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_7</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_7_A1</targetReference>
+            </connector>
+            <label>Giapponese</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <processMetadataValues>
+            <name>index</name>
+            <value>
+                <numberValue>4.0</numberValue>
+            </value>
+        </processMetadataValues>
+        <name>myDecision8</name>
+        <label>myDecision8</label>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>myDecision10</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myRule_9</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_9</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_9_A1</targetReference>
+            </connector>
+            <label>Americano</label>
+        </rules>
+    </decisions>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>AND([Case].RecordType.DeveloperName = &quot;Ticket_E_commerce&quot;,
+OR( [Case].Nazione_input__c = &quot;FR&quot;, [Case].Nazione_input__c = &quot;MC&quot;, [Case].Nazione_input__c = &quot;CA&quot;, [Case].Nazione_input__c = &quot;LU&quot;, [Case].Nazione_input__c = &quot;BE&quot;),
+!BEGINS([Case].Subject, &quot;I can&apos;t find my size online&quot;))</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_1</name>
+        <dataType>Boolean</dataType>
+        <expression>AND({!myVariable_current.RecordType.DeveloperName} = &quot;Ticket_E_commerce&quot;,
+OR( {!myVariable_current.Nazione_input__c} = &quot;FR&quot;, {!myVariable_current.Nazione_input__c} = &quot;MC&quot;, {!myVariable_current.Nazione_input__c} = &quot;CA&quot;, {!myVariable_current.Nazione_input__c} = &quot;LU&quot;, {!myVariable_current.Nazione_input__c} = &quot;BE&quot;),
+!BEGINS({!myVariable_current.Subject}, &quot;I can&apos;t find my size online&quot;))</expression>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>AND([Case].RecordType.DeveloperName = &quot;Ticket_E_commerce&quot;,
+[Case].Nazione_input__c &lt;&gt; &quot;FR&quot;, 
+[Case].Nazione_input__c &lt;&gt; &quot;MC&quot;, 
+[Case].Nazione_input__c &lt;&gt; &quot;CA&quot;, 
+[Case].Nazione_input__c &lt;&gt; &quot;LU&quot;, 
+[Case].Nazione_input__c &lt;&gt; &quot;BE&quot;, 
+[Case].Nazione_input__c &lt;&gt; &quot;ES&quot;, 
+[Case].Nazione_input__c &lt;&gt; &quot;CH&quot;, 
+[Case].Nazione_input__c &lt;&gt; &quot;JP&quot;,
+[Case].Nazione_input__c &lt;&gt; &quot;US&quot;,
+!BEGINS([Case].Subject, &quot;I can&apos;t find my size online&quot;))</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_11</name>
+        <dataType>Boolean</dataType>
+        <expression>AND({!myVariable_current.RecordType.DeveloperName} = &quot;Ticket_E_commerce&quot;,
+{!myVariable_current.Nazione_input__c} &lt;&gt; &quot;FR&quot;, 
+{!myVariable_current.Nazione_input__c} &lt;&gt; &quot;MC&quot;, 
+{!myVariable_current.Nazione_input__c} &lt;&gt; &quot;CA&quot;, 
+{!myVariable_current.Nazione_input__c} &lt;&gt; &quot;LU&quot;, 
+{!myVariable_current.Nazione_input__c} &lt;&gt; &quot;BE&quot;, 
+{!myVariable_current.Nazione_input__c} &lt;&gt; &quot;ES&quot;, 
+{!myVariable_current.Nazione_input__c} &lt;&gt; &quot;CH&quot;, 
+{!myVariable_current.Nazione_input__c} &lt;&gt; &quot;JP&quot;,
+{!myVariable_current.Nazione_input__c} &lt;&gt; &quot;US&quot;,
+!BEGINS({!myVariable_current.Subject}, &quot;I can&apos;t find my size online&quot;))</expression>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>AND([Case].RecordType.DeveloperName = &quot;Ticket_E_commerce&quot;,
+OR( [Case].Nazione_input__c = &quot;FR&quot;, [Case].Nazione_input__c = &quot;MC&quot;, [Case].Nazione_input__c = &quot;CA&quot;, [Case].Nazione_input__c = &quot;LU&quot;, [Case].Nazione_input__c = &quot;BE&quot;),
+BEGINS([Case].Subject, &quot;I can&apos;t find my size online&quot;))</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_13</name>
+        <dataType>Boolean</dataType>
+        <expression>AND({!myVariable_current.RecordType.DeveloperName} = &quot;Ticket_E_commerce&quot;,
+OR( {!myVariable_current.Nazione_input__c} = &quot;FR&quot;, {!myVariable_current.Nazione_input__c} = &quot;MC&quot;, {!myVariable_current.Nazione_input__c} = &quot;CA&quot;, {!myVariable_current.Nazione_input__c} = &quot;LU&quot;, {!myVariable_current.Nazione_input__c} = &quot;BE&quot;),
+BEGINS({!myVariable_current.Subject}, &quot;I can&apos;t find my size online&quot;))</expression>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>AND([Case].RecordType.DeveloperName = &quot;Ticket_E_commerce&quot;,
+[Case].Nazione_input__c = &quot;ES&quot;,
+BEGINS([Case].Subject, &quot;I can&apos;t find my size online&quot;))</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_15</name>
+        <dataType>Boolean</dataType>
+        <expression>AND({!myVariable_current.RecordType.DeveloperName} = &quot;Ticket_E_commerce&quot;,
+{!myVariable_current.Nazione_input__c} = &quot;ES&quot;,
+BEGINS({!myVariable_current.Subject}, &quot;I can&apos;t find my size online&quot;))</expression>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>AND([Case].RecordType.DeveloperName = &quot;Ticket_E_commerce&quot;,
+[Case].Nazione_input__c = &quot;CH&quot;,
+BEGINS([Case].Subject, &quot;I can&apos;t find my size online&quot;))</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_17</name>
+        <dataType>Boolean</dataType>
+        <expression>AND({!myVariable_current.RecordType.DeveloperName} = &quot;Ticket_E_commerce&quot;,
+{!myVariable_current.Nazione_input__c} = &quot;CH&quot;,
+BEGINS({!myVariable_current.Subject}, &quot;I can&apos;t find my size online&quot;))</expression>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>AND([Case].RecordType.DeveloperName = &quot;Ticket_E_commerce&quot;,
+[Case].Nazione_input__c = &quot;JP&quot;,
+BEGINS([Case].Subject, &quot;I can&apos;t find my size online&quot;))</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_19</name>
+        <dataType>Boolean</dataType>
+        <expression>AND({!myVariable_current.RecordType.DeveloperName} = &quot;Ticket_E_commerce&quot;,
+{!myVariable_current.Nazione_input__c} = &quot;JP&quot;,
+BEGINS({!myVariable_current.Subject}, &quot;I can&apos;t find my size online&quot;))</expression>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>AND([Case].RecordType.DeveloperName = &quot;Ticket_E_commerce&quot;,
+[Case].Nazione_input__c = &quot;US&quot;,
+BEGINS([Case].Subject, &quot;I can&apos;t find my size online&quot;))</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_21</name>
+        <dataType>Boolean</dataType>
+        <expression>AND({!myVariable_current.RecordType.DeveloperName} = &quot;Ticket_E_commerce&quot;,
+{!myVariable_current.Nazione_input__c} = &quot;US&quot;,
+BEGINS({!myVariable_current.Subject}, &quot;I can&apos;t find my size online&quot;))</expression>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>AND([Case].RecordType.DeveloperName = &quot;Ticket_E_commerce&quot;,
+[Case].Nazione_input__c &lt;&gt; &quot;FR&quot;, 
+[Case].Nazione_input__c &lt;&gt; &quot;MC&quot;, 
+[Case].Nazione_input__c &lt;&gt; &quot;CA&quot;, 
+[Case].Nazione_input__c &lt;&gt; &quot;LU&quot;, 
+[Case].Nazione_input__c &lt;&gt; &quot;BE&quot;, 
+[Case].Nazione_input__c &lt;&gt; &quot;ES&quot;, 
+[Case].Nazione_input__c &lt;&gt; &quot;CH&quot;, 
+[Case].Nazione_input__c &lt;&gt; &quot;JP&quot;,
+[Case].Nazione_input__c &lt;&gt; &quot;US&quot;,
+BEGINS([Case].Subject, &quot;I can&apos;t find my size online&quot;))</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_23</name>
+        <dataType>Boolean</dataType>
+        <expression>AND({!myVariable_current.RecordType.DeveloperName} = &quot;Ticket_E_commerce&quot;,
+{!myVariable_current.Nazione_input__c} &lt;&gt; &quot;FR&quot;, 
+{!myVariable_current.Nazione_input__c} &lt;&gt; &quot;MC&quot;, 
+{!myVariable_current.Nazione_input__c} &lt;&gt; &quot;CA&quot;, 
+{!myVariable_current.Nazione_input__c} &lt;&gt; &quot;LU&quot;, 
+{!myVariable_current.Nazione_input__c} &lt;&gt; &quot;BE&quot;, 
+{!myVariable_current.Nazione_input__c} &lt;&gt; &quot;ES&quot;, 
+{!myVariable_current.Nazione_input__c} &lt;&gt; &quot;CH&quot;, 
+{!myVariable_current.Nazione_input__c} &lt;&gt; &quot;JP&quot;,
+{!myVariable_current.Nazione_input__c} &lt;&gt; &quot;US&quot;,
+BEGINS({!myVariable_current.Subject}, &quot;I can&apos;t find my size online&quot;))</expression>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>AND([Case].RecordType.DeveloperName = &quot;Ticket_E_commerce&quot;,
+[Case].Nazione_input__c = &quot;ES&quot;,
+!BEGINS([Case].Subject, &quot;I can&apos;t find my size online&quot;))</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_3</name>
+        <dataType>Boolean</dataType>
+        <expression>AND({!myVariable_current.RecordType.DeveloperName} = &quot;Ticket_E_commerce&quot;,
+{!myVariable_current.Nazione_input__c} = &quot;ES&quot;,
+!BEGINS({!myVariable_current.Subject}, &quot;I can&apos;t find my size online&quot;))</expression>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>AND([Case].RecordType.DeveloperName = &quot;Ticket_E_commerce&quot;,
+[Case].Nazione_input__c = &quot;CH&quot;,
+!BEGINS([Case].Subject, &quot;I can&apos;t find my size online&quot;))</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_5</name>
+        <dataType>Boolean</dataType>
+        <expression>AND({!myVariable_current.RecordType.DeveloperName} = &quot;Ticket_E_commerce&quot;,
+{!myVariable_current.Nazione_input__c} = &quot;CH&quot;,
+!BEGINS({!myVariable_current.Subject}, &quot;I can&apos;t find my size online&quot;))</expression>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>AND([Case].RecordType.DeveloperName = &quot;Ticket_E_commerce&quot;,
+[Case].Nazione_input__c = &quot;JP&quot;,
+!BEGINS([Case].Subject, &quot;I can&apos;t find my size online&quot;))</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_7</name>
+        <dataType>Boolean</dataType>
+        <expression>AND({!myVariable_current.RecordType.DeveloperName} = &quot;Ticket_E_commerce&quot;,
+{!myVariable_current.Nazione_input__c} = &quot;JP&quot;,
+!BEGINS({!myVariable_current.Subject}, &quot;I can&apos;t find my size online&quot;))</expression>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>AND([Case].RecordType.DeveloperName = &quot;Ticket_E_commerce&quot;,
+[Case].Nazione_input__c = &quot;US&quot;,
+!BEGINS([Case].Subject, &quot;I can&apos;t find my size online&quot;))</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_9</name>
+        <dataType>Boolean</dataType>
+        <expression>AND({!myVariable_current.RecordType.DeveloperName} = &quot;Ticket_E_commerce&quot;,
+{!myVariable_current.Nazione_input__c} = &quot;US&quot;,
+!BEGINS({!myVariable_current.Subject}, &quot;I can&apos;t find my size online&quot;))</expression>
+    </formulas>
+    <interviewLabel>Auto_response_customer_care-1_InterviewLabel</interviewLabel>
+    <label>Auto-response customer care</label>
+    <processMetadataValues>
+        <name>ObjectType</name>
+        <value>
+            <stringValue>Case</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>ObjectVariable</name>
+        <value>
+            <elementReference>myVariable_current</elementReference>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OldObjectVariable</name>
+        <value>
+            <elementReference>myVariable_old</elementReference>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>TriggerType</name>
+        <value>
+            <stringValue>onCreateOnly</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Workflow</processType>
+    <startElementReference>myVariable_waitStartTimeAssignment</startElementReference>
+    <variables>
+        <name>myVariable_current</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <objectType>Case</objectType>
+    </variables>
+    <variables>
+        <name>myVariable_old</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Case</objectType>
+    </variables>
+    <variables>
+        <name>myVariable_waitStartTimeVariable</name>
+        <dataType>DateTime</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <elementReference>$Flow.CurrentDateTime</elementReference>
+        </value>
+    </variables>
+</Flow>

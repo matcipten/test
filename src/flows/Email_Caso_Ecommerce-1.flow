@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Inoltro_Email</name>
+        <label>Inoltro Email</label>
+        <locationX>133</locationX>
+        <locationY>106</locationY>
+        <actionName>Case.Avviso_Nuovo_Caso_Ecommerce_Button_Builder</actionName>
+        <actionType>emailAlert</actionType>
+        <connector>
+            <targetReference>Conferma_Invio</targetReference>
+        </connector>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>caseid</elementReference>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <interviewLabel>Email Caso Ecommerce {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Email Caso Ecommerce</label>
+    <processType>Flow</processType>
+    <screens>
+        <name>Conferma_Invio</name>
+        <label>Conferma Invio</label>
+        <locationX>133</locationX>
+        <locationY>263</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>Confirmation</name>
+            <fieldText>E-mail has been sent to the case owner</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <startElementReference>Inoltro_Email</startElementReference>
+    <variables>
+        <name>caseid</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+</Flow>

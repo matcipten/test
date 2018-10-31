@@ -5,6 +5,22 @@
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
         <actionName>List</actionName>
         <type>Default</type>
     </actionOverrides>
@@ -24,13 +40,15 @@
         <actionName>View</actionName>
         <type>Default</type>
     </actionOverrides>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <enableFeeds>false</enableFeeds>
     <fields>
-        <fullName>CommentBody</fullName>
-        <encrypted>false</encrypted>
+        <fullName>ScorecardId</fullName>
+        <type>MasterDetail</type>
     </fields>
     <fields>
-        <fullName>ParentOrigin</fullName>
-        <type>Picklist</type>
+        <fullName>TargetEntityId</fullName>
+        <type>Lookup</type>
     </fields>
+    <sharingModel>ControlledByParent</sharingModel>
 </CustomObject>

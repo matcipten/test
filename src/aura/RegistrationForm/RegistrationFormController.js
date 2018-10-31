@@ -279,6 +279,8 @@
                 stateField.set("v.errors", null);
             }
         }
+        
+        /* CONTROL FOR PRIVACY
 
         if(locale != 'DE'){
             var check1_yes = cmp.find('checkbox_1_yes');
@@ -336,6 +338,8 @@
 
             }      
         }
+        
+        */
         
         if(validitem){
             

@@ -101,7 +101,7 @@ public class RegistrationForm {
 
     @AuraEnabled
     public static User getUserInformation() {
-        return  [SELECT Id, Name, Nation_Contact_Card__c, Language_Contact_Card__c, Department__c FROM User WHERE Id =: UserInfo.getuserid() ];
+        return  [SELECT Id, Name, Nation_Contact_Card__c, Language_Contact_Card__c, Department__c, Codice_Boutique__c FROM User WHERE Id =: UserInfo.getuserid() ];
     }
 
     @AuraEnabled
@@ -116,15 +116,18 @@ public class RegistrationForm {
 
         System.debug('--- INSERT ---');
 
-        User user = [SELECT Id, LastName, Codice_Boutique__c, Id_Store_Manager__c, Codice_Associate__c FROM User WHERE Id=:UserInfo.getUserId()];
+        User user = [SELECT Id, LastName, Codice_Boutique__c, Id_Store_Manager__c, Codice_Associate__c, Nome_Profilo__c FROM User WHERE Id=:UserInfo.getUserId()];
         Location__c loc = new Location__c();
         if([SELECT Id, Name, Id_Location_Micros__c FROM Location__c WHERE Id_Location_Micros__c=: user.Codice_Boutique__c].size() != 0) {
             loc = [SELECT Id, Name, Id_Location_Micros__c FROM Location__c WHERE Id_Location_Micros__c=: user.Codice_Boutique__c];
         }
         Associated__c ass = new Associated__c();
-        if([SELECT Id, Id_Associate__c FROM Associated__c WHERE Id_Associate__c =: user.Codice_Associate__c].size() != 0) {
-            ass = [SELECT Id, Id_Associate__c FROM Associated__c WHERE Id_Associate__c =: user.Codice_Associate__c];
+        if(user.Nome_Profilo__c == 'BC - Associate'){
+            if([SELECT Id, Id_Associate__c FROM Associated__c WHERE Id_Associate__c =: user.Codice_Associate__c].size() != 0) {
+                ass = [SELECT Id, Id_Associate__c FROM Associated__c WHERE Id_Associate__c =: user.Codice_Associate__c];
+            }
         }
+        
         returnData ret = new returnData();
         ret.success = true;
         ret.message = 'Account create successfully';
@@ -137,7 +140,7 @@ public class RegistrationForm {
             newPersonAccount.LastName                = acc.LastName;
             newPersonAccount.PersonMailingStreet     = acc.PersonMailingStreet;
             newPersonAccount.PersonMailingCountry    = acc.PersonMailingCountry;
-            newPersonAccount.PersonMailingState    	 = acc.PersonMailingState;
+            newPersonAccount.PersonMailingState      = acc.PersonMailingState;
             newPersonAccount.PersonMailingPostalCode = acc.PersonMailingPostalCode;
             newPersonAccount.PersonMailingCity       = acc.PersonMailingCity;
             newPersonAccount.PersonEmail             = acc.PersonEmail;
@@ -160,7 +163,8 @@ public class RegistrationForm {
             newPersonAccount.First_ID_Location__c    = user.Codice_Boutique__c;
             if (loc != null){
                 newPersonAccount.First_Location__c       = loc.Id;
-                newPersonAccount.First_Location_Name__c  = loc.Name; 
+                newPersonAccount.First_Location_Name__c  = loc.Name;
+                newPersonAccount.Location__c             = loc.Id; 
             }
             newPersonAccount.Id_Location__c          = user.Codice_Boutique__c;
             if (ass != null){
@@ -169,6 +173,7 @@ public class RegistrationForm {
                 newPersonAccount.Associate__c               = ass.Id;
             }            
             newPersonAccount.Data_Ultimo_Aggiornamento_Privacy__c = Date.today();
+            newPersonAccount.Data_Di_Registrazione__c             = Date.today();
 
             insert newPersonAccount;
 
@@ -209,7 +214,7 @@ public class RegistrationForm {
             newPersonAccount.LastName                = acc.LastName;
             newPersonAccount.PersonMailingStreet     = acc.PersonMailingStreet;
             newPersonAccount.PersonMailingCountry    = acc.PersonMailingCountry;
-            newPersonAccount.PersonMailingState    	 = acc.PersonMailingState;
+            newPersonAccount.PersonMailingState      = acc.PersonMailingState;
             newPersonAccount.PersonMailingPostalCode = acc.PersonMailingPostalCode;
             newPersonAccount.PersonMailingCity       = acc.PersonMailingCity;
             newPersonAccount.PersonEmail             = acc.PersonEmail;
@@ -248,7 +253,15 @@ public class RegistrationForm {
     public  Static String insertContactCard(Account acc, String Id){
         
         System.debug('--- INSERT CONTACTCARD ---');
-
+        User usr = getUserInformation();
+        System.debug('SV usr: ' + usr);
+        List<Location__c> locList = new List<Location__c>();
+        Location__c loc = new Location__c();
+        if(String.isNotEmpty(usr.Codice_Boutique__c)){
+            loc = [SELECT id, name FROM Location__c WHERE Id_Location_Micros__c =: usr.Codice_Boutique__c LIMIT 1];
+        }
+        
+        System.debug('SV locList: ' + locList);
         returnData ret = new returnData();
         ret.success = true;
         ret.message = 'Contact card Object create successfully';
@@ -261,7 +274,7 @@ public class RegistrationForm {
             newContactCard.LastName__c                  = acc.LastName;
             newContactCard.PersonMailingStreet__c       = acc.PersonMailingStreet;
             newContactCard.PersonMailingCountry__c      = acc.PersonMailingCountry;
-            newContactCard.PersonMailingState__c    	= acc.PersonMailingState;
+            newContactCard.PersonMailingState__c        = acc.PersonMailingState;
             newContactCard.PersonMailingPostalCode__c   = acc.PersonMailingPostalCode;
             newContactCard.PersonMailingCity__c         = acc.PersonMailingCity;
             newContactCard.PersonEmail__c               = acc.PersonEmail;
@@ -283,6 +296,7 @@ public class RegistrationForm {
             newContactCard.Privacy3__c                  = acc.Privacy3__c;
             newContactCard.Privacy3__c                  = acc.Privacy3__c;
             newContactCard.Privacy_Registration_Date__c = Date.today();
+            newContactCard.Boutique__c                  = loc.Id;
 
             insert newContactCard;
             

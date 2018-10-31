@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <interviewLabel>CampaignMemberStatus - Invito Inviato {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>CampaignMemberStatus - Invitation sent</label>
+    <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <name>Invitation_sent</name>
+        <label>Invitation sent</label>
+        <locationX>35</locationX>
+        <locationY>35</locationY>
+        <inputAssignments>
+            <field>CampaignId</field>
+            <value>
+                <elementReference>CampaignId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Label</field>
+            <value>
+                <stringValue>Invitation sent</stringValue>
+            </value>
+        </inputAssignments>
+        <object>CampaignMemberStatus</object>
+    </recordCreates>
+    <startElementReference>Invitation_sent</startElementReference>
+    <variables>
+        <name>CampaignId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+</Flow>

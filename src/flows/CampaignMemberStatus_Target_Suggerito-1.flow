@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <interviewLabel>CampaignMemberStatus - Target Suggerito {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>CampaignMemberStatus - Suggested Target</label>
+    <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <name>Suggested_Target</name>
+        <label>Suggested Target</label>
+        <locationX>35</locationX>
+        <locationY>35</locationY>
+        <inputAssignments>
+            <field>CampaignId</field>
+            <value>
+                <elementReference>CampaignId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>IsDefault</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Label</field>
+            <value>
+                <stringValue>Suggested Target</stringValue>
+            </value>
+        </inputAssignments>
+        <object>CampaignMemberStatus</object>
+    </recordCreates>
+    <startElementReference>Suggested_Target</startElementReference>
+    <variables>
+        <name>CampaignId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+</Flow>

@@ -29,7 +29,7 @@
     "spaDist": "",
     "src": "src",
     "staticResourceCacheControl": "Private",
-    "url": "https://login.salesforce.com",
     "username": "admin.ten@brunellocucinelli.it",
-    "autoCompile": false
+    "autoCompile": false,
+    "url": "https://login.salesforce.com"
 }

@@ -1719,6 +1719,19 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Tempo_riparazione_giorni__c</fullName>
+        <externalId>false</externalId>
+        <formula>Data_riparazione_effettiva__c - DATEVALUE(Data_affidamento_riparazione__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Tempo riparazione (giorni)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Tipo_Riparazione__c</fullName>
         <externalId>false</externalId>
         <label>Tipo Riparazione</label>

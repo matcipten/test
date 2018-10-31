@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <interviewLabel>CampaignMemberStatus - Cliente Assente {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>CampaignMemberStatus - Customer did not attend</label>
+    <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <name>Customer_did_not_attend</name>
+        <label>Customer did not attend</label>
+        <locationX>35</locationX>
+        <locationY>35</locationY>
+        <inputAssignments>
+            <field>CampaignId</field>
+            <value>
+                <elementReference>CampaignId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Label</field>
+            <value>
+                <stringValue>Customer did not attend</stringValue>
+            </value>
+        </inputAssignments>
+        <object>CampaignMemberStatus</object>
+    </recordCreates>
+    <startElementReference>Customer_did_not_attend</startElementReference>
+    <variables>
+        <name>CampaignId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+</Flow>
