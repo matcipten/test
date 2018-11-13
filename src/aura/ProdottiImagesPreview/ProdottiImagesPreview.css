@@ -36,6 +36,10 @@
     height: auto;
 }
 
+.THIS .slds-page-header__title {
+    text-transform: capitalize;
+}
+
 /*CAROUSEL*/
 
 .THIS .main-container {
@@ -110,7 +114,7 @@
     justify-content: center;
     align-items: center;
     box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.32);
-    z-index: 10;
+    z-index: 20;
 }
 
 .THIS #prev {
@@ -160,7 +164,7 @@
 box-shadow: 0px 1px 5px 2px rgba(255,0,0,1);
 }
 
-.THIS .shadow {
+.THIS .shadow-reso {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -169,6 +173,17 @@ box-shadow: 0px 1px 5px 2px rgba(255,0,0,1);
     box-shadow: inset 0px 0px 20px 3px rgba(255,0,0,1);
     top: 0;
     left: 0;
+}
+
+.THIS .shadow-gift {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-box-shadow: inset 0px 0px 20px 3px rgba(255, 239, 68,1);
+    -moz-box-shadow: inset 0px 0px 20px 3px rgba(255, 239, 68,1);
+    box-shadow: inset 0px 0px 20px 3px rgba(255, 239, 68,1);
+    top: 0;
+        left: 0.5px;
 }
 
 .THIS .bottom-right {
@@ -261,7 +276,7 @@ box-shadow: 0px 1px 5px 2px rgba(255,0,0,1);
     width: 75%;
     max-width: none; 
     margin: auto;
-    margin-top: 135px;
+        margin-top: 70px;
     height: 83%;
 }
 

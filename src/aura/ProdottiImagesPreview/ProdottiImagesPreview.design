@@ -1,0 +1,3 @@
+<design:component>
+    <design:attribute name="productToShow" label="Product to show" datasource="purchase, gift" description="Definisce i prodotti da mostrare nella slide" />
+</design:component>

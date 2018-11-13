@@ -2,7 +2,8 @@
     getAttachments : function(component) {
         var action = component.get("c.getAttachments");
         action.setParams({
-            parentId : component.get("v.recordId")
+            parentId : component.get("v.recordId"),
+            type : component.get("v.productToShow")
         });
         
         action.setCallback(this, function(a) {
