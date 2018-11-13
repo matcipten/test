@@ -420,6 +420,28 @@
                                     </fieldset>
                                 </div>
                             </div>
+                            
+                            <div class="slds-col slds-size_12-of-12 slds-large-size_12-of-12">
+                                <div class="slds-form-element">
+                                    <fieldset class="slds-form-element">
+                                        <div class="slds-form-element__control">
+                                            <span class="slds-checkbox">
+                                                <lightning:input type="checkbox" aura:id="checkbox_3_yes" class="text-bold" label="{!v.translatorValue.Privacy_Yes_Label__c}" name="checkbox_3_yes" value="" onchange="{!c.verifyCheckQuestion}" disabled="{!v.afterPrinting}" />
+                                            </span>
+                                            <span class="slds-checkbox">
+                                                <lightning:input type="checkbox" aura:id="checkbox_3_no" class="text-bold" label="{!v.translatorValue.Privacy_No_Label__c}" name="checkbox_3_no" value="" onchange="{!c.verifyCheckQuestion}" disabled="{!v.afterPrinting}" />
+                                            </span>
+                                            <span>
+                                                <label aura:id="checkbox_3_label" class="slds-checkbox__label">
+                                                    {!v.translatorValue.Privacy_3_Label__c}   
+                                                </label>
+                                            </span>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </div> 
+                            
+                            <!--
                             <aura:if isTrue="{!v.locale == 'JP'}">
                                 <aura:set attribute="else">
                                     <div class="slds-col slds-size_12-of-12 slds-large-size_12-of-12">
@@ -444,6 +466,8 @@
                                     
                                 </aura:set>
                             </aura:if>
+							-->
+                            
                             <div class="slds-grid slds-grid_align-end footer-privacy-police">
                                 <div class="slds-col slds-size_9-of-12 slds-large-size_9-of-12">
                                     <div class="slds-form-element">

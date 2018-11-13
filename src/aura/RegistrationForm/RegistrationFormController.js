@@ -61,6 +61,9 @@
 	},
     
     validateAndRegistration: function(cmp, event, helper){
+        
+        cmp.set("v.buttonDisable",true);
+        
         var sign = cmp.find("canvas").getElement();
         var is_canvas_blank = helper.isCanvasTransparent(sign);
         console.log('is canvas transparent: ' + is_canvas_blank);
@@ -389,7 +392,6 @@
 
         } else {
             cmp.set("v.buttonDisable",false);
-
             cmp.set("v.errors",errors);
             document.body.scrollTop = 0;
             document.documentElement.scrollTop = 0;
@@ -486,5 +488,6 @@
     backButton:function(cmp,event,helper){
         window.open('/apex/RegistrationFormClose?core.apexpages.request.devconsole=1', '_parent');
     },
+
     
 })
