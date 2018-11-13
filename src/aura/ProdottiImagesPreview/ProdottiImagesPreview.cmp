@@ -10,11 +10,15 @@
     <aura:attribute name="isOpen" type="boolean" default="false"/>
     <aura:attribute name="isButtonShownRight" type="boolean" default="false"/>
     <aura:attribute name="isButtonShownleft" type="boolean" default="false"/>
+    
+    <aura:attribute name="productToShow" type="String" default="purchase" description="Definisce i prodotti da mostrare nella slide" />
+    
+    
     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
     
     <aura:renderIf isTrue="{!v.attachments.length > 0}">
         <div class="component" style="border: 1px solid rgb(221, 219, 218);
-        border-radius: .25rem;">
+                                      border-radius: .25rem;">
             
             
             <!-- HEADING AREA -->
@@ -28,7 +32,7 @@
                         </div>
                         
                         <div class="slds-media__body">
-                            <h1 class="slds-page-header__title slds-m-right--small slds-align-middle slds-truncate" title="Signature List">Product List ({!v.attachments.length})</h1>
+                            <h1 class="slds-page-header__title slds-m-right--small slds-align-middle slds-truncate" title="Signature List">{!v.productToShow} ({!v.attachments.length})</h1>
                         </div>
                     </div>
                     
@@ -55,10 +59,15 @@
                                             <div class="middle">
                                                 <div class="text">{! a.productSeason} - {! a.productModel}</div>
                                             </div>
+                                            <aura:if isTrue="{!a.productGift}">
+                                                <div class="shadow-gift"></div>
+                                                <div class="circle-number">G</div>
+                                            </aura:if>
                                             <aura:if isTrue="{!a.productReso}">
-                                                <div class="shadow"></div>
+                                                <div class="shadow-reso"></div>
                                                 <div class="circle-number">R</div>
                                             </aura:if>
+                                            
                                         </div>
                                     </div>
                                 </a>
@@ -88,7 +97,7 @@
                         X
                         <span class="slds-assistive-text">Close</span>
                     </button>
-                    <h2 id="header99" class="slds-text-heading--medium">All Products</h2>
+                    <h2 id="header99" class="slds-text-heading--medium">All {!v.productToShow}</h2>
                 </div>
                 <!--###### MODAL BOX BODY Part Start From Here ######-->
                 <div class="slds-modal__content slds-p-around--medium">
@@ -97,15 +106,19 @@
                             <a href="{!'/'+a.productId}" target="_blank">
                                 <div class="grid-item item">
                                     <div class="modal-content">
-                                            <img src="{!'/sfc/servlet.shepherd/version/download/'+a.imageId}" class="{!'image' + ' ' +  (a.productReso ? '' : '' )}" />
-                                            <div class="middle">
-                                                <div class="text">{! a.productSeason} - {! a.productModel}</div>
-                                            </div>
-                                            <aura:if isTrue="{!a.productReso}">
-                                                <div class="shadow"></div>
-                                                <div class="circle-number-modal">R</div>
-                                            </aura:if>
+                                        <img src="{!'/sfc/servlet.shepherd/version/download/'+a.imageId}" class="{!'image' + ' ' +  (a.productReso ? '' : '' )}" />
+                                        <div class="middle">
+                                            <div class="text">{! a.productSeason} - {! a.productModel}</div>
                                         </div>
+                                        <aura:if isTrue="{!a.productGift}">
+                                            <div class="shadow-gift"></div>
+                                            <div class="circle-number-modal">G</div>
+                                        </aura:if>
+                                        <aura:if isTrue="{!a.productReso}">
+                                            <div class="shadow-reso"></div>
+                                            <div class="circle-number-modal">R</div>
+                                        </aura:if>
+                                    </div>
                                 </div>
                             </a>
                         </aura:iteration>

@@ -35,7 +35,7 @@ public class ProdottiImagesPreviewControllerTest {
         ContentDocumentLink cDe = AllDataFactory.create_ContentDocumentLink(cv, detail);
         insert cDe;
             
-            List<ProdottiImagesPreviewController.productContainer> stringArray = ProdottiImagesPreviewController.getAttachments(parentId);
+            List<ProdottiImagesPreviewController.productContainer> stringArray = ProdottiImagesPreviewController.getAttachments(parentId, 'purchase');
         }
         Test.stopTest();
         
