@@ -229,6 +229,18 @@
         <template>Email_template_US/Customer_Care_reply_ecommerce_Notify_Me_Non_trovi_la_tua_taglia_USA_Wom</template>
     </alerts>
     <alerts>
+        <fullName>Auto_Response_Ecommerce_Nov_NO_USA</fullName>
+        <description>Auto Response Ecommerce 1November NO USA</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Email_Cliente_input__c</field>
+            <type>email</type>
+        </recipients>
+        <senderAddress>no-reply.customercare@brunellocucinelli.it</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Modelli_Email_Customer_care/Customer_Care_reply_ecommerce_1_Novembre_no_USA</template>
+    </alerts>
+    <alerts>
         <fullName>Auto_Response_Ecommerce_Pasqua_NO_USA</fullName>
         <description>Auto Response Ecommerce Pasqua NO USA</description>
         <protected>false</protected>
