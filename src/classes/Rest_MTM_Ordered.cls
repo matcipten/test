@@ -70,6 +70,7 @@ global without sharing class Rest_MTM_Ordered {
             orderWrap.CreatedDate = ossW.CreatedDate;
             orderWrap.Prezzo_number = ossW.Prezzo_number__c;
             orderWrap.Prezzo_valuta = ossW.Prezzo_valuta__c;
+            orderWrap.Record_Type_Giacca = ossW.Record_Type_Giacca__c;
             if(orderIdToAttachs.containsKey(ossW.Id)){  //MC-
                 orderWrap.orderAttachments = orderIdToAttachs.get(ossW.Id);
             }   
@@ -129,7 +130,7 @@ global without sharing class Rest_MTM_Ordered {
     public static List<Ordine_Sartoria_Solomeo__c> getOrdineSartoriaSolomeoBySarto(){
         
         List<Ordine_Sartoria_Solomeo__c> result = new List<Ordine_Sartoria_Solomeo__c>();
-        result = GenericDao.getAllFieldsResultByConditionStatusWithAttachments('Ordine_Sartoria_Solomeo__c', 'Status__c', 'Annullato' , 'Consegnato al Cliente');	//MC-
+        result = GenericDao.getAllFieldsResultByConditionStatusWithAttachments('Ordine_Sartoria_Solomeo__c', 'Status__c', 'Annullato' , 'Consegnato al Cliente');   //MC-
         return result;
         
     }
@@ -323,7 +324,7 @@ global without sharing class Rest_MTM_Ordered {
                 system.debug('accountList : ' +misureList);
                 result = getOrdine (orderedList, accountList , associateList ,  misureList );
             }
-			*/
+            */
             
             /* Map<String, Object> m = new Map<String, Object>();
 for (Ordine_Sartoria_Solomeo__c singleOrder : orderedList){
@@ -445,7 +446,9 @@ m.put(singleOrder.Id, singleOrder);
         String Nota_sarto;
         DateTime CreatedDate;
         Decimal Prezzo_number;
-        String Prezzo_valuta;        
+        String Prezzo_valuta;
+        String Record_Type_Giacca;
+               
         
         List<AttachWrapper> orderAttachments;
         CustomerMisureWrapper customer;  
