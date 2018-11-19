@@ -12,6 +12,9 @@ public with sharing class CurrencyConverterFactory {
 		mapCurrencyConverter.put('USD', new Euro2ISOCodeConverter());
 		mapCurrencyConverter.put('JPY', new Euro2ISOCodeConverter());
 		mapCurrencyConverter.put('MOP', new Euro2ISOCodeConverter());
+        mapCurrencyConverter.put('DKK', new Euro2ISOCodeConverter());
+        mapCurrencyConverter.put('RUB', new Euro2ISOCodeConverter());
+        mapCurrencyConverter.put('AUD', new Euro2ISOCodeConverter());
 	}
 	
 	public static CurrencyConverter getCurrencyConverter(String currencyIsoCode){

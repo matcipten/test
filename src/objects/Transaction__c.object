@@ -381,10 +381,13 @@ Prezzo_di_Listino__c - Prezzo_di_Vendita__c
 &quot;GBP&quot;, Sconto_GBP__c, 
 &quot;HKD&quot;, Sconto_HKD__c, 
 &quot;JPY&quot;, Sconto_JPY__c, 
-&quot;USD&quot;, Sconto_USD__c,
-&quot;MOP&quot;, Sconto_MOP__c,
+&quot;USD&quot;, Sconto_USD__c, 
+&quot;MOP&quot;, Sconto_MOP__c, 
+&quot;RUB&quot;, Sconto_RUB__c, 
+&quot;AUD&quot;, Sconto_AUD__c, 
+&quot;DKK&quot;, Sconto_DKK__c, 
 Importo_Sconto__c)</formula>
-        <label>Importo Sconto</label>
+        <label>Importo Sconto (formula)</label>
         <precision>18</precision>
         <required>false</required>
         <scale>2</scale>
@@ -505,6 +508,17 @@ Importo_Sconto__c)</formula>
         <type>TextArea</type>
     </fields>
     <fields>
+        <fullName>PSconto_AUD__c</fullName>
+        <externalId>false</externalId>
+        <label>% di Sconto (AUD)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
         <fullName>PSconto_BRL__c</fullName>
         <externalId>false</externalId>
         <label>% di Sconto (BRL)</label>
@@ -541,6 +555,17 @@ Importo_Sconto__c)</formula>
         <fullName>PSconto_CNY__c</fullName>
         <externalId>false</externalId>
         <label>% di Sconto (CNY)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>PSconto_DKK__c</fullName>
+        <externalId>false</externalId>
+        <label>% di Sconto (DKK)</label>
         <precision>18</precision>
         <required>false</required>
         <scale>2</scale>
@@ -596,6 +621,17 @@ Importo_Sconto__c)</formula>
         <fullName>PSconto_MOP__c</fullName>
         <externalId>false</externalId>
         <label>% di Sconto (MOP)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>PSconto_RUB__c</fullName>
+        <externalId>false</externalId>
+        <label>% di Sconto (RUB)</label>
         <precision>18</precision>
         <required>false</required>
         <scale>2</scale>
@@ -683,6 +719,9 @@ Importo_Sconto__c/ Prezzo_di_Listino__c
 &quot;JPY&quot;, Prezzo_netto_IVA_JPY__c, 
 &quot;USD&quot;, Prezzo_netto_IVA_USD__c, 
 &quot;MOP&quot;, Prezzo_netto_IVA_MOP__c,
+&quot;AUD&quot;, Prezzo_netto_IVA_AUD__c,
+&quot;DKK&quot;, Prezzo_netto_IVA_DKK__c,
+&quot;RUB&quot;, Prezzo_netto_IVA_RUB__c,
 Prezzo_Netto_IVA__c)</formula>
         <label>Prezzo Netto IVA (formula)</label>
         <precision>18</precision>
@@ -717,9 +756,12 @@ Prezzo_Netto_IVA__c)</formula>
 &quot;HKD&quot;, Prezzo_di_listino_HKD__c, 
 &quot;JPY&quot;, Prezzo_di_listino_JPY__c, 
 &quot;USD&quot;, Prezzo_di_listino_USD__c,
-&quot;MOP&quot;, Prezzo_di_listino_MOP__c, 
+&quot;MOP&quot;, Prezzo_di_listino_MOP__c,
+&quot;AUD&quot;, Prezzo_di_listino_AUD__c,
+&quot;DKK&quot;, Prezzo_di_listino_DKK__c,
+&quot;RUB&quot;, Prezzo_di_listino_RUB__c,
 Prezzo_di_Listino__c)</formula>
-        <label>Prezzo di Listino</label>
+        <label>Prezzo di Listino (formula)</label>
         <precision>18</precision>
         <required>false</required>
         <scale>2</scale>
@@ -751,10 +793,25 @@ Prezzo_di_Listino__c)</formula>
 &quot;GBP&quot;, Prezzo_di_vendita_GBP__c, 
 &quot;HKD&quot;, Prezzo_di_vendita_HKD__c, 
 &quot;JPY&quot;, Prezzo_di_vendita_JPY__c, 
-&quot;USD&quot;, Prezzo_di_vendita_USD__c,
-&quot;MOP&quot;, Prezzo_di_vendita_MOP__c, 
+&quot;USD&quot;, Prezzo_di_vendita_USD__c, 
+&quot;MOP&quot;, Prezzo_di_vendita_MOP__c,
+&quot;AUD&quot;, Prezzo_di_vendita_AUD__c,
+&quot;DKK&quot;, Prezzo_di_vendita_DKK__c,
+&quot;RUB&quot;, Prezzo_di_vendita_RUB__c,
 Prezzo_di_Vendita__c)</formula>
-        <label>Prezzo di Vendita</label>
+        <label>Prezzo di Vendita (formula)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Prezzo_di_listino_AUD__c</fullName>
+        <externalId>false</externalId>
+        <label>Prezzo di listino (AUD)</label>
         <precision>18</precision>
         <required>false</required>
         <scale>2</scale>
@@ -806,6 +863,18 @@ Prezzo_di_Vendita__c)</formula>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Prezzo_di_listino_DKK__c</fullName>
+        <externalId>false</externalId>
+        <label>Prezzo di listino (DKK)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Prezzo_di_listino_EUR__c</fullName>
@@ -863,6 +932,18 @@ Prezzo_di_Vendita__c)</formula>
         <type>Summary</type>
     </fields>
     <fields>
+        <fullName>Prezzo_di_listino_RUB__c</fullName>
+        <externalId>false</externalId>
+        <label>Prezzo di listino (RUB)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Prezzo_di_listino_USD__c</fullName>
         <externalId>false</externalId>
         <label>Prezzo di listino (USD)</label>
@@ -872,6 +953,18 @@ Prezzo_di_Vendita__c)</formula>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Prezzo_di_vendita_AUD__c</fullName>
+        <externalId>false</externalId>
+        <label>Prezzo di vendita (AUD)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Prezzo_di_vendita_BRL__c</fullName>
@@ -916,6 +1009,18 @@ Prezzo_di_Vendita__c)</formula>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Prezzo_di_vendita_DKK__c</fullName>
+        <externalId>false</externalId>
+        <label>Prezzo di vendita (DKK)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Prezzo_di_vendita_EUR__c</fullName>
@@ -973,6 +1078,18 @@ Prezzo_di_Vendita__c)</formula>
         <type>Summary</type>
     </fields>
     <fields>
+        <fullName>Prezzo_di_vendita_RUB__c</fullName>
+        <externalId>false</externalId>
+        <label>Prezzo di vendita (RUB)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Prezzo_di_vendita_USD__c</fullName>
         <externalId>false</externalId>
         <label>Prezzo di vendita (USD)</label>
@@ -982,6 +1099,18 @@ Prezzo_di_Vendita__c)</formula>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Prezzo_netto_IVA_AUD__c</fullName>
+        <externalId>false</externalId>
+        <label>Prezzo netto IVA (AUD)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Prezzo_netto_IVA_BRL__c</fullName>
@@ -1026,6 +1155,18 @@ Prezzo_di_Vendita__c)</formula>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Prezzo_netto_IVA_DKK__c</fullName>
+        <externalId>false</externalId>
+        <label>Prezzo netto IVA (DKK)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Prezzo_netto_IVA_EUR__c</fullName>
@@ -1081,6 +1222,18 @@ Prezzo_di_Vendita__c)</formula>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Prezzo_netto_IVA_RUB__c</fullName>
+        <externalId>false</externalId>
+        <label>Prezzo netto IVA (RUB)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Prezzo_netto_IVA_USD__c</fullName>
@@ -1172,6 +1325,18 @@ Prezzo_di_Vendita__c)</formula>
         <type>Summary</type>
     </fields>
     <fields>
+        <fullName>Sconto_AUD__c</fullName>
+        <externalId>false</externalId>
+        <label>Sconto (AUD)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Sconto_BRL__c</fullName>
         <externalId>false</externalId>
         <formula>if ( 
@@ -1243,6 +1408,18 @@ Prezzo_di_listino_CNY__c   - Prezzo_di_vendita_CNY__c
 )</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Sconto (CNY)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sconto_DKK__c</fullName>
+        <externalId>false</externalId>
+        <label>Sconto (DKK)</label>
         <precision>18</precision>
         <required>false</required>
         <scale>2</scale>
@@ -1344,6 +1521,18 @@ Prezzo_di_listino_JPY__c   - Prezzo_di_vendita_JPY__c
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Sconto_RUB__c</fullName>
+        <externalId>false</externalId>
+        <label>Sconto (RUB)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Sconto_USD__c</fullName>
         <externalId>false</externalId>
         <formula>if ( 
@@ -1377,8 +1566,13 @@ Prezzo_di_listino_USD__c   - Prezzo_di_vendita_USD__c
 &quot;JPY&quot;, PSconto_JPY__c, 
 &quot;USD&quot;, PSconto_USD__c, 
 &quot;MOP&quot;, PSconto_MOP__c,
+&quot;DKK&quot;, PSconto_DKK__c,
+&quot;AUD&quot;, PSconto_AUD__c,
+&quot;RUB&quot;, PSconto_RUB__c,
+
+ 
 PSconto__c)</formula>
-        <label>% Sconto</label>
+        <label>% Sconto (formula)</label>
         <precision>18</precision>
         <required>false</required>
         <scale>2</scale>

@@ -274,7 +274,7 @@ ISCHANGED(Name)
             <name>Aggiornamento_Sconto_MOP_riga</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>true</active>
+        <active>false</active>
         <description>Popola i campi Importo sconto per la valuta MOP</description>
         <formula>true</formula>
         <triggerType>onAllChanges</triggerType>

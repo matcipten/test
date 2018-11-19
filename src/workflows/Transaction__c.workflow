@@ -265,7 +265,7 @@ ISCHANGED(Codice_Cassa__c)
             <name>Aggiornamento_Sconto_MOP_Testata</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>true</active>
+        <active>false</active>
         <formula>true</formula>
         <triggerType>onAllChanges</triggerType>
     </rules>
