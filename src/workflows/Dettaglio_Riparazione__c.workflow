@@ -569,6 +569,24 @@ CreatedBy.Language_Email__c = &quot;Italian&quot;)</formula>
                 <type>Alert</type>
             </actions>
             <offsetFromField>Dettaglio_Riparazione__c.Data_Spedizione_da_Solomeo__c</offsetFromField>
+            <timeLength>30</timeLength>
+            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+        <workflowTimeTriggers>
+            <actions>
+                <name>Sollecito_chiusura_operazione</name>
+                <type>Alert</type>
+            </actions>
+            <offsetFromField>Dettaglio_Riparazione__c.Data_Spedizione_da_Solomeo__c</offsetFromField>
+            <timeLength>40</timeLength>
+            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+        <workflowTimeTriggers>
+            <actions>
+                <name>Sollecito_chiusura_operazione</name>
+                <type>Alert</type>
+            </actions>
+            <offsetFromField>Dettaglio_Riparazione__c.Data_Spedizione_da_Solomeo__c</offsetFromField>
             <timeLength>10</timeLength>
             <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
         </workflowTimeTriggers>
@@ -629,6 +647,15 @@ CreatedBy.Language_Email__c = &quot;Italian&quot;)</formula>
         <active>true</active>
         <formula>ISPICKVAL(Status__c, &quot;Invio capo verso sede&quot;) &amp;&amp; NOT(ISNULL(Data_accettazione_richiesta__c))</formula>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
+        <workflowTimeTriggers>
+            <actions>
+                <name>Sollecito_invio_verso_sede</name>
+                <type>Alert</type>
+            </actions>
+            <offsetFromField>Dettaglio_Riparazione__c.Data_accettazione_richiesta__c</offsetFromField>
+            <timeLength>20</timeLength>
+            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
         <workflowTimeTriggers>
             <actions>
                 <name>Sollecito_invio_verso_sede</name>
