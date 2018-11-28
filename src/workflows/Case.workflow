@@ -277,6 +277,26 @@
         <template>Email_template_US/Customer_Care_reply_ecommerce_USA</template>
     </alerts>
     <alerts>
+        <fullName>Auto_reply_out_of_office_thanksgiving</fullName>
+        <description>Auto-reply out of office thanksgiving</description>
+        <protected>false</protected>
+        <recipients>
+            <field>ContactEmail</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <field>Email_Cliente_input__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <field>SuppliedEmail</field>
+            <type>email</type>
+        </recipients>
+        <senderAddress>no-reply.customerserviceusa@brunellocucinelli.it</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Email_template_US/Auto_reply_out_of_office_thanksgiving</template>
+    </alerts>
+    <alerts>
         <fullName>Auto_response_Ticket_Ecommerce_ROW</fullName>
         <description>Auto-response Ticket Ecommerce ROW</description>
         <protected>false</protected>
