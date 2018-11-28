@@ -190,6 +190,16 @@
                     <default>false</default>
                     <label>Pince Fondo 19,5</label>
                 </value>
+                <value>
+                    <fullName>Flat with 19,5 cm bottom</fullName>
+                    <default>false</default>
+                    <label>Flat with 19,5 cm bottom</label>
+                </value>
+                <value>
+                    <fullName>Pleated with 19,5 cm bottom</fullName>
+                    <default>false</default>
+                    <label>Pleated with 19,5 cm bottom</label>
+                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
@@ -356,7 +366,15 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Flat with 19%2C5 cm bottom</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Pince Fondo 19%2C5</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pleated with 19%2C5 cm bottom</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -414,7 +432,15 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Flat with 19%2C5 cm bottom</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Pince Fondo 19%2C5</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pleated with 19%2C5 cm bottom</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -472,7 +498,15 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Flat with 19%2C5 cm bottom</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Pince Fondo 19%2C5</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pleated with 19%2C5 cm bottom</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
