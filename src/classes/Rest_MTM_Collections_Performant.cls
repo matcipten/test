@@ -14,7 +14,7 @@ global without sharing class Rest_MTM_Collections_Performant {
         collection.RecordTypeMisure = recorTypeList;
         
         List<SeasonWrapper> finList = new List<SeasonWrapper>();
-        
+    
         /*system.debug('misureList size: '+misureList.size());
         system.debug('stagionelist size: '+stagionelist.size());
         system.debug('capilist size: '+capilist.size());
@@ -78,11 +78,17 @@ global without sharing class Rest_MTM_Collections_Performant {
                                 
                                 TessutiWrapper tessuto = new TessutiWrapper();
                                 String tempTessId = 'tessuto'+ts.Id;
-                                if(ts.Id != null && Cache.Org.contains(tempTessId)){
+                                // PN20181012 removed cache
+                                /*if(ts.Id != null && Cache.Org.contains(tempTessId)){
                                         tessuto = (TessutiWrapper)Cache.Org.get(tempTessId);
+                                        //PN 20181012 added some values
+                                        tessuto.Prezzo_valuta = ctp.Prezzo_valuta__c;
+                                        tessuto.Prezzo_number = ctp.Prezzo_number__c;
+                                        //END PN 20181012 added some values
                                 }
-                                else{
-                                        
+                                else{*/
+                                // PN20181012 end removed cache
+                                    
                                 tessuto.Id = ts.Id;
                                 tessuto.Name = ts.Name;
                                 tessuto.Codice = ts.Codice__c;
@@ -155,11 +161,15 @@ global without sharing class Rest_MTM_Collections_Performant {
                                         colore.Bottoni = fin_bottoneList;
                                         fin_coloriList.add(colore);
                                     }
-                                }
+                                // PN20181012 removed cache
+                                //}
+                                // PN20181012 end removed cache
                                 tessuto.Colori = fin_coloriList;
-                                if(ts.Id != null){
+                                // PN20181012 removed cache
+                                /*if(ts.Id != null){
                                     Cache.Org.put(tempTessId,(TessutiWrapper)tessuto);
-                                }
+                                }*/
+                                // PN20181012 end  cache
                                 }
                                 fin_tessutoList.add(tessuto);
                             }
@@ -285,14 +295,16 @@ global without sharing class Rest_MTM_Collections_Performant {
             if(arr.size() > 3)
                 recordId = arr[3];
             
-            if(recordId != null && recordId != '' && Cache.Org.contains(recordId)){
+            // PN20181012 removed cache
+            /*if(recordId != null && recordId != '' && Cache.Org.contains(recordId)){
                 system.debug('retrieved: '+recordId);
                 return (CollectionWrapper)Cache.Org.get(recordId);
             }
             else if((recordId == null || recordId == '') && Cache.Org.contains('CollectionSchema')){
                 system.debug('retrieved: CollectionSchema');
                 return (CollectionWrapper)Cache.Org.get('CollectionSchema');
-            }
+            }*/
+            // END PN20181012 removed cache
             
             MTM__c mhc = MTM__c.getInstance();
           
@@ -371,15 +383,16 @@ global without sharing class Rest_MTM_Collections_Performant {
             m.put('Misure', misurediRiferimentoSartoriaList);
             */
             CollectionWrapper collections = getCollection(recordId,recordTypeList, misurediRiferimentoSartoriaList, setstagioni, setCapo, setTessuto, tessutolist, setTessutoColore, fodere, bottoni, foderaList, bottonelist);
-            
-            if(recordId != null && recordId != ''){
+            // PN20181012 removed cache
+            /*if(recordId != null && recordId != ''){
                 system.debug('cached: '+recordId);
                 Cache.Org.put(recordId,collections);
             }
             else{ 
                 system.debug('cached: CollectionSchema');
                 Cache.Org.put('CollectionSchema',collections);
-            }
+            }*/
+            // END PN20181012 removed cache
             return collections;
             
         }
