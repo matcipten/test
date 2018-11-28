@@ -542,6 +542,11 @@ Capo_Tessuto__r.Prezzo_EUR__c)
     </fields>
     <gender>Feminine</gender>
     <label>Ordine Sartoria Solomeo</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
     <nameField>
         <displayFormat>O-{000000}</displayFormat>
         <label>Nome Ordine Sartoria Solomeo</label>
