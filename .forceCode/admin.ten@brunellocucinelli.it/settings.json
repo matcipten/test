@@ -16,6 +16,8 @@
         "testLevel": "NoTestRun"
     },
     "maxFileChangeNotifications": 15,
+    "maxQueryHistory": 10,
+    "maxQueryResultsPerPage": 250,
     "outputQueriesAsCSV": false,
     "overwritePackageXML": false,
     "poll": 1500,
