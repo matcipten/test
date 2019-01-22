@@ -57,8 +57,8 @@ public class RegistrationForm {
     public static String saveNewAccount(Account account, String sPad64) {
         
         system.debug('ACCOUNT : ' + account);
-        
-        Savepoint sp = Database.setSavepoint();
+        try{
+            Savepoint sp = Database.setSavepoint();
         returnData insertAccount = (returnData)JSON.deserializeStrict( insertAccount(account), returnData.class);
         returnData insertContactCard = (returnData)JSON.deserializeStrict( insertContactCard(account, insertAccount.Id), returnData.class);
         returnData uploadSignResponse = (returnData)JSON.deserializeStrict( uploadSign(sPad64.replace('data:image/png;base64,', ''), insertContactCard.Id), returnData.class);
@@ -67,9 +67,16 @@ public class RegistrationForm {
             Database.rollback(sp);
             return 'false';
         }
-        
-        system.debug('insertAccount: ' + insertAccount);
+            
+            system.debug('insertAccount: ' + insertAccount);
         system.debug('uploadSignResponse: ' + uploadSignResponse);
+        
+        
+        }catch(Exception ex){
+            throw new AuraHandledException('Something went wrong: '+ ex.getMessage());
+
+        }
+        
         
         return 'true';
         
@@ -79,8 +86,8 @@ public class RegistrationForm {
     public static String updateNewAccount(Account account, String sPad64) {
         
         system.debug('ACCOUNT UPDATE: ' + account);
-        
-        //Savepoint sp = Database.setSavepoint();
+        try{
+             //Savepoint sp = Database.setSavepoint();
         returnData insertAccount = (returnData)JSON.deserializeStrict( updateAccount(account), returnData.class);
         returnData insertContactCard = (returnData)JSON.deserializeStrict( insertContactCard(account, insertAccount.Id), returnData.class);
         returnData uploadSignResponse = (returnData)JSON.deserializeStrict( uploadSign(sPad64.replace('data:image/png;base64,', ''), insertContactCard.Id), returnData.class);
@@ -94,6 +101,10 @@ public class RegistrationForm {
         
         system.debug('insertAccount: ' + insertAccount);
         system.debug('uploadSignResponse: ' + uploadSignResponse);
+        }catch(Exception ex){
+             throw new AuraHandledException('Something went wrong: '+ ex.getMessage());
+        }
+       
         
         return 'true';
         
@@ -101,15 +112,34 @@ public class RegistrationForm {
 
     @AuraEnabled
     public static User getUserInformation() {
-        return  [SELECT Id, Name, Nation_Contact_Card__c, Language_Contact_Card__c, Department__c, Codice_Boutique__c FROM User WHERE Id =: UserInfo.getuserid() ];
+        return  [SELECT Id, Name, Nation_Contact_Card__c, Language_Contact_Card__c, Department__c FROM User WHERE Id =: UserInfo.getuserid() ];
     }
 
     @AuraEnabled
     public static Account getAccount(Id AccountId) {
-        system.debug('AccountId: ' + AccountId);
-        return  [SELECT Id, Salutation, FirstName, LastName, PersonMailingStreet, PersonMailingCountry, PersonMailingPostalCode, PersonMailingCity, PersonMailingState,
+        Account acc = new Account();
+        try{
+            system.debug('AccountId: ' + AccountId);
+        if(AccountId == null || AccountId ==''){
+            Object obj = Cache.Session.get('local.partition1.AccountId');
+            AccountId = (Id)obj;
+            system.debug('AccountId inside : ' + (Id)obj);
+            if((Id)obj != null){
+                Cache.Session.put('local.partition1.AccountId', '');
+            }
+        }
+            
+        if(AccountId != null ){
+          acc =  [SELECT Id, Salutation, FirstName, LastName, PersonMailingStreet, PersonMailingCountry, PersonMailingPostalCode, PersonMailingCity, PersonMailingState,
                         PersonEmail, We_Chat_ID__c, Phone, PersonMobilePhone, PersonBirthdate, Sesso__c, Nazionalita__c, Lingua__c, Telefono__c, Email__c, WeChat__c, Posta__c, 
                         Other__c, Other_text__c, Privacy1__c, Privacy2__c, Privacy3__c FROM Account WHERE Id =: AccountId ];
+        }
+        system.debug('acc : ' + acc);
+        }Catch(Exception ex){
+            system.debug('Exception  : '+ ex.getMessage());
+        }
+        
+        return  acc;
     }
     
     public  Static String insertAccount(Account acc){
@@ -122,12 +152,9 @@ public class RegistrationForm {
             loc = [SELECT Id, Name, Id_Location_Micros__c FROM Location__c WHERE Id_Location_Micros__c=: user.Codice_Boutique__c];
         }
         Associated__c ass = new Associated__c();
-        if(user.Nome_Profilo__c == 'BC - Associate'){
-            if([SELECT Id, Id_Associate__c FROM Associated__c WHERE Id_Associate__c =: user.Codice_Associate__c].size() != 0) {
-                ass = [SELECT Id, Id_Associate__c FROM Associated__c WHERE Id_Associate__c =: user.Codice_Associate__c];
-            }
+        if([SELECT Id, Id_Associate__c FROM Associated__c WHERE Id_Associate__c =: user.Codice_Associate__c].size() != 0) {
+            ass = [SELECT Id, Id_Associate__c FROM Associated__c WHERE Id_Associate__c =: user.Codice_Associate__c];
         }
-        
         returnData ret = new returnData();
         ret.success = true;
         ret.message = 'Account create successfully';
@@ -140,7 +167,7 @@ public class RegistrationForm {
             newPersonAccount.LastName                = acc.LastName;
             newPersonAccount.PersonMailingStreet     = acc.PersonMailingStreet;
             newPersonAccount.PersonMailingCountry    = acc.PersonMailingCountry;
-            newPersonAccount.PersonMailingState      = acc.PersonMailingState;
+            newPersonAccount.PersonMailingState    	 = acc.PersonMailingState;
             newPersonAccount.PersonMailingPostalCode = acc.PersonMailingPostalCode;
             newPersonAccount.PersonMailingCity       = acc.PersonMailingCity;
             newPersonAccount.PersonEmail             = acc.PersonEmail;
@@ -163,17 +190,26 @@ public class RegistrationForm {
             newPersonAccount.First_ID_Location__c    = user.Codice_Boutique__c;
             if (loc != null){
                 newPersonAccount.First_Location__c       = loc.Id;
-                newPersonAccount.First_Location_Name__c  = loc.Name;
-                newPersonAccount.Location__c             = loc.Id; 
+                newPersonAccount.First_Location_Name__c  = loc.Name; 
             }
             newPersonAccount.Id_Location__c          = user.Codice_Boutique__c;
             if (ass != null){
                 newPersonAccount.Associate_di_registrazione__c = ass.Id;
-                newPersonAccount.Id_Associate__c            = ass.Id_Associate__c;
-                newPersonAccount.Associate__c               = ass.Id;
+                newPersonAccount.Id_Associate__c               = ass.Id_Associate__c;
+                newPersonAccount.Associate__c                  = ass.Id;
             }            
+
+            if(user.Nome_Profilo__c == 'BC - Associate'){
+                List<User> userLeader = [SELECT Id, Codice_Boutique__c FROM User WHERE Nome_Profilo__c = 'BC - Boutique' AND Codice_Boutique__c =: user.Codice_Boutique__c];
+                if(userLeader.size() > 0){
+                    System.debug('USER LEADER TROVATI: ' + userLeader.size());
+                    newPersonAccount.OwnerId = userLeader[0].Id;
+                } else {
+                    System.debug('USER LEADER NON TROVATI SALVO OWNER ID CON QUELLO DELL\' ASSOCIATE');
+                }
+            }
+            
             newPersonAccount.Data_Ultimo_Aggiornamento_Privacy__c = Date.today();
-            newPersonAccount.Data_Di_Registrazione__c             = Date.today();
 
             insert newPersonAccount;
 
@@ -214,7 +250,7 @@ public class RegistrationForm {
             newPersonAccount.LastName                = acc.LastName;
             newPersonAccount.PersonMailingStreet     = acc.PersonMailingStreet;
             newPersonAccount.PersonMailingCountry    = acc.PersonMailingCountry;
-            newPersonAccount.PersonMailingState      = acc.PersonMailingState;
+            newPersonAccount.PersonMailingState    	 = acc.PersonMailingState;
             newPersonAccount.PersonMailingPostalCode = acc.PersonMailingPostalCode;
             newPersonAccount.PersonMailingCity       = acc.PersonMailingCity;
             newPersonAccount.PersonEmail             = acc.PersonEmail;
@@ -253,15 +289,7 @@ public class RegistrationForm {
     public  Static String insertContactCard(Account acc, String Id){
         
         System.debug('--- INSERT CONTACTCARD ---');
-        User usr = getUserInformation();
-        System.debug('SV usr: ' + usr);
-        List<Location__c> locList = new List<Location__c>();
-        Location__c loc = new Location__c();
-        if(String.isNotEmpty(usr.Codice_Boutique__c)){
-            loc = [SELECT id, name FROM Location__c WHERE Id_Location_Micros__c =: usr.Codice_Boutique__c LIMIT 1];
-        }
-        
-        System.debug('SV locList: ' + locList);
+
         returnData ret = new returnData();
         ret.success = true;
         ret.message = 'Contact card Object create successfully';
@@ -274,7 +302,7 @@ public class RegistrationForm {
             newContactCard.LastName__c                  = acc.LastName;
             newContactCard.PersonMailingStreet__c       = acc.PersonMailingStreet;
             newContactCard.PersonMailingCountry__c      = acc.PersonMailingCountry;
-            newContactCard.PersonMailingState__c        = acc.PersonMailingState;
+            newContactCard.PersonMailingState__c    	= acc.PersonMailingState;
             newContactCard.PersonMailingPostalCode__c   = acc.PersonMailingPostalCode;
             newContactCard.PersonMailingCity__c         = acc.PersonMailingCity;
             newContactCard.PersonEmail__c               = acc.PersonEmail;
@@ -296,7 +324,6 @@ public class RegistrationForm {
             newContactCard.Privacy3__c                  = acc.Privacy3__c;
             newContactCard.Privacy3__c                  = acc.Privacy3__c;
             newContactCard.Privacy_Registration_Date__c = Date.today();
-            newContactCard.Boutique__c                  = loc.Id;
 
             insert newContactCard;
             
@@ -362,6 +389,24 @@ public class RegistrationForm {
         Boolean success {get;set;}
         String message {get;set;}
         String Id {get;set;}
+    }
+    
+    @auraEnabled
+    public static void setCacheInLocal(String accId){
+        system.debug('accId : '  + accId);
+        //Cache.Org.put('accId',accId);
+        //Cache.Session.put('ns1.partition1.AccountId', accId);
+        Cache.Session.put('local.partition1.AccountId', accId);
+
+
+    }
+    @auraEnabled
+    public static String getCacheInLocal(){
+        Object obj = Cache.Session.get('local.partition1.AccountId');
+		system.debug('obj : ' + obj);
+        String accId = (String)obj;
+		system.debug('accId : ' + accId);
+		return accId;
     }
 
 }

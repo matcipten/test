@@ -26,7 +26,7 @@ public class RegistrationFormTest {
 
             Account test_acc = RegistrationForm.getAccount(acc.Id);
 
-            String test_update = RegistrationForm.updateNewAccount(test_acc, 'sPad64');
+            String test_update = RegistrationForm.updateNewAccount(acc, 'sPad64');
             
 
         }

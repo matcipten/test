@@ -26,6 +26,32 @@ public without sharing class GenericDao {
         return l == null || l.isEmpty() ? null : l.get(0);
     }
     
+    //Ak 23/10/2018 
+    public static List<SObject> getAllFieldsResultByCondition(String objectName, String key, Set<String> value){
+         Map<String, Schema.SObjectType> schemaMap = Schema.getGlobalDescribe();
+         System.debug('schemaMap:' + schemaMap);
+         System.debug('schemaMap.get(objectName).getDescribe():' + schemaMap.get(objectName).getDescribe());
+         System.debug('schemaMap.get(objectName).getDescribe().fields:' + schemaMap.get(objectName).getDescribe().fields);
+         System.debug('schemaMap.get(objectName).getDescribe().fields.getMap():' + schemaMap.get(objectName).getDescribe().fields.getMap());
+
+        Map<String, Schema.SObjectField> fieldMap = schemaMap.get(objectName).getDescribe().fields.getMap();
+ 
+        String commaSepratedFields = '';
+        for(String fieldName : fieldMap.keyset()){
+            if(commaSepratedFields == null || commaSepratedFields == ''){
+                commaSepratedFields = fieldName;
+            }else{
+                commaSepratedFields = commaSepratedFields + ', ' + fieldName;
+            }
+        }
+ 
+        String query = 'Select ' + commaSepratedFields + ' From ' + objectName + ' Where ' + key + ' IN :value LIMIT 100';
+ 
+        List<SObject> l = Database.query( query );
+         
+        return l == null || l.isEmpty() ? null : l;
+    }
+    
     //MC-
     public static List<SObject> getAllFieldsResultByConditionStatusWithAttachments(String objectName, String key, String value1 ,String value2){
          Map<String, Schema.SObjectType> schemaMap = Schema.getGlobalDescribe();
