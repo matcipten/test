@@ -64,7 +64,7 @@ public abstract class ProvaHandler {
 
 
     private ResponseWrapper handlePatch(SObject obj){
-        
+        //Akshay  DT:17/10/2018 l'utente possono modificare i casi richesta di (ticket numero - 375)
         DateTime startTime = System.now();
          
         RestRequest req = RestContext.request;
@@ -83,38 +83,37 @@ public abstract class ProvaHandler {
            
             //res.statusCode = 204;
             res.statusCode = 200;
-            
+             
+            result = afterUpdateResponse(req, res, s);    
+
+            System.debug('result:' + result);
             DateTime endTime = System.now();
             
             System.debug('Time(millisec) for PATCH ' + (endTime.getTime() - startTime.getTime()) );
-                
-            responseWrapper = afterUpdateResponse(req, res, s);    
-
-            System.debug('responseWrapper:' + responseWrapper);
             
         }catch(ResourceException ex){
             system.debug('Eccezione ' + ex.getMessage());
             system.debug('StackString ' + ex.getStackTraceString());
             
             res.statusCode = 404;
-            responseWrapper = createErrorResult(ex.code, ex.getMessage());
+            result = createErrorResult(ex.code, ex.getMessage());
             
         }catch(DMLException ex){
             system.debug('Eccezione ' + ex.getMessage());
             system.debug('StackString ' + ex.getStackTraceString());
             
             res.statusCode = 400;
-            responseWrapper = createErrorResult(Label.ERR_0003, ex.getMessage());
+            result = createErrorResult(Label.ERR_0003, ex.getMessage());
             
         }catch(Exception ex){
             system.debug('Eccezione ' + ex.getMessage());
             system.debug('StackString ' + ex.getStackTraceString());
             
             res.statusCode = 500;
-            responseWrapper = createErrorResult(Label.ERR_0001, ex.getMessage());
+            result = createErrorResult(Label.ERR_0001, ex.getMessage());
         }
         
-        return responseWrapper;
+        return result;
     }
 
     private  ResponseWrapper handleGet(RestRequest req,  RestResponse res) { 
@@ -132,7 +131,7 @@ public abstract class ProvaHandler {
             String id = arrSize > 1 ? arr[1] : null;
             String relatedResource = arrSize > 2 ? arr[2] : null;
             String idRelatedResource = arrSize > 3 ? arr[3] : null;
-        
+            system.debug('id: ' +id);
         try {
 
             Object result = get(req, res);
