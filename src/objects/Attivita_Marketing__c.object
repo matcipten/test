@@ -182,16 +182,11 @@
         <valueSet>
             <restricted>true</restricted>
             <valueSetDefinition>
-                <sorted>false</sorted>
+                <sorted>true</sorted>
                 <value>
-                    <fullName>Holiday Gifting</fullName>
+                    <fullName>Book: The Dream of Solomeo</fullName>
                     <default>false</default>
-                    <label>Holiday Gifting</label>
-                </value>
-                <value>
-                    <fullName>Bottle of wine</fullName>
-                    <default>false</default>
-                    <label>Bottle of wine</label>
+                    <label>Book: The Dream of Solomeo</label>
                 </value>
                 <value>
                     <fullName>Bottle of olive oil</fullName>
@@ -199,14 +194,14 @@
                     <label>Bottle of olive oil</label>
                 </value>
                 <value>
-                    <fullName>Flowers</fullName>
+                    <fullName>Bottle of wine</fullName>
                     <default>false</default>
-                    <label>Flowers</label>
+                    <label>Bottle of wine</label>
                 </value>
                 <value>
-                    <fullName>Tickets</fullName>
+                    <fullName>Chinese New Year gifting</fullName>
                     <default>false</default>
-                    <label>Tickets</label>
+                    <label>Chinese New Year gifting</label>
                 </value>
                 <value>
                     <fullName>Cigars</fullName>
@@ -214,24 +209,39 @@
                     <label>Cigars</label>
                 </value>
                 <value>
-                    <fullName>Styling emails</fullName>
+                    <fullName>Flowers</fullName>
                     <default>false</default>
-                    <label>Styling emails</label>
+                    <label>Flowers</label>
                 </value>
                 <value>
-                    <fullName>Very Special Gift</fullName>
+                    <fullName>Holiday Gifting</fullName>
                     <default>false</default>
-                    <label>Very Special Gift</label>
-                </value>
-                <value>
-                    <fullName>Serie Delighting</fullName>
-                    <default>true</default>
-                    <label>Serie Delighting</label>
+                    <label>Holiday Gifting</label>
                 </value>
                 <value>
                     <fullName>Other (insert a detailed description)</fullName>
                     <default>false</default>
                     <label>Other (insert a detailed description)</label>
+                </value>
+                <value>
+                    <fullName>Serie Delighting</fullName>
+                    <default>false</default>
+                    <label>Serie Delighting</label>
+                </value>
+                <value>
+                    <fullName>Styling emails</fullName>
+                    <default>false</default>
+                    <label>Styling emails</label>
+                </value>
+                <value>
+                    <fullName>Tickets</fullName>
+                    <default>false</default>
+                    <label>Tickets</label>
+                </value>
+                <value>
+                    <fullName>Very Special Gift</fullName>
+                    <default>false</default>
+                    <label>Very Special Gift</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -275,9 +285,10 @@
         <columns>Tipologia_Attivita__c</columns>
         <columns>Product__c</columns>
         <columns>RECORDTYPE</columns>
+        <columns>Descrizione__c</columns>
+        <columns>CREATED_DATE</columns>
         <filterScope>Everything</filterScope>
         <label>Tutto</label>
-        <language>it</language>
     </listViews>
     <nameField>
         <displayFormat>A-{0000}</displayFormat>
@@ -332,11 +343,19 @@
         <picklistValues>
             <picklist>Tipologia_Attivit_picklist__c</picklist>
             <values>
+                <fullName>Book%3A The Dream of Solomeo</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Bottle of olive oil</fullName>
                 <default>false</default>
             </values>
             <values>
                 <fullName>Bottle of wine</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Chinese New Year gifting</fullName>
                 <default>false</default>
             </values>
             <values>
