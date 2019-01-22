@@ -25,6 +25,17 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Caso_NotifyMe__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Caso_NotifyMe</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Caso_OMS__c</fullName>
         <encrypted>false</encrypted>
         <externalId>false</externalId>
