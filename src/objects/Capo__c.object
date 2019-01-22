@@ -68,6 +68,20 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Codice_Capo__c</fullName>
+        <externalId>false</externalId>
+        <formula>CASE (RecordType.DeveloperName,
+&quot;Abito&quot;,  Codice_Abito__c,
+&quot;Giacca&quot;,  Codice_Giacca__c,
+&quot;Pantalone&quot;,  Codice_Pantalone__c, &quot;&quot;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Codice Capo</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Codice_Giacca__c</fullName>
         <encrypted>false</encrypted>
         <externalId>false</externalId>
