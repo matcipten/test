@@ -23,6 +23,28 @@
         <targetObject>ParentId</targetObject>
     </fieldUpdates>
     <fieldUpdates>
+        <fullName>Popola_Checkbox_New_Customer_Email_Rec</fullName>
+        <description>Popola Checkbox New Customer Email Received</description>
+        <field>New_Customer_Email_Received__c</field>
+        <literalValue>1</literalValue>
+        <name>Popola Checkbox New Customer Email Rec.</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <targetObject>ParentId</targetObject>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Sbianca_checkbox_new_email_received</fullName>
+        <description>Sbianca checkbox new customeri email received quando customer care invia risposta</description>
+        <field>New_Customer_Email_Received__c</field>
+        <literalValue>0</literalValue>
+        <name>Sbianca checkbox new email received</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <targetObject>ParentId</targetObject>
+    </fieldUpdates>
+    <fieldUpdates>
         <fullName>Set_status_to_replied</fullName>
         <description>Aggiornamento stato caso non appena si riceve una risposta dal cliente</description>
         <field>Status</field>
@@ -59,7 +81,37 @@
             <operation>notEqual</operation>
             <value>Nuovo</value>
         </criteriaItems>
+        <criteriaItems>
+            <field>Case.RecordTypeId</field>
+            <operation>notEqual</operation>
+            <value>Ticket E-commerce – Notify Me</value>
+        </criteriaItems>
         <description>Regola per il cambio di stato di un caso quando il cliente risponde al messaggio di posta</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Email message Received Notify Me</fullName>
+        <actions>
+            <name>Popola_Checkbox_New_Customer_Email_Rec</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>EmailMessage.Incoming</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>EmailMessage.Status</field>
+            <operation>equals</operation>
+            <value>Nuovo</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Ticket E-commerce – Notify Me</value>
+        </criteriaItems>
+        <description>Regola per popolamento checkbox di un caso Notify Me quando il cliente risponde al messaggio di posta</description>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>
     <rules>
@@ -74,7 +126,32 @@
             <operation>equals</operation>
             <value>Inviato</value>
         </criteriaItems>
+        <criteriaItems>
+            <field>Case.RecordTypeId</field>
+            <operation>notEqual</operation>
+            <value>Ticket E-commerce – Notify Me</value>
+        </criteriaItems>
         <description>Cambio di stato per messaggio inviato da customer care</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Email message sent Notify Me</fullName>
+        <actions>
+            <name>Sbianca_checkbox_new_email_received</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>EmailMessage.Status</field>
+            <operation>equals</operation>
+            <value>Inviato</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Ticket E-commerce – Notify Me</value>
+        </criteriaItems>
+        <description>Sbianca checkbox per messaggio inviato da customer care</description>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>
 </Workflow>
