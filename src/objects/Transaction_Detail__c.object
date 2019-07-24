@@ -53,6 +53,7 @@
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ControlledByParent</externalSharingModel>
     <fields>
         <fullName>AccountId__c</fullName>
         <externalId>false</externalId>
@@ -83,7 +84,7 @@
         <length>100</length>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -108,7 +109,7 @@
         <label>Data Scontrino KPI</label>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Date</type>
     </fields>
@@ -119,7 +120,7 @@
         <label>Data Scontrino</label>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>DateTime</type>
     </fields>
@@ -139,7 +140,7 @@
         <externalId>false</externalId>
         <label>Gift</label>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
@@ -151,7 +152,7 @@
         <required>false</required>
         <scale>2</scale>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Percent</type>
     </fields>
@@ -251,7 +252,7 @@ Importo_Sconto__c)</formula>
         <length>255</length>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>true</unique>
@@ -377,6 +378,18 @@ Importo_Sconto__c)</formula>
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>PSconto_AED__c</fullName>
+        <externalId>false</externalId>
+        <label>% di Sconto (AED)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
         <fullName>PSconto_AUD__c</fullName>
         <externalId>false</externalId>
         <label>% di Sconto (AUD)</label>
@@ -485,9 +498,45 @@ Importo_Sconto__c)</formula>
         <type>Percent</type>
     </fields>
     <fields>
+        <fullName>PSconto_KRW__c</fullName>
+        <externalId>false</externalId>
+        <label>% di Sconto (KRW)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
         <fullName>PSconto_MOP__c</fullName>
         <externalId>false</externalId>
         <label>% di Sconto (MOP)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>PSconto_PLN__c</fullName>
+        <externalId>false</externalId>
+        <label>% di Sconto (PLN)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>PSconto_QAR__c</fullName>
+        <externalId>false</externalId>
+        <label>% di Sconto (QAR)</label>
         <precision>18</precision>
         <required>false</required>
         <scale>2</scale>
@@ -500,6 +549,30 @@ Importo_Sconto__c)</formula>
         <fullName>PSconto_RUB__c</fullName>
         <externalId>false</externalId>
         <label>% di Sconto (RUB)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>PSconto_SAR__c</fullName>
+        <externalId>false</externalId>
+        <label>% di Sconto (SAR)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>PSconto_SGD__c</fullName>
+        <externalId>false</externalId>
+        <label>% di Sconto (SGD)</label>
         <precision>18</precision>
         <required>false</required>
         <scale>2</scale>
@@ -553,6 +626,20 @@ Importo_Sconto__c / Prezzo_di_Listino__c
         <type>Percent</type>
     </fields>
     <fields>
+        <fullName>Prezzo_Netto_IVA_AED__c</fullName>
+        <externalId>false</externalId>
+        <formula>Prezzo_di_vendita_AED__c /( IVA__c +1)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Prezzo Netto IVA (AED)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Prezzo_Netto_IVA_AUD__c</fullName>
         <externalId>false</externalId>
         <formula>Prezzo_di_vendita_AUD__c /( IVA__c +1)</formula>
@@ -596,11 +683,81 @@ Importo_Sconto__c / Prezzo_di_Listino__c
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Prezzo_Netto_IVA_KRW__c</fullName>
+        <externalId>false</externalId>
+        <formula>Prezzo_di_vendita_KRW__c /( IVA__c +1)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Prezzo Netto IVA (KRW)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Prezzo_Netto_IVA_PLN__c</fullName>
+        <externalId>false</externalId>
+        <formula>Prezzo_di_vendita_PLN__c /( IVA__c +1)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Prezzo Netto IVA (PLN)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Prezzo_Netto_IVA_QAR__c</fullName>
+        <externalId>false</externalId>
+        <formula>Prezzo_di_vendita_QAR__c /( IVA__c +1)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Prezzo Netto IVA (QAR)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Prezzo_Netto_IVA_RUB__c</fullName>
         <externalId>false</externalId>
         <formula>Prezzo_di_vendita_RUB__c /( IVA__c +1)</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Prezzo Netto IVA (RUB)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Prezzo_Netto_IVA_SAR__c</fullName>
+        <externalId>false</externalId>
+        <formula>Prezzo_di_vendita_SAR__c /( IVA__c +1)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Prezzo Netto IVA (SAR)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Prezzo_Netto_IVA_SGD__c</fullName>
+        <externalId>false</externalId>
+        <formula>Prezzo_di_vendita_SGD__c /( IVA__c +1)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Prezzo Netto IVA (SGD)</label>
         <precision>18</precision>
         <required>false</required>
         <scale>2</scale>
@@ -626,6 +783,12 @@ Importo_Sconto__c / Prezzo_di_Listino__c
 &quot;AUD&quot;, Prezzo_Netto_IVA_AUD__c,
 &quot;DKK&quot;, Prezzo_Netto_IVA_DKK__c,
 &quot;RUB&quot;, Prezzo_Netto_IVA_RUB__c,
+&quot;KRW&quot;, Prezzo_Netto_IVA_KRW__c, 
+&quot;AED&quot;, Prezzo_Netto_IVA_AED__c, 
+&quot;PLN&quot;, Prezzo_Netto_IVA_PLN__c, 
+&quot;QAR&quot;, Prezzo_Netto_IVA_QAR__c, 
+&quot;SGD&quot;, Prezzo_Netto_IVA_SGD__c, 
+&quot;SAR&quot;, Prezzo_Netto_IVA_SAR__c, 
 Prezzo_Netto_Iva__c)</formula>
         <label>Prezzo Netto IVA (formula)</label>
         <precision>18</precision>
@@ -671,7 +834,7 @@ Prezzo_Netto_Iva__c)</formula>
         <required>false</required>
         <scale>2</scale>
         <trackFeedHistory>true</trackFeedHistory>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
@@ -697,7 +860,7 @@ Prezzo_Netto_Iva__c)</formula>
         <required>false</required>
         <scale>2</scale>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
@@ -725,7 +888,7 @@ Prezzo_Netto_Iva__c)</formula>
         <required>false</required>
         <scale>2</scale>
         <trackFeedHistory>true</trackFeedHistory>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
@@ -744,6 +907,19 @@ Prezzo_Netto_Iva__c)</formula>
         <type>Currency</type>
     </fields>
     <fields>
+        <fullName>Prezzo_di_listino_AED__c</fullName>
+        <externalId>false</externalId>
+        <label>Prezzo di listino (AED)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Prezzo_di_listino_AUD__c</fullName>
         <externalId>false</externalId>
         <label>Prezzo di listino (AUD)</label>
@@ -751,7 +927,7 @@ Prezzo_Netto_Iva__c)</formula>
         <required>false</required>
         <scale>2</scale>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
@@ -790,7 +966,7 @@ Prezzo_Netto_Iva__c)</formula>
         <required>false</required>
         <scale>2</scale>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
@@ -816,7 +992,7 @@ Prezzo_Netto_Iva__c)</formula>
         <required>false</required>
         <scale>2</scale>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
@@ -855,6 +1031,19 @@ Prezzo_Netto_Iva__c)</formula>
         <required>false</required>
         <scale>2</scale>
         <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Prezzo_di_listino_KRW__c</fullName>
+        <externalId>false</externalId>
+        <label>Prezzo di listino (KRW)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Number</type>
@@ -864,6 +1053,32 @@ Prezzo_Netto_Iva__c)</formula>
         <fullName>Prezzo_di_listino_MOP__c</fullName>
         <externalId>false</externalId>
         <label>Prezzo di listino (MOP)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Prezzo_di_listino_PLN__c</fullName>
+        <externalId>false</externalId>
+        <label>Prezzo di listino (PLN)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Prezzo_di_listino_QAR__c</fullName>
+        <externalId>false</externalId>
+        <label>Prezzo di listino (QAR)</label>
         <precision>18</precision>
         <required>false</required>
         <scale>2</scale>
@@ -881,6 +1096,32 @@ Prezzo_Netto_Iva__c)</formula>
         <required>false</required>
         <scale>2</scale>
         <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Prezzo_di_listino_SAR__c</fullName>
+        <externalId>false</externalId>
+        <label>Prezzo di listino (SAR)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Prezzo_di_listino_SGD__c</fullName>
+        <externalId>false</externalId>
+        <label>Prezzo di listino (SGD)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Number</type>
@@ -894,7 +1135,7 @@ Prezzo_Netto_Iva__c)</formula>
         <required>false</required>
         <scale>2</scale>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
@@ -916,11 +1157,30 @@ Prezzo_Netto_Iva__c)</formula>
 &quot;AUD&quot;, Prezzo_di_listino_AUD__c,
 &quot;DKK&quot;, Prezzo_di_listino_DKK__c,
 &quot;RUB&quot;, Prezzo_di_listino_RUB__c,
+&quot;KRW&quot;, Prezzo_di_listino_KRW__c, 
+&quot;AED&quot;, Prezzo_di_listino_AED__c, 
+&quot;PLN&quot;, Prezzo_di_listino_PLN__c, 
+&quot;QAR&quot;, Prezzo_di_listino_QAR__c, 
+&quot;SGD&quot;, Prezzo_di_listino_SGD__c, 
+&quot;SAR&quot;, Prezzo_di_listino_SAR__c, 
 Prezzo_di_Listino__c)</formula>
-        <label>Prezzo di Listino (formula)</label>
+        <label>Retail price</label>
         <precision>18</precision>
         <required>false</required>
         <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Prezzo_di_vendita_AED__c</fullName>
+        <externalId>false</externalId>
+        <label>Prezzo di vendita (AED)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Number</type>
@@ -934,7 +1194,7 @@ Prezzo_di_Listino__c)</formula>
         <required>false</required>
         <scale>2</scale>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
@@ -947,7 +1207,7 @@ Prezzo_di_Listino__c)</formula>
         <required>false</required>
         <scale>2</scale>
         <trackFeedHistory>true</trackFeedHistory>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
@@ -960,7 +1220,7 @@ Prezzo_di_Listino__c)</formula>
         <required>false</required>
         <scale>2</scale>
         <trackFeedHistory>true</trackFeedHistory>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
@@ -973,7 +1233,7 @@ Prezzo_di_Listino__c)</formula>
         <required>false</required>
         <scale>2</scale>
         <trackFeedHistory>true</trackFeedHistory>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
@@ -986,7 +1246,7 @@ Prezzo_di_Listino__c)</formula>
         <required>false</required>
         <scale>2</scale>
         <trackFeedHistory>true</trackFeedHistory>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
@@ -999,7 +1259,7 @@ Prezzo_di_Listino__c)</formula>
         <required>false</required>
         <scale>2</scale>
         <trackFeedHistory>true</trackFeedHistory>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
@@ -1012,7 +1272,7 @@ Prezzo_di_Listino__c)</formula>
         <required>false</required>
         <scale>2</scale>
         <trackFeedHistory>true</trackFeedHistory>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
@@ -1025,6 +1285,19 @@ Prezzo_di_Listino__c)</formula>
         <required>false</required>
         <scale>2</scale>
         <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Prezzo_di_vendita_KRW__c</fullName>
+        <externalId>false</externalId>
+        <label>Prezzo di vendita (KRW)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Number</type>
@@ -1034,6 +1307,32 @@ Prezzo_di_Listino__c)</formula>
         <fullName>Prezzo_di_vendita_MOP__c</fullName>
         <externalId>false</externalId>
         <label>Prezzo di vendita (MOP)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Prezzo_di_vendita_PLN__c</fullName>
+        <externalId>false</externalId>
+        <label>Prezzo di vendita (PLN)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Prezzo_di_vendita_QAR__c</fullName>
+        <externalId>false</externalId>
+        <label>Prezzo di vendita (QAR)</label>
         <precision>18</precision>
         <required>false</required>
         <scale>2</scale>
@@ -1051,6 +1350,32 @@ Prezzo_di_Listino__c)</formula>
         <required>false</required>
         <scale>2</scale>
         <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Prezzo_di_vendita_SAR__c</fullName>
+        <externalId>false</externalId>
+        <label>Prezzo di vendita (SAR)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Prezzo_di_vendita_SGD__c</fullName>
+        <externalId>false</externalId>
+        <label>Prezzo di vendita (SGD)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Number</type>
@@ -1064,7 +1389,7 @@ Prezzo_di_Listino__c)</formula>
         <required>false</required>
         <scale>2</scale>
         <trackFeedHistory>true</trackFeedHistory>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
@@ -1086,6 +1411,12 @@ Prezzo_di_Listino__c)</formula>
 &quot;AUD&quot;, Prezzo_di_vendita_AUD__c,
 &quot;DKK&quot;, Prezzo_di_Vendita_DKK__c,
 &quot;RUB&quot;, Prezzo_di_vendita_RUB__c,
+&quot;KRW&quot;, Prezzo_di_vendita_KRW__c, 
+&quot;AED&quot;, Prezzo_di_vendita_AED__c, 
+&quot;PLN&quot;, Prezzo_di_vendita_PLN__c, 
+&quot;QAR&quot;, Prezzo_di_vendita_QAR__c, 
+&quot;SGD&quot;, Prezzo_di_vendita_SGD__c, 
+&quot;SAR&quot;, Prezzo_di_vendita_SAR__c, 
 Prezzo_di_Vendita__c)</formula>
         <label>Prezzo di Vendita (formula)</label>
         <precision>18</precision>
@@ -1245,6 +1576,31 @@ YEAR(today()) -7, Prezzo_di_Vendita_EUR__c * 0.3 , 0)</formula>
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Product_Image_Reference__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Product Image Reference</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Product_Image__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(Product_Image_Reference__c != &apos;&apos;, SUBSTITUTE(IMAGE(&apos;/sfc/servlet.shepherd/version/download/$$$$$$$$$$$$$&apos;, &apos;product image&apos;,70,70) &amp; IF( ISPICKVAL(Tipo_Vendita__c, &apos;R&apos;), IMAGE(&apos;/resource/Close&apos;,&apos;none&apos;,25,25) , IMAGE(&apos;/resource/Approval&apos;,&apos;none&apos;,25,25)), &apos;$$$$$$$$$$$$$&apos;, Product_Image_Reference__c ),&apos;&apos;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Product Image</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Product__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <externalId>false</externalId>
@@ -1294,7 +1650,7 @@ YEAR(today()) -7, Prezzo_di_Vendita_EUR__c * 0.3 , 0)</formula>
         <length>100</length>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -1314,6 +1670,19 @@ YEAR(today()) -7, Prezzo_di_Vendita_EUR__c * 0.3 , 0)</formula>
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Sconto_AED__c</fullName>
+        <externalId>false</externalId>
+        <label>Sconto (AED)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Sconto_AUD__c</fullName>
         <externalId>false</externalId>
         <label>Sconto (AUD)</label>
@@ -1321,7 +1690,7 @@ YEAR(today()) -7, Prezzo_di_Vendita_EUR__c * 0.3 , 0)</formula>
         <required>false</required>
         <scale>2</scale>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
@@ -1414,7 +1783,7 @@ Prezzo_di_listino_CNY__c   - Prezzo_di_vendita_CNY__c
         <required>false</required>
         <scale>2</scale>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
@@ -1500,9 +1869,48 @@ Prezzo_di_listino_JPY__c   - Prezzo_di_vendita_JPY__c
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Sconto_KRW__c</fullName>
+        <externalId>false</externalId>
+        <label>Sconto (KRW)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Sconto_MOP__c</fullName>
         <externalId>false</externalId>
         <label>Sconto (MOP)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sconto_PLN__c</fullName>
+        <externalId>false</externalId>
+        <label>Sconto (PLN)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sconto_QAR__c</fullName>
+        <externalId>false</externalId>
+        <label>Sconto (QAR)</label>
         <precision>18</precision>
         <required>false</required>
         <scale>2</scale>
@@ -1516,6 +1924,32 @@ Prezzo_di_listino_JPY__c   - Prezzo_di_vendita_JPY__c
         <fullName>Sconto_RUB__c</fullName>
         <externalId>false</externalId>
         <label>Sconto (RUB)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sconto_SAR__c</fullName>
+        <externalId>false</externalId>
+        <label>Sconto (SAR)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sconto_SGD__c</fullName>
+        <externalId>false</externalId>
+        <label>Sconto (SGD)</label>
         <precision>18</precision>
         <required>false</required>
         <scale>2</scale>
@@ -1562,6 +1996,12 @@ Prezzo_di_listino_USD__c   - Prezzo_di_vendita_USD__c
 &quot;AUD&quot;, PSconto_AUD__c,
 &quot;DKK&quot;, PSconto_DKK__c,
 &quot;RUB&quot;, PSconto_RUB__c,
+&quot;KRW&quot;, PSconto_KRW__c,
+&quot;AED&quot;, PSconto_AED__c,
+&quot;PLN&quot;, PSconto_PLN__c,
+&quot;QAR&quot;, PSconto_QAR__c,
+&quot;SGD&quot;, PSconto_SGD__c,
+&quot;SAR&quot;, PSconto_SAR__c,
 PSconto__c)</formula>
         <label>% Sconto (formula)</label>
         <precision>18</precision>
@@ -1694,7 +2134,7 @@ PSconto__c)</formula>
         <required>false</required>
         <scale>6</scale>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
@@ -2028,6 +2468,34 @@ PSconto__c)</formula>
         </valueSet>
     </fields>
     <fields>
+        <fullName>Titolare_Boutique__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF (AND( 
+$User.ProfileId = $Setup.Profile__c.Id_Boutique__c, 
+!ISNULL(Transaction__c),!ISNULL(Transaction__r.Id_Location_Micros__c), 
+Transaction__r.Id_Location_Micros__c =  $User.Codice_Boutique__c ), 
+true, false)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Titolare Boutique</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Titolare_Client_Advisor__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF (AND( 
+OR($User.ProfileId = $Setup.Profile__c.Id_Associate__c,$User.ProfileId = $Setup.Profile__c.Id_Boutique__c), 
+!ISNULL(Codice_Seller__c), !ISBLANK(Codice_Seller__c), Codice_Seller__c &lt;&gt; &apos;&apos;,
+Codice_Seller__c = $User.Codice_Associate__c), 
+true, false)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Titolare Client Advisor</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>Titolare_per_report__c</fullName>
         <externalId>false</externalId>
         <formula>IF($User.Codice_Boutique__c = Id_Location_Micros__c,true,false)</formula>
@@ -2061,7 +2529,7 @@ PSconto__c)</formula>
         <relationshipOrder>0</relationshipOrder>
         <reparentableMasterDetail>false</reparentableMasterDetail>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>MasterDetail</type>
         <writeRequiresMasterRead>false</writeRequiresMasterRead>
@@ -2076,6 +2544,26 @@ PSconto__c)</formula>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>check_upload_image__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>check upload image</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>checkbox_temp__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>checkbox temp</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
     </fields>
     <gender>Feminine</gender>
     <label>Dettaglio Transazione</label>

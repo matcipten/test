@@ -124,31 +124,31 @@ public class OnOrdineSartoriaSolomeoTriggerHandler {
                     String oldStatus = ordeOld.Status__c;
                     String newStatus = orderNew.Status__c;
                     String step = '';
-                    if(oldStatus == 'In editing' && newStatus == 'In revisione 1 livello')
+                    if(oldStatus != 'In revisione 1 livello' && newStatus == 'In revisione 1 livello')
                         step = '1';
                     
-                    else if(oldStatus == 'In revisione 1 livello' && newStatus == 'Rifiutato 1 livello')
+                    else if(oldStatus != 'Rifiutato 1 livello' && newStatus == 'Rifiutato 1 livello')
                         step = '1.2';
                     
                     else if(oldStatus == 'Rifiutato 1 livello' && newStatus == 'Annullato')
                         step = '1.3';
                     
-                    else if(oldStatus == 'In revisione 1 livello' && newStatus == 'In revisione dal sarto')
+                    else if(oldStatus != 'In revisione dal sarto' && newStatus == 'In revisione dal sarto')
                         step = '2';
                     
                     else if(oldStatus == 'Rifiutato dal sarto' && newStatus == 'Annullato')
                         step = '2.2';
                     
-                    else if(oldStatus == 'In revisione dal sarto' && newStatus == 'Rifiutato dal sarto')
+                    else if(oldStatus != 'Rifiutato dal sarto' && newStatus == 'Rifiutato dal sarto')
                         step = '2.3';
                     
-                    else if(oldStatus == 'In revisione dal sarto' && newStatus == 'Approvato dal sarto')
+                    else if(oldStatus != 'Approvato dal sarto' && newStatus == 'Approvato dal sarto')
                         step = '3';
                     
-                    else if(oldStatus == 'Approvato dal sarto' && newStatus == 'Ricevuto in negozio')
+                    else if(oldStatus != 'Ricevuto in negozio' && newStatus == 'Ricevuto in negozio')
                         step = '4';
                     
-                    else if(oldStatus == 'Ricevuto in negozio' && newStatus == 'Consegnato al Cliente')
+                    else if(oldStatus != 'Consegnato al Cliente' && newStatus == 'Consegnato al Cliente')
                         step = '5';
                     
                     System.debug('SV step: ' + step);

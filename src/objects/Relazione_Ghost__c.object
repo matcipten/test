@@ -53,6 +53,7 @@
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ReadWrite</externalSharingModel>
     <fields>
         <fullName>Cliente__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
@@ -99,66 +100,16 @@
             <restricted>true</restricted>
             <valueSetName>Legami_Parentela</valueSetName>
             <valueSettings>
-                <controllingFieldValue>Genero</controllingFieldValue>
-                <controllingFieldValue>Nuora</controllingFieldValue>
-                <valueName>Suocero/a</valueName>
+                <controllingFieldValue>Marriage</controllingFieldValue>
+                <valueName>Marriage</valueName>
             </valueSettings>
             <valueSettings>
-                <controllingFieldValue>Cognato/a</controllingFieldValue>
-                <valueName>Cognato/a</valueName>
+                <controllingFieldValue>Family</controllingFieldValue>
+                <valueName>Family</valueName>
             </valueSettings>
             <valueSettings>
-                <controllingFieldValue>Suocero/a</controllingFieldValue>
-                <valueName>Genero</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Suocero/a</controllingFieldValue>
-                <valueName>Nuora</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Marito</controllingFieldValue>
-                <controllingFieldValue>Moglie</controllingFieldValue>
-                <valueName>Marito</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Marito</controllingFieldValue>
-                <controllingFieldValue>Moglie</controllingFieldValue>
-                <valueName>Moglie</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Genitore</controllingFieldValue>
-                <valueName>Figlio/a</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Figlio/a</controllingFieldValue>
-                <valueName>Genitore</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Fratello</controllingFieldValue>
-                <controllingFieldValue>Sorella</controllingFieldValue>
-                <valueName>Fratello</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Fratello</controllingFieldValue>
-                <controllingFieldValue>Sorella</controllingFieldValue>
-                <valueName>Sorella</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Amico/a</controllingFieldValue>
-                <valueName>Amico/a</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Nonno/a</controllingFieldValue>
-                <controllingFieldValue>Zio/a</controllingFieldValue>
-                <valueName>Nipote</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Nipote</controllingFieldValue>
-                <valueName>Nonno/a</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Nipote</controllingFieldValue>
-                <valueName>Zio/a</valueName>
+                <controllingFieldValue>Friendship</controllingFieldValue>
+                <valueName>Friendship</valueName>
             </valueSettings>
         </valueSet>
     </fields>

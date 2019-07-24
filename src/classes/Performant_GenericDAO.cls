@@ -129,7 +129,7 @@ public class Performant_GenericDAO {
          System.debug('schemaMap.get(objectName).getDescribe():' + schemaMap.get(objectName).getDescribe());
          System.debug('schemaMap.get(objectName).getDescribe().fields:' + schemaMap.get(objectName).getDescribe().fields);
          System.debug('schemaMap.get(objectName).getDescribe().fields.getMap():' + schemaMap.get(objectName).getDescribe().fields.getMap());
-*/
+        */
         Map<String, Schema.SObjectField> fieldMap = schemaMap.get(objectName).getDescribe().fields.getMap();
  
         String commaSepratedFields = '';
@@ -151,6 +151,113 @@ public class Performant_GenericDAO {
          
         return m;
     }
+        public static Map<Id,SObject> getAllFieldsListWhereInConditionsAndFilterWithNoLimits(Map<String, Schema.SObjectType> schemaMap, String objectName, String key, Set<ID> setValue, String filter){
+         /*System.debug('schemaMap:' + schemaMap);
+         System.debug('schemaMap.get(objectName).getDescribe():' + schemaMap.get(objectName).getDescribe());
+         System.debug('schemaMap.get(objectName).getDescribe().fields:' + schemaMap.get(objectName).getDescribe().fields);
+         System.debug('schemaMap.get(objectName).getDescribe().fields.getMap():' + schemaMap.get(objectName).getDescribe().fields.getMap());
+        */
+        Map<String, Schema.SObjectField> fieldMap = schemaMap.get(objectName).getDescribe().fields.getMap();
+ 
+        String commaSepratedFields = '';
+        for(String fieldName : fieldMap.keyset()){
+            if(commaSepratedFields == null || commaSepratedFields == ''){
+                commaSepratedFields = fieldName;
+            }else{
+                commaSepratedFields = commaSepratedFields + ', ' + fieldName;
+            }
+        }
+        
+        String query = 'Select ' + commaSepratedFields + ' From ' + objectName + ' Where ' + key + ' IN : setValue '+filter+'LIMIT 49999';
+ 
+        System.debug('query: ' + query);
+        //List<SObject> l = Database.query( query );
+        
+        Map<Id,SObject> m = new Map<Id,SObject>((List<SObject>)Database.query( query ));
+        System.debug('size: ' + m.size());
+         
+        return m;
+    }
+    public static Map<Id,SObject> getAllFieldsListWhereInConditionsWithNoLimits(Map<String, Schema.SObjectType> schemaMap, String objectName, String key, String value){
+         /*System.debug('schemaMap:' + schemaMap);
+         System.debug('schemaMap.get(objectName).getDescribe():' + schemaMap.get(objectName).getDescribe());
+         System.debug('schemaMap.get(objectName).getDescribe().fields:' + schemaMap.get(objectName).getDescribe().fields);
+         System.debug('schemaMap.get(objectName).getDescribe().fields.getMap():' + schemaMap.get(objectName).getDescribe().fields.getMap());
+        */
+        Map<String, Schema.SObjectField> fieldMap = schemaMap.get(objectName).getDescribe().fields.getMap();
+ 
+        String commaSepratedFields = '';
+        for(String fieldName : fieldMap.keyset()){
+            if(commaSepratedFields == null || commaSepratedFields == ''){
+                commaSepratedFields = fieldName;
+            }else{
+                commaSepratedFields = commaSepratedFields + ', ' + fieldName;
+            }
+        }
+        
+        String query = 'Select ' + commaSepratedFields + ' From ' + objectName + ' Where ' + key + ' = : value LIMIT 49999';
+        System.debug('value: ' + value);
+        System.debug('query: ' + query);
+        //List<SObject> l = Database.query( query );
+        
+        Map<Id,SObject> m = new Map<Id,SObject>((List<SObject>)Database.query( query ));
+        System.debug('size: ' + m.size());
+         
+        return m;
+    }
+
+    
+    public static Map<Id,SObject> getAllFieldsListWhereInANDConditionsWithNoLimits(Map<String, Schema.SObjectType> schemaMap, String objectName, String key1, Set<String> value1, String key2, Set<String> value2){
+         /*System.debug('schemaMap:' + schemaMap);
+         System.debug('schemaMap.get(objectName).getDescribe():' + schemaMap.get(objectName).getDescribe());
+         System.debug('schemaMap.get(objectName).getDescribe().fields:' + schemaMap.get(objectName).getDescribe().fields);
+         System.debug('schemaMap.get(objectName).getDescribe().fields.getMap():' + schemaMap.get(objectName).getDescribe().fields.getMap());
+        */
+        Map<String, Schema.SObjectField> fieldMap = schemaMap.get(objectName).getDescribe().fields.getMap();
+ 
+        String commaSepratedFields = '';
+        for(String fieldName : fieldMap.keyset()){
+            if(commaSepratedFields == null || commaSepratedFields == ''){
+                commaSepratedFields = fieldName;
+            }else{
+                commaSepratedFields = commaSepratedFields + ', ' + fieldName;
+            }
+        }
+
+        String query = 'Select ' + commaSepratedFields + ' From ' + objectName;
+
+        Boolean whereOK = false;
+        
+        if(value1 != null && value1.size()>0){
+            if(whereOK == true)
+                query += ' AND';
+            else{
+                query+= ' WHERE';
+                whereOk = true;
+            }
+            query += ' '+key1 + ' IN : value1';
+        }
+        if(value2 != null && value2.size()>0){
+            if(whereOK == true)
+                query += ' AND';
+            else{
+                query+= ' WHERE';
+                whereOk = true;
+            }
+            query += ' '+key2 + ' IN : value2';
+        }
+        //String query = 'Select ' + commaSepratedFields + ' From ' + objectName + ' Where ' + key1 + ' = : value LIMIT 49999';
+        System.debug('value: ' + value1);
+        System.debug('value: ' + value2);
+        System.debug('query: ' + query);
+        //List<SObject> l = Database.query( query );
+        
+        Map<Id,SObject> m = new Map<Id,SObject>((List<SObject>)Database.query( query ));
+        System.debug('size: ' + m.size());
+         
+        return m;
+    }
+    
     
     public static Map<Id,SObject> getAllFieldsListWithoutConditions(Map<String, Schema.SObjectType> schemaMap, String objectName){
         /* System.debug('schemaMap:' + schemaMap);
@@ -174,6 +281,7 @@ public class Performant_GenericDAO {
         //List<SObject> l = Database.query( query );
         
         Map<Id,SObject> m = new Map<Id,SObject>((List<SObject>)Database.query( query ));
+        system.debug('Akshay :' + m);
          
         return m;
     }

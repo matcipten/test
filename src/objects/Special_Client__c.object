@@ -52,6 +52,143 @@
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>Read</externalSharingModel>
+    <fields>
+        <fullName>Cibi__c</fullName>
+        <externalId>false</externalId>
+        <label>Food</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <controllingField>Tipologia__c</controllingField>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Italian</fullName>
+                    <default>false</default>
+                    <label>Italian</label>
+                </value>
+                <value>
+                    <fullName>Japanese</fullName>
+                    <default>false</default>
+                    <label>Japanese</label>
+                </value>
+                <value>
+                    <fullName>Sushi</fullName>
+                    <default>false</default>
+                    <label>Sushi</label>
+                </value>
+                <value>
+                    <fullName>Chinese</fullName>
+                    <default>false</default>
+                    <label>Chinese</label>
+                </value>
+                <value>
+                    <fullName>Gourmet</fullName>
+                    <default>false</default>
+                    <label>Gourmet</label>
+                </value>
+                <value>
+                    <fullName>Pizza</fullName>
+                    <default>false</default>
+                    <label>Pizza</label>
+                </value>
+                <value>
+                    <fullName>Seafood</fullName>
+                    <default>false</default>
+                    <label>Seafood</label>
+                </value>
+                <value>
+                    <fullName>Vegetables</fullName>
+                    <default>false</default>
+                    <label>Vegetables</label>
+                </value>
+                <value>
+                    <fullName>Chocolate</fullName>
+                    <default>false</default>
+                    <label>Chocolate</label>
+                </value>
+                <value>
+                    <fullName>Italian wines</fullName>
+                    <default>false</default>
+                    <label>Italian wines</label>
+                </value>
+                <value>
+                    <fullName>Champagne</fullName>
+                    <default>false</default>
+                    <label>Champagne</label>
+                </value>
+                <value>
+                    <fullName>Liquors</fullName>
+                    <default>false</default>
+                    <label>Liquors</label>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>Cibi desiderati</controllingFieldValue>
+                <controllingFieldValue>Cibi indesiderati</controllingFieldValue>
+                <valueName>Italian</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cibi desiderati</controllingFieldValue>
+                <controllingFieldValue>Cibi indesiderati</controllingFieldValue>
+                <valueName>Japanese</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cibi desiderati</controllingFieldValue>
+                <controllingFieldValue>Cibi indesiderati</controllingFieldValue>
+                <valueName>Sushi</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cibi desiderati</controllingFieldValue>
+                <controllingFieldValue>Cibi indesiderati</controllingFieldValue>
+                <valueName>Chinese</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cibi desiderati</controllingFieldValue>
+                <controllingFieldValue>Cibi indesiderati</controllingFieldValue>
+                <valueName>Gourmet</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cibi desiderati</controllingFieldValue>
+                <controllingFieldValue>Cibi indesiderati</controllingFieldValue>
+                <valueName>Pizza</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cibi desiderati</controllingFieldValue>
+                <controllingFieldValue>Cibi indesiderati</controllingFieldValue>
+                <valueName>Seafood</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cibi desiderati</controllingFieldValue>
+                <controllingFieldValue>Cibi indesiderati</controllingFieldValue>
+                <valueName>Vegetables</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cibi desiderati</controllingFieldValue>
+                <controllingFieldValue>Cibi indesiderati</controllingFieldValue>
+                <valueName>Chocolate</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cibi desiderati</controllingFieldValue>
+                <controllingFieldValue>Cibi indesiderati</controllingFieldValue>
+                <valueName>Italian wines</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cibi desiderati</controllingFieldValue>
+                <controllingFieldValue>Cibi indesiderati</controllingFieldValue>
+                <valueName>Champagne</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cibi desiderati</controllingFieldValue>
+                <controllingFieldValue>Cibi indesiderati</controllingFieldValue>
+                <valueName>Liquors</valueName>
+            </valueSettings>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
     <fields>
         <fullName>Cliente__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
@@ -110,7 +247,7 @@
     <fields>
         <fullName>Tipologia__c</fullName>
         <externalId>false</externalId>
-        <label>Tipologia</label>
+        <label>Service Note List</label>
         <required>false</required>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
@@ -119,13 +256,25 @@
             <valueSetDefinition>
                 <sorted>false</sorted>
                 <value>
+                    <fullName>Cibi desiderati</fullName>
+                    <default>false</default>
+                    <label>Preferred food</label>
+                </value>
+                <value>
+                    <fullName>Cibi indesiderati</fullName>
+                    <default>false</default>
+                    <label>Unwelcome food</label>
+                </value>
+                <value>
                     <fullName>Criticità</fullName>
                     <default>false</default>
+                    <isActive>false</isActive>
                     <label>Criticità</label>
                 </value>
                 <value>
                     <fullName>Nota</fullName>
                     <default>false</default>
+                    <isActive>false</isActive>
                     <label>Nota</label>
                 </value>
             </valueSetDefinition>

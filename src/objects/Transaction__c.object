@@ -53,6 +53,7 @@
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ReadWrite</externalSharingModel>
     <fields>
         <fullName>Account__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
@@ -62,7 +63,7 @@
         <relationshipLabel>Transazioni</relationshipLabel>
         <relationshipName>Transazioni</relationshipName>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -121,7 +122,7 @@
         <label>Codice Nazione Spedizione</label>
         <length>15</length>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -193,7 +194,7 @@
         <label>Cognome Spedizione</label>
         <length>40</length>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -214,7 +215,7 @@
         <externalId>false</externalId>
         <label>Data Spedizione</label>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>DateTime</type>
     </fields>
@@ -238,6 +239,20 @@
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Generic_customer_import__c</fullName>
+        <externalId>false</externalId>
+        <formula>Prezzo_di_Vendita_formula__c*   Account__r.Generic_Customer__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Generic customer import</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
         <unique>false</unique>
     </fields>
     <fields>
@@ -283,7 +298,7 @@
         <label>Id Cliente Relate</label>
         <length>40</length>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -415,7 +430,7 @@ Importo_Sconto__c)</formula>
         <label>Indirizzo Spedizione</label>
         <length>100</length>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -492,7 +507,7 @@ Importo_Sconto__c)</formula>
         <label>Nome Spedizione</label>
         <length>40</length>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -506,6 +521,17 @@ Importo_Sconto__c)</formula>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>PSconto_AED__c</fullName>
+        <externalId>false</externalId>
+        <label>% di Sconto (AED)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
     </fields>
     <fields>
         <fullName>PSconto_AUD__c</fullName>
@@ -618,6 +644,17 @@ Importo_Sconto__c)</formula>
         <type>Percent</type>
     </fields>
     <fields>
+        <fullName>PSconto_KRW__c</fullName>
+        <externalId>false</externalId>
+        <label>% di Sconto (KRW)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
         <fullName>PSconto_MOP__c</fullName>
         <externalId>false</externalId>
         <label>% di Sconto (MOP)</label>
@@ -629,9 +666,53 @@ Importo_Sconto__c)</formula>
         <type>Percent</type>
     </fields>
     <fields>
+        <fullName>PSconto_PLN__c</fullName>
+        <externalId>false</externalId>
+        <label>% di Sconto (PLN)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>PSconto_QAR__c</fullName>
+        <externalId>false</externalId>
+        <label>% di Sconto (QAR)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
         <fullName>PSconto_RUB__c</fullName>
         <externalId>false</externalId>
         <label>% di Sconto (RUB)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>PSconto_SAR__c</fullName>
+        <externalId>false</externalId>
+        <label>% di Sconto (SAR)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>PSconto_SGD__c</fullName>
+        <externalId>false</externalId>
+        <label>% di Sconto (SGD)</label>
         <precision>18</precision>
         <required>false</required>
         <scale>2</scale>
@@ -695,6 +776,78 @@ Importo_Sconto__c/ Prezzo_di_Listino__c
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Prezzo_Netto_IVA_AED__c</fullName>
+        <externalId>false</externalId>
+        <label>Prezzo netto IVA (AED)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Prezzo_Netto_IVA_KRW__c</fullName>
+        <externalId>false</externalId>
+        <label>Prezzo netto IVA (KRW)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Prezzo_Netto_IVA_PLN__c</fullName>
+        <externalId>false</externalId>
+        <label>Prezzo netto IVA (PLN)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Prezzo_Netto_IVA_QAR__c</fullName>
+        <externalId>false</externalId>
+        <label>Prezzo netto IVA (QAR)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Prezzo_Netto_IVA_SAR__c</fullName>
+        <externalId>false</externalId>
+        <label>Prezzo netto IVA (SAR)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Prezzo_Netto_IVA_SGD__c</fullName>
+        <externalId>false</externalId>
+        <label>Prezzo netto IVA (SGD)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Prezzo_Netto_IVA__c</fullName>
         <externalId>false</externalId>
         <label>Prezzo Netto IVA</label>
@@ -722,6 +875,12 @@ Importo_Sconto__c/ Prezzo_di_Listino__c
 &quot;AUD&quot;, Prezzo_netto_IVA_AUD__c,
 &quot;DKK&quot;, Prezzo_netto_IVA_DKK__c,
 &quot;RUB&quot;, Prezzo_netto_IVA_RUB__c,
+&quot;KRW&quot;, Prezzo_Netto_IVA_KRW__c,
+&quot;AED&quot;, Prezzo_Netto_IVA_AED__c,
+&quot;PLN&quot;, Prezzo_Netto_IVA_PLN__c,
+&quot;QAR&quot;, Prezzo_Netto_IVA_QAR__c,
+&quot;SGD&quot;, Prezzo_Netto_IVA_SGD__c,
+&quot;SAR&quot;, Prezzo_Netto_IVA_SAR__c,
 Prezzo_Netto_IVA__c)</formula>
         <label>Prezzo Netto IVA (formula)</label>
         <precision>18</precision>
@@ -760,8 +919,14 @@ Prezzo_Netto_IVA__c)</formula>
 &quot;AUD&quot;, Prezzo_di_listino_AUD__c,
 &quot;DKK&quot;, Prezzo_di_listino_DKK__c,
 &quot;RUB&quot;, Prezzo_di_listino_RUB__c,
+&quot;KRW&quot;, Prezzo_di_listino_KRW__c,
+&quot;AED&quot;, Prezzo_di_listino_AED__c,
+&quot;PLN&quot;, Prezzo_di_listino_PLN__c,
+&quot;QAR&quot;, Prezzo_di_listino_QAR__c,
+&quot;SGD&quot;, Prezzo_di_listino_SGD__c,
+&quot;SAR&quot;, Prezzo_di_listino_SAR__c,
 Prezzo_di_Listino__c)</formula>
-        <label>Prezzo di Listino (formula)</label>
+        <label>Retail price</label>
         <precision>18</precision>
         <required>false</required>
         <scale>2</scale>
@@ -798,6 +963,12 @@ Prezzo_di_Listino__c)</formula>
 &quot;AUD&quot;, Prezzo_di_vendita_AUD__c,
 &quot;DKK&quot;, Prezzo_di_vendita_DKK__c,
 &quot;RUB&quot;, Prezzo_di_vendita_RUB__c,
+&quot;KRW&quot;, Prezzo_di_vendita_KRW__c,
+&quot;AED&quot;, Prezzo_di_vendita_AED__c,
+&quot;PLN&quot;, Prezzo_di_vendita_PLN__c,
+&quot;QAR&quot;, Prezzo_di_vendita_QAR__c,
+&quot;SGD&quot;, Prezzo_di_vendita_SGD__c,
+&quot;SAR&quot;, Prezzo_di_vendita_SAR__c,
 Prezzo_di_Vendita__c)</formula>
         <label>Prezzo di Vendita (formula)</label>
         <precision>18</precision>
@@ -809,13 +980,25 @@ Prezzo_di_Vendita__c)</formula>
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Prezzo_di_listino_AED__c</fullName>
+        <externalId>false</externalId>
+        <label>Prezzo di listino (AED)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Prezzo_di_listino_AUD__c</fullName>
         <externalId>false</externalId>
         <label>Prezzo di listino (AUD)</label>
         <precision>18</precision>
         <required>false</required>
         <scale>2</scale>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
@@ -871,7 +1054,7 @@ Prezzo_di_Vendita__c)</formula>
         <precision>18</precision>
         <required>false</required>
         <scale>2</scale>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
@@ -921,6 +1104,18 @@ Prezzo_di_Vendita__c)</formula>
         <type>Summary</type>
     </fields>
     <fields>
+        <fullName>Prezzo_di_listino_KRW__c</fullName>
+        <externalId>false</externalId>
+        <label>Prezzo di listino (KRW)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Prezzo_di_listino_MOP__c</fullName>
         <externalId>false</externalId>
         <label>Prezzo di listino (MOP)</label>
@@ -932,13 +1127,61 @@ Prezzo_di_Vendita__c)</formula>
         <type>Summary</type>
     </fields>
     <fields>
+        <fullName>Prezzo_di_listino_PLN__c</fullName>
+        <externalId>false</externalId>
+        <label>Prezzo di listino (PLN)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Prezzo_di_listino_QAR__c</fullName>
+        <externalId>false</externalId>
+        <label>Prezzo di listino (QAR)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Prezzo_di_listino_RUB__c</fullName>
         <externalId>false</externalId>
         <label>Prezzo di listino (RUB)</label>
         <precision>18</precision>
         <required>false</required>
         <scale>2</scale>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Prezzo_di_listino_SAR__c</fullName>
+        <externalId>false</externalId>
+        <label>Prezzo di listino (SAR)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Prezzo_di_listino_SGD__c</fullName>
+        <externalId>false</externalId>
+        <label>Prezzo di listino (SGD)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
@@ -955,13 +1198,25 @@ Prezzo_di_Vendita__c)</formula>
         <type>Summary</type>
     </fields>
     <fields>
+        <fullName>Prezzo_di_vendita_AED__c</fullName>
+        <externalId>false</externalId>
+        <label>Prezzo di vendita (AED)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Prezzo_di_vendita_AUD__c</fullName>
         <externalId>false</externalId>
         <label>Prezzo di vendita (AUD)</label>
         <precision>18</precision>
         <required>false</required>
         <scale>2</scale>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
@@ -1017,7 +1272,7 @@ Prezzo_di_Vendita__c)</formula>
         <precision>18</precision>
         <required>false</required>
         <scale>2</scale>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
@@ -1067,6 +1322,18 @@ Prezzo_di_Vendita__c)</formula>
         <type>Summary</type>
     </fields>
     <fields>
+        <fullName>Prezzo_di_vendita_KRW__c</fullName>
+        <externalId>false</externalId>
+        <label>Prezzo di vendita (KRW)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Prezzo_di_vendita_MOP__c</fullName>
         <externalId>false</externalId>
         <label>Prezzo di vendita (MOP)</label>
@@ -1078,13 +1345,61 @@ Prezzo_di_Vendita__c)</formula>
         <type>Summary</type>
     </fields>
     <fields>
+        <fullName>Prezzo_di_vendita_PLN__c</fullName>
+        <externalId>false</externalId>
+        <label>Prezzo di vendita (PLN)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Prezzo_di_vendita_QAR__c</fullName>
+        <externalId>false</externalId>
+        <label>Prezzo di vendita (QAR)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Prezzo_di_vendita_RUB__c</fullName>
         <externalId>false</externalId>
         <label>Prezzo di vendita (RUB)</label>
         <precision>18</precision>
         <required>false</required>
         <scale>2</scale>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Prezzo_di_vendita_SAR__c</fullName>
+        <externalId>false</externalId>
+        <label>Prezzo di vendita (SAR)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Prezzo_di_vendita_SGD__c</fullName>
+        <externalId>false</externalId>
+        <label>Prezzo di vendita (SGD)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
@@ -1107,7 +1422,7 @@ Prezzo_di_Vendita__c)</formula>
         <precision>18</precision>
         <required>false</required>
         <scale>2</scale>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
@@ -1163,7 +1478,7 @@ Prezzo_di_Vendita__c)</formula>
         <precision>18</precision>
         <required>false</required>
         <scale>2</scale>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
@@ -1230,7 +1545,7 @@ Prezzo_di_Vendita__c)</formula>
         <precision>18</precision>
         <required>false</required>
         <scale>2</scale>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
@@ -1323,6 +1638,18 @@ Prezzo_di_Vendita__c)</formula>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Sconto_AED__c</fullName>
+        <externalId>false</externalId>
+        <label>Sconto (AED)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Sconto_AUD__c</fullName>
@@ -1509,6 +1836,18 @@ Prezzo_di_listino_JPY__c   - Prezzo_di_vendita_JPY__c
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Sconto_KRW__c</fullName>
+        <externalId>false</externalId>
+        <label>Sconto(KRW)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Sconto_MOP__c</fullName>
         <externalId>false</externalId>
         <label>Sconto (MOP)</label>
@@ -1521,9 +1860,57 @@ Prezzo_di_listino_JPY__c   - Prezzo_di_vendita_JPY__c
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Sconto_PLN__c</fullName>
+        <externalId>false</externalId>
+        <label>Sconto (PLN)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sconto_QAR__c</fullName>
+        <externalId>false</externalId>
+        <label>Sconto (QAR)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Sconto_RUB__c</fullName>
         <externalId>false</externalId>
         <label>Sconto (RUB)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sconto_SAR__c</fullName>
+        <externalId>false</externalId>
+        <label>Sconto (SAR)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sconto_SGD__c</fullName>
+        <externalId>false</externalId>
+        <label>Sconto (SGD)</label>
         <precision>18</precision>
         <required>false</required>
         <scale>2</scale>
@@ -1569,7 +1956,11 @@ Prezzo_di_listino_USD__c   - Prezzo_di_vendita_USD__c
 &quot;DKK&quot;, PSconto_DKK__c,
 &quot;AUD&quot;, PSconto_AUD__c,
 &quot;RUB&quot;, PSconto_RUB__c,
-
+&quot;KRW&quot;, PSconto_KRW__c,
+&quot;PLN&quot;, PSconto_PLN__c,
+&quot;QAR&quot;, PSconto_QAR__c,
+&quot;SGD&quot;, PSconto_SGD__c,
+&quot;SAR&quot;, PSconto_SAR__c,
  
 PSconto__c)</formula>
         <label>% Sconto (formula)</label>

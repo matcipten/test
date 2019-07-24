@@ -52,6 +52,7 @@
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ReadWrite</externalSharingModel>
     <fields>
         <fullName>Area_MTM__c</fullName>
         <externalId>false</externalId>
@@ -135,6 +136,26 @@
         <formula>Capo__r.Codice_Capo__c</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Codice Capo</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Codice_finale_prodotto__c</fullName>
+        <externalId>false</externalId>
+        <formula>Tessuto_Colore__r.Stagione__r.Codice_Stagione__c &amp;&quot;-&quot;&amp;
+ Tessuto__r.Codice__c &amp;&quot;-&quot;&amp;
+CASE ( Capo__r.Record_Type_Label__c, 
+&quot;Abito&quot;, Capo__r.Codice_Abito__c, 
+&quot;Giacca&quot;, Capo__r.Codice_Giacca__c, 
+&quot;Pantalone&quot;, Capo__r.Codice_Pantalone__c, 
+&quot;Panciotto&quot;, Capo__r.Codice_Panciotto__c,&quot;&quot;) &amp;&quot;-&quot;&amp;
+ Tessuto_Colore__r.Codice_Colore__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Codice Stagione - Codice Tessuto - Codice Capo - Codice Colore</inlineHelpText>
+        <label>Codice finale prodotto</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>

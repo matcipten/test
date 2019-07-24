@@ -52,6 +52,7 @@
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ReadWrite</externalSharingModel>
     <fields>
         <fullName>Capo__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
@@ -64,21 +65,110 @@
         <type>Lookup</type>
     </fields>
     <fields>
+        <fullName>Categoria_Capo__c</fullName>
+        <externalId>false</externalId>
+        <formula>text (Capo__r.Categoria__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Categoria Capo</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Codice_Giacca__c</fullName>
+        <externalId>false</externalId>
+        <formula>Capo__r.Codice_Giacca__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Codice Giacca</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Codice_Panciotto__c</fullName>
+        <externalId>false</externalId>
+        <formula>Capo__r.Codice_Panciotto__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Codice Panciotto</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Codice_Pantalone__c</fullName>
+        <externalId>false</externalId>
+        <formula>Capo__r.Codice_Pantalone__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Codice Pantalone</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Codice_Tessuto_Capo__c</fullName>
         <externalId>false</externalId>
-        <formula>Capo__r.Stagione__r.Codice_Stagione__c
-&amp;
-Tessuto__r.Codice__c
-&amp;
-CASE ( Capo__r.Record_Type_Label__c,
-&quot;Abito&quot;, Capo__r.Codice_Abito__c,
-&quot;Giacca&quot;, Capo__r.Codice_Giacca__c,
-&quot;Pantalone&quot;, Capo__r.Codice_Pantalone__c, &quot;&quot;)</formula>
+        <formula>Tessuto__r.Codice__c 
+&amp; 
+CASE ( Capo__r.Record_Type_Label__c, 
+&quot;Abito&quot;, Capo__r.Codice_Abito__c, 
+&quot;Giacca&quot;, Capo__r.Codice_Giacca__c, 
+&quot;Pantalone&quot;, Capo__r.Codice_Pantalone__c, 
+&quot;Panciotto&quot;, Capo__r.Codice_Panciotto__c, &quot;&quot;)</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Codice Tessuto Capo</label>
         <required>false</required>
         <trackTrending>false</trackTrending>
         <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Descrizione_Modello_Giacca__c</fullName>
+        <externalId>false</externalId>
+        <formula>text(Capo__r.Descrizione_Modello_Giacca__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Descrizione Modello Giacca</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Descrizione_Modello_Panciotto__c</fullName>
+        <externalId>false</externalId>
+        <formula>text(Capo__r.Descrizione_Modello_Panciotto__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Descrizione Modello Panciotto</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Descrizione_Modello_Pantalone__c</fullName>
+        <externalId>false</externalId>
+        <formula>text(Capo__r.Descrizione_Modello_Pantalone__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Descrizione Modello Pantalone</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Posizione__c</fullName>
+        <externalId>false</externalId>
+        <formula>Capo__r.Posizione__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Posizione</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
         <unique>false</unique>
     </fields>
     <fields>
@@ -260,6 +350,28 @@ Prezzo_EUR__c) )</formula>
         <required>false</required>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Tipo_Capo__c</fullName>
+        <externalId>false</externalId>
+        <formula>Capo__r.RecordTypeId</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Tipo Capo</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Tipo_Giacca__c</fullName>
+        <externalId>false</externalId>
+        <formula>text(Capo__r.Tipo_Giacca__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Tipo Giacca</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <gender>Masculine</gender>
     <label>Capo - Tessuto</label>

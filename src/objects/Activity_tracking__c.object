@@ -1,0 +1,506 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Activity_tracking_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+    <allowInChatterGroups>true</allowInChatterGroups>
+    <compactLayoutAssignment>Activity_tracking</compactLayoutAssignment>
+    <compactLayouts>
+        <fullName>Activity_tracking</fullName>
+        <fields>Activity_Number__c</fields>
+        <fields>Canale__c</fields>
+        <fields>RecordTypeId</fields>
+        <fields>Categoria__c</fields>
+        <label>Activity tracking</label>
+    </compactLayouts>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableChangeDataCapture>false</enableChangeDataCapture>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>Read</externalSharingModel>
+    <fields>
+        <fullName>Activity_Date__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Activity Date</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Activity_Number__c</fullName>
+        <externalId>false</externalId>
+        <formula>CASE(RecordType.Name,&apos;One To One&apos;,&apos;OT-&apos;+ Name ,
+&apos;Events&apos;,&apos;EV-&apos; + Name,
+&apos;Mailing&apos;,&apos;MA-&apos; + Name,
+&apos;&apos;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Activity Number</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Campagna__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Campaign name</label>
+        <referenceTo>Campaign</referenceTo>
+        <relationshipLabel>Activity tracking</relationshipLabel>
+        <relationshipName>Activity_tracking</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Canale__c</fullName>
+        <externalId>false</externalId>
+        <label>Channel</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>Activity_Channel</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Categoria__c</fullName>
+        <externalId>false</externalId>
+        <label>Activity category</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>Activity_Category</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Customer_Name__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Customer Name</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Activity tracking</relationshipLabel>
+        <relationshipName>Activity_tracking</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Location_Instore__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Boutique</label>
+        <referenceTo>Location__c</referenceTo>
+        <relationshipLabel>Activity tracking</relationshipLabel>
+        <relationshipName>Activity_tracking</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Location_Out_of_store__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Where (out of store)</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Location__c</fullName>
+        <externalId>false</externalId>
+        <label>Location</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Instore</fullName>
+                    <default>false</default>
+                    <label>Instore</label>
+                </value>
+                <value>
+                    <fullName>Out of store</fullName>
+                    <default>false</default>
+                    <label>Out of store</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Note_Contatto__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Activity notes</label>
+        <length>32768</length>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Sum_of_final_costs__c</fullName>
+        <externalId>false</externalId>
+        <label>Sum of final costs</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <gender>Masculine</gender>
+    <label>Activity tracking</label>
+    <listViews>
+        <fullName>All1</fullName>
+        <columns>NAME</columns>
+        <columns>Campagna__c</columns>
+        <columns>Customer_Name__c</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Campagna__c</field>
+            <operation>equals</operation>
+        </filters>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <displayFormat>{00000}</displayFormat>
+        <label>Activity Tracking Name</label>
+        <trackHistory>true</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Activity tracking</pluralLabel>
+    <recordTypeTrackHistory>true</recordTypeTrackHistory>
+    <recordTypes>
+        <fullName>Events</fullName>
+        <active>true</active>
+        <compactLayoutAssignment>Activity_tracking</compactLayoutAssignment>
+        <label>Event</label>
+        <picklistValues>
+            <picklist>Canale__c</picklist>
+            <values>
+                <fullName>Chat</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Mail</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Personal_Contact</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Phone</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Categoria__c</picklist>
+            <values>
+                <fullName>EVMA_Seasonal opening</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EV_In store animation%2FEvent</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EV_Networking - Charity</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EV_Out of store Event</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EV_Private Sales</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EV_Store opening%2FPop-up</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EV_VIP Event Solomeo</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Location__c</picklist>
+            <values>
+                <fullName>Instore</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Out of store</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Mailing</fullName>
+        <active>true</active>
+        <compactLayoutAssignment>Activity_tracking</compactLayoutAssignment>
+        <label>Mailing</label>
+        <picklistValues>
+            <picklist>Canale__c</picklist>
+            <values>
+                <fullName>Chat</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Mail</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Personal_Contact</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Phone</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Categoria__c</picklist>
+            <values>
+                <fullName>EVMA_Seasonal opening</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MA_Catalogues</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MA_Direct Emailing</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MA_Lookbooks</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Location__c</picklist>
+            <values>
+                <fullName>Instore</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Out of store</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>One_To_One</fullName>
+        <active>true</active>
+        <compactLayoutAssignment>Activity_tracking</compactLayoutAssignment>
+        <label>One2One</label>
+        <picklistValues>
+            <picklist>Canale__c</picklist>
+            <values>
+                <fullName>Chat</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Mail</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Personal_Contact</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Phone</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Categoria__c</picklist>
+            <values>
+                <fullName>OT_Attending Corporate Event</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Eating out%2FVip dinner or lunch</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Follow-up after store visit</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Gifting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Greetings</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Preview</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Product Home Delivery</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Proposte di stile</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Repair follow-up</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Sartoria Solomeo</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Solomeo Experience</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Spend time with clients</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Thank you note</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Tour Visit</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Trunk Show</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Location__c</picklist>
+            <values>
+                <fullName>Instore</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Out of store</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <searchLayouts>
+        <searchResultsAdditionalFields>Customer_Name__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Campagna__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Canale__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>RECORDTYPE</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Categoria__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CREATED_DATE</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>LAST_UPDATE</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>OWNER.ALIAS</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>Read</sharingModel>
+    <startsWith>Vowel</startsWith>
+    <validationRules>
+        <fullName>Location_alternative</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(!ISBLANK(Location_Instore__c), !ISBLANK( Location_Out_of_store__c ))</errorConditionFormula>
+        <errorMessage>Le location in/out of store sono alternative tra loro. Selezionarne solo una.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Location_blank</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND ( RecordType.DeveloperName &lt;&gt; &apos;Mailing&apos;,
+
+OR(
+AND(ISPICKVAL( Location__c, &apos;Instore&apos;), ISBLANK(Location_Instore__c)),
+
+AND(ISPICKVAL( Location__c, &apos;Out of store&apos;),
+ISBLANK( Location_Out_of_store__c))))</errorConditionFormula>
+        <errorMessage>Selezionare la location corretta.</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+</CustomObject>

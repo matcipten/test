@@ -53,6 +53,7 @@
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>Read</externalSharingModel>
     <fields>
         <fullName>Area_MTM__c</fullName>
         <externalId>false</externalId>
@@ -220,6 +221,18 @@
         <length>100</length>
         <required>false</required>
         <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Id_Store_Manager__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Id Store Manager</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -508,7 +521,6 @@
         <columns>Id_Location_Micros__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
-        <language>en_US</language>
     </listViews>
     <listViews>
         <fullName>All1</fullName>
@@ -546,6 +558,7 @@
         <excludedStandardButtons>New</excludedStandardButtons>
         <excludedStandardButtons>Accept</excludedStandardButtons>
         <excludedStandardButtons>ChangeOwner</excludedStandardButtons>
+        <searchResultsAdditionalFields>Id_Location_Micros__c</searchResultsAdditionalFields>
     </searchLayouts>
     <sharingModel>Read</sharingModel>
     <visibility>Public</visibility>

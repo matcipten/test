@@ -244,6 +244,27 @@
         <operation>Formula</operation>
         <protected>false</protected>
     </fieldUpdates>
+    <fieldUpdates>
+        <fullName>salvaId</fullName>
+        <description>copia il valore del campo id in formato formula in modo da trovarlo sulla global search.</description>
+        <field>Salesforce_Id__c</field>
+        <formula>CASESAFEID(Id)</formula>
+        <name>salvaId</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <rules>
+        <fullName>CreatedCustomer</fullName>
+        <actions>
+            <name>salvaId</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>controlla quando viene creato un record di cliente</description>
+        <formula>TRUE</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
     <rules>
         <fullName>First Location</fullName>
         <actions>

@@ -56,6 +56,18 @@
     <enableSearch>false</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ControlledByParent</externalSharingModel>
+    <fields>
+        <fullName>Categoria__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT(Stagione__r.Categoria__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Categoria</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
     <fields>
         <fullName>Codice_Colore__c</fullName>
         <encrypted>false</encrypted>
@@ -227,6 +239,17 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Nome_Stagione__c</fullName>
+        <externalId>false</externalId>
+        <formula>Stagione__r.Name</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Nome Stagione</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Ordinato_metri__c</fullName>
         <externalId>false</externalId>
         <label>Ordinato (metri)</label>
@@ -238,12 +261,35 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Peso_tessuto__c</fullName>
+        <externalId>false</externalId>
+        <formula>Tessuto__r.Peso__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Peso tessuto</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Ricalcola_Ordinato__c</fullName>
         <defaultValue>false</defaultValue>
         <externalId>false</externalId>
         <label>Ricalcola Ordinato</label>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Stagione__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Stagione</label>
+        <referenceTo>Stagione__c</referenceTo>
+        <relationshipLabel>Tessuti - Colori</relationshipLabel>
+        <relationshipName>Tessuti_Colori</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
     </fields>
     <fields>
         <fullName>Tessuto__c</fullName>

@@ -24,6 +24,7 @@
     <enableHistory>true</enableHistory>
     <fields>
         <fullName>Answer__c</fullName>
+        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Answer</label>
         <length>32768</length>
@@ -33,6 +34,7 @@
     </fields>
     <fields>
         <fullName>Question__c</fullName>
+        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Question</label>
         <length>32768</length>

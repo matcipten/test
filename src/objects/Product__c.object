@@ -57,6 +57,7 @@
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>Read</externalSharingModel>
     <fields>
         <fullName>Categoria_merceologica__c</fullName>
         <encrypted>false</encrypted>
@@ -242,6 +243,18 @@
         <externalId>false</externalId>
         <label>Sesso</label>
         <length>40</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Stagione_SS_FW__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF (RIGHT(Stagione__c, 1)= &quot;1&quot;, &quot;SS&quot;, 
+IF (RIGHT(Stagione__c, 1)= &quot;2&quot;, &quot;FW&quot;,&quot;&quot;))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Stagione SS/FW</label>
         <required>false</required>
         <trackTrending>false</trackTrending>
         <type>Text</type>

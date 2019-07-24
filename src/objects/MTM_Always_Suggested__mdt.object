@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>Bottone__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Bottone</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Fodera__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Fodera</label>
+        <type>Checkbox</type>
+    </fields>
+    <label>MTM Always Suggested</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>MasterLabel</columns>
+        <columns>DeveloperName</columns>
+        <columns>Bottone__c</columns>
+        <columns>Fodera__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All.</label>
+        <language>en_US</language>
+    </listViews>
+    <pluralLabel>MTM Always Suggested</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

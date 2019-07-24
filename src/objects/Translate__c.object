@@ -47,11 +47,12 @@
     <enableBulkApi>true</enableBulkApi>
     <enableChangeDataCapture>false</enableChangeDataCapture>
     <enableFeeds>false</enableFeeds>
-    <enableHistory>false</enableHistory>
-    <enableReports>false</enableReports>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ReadWrite</externalSharingModel>
     <fields>
         <fullName>Birthdate_Label__c</fullName>
         <encrypted>false</encrypted>
@@ -59,6 +60,19 @@
         <label>Birthdate_Label</label>
         <length>255</length>
         <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Button_Back_Label__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Button Back Label</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -70,6 +84,7 @@
         <label>Button Form Registration Label</label>
         <length>255</length>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -81,6 +96,7 @@
         <label>Button Signature Clear Label</label>
         <length>255</length>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -92,6 +108,7 @@
         <label>Button Signature Save Label</label>
         <length>255</length>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -103,6 +120,7 @@
         <label>CAP_Label</label>
         <length>255</length>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -114,6 +132,7 @@
         <label>CAP_Placeholder</label>
         <length>255</length>
         <required>false</required>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -125,6 +144,7 @@
         <label>Checkbox_Email_Label</label>
         <length>255</length>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -136,6 +156,19 @@
         <label>Checkbox_Mail_Label</label>
         <length>255</length>
         <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Checkbox_Messaging_Label__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Checkbox_Messaging_Label</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -147,6 +180,7 @@
         <label>Checkbox_Other_Label</label>
         <length>255</length>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -158,6 +192,7 @@
         <label>Checkbox_Other_Placeholder</label>
         <length>25</length>
         <required>false</required>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -169,6 +204,7 @@
         <label>Checkbox_Phone_Label</label>
         <length>255</length>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -180,6 +216,7 @@
         <label>Checkbox_WeChat_Label</label>
         <length>100</length>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -191,6 +228,7 @@
         <label>City_Label</label>
         <length>255</length>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -202,6 +240,7 @@
         <label>City_Placeholder</label>
         <length>255</length>
         <required>false</required>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -213,6 +252,19 @@
         <label>Contact_Preferences_Label</label>
         <length>255</length>
         <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Country_FRM__c</fullName>
+        <externalId>false</externalId>
+        <formula>RIGHT(Name, 2)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Country_FRM</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -224,6 +276,7 @@
         <label>Country_Label</label>
         <length>255</length>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -235,6 +288,7 @@
         <label>Country_Placeholder</label>
         <length>255</length>
         <required>false</required>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -246,6 +300,19 @@
         <label>Country</label>
         <length>100</length>
         <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Data_di_emissione_passaporto_Label__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Data_di_emissione_passaporto_Label</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -257,6 +324,7 @@
         <label>Date_Label</label>
         <length>255</length>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -268,6 +336,7 @@
         <label>Email_Label</label>
         <length>255</length>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -279,6 +348,19 @@
         <label>Email_Placeholder</label>
         <length>255</length>
         <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Ente_di_emissione_passaporto_Label__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Ente_di_emissione_passaporto_Label</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -290,6 +372,7 @@
         <label>First_Name_Label</label>
         <length>255</length>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -301,6 +384,7 @@
         <label>First_Name_Placeholder</label>
         <length>255</length>
         <required>false</required>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -312,9 +396,54 @@
         <label>Gender_Label</label>
         <length>255</length>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Gender_Values__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Gender_Values</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Hobby_Label__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Hobby_Label</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Hobby_Values__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Hobby_Values</label>
+        <length>131072</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>2</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Increase_version__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Increase version</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>Informativa_Body_Label__c</fullName>
@@ -322,24 +451,29 @@
         <externalId>false</externalId>
         <label>Informativa_Body_Label</label>
         <length>32768</length>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
         <visibleLines>3</visibleLines>
     </fields>
     <fields>
         <fullName>Informativa_Body_Rich_Label_Department__c</fullName>
+        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Informativa_Body_Rich_Label_Department</label>
         <length>32768</length>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Html</type>
         <visibleLines>25</visibleLines>
     </fields>
     <fields>
         <fullName>Informativa_Body_Rich_Label__c</fullName>
+        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Informativa_Body_Rich_Label</label>
         <length>32768</length>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Html</type>
         <visibleLines>25</visibleLines>
@@ -351,6 +485,7 @@
         <label>Informativa_Header_Label</label>
         <length>255</length>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -362,6 +497,19 @@
         <label>Language_Label</label>
         <length>255</length>
         <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Language_Values__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Language_Values</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -373,6 +521,7 @@
         <label>Language</label>
         <length>100</length>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -384,6 +533,7 @@
         <label>Last_Name_Label</label>
         <length>255</length>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -395,6 +545,31 @@
         <label>Last_Name_Placeholder</label>
         <length>255</length>
         <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Local_First_Name_Label__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Local_First_Name_Label</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Local_Last_Name_Label__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Local_Last_Name_Label</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -406,6 +581,7 @@
         <label>Mobile_Label</label>
         <length>255</length>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -417,9 +593,34 @@
         <label>Mobile_Placeholder</label>
         <length>255</length>
         <required>false</required>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>N_versione__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <label>N° versione</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Nationality_ISO__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Nationality_ISO</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
     </fields>
     <fields>
         <fullName>Nationality_Label__c</fullName>
@@ -428,9 +629,66 @@
         <label>Nationality_Label</label>
         <length>255</length>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Nationality_Values__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Nationality_Values</label>
+        <length>131072</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>2</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Note_versionamento__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Note versionamento</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Numero_Passaporto_Label__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Numero_Passaporto_Label</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Paese_di_emissione_passaporto_Label__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Paese_di_emissione_passaporto_Label</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Passport_Section_Label__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Passport Section Label</label>
+        <length>131072</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
     </fields>
     <fields>
         <fullName>Phone_Label__c</fullName>
@@ -439,6 +697,7 @@
         <label>Phone_Label</label>
         <length>255</length>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -450,6 +709,7 @@
         <label>Phone_Placeholder</label>
         <length>255</length>
         <required>false</required>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -461,6 +721,7 @@
         <label>Preferred_Language_Label</label>
         <length>255</length>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -471,6 +732,7 @@
         <externalId>false</externalId>
         <label>Privacy_1_Label</label>
         <length>32768</length>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
         <visibleLines>3</visibleLines>
@@ -481,6 +743,7 @@
         <externalId>false</externalId>
         <label>Privacy_2_Label_Department</label>
         <length>131072</length>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
         <visibleLines>3</visibleLines>
@@ -491,6 +754,7 @@
         <externalId>false</externalId>
         <label>Privacy_2_Label</label>
         <length>32768</length>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
         <visibleLines>3</visibleLines>
@@ -501,6 +765,7 @@
         <externalId>false</externalId>
         <label>Privacy_3_Label</label>
         <length>32768</length>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
         <visibleLines>3</visibleLines>
@@ -511,6 +776,7 @@
         <externalId>false</externalId>
         <label>Privacy_Footer_Label</label>
         <length>131072</length>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
         <visibleLines>3</visibleLines>
@@ -521,6 +787,7 @@
         <externalId>false</externalId>
         <label>Privacy_Header_After_Link_Label</label>
         <length>32768</length>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
         <visibleLines>3</visibleLines>
@@ -531,6 +798,7 @@
         <externalId>false</externalId>
         <label>Privacy_Header_Before_Link_Label</label>
         <length>32768</length>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
         <visibleLines>3</visibleLines>
@@ -541,6 +809,7 @@
         <externalId>false</externalId>
         <label>Privacy_Header_Label</label>
         <length>131072</length>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
         <visibleLines>3</visibleLines>
@@ -552,6 +821,7 @@
         <label>Privacy_Header_Link_Label</label>
         <length>255</length>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -563,6 +833,7 @@
         <label>Privacy_No_Label</label>
         <length>255</length>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -574,9 +845,42 @@
         <label>Privacy_Yes_Label</label>
         <length>255</length>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Profession_Label__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Profession_Label</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Profession_Values__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Profession_Values</label>
+        <length>131072</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>2</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Richiedi_Firma__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Richiedi Firma</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>Salutation_Key__c</fullName>
@@ -585,6 +889,7 @@
         <label>Salutation Key</label>
         <length>255</length>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -596,6 +901,7 @@
         <label>Salutation_Label</label>
         <length>255</length>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -607,6 +913,7 @@
         <label>Salutation_Value</label>
         <length>255</length>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -618,6 +925,7 @@
         <label>Signature_Asterisco_Label</label>
         <length>255</length>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -629,6 +937,7 @@
         <label>Signature_Label</label>
         <length>255</length>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -640,6 +949,7 @@
         <label>State_Label</label>
         <length>255</length>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -651,6 +961,7 @@
         <label>State_Placeholder</label>
         <length>255</length>
         <required>false</required>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -662,6 +973,7 @@
         <label>Street_Label</label>
         <length>255</length>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -673,6 +985,7 @@
         <label>Street_Placeholder</label>
         <length>255</length>
         <required>false</required>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -684,6 +997,30 @@
         <label>Subheader_Label</label>
         <length>255</length>
         <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Success_Message_Label__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Success_Message_Label</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Versione_DCC__c</fullName>
+        <externalId>false</externalId>
+        <formula>text(N_versione__c) &amp; &quot;.&quot; &amp; text($User.Nation_Contact_Card__c) &amp; &quot;.&quot; &amp; text($User.Canale_di_Vendita__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Versione DCC</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -695,6 +1032,7 @@
         <label>We_Chat_ID_Label</label>
         <length>255</length>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -706,6 +1044,7 @@
         <label>We_Chat_ID_Placeholder</label>
         <length>25</length>
         <required>false</required>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -716,9 +1055,10 @@
         <columns>NAME</columns>
         <columns>Country__c</columns>
         <columns>Language__c</columns>
-        <columns>Signature_Label__c</columns>
+        <columns>N_versione__c</columns>
+        <columns>Richiedi_Firma__c</columns>
         <filterScope>Everything</filterScope>
-        <label>All</label>
+        <label>All with version</label>
         <language>en_US</language>
     </listViews>
     <listViews>
@@ -729,6 +1069,7 @@
     <nameField>
         <encrypted>false</encrypted>
         <label>ISO Language</label>
+        <trackHistory>true</trackHistory>
         <type>Text</type>
     </nameField>
     <pluralLabel>Translates</pluralLabel>

@@ -47,19 +47,22 @@
     <enableBulkApi>true</enableBulkApi>
     <enableChangeDataCapture>false</enableChangeDataCapture>
     <enableFeeds>false</enableFeeds>
-    <enableHistory>false</enableHistory>
+    <enableHistory>true</enableHistory>
     <enableReports>true</enableReports>
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>Read</externalSharingModel>
     <fields>
         <fullName>Associate__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <externalId>false</externalId>
-        <label>Associate</label>
+        <label>Client Advisor</label>
         <referenceTo>Associated__c</referenceTo>
+        <relationshipLabel>Gift</relationshipLabel>
         <relationshipName>Marketing_Activities</relationshipName>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -71,6 +74,7 @@
         <lookupFilter>
             <active>false</active>
             <booleanFilter>1 OR 2 OR 3</booleanFilter>
+            <errorMessage>The customer doesn&apos;t have marketing consent.</errorMessage>
             <filterItems>
                 <field>Account.Privacy_1__c</field>
                 <operation>equals</operation>
@@ -92,6 +96,7 @@
         <relationshipLabel>Gift</relationshipLabel>
         <relationshipName>Attivit_Marketing</relationshipName>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -101,6 +106,7 @@
         <externalId>false</externalId>
         <label>Data</label>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Date</type>
     </fields>
@@ -111,6 +117,7 @@
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Dati Deduplica</label>
         <required>false</required>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -121,6 +128,7 @@
         <externalId>false</externalId>
         <label>Descrizione</label>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>TextArea</type>
     </fields>
@@ -132,6 +140,7 @@
         <referenceTo>Transaction_Detail__c</referenceTo>
         <relationshipName>Attivit_Marketing</relationshipName>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -140,6 +149,7 @@
         <defaultValue>false</defaultValue>
         <externalId>false</externalId>
         <label>Gift</label>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
@@ -148,6 +158,7 @@
         <defaultValue>false</defaultValue>
         <externalId>false</externalId>
         <label>Nota BC</label>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
@@ -157,9 +168,46 @@
         <externalId>false</externalId>
         <label>Note</label>
         <length>32768</length>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
         <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Product_Image_Reference__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Product Image Reference</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Product_Image__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(Product_Image_Reference__c != &apos;&apos;, SUBSTITUTE(IMAGE(&apos;/sfc/servlet.shepherd/version/download/$$$$$$$$$$$$$&apos;, &apos;product image&apos;,70,70) &amp; IF( ISPICKVAL(Dettaglio_Transazione__r.Tipo_Vendita__c, &apos;R&apos;), IMAGE(&apos;/resource/Close&apos;,&apos;none&apos;,25,25) , IMAGE(&apos;/resource/Approval&apos;,&apos;none&apos;,25,25)), &apos;$$$$$$$$$$$$$&apos;,  Product_Image_Reference__c ),&apos;&apos;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Product Image</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Product_Thumbnail__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(Product_Image_Reference__c != &apos;&apos;, SUBSTITUTE(IMAGE(&apos;/sfc/servlet.shepherd/version/download/$$$$$$$$$$$$$&apos;, &apos;product image&apos;) &amp; IF( ISPICKVAL(Dettaglio_Transazione__r.Tipo_Vendita__c, &apos;R&apos;), IMAGE(&apos;/resource/Close&apos;,&apos;none&apos;,25,25) , IMAGE(&apos;/resource/Approval&apos;,&apos;none&apos;,25,25)), &apos;$$$$$$$$$$$$$&apos;, Product_Image_Reference__c ),&apos;&apos;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Product Thumbnail</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Product__c</fullName>
@@ -169,69 +217,58 @@
         <referenceTo>Product__c</referenceTo>
         <relationshipName>Attivit_Marketing</relationshipName>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>SKU__c</fullName>
+        <externalId>false</externalId>
+        <formula>Product__r.Item_ID__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>SKU</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Tipologia_Attivit_picklist__c</fullName>
         <externalId>false</externalId>
         <label>Gift Type</label>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
             <restricted>true</restricted>
             <valueSetDefinition>
-                <sorted>true</sorted>
-                <value>
-                    <fullName>Book: The Dream of Solomeo</fullName>
-                    <default>false</default>
-                    <label>Book: The Dream of Solomeo</label>
-                </value>
-                <value>
-                    <fullName>Bottle of olive oil</fullName>
-                    <default>false</default>
-                    <label>Bottle of olive oil</label>
-                </value>
-                <value>
-                    <fullName>Bottle of wine</fullName>
-                    <default>false</default>
-                    <label>Bottle of wine</label>
-                </value>
-                <value>
-                    <fullName>Chinese New Year gifting</fullName>
-                    <default>false</default>
-                    <label>Chinese New Year gifting</label>
-                </value>
-                <value>
-                    <fullName>Cigars</fullName>
-                    <default>false</default>
-                    <label>Cigars</label>
-                </value>
+                <sorted>false</sorted>
                 <value>
                     <fullName>Flowers</fullName>
                     <default>false</default>
                     <label>Flowers</label>
                 </value>
                 <value>
-                    <fullName>Holiday Gifting</fullName>
+                    <fullName>Chocolate</fullName>
                     <default>false</default>
-                    <label>Holiday Gifting</label>
+                    <label>Chocolate</label>
                 </value>
                 <value>
-                    <fullName>Other (insert a detailed description)</fullName>
+                    <fullName>Cake</fullName>
                     <default>false</default>
-                    <label>Other (insert a detailed description)</label>
+                    <label>Cake</label>
                 </value>
                 <value>
-                    <fullName>Serie Delighting</fullName>
+                    <fullName>Olive oil</fullName>
                     <default>false</default>
-                    <label>Serie Delighting</label>
+                    <label>Olive oil</label>
                 </value>
                 <value>
-                    <fullName>Styling emails</fullName>
+                    <fullName>Wine</fullName>
                     <default>false</default>
-                    <label>Styling emails</label>
+                    <label>Wine</label>
                 </value>
                 <value>
                     <fullName>Tickets</fullName>
@@ -239,8 +276,78 @@
                     <label>Tickets</label>
                 </value>
                 <value>
+                    <fullName>Dream of Solomeo</fullName>
+                    <default>false</default>
+                    <label>Dream of Solomeo</label>
+                </value>
+                <value>
+                    <fullName>Other books (specify in Note)</fullName>
+                    <default>false</default>
+                    <label>Other books (specify in Note)</label>
+                </value>
+                <value>
+                    <fullName>Other (specify in Note)</fullName>
+                    <default>false</default>
+                    <label>Other (specify in Note)</label>
+                </value>
+                <value>
+                    <fullName>Book: The Dream of Solomeo</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Book: The Dream of Solomeo</label>
+                </value>
+                <value>
+                    <fullName>Bottle of olive oil</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Bottle of olive oil</label>
+                </value>
+                <value>
+                    <fullName>Bottle of wine</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Bottle of wine</label>
+                </value>
+                <value>
+                    <fullName>Chinese New Year gifting</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Chinese New Year gifting</label>
+                </value>
+                <value>
+                    <fullName>Cigars</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Cigars</label>
+                </value>
+                <value>
+                    <fullName>Holiday Gifting</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Holiday Gifting</label>
+                </value>
+                <value>
+                    <fullName>Other (insert a detailed description)</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Other (insert a detailed description)</label>
+                </value>
+                <value>
+                    <fullName>Serie Delighting</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Serie Delighting</label>
+                </value>
+                <value>
+                    <fullName>Styling emails</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Styling emails</label>
+                </value>
+                <value>
                     <fullName>Very Special Gift</fullName>
                     <default>false</default>
+                    <isActive>false</isActive>
                     <label>Very Special Gift</label>
                 </value>
             </valueSetDefinition>
@@ -273,8 +380,18 @@
         <referenceTo>Pannello_Amministrazione_Marketing__c</referenceTo>
         <relationshipName>Attivita_Marketing</relationshipName>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>checkbox_temp__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>checkbox temp</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
     </fields>
     <gender>Masculine</gender>
     <label>Gift</label>
@@ -293,9 +410,11 @@
     <nameField>
         <displayFormat>A-{0000}</displayFormat>
         <label>Gift Name</label>
+        <trackHistory>true</trackHistory>
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Gift</pluralLabel>
+    <recordTypeTrackHistory>true</recordTypeTrackHistory>
     <recordTypes>
         <fullName>Direct_Marketing</fullName>
         <active>false</active>
@@ -303,31 +422,7 @@
         <picklistValues>
             <picklist>Tipologia_Attivit_picklist__c</picklist>
             <values>
-                <fullName>Bottle of olive oil</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Bottle of wine</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Cigars</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Flowers</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Holiday Gifting</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Other %28insert a detailed description%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Styling emails</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -343,23 +438,15 @@
         <picklistValues>
             <picklist>Tipologia_Attivit_picklist__c</picklist>
             <values>
-                <fullName>Book%3A The Dream of Solomeo</fullName>
+                <fullName>Cake</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Bottle of olive oil</fullName>
+                <fullName>Chocolate</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Bottle of wine</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Chinese New Year gifting</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Cigars</fullName>
+                <fullName>Dream of Solomeo</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -367,19 +454,15 @@
                 <default>false</default>
             </values>
             <values>
-                <fullName>Holiday Gifting</fullName>
+                <fullName>Olive oil</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Other %28insert a detailed description%29</fullName>
+                <fullName>Other %28specify in Note%29</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Serie Delighting</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Styling emails</fullName>
+                <fullName>Other books %28specify in Note%29</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -387,7 +470,7 @@
                 <default>false</default>
             </values>
             <values>
-                <fullName>Very Special Gift</fullName>
+                <fullName>Wine</fullName>
                 <default>false</default>
             </values>
         </picklistValues>

@@ -14,7 +14,9 @@ public with sharing class OnRelazioneGhostTriggerHandler{
 			Relazioni__c nr             = new Relazioni__c();
 			nr.Cliente__c               = r.Cliente__c;
 			nr.Cliente_in_Relazione__c	= r.Cliente_in_Relazione__c;
-			nr.Legame__c                = r.Legame_Cliente_in_Relazione__c;
+			// nr.Legame__c                = r.Legame_Cliente_in_Relazione__c;
+			nr.Legame__c                = r.Legame_Cliente__c;
+			nr.Key_Relazione_Ghost__c	= hexDigest;
 			nr.Key_Relazione_Ghost__c	= hexDigest;
             ListRelazioni.add(nr);
                 

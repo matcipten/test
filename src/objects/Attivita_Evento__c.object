@@ -38,10 +38,30 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <type>Default</type>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Event_Activity_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
     </actionOverrides>
     <allowInChatterGroups>false</allowInChatterGroups>
-    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <compactLayoutAssignment>Campaign_Cost</compactLayoutAssignment>
+    <compactLayouts>
+        <fullName>Activity_Tracking_Cost</fullName>
+        <fields>Name</fields>
+        <fields>Activity_tracking__c</fields>
+        <fields>Type__c</fields>
+        <fields>Total_Invoiced_Net_VAT__c</fields>
+        <label>Activity Tracking Cost</label>
+    </compactLayouts>
+    <compactLayouts>
+        <fullName>Campaign_Cost</fullName>
+        <fields>Name</fields>
+        <fields>Campagna__c</fields>
+        <fields>Type__c</fields>
+        <fields>Total_Invoiced_Net_VAT__c</fields>
+        <label>Campaign Cost</label>
+    </compactLayouts>
     <deploymentStatus>Deployed</deploymentStatus>
     <enableActivities>true</enableActivities>
     <enableBulkApi>true</enableBulkApi>
@@ -52,18 +72,29 @@
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ControlledByParent</externalSharingModel>
+    <fields>
+        <fullName>Activity_tracking__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Activity tracking</label>
+        <referenceTo>Activity_tracking__c</referenceTo>
+        <relationshipName>Event_Activities</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
     <fields>
         <fullName>Campagna__c</fullName>
         <externalId>false</externalId>
         <label>Campagna</label>
         <referenceTo>Campaign</referenceTo>
-        <relationshipLabel>Attività Evento</relationshipLabel>
         <relationshipName>Attivita_Evento</relationshipName>
         <relationshipOrder>0</relationshipOrder>
         <reparentableMasterDetail>false</reparentableMasterDetail>
         <trackTrending>false</trackTrending>
         <type>MasterDetail</type>
-        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+        <writeRequiresMasterRead>true</writeRequiresMasterRead>
     </fields>
     <fields>
         <fullName>Scostamento_Budget_Invoiced__c</fullName>
@@ -108,7 +139,6 @@
             <isOptional>false</isOptional>
         </lookupFilter>
         <referenceTo>Pannello_Amministrazione_Marketing__c</referenceTo>
-        <relationshipLabel>Attività Evento</relationshipLabel>
         <relationshipName>Attivita_Evento</relationshipName>
         <required>false</required>
         <trackTrending>false</trackTrending>
@@ -117,7 +147,7 @@
     <fields>
         <fullName>Total_Budget_Net_VAT__c</fullName>
         <externalId>false</externalId>
-        <label>Total Budget Net VAT</label>
+        <label>Final Cost (without VAT)</label>
         <precision>18</precision>
         <required>false</required>
         <scale>2</scale>
@@ -127,27 +157,337 @@
     <fields>
         <fullName>Total_Invoiced_Net_VAT__c</fullName>
         <externalId>false</externalId>
-        <label>Total Invoiced Net VAT</label>
+        <label>Final Cost (with VAT)</label>
         <precision>18</precision>
         <required>false</required>
         <scale>2</scale>
         <trackTrending>false</trackTrending>
         <type>Currency</type>
     </fields>
-    <gender>Feminine</gender>
-    <label>Attività Evento</label>
+    <fields>
+        <fullName>Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Type of cost</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Restaurant</fullName>
+                    <default>false</default>
+                    <label>Restaurant</label>
+                </value>
+                <value>
+                    <fullName>Hotel</fullName>
+                    <default>false</default>
+                    <label>Hotel</label>
+                </value>
+                <value>
+                    <fullName>Shipping</fullName>
+                    <default>false</default>
+                    <label>Shipping</label>
+                </value>
+                <value>
+                    <fullName>Transport</fullName>
+                    <default>false</default>
+                    <label>Transport</label>
+                </value>
+                <value>
+                    <fullName>Food</fullName>
+                    <default>false</default>
+                    <label>Food</label>
+                </value>
+                <value>
+                    <fullName>Beverage</fullName>
+                    <default>false</default>
+                    <label>Beverage</label>
+                </value>
+                <value>
+                    <fullName>Waiters</fullName>
+                    <default>false</default>
+                    <label>Waiters</label>
+                </value>
+                <value>
+                    <fullName>Flatware</fullName>
+                    <default>false</default>
+                    <label>Flatware</label>
+                </value>
+                <value>
+                    <fullName>Music</fullName>
+                    <default>false</default>
+                    <label>Music</label>
+                </value>
+                <value>
+                    <fullName>Florist</fullName>
+                    <default>false</default>
+                    <label>Florist</label>
+                </value>
+                <value>
+                    <fullName>Calligrapher</fullName>
+                    <default>false</default>
+                    <label>Calligrapher</label>
+                </value>
+                <value>
+                    <fullName>Models</fullName>
+                    <default>false</default>
+                    <label>Models</label>
+                </value>
+                <value>
+                    <fullName>Photographer</fullName>
+                    <default>false</default>
+                    <label>Photographer</label>
+                </value>
+                <value>
+                    <fullName>Video Maker</fullName>
+                    <default>false</default>
+                    <label>Video Maker</label>
+                </value>
+                <value>
+                    <fullName>Intepreter</fullName>
+                    <default>false</default>
+                    <label>Intepreter</label>
+                </value>
+                <value>
+                    <fullName>Tour guide</fullName>
+                    <default>false</default>
+                    <label>Tour guide</label>
+                </value>
+                <value>
+                    <fullName>Location venue</fullName>
+                    <default>false</default>
+                    <label>Location venue</label>
+                </value>
+                <value>
+                    <fullName>Invitation cards</fullName>
+                    <default>false</default>
+                    <label>Invitation cards</label>
+                </value>
+                <value>
+                    <fullName>Entrance Ticket/fee</fullName>
+                    <default>false</default>
+                    <label>Entrance Ticket/fee</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+                <value>
+                    <fullName>Shipping cost</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Shipping cost</label>
+                </value>
+                <value>
+                    <fullName>Shipping courier</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Shipping courier</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <gender>Masculine</gender>
+    <label>Costo</label>
     <listViews>
         <fullName>All</fullName>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
     <nameField>
-        <displayFormat>AV-{0000}</displayFormat>
-        <label>Attività Evento</label>
+        <displayFormat>C-{0000}</displayFormat>
+        <label>Costo</label>
         <type>AutoNumber</type>
     </nameField>
-    <pluralLabel>Attività Evento</pluralLabel>
+    <pluralLabel>Costi</pluralLabel>
+    <recordTypes>
+        <fullName>Activity_Cost</fullName>
+        <active>true</active>
+        <compactLayoutAssignment>Activity_Tracking_Cost</compactLayoutAssignment>
+        <label>Activity Cost</label>
+        <picklistValues>
+            <picklist>Type__c</picklist>
+            <values>
+                <fullName>Beverage</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Calligrapher</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Entrance Ticket%2Ffee</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Flatware</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Florist</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Food</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hotel</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Intepreter</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Invitation cards</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Location venue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Models</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Music</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Photographer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Restaurant</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Shipping</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tour guide</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Transport</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Video Maker</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Waiters</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Campaign_Cost</fullName>
+        <active>true</active>
+        <compactLayoutAssignment>Campaign_Cost</compactLayoutAssignment>
+        <label>Campaign Cost</label>
+        <picklistValues>
+            <picklist>Type__c</picklist>
+            <values>
+                <fullName>Beverage</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Calligrapher</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Entrance Ticket%2Ffee</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Flatware</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Florist</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Food</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hotel</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Intepreter</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Invitation cards</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Location venue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Models</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Music</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Photographer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Restaurant</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Shipping</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tour guide</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Transport</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Video Maker</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Waiters</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
     <searchLayouts/>
     <sharingModel>ControlledByParent</sharingModel>
+    <validationRules>
+        <fullName>Required_Cost</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(ISBLANK(Total_Budget_Net_VAT__c), ISBLANK( Total_Invoiced_Net_VAT__c))</errorConditionFormula>
+        <errorMessage>Inserire almeno un costo</errorMessage>
+    </validationRules>
     <visibility>Public</visibility>
 </CustomObject>

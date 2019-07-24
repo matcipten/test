@@ -53,6 +53,7 @@
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ReadWrite</externalSharingModel>
     <fields>
         <fullName>Attiva__c</fullName>
         <defaultValue>false</defaultValue>
@@ -60,6 +61,35 @@
         <label>Attiva</label>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Categoria__c</fullName>
+        <externalId>false</externalId>
+        <label>Categoria</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Business</fullName>
+                    <default>false</default>
+                    <label>Business</label>
+                </value>
+                <value>
+                    <fullName>Stagionale</fullName>
+                    <default>false</default>
+                    <label>Stagionale</label>
+                </value>
+                <value>
+                    <fullName>Sera</fullName>
+                    <default>false</default>
+                    <label>Sera</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Codice_Stagione__c</fullName>
@@ -71,6 +101,14 @@
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Stagione_principale__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Stagione principale</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
     </fields>
     <gender>Feminine</gender>
     <label>Stagione</label>

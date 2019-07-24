@@ -56,6 +56,31 @@
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ReadWrite</externalSharingModel>
+    <fields>
+        <fullName>Categoria__c</fullName>
+        <externalId>false</externalId>
+        <label>Categoria</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Sera</fullName>
+                    <default>false</default>
+                    <label>Sera</label>
+                </value>
+                <value>
+                    <fullName>Ready-to-wear</fullName>
+                    <default>false</default>
+                    <label>Ready-to-wear</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
     <fields>
         <fullName>Codice_Abito__c</fullName>
         <encrypted>false</encrypted>
@@ -73,7 +98,8 @@
         <formula>CASE (RecordType.DeveloperName,
 &quot;Abito&quot;,  Codice_Abito__c,
 &quot;Giacca&quot;,  Codice_Giacca__c,
-&quot;Pantalone&quot;,  Codice_Pantalone__c, &quot;&quot;)</formula>
+&quot;Pantalone&quot;,  Codice_Pantalone__c,
+&quot;Panciotto&quot;, Codice_Panciotto__c, &quot;&quot;)</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Codice Capo</label>
         <required>false</required>
@@ -86,6 +112,17 @@
         <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Codice Giacca</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Codice_Panciotto__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Codice Panciotto</label>
         <length>255</length>
         <required>false</required>
         <trackTrending>false</trackTrending>
@@ -185,6 +222,24 @@
         </valueSet>
     </fields>
     <fields>
+        <fullName>Descrizione_Modello_Panciotto__c</fullName>
+        <externalId>false</externalId>
+        <label>Descrizione Modello Panciotto</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Traditional Waistcoat</fullName>
+                    <default>false</default>
+                    <label>Traditional Waistcoat</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
         <fullName>Descrizione_Modello_Pantalone__c</fullName>
         <externalId>false</externalId>
         <label>Descrizione Modello Pantalone</label>
@@ -222,6 +277,17 @@
         <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Modello Giacca</label>
+        <length>50</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Modello_Panciotto__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Modello Panciotto</label>
         <length>50</length>
         <required>false</required>
         <trackTrending>false</trackTrending>
@@ -343,6 +409,17 @@
         <active>true</active>
         <label>Abito</label>
         <picklistValues>
+            <picklist>Categoria__c</picklist>
+            <values>
+                <fullName>Ready-to-wear</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sera</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
             <picklist>Descrizione_Modello_Giacca__c</picklist>
             <values>
                 <fullName>CAVALLO REVER GRANDE</fullName>
@@ -370,6 +447,13 @@
             </values>
             <values>
                 <fullName>UN PETTO E MEZZO TASCHE A TOPPA</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Descrizione_Modello_Panciotto__c</picklist>
+            <values>
+                <fullName>Traditional Waistcoat</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -409,6 +493,17 @@
         <active>true</active>
         <label>Giacca</label>
         <picklistValues>
+            <picklist>Categoria__c</picklist>
+            <values>
+                <fullName>Ready-to-wear</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sera</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
             <picklist>Descrizione_Modello_Giacca__c</picklist>
             <values>
                 <fullName>CAVALLO REVER GRANDE</fullName>
@@ -436,6 +531,97 @@
             </values>
             <values>
                 <fullName>UN PETTO E MEZZO TASCHE A TOPPA</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Descrizione_Modello_Panciotto__c</picklist>
+            <values>
+                <fullName>Traditional Waistcoat</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Descrizione_Modello_Pantalone__c</picklist>
+            <values>
+                <fullName>Flat Fondo 19%2C5</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Flat with 19%2C5 cm bottom</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pince Fondo 19%2C5</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pleated with 19%2C5 cm bottom</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Tipo_Giacca__c</picklist>
+            <values>
+                <fullName>Giacca_un_petto</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Giacca_un_petto_e_mezzo</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Panciotto</fullName>
+        <active>true</active>
+        <label>Panciotto</label>
+        <picklistValues>
+            <picklist>Categoria__c</picklist>
+            <values>
+                <fullName>Ready-to-wear</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sera</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Descrizione_Modello_Giacca__c</picklist>
+            <values>
+                <fullName>CAVALLO REVER GRANDE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>REVER A LANCIA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>REVER A LANCIA GRANDE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>REVER A SPECCHIO 3 TASCHE A TOPPA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>TRADIZIONALE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>UN PETTO E MEZZO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>UN PETTO E MEZZO TASCHE A TOPPA</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Descrizione_Modello_Panciotto__c</picklist>
+            <values>
+                <fullName>Traditional Waistcoat</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -475,6 +661,17 @@
         <active>true</active>
         <label>Pantalone</label>
         <picklistValues>
+            <picklist>Categoria__c</picklist>
+            <values>
+                <fullName>Ready-to-wear</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sera</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
             <picklist>Descrizione_Modello_Giacca__c</picklist>
             <values>
                 <fullName>CAVALLO REVER GRANDE</fullName>
@@ -502,6 +699,13 @@
             </values>
             <values>
                 <fullName>UN PETTO E MEZZO TASCHE A TOPPA</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Descrizione_Modello_Panciotto__c</picklist>
+            <values>
+                <fullName>Traditional Waistcoat</fullName>
                 <default>false</default>
             </values>
         </picklistValues>

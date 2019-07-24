@@ -52,6 +52,7 @@
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ReadWrite</externalSharingModel>
     <fields>
         <fullName>Area__c</fullName>
         <externalId>false</externalId>
@@ -236,6 +237,7 @@
     </fields>
     <fields>
         <fullName>Note_Brunello_Cucinelli__c</fullName>
+        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Note Brunello Cucinelli</label>
         <length>32768</length>
@@ -247,6 +249,7 @@
     </fields>
     <fields>
         <fullName>Note_Ten__c</fullName>
+        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Note Ten</label>
         <length>32768</length>
@@ -302,6 +305,7 @@
     </fields>
     <fields>
         <fullName>Richiesta__c</fullName>
+        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Richiesta</label>
         <length>32768</length>

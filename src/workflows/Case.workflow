@@ -25,6 +25,126 @@
         <template>Email_template_US/Auto_Reply_Customer_Care_Americano_Christmas</template>
     </alerts>
     <alerts>
+        <fullName>Auto_Reply_Customer_Care_Cinese_CN</fullName>
+        <description>Auto-Reply Customer Care Cinese CN</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Email_Cliente_input__c</field>
+            <type>email</type>
+        </recipients>
+        <senderAddress>no-reply.customercare@brunellocucinelli.it</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Modelli_Email_Customer_care/Auto_Reply_Customer_Care_Cinese_CN</template>
+    </alerts>
+    <alerts>
+        <fullName>Auto_Reply_Customer_Care_Cinese_HK_TW_MO</fullName>
+        <description>Auto-Reply Customer Care Cinese HK,TW,MO</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Email_Cliente_input__c</field>
+            <type>email</type>
+        </recipients>
+        <senderAddress>no-reply.customercare@brunellocucinelli.it</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Modelli_Email_Customer_care/Auto_Reply_Customer_Care_Cinese_HK_TW_MO</template>
+    </alerts>
+    <alerts>
+        <fullName>Auto_Reply_Customer_Care_Festa_Cinese_CN</fullName>
+        <description>Auto-Reply Customer Care Festa Cinese CN</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Email_Cliente_input__c</field>
+            <type>email</type>
+        </recipients>
+        <senderAddress>no-reply.customercare@brunellocucinelli.it</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Out_of_Office_Customer_Care_Festa/Auto_Reply_Customer_Care_Festa_Cinese_CN</template>
+    </alerts>
+    <alerts>
+        <fullName>Auto_Reply_Customer_Care_Festa_Cinese_HKTWMO</fullName>
+        <description>Auto-Reply Customer Care Festa Cinese HK, TW, MO</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Email_Cliente_input__c</field>
+            <type>email</type>
+        </recipients>
+        <senderAddress>no-reply.customercare@brunellocucinelli.it</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Out_of_Office_Customer_Care_Festa/Auto_Reply_Customer_Care_Festa_Cinese_HK_TW_MO</template>
+    </alerts>
+    <alerts>
+        <fullName>Auto_Reply_Customer_Care_Festa_Francese</fullName>
+        <description>Auto-Reply Customer Care Festa Francese</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Email_Cliente_input__c</field>
+            <type>email</type>
+        </recipients>
+        <senderAddress>no-reply.customercare@brunellocucinelli.it</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Out_of_Office_Customer_Care_Festa/Auto_Reply_Customer_Care_Festa_Francese</template>
+    </alerts>
+    <alerts>
+        <fullName>Auto_Reply_Customer_Care_Festa_Giapponese</fullName>
+        <description>Auto-Reply Customer Care Festa Giapponese</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Email_Cliente_input__c</field>
+            <type>email</type>
+        </recipients>
+        <senderAddress>no-reply.customercare@brunellocucinelli.it</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Out_of_Office_Customer_Care_Festa/Auto_Reply_Customer_Care_Festa_Giapponese</template>
+    </alerts>
+    <alerts>
+        <fullName>Auto_Reply_Customer_Care_Festa_ROW</fullName>
+        <description>Auto-Reply Customer Care Festa ROW</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Email_Cliente_input__c</field>
+            <type>email</type>
+        </recipients>
+        <senderAddress>no-reply.customercare@brunellocucinelli.it</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Out_of_Office_Customer_Care_Festa/Auto_Reply_Customer_Care_Festa_ROW</template>
+    </alerts>
+    <alerts>
+        <fullName>Auto_Reply_Customer_Care_Festa_Russo</fullName>
+        <description>Auto-Reply Customer Care Festa Russo</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Email_Cliente_input__c</field>
+            <type>email</type>
+        </recipients>
+        <senderAddress>no-reply.customercare@brunellocucinelli.it</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Out_of_Office_Customer_Care_Festa/Auto_Reply_Customer_Care_Festa_Russo</template>
+    </alerts>
+    <alerts>
+        <fullName>Auto_Reply_Customer_Care_Festa_Spagnolo</fullName>
+        <description>Auto-Reply Customer Care Festa Spagnolo</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Email_Cliente_input__c</field>
+            <type>email</type>
+        </recipients>
+        <senderAddress>no-reply.customercare@brunellocucinelli.it</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Out_of_Office_Customer_Care_Festa/Auto_Reply_Customer_Care_Festa_Spagnolo</template>
+    </alerts>
+    <alerts>
+        <fullName>Auto_Reply_Customer_Care_Festa_Svizzero</fullName>
+        <description>Auto-Reply Customer Care Festa Svizzero</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Email_Cliente_input__c</field>
+            <type>email</type>
+        </recipients>
+        <senderAddress>no-reply.customercare@brunellocucinelli.it</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Out_of_Office_Customer_Care_Festa/Auto_Reply_Customer_Care_Festa_Svizzero</template>
+    </alerts>
+    <alerts>
         <fullName>Auto_Reply_Customer_Care_Francese</fullName>
         <description>Auto-Reply Customer Care Francese</description>
         <protected>false</protected>
@@ -97,6 +217,18 @@
         <template>Modelli_Email_Customer_care/Auto_Reply_Customer_Care_ROW_Christmas</template>
     </alerts>
     <alerts>
+        <fullName>Auto_Reply_Customer_Care_Russo</fullName>
+        <description>Auto-Reply Customer Care Russo</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Email_Cliente_input__c</field>
+            <type>email</type>
+        </recipients>
+        <senderAddress>no-reply.customercare@brunellocucinelli.it</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Modelli_Email_Customer_care/Auto_Reply_Customer_Care_Russo</template>
+    </alerts>
+    <alerts>
         <fullName>Auto_Reply_Customer_Care_Spagnolo</fullName>
         <description>Auto-Reply Customer Care Spagnolo</description>
         <protected>false</protected>
@@ -157,6 +289,30 @@
         <template>Email_template_US/Auto_Reply_Notify_Me_Customer_Care_Americano</template>
     </alerts>
     <alerts>
+        <fullName>Auto_Reply_Notify_Me_Customer_Care_Cinese_CN</fullName>
+        <description>Auto-Reply Notify Me Customer Care Cinese CN</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Email_Cliente_input__c</field>
+            <type>email</type>
+        </recipients>
+        <senderAddress>no-reply.customercare@brunellocucinelli.it</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Modelli_Email_Customer_care/Auto_Reply_Notify_Me_Customer_Care_Cinese_CN</template>
+    </alerts>
+    <alerts>
+        <fullName>Auto_Reply_Notify_Me_Customer_Care_Cinese_HK_TW_MO</fullName>
+        <description>Auto-Reply Notify Me Customer Care Cinese HK,TW,MO</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Email_Cliente_input__c</field>
+            <type>email</type>
+        </recipients>
+        <senderAddress>no-reply.customercare@brunellocucinelli.it</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Modelli_Email_Customer_care/Auto_Reply_Notify_Me_Customer_Care_Cinese_HK_TW_MO</template>
+    </alerts>
+    <alerts>
         <fullName>Auto_Reply_Notify_Me_Customer_Care_Francese</fullName>
         <description>Auto-Reply Notify Me Customer Care Francese</description>
         <protected>false</protected>
@@ -191,6 +347,18 @@
         <senderAddress>no-reply.customercare@brunellocucinelli.it</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>Modelli_Email_Customer_care/Auto_Reply_Notify_Me_Customer_Care_ROW</template>
+    </alerts>
+    <alerts>
+        <fullName>Auto_Reply_Notify_Me_Customer_Care_Russo</fullName>
+        <description>Auto-Reply Notify Me Customer Care Russo</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Email_Cliente_input__c</field>
+            <type>email</type>
+        </recipients>
+        <senderAddress>no-reply.customercare@brunellocucinelli.it</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Modelli_Email_Customer_care/Auto_Reply_Notify_Me_Customer_Care_Russo</template>
     </alerts>
     <alerts>
         <fullName>Auto_Reply_Notify_Me_Customer_Care_Spagnolo</fullName>
@@ -490,6 +658,10 @@
         <description>Email Alert - Notify Me -Capo Online</description>
         <protected>false</protected>
         <recipients>
+            <recipient>Customer_Care_IT</recipient>
+            <type>group</type>
+        </recipients>
+        <recipients>
             <type>owner</type>
         </recipients>
         <senderType>CurrentUser</senderType>
@@ -548,6 +720,17 @@
         </recipients>
         <senderType>CurrentUser</senderType>
         <template>Assignment_Templates/Email_Template_Notify_Me_Recommendation_inserite</template>
+    </alerts>
+    <alerts>
+        <fullName>Email_Alert_Notify_Me_Reminder_inserimento_Tracking_Number</fullName>
+        <description>Email Alert - Notify Me - Reminder inserimento Tracking Number</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderAddress>no-reply.customercare@brunellocucinelli.it</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Assignment_Templates/Email_Template_Notify_Me_Reminder_inserimento_Tracking_Number</template>
     </alerts>
     <alerts>
         <fullName>Email_Alert_Notify_Me_Richiesta_Annullata</fullName>
@@ -850,6 +1033,40 @@ Nazione_input__c &lt;&gt; &quot;US&quot;,
 Nazione_input__c = &quot;US&quot;, 
 !BEGINS(Subject, &quot;I can&apos;t find my size online&quot;))</formula>
         <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Notify Me Cases Capo Prenotato</fullName>
+        <active>true</active>
+        <criteriaItems>
+            <field>Case.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Ticket E-commerce – Notify Me</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Status</field>
+            <operation>equals</operation>
+            <value>Capo prenotato</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Ubicazione__c</field>
+            <operation>equals</operation>
+            <value>Boutique DOS</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Data_prenotazione_capo__c</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <description>Schedulazione reminder inserimento Tracking Number per Ticket E-commerce – Notify Me</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+        <workflowTimeTriggers>
+            <actions>
+                <name>Email_Alert_Notify_Me_Reminder_inserimento_Tracking_Number</name>
+                <type>Alert</type>
+            </actions>
+            <offsetFromField>Case.Data_prenotazione_capo__c</offsetFromField>
+            <timeLength>2</timeLength>
+            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
     </rules>
     <rules>
         <fullName>Notify Me Cases Ubicazione Boutique</fullName>
