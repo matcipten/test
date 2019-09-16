@@ -3,15 +3,16 @@
     
     <ltng:require scripts="/resource/masonry" />    
     
-    <aura:attribute name="recordId" type="String"/>
+    <aura:attribute name="recordId" type="String" access="GLOBAL"/>
     <aura:attribute name="attachments" type="Object[]"/>
+    <aura:attribute name="showall" type="boolean" default="true"/>  <!-- MC-CR19#28 add checkbox-->
     <aura:attribute name="index" type="Integer" default="0" />
     <aura:attribute name="max_value" type="Integer" default="0" />
     <aura:attribute name="isOpen" type="boolean" default="false"/>
     <aura:attribute name="isButtonShownRight" type="boolean" default="false"/>
     <aura:attribute name="isButtonShownleft" type="boolean" default="false"/>
     
-    <aura:attribute name="productToShow" type="String" default="purchase" description="Definisce i prodotti da mostrare nella slide" />
+    <aura:attribute name="productToShow" type="String" default="purchase" description="Definisce i prodotti da mostrare nella slide" access="GLOBAL" />
     
     
     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
@@ -32,9 +33,12 @@
                         </div>
                         
                         <div class="slds-media__body">
-                            <h1 class="slds-page-header__title slds-m-right--small slds-align-middle slds-truncate" title="Signature List">{!v.productToShow} ({!v.attachments.length})</h1>
+                            <h1 class="slds-page-header__title slds-m-right--small slds-align-middle slds-truncate" title="Signature List">{!v.productToShow} pictures (when available)</h1>
                         </div>
                     </div>
+
+                    <!-- MC-CR19#28 Add checkbox -->
+                    <lightning:input label="{!$Label.c.Chk_MostraGifts}" type="checkbox" name="viewOption" aura:id="viewOption" onchange="{!c.showGifts}" class="{!(v.productToShow == 'purchase') ? 'slds-hide' : 'slds-form-element'}" checked="true"/>
                     
                     <div class="slds-grid slds-wrap row slds-text-align_center">
                         <div class="slds-col slds-size_12-of-12 slds-large-size_12-of-12">
@@ -51,8 +55,9 @@
                 <div id="container" class="container">
                     <div class="slider">
                         <div id="content" class="content">
+                            
                             <aura:iteration items="{!v.attachments}" var="a" end="{!v.max_value}">
-                                <a href="{!'/'+a.productId}" target="_blank">
+                                <a href="{!(a.isGift == true ? '/'+a.Id : '/'+a.productId)}" target="_blank" class="{!(and(v.showall == false,a.isGift == true) ? 'slds-hide' : '')}">
                                     <div class="slide">
                                         <div class="slide-content">
                                             <img src="{!'/sfc/servlet.shepherd/version/download/'+a.imageId}" class="{!'image' + ' ' +  (a.productReso ? '' : '' )}" />
@@ -103,7 +108,7 @@
                 <div class="slds-modal__content slds-p-around--medium">
                     <div class="grid masonry" id="mansory-grid" aura:id="mansory-grid">
                         <aura:iteration items="{!v.attachments}" var="a" >
-                            <a href="{!'/'+a.productId}" target="_blank">
+                            <a href="{!(a.isGift == true ? '/'+a.Id : '/'+a.productId)}" target="_blank" class="{!(and(v.showall == false,a.isGift == true) ? 'slds-hide' : '')}">
                                 <div class="grid-item item">
                                     <div class="modal-content">
                                         <img src="{!'/sfc/servlet.shepherd/version/download/'+a.imageId}" class="{!'image' + ' ' +  (a.productReso ? '' : '' )}" />

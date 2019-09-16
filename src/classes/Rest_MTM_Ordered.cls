@@ -17,7 +17,7 @@ global without sharing class Rest_MTM_Ordered {
     }    
     
     public static List<OrderResponseWrapper> getOrdine(List<Ordine_Sartoria_Solomeo__c> ordineList, List<Account> accountList,List<Associated__c> associateList ,  List<Account_Misure_Sartoriali__c> misureList){
-        
+       // system.debug('accountList '+ accountList.size());
         List<OrderResponseWrapper> orderWrapList = new List<OrderResponseWrapper>();
         //MC- 2018.08.03 create map orderId ==> related attachment list #start
         Map<string,List<AttachWrapper>> orderIdToAttachs = new Map<string,List<AttachWrapper>>();
@@ -36,7 +36,7 @@ global without sharing class Rest_MTM_Ordered {
         //MC- 2018.08.03 create map orderId ==> related attachment list #End
         
         for(Ordine_Sartoria_Solomeo__c ossW : ordineList){
-            system.debug('ossW : ' +ossW);
+            //system.debug('ossW : ' +ossW);
             OrderResponseWrapper orderWrap = new OrderResponseWrapper();
             //orderWrap.ordine = ossw;
             orderWrap.id = ossW.Id ;
@@ -71,13 +71,18 @@ global without sharing class Rest_MTM_Ordered {
             orderWrap.Prezzo_number = ossW.Prezzo_number__c;
             orderWrap.Prezzo_valuta = ossW.Prezzo_valuta__c;
             orderWrap.Record_Type_Giacca = ossW.Record_Type_Giacca__c;
+            orderWrap.Etichetta_personalizzata = ossW.Etichetta_personalizzata__c;
+            orderWrap.Name_etichetta = ossW.Name_etichetta__c;
+            orderWrap.Data_etichetta = ossW.Data_etichetta__c;
+            orderWrap.Papillon = ossW.Papillon__c;
+            orderWrap.Fascia_Smoking = ossW.Fascia_Smoking__c;
             if(orderIdToAttachs.containsKey(ossW.Id)){  //MC-
                 orderWrap.orderAttachments = orderIdToAttachs.get(ossW.Id);
             }   
             //List<CustomerMisureWrapper> cmwList = new List<CustomerMisureWrapper>();
             
             for(Account accW : accountList){
-                system.debug('accW : ' +accW);
+                //system.debug('accW : ' +accW);
                 if(accW.Id == ossw.Cliente__c){
                     CustomerMisureWrapper cmw = new CustomerMisureWrapper();
                     cmw.Id = accW.Id;
@@ -87,7 +92,7 @@ global without sharing class Rest_MTM_Ordered {
                     cmw.Id_Cliente_Relate = accW.Id_Cliente_Relate__c;
                     List<Account_Misure_Sartoriali__c> amsWList = new List<Account_Misure_Sartoriali__c>();
                     for(Account_Misure_Sartoriali__c amsW :  misureList){
-                        system.debug('amsW : ' +amsW);
+                        //system.debug('amsW : ' +amsW);
                         if(amsW.Account__c == accW.Id ){
                             amsWList.add(amsW);
                         }
@@ -97,7 +102,7 @@ global without sharing class Rest_MTM_Ordered {
                     orderWrap.Customer = cmw;
                 }
                 for(Associated__c assoc : associateList){
-                    system.debug('ossW.Associate__c : ' + ossW.Associate__c);
+                   // system.debug('ossW.Associate__c : ' + ossW.Associate__c);
                     if(assoc.Id == ossW.Associate__c ){
                         AssociateWrapper assocWrap = new AssociateWrapper();
                         assocWrap.Id = assoc.Id;
@@ -110,7 +115,7 @@ global without sharing class Rest_MTM_Ordered {
             }
             
             
-            system.debug('orderWrap : ' + orderWrap);
+           // system.debug('orderWrap : ' + orderWrap);
             orderWrapList.add(orderWrap);
         }
         //ow.ordine = orderWrapList;
@@ -147,6 +152,7 @@ global without sharing class Rest_MTM_Ordered {
         
         List<Account> result = new List<Account>();
         result = GenericDao.getAllFieldsListWhereInConditionsWithNoLimits('Account', 'Id', setAccountIds);
+        system.debug('result Account : '+result);
         return result;
         
     }
@@ -201,7 +207,7 @@ global without sharing class Rest_MTM_Ordered {
                 if(usr.Nome_Profilo__c == 'BC - Associate'){
                     List<Associated__c> associate = new List<Associated__c>();
                     associate = GenericDao.getAllFieldsListResultById('Associated__c', 'Id_Associate__c', usr.Codice_Associate__c);
-                    System.debug('SV associate: ' + associate);
+                    //System.debug('SV associate: ' + associate);
                     Id associateId = associate[0].Id;
                     orderedList = RestOrderedHandler.getOrdineSartoriaSolomeoByAssociate(associateId);
                     
@@ -286,6 +292,10 @@ global without sharing class Rest_MTM_Ordered {
                 system.debug('accountList : ' +accountList);
                 system.debug('accountList : ' +misureList);
                 
+                system.debug('Aksha orderedList : ' +orderedList.size());
+                system.debug('Aksha accountList : ' +accountList.size());
+                system.debug('Aksha misureList : ' +misureList.size());
+                system.debug('Aksha orderedList : ' +orderedList.size());
                 result = getOrdine (orderedList, accountList , associateList ,  misureList );
             }
             
@@ -448,6 +458,12 @@ m.put(singleOrder.Id, singleOrder);
         Decimal Prezzo_number;
         String Prezzo_valuta;
         String Record_Type_Giacca;
+        Boolean Etichetta_personalizzata;
+        String Name_etichetta;
+        String Data_etichetta;
+        Boolean Papillon;
+        Boolean Fascia_Smoking;
+
                
         
         List<AttachWrapper> orderAttachments;

@@ -1,6 +1,19 @@
-<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction,lightning:isUrlAddressable" access="global" >
-   	<aura:attribute name="textButton" type="String" default="Create new Customer" />
-    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
-    
-    <ui:button label="{!v.textButton}" press="{!c.openActionWindow}" class="ten_button"/>
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction,lightning:isUrlAddressable"
+                access="global">
+    <aura:attribute name="textButton"
+                    type="String"
+                    default="New Digital customer card" />
+    <aura:handler name="init"
+                  value="{!this}"
+                  action="{!c.doInit}" />
+    <lightning:navigation aura:id="navService" />
+    <!-- <ui:button label="{!v.textButton}"
+               press="{!c.openActionWindow}"
+               class="ten_button" /> -->
+    <lightning:button variant="neutral"
+                      onclick="{!c.openActionWindow}"
+                      label="{!$Label.c.New_DCC}"
+	                  title="{!$Label.c.New_DCC}"
+                      class="slds-m-bottom_x-small slds-m-top_x-small ten_button2" />
+
 </aura:component>

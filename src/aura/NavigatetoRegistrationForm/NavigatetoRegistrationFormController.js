@@ -2,7 +2,7 @@
     doInit : function(component, event, helper) {
         console.log('recordId ' + component.get("v.recordId"));
         if (component.get("v.recordId") === undefined) {
-			component.set("v.textButton", "Create new Customer");
+			component.set("v.textButton", "Digital customer card");
         } else {
 			component.set("v.textButton", "Update Customer");        
         }        
@@ -10,8 +10,19 @@
     
     openActionWindow : function(component, event, helper) {        
         console.log('recordId ' + component.get("v.recordId"));
-        if (component.get("v.recordId") === undefined) {
-            window.open('/c/RegistrationFormApp.app', '_self');
+         var navService = component.find("navService");
+        var pageReference = {
+            type: 'standard__component',
+            attributes: {
+                componentName: 'c__RegistrationForm',
+            },
+            state: {
+                
+            }
+        };
+        component.set("v.pageReference", pageReference);
+        navService.navigate(pageReference);
+         
             /*
             $A.get("e.force:closeQuickAction").fire();
             var urlEvent = $A.get("e.force:navigateToURL");
@@ -34,17 +45,7 @@
         urlEvent.fire();
             
              */
-        } else {
-            window.open('/c/RegistrationFormApp.app?Id=' + component.get("v.recordId"), '_self');
-            /*
-            $A.get("e.force:closeQuickAction").fire();
-            var urlEvent = $A.get("e.force:navigateToURL");
-            urlEvent.setParams({
-                "url": window.location.protocol + "//" + window.location.host + "/c/RegistrationFormApp.app?Id=" + component.get("v.recordId")
-            });
-            urlEvent.fire();
-            */
-        }
+       
     },
     
     openActionComponent : function(component, event, helper) {        

@@ -21,10 +21,6 @@
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
-        <actionName>Follow</actionName>
-        <type>Default</type>
-    </actionOverrides>
-    <actionOverrides>
         <actionName>List</actionName>
         <type>Default</type>
     </actionOverrides>
@@ -65,13 +61,6 @@
     </fields>
     <fields>
         <fullName>Family</fullName>
-        <picklist>
-            <picklistValues>
-                <fullName>None</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <trackHistory>false</trackHistory>
         <type>Picklist</type>
     </fields>
@@ -89,13 +78,6 @@
     </fields>
     <fields>
         <fullName>QuantityUnitOfMeasure</fullName>
-        <picklist>
-            <picklistValues>
-                <fullName>Ciascuno</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <trackHistory>false</trackHistory>
         <type>Picklist</type>
     </fields>

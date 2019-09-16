@@ -1,3 +1,11 @@
-<aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:appHostable" >
-	<ui:button press="{!c.createRecord}" label="{!$Label.c.Nuova_Riparazione}" class="ten_button"/>
+<aura:component controller="NuovaRiparazioneController"
+                implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:appHostable">
+	<!-- <ui:button press="{!c.createRecord}"
+	           label="{!$Label.c.Nuova_Riparazione}"
+	           class="ten_button" /> -->
+	<lightning:button variant="neutral"
+	                  onclick="{!c.createRecord}"
+	                  label="{!$Label.c.Nuova_Riparazione}"
+	                  title="{!$Label.c.Nuova_Riparazione}"
+	                  class="slds-m-bottom_x-small slds-m-top_x-small ten_button2" />
 </aura:component>

@@ -77,5 +77,23 @@
         alert('thanks for like Us :)');
         component.set("v.isOpen", false);
     },
+
+    //MC-CR19#28 CheckBox
+    showGifts: function(component, event, helper) {
+        console.log("MC- Dentro showGifts");
+        //var checkbox = event.getSource();
+        var element = component.find("viewOption");
+        // var element = document.getElementById("viewOption");
+        //var check = element.get("v.checked");
+        var check = element.get('v.checked');
+        console.log("MC- check: " + check);
+        console.log("showall1: " + component.get("v.showall"));
+        if(check){
+            component.set("v.showall",true);
+        }else{
+            component.set("v.showall",false);
+        }
+        console.log("showall2: " + component.get("v.showall"));
+    },
     
 })

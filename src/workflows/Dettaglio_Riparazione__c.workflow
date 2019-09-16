@@ -34,6 +34,10 @@
             <recipient>simona.caterina@brunellocucinelli.it</recipient>
             <type>user</type>
         </recipients>
+        <recipients>
+            <recipient>vincenza.tralli@brunellocucinelli.it</recipient>
+            <type>user</type>
+        </recipients>
         <senderType>CurrentUser</senderType>
         <template>Riparazione/Riparazione_1_avviso_nuova_riparazione</template>
     </alerts>
@@ -129,7 +133,7 @@
     </alerts>
     <alerts>
         <fullName>Nuova_riparazione_DK_GB</fullName>
-        <description>Nuova riparazione DK, GB</description>
+        <description>Nuova riparazione GB, DK, BE, AT, FR, DE</description>
         <protected>false</protected>
         <recipients>
             <recipient>arianna.ricci@brunellocucinelli.it</recipient>
@@ -447,13 +451,13 @@ NOT(ISBLANK(Data_riparazione_prevista__c )))</formula>
         <triggerType>onCreateOnly</triggerType>
     </rules>
     <rules>
-        <fullName>Creazione Riparazione Sede - GB%2C DK</fullName>
+        <fullName>Creazione Riparazione Sede - GB%2C DK%2C BE%2C AT%2C FR%2C DE</fullName>
         <actions>
             <name>Nuova_riparazione_DK_GB</name>
             <type>Alert</type>
         </actions>
         <active>true</active>
-        <booleanFilter>1 AND (2 OR 3 OR 4 OR 5)</booleanFilter>
+        <booleanFilter>1 AND (2 OR 3 OR 4 OR 5 OR 6 OR 7 OR 8)</booleanFilter>
         <criteriaItems>
             <field>Dettaglio_Riparazione__c.RecordTypeId</field>
             <operation>equals</operation>
@@ -479,7 +483,22 @@ NOT(ISBLANK(Data_riparazione_prevista__c )))</formula>
             <operation>equals</operation>
             <value>NL</value>
         </criteriaItems>
-        <description>Invio alert nuova riparazione per Inghilterra, Danimarca</description>
+        <criteriaItems>
+            <field>User.Nation_Contact_Card__c</field>
+            <operation>equals</operation>
+            <value>AT</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>User.Nation_Contact_Card__c</field>
+            <operation>equals</operation>
+            <value>FR</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>User.Nation_Contact_Card__c</field>
+            <operation>equals</operation>
+            <value>DE</value>
+        </criteriaItems>
+        <description>Invio alert nuova riparazione per Inghilterra, Danimarca, Belgio, Austria, Francia, Germania</description>
         <triggerType>onCreateOnly</triggerType>
     </rules>
     <rules>
@@ -496,7 +515,7 @@ NOT(ISBLANK(Data_riparazione_prevista__c )))</formula>
             <value>Riparazione - Sede</value>
         </criteriaItems>
         <criteriaItems>
-            <field>User.Country</field>
+            <field>User.Nation_Contact_Card__c</field>
             <operation>equals</operation>
             <value>IT</value>
         </criteriaItems>

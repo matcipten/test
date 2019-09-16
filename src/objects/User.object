@@ -21,10 +21,6 @@
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
-        <actionName>Follow</actionName>
-        <type>Default</type>
-    </actionOverrides>
-    <actionOverrides>
         <actionName>FreezeUserAction</actionName>
         <type>Default</type>
     </actionOverrides>
@@ -49,6 +45,10 @@
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
+        <actionName>SmsHighlightAction</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
         <actionName>UpdateBannerPhotoAction</actionName>
         <type>Default</type>
     </actionOverrides>
@@ -62,12 +62,44 @@
     <fields>
         <fullName>Area_MTM__c</fullName>
         <externalId>false</externalId>
-        <globalPicklist>Area_MTM</globalPicklist>
         <label>Area MTM</label>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <type>MultiselectPicklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>Area_MTM</valueSetName>
+        </valueSet>
         <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Canale_di_Vendita__c</fullName>
+        <externalId>false</externalId>
+        <label>Canale di Vendita</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Monobrand</fullName>
+                    <default>false</default>
+                    <label>Monobrand</label>
+                </value>
+                <value>
+                    <fullName>Department</fullName>
+                    <default>false</default>
+                    <label>Department</label>
+                </value>
+                <value>
+                    <fullName>Franchising</fullName>
+                    <default>false</default>
+                    <label>Franchising</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Codice_Associate__c</fullName>
@@ -111,6 +143,25 @@
         <type>Checkbox</type>
     </fields>
     <fields>
+        <fullName>European_User__c</fullName>
+        <externalId>false</externalId>
+        <formula>CASE( TEXT( Nation_Contact_Card__c ) ,                        
+&quot;IT&quot;,1,
+&quot;FR&quot;,1,
+&quot;AT&quot;,1,
+&quot;DE&quot;,1,
+&quot;BE&quot;,1,
+&quot;GR&quot;,1,
+&quot;GB&quot;,1,
+&quot;ES&quot;,1,
+&quot;MC&quot;,1,
+&quot;CH&quot;,1,
+&quot;NL&quot;,1,
+0)=1</formula>
+        <label>European User</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>Id_Store_Manager__c</fullName>
         <encrypted>false</encrypted>
         <externalId>false</externalId>
@@ -124,11 +175,14 @@
     <fields>
         <fullName>Language_Contact_Card__c</fullName>
         <externalId>false</externalId>
-        <globalPicklist>Language</globalPicklist>
         <label>Language Contact Card</label>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>Language</valueSetName>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Language_Email__c</fullName>
@@ -149,11 +203,14 @@
     <fields>
         <fullName>Nation_Contact_Card__c</fullName>
         <externalId>false</externalId>
-        <globalPicklist>Nation</globalPicklist>
         <label>Nation Contact Card</label>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>Nation</valueSetName>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Nome_Profilo__c</fullName>
@@ -164,6 +221,14 @@
         <required>false</required>
         <type>Text</type>
         <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Store_Manager__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF (Profile.Id  = $Setup.Profile__c.Id_Boutique__c,  true, false)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Store Manager</label>
+        <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>et4ae5__Default_ET_Page__c</fullName>
@@ -315,20 +380,256 @@
         <columns>CORE.USER_ROLE.NAME</columns>
         <columns>CORE.USERS.ACTIVE</columns>
         <columns>CORE.PROFILE.NAME</columns>
+        <columns>Codice_Boutique__c</columns>
+        <columns>Codice_Associate__c</columns>
         <columns>CORE.USERS.COMMUNITY_NICKNAME</columns>
         <columns>CORE.USERS.LAST_LOGIN</columns>
         <columns>CORE.USERS.ADDRESS_COUNTRY</columns>
         <columns>CREATED_DATE</columns>
+        <columns>MANAGER</columns>
         <filterScope>Everything</filterScope>
         <filters>
-            <field>CORE.USER_ROLE.NAME</field>
-            <operation>equals</operation>
-            <value>ALL ASSOCIATE</value>
+            <field>CORE.PROFILE.NAME</field>
+            <operation>contains</operation>
+            <value>associate</value>
         </filters>
         <label>Associate</label>
         <language>en_US</language>
         <sharedTo>
+            <group>HQ_Admin</group>
             <role>Sede</role>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Associate_CA</fullName>
+        <columns>FULL_NAME</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <columns>CORE.USERS.USERNAME</columns>
+        <columns>CORE.USERS.LAST_LOGIN</columns>
+        <columns>CORE.USER_ROLE.NAME</columns>
+        <columns>CORE.USERS.ACTIVE</columns>
+        <columns>CORE.PROFILE.NAME</columns>
+        <columns>MANAGER</columns>
+        <columns>Codice_Associate__c</columns>
+        <columns>Codice_Boutique__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CORE.PROFILE.NAME</field>
+            <operation>contains</operation>
+            <value>associate</value>
+        </filters>
+        <filters>
+            <field>CORE.USERS.ADDRESS_COUNTRY</field>
+            <operation>contains</operation>
+            <value>CA</value>
+        </filters>
+        <label>Associate CA</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>Associate_DK</fullName>
+        <booleanFilter>(1 OR 2) AND 3</booleanFilter>
+        <columns>FULL_NAME</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <columns>CORE.USERS.USERNAME</columns>
+        <columns>CORE.USERS.LAST_LOGIN</columns>
+        <columns>CORE.USER_ROLE.NAME</columns>
+        <columns>CORE.USERS.ACTIVE</columns>
+        <columns>CORE.PROFILE.NAME</columns>
+        <columns>MANAGER</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CORE.PROFILE.NAME</field>
+            <operation>equals</operation>
+            <value>BC - Associate</value>
+        </filters>
+        <filters>
+            <field>CORE.PROFILE.NAME</field>
+            <operation>equals</operation>
+            <value>BC - Boutique</value>
+        </filters>
+        <filters>
+            <field>CORE.USERS.ADDRESS_COUNTRY</field>
+            <operation>equals</operation>
+            <value>DK</value>
+        </filters>
+        <label>Associate DK</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>Associate_GR</fullName>
+        <columns>FULL_NAME</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <columns>CORE.USERS.USERNAME</columns>
+        <columns>CORE.USERS.LAST_LOGIN</columns>
+        <columns>CORE.USER_ROLE.NAME</columns>
+        <columns>CORE.USERS.ACTIVE</columns>
+        <columns>CORE.PROFILE.NAME</columns>
+        <columns>MANAGER</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CORE.PROFILE.NAME</field>
+            <operation>equals</operation>
+            <value>BC - Associate</value>
+        </filters>
+        <filters>
+            <field>CORE.USERS.ADDRESS_COUNTRY</field>
+            <operation>equals</operation>
+            <value>GR</value>
+        </filters>
+        <label>Associate GR</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>Associate_IT</fullName>
+        <columns>FULL_NAME</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <columns>CORE.USERS.USERNAME</columns>
+        <columns>CORE.USER_ROLE.NAME</columns>
+        <columns>CORE.USERS.ACTIVE</columns>
+        <columns>CORE.PROFILE.NAME</columns>
+        <columns>CORE.USERS.COMMUNITY_NICKNAME</columns>
+        <columns>CORE.USERS.LAST_LOGIN</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>CurrencyISOcode__c</columns>
+        <columns>Codice_Boutique__c</columns>
+        <columns>Codice_Associate__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CORE.PROFILE.NAME</field>
+            <operation>contains</operation>
+            <value>associate</value>
+        </filters>
+        <filters>
+            <field>CORE.USERS.USERNAME</field>
+            <operation>contains</operation>
+            <value>cucinelli.it</value>
+        </filters>
+        <filters>
+            <field>CORE.USERS.ADDRESS_COUNTRY</field>
+            <operation>equals</operation>
+            <value>IT</value>
+        </filters>
+        <label>Associate IT</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>Associate_JP</fullName>
+        <columns>FULL_NAME</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <columns>CORE.USERS.USERNAME</columns>
+        <columns>CORE.USERS.LAST_LOGIN</columns>
+        <columns>CORE.USER_ROLE.NAME</columns>
+        <columns>CORE.USERS.ACTIVE</columns>
+        <columns>CORE.PROFILE.NAME</columns>
+        <columns>MANAGER</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CORE.USERS.ADDRESS_COUNTRY</field>
+            <operation>equals</operation>
+            <value>JP</value>
+        </filters>
+        <filters>
+            <field>CORE.PROFILE.NAME</field>
+            <operation>contains</operation>
+            <value>associate</value>
+        </filters>
+        <label>Associate JP</label>
+        <language>en_US</language>
+        <sharedTo>
+            <group>HQ_Admin</group>
+            <group>Local_Admin</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Associate_NL</fullName>
+        <columns>FULL_NAME</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <columns>CORE.USERS.USERNAME</columns>
+        <columns>CORE.USERS.LAST_LOGIN</columns>
+        <columns>CORE.USER_ROLE.NAME</columns>
+        <columns>CORE.USERS.ACTIVE</columns>
+        <columns>CORE.PROFILE.NAME</columns>
+        <columns>MANAGER</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CORE.PROFILE.NAME</field>
+            <operation>contains</operation>
+            <value>BC</value>
+        </filters>
+        <filters>
+            <field>CORE.USERS.ADDRESS_COUNTRY</field>
+            <operation>equals</operation>
+            <value>NL</value>
+        </filters>
+        <filters>
+            <field>Codice_Boutique__c</field>
+            <operation>equals</operation>
+            <value>911</value>
+        </filters>
+        <label>Associate NL</label>
+        <language>it</language>
+    </listViews>
+    <listViews>
+        <fullName>Associate_RU</fullName>
+        <columns>FULL_NAME</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <columns>CORE.USERS.USERNAME</columns>
+        <columns>CORE.USERS.LAST_LOGIN</columns>
+        <columns>CORE.USER_ROLE.NAME</columns>
+        <columns>CORE.USERS.ACTIVE</columns>
+        <columns>CORE.PROFILE.NAME</columns>
+        <columns>MANAGER</columns>
+        <columns>LANGUAGE</columns>
+        <columns>Codice_Boutique__c</columns>
+        <columns>Codice_Associate__c</columns>
+        <columns>Nation_Contact_Card__c</columns>
+        <columns>Language_Contact_Card__c</columns>
+        <columns>Canale_di_Vendita__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CORE.PROFILE.NAME</field>
+            <operation>contains</operation>
+            <value>Associate</value>
+        </filters>
+        <filters>
+            <field>CORE.USERS.EMAIL</field>
+            <operation>contains</operation>
+            <value>cucinelli.ru</value>
+        </filters>
+        <label>Associate RU</label>
+        <language>en_US</language>
+        <sharedTo>
+            <group>HQ_Admin</group>
+            <group>Local_Admin</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Boutique_RU</fullName>
+        <columns>FULL_NAME</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <columns>CORE.USERS.USERNAME</columns>
+        <columns>CORE.USERS.LAST_LOGIN</columns>
+        <columns>CORE.USER_ROLE.NAME</columns>
+        <columns>CORE.USERS.ACTIVE</columns>
+        <columns>CORE.PROFILE.NAME</columns>
+        <columns>MANAGER</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CORE.USERS.ADDRESS_COUNTRY</field>
+            <operation>equals</operation>
+            <value>RU</value>
+        </filters>
+        <filters>
+            <field>CORE.PROFILE.NAME</field>
+            <operation>contains</operation>
+            <value>boutique</value>
+        </filters>
+        <label>Boutique RU</label>
+        <language>en_US</language>
+        <sharedTo>
+            <group>HQ_Admin</group>
+            <group>Local_Admin</group>
         </sharedTo>
     </listViews>
     <listViews>
@@ -343,6 +644,8 @@
         <columns>CORE.PROFILE.NAME</columns>
         <columns>CORE.USERS.ACTIVE</columns>
         <columns>CORE.USERS.LAST_LOGIN</columns>
+        <columns>CurrencyISOcode__c</columns>
+        <columns>DEFAULT_CURRENCY</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>CORE.PROFILE.NAME</field>
@@ -363,6 +666,7 @@
         <columns>CORE.PROFILE.NAME</columns>
         <columns>CORE.USERS.ACTIVE</columns>
         <columns>CORE.USERS.LAST_LOGIN</columns>
+        <columns>TIMEZONE</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>CORE.PROFILE.NAME</field>
@@ -415,9 +719,14 @@
         </filters>
         <label>Boutiques Japan</label>
         <language>it</language>
+        <sharedTo>
+            <group>HQ_Admin</group>
+            <group>Local_Admin</group>
+        </sharedTo>
     </listViews>
     <listViews>
         <fullName>Buying_Team</fullName>
+        <booleanFilter>1 or 2</booleanFilter>
         <columns>FULL_NAME</columns>
         <columns>CORE.USERS.ALIAS</columns>
         <columns>CORE.USERS.USERNAME</columns>
@@ -429,6 +738,11 @@
         <filterScope>Everything</filterScope>
         <filters>
             <field>CORE.USERS.DIVISION</field>
+            <operation>contains</operation>
+            <value>Buying</value>
+        </filters>
+        <filters>
+            <field>CORE.USERS.DEPARTMENT</field>
             <operation>contains</operation>
             <value>Buying</value>
         </filters>
@@ -471,8 +785,8 @@
         <filterScope>Everything</filterScope>
         <filters>
             <field>CORE.PROFILE.NAME</field>
-            <operation>equals</operation>
-            <value>BC - Customer Care 1° Level,BC - Customer Care 2° Level</value>
+            <operation>contains</operation>
+            <value>BC - Customer Care</value>
         </filters>
         <label>Customer Care ITA</label>
         <language>en_US</language>
@@ -496,34 +810,26 @@
         <language>en_US</language>
     </listViews>
     <listViews>
-        <fullName>New_Associate_07_09</fullName>
+        <fullName>Inactive_profiles</fullName>
         <columns>FULL_NAME</columns>
         <columns>CORE.USERS.ALIAS</columns>
         <columns>CORE.USERS.USERNAME</columns>
-        <columns>CORE.USERS.EMAIL</columns>
+        <columns>CORE.USERS.LAST_LOGIN</columns>
         <columns>CORE.USER_ROLE.NAME</columns>
         <columns>CORE.USERS.ACTIVE</columns>
         <columns>CORE.PROFILE.NAME</columns>
-        <columns>CORE.USERS.COMMUNITY_NICKNAME</columns>
-        <columns>CORE.USERS.LAST_LOGIN</columns>
-        <columns>CREATED_DATE</columns>
-        <columns>CurrencyISOcode__c</columns>
+        <columns>MANAGER</columns>
         <filterScope>Everything</filterScope>
         <filters>
-            <field>CORE.USER_ROLE.NAME</field>
+            <field>CORE.USERS.ACTIVE</field>
             <operation>equals</operation>
-            <value>ALL ASSOCIATE</value>
+            <value>0</value>
         </filters>
-        <filters>
-            <field>CREATED_DATE</field>
-            <operation>equals</operation>
-            <value>9/7/2018 12:00 AM</value>
-        </filters>
-        <label>New Associate 07-09</label>
+        <label>Inactive profiles</label>
         <language>en_US</language>
     </listViews>
     <listViews>
-        <fullName>New_Associate_15_10</fullName>
+        <fullName>New_Associate_07_09</fullName>
         <columns>FULL_NAME</columns>
         <columns>CORE.USERS.ALIAS</columns>
         <columns>CORE.USERS.USERNAME</columns>
@@ -545,13 +851,42 @@
         <filters>
             <field>CREATED_DATE</field>
             <operation>equals</operation>
-            <value>10/15/2018 12:00 AM</value>
+            <value>9/7/2018 12:00 AM</value>
         </filters>
-        <label>New Associate 15-10</label>
+        <label>New Associate 07-09</label>
         <language>en_US</language>
     </listViews>
     <listViews>
-        <fullName>New_Associate_17_09</fullName>
+        <fullName>New_Associate_09_04</fullName>
+        <columns>FULL_NAME</columns>
+        <columns>CORE.USERS.USERNAME</columns>
+        <columns>CORE.USERS.EMAIL</columns>
+        <columns>CORE.USER_ROLE.NAME</columns>
+        <columns>CORE.USERS.ACTIVE</columns>
+        <columns>CORE.PROFILE.NAME</columns>
+        <columns>CORE.USERS.LAST_LOGIN</columns>
+        <columns>CurrencyISOcode__c</columns>
+        <columns>Codice_Boutique__c</columns>
+        <columns>DEFAULT_CURRENCY</columns>
+        <columns>Language_Contact_Card__c</columns>
+        <columns>Nation_Contact_Card__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CORE.PROFILE.NAME</field>
+            <operation>contains</operation>
+            <value>Associate</value>
+        </filters>
+        <filters>
+            <field>CORE.USERS.EMAIL</field>
+            <operation>contains</operation>
+            <value>cucinelli.cn</value>
+        </filters>
+        <label>Associate CN</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>New_Associate_15_10</fullName>
+        <booleanFilter>1 AND 2</booleanFilter>
         <columns>FULL_NAME</columns>
         <columns>CORE.USERS.ALIAS</columns>
         <columns>CORE.USERS.USERNAME</columns>
@@ -563,18 +898,47 @@
         <columns>CORE.USERS.LAST_LOGIN</columns>
         <columns>CREATED_DATE</columns>
         <columns>CurrencyISOcode__c</columns>
+        <columns>Codice_Boutique__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
-            <field>CORE.USER_ROLE.NAME</field>
-            <operation>equals</operation>
-            <value>ALL ASSOCIATE</value>
+            <field>CORE.PROFILE.NAME</field>
+            <operation>contains</operation>
+            <value>BC -</value>
         </filters>
         <filters>
-            <field>CREATED_DATE</field>
-            <operation>equals</operation>
-            <value>9/17/2018 12:00 AM</value>
+            <field>CORE.USERS.USERNAME</field>
+            <operation>contains</operation>
+            <value>.fr</value>
         </filters>
-        <label>New Associate 17-09</label>
+        <label>Associate FR</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>New_Associate_17_09</fullName>
+        <columns>FULL_NAME</columns>
+        <columns>CORE.USERS.USERNAME</columns>
+        <columns>CORE.USERS.EMAIL</columns>
+        <columns>CORE.USER_ROLE.NAME</columns>
+        <columns>CORE.USERS.ACTIVE</columns>
+        <columns>CORE.PROFILE.NAME</columns>
+        <columns>CORE.USERS.LAST_LOGIN</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>CurrencyISOcode__c</columns>
+        <columns>Codice_Boutique__c</columns>
+        <columns>DEFAULT_CURRENCY</columns>
+        <columns>MANAGER</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CORE.PROFILE.NAME</field>
+            <operation>contains</operation>
+            <value>Associate</value>
+        </filters>
+        <filters>
+            <field>CORE.USERS.USERNAME</field>
+            <operation>contains</operation>
+            <value>usa.com</value>
+        </filters>
+        <label>Associate US</label>
         <language>en_US</language>
     </listViews>
     <listViews>
@@ -594,9 +958,9 @@
         <columns>Codice_Boutique__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
-            <field>CORE.USER_ROLE.NAME</field>
-            <operation>equals</operation>
-            <value>ALL ASSOCIATE</value>
+            <field>CORE.PROFILE.NAME</field>
+            <operation>contains</operation>
+            <value>BC -</value>
         </filters>
         <filters>
             <field>CORE.USERS.USERNAME</field>
@@ -607,29 +971,58 @@
         <language>en_US</language>
     </listViews>
     <listViews>
-        <fullName>New_Associate_UK</fullName>
+        <fullName>New_Associate_25_10</fullName>
         <columns>FULL_NAME</columns>
-        <columns>CORE.USERS.ALIAS</columns>
         <columns>CORE.USERS.USERNAME</columns>
         <columns>CORE.USERS.EMAIL</columns>
-        <columns>CORE.USERS.ACTIVE</columns>
         <columns>CORE.USER_ROLE.NAME</columns>
+        <columns>CORE.USERS.ACTIVE</columns>
+        <columns>CORE.PROFILE.NAME</columns>
+        <columns>CORE.USERS.LAST_LOGIN</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>CurrencyISOcode__c</columns>
+        <columns>Codice_Boutique__c</columns>
+        <columns>DEFAULT_CURRENCY</columns>
+        <columns>MANAGER</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CORE.PROFILE.NAME</field>
+            <operation>contains</operation>
+            <value>BC -</value>
+        </filters>
+        <filters>
+            <field>CORE.USERS.USERNAME</field>
+            <operation>contains</operation>
+            <value>cucinelli.ch</value>
+        </filters>
+        <label>Associate CH</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>New_Associate_UK</fullName>
+        <columns>FULL_NAME</columns>
+        <columns>CORE.USERS.EMAIL</columns>
+        <columns>CORE.USERS.ACTIVE</columns>
         <columns>CORE.PROFILE.NAME</columns>
         <columns>CORE.USERS.LAST_LOGIN</columns>
         <columns>LANGUAGE</columns>
         <columns>Codice_Boutique__c</columns>
+        <columns>MANAGER</columns>
+        <columns>CurrencyISOcode__c</columns>
+        <columns>DEFAULT_CURRENCY</columns>
+        <columns>CREATED_DATE</columns>
         <filterScope>Everything</filterScope>
         <filters>
-            <field>CORE.USER_ROLE.NAME</field>
-            <operation>equals</operation>
-            <value>ALL ASSOCIATE</value>
+            <field>CORE.PROFILE.NAME</field>
+            <operation>contains</operation>
+            <value>BC -</value>
         </filters>
         <filters>
             <field>CORE.USERS.USERNAME</field>
             <operation>contains</operation>
             <value>@brunellocucinelli.co.uk</value>
         </filters>
-        <label>Associate UK</label>
+        <label>Associate UK - GB</label>
         <language>en_US</language>
         <sharedTo>
             <role>Sede</role>
@@ -656,7 +1049,62 @@
             <operation>notContain</operation>
             <value>boutique</value>
         </filters>
+        <filters>
+            <field>CORE.USERS.ACTIVE</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
         <label>Superusers</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>Users_CN</fullName>
+        <columns>FULL_NAME</columns>
+        <columns>CORE.USERS.USERNAME</columns>
+        <columns>CORE.USERS.LAST_LOGIN</columns>
+        <columns>CORE.USER_ROLE.NAME</columns>
+        <columns>CORE.PROFILE.NAME</columns>
+        <columns>MANAGER</columns>
+        <columns>Codice_Boutique__c</columns>
+        <columns>Codice_Associate__c</columns>
+        <columns>CurrencyISOcode__c</columns>
+        <columns>Nation_Contact_Card__c</columns>
+        <columns>Language_Contact_Card__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CORE.USERS.ADDRESS_COUNTRY</field>
+            <operation>equals</operation>
+            <value>CN</value>
+        </filters>
+        <label>Users CN</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>Users_HK_MO</fullName>
+        <booleanFilter>1 OR 2</booleanFilter>
+        <columns>FULL_NAME</columns>
+        <columns>CORE.USERS.USERNAME</columns>
+        <columns>CORE.USERS.LAST_LOGIN</columns>
+        <columns>CORE.USER_ROLE.NAME</columns>
+        <columns>CORE.PROFILE.NAME</columns>
+        <columns>MANAGER</columns>
+        <columns>Codice_Boutique__c</columns>
+        <columns>Codice_Associate__c</columns>
+        <columns>CurrencyISOcode__c</columns>
+        <columns>Nation_Contact_Card__c</columns>
+        <columns>Language_Contact_Card__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CORE.USERS.ADDRESS_COUNTRY</field>
+            <operation>equals</operation>
+            <value>HK</value>
+        </filters>
+        <filters>
+            <field>CORE.USERS.ADDRESS_COUNTRY</field>
+            <operation>equals</operation>
+            <value>MO</value>
+        </filters>
+        <label>Users HK - MO</label>
         <language>en_US</language>
     </listViews>
     <searchLayouts>

@@ -28,27 +28,33 @@
     <enableFeeds>false</enableFeeds>
     <fields>
         <fullName>BccAddress</fullName>
+        <encrypted>false</encrypted>
     </fields>
     <fields>
         <fullName>CcAddress</fullName>
+        <encrypted>false</encrypted>
     </fields>
     <fields>
         <fullName>FirstOpenedDate</fullName>
     </fields>
     <fields>
         <fullName>FromAddress</fullName>
+        <encrypted>false</encrypted>
     </fields>
     <fields>
         <fullName>FromName</fullName>
+        <encrypted>false</encrypted>
     </fields>
     <fields>
         <fullName>HasAttachment</fullName>
     </fields>
     <fields>
         <fullName>Headers</fullName>
+        <encrypted>false</encrypted>
     </fields>
     <fields>
         <fullName>HtmlBody</fullName>
+        <encrypted>false</encrypted>
     </fields>
     <fields>
         <fullName>Incoming</fullName>
@@ -81,12 +87,15 @@
     </fields>
     <fields>
         <fullName>Subject</fullName>
+        <encrypted>false</encrypted>
     </fields>
     <fields>
         <fullName>TextBody</fullName>
+        <encrypted>false</encrypted>
     </fields>
     <fields>
         <fullName>ToAddress</fullName>
+        <encrypted>false</encrypted>
     </fields>
     <fields>
         <fullName>ValidatedFromAddress</fullName>

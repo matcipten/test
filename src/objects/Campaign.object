@@ -25,10 +25,6 @@
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
-        <actionName>Follow</actionName>
-        <type>Default</type>
-    </actionOverrides>
-    <actionOverrides>
         <actionName>List</actionName>
         <type>Default</type>
     </actionOverrides>
@@ -46,13 +42,36 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <type>Default</type>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
     </actionOverrides>
-    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Campaign_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+    <compactLayoutAssignment>Compact_Layout</compactLayoutAssignment>
+    <compactLayouts>
+        <fullName>Compact_Layout</fullName>
+        <fields>Name</fields>
+        <fields>RecordTypeId</fields>
+        <fields>Categoria__c</fields>
+        <fields>StartDate</fields>
+        <fields>EndDate</fields>
+        <fields>Status</fields>
+        <label>Compact Layout</label>
+    </compactLayouts>
     <enableFeeds>false</enableFeeds>
-    <enableHistory>false</enableHistory>
+    <enableHistory>true</enableHistory>
     <fields>
         <fullName>ActualCost</fullName>
+        <trackHistory>true</trackHistory>
     </fields>
     <fields>
         <fullName>AmountAllOpportunities</fullName>
@@ -61,53 +80,186 @@
         <fullName>AmountWonOpportunities</fullName>
     </fields>
     <fields>
+        <fullName>AutoNumber__c</fullName>
+        <displayFormat>{00000}</displayFormat>
+        <externalId>false</externalId>
+        <label>AutoNumber</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </fields>
+    <fields>
         <fullName>BudgetedCost</fullName>
+        <trackHistory>true</trackHistory>
     </fields>
     <fields>
         <fullName>CampaignMemberRecordTypeId</fullName>
+        <trackHistory>true</trackHistory>
         <type>Lookup</type>
     </fields>
     <fields>
+        <fullName>Campaign_Budget_Net_VAT__c</fullName>
+        <externalId>false</externalId>
+        <label>Campaign Budget</label>
+        <summarizedField>Attivita_Evento__c.Total_Budget_Net_VAT__c</summarizedField>
+        <summaryFilterItems>
+            <field>Attivita_Evento__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Campaign Cost</value>
+        </summaryFilterItems>
+        <summaryForeignKey>Attivita_Evento__c.Campagna__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Campaign_ID__c</fullName>
+        <externalId>false</externalId>
+        <formula>CASE(RecordType.Name,
+&apos;One To One&apos;,&apos;COT-&apos;+  AutoNumber__c  ,
+&apos;Events&apos;,&apos;CEV-&apos; +  AutoNumber__c ,
+&apos;Mailing&apos;,&apos;CMA-&apos; +  AutoNumber__c ,
+AutoNumber__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Campaign ID</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Campaign_Invoiced_Net_VAT__c</fullName>
+        <externalId>false</externalId>
+        <label>Campaign Invoiced</label>
+        <summarizedField>Attivita_Evento__c.Total_Invoiced_Net_VAT__c</summarizedField>
+        <summaryFilterItems>
+            <field>Attivita_Evento__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Campaign Cost</value>
+        </summaryFilterItems>
+        <summaryForeignKey>Attivita_Evento__c.Campagna__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Cards__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Cards</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Categoria__c</fullName>
+        <externalId>false</externalId>
+        <label>Activity Category</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>Activity_Category</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Channel__c</fullName>
+        <externalId>false</externalId>
+        <label>Channel</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>Activity_Channel</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Chat__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Chat</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>CurrencyIsoCode</fullName>
+        <trackHistory>true</trackHistory>
+    </fields>
+    <fields>
+        <fullName>Default_for_Activity_Tracking__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Default for Activity Tracking</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>Description</fullName>
+        <trackHistory>true</trackHistory>
+    </fields>
+    <fields>
+        <fullName>Email__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Email</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>EndDate</fullName>
+        <trackHistory>true</trackHistory>
+    </fields>
+    <fields>
+        <fullName>Event_Date__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <inlineHelpText>Official date of the event (campaign)</inlineHelpText>
+        <label>Event Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Date</type>
     </fields>
     <fields>
         <fullName>ExpectedResponse</fullName>
+        <trackHistory>true</trackHistory>
     </fields>
     <fields>
         <fullName>ExpectedRevenue</fullName>
+        <trackHistory>true</trackHistory>
     </fields>
     <fields>
         <fullName>Focus__c</fullName>
         <externalId>false</externalId>
         <label>Focus</label>
-        <picklist>
-            <picklistValues>
-                <fullName>New Collection</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Private Sale</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Public Sale</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Nuovi Arrivi Preview</fullName>
-                <default>false</default>
-            </picklistValues>
-            <restrictedPicklist>true</restrictedPicklist>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>New Collection</fullName>
+                    <default>false</default>
+                    <label>New Collection</label>
+                </value>
+                <value>
+                    <fullName>Private Sale</fullName>
+                    <default>false</default>
+                    <label>Private Sale</label>
+                </value>
+                <value>
+                    <fullName>Public Sale</fullName>
+                    <default>false</default>
+                    <label>Public Sale</label>
+                </value>
+                <value>
+                    <fullName>Nuovi Arrivi Preview</fullName>
+                    <default>false</default>
+                    <label>Nuovi Arrivi Preview</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>HierarchyActualCost</fullName>
@@ -147,9 +299,59 @@
     </fields>
     <fields>
         <fullName>IsActive</fullName>
+        <trackHistory>true</trackHistory>
+    </fields>
+    <fields>
+        <fullName>Location_Instore__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Boutique</label>
+        <referenceTo>Location__c</referenceTo>
+        <relationshipLabel>Campaigns</relationshipLabel>
+        <relationshipName>Campaigns</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Location_Out_of_store__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <inlineHelpText>Fill only if  Campaign Location is Out of store</inlineHelpText>
+        <label>Where</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Location__c</fullName>
+        <externalId>false</externalId>
+        <label>Location</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Instore</fullName>
+                    <default>false</default>
+                    <label>Instore</label>
+                </value>
+                <value>
+                    <fullName>Out of store</fullName>
+                    <default>false</default>
+                    <label>Out of store</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Name</fullName>
+        <trackHistory>true</trackHistory>
     </fields>
     <fields>
         <fullName>NumberOfContacts</fullName>
@@ -171,14 +373,28 @@
     </fields>
     <fields>
         <fullName>NumberSent</fullName>
+        <trackHistory>true</trackHistory>
     </fields>
     <fields>
         <fullName>OwnerId</fullName>
+        <trackHistory>true</trackHistory>
         <type>Lookup</type>
     </fields>
     <fields>
         <fullName>ParentId</fullName>
+        <trackHistory>true</trackHistory>
         <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Quantity__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Quantity</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Scostamento_Budget_Invoiced__c</fullName>
@@ -189,32 +405,57 @@
         <precision>18</precision>
         <required>false</required>
         <scale>2</scale>
+        <trackHistory>false</trackHistory>
         <type>Percent</type>
     </fields>
     <fields>
+        <fullName>Season__c</fullName>
+        <externalId>false</externalId>
+        <label>Season</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <controllingField>Categoria__c</controllingField>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>FW</fullName>
+                    <default>false</default>
+                    <label>FW</label>
+                </value>
+                <value>
+                    <fullName>SS</fullName>
+                    <default>false</default>
+                    <label>SS</label>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>MA_Catalogues</controllingFieldValue>
+                <controllingFieldValue>MA_Lookbooks</controllingFieldValue>
+                <controllingFieldValue>OT_Sartoria Solomeo</controllingFieldValue>
+                <controllingFieldValue>OT_Trunk Show</controllingFieldValue>
+                <controllingFieldValue>EV_Private Sales</controllingFieldValue>
+                <valueName>FW</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>MA_Catalogues</controllingFieldValue>
+                <controllingFieldValue>MA_Lookbooks</controllingFieldValue>
+                <controllingFieldValue>OT_Sartoria Solomeo</controllingFieldValue>
+                <controllingFieldValue>OT_Trunk Show</controllingFieldValue>
+                <controllingFieldValue>EV_Private Sales</controllingFieldValue>
+                <valueName>SS</valueName>
+            </valueSettings>
+        </valueSet>
+    </fields>
+    <fields>
         <fullName>StartDate</fullName>
+        <trackHistory>true</trackHistory>
     </fields>
     <fields>
         <fullName>Status</fullName>
-        <picklist>
-            <picklistValues>
-                <fullName>In Progress</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Completed</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Aborted</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Planned</fullName>
-                <default>true</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
+        <trackHistory>true</trackHistory>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -240,115 +481,275 @@
         <relationshipLabel>Campagne</relationshipLabel>
         <relationshipName>Campagne</relationshipName>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <type>Lookup</type>
     </fields>
     <fields>
         <fullName>Total_Budget_Net_VAT__c</fullName>
         <externalId>false</externalId>
-        <label>Total Budget Net VAT</label>
+        <label>Total Budget</label>
         <summarizedField>Attivita_Evento__c.Total_Budget_Net_VAT__c</summarizedField>
         <summaryForeignKey>Attivita_Evento__c.Campagna__c</summaryForeignKey>
         <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
         <type>Summary</type>
     </fields>
     <fields>
         <fullName>Total_Invoiced_Net_VAT__c</fullName>
         <externalId>false</externalId>
-        <label>Total Invoiced Net VAT</label>
+        <label>Total Invoiced</label>
         <summarizedField>Attivita_Evento__c.Total_Invoiced_Net_VAT__c</summarizedField>
         <summaryForeignKey>Attivita_Evento__c.Campagna__c</summaryForeignKey>
         <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
         <type>Summary</type>
     </fields>
     <fields>
         <fullName>Type</fullName>
-        <picklist>
-            <picklistValues>
-                <fullName>Advertisement</fullName>
-                <default>true</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Email</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Telemarketing</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Banner Ads</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Seminar / Conference</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Public Relations</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Partners</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Referral Program</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Other</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
+        <trackHistory>true</trackHistory>
         <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Typology__c</fullName>
+        <externalId>false</externalId>
+        <label>Typology</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Collection</fullName>
+                    <default>false</default>
+                    <label>Collection</label>
+                </value>
+                <value>
+                    <fullName>Capsule</fullName>
+                    <default>false</default>
+                    <label>Capsule</label>
+                </value>
+                <value>
+                    <fullName>Local Celebration</fullName>
+                    <default>false</default>
+                    <label>Local Celebration</label>
+                </value>
+                <value>
+                    <fullName>Valori da inserire</fullName>
+                    <default>false</default>
+                    <label>Valori da inserire</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <listViews>
         <fullName>AllActiveCampaigns</fullName>
         <columns>CAMPAIGN.NAME</columns>
         <columns>CAMPAIGN.START_DATE</columns>
         <columns>CAMPAIGN.END_DATE</columns>
+        <columns>Tipologia_Attivita__c</columns>
         <columns>CAMPAIGN.CAMPAIGN_TYPE</columns>
+        <columns>Typology__c</columns>
         <columns>CAMPAIGN.STATUS</columns>
         <filterScope>Everything</filterScope>
         <filters>
-            <field>CAMPAIGN.ACTIVE</field>
-            <operation>equals</operation>
-            <value>1</value>
+            <field>CAMPAIGN.END_DATE</field>
+            <operation>lessThan</operation>
+            <value>6/30/2018</value>
+        </filters>
+        <filters>
+            <field>CAMPAIGN.START_DATE</field>
+            <operation>greaterThan</operation>
+            <value>1/1/2018</value>
         </filters>
         <label>All Active Campaigns</label>
     </listViews>
     <listViews>
         <fullName>All_Inactive_Campaigns</fullName>
         <columns>CAMPAIGN.NAME</columns>
+        <columns>CAMPAIGN.RECORDTYPE</columns>
+        <columns>Categoria__c</columns>
         <columns>CAMPAIGN.START_DATE</columns>
         <columns>CAMPAIGN.END_DATE</columns>
-        <columns>CAMPAIGN.CAMPAIGN_TYPE</columns>
         <columns>CAMPAIGN.STATUS</columns>
         <columns>CAMPAIGN.LAST_UPDATE</columns>
         <columns>CAMPAIGN.CREATED_DATE</columns>
         <filterScope>Everything</filterScope>
         <label>All Campaigns</label>
+        <language>en_US</language>
     </listViews>
     <listViews>
         <fullName>MyActiveCampaigns</fullName>
         <columns>CAMPAIGN.NAME</columns>
         <columns>CAMPAIGN.START_DATE</columns>
         <columns>CAMPAIGN.END_DATE</columns>
+        <columns>Tipologia_Attivita__c</columns>
         <columns>CAMPAIGN.CAMPAIGN_TYPE</columns>
+        <columns>Typology__c</columns>
         <columns>CAMPAIGN.STATUS</columns>
-        <filterScope>Mine</filterScope>
+        <columns>CORE.USERS.ALIAS</columns>
+        <filterScope>Everything</filterScope>
         <filters>
-            <field>CAMPAIGN.ACTIVE</field>
+            <field>CAMPAIGN.STATUS</field>
             <operation>equals</operation>
-            <value>1</value>
+            <value>In Progress,Planned</value>
         </filters>
         <label>My Active Campaigns</label>
     </listViews>
+    <listViews>
+        <fullName>Upcoming_Events_Mailings</fullName>
+        <columns>CAMPAIGN.NAME</columns>
+        <columns>CAMPAIGN.START_DATE</columns>
+        <columns>CAMPAIGN.END_DATE</columns>
+        <columns>Tipologia_Attivita__c</columns>
+        <columns>CAMPAIGN.CAMPAIGN_TYPE</columns>
+        <columns>Typology__c</columns>
+        <columns>CAMPAIGN.STATUS</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CAMPAIGN.START_DATE</field>
+            <operation>equals</operation>
+            <value>THIS_MONTH</value>
+        </filters>
+        <filters>
+            <field>CAMPAIGN.START_DATE</field>
+            <operation>greaterOrEqual</operation>
+            <value>TODAY</value>
+        </filters>
+        <label>Upcoming Events/Mailings</label>
+    </listViews>
+    <recordTypeTrackHistory>true</recordTypeTrackHistory>
     <recordTypes>
         <fullName>Direct_Marketing</fullName>
-        <active>true</active>
+        <active>false</active>
         <label>Direct Marketing</label>
+        <picklistValues>
+            <picklist>Categoria__c</picklist>
+            <values>
+                <fullName>EVMA_Seasonal opening</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EV_In store animation%2FEvent</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EV_Networking - Charity</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EV_Out of store Event</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EV_Private Sales</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EV_Store opening%2FPop-up</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EV_VIP Event Solomeo</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MA_Catalogues</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MA_Direct Emailing</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MA_Lookbooks</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Attending Corporate Event</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Eating out%2FVip dinner or lunch</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Follow-up after store visit</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Gifting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Greetings</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Preview</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Product Home Delivery</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Proposte di stile</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Repair follow-up</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Sartoria Solomeo</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Solomeo Experience</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Spend time with clients</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Thank you note</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Tour Visit</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Trunk Show</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Channel__c</picklist>
+            <values>
+                <fullName>Chat</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Mail</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Personal_Contact</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Phone</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
         <picklistValues>
             <picklist>Focus__c</picklist>
             <values>
@@ -365,6 +766,28 @@
             </values>
             <values>
                 <fullName>Public Sale</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Location__c</picklist>
+            <values>
+                <fullName>Instore</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Out of store</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Season__c</picklist>
+            <values>
+                <fullName>FW</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SS</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -423,14 +846,159 @@
             </values>
             <values>
                 <fullName>Telemarketing</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Typology__c</picklist>
+            <values>
+                <fullName>Capsule</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Collection</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Local Celebration</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Valori da inserire</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
     </recordTypes>
     <recordTypes>
         <fullName>Ecommerce</fullName>
-        <active>true</active>
+        <active>false</active>
         <label>Ecommerce</label>
+        <picklistValues>
+            <picklist>Categoria__c</picklist>
+            <values>
+                <fullName>EVMA_Seasonal opening</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EV_In store animation%2FEvent</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EV_Networking - Charity</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EV_Out of store Event</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EV_Private Sales</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EV_Store opening%2FPop-up</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EV_VIP Event Solomeo</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MA_Catalogues</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MA_Direct Emailing</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MA_Lookbooks</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Attending Corporate Event</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Eating out%2FVip dinner or lunch</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Follow-up after store visit</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Gifting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Greetings</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Preview</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Product Home Delivery</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Proposte di stile</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Repair follow-up</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Sartoria Solomeo</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Solomeo Experience</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Spend time with clients</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Thank you note</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Tour Visit</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Trunk Show</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Channel__c</picklist>
+            <values>
+                <fullName>Chat</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Mail</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Personal_Contact</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Phone</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
         <picklistValues>
             <picklist>Focus__c</picklist>
             <values>
@@ -447,6 +1015,28 @@
             </values>
             <values>
                 <fullName>Public Sale</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Location__c</picklist>
+            <values>
+                <fullName>Instore</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Out of store</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Season__c</picklist>
+            <values>
+                <fullName>FW</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SS</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -505,14 +1095,159 @@
             </values>
             <values>
                 <fullName>Telemarketing</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Typology__c</picklist>
+            <values>
+                <fullName>Capsule</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Collection</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Local Celebration</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Valori da inserire</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
     </recordTypes>
     <recordTypes>
         <fullName>Evento</fullName>
-        <active>true</active>
+        <active>false</active>
         <label>Evento</label>
+        <picklistValues>
+            <picklist>Categoria__c</picklist>
+            <values>
+                <fullName>EVMA_Seasonal opening</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EV_In store animation%2FEvent</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EV_Networking - Charity</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EV_Out of store Event</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EV_Private Sales</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EV_Store opening%2FPop-up</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EV_VIP Event Solomeo</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MA_Catalogues</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MA_Direct Emailing</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MA_Lookbooks</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Attending Corporate Event</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Eating out%2FVip dinner or lunch</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Follow-up after store visit</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Gifting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Greetings</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Preview</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Product Home Delivery</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Proposte di stile</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Repair follow-up</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Sartoria Solomeo</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Solomeo Experience</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Spend time with clients</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Thank you note</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Tour Visit</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Trunk Show</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Channel__c</picklist>
+            <values>
+                <fullName>Chat</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Mail</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Personal_Contact</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Phone</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
         <picklistValues>
             <picklist>Focus__c</picklist>
             <values>
@@ -529,6 +1264,28 @@
             </values>
             <values>
                 <fullName>Public Sale</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Location__c</picklist>
+            <values>
+                <fullName>Instore</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Out of store</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Season__c</picklist>
+            <values>
+                <fullName>FW</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SS</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -587,15 +1344,694 @@
             </values>
             <values>
                 <fullName>Telemarketing</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Typology__c</picklist>
+            <values>
+                <fullName>Capsule</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Collection</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Local Celebration</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Valori da inserire</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Events</fullName>
+        <active>true</active>
+        <compactLayoutAssignment>Compact_Layout</compactLayoutAssignment>
+        <label>Event</label>
+        <picklistValues>
+            <picklist>Categoria__c</picklist>
+            <values>
+                <fullName>EVMA_Seasonal opening</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EV_In store animation%2FEvent</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EV_Networking - Charity</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EV_Out of store Event</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EV_Private Sales</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EV_Store opening%2FPop-up</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EV_VIP Event Solomeo</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Channel__c</picklist>
+            <values>
+                <fullName>Chat</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Mail</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Personal_Contact</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Phone</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Focus__c</picklist>
+            <values>
+                <fullName>New Collection</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Nuovi Arrivi Preview</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Private Sale</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Public Sale</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Location__c</picklist>
+            <values>
+                <fullName>Instore</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Out of store</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Season__c</picklist>
+            <values>
+                <fullName>FW</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SS</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Status</picklist>
+            <values>
+                <fullName>Aborted</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Completed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>In Progress</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Planned</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Type</picklist>
+            <values>
+                <fullName>Advertisement</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Banner Ads</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Partners</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Public Relations</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Referral Program</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Seminar %2F Conference</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Telemarketing</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Typology__c</picklist>
+            <values>
+                <fullName>Capsule</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Collection</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Local Celebration</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Mailing</fullName>
+        <active>true</active>
+        <compactLayoutAssignment>Compact_Layout</compactLayoutAssignment>
+        <label>Mailing</label>
+        <picklistValues>
+            <picklist>Categoria__c</picklist>
+            <values>
+                <fullName>EVMA_Seasonal opening</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MA_Catalogues</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MA_Direct Emailing</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MA_Lookbooks</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Channel__c</picklist>
+            <values>
+                <fullName>Chat</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Mail</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Personal_Contact</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Phone</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Focus__c</picklist>
+            <values>
+                <fullName>New Collection</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Nuovi Arrivi Preview</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Private Sale</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Public Sale</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Location__c</picklist>
+            <values>
+                <fullName>Instore</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Out of store</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Season__c</picklist>
+            <values>
+                <fullName>FW</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SS</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Status</picklist>
+            <values>
+                <fullName>Aborted</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Completed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>In Progress</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Planned</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Type</picklist>
+            <values>
+                <fullName>Advertisement</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Banner Ads</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Partners</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Public Relations</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Referral Program</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Seminar %2F Conference</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Telemarketing</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Typology__c</picklist>
+            <values>
+                <fullName>Capsule</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Collection</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Local Celebration</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>One_To_One</fullName>
+        <active>true</active>
+        <compactLayoutAssignment>Compact_Layout</compactLayoutAssignment>
+        <label>One2One</label>
+        <picklistValues>
+            <picklist>Categoria__c</picklist>
+            <values>
+                <fullName>OT_Attending Corporate Event</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Eating out%2FVip dinner or lunch</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Follow-up after store visit</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Gifting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Greetings</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Preview</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Product Home Delivery</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Proposte di stile</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Repair follow-up</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Sartoria Solomeo</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Solomeo Experience</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Spend time with clients</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Thank you note</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Tour Visit</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Trunk Show</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Channel__c</picklist>
+            <values>
+                <fullName>Chat</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Mail</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Personal_Contact</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Phone</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Focus__c</picklist>
+            <values>
+                <fullName>New Collection</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Nuovi Arrivi Preview</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Private Sale</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Public Sale</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Location__c</picklist>
+            <values>
+                <fullName>Instore</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Out of store</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Season__c</picklist>
+            <values>
+                <fullName>FW</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SS</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Status</picklist>
+            <values>
+                <fullName>Aborted</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Completed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>In Progress</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Planned</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Type</picklist>
+            <values>
+                <fullName>Advertisement</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Banner Ads</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Partners</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Public Relations</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Referral Program</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Seminar %2F Conference</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Telemarketing</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Typology__c</picklist>
+            <values>
+                <fullName>Valori da inserire</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
     </recordTypes>
     <recordTypes>
         <fullName>Pre_Saldi</fullName>
-        <active>true</active>
+        <active>false</active>
         <description>Campagne pre saldi</description>
         <label>Pre-Saldi</label>
+        <picklistValues>
+            <picklist>Categoria__c</picklist>
+            <values>
+                <fullName>EVMA_Seasonal opening</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EV_In store animation%2FEvent</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EV_Networking - Charity</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EV_Out of store Event</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EV_Private Sales</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EV_Store opening%2FPop-up</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EV_VIP Event Solomeo</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MA_Catalogues</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MA_Direct Emailing</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MA_Lookbooks</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Attending Corporate Event</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Eating out%2FVip dinner or lunch</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Follow-up after store visit</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Gifting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Greetings</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Preview</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Product Home Delivery</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Proposte di stile</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Repair follow-up</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Sartoria Solomeo</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Solomeo Experience</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Spend time with clients</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Thank you note</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Tour Visit</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Trunk Show</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Channel__c</picklist>
+            <values>
+                <fullName>Chat</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Mail</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Personal_Contact</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Phone</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
         <picklistValues>
             <picklist>Focus__c</picklist>
             <values>
@@ -612,6 +2048,28 @@
             </values>
             <values>
                 <fullName>Public Sale</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Location__c</picklist>
+            <values>
+                <fullName>Instore</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Out of store</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Season__c</picklist>
+            <values>
+                <fullName>FW</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SS</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -670,14 +2128,159 @@
             </values>
             <values>
                 <fullName>Telemarketing</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Typology__c</picklist>
+            <values>
+                <fullName>Capsule</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Collection</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Local Celebration</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Valori da inserire</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
     </recordTypes>
     <recordTypes>
         <fullName>Special_Client</fullName>
-        <active>true</active>
+        <active>false</active>
         <label>Special Client</label>
+        <picklistValues>
+            <picklist>Categoria__c</picklist>
+            <values>
+                <fullName>EVMA_Seasonal opening</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EV_In store animation%2FEvent</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EV_Networking - Charity</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EV_Out of store Event</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EV_Private Sales</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EV_Store opening%2FPop-up</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EV_VIP Event Solomeo</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MA_Catalogues</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MA_Direct Emailing</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MA_Lookbooks</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Attending Corporate Event</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Eating out%2FVip dinner or lunch</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Follow-up after store visit</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Gifting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Greetings</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Preview</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Product Home Delivery</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Proposte di stile</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Repair follow-up</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Sartoria Solomeo</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Solomeo Experience</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Spend time with clients</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Thank you note</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Tour Visit</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Trunk Show</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Channel__c</picklist>
+            <values>
+                <fullName>Chat</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Mail</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Personal_Contact</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Phone</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
         <picklistValues>
             <picklist>Focus__c</picklist>
             <values>
@@ -694,6 +2297,28 @@
             </values>
             <values>
                 <fullName>Public Sale</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Location__c</picklist>
+            <values>
+                <fullName>Instore</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Out of store</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Season__c</picklist>
+            <values>
+                <fullName>FW</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SS</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -752,6 +2377,25 @@
             </values>
             <values>
                 <fullName>Telemarketing</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Typology__c</picklist>
+            <values>
+                <fullName>Capsule</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Collection</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Local Celebration</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Valori da inserire</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -772,6 +2416,30 @@
         <searchResultsAdditionalFields>CORE.USERS.ALIAS</searchResultsAdditionalFields>
     </searchLayouts>
     <sharingModel>Private</sharingModel>
+    <validationRules>
+        <fullName>Invitation_channel_compilato</fullName>
+        <active>false</active>
+        <errorConditionFormula>AND(
+OR(RecordType.DeveloperName = &apos;Events&apos;,RecordType.DeveloperName = &apos;One_To_One&apos;, RecordType.DeveloperName = &apos;Mailing&apos;),
+Cards__c=false, Email__c =false, Chat__c =false)</errorConditionFormula>
+        <errorMessage>Please select at least one invitation channel.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Location_alternative</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(!ISBLANK(Location_Instore__c), !ISBLANK( Location_Out_of_store__c ))</errorConditionFormula>
+        <errorMessage>Please select only one location.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Location_blank</fullName>
+        <active>true</active>
+        <errorConditionFormula>oR( 
+AND(ISPICKVAL( Location__c, &apos;Instore&apos;), ISBLANK(Location_Instore__c)), 
+
+AND(ISPICKVAL( Location__c, &apos;Out of store&apos;), 
+ISBLANK( Location_Out_of_store__c)))</errorConditionFormula>
+        <errorMessage>Please select &quot;Where&quot; if Location is &quot;Out of store&quot;, select &quot;Boutique&quot; if Location is &quot;Instore&quot;.</errorMessage>
+    </validationRules>
     <webLinks>
         <fullName>ViewAllCampaignMembers</fullName>
         <availability>online</availability>
@@ -820,19 +2488,7 @@
         <masterLabel>Send Marketing Cloud Email</masterLabel>
         <openType>onClickJavaScript</openType>
         <protected>false</protected>
-        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/19.0/connection.js&quot;)}
-{!REQUIRESCRIPT(&quot;/soap/ajax/15.0/apex.js&quot;)}
-try
-{
-var urlPrefix = sforce.apex.execute(&quot;et4ae5/jsButtonMethods&quot;,&quot;namespace&quot;, {});
-var theUrl = &quot;https://&quot;+urlPrefix+&quot;/apex/singleSendETEmail?campaignId={!CASESAFEID( Campaign.Id )}&quot;;
-parent.location.href = theUrl;
-}
-catch (e)
-{
-var theUrl = &quot;/apex/singleSendETEmail?campaignId={!CASESAFEID( Campaign.Id )}&quot;;
-parent.location.href = theUrl;
-}</url>
+        <url>alert(&quot;{!$Label.et4ae5__deprecatecampaignjscomponents}&quot;);</url>
     </webLinks>
     <webLinks>
         <fullName>et4ae5__ViewCampaignInfluenceReport</fullName>

@@ -74,7 +74,7 @@
         <relationshipLabel>Ordini Sartoria Solomeo</relationshipLabel>
         <relationshipName>Ordini_Sartoria_Solomeo</relationshipName>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -87,7 +87,7 @@
         <relationshipLabel>Ordini Sartoria Solomeo</relationshipLabel>
         <relationshipName>Ordini_Sartoria_Solomeo</relationshipName>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -100,7 +100,7 @@
         <relationshipLabel>Ordini Sartoria Solomeo</relationshipLabel>
         <relationshipName>Ordini_Sartoria_Solomeo</relationshipName>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -113,7 +113,7 @@
         <relationshipLabel>Ordini Sartoria Solomeo</relationshipLabel>
         <relationshipName>Ordini_Sartoria_Solomeo</relationshipName>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -126,7 +126,7 @@
         <relationshipLabel>Ordini Sartoria Solomeo</relationshipLabel>
         <relationshipName>Ordini_Sartoria_Solomeo</relationshipName>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -200,7 +200,7 @@ CASE ( Capo__r.Record_Type_Label__c,
         <defaultValue>true</defaultValue>
         <externalId>false</externalId>
         <label>Conteggia</label>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
@@ -245,6 +245,18 @@ CASE ( Capo__r.Record_Type_Label__c,
         <type>DateTime</type>
     </fields>
     <fields>
+        <fullName>Data_etichetta__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Data etichetta</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Descrizione_Colore__c</fullName>
         <externalId>false</externalId>
         <formula>text(Tessuto_Colore__r.Descrizione_Colore__c)</formula>
@@ -269,6 +281,24 @@ CASE ( Capo__r.Record_Type_Label__c,
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Etichetta_personalizzata__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Etichetta personalizzata</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Fascia_Smoking__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Fascia Smoking</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>Fodera__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <externalId>false</externalId>
@@ -277,7 +307,7 @@ CASE ( Capo__r.Record_Type_Label__c,
         <relationshipLabel>Ordini Sartoria Solomeo</relationshipLabel>
         <relationshipName>Ordini_Sartoria_Solomeo</relationshipName>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -290,7 +320,7 @@ CASE ( Capo__r.Record_Type_Label__c,
         <relationshipLabel>Ordini Sartoria Solomeo</relationshipLabel>
         <relationshipName>Ordini_Sartoria_Solomeo</relationshipName>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -303,9 +333,21 @@ CASE ( Capo__r.Record_Type_Label__c,
         <relationshipLabel>Ordini Sartoria Solomeo (Misure Pantaloni)</relationshipLabel>
         <relationshipName>Ordini_Sartoria_Solomeo1</relationshipName>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Name_etichetta__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Name etichetta</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Nome_Associate__c</fullName>
@@ -337,7 +379,7 @@ CASE ( Capo__r.Record_Type_Label__c,
         <externalId>false</externalId>
         <label>Nota approvatore 1 livello</label>
         <length>32768</length>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
         <visibleLines>3</visibleLines>
@@ -348,7 +390,7 @@ CASE ( Capo__r.Record_Type_Label__c,
         <externalId>false</externalId>
         <label>Nota di consegna al cliente</label>
         <length>32768</length>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
         <visibleLines>3</visibleLines>
@@ -359,7 +401,7 @@ CASE ( Capo__r.Record_Type_Label__c,
         <externalId>false</externalId>
         <label>Nota negozio</label>
         <length>32768</length>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
         <visibleLines>3</visibleLines>
@@ -370,10 +412,19 @@ CASE ( Capo__r.Record_Type_Label__c,
         <externalId>false</externalId>
         <label>Nota sarto</label>
         <length>32768</length>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
         <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Papillon__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Papillon</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>Prezzo_number__c</fullName>
@@ -434,7 +485,7 @@ Capo_Tessuto__r.Prezzo_EUR__c)
         <precision>18</precision>
         <required>false</required>
         <scale>0</scale>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
@@ -446,7 +497,7 @@ Capo_Tessuto__r.Prezzo_EUR__c)
         <label>Record Type Giacca</label>
         <length>255</length>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -456,7 +507,7 @@ Capo_Tessuto__r.Prezzo_EUR__c)
         <externalId>false</externalId>
         <label>Status</label>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -544,7 +595,7 @@ Capo_Tessuto__r.Prezzo_EUR__c)
         <relationshipLabel>Ordini Sartoria Solomeo</relationshipLabel>
         <relationshipName>Ordini_Sartoria_Solomeo</relationshipName>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -557,7 +608,7 @@ Capo_Tessuto__r.Prezzo_EUR__c)
         <relationshipLabel>Ordini Sartoria Solomeo</relationshipLabel>
         <relationshipName>Ordini_Sartoria_Solomeo</relationshipName>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -568,7 +619,7 @@ Capo_Tessuto__r.Prezzo_EUR__c)
         <precision>18</precision>
         <required>false</required>
         <scale>2</scale>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>

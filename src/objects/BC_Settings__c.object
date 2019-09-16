@@ -46,6 +46,17 @@
         <type>Email</type>
         <unique>false</unique>
     </fields>
+    <fields>
+        <fullName>Id_Admin_Ten__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Id Admin Ten</label>
+        <length>15</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
     <label>BC - Settings</label>
     <visibility>Protected</visibility>
 </CustomObject>

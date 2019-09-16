@@ -1,5 +1,181 @@
 public class RegistrationForm {
-    
+
+    //GENERATE PDF VARIABLE
+	public static string PDFDatas {get; set;}
+    public RegistrationForm(String contactCId){
+		//registerForm(contactCId);
+	}
+
+
+	public RegistrationForm(){
+		String contactCId  =  ApexPages.CurrentPage().getParameters().get('ccId');
+		//registerForm(contactCId);
+	}
+    /*	public static void registerForm(String contactCId) {
+        system.debug('Registration Form');
+		//if(PDFDatas == null || PDFDatas == '') {
+		if(!String.isBlank(contactCId)) {
+			system.debug('Id:::: '+contactCId);
+			list<Contact_Card__c> cc = [SELECT Id,htmlForPdf__c, Lingua__c, FirstName__c, LastName__c, Salutation__c, PersonMailingStreet__c, 
+                                        PersonMailingCity__c, PersonMailingPostalCode__c, Phone__c, PersonMailingCountry__c, Nazionalita__c, 
+                                        PersonEmail__c, PersonBirthdate__c, Sesso__c, Professione__c, Hobby__c, Privacy1__c,Privacy2__c,Privacy3__c, CreatedDate, Numero_Passaporto__c,
+                                        Paese_di_emissione_passaporto__c,Data_di_emissione_passaporto__c,Ente_di_emissione_passaporto__c,PersonMailingState__c,Nome_UTF_8__c,Cognome_UTF_8__c,
+                                        We_Chat_ID__c,Telefono__c,Email__c,WeChat__c,Posta__c,Messaging__c,Versione_DCC__c
+                                        FROM Contact_Card__c WHERE Id = :contactCId LIMIT 1 ];
+            list<Attachment> Firma = [SELECT Id, Name, ParentId, Parent.Type 
+                                      FROM Attachment where Parent.Type = 'Contact_Card__c' AND parentId = :cc[0].id AND contenttype = 'image/png'];
+            string locale = cc[0].Versione_DCC__c.substring(cc[0].Versione_DCC__c.indexOf('.')+1,cc[0].Versione_DCC__c.lastIndexOf('.'));//Translation[0].Country_FRM__c;
+            string HelpForLike;
+            User userRecord = getUserInformation();
+            string pdfLanguage = userRecord.Language_Contact_Card__c;
+            
+            if (pdfLanguage != null)
+            	HelpForLike = pdfLanguage+'_'+locale;
+            else 
+                HelpForLike = 'en'+'_'+locale;
+            system.debug('HelpforLike:::: '+HelpForLike);
+            system.debug('LINGUA:::: '+cc[0].Lingua__c);
+            list<Translate__c> Translation = [SELECT Privacy_Yes_Label__c, Privacy_No_Label__c,First_Name_Label__c,Last_Name_Label__c,
+                                              Street_Label__c, City_Label__c, CAP_Label__c, Country_Label__c, Phone_Label__c, Nationality_Label__c, 
+                                              Birthdate_Label__c, Gender_Label__c, Profession_Label__c, Hobby_Label__c, Preferred_Language_Label__c, 
+                                              Contact_Preferences_Label__c, Privacy_1_Label__c, Privacy_2_Label__c, Privacy_3_Label__c, Date_Label__c, Signature_Label__c,
+                                              Language_Label__c, Email_Label__c, Salutation_Label__c, Passport_Section_Label__c, Numero_Passaporto_Label__c, Paese_di_emissione_passaporto_Label__c,
+                                              Data_di_emissione_passaporto_Label__c,Ente_di_emissione_passaporto_Label__c, Country_FRM__c,State_Label__c,Local_First_Name_Label__c,Local_Last_Name_Label__c,
+                                              We_Chat_ID_Label__c,Checkbox_Phone_Label__c,Checkbox_Email_Label__c,Checkbox_WeChat_Label__c,Checkbox_Mail_Label__c,
+                                              Checkbox_Messaging_Label__c,Privacy_Header_Before_Link_Label__c,Privacy_Header_Link_Label__c,Privacy_Header_After_Link_Label__c
+                                              FROM Translate__c WHERE Name LIKE :HelpForLike];
+           
+			system.debug('cc::: '+cc);
+            system.debug('LOCALE::: '+locale);
+            system.debug('TRANSLATION::: '+Translation);
+
+            string datetimestr;
+            string datetimestr2;
+            integer length1;
+
+            if(cc != null && cc.size() > 0 && cc[0].PersonBirthDate__c != null){
+                datetimestr = cc[0].CreatedDate.format('dd MMMMM yyyy');
+           	 	datetimestr2 = ((Datetime)cc[0].PersonBirthDate__c).format('dd MMMMM yyyy');
+            }
+				PDFDatas = cc[0].htmlForPdf__c.unescapeHtml4();
+            	
+PDFDatas = PDFDatas.replace('PreferredLanguagePlaceHolder', '<label>'+Translation[0].Preferred_Language_Label__c+':  '+'</label><br>' +cc[0].Lingua__c);
+PDFDatas = PDFDatas.replacefirst('LanguagePlaceHolder','<label>'+ Translation[0].Language_Label__c+':  '+'</label><br>' +pdfLanguage);
+PDFDatas = PDFDatas.replace('FirstNamePlaceHolder','<label>'+Translation[0].First_Name_Label__c+ ':  '+'</label><br>' +cc[0].FirstName__c);
+PDFDatas = PDFDatas.replace('LastNamePlaceHolder','<label>'+ Translation[0].Last_Name_Label__c+':  '+'</label><br>' +cc[0].LastName__c);
+            if (locale == 'JP'|| locale == 'CN' || locale == 'RU' || locale == 'HK' || locale == 'MO' || cc[0].Lingua__c == 'ja'|| cc[0].Lingua__c == 'zh' || cc[0].Lingua__c == 'ru' ){
+                PDFDatas = PDFDatas.replace('LocalFNPlaceHolder','<label>'+Translation[0].Local_First_Name_Label__c+ ':  '+'</label><br>' +cc[0].Nome_UTF_8__c);
+				PDFDatas = PDFDatas.replace('LocalLNPlaceHolder','<label>'+ Translation[0].Local_Last_Name_Label__c+':  '+'</label><br>' +cc[0].Cognome_UTF_8__c);
+            }
+            else{
+                PDFDatas = PDFDatas.replace('LocalFNPlaceHolder','');
+				PDFDatas = PDFDatas.replace('LocalLNPlaceHolder','');
+            }
+PDFDatas = PDFDatas.replace('TitlePlaceHolder','<label>'+ Translation[0].Salutation_Label__c+':  '+'</label><br>' +cc[0].Salutation__c);
+PDFDatas = PDFDatas.replace('AddressPlaceHolder','<label>'+ Translation[0].Street_Label__c+':  '+'</label><br>' +cc[0].PersonMailingStreet__c);
+PDFDatas = PDFDatas.replace('CityPlaceHolder','<label>'+ Translation[0].City_Label__c+':  ' +'</label><br>'+cc[0].PersonMailingCity__c);
+PDFDatas = PDFDatas.replace('PostalCodePlaceHolder','<label>'+ Translation[0].CAP_Label__c+':  '+'</label><br>' +cc[0].PersonMailingPostalCode__c);
+            if (locale == 'US')
+                PDFDatas = PDFDatas.replace('PostalStatePlaceHolder','<label>'+ Translation[0].State_Label__c+':  '+'</label><br>' +cc[0].PersonMailingState__c);
+            else{
+                PDFDatas = PDFDatas.replace('<td class="field"> PostalStatePlaceHolder </td>','');
+            }
+
+PDFDatas = PDFDatas.replace('CountryPlaceHolder','<label>'+ Translation[0].Country_Label__c+':  '+'</label><br>' +cc[0].PersonMailingCountry__c);
+
+PDFDatas = PDFDatas.replace('ContactPreferencesPlaceHolder','<label>'+ Translation[0].Contact_Preferences_Label__c+'</label><br>');
+            if (cc[0].Telefono__c == true){
+				PDFDatas = PDFDatas.replace('TelCheckboxPlaceHolder','<label>'+ Translation[0].Checkbox_Phone_Label__c+':  '+'</label> <img src="/img/checkbox_checked.gif"/> ');
+            }
+            else{
+				PDFDatas = PDFDatas.replace('TelCheckboxPlaceHolder','<label>'+ Translation[0].Checkbox_Phone_Label__c+':  '+'</label> <img src="/img/checkbox_unchecked.gif"/> ');
+            }
+            if (locale == 'CN'){
+                if (cc[0].WeChat__c == true){
+                    PDFDatas = PDFDatas.replace('WeChatCheckboxPlaceHolder','<label>'+ Translation[0].Checkbox_WeChat_Label__c+':  '+'</label> <img src="/img/checkbox_checked.gif"/> ');
+                }
+                else{
+                    PDFDatas = PDFDatas.replace('WeChatCheckboxPlaceHolder','<label>'+ Translation[0].Checkbox_WeChat_Label__c+':  '+'</label> <img src="/img/checkbox_unchecked.gif"/> ');
+                }
+            }
+            else{
+                PDFDatas = PDFDatas.replace('<td> WeChatCheckboxPlaceHolder </td>','');
+            }
+            if (cc[0].Email__c == true){
+				PDFDatas = PDFDatas.replace('EmailCheckboxPlaceHolder','<label>'+ Translation[0].Checkbox_Email_Label__c+':  '+'</label> <img src="/img/checkbox_checked.gif"/> ');
+            }
+            else{
+				PDFDatas = PDFDatas.replace('EmailCheckboxPlaceHolder','<label>'+ Translation[0].Checkbox_Email_Label__c+':  '+'</label> <img src="/img/checkbox_unchecked.gif"/> ');
+            }
+            if (cc[0].Posta__c == true){
+				PDFDatas = PDFDatas.replace('PostaCheckboxPlaceHolder','<label>'+ Translation[0].Checkbox_Mail_Label__c+':  '+'</label> <img src="/img/checkbox_checked.gif"/> ');
+            }
+            else{
+				PDFDatas = PDFDatas.replace('PostaCheckboxPlaceHolder','<label>'+ Translation[0].Checkbox_Mail_Label__c+':  '+'</label> <img src="/img/checkbox_unchecked.gif"/> ');
+            }
+            if (cc[0].Messaging__c == true){
+				PDFDatas = PDFDatas.replace('MessCheckboxPlaceHolder','<label>'+ Translation[0].Checkbox_Messaging_Label__c+':  '+'</label> <img src="/img/checkbox_checked.gif"/> ');
+            }
+            else{
+				PDFDatas = PDFDatas.replace('MessCheckboxPlaceHolder','<label>'+ Translation[0].Checkbox_Messaging_Label__c+':  '+'</label> <img src="/img/checkbox_unchecked.gif"/> ');
+            }
+
+
+PDFDatas = PDFDatas.replace('PhonePlaceHolder','<label>'+ Translation[0].Phone_Label__c.substringBefore('(')+':  '+'</label><br>' +cc[0].Phone__c);
+PDFDatas = PDFDatas.replace('NationalityPlaceHolder','<label>'+ Translation[0].Nationality_Label__c+':  '+'</label><br>' +cc[0].Nazionalita__c);
+PDFDatas = PDFDatas.replace('EmailPlaceHolder','<label>'+ Translation[0].Email_Label__c+':  '+'</label><br>' +cc[0].PersonEmail__c);
+            if (locale == 'CN')
+                PDFDatas = PDFDatas.replace('WeChatPlaceHolder','<label>'+ Translation[0].We_Chat_ID_Label__c+':  '+'</label><br>' +cc[0].We_Chat_ID__c);
+            else{
+                PDFDatas = PDFDatas.replace('<td class="field"> WeChatPlaceHolder </td>','');
+            }
+PDFDatas = PDFDatas.replace('DatePlaceHolder','<label>'+ Translation[0].Date_Label__c+' '+'</label><br>' +datetimestr);
+PDFDatas = PDFDatas.replace('DateofBirthPlaceHolder','<label>'+ Translation[0].Birthdate_Label__c+':  '+'</label><br>' +datetimestr2 );
+
+PDFDatas = PDFDatas.replace(Translation[0].Date_Label__c+' ' +datetimestr+Translation[0].Birthdate_Label__c.substring(Translation[0].Date_Label__c.length(), Translation[0].Birthdate_Label__c.length() ), Translation[0].Birthdate_Label__c+' :  ' +datetimestr2);
+
+PDFDatas = PDFDatas.replace('GenderPlaceHolder','<label>'+ Translation[0].Gender_Label__c+':  '+'</label><br>' +cc[0].Sesso__c);
+PDFDatas = PDFDatas.replace('ProfessionPlaceHolder', '<label>'+Translation[0].Profession_Label__c+':  '+'</label><br>' +cc[0].Professione__c);
+PDFDatas = PDFDatas.replace('HobbyPlaceHolder', '<label>'+Translation[0].Hobby_Label__c+':  '+'</label><br>' +cc[0].Hobby__c);
+//PDFDatas = PDFDatas.replace(Translation[0].Passport_Section_Label__c, '');
+PDFDatas = PDFDatas.replace('PassportNumberPlaceHolder', '<label>'+Translation[0].Numero_Passaporto_Label__c+':  '+'</label><br>' +cc[0].Numero_Passaporto__c);
+PDFDatas = PDFDatas.replace('PassportCPlaceHolder', '<label>'+Translation[0].Paese_di_emissione_passaporto_Label__c+':  '+'</label><br>' +cc[0].Paese_di_emissione_passaporto__c);
+            if (locale == 'RU'){
+PDFDatas = PDFDatas.replace('PassportIssuedFromPlaceHolder', '<label>'+Translation[0].Ente_di_emissione_passaporto_Label__c+':  '+'</label><br>' +cc[0].Ente_di_emissione_passaporto__c);
+PDFDatas = PDFDatas.replace('PassportIssuedDPlaceHolder', '<label>'+Translation[0].Data_di_emissione_passaporto_Label__c+':  '+'</label><br>' +cc[0].Data_di_emissione_passaporto__c);
+            }
+            else
+            {
+                PDFDatas = PDFDatas.replace('PassportIssuedFromPlaceHolder', '');
+				PDFDatas = PDFDatas.replace('PassportIssuedDPlaceHolder', '');
+            }
+PDFDatas = PDFDatas.replace('PrivacyHeaderPlaceHolder',Translation[0].Privacy_Header_Before_Link_Label__c+' '+ Translation[0].Privacy_Header_Link_Label__c+' '+ Translation[0].Privacy_Header_After_Link_Label__c);
+            
+if(cc[0].Privacy1__c==true){
+PDFDatas = PDFDatas.replace('LegalNotePlaceHolder1', Translation[0].Privacy_Yes_label__c+' '+Translation[0].Privacy_1_Label__c );
+}
+else{
+PDFDatas = PDFDatas.replace('LegalNotePlaceHolder1', Translation[0].Privacy_No_label__c+' '+Translation[0].Privacy_1_Label__c );
+}
+if(cc[0].Privacy2__c==true){
+PDFDatas = PDFDatas.replace('LegalNotePlaceHolder2', Translation[0].Privacy_Yes_label__c+' '+Translation[0].Privacy_2_Label__c );
+}
+else{
+PDFDatas = PDFDatas.replace('LegalNotePlaceHolder2', Translation[0].Privacy_No_label__c+' '+Translation[0].Privacy_2_Label__c);
+}
+if(cc[0].Privacy3__c==true){
+PDFDatas = PDFDatas.replace('LegalNotePlaceHolder3', Translation[0].Privacy_Yes_label__c+' '+Translation[0].Privacy_3_Label__c );
+}
+else{
+PDFDatas = PDFDatas.replace('LegalNotePlaceHolder3', Translation[0].Privacy_No_label__c+' '+Translation[0].Privacy_3_Label__c );
+}            
+PDFDatas = PDFDatas.replace('<p class="field">SignaturePlaceHolder</p>', '<div class="labelSignature">' + Translation[0].Signature_Label__c +'</div> <br>' +'<img src="/servlet/servlet.FileDownload?file='+Firma[0].id+'"/> ');
+
+				PDFDatas = PDFDatas.replaceall('null', 'N/A');
+        }
+	
+	}
+    */
     @AuraEnabled
     public static map<String,Translate__c> getTranslatorForm(String locale){
         Map<String,Translate__c> Mymap = new Map<String,Translate__c>();
@@ -19,7 +195,7 @@ public class RegistrationForm {
                                 Informativa_Header_Label__c, Informativa_Body_Rich_Label__c, Informativa_Body_Rich_Label_Department__c,
                                 Profession_Label__c, Hobby_Label__c,  Passport_Section_Label__c, Numero_Passaporto_Label__c, Paese_di_emissione_passaporto_Label__c,
                                 Local_First_Name_Label__c, Local_Last_Name_Label__c, Button_Back_Label__c,Versione_DCC__c,Richiedi_Firma__c,Success_Message_Label__c,Data_di_emissione_passaporto_Label__c,
-                                Ente_di_emissione_passaporto_Label__c
+                                Ente_di_emissione_passaporto_Label__c, Button_Generate_Barcode_Label__c
                                 FROM Translate__c WHERE Country_FRM__c = :locale]) {
                                     Mymap.put(obj.Name, obj );
                                 }
@@ -326,7 +502,10 @@ return 'false';
             newContactCard.PersonBirthdate__c           = acc.PersonBirthdate;
             newContactCard.Sesso__c                     = acc.Sesso__c;
             newContactCard.Nazionalita__c               = acc.Nazionalita__c;
-            newContactCard.Lingua__c                    = acc.Lingua__c;
+            if (acc.Lingua__c != null)
+            	newContactCard.Lingua__c                    = acc.Lingua__c;
+            else
+            	newContactCard.Lingua__c = 'en';
             newContactCard.Telefono__c                  = acc.Telefono__c;
             newContactCard.Email__c                     = acc.Email__c;
             newContactCard.WeChat__c                    = acc.WeChat__c;

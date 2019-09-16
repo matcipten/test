@@ -1,6 +1,14 @@
-.THIS {
-}
+.THIS.ten_button2 {
+	width:100%;
+	height:8vmin;
+	font-size: 2.5vmin;
+	border-width:0.5vmin;
+	box-shadow: 0.25vmin 0.25vmin rgb(221, 219, 218);
+	font-weight: bold;
+	
+	}
 .THIS.uiButton.ten_button {
 width:100%;
 height:50px;
+font-size: 18px;
 }

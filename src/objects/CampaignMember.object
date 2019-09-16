@@ -99,57 +99,18 @@
     </fields>
     <fields>
         <fullName>LeadSource</fullName>
-        <picklist>
-            <picklistValues>
-                <fullName>Advertisement</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Employee Referral</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>External Referral</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Partner</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Public Relations</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Seminar - Internal</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Seminar - Partner</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Trade Show</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Web</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Word of mouth</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Other</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <type>Picklist</type>
     </fields>
     <fields>
         <fullName>MobilePhone</fullName>
+    </fields>
+    <fields>
+        <fullName>Notes__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Notes</label>
+        <required>false</required>
+        <type>TextArea</type>
     </fields>
     <fields>
         <fullName>Phone</fullName>
@@ -159,33 +120,6 @@
     </fields>
     <fields>
         <fullName>Salutation</fullName>
-        <picklist>
-            <picklistValues>
-                <fullName>Mr.</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Ms.</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Mrs.</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Dr.</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Prof.</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Mss.</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -193,53 +127,6 @@
     </fields>
     <fields>
         <fullName>Status</fullName>
-        <picklist>
-            <picklistValues>
-                <fullName>Responded</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Sent</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Customer attended</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Customer did not attend</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Inviato</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Invitation sent</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Presence confirmed</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Presence declined</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Risposta</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Suggested Target</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Target confirmed</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>true</sorted>
-        </picklist>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -249,34 +136,46 @@
         <fullName>Title</fullName>
     </fields>
     <fields>
+        <fullName>Titolare_Client_Advisor_Boutique__c</fullName>
+        <externalId>false</externalId>
+        <formula>Contact.Account.Titolare_Client_Advisor_Boutique__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Titolare Client Advisor / Boutique</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>et4ae5__Activity__c</fullName>
         <deprecated>false</deprecated>
         <externalId>false</externalId>
         <label>Activity</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Sent</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Unsubscribed</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Sent</fullName>
+                    <default>false</default>
+                    <label>Sent</label>
+                </value>
+                <value>
+                    <fullName>Unsubscribed</fullName>
+                    <default>false</default>
+                    <label>Unsubscribed</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <sharingModel>ControlledByCampaign</sharingModel>
     <validationRules>
         <fullName>Consensi_privacy</fullName>
-        <active>true</active>
+        <active>false</active>
         <errorConditionFormula>AND ( Contact.Account.Privacy_1__c = false,
       Contact.Account.Privacy1__c = false,
       Contact.Account.Privacy2__c = false,
-      $Profile.Id &lt;&gt; $Setup.Profile__c.Id_Admin__c, 
+      $Profile.Id &lt;&gt; $Setup.Profile__c.Id_Admin__c/*, 
       $Profile.Id &lt;&gt; $Setup.Profile__c.Id_Boutique__c, 
-      $Profile.Id &lt;&gt; $Setup.Profile__c.Id_Associate__c)</errorConditionFormula>
+      $Profile.Id &lt;&gt; $Setup.Profile__c.Id_Associate__c*/)</errorConditionFormula>
         <errorMessage>Il cliente non ha alcun consenso privacy</errorMessage>
     </validationRules>
 </CustomObject>

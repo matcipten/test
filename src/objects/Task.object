@@ -21,10 +21,6 @@
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
-        <actionName>Follow</actionName>
-        <type>Default</type>
-    </actionOverrides>
-    <actionOverrides>
         <actionName>NewTask</actionName>
         <type>Default</type>
     </actionOverrides>
@@ -78,24 +74,6 @@
     </fields>
     <fields>
         <fullName>Priority</fullName>
-        <picklist>
-            <picklistValues>
-                <fullName>Alta</fullName>
-                <default>false</default>
-                <highPriority>true</highPriority>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Normale</fullName>
-                <default>true</default>
-                <highPriority>false</highPriority>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Bassa</fullName>
-                <default>false</default>
-                <highPriority>false</highPriority>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -106,61 +84,11 @@
     </fields>
     <fields>
         <fullName>Status</fullName>
-        <picklist>
-            <picklistValues>
-                <fullName>Non iniziata</fullName>
-                <default>true</default>
-                <closed>false</closed>
-            </picklistValues>
-            <picklistValues>
-                <fullName>In corso</fullName>
-                <default>false</default>
-                <closed>false</closed>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Completata</fullName>
-                <default>false</default>
-                <closed>true</closed>
-            </picklistValues>
-            <picklistValues>
-                <fullName>In attesa di terza persona</fullName>
-                <default>false</default>
-                <closed>false</closed>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Rinviato</fullName>
-                <default>false</default>
-                <closed>false</closed>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <type>Picklist</type>
     </fields>
     <fields>
         <fullName>Subject</fullName>
-        <picklist>
-            <picklistValues>
-                <fullName>E-mail</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Telefonata</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Invio posta</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Altro</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Thank You Note</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
+        <encrypted>false</encrypted>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -168,21 +96,6 @@
     </fields>
     <fields>
         <fullName>Type</fullName>
-        <picklist>
-            <picklistValues>
-                <fullName>Chiamata</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Meeting</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Altro</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -193,10 +106,198 @@
         <fullName>WhoId</fullName>
         <type>Lookup</type>
     </fields>
+    <listViews>
+        <fullName>CompletedTasks</fullName>
+        <columns>SUBJECT</columns>
+        <columns>WHO_NAME</columns>
+        <columns>WHAT_NAME</columns>
+        <columns>DUE_DATE</columns>
+        <columns>STATUS</columns>
+        <columns>PRIORITY</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <columns>LAST_UPDATE</columns>
+        <columns>UPDATEDBY_USER.ALIAS</columns>
+        <filterScope>Mine</filterScope>
+        <filters>
+            <field>IS_CLOSED</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <filters>
+            <field>IS_RECURRENCE</field>
+            <operation>equals</operation>
+            <value>0</value>
+        </filters>
+        <filters>
+            <field>LAST_UPDATE</field>
+            <operation>equals</operation>
+            <value>TODAY,LAST_N_DAYS:30</value>
+        </filters>
+        <label>ENCODED:{!FilterNames.Task_CompletedTasks}</label>
+    </listViews>
+    <listViews>
+        <fullName>DelegatedTasks</fullName>
+        <columns>SUBJECT</columns>
+        <columns>WHO_NAME</columns>
+        <columns>WHAT_NAME</columns>
+        <columns>DUE_DATE</columns>
+        <columns>STATUS</columns>
+        <columns>PRIORITY</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <columns>LAST_UPDATE</columns>
+        <columns>UPDATEDBY_USER.ALIAS</columns>
+        <filterScope>Delegated</filterScope>
+        <label>ENCODED:{!FilterNames.Task_DelegatedTasks}</label>
+    </listViews>
+    <listViews>
+        <fullName>OpenTasks</fullName>
+        <columns>SUBJECT</columns>
+        <columns>WHO_NAME</columns>
+        <columns>WHAT_NAME</columns>
+        <columns>DUE_DATE</columns>
+        <columns>STATUS</columns>
+        <columns>PRIORITY</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <columns>LAST_UPDATE</columns>
+        <columns>UPDATEDBY_USER.ALIAS</columns>
+        <filterScope>Mine</filterScope>
+        <filters>
+            <field>IS_CLOSED</field>
+            <operation>equals</operation>
+            <value>0</value>
+        </filters>
+        <filters>
+            <field>IS_RECURRENCE</field>
+            <operation>equals</operation>
+            <value>0</value>
+        </filters>
+        <filters>
+            <field>DUE_DATE</field>
+            <operation>greaterOrEqual</operation>
+            <value>LAST_N_DAYS:30</value>
+        </filters>
+        <label>ENCODED:{!FilterNames.Task_OpenTasks}</label>
+    </listViews>
+    <listViews>
+        <fullName>OverdueTasks</fullName>
+        <columns>SUBJECT</columns>
+        <columns>WHO_NAME</columns>
+        <columns>WHAT_NAME</columns>
+        <columns>DUE_DATE</columns>
+        <columns>STATUS</columns>
+        <columns>PRIORITY</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <columns>LAST_UPDATE</columns>
+        <columns>UPDATEDBY_USER.ALIAS</columns>
+        <filterScope>Mine</filterScope>
+        <filters>
+            <field>IS_CLOSED</field>
+            <operation>equals</operation>
+            <value>0</value>
+        </filters>
+        <filters>
+            <field>IS_RECURRENCE</field>
+            <operation>equals</operation>
+            <value>0</value>
+        </filters>
+        <filters>
+            <field>DUE_DATE</field>
+            <operation>lessThan</operation>
+            <value>TODAY</value>
+        </filters>
+        <label>ENCODED:{!FilterNames.Task_OverdueTasks}</label>
+    </listViews>
+    <listViews>
+        <fullName>RecurringTasks</fullName>
+        <columns>SUBJECT</columns>
+        <columns>WHO_NAME</columns>
+        <columns>WHAT_NAME</columns>
+        <columns>DUE_DATE</columns>
+        <columns>STATUS</columns>
+        <columns>PRIORITY</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <columns>LAST_UPDATE</columns>
+        <columns>UPDATEDBY_USER.ALIAS</columns>
+        <filterScope>Mine</filterScope>
+        <filters>
+            <field>IS_RECURRENCE</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>ENCODED:{!FilterNames.Task_RecurringTasks}</label>
+    </listViews>
+    <listViews>
+        <fullName>TodaysTasks</fullName>
+        <columns>SUBJECT</columns>
+        <columns>WHO_NAME</columns>
+        <columns>WHAT_NAME</columns>
+        <columns>DUE_DATE</columns>
+        <columns>STATUS</columns>
+        <columns>PRIORITY</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <columns>LAST_UPDATE</columns>
+        <columns>UPDATEDBY_USER.ALIAS</columns>
+        <filterScope>Mine</filterScope>
+        <filters>
+            <field>IS_CLOSED</field>
+            <operation>equals</operation>
+            <value>0</value>
+        </filters>
+        <filters>
+            <field>IS_RECURRENCE</field>
+            <operation>equals</operation>
+            <value>0</value>
+        </filters>
+        <filters>
+            <field>DUE_DATE</field>
+            <operation>equals</operation>
+            <value>TODAY,LAST_N_DAYS:30</value>
+        </filters>
+        <label>ENCODED:{!FilterNames.z_TodaysTasks}</label>
+    </listViews>
+    <listViews>
+        <fullName>UnscheduledTasks</fullName>
+        <columns>SUBJECT</columns>
+        <columns>WHO_NAME</columns>
+        <columns>WHAT_NAME</columns>
+        <columns>DUE_DATE</columns>
+        <columns>STATUS</columns>
+        <columns>PRIORITY</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <columns>LAST_UPDATE</columns>
+        <columns>UPDATEDBY_USER.ALIAS</columns>
+        <filterScope>Mine</filterScope>
+        <filters>
+            <field>IS_CLOSED</field>
+            <operation>equals</operation>
+            <value>0</value>
+        </filters>
+        <filters>
+            <field>IS_RECURRENCE</field>
+            <operation>equals</operation>
+            <value>0</value>
+        </filters>
+        <filters>
+            <field>DUE_DATE</field>
+            <operation>equals</operation>
+        </filters>
+        <label>ENCODED:{!FilterNames.Task_UnscheduledTasks}</label>
+    </listViews>
     <recordTypes>
         <fullName>Alert_Duplicato</fullName>
         <active>true</active>
         <label>Alert Duplicato</label>
+        <picklistValues>
+            <picklist>Accetta_Trasferimento__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sì</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
         <picklistValues>
             <picklist>Priority</picklist>
             <values>
@@ -322,6 +423,17 @@
         <active>true</active>
         <label>Attività Boutique</label>
         <picklistValues>
+            <picklist>Accetta_Trasferimento__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sì</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
             <picklist>Priority</picklist>
             <values>
                 <fullName>Alta</fullName>
@@ -445,6 +557,17 @@
         <fullName>Operazione</fullName>
         <active>true</active>
         <label>Operazione</label>
+        <picklistValues>
+            <picklist>Accetta_Trasferimento__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sì</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
         <picklistValues>
             <picklist>Priority</picklist>
             <values>
@@ -571,6 +694,17 @@
         <description>Reso/Cambio in Store</description>
         <label>Reso/Cambio in Store</label>
         <picklistValues>
+            <picklist>Accetta_Trasferimento__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sì</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
             <picklist>Priority</picklist>
             <values>
                 <fullName>Alta</fullName>
@@ -672,10 +806,156 @@
         </picklistValues>
     </recordTypes>
     <recordTypes>
+        <fullName>Richiesta_Disponibilit_Capo</fullName>
+        <active>true</active>
+        <label>Richiesta Disponibilità Capo</label>
+        <picklistValues>
+            <picklist>Accetta_Trasferimento__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sì</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Priority</picklist>
+            <values>
+                <fullName>Alta</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Bassa</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Normale</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Scala_di_valutazione__c</picklist>
+            <values>
+                <fullName>0</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>10</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>7</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>8</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>9</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Status</picklist>
+            <values>
+                <fullName>Completata</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>In attesa di terza persona</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>In corso</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Non iniziata</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Rinviato</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Subject</picklist>
+            <values>
+                <fullName>Altro</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>E-mail</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Invio posta</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Telefonata</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Type</picklist>
+            <values>
+                <fullName>Altro</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Chiamata</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Meeting</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
         <fullName>Thank_You_Note</fullName>
         <active>true</active>
         <description>Thank you note message sent inside customer&apos;s ecommerce order</description>
         <label>Thank You Note</label>
+        <picklistValues>
+            <picklist>Accetta_Trasferimento__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sì</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
         <picklistValues>
             <picklist>Priority</picklist>
             <values>
@@ -806,6 +1086,17 @@
         <description>Wishlist</description>
         <label>Wishlist</label>
         <picklistValues>
+            <picklist>Accetta_Trasferimento__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sì</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
             <picklist>Priority</picklist>
             <values>
                 <fullName>Alta</fullName>
@@ -906,5 +1197,6 @@
             </values>
         </picklistValues>
     </recordTypes>
+    <searchLayouts/>
     <sharingModel>ControlledByParent</sharingModel>
 </CustomObject>

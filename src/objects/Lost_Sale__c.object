@@ -149,6 +149,21 @@
                     <label>Looking for a specific product</label>
                 </value>
                 <value>
+                    <fullName>Product available online only</fullName>
+                    <default>false</default>
+                    <label>Product available online only</label>
+                </value>
+                <value>
+                    <fullName>Client cannot wait for the transfer</fullName>
+                    <default>false</default>
+                    <label>Client cannot wait for the transfer</label>
+                </value>
+                <value>
+                    <fullName>Looking for the new collection not yet in the store</fullName>
+                    <default>false</default>
+                    <label>Looking for the new collection not yet in the store</label>
+                </value>
+                <value>
                     <fullName>Other</fullName>
                     <default>false</default>
                     <label>Other</label>

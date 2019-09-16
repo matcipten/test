@@ -40,55 +40,18 @@
     <enableFeeds>false</enableFeeds>
     <fields>
         <fullName>Category</fullName>
-        <picklist>
-            <picklistValues>
-                <fullName>Saluti</fullName>
-                <default>true</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Domande frequenti</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Chiusure</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <trackHistory>false</trackHistory>
         <type>Picklist</type>
     </fields>
     <fields>
         <fullName>Channel</fullName>
-        <picklist>
-            <picklistValues>
-                <fullName>Email</fullName>
-                <default>true</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Portal</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Phone</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Internal</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Event</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Task</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <trackHistory>false</trackHistory>
         <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>FolderId</fullName>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
     </fields>
     <fields>
         <fullName>Message</fullName>
@@ -103,6 +66,15 @@
         <trackHistory>false</trackHistory>
         <type>Lookup</type>
     </fields>
+    <listViews>
+        <fullName>Commerciale_IT_CH_QuickText</fullName>
+        <filterScope>Queue</filterScope>
+        <label>Commerciale IT - CH</label>
+        <queue>Commerciale_IT_CH</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
     <searchLayouts>
         <customTabListAdditionalFields>Message</customTabListAdditionalFields>
         <customTabListAdditionalFields>Category</customTabListAdditionalFields>

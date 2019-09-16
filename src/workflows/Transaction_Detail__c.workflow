@@ -35,6 +35,15 @@ Prezzo_di_listino_MOP__c - Prezzo_di_vendita_MOP__c
         <protected>false</protected>
     </fieldUpdates>
     <fieldUpdates>
+        <fullName>Stamp_Data_Scontrino_KPI</fullName>
+        <field>Data_Scontrino_KPI__c</field>
+        <formula>DATEVALUE( Data_Scontrino__c )</formula>
+        <name>Stamp Data Scontrino KPI</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
         <fullName>Update_Sconto_BRL_riga</fullName>
         <field>PSconto_BRL__c</field>
         <formula>if 
@@ -267,6 +276,16 @@ ISCHANGED(Name)
 
 )</formula>
         <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Created not by Admin Ten</fullName>
+        <actions>
+            <name>Stamp_Data_Scontrino_KPI</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>$User.Id &lt;&gt; $Setup.BC_Settings__c.Id_Admin_Ten__c</formula>
+        <triggerType>onCreateOnly</triggerType>
     </rules>
     <rules>
         <fullName>Importo Sconto Riga MOP</fullName>
