@@ -16,17 +16,19 @@ public with sharing class CreateActivityTrackingController {
 	public static Map<String,String> getGiftTipologiaPicklist(){
 		//PN20190305 manage gift
 		Map<String,String> giftLabels = new  Map<String,String>();
+        
 
 		Schema.DescribeSObjectResult giftDescribe = Attivita_Marketing__c.SobjectType.getDescribe();
 		Map<String, Schema.SObjectField> giftFields = giftDescribe.fields.getMap();
 
 		Schema.DescribeFieldResult giftPicklist = giftFields.get('Tipologia_Attivit_picklist__c').getDescribe();
-
+		
 		for (Schema.PicklistEntry f : giftPicklist.getPicklistValues()) {
-			giftLabels.put(f.getValue(),f.getLabel());
+
+            giftLabels.put(f.getValue(),f.getLabel());
 
 		}
-
+		
 		return giftLabels;
 
 		//PN20190305 manage gift END
@@ -205,11 +207,13 @@ public with sharing class CreateActivityTrackingController {
 	}
 
 	@AuraEnabled
-	public static String createGift(String tipo,String accountId,Date activityDate){
+	public static String createGift(String tipo,String accountId,String actId,Date activityDate){
 
 		List<Associated__c> associates = new List<Associated__c>();
 		Associated__c associate = null;
 		Attivita_Marketing__c gift;
+
+		List<Activity_tracking__c> act = new List<Activity_tracking__c>();
 
 		User mySelf = [Select Id, Codice_Associate__c,Profile.Name,Codice_Boutique__c FROM User WHERE Id = :UserInfo.getUserId() LIMIT 1];
 
@@ -244,6 +248,14 @@ public with sharing class CreateActivityTrackingController {
 
 
 			insert gift;
+
+			act = [SELECT id, Gift__c  FROM Activity_tracking__c WHERE id = :actId];
+			system.debug('MCIPE '+act);
+
+			if(act !=null && act.size() > 0){
+				act[0].Gift__c = gift.Id;
+				update act;
+			}
 
 			return (String) gift.Id;
 		}

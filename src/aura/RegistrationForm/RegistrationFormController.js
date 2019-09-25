@@ -97,7 +97,7 @@
     },
     
     validateAndRegistration: function(cmp, event, helper){
-        
+        cmp.set("v.newItem.SignedLanguage__c",cmp.get("v.language").substring(0,2));
         //cmp.set("v.buttonDisable",true);
         
         var sign = cmp.find("canvas").getElement();
@@ -494,32 +494,34 @@
             var check3_no  = cmp.find("checkbox_3_no");
             var check3_label = cmp.find('checkbox_3_label');
         if (!isAnUpdate){
-            if(item.Privacy1__c == null || item.Privacy2__c == null || item.Privacy3__c == null){
-                    validitem = false;
-                    errors.push('You must specify whether you give your consent or not to privacy');
-                    if(item.Privacy1__c == null){
-                        $A.util.addClass(check1_label, 'changeMeLabel');
-                    } else {
-                        $A.util.removeClass(check1_label, 'changeMeLabel');
-                    } 
-                    if(item.Privacy2__c == null){
-                        $A.util.addClass(check2_label, 'changeMeLabel');
-                    } else {
-                        $A.util.removeClass(check2_label, 'changeMeLabel');
-                    } 
-                    if(item.Privacy3__c == null){
-                        $A.util.addClass(check3_label, 'changeMeLabel');
-                    } else {
-                        $A.util.removeClass(check3_label, 'changeMeLabel');
-                    }                
+            if(locale != 'DE'){
+                if(item.Privacy1__c == null || item.Privacy2__c == null || item.Privacy3__c == null){
+                        validitem = false;
+                        errors.push('You must specify whether you give your consent or not to privacy');
+                            if(item.Privacy1__c == null){
+                                $A.util.addClass(check1_label, 'changeMeLabel');
+                            } else {
+                                $A.util.removeClass(check1_label, 'changeMeLabel');
+                            } 
+                            if(item.Privacy2__c == null){
+                                $A.util.addClass(check2_label, 'changeMeLabel');
+                            } else {
+                                $A.util.removeClass(check2_label, 'changeMeLabel');
+                            } 
+                            if(item.Privacy3__c == null){
+                                $A.util.addClass(check3_label, 'changeMeLabel');
+                            } else {
+                                $A.util.removeClass(check3_label, 'changeMeLabel');
+                            }                
                 } else {
                     $A.util.removeClass(check1_label, 'changeMeLabel');
                     $A.util.removeClass(check2_label, 'changeMeLabel');
                     $A.util.removeClass(check3_label, 'changeMeLabel');
                 }
+            }     
         }
         
-        /* CONTROL FOR PRIVACY
+        /*CONTROL FOR PRIVACY
 
         if(locale != 'DE'){
             var check1_yes = cmp.find('checkbox_1_yes');
@@ -577,8 +579,9 @@
 
             }      
         }
-        
+
         */
+
         
         if(validitem){
             
