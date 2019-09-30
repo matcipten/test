@@ -139,240 +139,210 @@ public with sharing class onTransactionDetailTriggerHandler {
         Decimal Prezzo_netto_IVA_SAR = 0;
         Decimal Prezzo_di_listino_SAR = 0;
 
+        for(Transaction__c tempTr : transectionMap.values()){
+            tempTr.Prezzo_di_Vendita_DKK__c = 0;
+            tempTr.Prezzo_di_listino_DKK__c = 0;
+            tempTr.Prezzo_netto_IVA_DKK__c = 0;
+            tempTr.Prezzo_di_Vendita_RUB__c = 0;
+            tempTr.Prezzo_di_listino_RUB__c = 0;
+            tempTr.Prezzo_netto_IVA_RUB__c = 0;
+            tempTr.Prezzo_di_Vendita_AUD__c = 0;
+            tempTr.Prezzo_di_listino_AUD__c = 0;
+            tempTr.Prezzo_netto_IVA_AUD__c = 0;            
+            tempTr.Prezzo_di_Vendita_KRW__c = 0;
+            tempTr.Prezzo_di_listino_KRW__c = 0;
+            tempTr.Prezzo_netto_IVA_KRW__c = 0;
+            tempTr.Prezzo_di_Vendita_AED__c = 0;
+            tempTr.Prezzo_di_listino_AED__c = 0;
+            tempTr.Prezzo_netto_IVA_AED__c = 0;
+            tempTr.Prezzo_di_Vendita_PLN__c = 0;
+            tempTr.Prezzo_di_listino_PLN__c = 0;
+            tempTr.Prezzo_netto_IVA_PLN__c = 0;
+            tempTr.Prezzo_di_Vendita_QAR__c = 0;
+            tempTr.Prezzo_di_listino_QAR__c = 0;
+            tempTr.Prezzo_netto_IVA_QAR__c = 0;
+            tempTr.Prezzo_di_Vendita_SGD__c = 0;
+            tempTr.Prezzo_di_listino_SGD__c = 0;
+            tempTr.Prezzo_netto_IVA_SGD__c = 0;
+            tempTr.Prezzo_di_Vendita_SAR__c = 0;
+            tempTr.Prezzo_di_listino_SAR__c = 0;
+            tempTr.Prezzo_netto_IVA_SAR__c = 0;                                                                
+        }
 
         for (Transaction_Detail__c trsd : transectionDetailList) {
-        
+
             if(trsd.Prezzo_di_Vendita_DKK__c != NULL) {
                 if(transectionMap.get(trsd.Transaction__c).Prezzo_di_Vendita_DKK__c == null){
                         transectionMap.get(trsd.Transaction__c).Prezzo_di_Vendita_DKK__c = 0;
                     }
-                    //transectionMap.get(trsd.Transaction__c).Prezzo_di_Vendita_DKK__c = transectionMap.get(trsd.Transaction__c).Prezzo_di_Vendita_DKK__c+trsd.Prezzo_di_Vendita_DKK__c;
-					System.debug('MCIPE DEBUG '+Prezzo_vendita_DKK);
-                    Prezzo_vendita_DKK += trsd.Prezzo_di_Vendita_DKK__c;
-					System.debug('MCIPE DEBUG '+Prezzo_vendita_DKK);
-                    transectionMap.get(trsd.Transaction__c).Prezzo_di_Vendita_DKK__c = Prezzo_vendita_DKK;
+                    transectionMap.get(trsd.Transaction__c).Prezzo_di_Vendita_DKK__c = transectionMap.get(trsd.Transaction__c).Prezzo_di_Vendita_DKK__c+trsd.Prezzo_di_Vendita_DKK__c;
             }
             if(trsd.Prezzo_di_listino_DKK__c != NULL) {
                 if(transectionMap.get(trsd.Transaction__c).Prezzo_di_listino_DKK__c == null){
                         transectionMap.get(trsd.Transaction__c).Prezzo_di_listino_DKK__c = 0;
                     }
-                    //transectionMap.get(trsd.Transaction__c).Prezzo_di_listino_DKK__c = transectionMap.get(trsd.Transaction__c).Prezzo_di_listino_DKK__c+trsd.Prezzo_di_listino_DKK__c;
-					System.debug('MCIPE DEBUG '+Prezzo_di_listino_DKK);
-                    Prezzo_di_listino_DKK += trsd.Prezzo_di_listino_DKK__c;
-					System.debug('MCIPE DEBUG '+Prezzo_di_listino_DKK);
-                    transectionMap.get(trsd.Transaction__c).Prezzo_di_listino_DKK__c = Prezzo_di_listino_DKK;                    
+                    transectionMap.get(trsd.Transaction__c).Prezzo_di_listino_DKK__c = transectionMap.get(trsd.Transaction__c).Prezzo_di_listino_DKK__c+trsd.Prezzo_di_listino_DKK__c;
             }
             if(trsd.Prezzo_netto_IVA_DKK__c != NULL) {
                 if(transectionMap.get(trsd.Transaction__c).Prezzo_netto_IVA_DKK__c == null){
                         transectionMap.get(trsd.Transaction__c).Prezzo_netto_IVA_DKK__c = 0;
                     }
-                    //transectionMap.get(trsd.Transaction__c).Prezzo_netto_IVA_DKK__c = transectionMap.get(trsd.Transaction__c).Prezzo_netto_IVA_DKK__c+trsd.Prezzo_netto_IVA_DKK__c;
-					System.debug('MCIPE DEBUG '+Prezzo_netto_IVA_DKK);
-                    Prezzo_netto_IVA_DKK += trsd.Prezzo_netto_IVA_DKK__c;
-					System.debug('MCIPE DEBUG '+Prezzo_netto_IVA_DKK);
-                    transectionMap.get(trsd.Transaction__c).Prezzo_netto_IVA_DKK__c = Prezzo_netto_IVA_DKK;                    
+                    transectionMap.get(trsd.Transaction__c).Prezzo_netto_IVA_DKK__c = transectionMap.get(trsd.Transaction__c).Prezzo_netto_IVA_DKK__c+trsd.Prezzo_netto_IVA_DKK__c;
             }
 
             if(trsd.Prezzo_di_Vendita_RUB__c != NULL) {
                 if(transectionMap.get(trsd.Transaction__c).Prezzo_di_Vendita_RUB__c == null){
                         transectionMap.get(trsd.Transaction__c).Prezzo_di_Vendita_RUB__c = 0;
                     }
-                    //transectionMap.get(trsd.Transaction__c).Prezzo_di_Vendita_RUB__c = transectionMap.get(trsd.Transaction__c).Prezzo_di_Vendita_RUB__c+trsd.Prezzo_di_Vendita_RUB__c;                    
-                    Prezzo_vendita_RUB += trsd.Prezzo_di_Vendita_RUB__c;                    
-                    transectionMap.get(trsd.Transaction__c).Prezzo_di_Vendita_RUB__c = Prezzo_vendita_RUB;                    
+                    transectionMap.get(trsd.Transaction__c).Prezzo_di_Vendita_RUB__c = transectionMap.get(trsd.Transaction__c).Prezzo_di_Vendita_RUB__c+trsd.Prezzo_di_Vendita_RUB__c;
             }
             if(trsd.Prezzo_di_listino_RUB__c != NULL) {
                 if(transectionMap.get(trsd.Transaction__c).Prezzo_di_listino_RUB__c == null){
                         transectionMap.get(trsd.Transaction__c).Prezzo_di_listino_RUB__c = 0;
                     }
-                    //transectionMap.get(trsd.Transaction__c).Prezzo_di_listino_RUB__c = transectionMap.get(trsd.Transaction__c).Prezzo_di_listino_RUB__c+trsd.Prezzo_di_listino_RUB__c;
-                    Prezzo_di_listino_RUB += trsd.Prezzo_di_listino_RUB__c;
-                    transectionMap.get(trsd.Transaction__c).Prezzo_di_listino_RUB__c = Prezzo_di_listino_RUB;                     
+                    transectionMap.get(trsd.Transaction__c).Prezzo_di_listino_RUB__c = transectionMap.get(trsd.Transaction__c).Prezzo_di_listino_RUB__c+trsd.Prezzo_di_listino_RUB__c;
             }
             if(trsd.Prezzo_netto_IVA_RUB__c != NULL) {
                 if(transectionMap.get(trsd.Transaction__c).Prezzo_netto_IVA_RUB__c == null){
                         transectionMap.get(trsd.Transaction__c).Prezzo_netto_IVA_RUB__c = 0;
                     }
-                    //transectionMap.get(trsd.Transaction__c).Prezzo_netto_IVA_RUB__c = transectionMap.get(trsd.Transaction__c).Prezzo_netto_IVA_RUB__c+trsd.Prezzo_netto_IVA_RUB__c;
-                    Prezzo_netto_IVA_RUB += trsd.Prezzo_netto_IVA_RUB__c;
-                    transectionMap.get(trsd.Transaction__c).Prezzo_netto_IVA_RUB__c = Prezzo_netto_IVA_RUB;                     
+                    transectionMap.get(trsd.Transaction__c).Prezzo_netto_IVA_RUB__c = transectionMap.get(trsd.Transaction__c).Prezzo_netto_IVA_RUB__c+trsd.Prezzo_netto_IVA_RUB__c;
             }
 
             if(trsd.Prezzo_di_Vendita_AUD__c != NULL) {
                 if(transectionMap.get(trsd.Transaction__c).Prezzo_di_Vendita_AUD__c == null){
                         transectionMap.get(trsd.Transaction__c).Prezzo_di_Vendita_AUD__c = 0;
                     }
-                    //transectionMap.get(trsd.Transaction__c).Prezzo_di_Vendita_AUD__c = transectionMap.get(trsd.Transaction__c).Prezzo_di_Vendita_AUD__c+trsd.Prezzo_di_Vendita_AUD__c;
-                    Prezzo_vendita_AUD += trsd.Prezzo_di_Vendita_AUD__c;
-                    transectionMap.get(trsd.Transaction__c).Prezzo_di_Vendita_AUD__c = Prezzo_vendita_AUD;
+                    transectionMap.get(trsd.Transaction__c).Prezzo_di_Vendita_AUD__c = transectionMap.get(trsd.Transaction__c).Prezzo_di_Vendita_AUD__c+trsd.Prezzo_di_Vendita_AUD__c;
             }
             if(trsd.Prezzo_di_listino_AUD__c != NULL) {
                 if(transectionMap.get(trsd.Transaction__c).Prezzo_di_listino_AUD__c == null){
                         transectionMap.get(trsd.Transaction__c).Prezzo_di_listino_AUD__c = 0;
                     }
-                    //transectionMap.get(trsd.Transaction__c).Prezzo_di_listino_AUD__c = transectionMap.get(trsd.Transaction__c).Prezzo_di_listino_AUD__c+trsd.Prezzo_di_listino_AUD__c;
-                    Prezzo_di_listino_AUD += trsd.Prezzo_di_listino_AUD__c;
-                    transectionMap.get(trsd.Transaction__c).Prezzo_di_listino_AUD__c = Prezzo_di_listino_AUD;
+                    transectionMap.get(trsd.Transaction__c).Prezzo_di_listino_AUD__c = transectionMap.get(trsd.Transaction__c).Prezzo_di_listino_AUD__c+trsd.Prezzo_di_listino_AUD__c;
             }
             if(trsd.Prezzo_netto_IVA_AUD__c != NULL) {
                 if(transectionMap.get(trsd.Transaction__c).Prezzo_netto_IVA_AUD__c == null){
                         transectionMap.get(trsd.Transaction__c).Prezzo_netto_IVA_AUD__c = 0;
                     }
-                    //transectionMap.get(trsd.Transaction__c).Prezzo_netto_IVA_AUD__c = transectionMap.get(trsd.Transaction__c).Prezzo_netto_IVA_AUD__c+trsd.Prezzo_netto_IVA_AUD__c;
-                    Prezzo_netto_IVA_AUD += trsd.Prezzo_netto_IVA_AUD__c;
-                    transectionMap.get(trsd.Transaction__c).Prezzo_netto_IVA_AUD__c = Prezzo_netto_IVA_AUD;                    
+                    transectionMap.get(trsd.Transaction__c).Prezzo_netto_IVA_AUD__c = transectionMap.get(trsd.Transaction__c).Prezzo_netto_IVA_AUD__c+trsd.Prezzo_netto_IVA_AUD__c;
             }
 
             if(trsd.Prezzo_di_Vendita_KRW__c != NULL) {
                 if(transectionMap.get(trsd.Transaction__c).Prezzo_di_Vendita_KRW__c == null){
                         transectionMap.get(trsd.Transaction__c).Prezzo_di_Vendita_KRW__c = 0;
                     }
-                    //transectionMap.get(trsd.Transaction__c).Prezzo_di_Vendita_KRW__c = transectionMap.get(trsd.Transaction__c).Prezzo_di_Vendita_KRW__c+trsd.Prezzo_di_Vendita_KRW__c;
-                    Prezzo_vendita_KRW += trsd.Prezzo_di_Vendita_KRW__c;
-                    transectionMap.get(trsd.Transaction__c).Prezzo_di_Vendita_KRW__c = Prezzo_vendita_KRW;
+                    transectionMap.get(trsd.Transaction__c).Prezzo_di_Vendita_KRW__c = transectionMap.get(trsd.Transaction__c).Prezzo_di_Vendita_KRW__c+trsd.Prezzo_di_Vendita_KRW__c;
             }
             if(trsd.Prezzo_di_listino_KRW__c != NULL) {
                 if(transectionMap.get(trsd.Transaction__c).Prezzo_di_listino_KRW__c == null){
                         transectionMap.get(trsd.Transaction__c).Prezzo_di_listino_KRW__c = 0;
                     }
-                    //transectionMap.get(trsd.Transaction__c).Prezzo_di_listino_KRW__c = transectionMap.get(trsd.Transaction__c).Prezzo_di_listino_KRW__c+trsd.Prezzo_di_listino_KRW__c;
-                    Prezzo_di_listino_KRW += trsd.Prezzo_di_listino_KRW__c;
-                    transectionMap.get(trsd.Transaction__c).Prezzo_di_listino_KRW__c = Prezzo_di_listino_KRW;
+                    transectionMap.get(trsd.Transaction__c).Prezzo_di_listino_KRW__c = transectionMap.get(trsd.Transaction__c).Prezzo_di_listino_KRW__c+trsd.Prezzo_di_listino_KRW__c;
             }
             if(trsd.Prezzo_netto_IVA_KRW__c != NULL) {
                 if(transectionMap.get(trsd.Transaction__c).Prezzo_netto_IVA_KRW__c == null){
                         transectionMap.get(trsd.Transaction__c).Prezzo_netto_IVA_KRW__c = 0;
                     }
-                    //transectionMap.get(trsd.Transaction__c).Prezzo_netto_IVA_KRW__c = transectionMap.get(trsd.Transaction__c).Prezzo_netto_IVA_KRW__c+trsd.Prezzo_netto_IVA_KRW__c;
-                    Prezzo_netto_IVA_KRW += trsd.Prezzo_netto_IVA_KRW__c;
-                    transectionMap.get(trsd.Transaction__c).Prezzo_netto_IVA_KRW__c = Prezzo_netto_IVA_KRW; 
+                    transectionMap.get(trsd.Transaction__c).Prezzo_netto_IVA_KRW__c = transectionMap.get(trsd.Transaction__c).Prezzo_netto_IVA_KRW__c+trsd.Prezzo_netto_IVA_KRW__c;
             }
 
             if(trsd.Prezzo_di_Vendita_AED__c != NULL) {
                 if(transectionMap.get(trsd.Transaction__c).Prezzo_di_Vendita_AED__c == null){
                         transectionMap.get(trsd.Transaction__c).Prezzo_di_Vendita_AED__c = 0;
                     }
-                    //transectionMap.get(trsd.Transaction__c).Prezzo_di_Vendita_AED__c = transectionMap.get(trsd.Transaction__c).Prezzo_di_Vendita_AED__c+trsd.Prezzo_di_Vendita_AED__c;
-                    Prezzo_vendita_AED += trsd.Prezzo_di_Vendita_AED__c;
-                    transectionMap.get(trsd.Transaction__c).Prezzo_di_Vendita_AED__c = Prezzo_vendita_AED;
+                    transectionMap.get(trsd.Transaction__c).Prezzo_di_Vendita_AED__c = transectionMap.get(trsd.Transaction__c).Prezzo_di_Vendita_AED__c+trsd.Prezzo_di_Vendita_AED__c;
             }
             if(trsd.Prezzo_di_listino_AED__c != NULL) {
                 if(transectionMap.get(trsd.Transaction__c).Prezzo_di_listino_AED__c == null){
                         transectionMap.get(trsd.Transaction__c).Prezzo_di_listino_AED__c = 0;
                     }
-                    //transectionMap.get(trsd.Transaction__c).Prezzo_di_listino_AED__c = transectionMap.get(trsd.Transaction__c).Prezzo_di_listino_AED__c+trsd.Prezzo_di_listino_AED__c;
-                    Prezzo_di_listino_AED += trsd.Prezzo_di_listino_AED__c;
-                    transectionMap.get(trsd.Transaction__c).Prezzo_di_listino_AED__c = Prezzo_di_listino_AED;
+                    transectionMap.get(trsd.Transaction__c).Prezzo_di_listino_AED__c = transectionMap.get(trsd.Transaction__c).Prezzo_di_listino_AED__c+trsd.Prezzo_di_listino_AED__c;
             }
             if(trsd.Prezzo_netto_IVA_AED__c != NULL) {
                 if(transectionMap.get(trsd.Transaction__c).Prezzo_netto_IVA_AED__c == null){
                         transectionMap.get(trsd.Transaction__c).Prezzo_netto_IVA_AED__c = 0;
                     }
-                    //transectionMap.get(trsd.Transaction__c).Prezzo_netto_IVA_AED__c = transectionMap.get(trsd.Transaction__c).Prezzo_netto_IVA_AED__c+trsd.Prezzo_netto_IVA_AED__c;
-                    Prezzo_netto_IVA_AED += trsd.Prezzo_netto_IVA_AED__c;
-                    transectionMap.get(trsd.Transaction__c).Prezzo_netto_IVA_AED__c = Prezzo_netto_IVA_AED;
+                    transectionMap.get(trsd.Transaction__c).Prezzo_netto_IVA_AED__c = transectionMap.get(trsd.Transaction__c).Prezzo_netto_IVA_AED__c+trsd.Prezzo_netto_IVA_AED__c;
             }
 
             if(trsd.Prezzo_di_Vendita_PLN__c != NULL) {
                 if(transectionMap.get(trsd.Transaction__c).Prezzo_di_Vendita_PLN__c == null){
                         transectionMap.get(trsd.Transaction__c).Prezzo_di_Vendita_PLN__c = 0;
                     }
-                    //transectionMap.get(trsd.Transaction__c).Prezzo_di_Vendita_PLN__c = transectionMap.get(trsd.Transaction__c).Prezzo_di_Vendita_PLN__c+trsd.Prezzo_di_Vendita_PLN__c;
-                    Prezzo_vendita_PLN += trsd.Prezzo_di_Vendita_PLN__c;
-                    transectionMap.get(trsd.Transaction__c).Prezzo_di_Vendita_PLN__c = Prezzo_vendita_PLN;
+                    transectionMap.get(trsd.Transaction__c).Prezzo_di_Vendita_PLN__c = transectionMap.get(trsd.Transaction__c).Prezzo_di_Vendita_PLN__c+trsd.Prezzo_di_Vendita_PLN__c;
             }
             if(trsd.Prezzo_di_listino_PLN__c != NULL) {
                 if(transectionMap.get(trsd.Transaction__c).Prezzo_di_listino_PLN__c == null){
                         transectionMap.get(trsd.Transaction__c).Prezzo_di_listino_PLN__c = 0;
                     }
-                    //transectionMap.get(trsd.Transaction__c).Prezzo_di_listino_PLN__c = transectionMap.get(trsd.Transaction__c).Prezzo_di_listino_PLN__c+trsd.Prezzo_di_listino_PLN__c;
-                    Prezzo_di_listino_PLN += trsd.Prezzo_di_listino_PLN__c;
-                    transectionMap.get(trsd.Transaction__c).Prezzo_di_listino_PLN__c = Prezzo_di_listino_PLN;
+                    transectionMap.get(trsd.Transaction__c).Prezzo_di_listino_PLN__c = transectionMap.get(trsd.Transaction__c).Prezzo_di_listino_PLN__c+trsd.Prezzo_di_listino_PLN__c;
             }
             if(trsd.Prezzo_netto_IVA_PLN__c != NULL) {
                 if(transectionMap.get(trsd.Transaction__c).Prezzo_netto_IVA_PLN__c == null){
                         transectionMap.get(trsd.Transaction__c).Prezzo_netto_IVA_PLN__c = 0;
                     }
-                    //transectionMap.get(trsd.Transaction__c).Prezzo_netto_IVA_PLN__c = transectionMap.get(trsd.Transaction__c).Prezzo_netto_IVA_PLN__c+trsd.Prezzo_netto_IVA_PLN__c;
-                    Prezzo_netto_IVA_PLN += trsd.Prezzo_netto_IVA_PLN__c;
-                    transectionMap.get(trsd.Transaction__c).Prezzo_netto_IVA_PLN__c = Prezzo_netto_IVA_PLN;
+                    transectionMap.get(trsd.Transaction__c).Prezzo_netto_IVA_PLN__c = transectionMap.get(trsd.Transaction__c).Prezzo_netto_IVA_PLN__c+trsd.Prezzo_netto_IVA_PLN__c;
             }
 
             if(trsd.Prezzo_di_Vendita_QAR__c != NULL) {
                 if(transectionMap.get(trsd.Transaction__c).Prezzo_di_Vendita_QAR__c == null){
                         transectionMap.get(trsd.Transaction__c).Prezzo_di_Vendita_QAR__c = 0;
                     }
-                    //transectionMap.get(trsd.Transaction__c).Prezzo_di_Vendita_QAR__c = transectionMap.get(trsd.Transaction__c).Prezzo_di_Vendita_QAR__c+trsd.Prezzo_di_Vendita_QAR__c;
-                    Prezzo_vendita_QAR += trsd.Prezzo_di_Vendita_QAR__c;
-                    transectionMap.get(trsd.Transaction__c).Prezzo_di_Vendita_QAR__c = Prezzo_vendita_QAR;
+                    transectionMap.get(trsd.Transaction__c).Prezzo_di_Vendita_QAR__c = transectionMap.get(trsd.Transaction__c).Prezzo_di_Vendita_QAR__c+trsd.Prezzo_di_Vendita_QAR__c;
             }
             if(trsd.Prezzo_di_listino_QAR__c != NULL) {
                 if(transectionMap.get(trsd.Transaction__c).Prezzo_di_listino_QAR__c == null){
                         transectionMap.get(trsd.Transaction__c).Prezzo_di_listino_QAR__c = 0;
                     }
-                    //transectionMap.get(trsd.Transaction__c).Prezzo_di_listino_QAR__c = transectionMap.get(trsd.Transaction__c).Prezzo_di_listino_QAR__c+trsd.Prezzo_di_listino_QAR__c;
-                    Prezzo_di_listino_QAR += trsd.Prezzo_di_listino_QAR__c;
-                    transectionMap.get(trsd.Transaction__c).Prezzo_di_listino_QAR__c = Prezzo_di_listino_QAR;
+                    transectionMap.get(trsd.Transaction__c).Prezzo_di_listino_QAR__c = transectionMap.get(trsd.Transaction__c).Prezzo_di_listino_QAR__c+trsd.Prezzo_di_listino_QAR__c;
             }
             if(trsd.Prezzo_netto_IVA_QAR__c != NULL) {
                 if(transectionMap.get(trsd.Transaction__c).Prezzo_netto_IVA_QAR__c == null){
                         transectionMap.get(trsd.Transaction__c).Prezzo_netto_IVA_QAR__c = 0;
                     }
-                    //transectionMap.get(trsd.Transaction__c).Prezzo_netto_IVA_QAR__c = transectionMap.get(trsd.Transaction__c).Prezzo_netto_IVA_QAR__c+trsd.Prezzo_netto_IVA_QAR__c;
-                    Prezzo_netto_IVA_QAR += trsd.Prezzo_netto_IVA_QAR__c;
-                    transectionMap.get(trsd.Transaction__c).Prezzo_netto_IVA_QAR__c = Prezzo_netto_IVA_QAR;
+                    transectionMap.get(trsd.Transaction__c).Prezzo_netto_IVA_QAR__c = transectionMap.get(trsd.Transaction__c).Prezzo_netto_IVA_QAR__c+trsd.Prezzo_netto_IVA_QAR__c;
             }
 
             if(trsd.Prezzo_di_Vendita_SGD__c != NULL) {
                 if(transectionMap.get(trsd.Transaction__c).Prezzo_di_Vendita_SGD__c == null){
                         transectionMap.get(trsd.Transaction__c).Prezzo_di_Vendita_SGD__c = 0;
                     }
-                    //transectionMap.get(trsd.Transaction__c).Prezzo_di_Vendita_SGD__c = transectionMap.get(trsd.Transaction__c).Prezzo_di_Vendita_SGD__c+trsd.Prezzo_di_Vendita_SGD__c;
-                    Prezzo_vendita_SGD += trsd.Prezzo_di_Vendita_SGD__c;
-                    transectionMap.get(trsd.Transaction__c).Prezzo_di_Vendita_SGD__c = Prezzo_vendita_SGD;
+                    transectionMap.get(trsd.Transaction__c).Prezzo_di_Vendita_SGD__c = transectionMap.get(trsd.Transaction__c).Prezzo_di_Vendita_SGD__c+trsd.Prezzo_di_Vendita_SGD__c;
             }
             if(trsd.Prezzo_di_listino_SGD__c != NULL) {
                 if(transectionMap.get(trsd.Transaction__c).Prezzo_di_listino_SGD__c == null){
                         transectionMap.get(trsd.Transaction__c).Prezzo_di_listino_SGD__c = 0;
                     }
-                    //transectionMap.get(trsd.Transaction__c).Prezzo_di_listino_SGD__c = transectionMap.get(trsd.Transaction__c).Prezzo_di_listino_SGD__c+trsd.Prezzo_di_listino_SGD__c;
-                    Prezzo_di_listino_SGD += trsd.Prezzo_di_listino_SGD__c;
-                    transectionMap.get(trsd.Transaction__c).Prezzo_di_listino_SGD__c = Prezzo_di_listino_SGD;
+                    transectionMap.get(trsd.Transaction__c).Prezzo_di_listino_SGD__c = transectionMap.get(trsd.Transaction__c).Prezzo_di_listino_SGD__c+trsd.Prezzo_di_listino_SGD__c;
             }
             if(trsd.Prezzo_netto_IVA_SGD__c != NULL) {
                 if(transectionMap.get(trsd.Transaction__c).Prezzo_netto_IVA_SGD__c == null){
                         transectionMap.get(trsd.Transaction__c).Prezzo_netto_IVA_SGD__c = 0;
                     }
-                    //transectionMap.get(trsd.Transaction__c).Prezzo_netto_IVA_SGD__c = transectionMap.get(trsd.Transaction__c).Prezzo_netto_IVA_SGD__c+trsd.Prezzo_netto_IVA_SGD__c;
-                    Prezzo_netto_IVA_SGD += trsd.Prezzo_netto_IVA_SGD__c;
-                    transectionMap.get(trsd.Transaction__c).Prezzo_netto_IVA_SGD__c = Prezzo_netto_IVA_SGD; 
+                    transectionMap.get(trsd.Transaction__c).Prezzo_netto_IVA_SGD__c = transectionMap.get(trsd.Transaction__c).Prezzo_netto_IVA_SGD__c+trsd.Prezzo_netto_IVA_SGD__c;
             }
 
             if(trsd.Prezzo_di_Vendita_SAR__c != NULL) {
                 if(transectionMap.get(trsd.Transaction__c).Prezzo_di_Vendita_SAR__c == null){
                         transectionMap.get(trsd.Transaction__c).Prezzo_di_Vendita_SAR__c = 0;
                     }
-                    //transectionMap.get(trsd.Transaction__c).Prezzo_di_Vendita_SAR__c = transectionMap.get(trsd.Transaction__c).Prezzo_di_Vendita_SAR__c+trsd.Prezzo_di_Vendita_SAR__c;
-                    Prezzo_vendita_SAR += trsd.Prezzo_di_Vendita_SAR__c;
-                    transectionMap.get(trsd.Transaction__c).Prezzo_di_Vendita_SAR__c = Prezzo_vendita_SAR;
+                    transectionMap.get(trsd.Transaction__c).Prezzo_di_Vendita_SAR__c = transectionMap.get(trsd.Transaction__c).Prezzo_di_Vendita_SAR__c+trsd.Prezzo_di_Vendita_SAR__c;
             }
             if(trsd.Prezzo_di_listino_SAR__c != NULL) {
                 if(transectionMap.get(trsd.Transaction__c).Prezzo_di_listino_SAR__c == null){
                         transectionMap.get(trsd.Transaction__c).Prezzo_di_listino_SAR__c = 0;
                     }
-                    //transectionMap.get(trsd.Transaction__c).Prezzo_di_listino_SAR__c = transectionMap.get(trsd.Transaction__c).Prezzo_di_listino_SAR__c+trsd.Prezzo_di_listino_SAR__c;
-                    Prezzo_di_listino_SAR += trsd.Prezzo_di_listino_SAR__c;
-                    transectionMap.get(trsd.Transaction__c).Prezzo_di_listino_SAR__c = Prezzo_di_listino_SAR;
+                    transectionMap.get(trsd.Transaction__c).Prezzo_di_listino_SAR__c = transectionMap.get(trsd.Transaction__c).Prezzo_di_listino_SAR__c+trsd.Prezzo_di_listino_SAR__c;
             }
             if(trsd.Prezzo_netto_IVA_SAR__c != NULL) {
                 if(transectionMap.get(trsd.Transaction__c).Prezzo_netto_IVA_SAR__c == null){
                         transectionMap.get(trsd.Transaction__c).Prezzo_netto_IVA_SAR__c = 0;
                     }
-                    //transectionMap.get(trsd.Transaction__c).Prezzo_netto_IVA_SAR__c = transectionMap.get(trsd.Transaction__c).Prezzo_netto_IVA_SAR__c+trsd.Prezzo_netto_IVA_SAR__c;
-                    Prezzo_netto_IVA_SAR += trsd.Prezzo_netto_IVA_SAR__c;
-                    transectionMap.get(trsd.Transaction__c).Prezzo_netto_IVA_SAR__c = Prezzo_netto_IVA_SAR;
+                    transectionMap.get(trsd.Transaction__c).Prezzo_netto_IVA_SAR__c = transectionMap.get(trsd.Transaction__c).Prezzo_netto_IVA_SAR__c+trsd.Prezzo_netto_IVA_SAR__c;
             }
         }
+
 
         for(Id Id_transaction : transectionMap.keySet()) {
 
