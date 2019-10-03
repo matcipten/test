@@ -59,7 +59,6 @@
     <externalSharingModel>ReadWrite</externalSharingModel>
     <fields>
         <fullName>Codice__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Codice</label>
         <length>50</length>
@@ -70,7 +69,6 @@
     </fields>
     <fields>
         <fullName>Composizione__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Composizione</label>
         <length>255</length>
@@ -81,7 +79,6 @@
     </fields>
     <fields>
         <fullName>Descrizione_Tessuto__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Descrizione Tessuto</label>
         <length>255</length>
@@ -92,7 +89,6 @@
     </fields>
     <fields>
         <fullName>Peso__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Peso</label>
         <length>50</length>
@@ -103,7 +99,6 @@
     </fields>
     <fields>
         <fullName>Tipologia_Tessuto__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Tipologia Tessuto</label>
         <length>100</length>
@@ -115,7 +110,6 @@
     <gender>Masculine</gender>
     <label>Tessuto</label>
     <nameField>
-        <encrypted>false</encrypted>
         <label>Tessuto Name</label>
         <type>Text</type>
     </nameField>

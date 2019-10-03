@@ -55,7 +55,6 @@
     <externalSharingModel>ReadWrite</externalSharingModel>
     <fields>
         <fullName>Area__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Area</label>
         <length>100</length>
@@ -66,7 +65,6 @@
     </fields>
     <fields>
         <fullName>Email__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Email</label>
         <required>false</required>
@@ -76,7 +74,6 @@
     </fields>
     <fields>
         <fullName>First_Name__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>First Name</label>
         <length>100</length>
@@ -87,7 +84,6 @@
     </fields>
     <fields>
         <fullName>Last_Name__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Last Name</label>
         <length>100</length>

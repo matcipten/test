@@ -69,7 +69,6 @@
     </fields>
     <fields>
         <fullName>Area__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Area</label>
         <length>100</length>
@@ -81,7 +80,6 @@
     </fields>
     <fields>
         <fullName>Citta_Legal_Entity__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Città Legal Entity</label>
         <length>100</length>
@@ -93,7 +91,6 @@
     </fields>
     <fields>
         <fullName>Citta__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Città</label>
         <length>200</length>
@@ -105,7 +102,6 @@
     </fields>
     <fields>
         <fullName>Codice_Postale_Legal_Entity__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Codice Postale Legal Entity</label>
         <length>15</length>
@@ -117,7 +113,6 @@
     </fields>
     <fields>
         <fullName>Codice_Postale__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Codice Postale</label>
         <length>200</length>
@@ -129,7 +124,6 @@
     </fields>
     <fields>
         <fullName>Data_Chiusura_Negozio__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Data Chiusura Negozio</label>
         <required>false</required>
@@ -139,7 +133,6 @@
     </fields>
     <fields>
         <fullName>Descrizione__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Descrizione</label>
         <required>false</required>
@@ -149,7 +142,6 @@
     </fields>
     <fields>
         <fullName>Email_Legal_Entity__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Email Legal Entity</label>
         <required>false</required>
@@ -160,7 +152,6 @@
     </fields>
     <fields>
         <fullName>Email_Test_MC__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Email Test MC</label>
         <required>false</required>
@@ -171,7 +162,6 @@
     </fields>
     <fields>
         <fullName>Email__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Email</label>
         <required>false</required>
@@ -182,7 +172,6 @@
     </fields>
     <fields>
         <fullName>Fax_Legal_Entity__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Fax Legal Entity</label>
         <required>false</required>
@@ -203,7 +192,6 @@
     </fields>
     <fields>
         <fullName>Id_Location_Micros__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Id Location Micros</label>
         <length>100</length>
@@ -215,7 +203,6 @@
     </fields>
     <fields>
         <fullName>Id_Location__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>true</externalId>
         <label>Id Location</label>
         <length>100</length>
@@ -227,7 +214,6 @@
     </fields>
     <fields>
         <fullName>Id_Store_Manager__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Id Store Manager</label>
         <length>100</length>
@@ -248,7 +234,6 @@
     </fields>
     <fields>
         <fullName>Indirizzo_Legal_Entity_1__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Indirizzo Legal Entity 1</label>
         <length>255</length>
@@ -260,7 +245,6 @@
     </fields>
     <fields>
         <fullName>Indirizzo_Legal_Entity_2__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Indirizzo Legal Entity 2</label>
         <length>255</length>
@@ -284,7 +268,6 @@
     </fields>
     <fields>
         <fullName>Indirizzo__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Indirizzo</label>
         <length>255</length>
@@ -296,7 +279,6 @@
     </fields>
     <fields>
         <fullName>Legal_Entity__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Legal Entity</label>
         <length>100</length>
@@ -308,7 +290,6 @@
     </fields>
     <fields>
         <fullName>Nazione_Legal_Entity__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Nazione Legal Entity</label>
         <length>100</length>
@@ -320,7 +301,6 @@
     </fields>
     <fields>
         <fullName>Nazione__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Nazione</label>
         <length>200</length>
@@ -332,7 +312,6 @@
     </fields>
     <fields>
         <fullName>Nome_legal_entity__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Nome legal entity</label>
         <length>100</length>
@@ -344,7 +323,6 @@
     </fields>
     <fields>
         <fullName>Orari_Apertura__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Orari Apertura</label>
         <required>false</required>
@@ -354,7 +332,6 @@
     </fields>
     <fields>
         <fullName>Orari_Chiusura__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Orari Chiusura</label>
         <length>1024</length>
@@ -365,7 +342,6 @@
     </fields>
     <fields>
         <fullName>Partita_iva_Legal_entity__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Partita iva Legal entity</label>
         <length>100</length>
@@ -377,7 +353,6 @@
     </fields>
     <fields>
         <fullName>Provincia_Legal_Entity__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Provincia Legal Entity</label>
         <length>100</length>
@@ -389,7 +364,6 @@
     </fields>
     <fields>
         <fullName>Provincia__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Provincia</label>
         <length>200</length>
@@ -401,7 +375,6 @@
     </fields>
     <fields>
         <fullName>Store_Manager_Test_MC__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Store Manager Test MC</label>
         <length>255</length>
@@ -413,7 +386,6 @@
     </fields>
     <fields>
         <fullName>Store_Manager__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Store Manager</label>
         <length>100</length>
@@ -425,7 +397,6 @@
     </fields>
     <fields>
         <fullName>Telefono_2__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Telefono 2</label>
         <required>false</required>
@@ -435,7 +406,6 @@
     </fields>
     <fields>
         <fullName>Telefono_3__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Telefono 3</label>
         <required>false</required>
@@ -445,7 +415,6 @@
     </fields>
     <fields>
         <fullName>Telefono_Legal_Entity__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Telefono Legal Entity</label>
         <required>false</required>
@@ -455,7 +424,6 @@
     </fields>
     <fields>
         <fullName>Telefono__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Telefono</label>
         <required>false</required>
@@ -548,7 +516,6 @@
         <language>en_US</language>
     </listViews>
     <nameField>
-        <encrypted>false</encrypted>
         <label>Location Name</label>
         <trackHistory>true</trackHistory>
         <type>Text</type>

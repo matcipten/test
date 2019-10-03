@@ -55,7 +55,6 @@
     <externalSharingModel>ReadWrite</externalSharingModel>
     <fields>
         <fullName>Causale__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Causale</label>
         <length>100</length>
@@ -78,7 +77,6 @@
     <fields>
         <fullName>Chiave_Record__c</fullName>
         <caseSensitive>false</caseSensitive>
-        <encrypted>false</encrypted>
         <externalId>true</externalId>
         <label>Chiave Record</label>
         <length>100</length>
@@ -89,7 +87,6 @@
     </fields>
     <fields>
         <fullName>Codice__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Codice</label>
         <length>100</length>
@@ -100,7 +97,6 @@
     </fields>
     <fields>
         <fullName>Data_Fine__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Data Fine</label>
         <required>false</required>
@@ -109,7 +105,6 @@
     </fields>
     <fields>
         <fullName>Data_Inizio__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Data Inizio</label>
         <required>false</required>
@@ -118,7 +113,6 @@
     </fields>
     <fields>
         <fullName>Descrizione_ENG__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Descrizione ENG</label>
         <length>100</length>
@@ -129,7 +123,6 @@
     </fields>
     <fields>
         <fullName>Descrizione__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Descrizione</label>
         <length>100</length>
@@ -199,7 +192,6 @@
     </fields>
     <fields>
         <fullName>Numero_Stagione__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Numero Stagione</label>
         <length>100</length>

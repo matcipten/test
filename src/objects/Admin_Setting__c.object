@@ -4,7 +4,6 @@
     <enableFeeds>false</enableFeeds>
     <fields>
         <fullName>Email_Notifica_Batch__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Email Notifica Batch</label>
         <required>false</required>

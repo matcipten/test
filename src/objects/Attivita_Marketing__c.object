@@ -102,7 +102,6 @@
     </fields>
     <fields>
         <fullName>Data__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Data</label>
         <required>false</required>
@@ -124,7 +123,6 @@
     </fields>
     <fields>
         <fullName>Descrizione__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Descrizione</label>
         <required>false</required>
@@ -164,7 +162,6 @@
     </fields>
     <fields>
         <fullName>Note__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Note</label>
         <length>32768</length>
@@ -175,7 +172,6 @@
     </fields>
     <fields>
         <fullName>Product_Image_Reference__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Product Image Reference</label>
         <length>255</length>

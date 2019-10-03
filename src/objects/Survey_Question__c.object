@@ -56,7 +56,6 @@
     <externalSharingModel>ControlledByParent</externalSharingModel>
     <fields>
         <fullName>Choices__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Choices</label>
         <required>false</required>
@@ -78,7 +77,6 @@
     </fields>
     <fields>
         <fullName>Question__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Question</label>
         <required>true</required>
@@ -152,7 +150,6 @@
     </fields>
     <label>Survey Question</label>
     <nameField>
-        <encrypted>false</encrypted>
         <label>Name</label>
         <type>Text</type>
     </nameField>

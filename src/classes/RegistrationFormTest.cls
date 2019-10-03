@@ -18,6 +18,7 @@ public class RegistrationFormTest {
         Translate__c translate = AllDataFactory.create_Translator();
         insert translate;
         
+       
         
         Test.startTest();
         System.runAs(usr){
@@ -30,10 +31,14 @@ public class RegistrationFormTest {
 
             String test_update = RegistrationForm.updateNewAccount(test_acc, 'sPad64');
             
+            List<Contact_Card__c> cc = [SELECT Id From Contact_Card__c WHERE Customer_ID__c =: acc.Id];
+            RegistrationForm.registerForm(cc[0].Id);
 
         }
         Test.stopTest();
         
     }
+    
+    
 
 }

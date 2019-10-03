@@ -84,7 +84,6 @@
     </fields>
     <fields>
         <fullName>Key_Relazione_Ghost__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Key Relazione Ghost</label>
         <length>255</length>

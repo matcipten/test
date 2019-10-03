@@ -210,7 +210,6 @@
     </fields>
     <fields>
         <fullName>Email_Account_Owner__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Email Account Owner</label>
         <required>false</required>
@@ -220,7 +219,6 @@
     </fields>
     <fields>
         <fullName>Note__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Note</label>
         <length>131072</length>

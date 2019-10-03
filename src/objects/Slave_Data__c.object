@@ -75,7 +75,6 @@
     </fields>
     <fields>
         <fullName>Categoria_Cliente__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Categoria Cliente</label>
         <length>100</length>
@@ -94,7 +93,6 @@
     </fields>
     <fields>
         <fullName>Citta_UTF_8__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Citta UTF 8</label>
         <length>40</length>
@@ -105,7 +103,6 @@
     </fields>
     <fields>
         <fullName>Cognome_UTF_8__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Cognome UTF-8</label>
         <length>80</length>
@@ -387,7 +384,6 @@
     </fields>
     <fields>
         <fullName>Data_Annullamento__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Data Annullamento</label>
         <required>false</required>
@@ -396,7 +392,6 @@
     </fields>
     <fields>
         <fullName>Data_Cancellazione_Newsletter__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Data Cancellazione Newsletter</label>
         <required>false</required>
@@ -405,7 +400,6 @@
     </fields>
     <fields>
         <fullName>Data_Di_Registrazione__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Data Di Registrazione</label>
         <required>false</required>
@@ -414,7 +408,6 @@
     </fields>
     <fields>
         <fullName>Data_Registrazione_Newsletter__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Data Registrazione Newsletter</label>
         <required>false</required>
@@ -423,7 +416,6 @@
     </fields>
     <fields>
         <fullName>Data_Ultimo_Aggiornamento_Privacy__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Data Ultimo Aggiornamento Privacy</label>
         <required>false</required>
@@ -432,7 +424,6 @@
     </fields>
     <fields>
         <fullName>Email_Ecommerce__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Email Ecommerce</label>
         <required>false</required>
@@ -450,7 +441,6 @@
     </fields>
     <fields>
         <fullName>Fascia_di_Eta__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Fascia di Età</label>
         <length>100</length>
@@ -461,7 +451,6 @@
     </fields>
     <fields>
         <fullName>Fax__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Fax</label>
         <required>false</required>
@@ -470,7 +459,6 @@
     </fields>
     <fields>
         <fullName>FirstName__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>FirstName</label>
         <length>255</length>
@@ -503,7 +491,6 @@
     </fields>
     <fields>
         <fullName>Id_Associate__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Id Associate</label>
         <length>100</length>
@@ -514,7 +501,6 @@
     </fields>
     <fields>
         <fullName>Id_Cliente_DW__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Id Cliente DW</label>
         <length>100</length>
@@ -525,7 +511,6 @@
     </fields>
     <fields>
         <fullName>Id_Cliente_Relate__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Id Cliente Relate</label>
         <length>100</length>
@@ -536,7 +521,6 @@
     </fields>
     <fields>
         <fullName>Id_Cliente_Salesforce__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Id Cliente Salesforce</label>
         <length>100</length>
@@ -547,7 +531,6 @@
     </fields>
     <fields>
         <fullName>Id_Cliente__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Id Cliente</label>
         <length>100</length>
@@ -558,7 +541,6 @@
     </fields>
     <fields>
         <fullName>Id_Cliente_xStore__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Id Cliente xStore</label>
         <length>100</length>
@@ -569,7 +551,6 @@
     </fields>
     <fields>
         <fullName>Id_Location__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Id Location</label>
         <length>100</length>
@@ -602,7 +583,6 @@
     </fields>
     <fields>
         <fullName>Indirizzo_UTF_8__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Indirizzo UTF-8</label>
         <length>255</length>
@@ -613,7 +593,6 @@
     </fields>
     <fields>
         <fullName>LastName__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>LastName</label>
         <length>255</length>
@@ -624,7 +603,6 @@
     </fields>
     <fields>
         <fullName>Lingua__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Lingua</label>
         <length>255</length>
@@ -646,7 +624,6 @@
     </fields>
     <fields>
         <fullName>Master_Slave__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Master/Slave</label>
         <length>100</length>
@@ -657,7 +634,6 @@
     </fields>
     <fields>
         <fullName>Natura_Giuridica__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Natura Giuridica</label>
         <length>100</length>
@@ -668,7 +644,6 @@
     </fields>
     <fields>
         <fullName>Nazionalita__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Nazionalità</label>
         <length>100</length>
@@ -687,7 +662,6 @@
     </fields>
     <fields>
         <fullName>Nome_UTF_8__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Nome UTF-8</label>
         <length>40</length>
@@ -698,7 +672,6 @@
     </fields>
     <fields>
         <fullName>OUT_MATCHING_FLAG_MASTER__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>OUT_MATCHING_FLAG_MASTER</label>
         <length>255</length>
@@ -709,7 +682,6 @@
     </fields>
     <fields>
         <fullName>OUT_MATCHING_KEY__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>OUT_MATCHING_KEY</label>
         <length>255</length>
@@ -720,7 +692,6 @@
     </fields>
     <fields>
         <fullName>OUT_MATCHING_MASTER_CASE__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>OUT_MATCHING_MASTER_CASE</label>
         <length>255</length>
@@ -731,7 +702,6 @@
     </fields>
     <fields>
         <fullName>OUT_MATCHING_SCORE__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>OUT_MATCHING_SCORE</label>
         <length>255</length>
@@ -742,7 +712,6 @@
     </fields>
     <fields>
         <fullName>OUT_MATCHING_WARNING__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>OUT_MATCHING_WARNING</label>
         <length>255</length>
@@ -753,7 +722,6 @@
     </fields>
     <fields>
         <fullName>PersonBirthdate__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>PersonBirthdate</label>
         <required>false</required>
@@ -762,7 +730,6 @@
     </fields>
     <fields>
         <fullName>PersonEmail__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>PersonEmail</label>
         <required>false</required>
@@ -772,7 +739,6 @@
     </fields>
     <fields>
         <fullName>PersonMailingCity__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>PersonMailingCity</label>
         <length>40</length>
@@ -783,7 +749,6 @@
     </fields>
     <fields>
         <fullName>PersonMailingCountry__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>PersonMailingCountry</label>
         <length>80</length>
@@ -794,7 +759,6 @@
     </fields>
     <fields>
         <fullName>PersonMailingPostalCode__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>PersonMailingPostalCode</label>
         <length>20</length>
@@ -805,7 +769,6 @@
     </fields>
     <fields>
         <fullName>PersonMailingState__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>PersonMailingState</label>
         <length>80</length>
@@ -816,7 +779,6 @@
     </fields>
     <fields>
         <fullName>PersonMailingStreet__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>PersonMailingStreet</label>
         <length>255</length>
@@ -827,7 +789,6 @@
     </fields>
     <fields>
         <fullName>PersonMobilePhone__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>PersonMobilePhone</label>
         <required>false</required>
@@ -836,7 +797,6 @@
     </fields>
     <fields>
         <fullName>PersonOtherPhone__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>PersonOtherPhone</label>
         <required>false</required>
@@ -845,7 +805,6 @@
     </fields>
     <fields>
         <fullName>Phone__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Phone</label>
         <required>false</required>
@@ -862,7 +821,6 @@
     </fields>
     <fields>
         <fullName>Preferenza_newsletter__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Preferenza newsletter</label>
         <length>100</length>
@@ -905,7 +863,6 @@
     </fields>
     <fields>
         <fullName>Professione__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Professione</label>
         <length>100</length>
@@ -916,7 +873,6 @@
     </fields>
     <fields>
         <fullName>Sesso__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Sesso</label>
         <length>100</length>
@@ -927,7 +883,6 @@
     </fields>
     <fields>
         <fullName>ShippingCity__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>ShippingCity</label>
         <length>40</length>
@@ -938,7 +893,6 @@
     </fields>
     <fields>
         <fullName>ShippingCountry__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>ShippingCountry</label>
         <length>80</length>
@@ -949,7 +903,6 @@
     </fields>
     <fields>
         <fullName>ShippingPostalCode__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>ShippingPostalCode</label>
         <length>20</length>
@@ -960,7 +913,6 @@
     </fields>
     <fields>
         <fullName>ShippingState__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>ShippingState</label>
         <length>80</length>
@@ -971,7 +923,6 @@
     </fields>
     <fields>
         <fullName>ShippingStreet__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>ShippingStreet</label>
         <length>255</length>
@@ -1028,7 +979,6 @@
         <label>All</label>
     </listViews>
     <nameField>
-        <encrypted>false</encrypted>
         <label>Slave Data Name</label>
         <type>Text</type>
     </nameField>

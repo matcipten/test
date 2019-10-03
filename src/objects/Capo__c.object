@@ -83,7 +83,6 @@
     </fields>
     <fields>
         <fullName>Codice_Abito__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Codice Abito</label>
         <length>255</length>
@@ -109,7 +108,6 @@
     </fields>
     <fields>
         <fullName>Codice_Giacca__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Codice Giacca</label>
         <length>255</length>
@@ -120,7 +118,6 @@
     </fields>
     <fields>
         <fullName>Codice_Panciotto__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Codice Panciotto</label>
         <length>255</length>
@@ -131,7 +128,6 @@
     </fields>
     <fields>
         <fullName>Codice_Pantalone__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Codice Pantalone</label>
         <length>255</length>
@@ -274,7 +270,6 @@
     </fields>
     <fields>
         <fullName>Modello_Giacca__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Modello Giacca</label>
         <length>50</length>
@@ -285,7 +280,6 @@
     </fields>
     <fields>
         <fullName>Modello_Panciotto__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Modello Panciotto</label>
         <length>50</length>
@@ -330,7 +324,6 @@
     </fields>
     <fields>
         <fullName>Tipo_Filato__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Tipo Filato</label>
         <length>50</length>
@@ -365,7 +358,6 @@
     </fields>
     <fields>
         <fullName>Tipologia_MTM__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Tipologia MTM</label>
         <length>50</length>
@@ -376,7 +368,6 @@
     </fields>
     <fields>
         <fullName>Tipologia_Pantalone__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Tipologia Pantalone</label>
         <length>100</length>
@@ -387,7 +378,6 @@
     </fields>
     <fields>
         <fullName>Tipologia_costruzione_MTM__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Tipologia costruzione MTM</label>
         <length>50</length>
@@ -399,7 +389,6 @@
     <gender>Masculine</gender>
     <label>Capo</label>
     <nameField>
-        <encrypted>false</encrypted>
         <label>Capo Name</label>
         <type>Text</type>
     </nameField>

@@ -128,7 +128,6 @@
         <language>en_US</language>
     </listViews>
     <nameField>
-        <encrypted>false</encrypted>
         <label>Nome Pannello Amministrazione Marketing</label>
         <type>Text</type>
     </nameField>

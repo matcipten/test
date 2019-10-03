@@ -69,7 +69,6 @@
     </fields>
     <fields>
         <fullName>Citta_Fatturazione__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Città Fatturazione</label>
         <length>40</length>
@@ -81,7 +80,6 @@
     </fields>
     <fields>
         <fullName>Citta_Spedizione__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Città Spedizione</label>
         <length>40</length>
@@ -93,7 +91,6 @@
     </fields>
     <fields>
         <fullName>Codice_Cassa__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Codice Cassa</label>
         <length>100</length>
@@ -105,7 +102,6 @@
     </fields>
     <fields>
         <fullName>Codice_Nazione_Fatturazione__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Codice Nazione Fatturazione</label>
         <length>15</length>
@@ -117,7 +113,6 @@
     </fields>
     <fields>
         <fullName>Codice_Nazione_Spedizione__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Codice Nazione Spedizione</label>
         <length>15</length>
@@ -129,7 +124,6 @@
     </fields>
     <fields>
         <fullName>Codice_Postale_Fatturazione__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Codice Postale Fatturazione</label>
         <length>15</length>
@@ -141,7 +135,6 @@
     </fields>
     <fields>
         <fullName>Codice_Postale_Spedizione__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Codice Postale Spedizione</label>
         <length>15</length>
@@ -153,7 +146,6 @@
     </fields>
     <fields>
         <fullName>Codice_Stato_Fatturazione__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Codice Stato Fatturazione</label>
         <length>15</length>
@@ -165,7 +157,6 @@
     </fields>
     <fields>
         <fullName>Codice_Stato_Spedizione__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Codice Stato Spedizione</label>
         <length>15</length>
@@ -177,7 +168,6 @@
     </fields>
     <fields>
         <fullName>Cognome_Fatturazione__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Cognome Fatturazione</label>
         <length>40</length>
@@ -189,7 +179,6 @@
     </fields>
     <fields>
         <fullName>Cognome_Spedizione__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Cognome Spedizione</label>
         <length>40</length>
@@ -201,7 +190,6 @@
     </fields>
     <fields>
         <fullName>Data_Scontrino__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Data Scontrino</label>
         <required>false</required>
@@ -211,7 +199,6 @@
     </fields>
     <fields>
         <fullName>Data_Spedizione__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Data Spedizione</label>
         <required>false</required>
@@ -221,7 +208,6 @@
     </fields>
     <fields>
         <fullName>Email_Fatturazione__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Email Fatturazione</label>
         <required>false</required>
@@ -232,7 +218,6 @@
     </fields>
     <fields>
         <fullName>Email_Spedizione__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Email Spedizione</label>
         <required>false</required>
@@ -257,7 +242,6 @@
     </fields>
     <fields>
         <fullName>ID_Store_Xchannel__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>ID Store Xchannel</label>
         <length>100</length>
@@ -269,7 +253,6 @@
     </fields>
     <fields>
         <fullName>Id_Cliente_DW__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Id Cliente DW</label>
         <length>40</length>
@@ -281,7 +264,6 @@
     </fields>
     <fields>
         <fullName>Id_Cliente_Micros__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Id Cliente Micros</label>
         <length>40</length>
@@ -293,7 +275,6 @@
     </fields>
     <fields>
         <fullName>Id_Cliente_Relate__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Id Cliente Relate</label>
         <length>40</length>
@@ -305,7 +286,6 @@
     </fields>
     <fields>
         <fullName>Id_Cliente__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Id Cliente</label>
         <length>40</length>
@@ -317,7 +297,6 @@
     </fields>
     <fields>
         <fullName>Id_Location_Micros__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Id Location Micros</label>
         <length>100</length>
@@ -329,7 +308,6 @@
     </fields>
     <fields>
         <fullName>Id_Location__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Id Location</label>
         <length>100</length>
@@ -341,7 +319,6 @@
     </fields>
     <fields>
         <fullName>Id_Transazione_originaria_Ecommerce__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Id Transazione originaria Ecommerce</label>
         <length>100</length>
@@ -413,7 +390,6 @@ Importo_Sconto__c)</formula>
     </fields>
     <fields>
         <fullName>Indirizzo_Fatturazione__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Indirizzo Fatturazione</label>
         <length>100</length>
@@ -425,7 +401,6 @@ Importo_Sconto__c)</formula>
     </fields>
     <fields>
         <fullName>Indirizzo_Spedizione__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Indirizzo Spedizione</label>
         <length>100</length>
@@ -453,7 +428,6 @@ Importo_Sconto__c)</formula>
     <fields>
         <fullName>Key_Transazione__c</fullName>
         <caseSensitive>false</caseSensitive>
-        <encrypted>false</encrypted>
         <externalId>true</externalId>
         <label>Key Transazione</label>
         <length>255</length>
@@ -490,7 +464,6 @@ Importo_Sconto__c)</formula>
     </fields>
     <fields>
         <fullName>Nome_Fatturazione__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Nome Fatturazione</label>
         <length>40</length>
@@ -502,7 +475,6 @@ Importo_Sconto__c)</formula>
     </fields>
     <fields>
         <fullName>Nome_Spedizione__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Nome Spedizione</label>
         <length>40</length>
@@ -514,7 +486,6 @@ Importo_Sconto__c)</formula>
     </fields>
     <fields>
         <fullName>Note_Upselling__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Note Upselling</label>
         <required>false</required>
@@ -754,7 +725,6 @@ Importo_Sconto__c/ Prezzo_di_Listino__c
     </fields>
     <fields>
         <fullName>PostVoidComment__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>PostVoidComment</label>
         <length>32768</length>
@@ -765,7 +735,6 @@ Importo_Sconto__c/ Prezzo_di_Listino__c
     </fields>
     <fields>
         <fullName>PostVoidReasonCode__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>PostVoidReasonCode</label>
         <length>100</length>
@@ -1564,7 +1533,6 @@ Prezzo_di_Vendita__c)</formula>
     <fields>
         <fullName>Proprieta_Cross_Selling__c</fullName>
         <description>Tag che indica  il fattore scatenante l&apos;upselling</description>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Proprietà Cross Selling</label>
         <length>255</length>
@@ -2221,7 +2189,6 @@ PSconto__c)</formula>
     </fields>
     <fields>
         <fullName>Telefono_Fatturazione__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Telefono Fatturazione</label>
         <length>30</length>
@@ -2233,7 +2200,6 @@ PSconto__c)</formula>
     </fields>
     <fields>
         <fullName>Telefono_Spedizione__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Telefono Spedizione</label>
         <length>30</length>
@@ -2375,7 +2341,6 @@ PSconto__c)</formula>
     </fields>
     <fields>
         <fullName>Voided_BusinessDayDate__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Voided_BusinessDayDate</label>
         <required>false</required>
@@ -2385,7 +2350,6 @@ PSconto__c)</formula>
     </fields>
     <fields>
         <fullName>Voided_RetailStoreID__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Voided RetailStoreID</label>
         <length>100</length>
@@ -2397,7 +2361,6 @@ PSconto__c)</formula>
     </fields>
     <fields>
         <fullName>Voided_SequenceNumber__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Voided SequenceNumber</label>
         <length>100</length>
@@ -2409,7 +2372,6 @@ PSconto__c)</formula>
     </fields>
     <fields>
         <fullName>Voided_WorkstationID__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Voided WorkstationID</label>
         <length>100</length>
@@ -2456,7 +2418,6 @@ PSconto__c)</formula>
         </sharedTo>
     </listViews>
     <nameField>
-        <encrypted>false</encrypted>
         <label>Numero Transazione</label>
         <trackHistory>true</trackHistory>
         <type>Text</type>

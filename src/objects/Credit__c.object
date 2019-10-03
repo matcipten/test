@@ -69,7 +69,6 @@
     </fields>
     <fields>
         <fullName>Data_Creazione__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Data Creazione</label>
         <required>false</required>
@@ -79,7 +78,6 @@
     <fields>
         <fullName>Data_Esportazione__c</fullName>
         <description>Export date of the interface</description>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Data Esportazione</label>
         <required>false</required>
@@ -89,7 +87,6 @@
     <fields>
         <fullName>Data_ultimo_movimento__c</fullName>
         <description>Date of the last movement on the House Account</description>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Data Ultimo Movimento</label>
         <required>false</required>
@@ -100,7 +97,6 @@
         <fullName>ID_House_Account__c</fullName>
         <caseSensitive>false</caseSensitive>
         <description>HA Id</description>
-        <encrypted>false</encrypted>
         <externalId>true</externalId>
         <label>ID House Account</label>
         <length>60</length>
@@ -111,7 +107,6 @@
     </fields>
     <fields>
         <fullName>Id_Cliente_DW__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Id Cliente DW</label>
         <length>100</length>
@@ -123,7 +118,6 @@
     <fields>
         <fullName>Id_Cliente_Xstore__c</fullName>
         <description>party Id</description>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Id Cliente Xstore</label>
         <length>100</length>
@@ -135,7 +129,6 @@
     <fields>
         <fullName>Id_Cliente__c</fullName>
         <description>Xstore ID of the Customer that holds the House Account</description>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Id Cliente</label>
         <length>100</length>
@@ -158,7 +151,6 @@
     <fields>
         <fullName>Legal_Entity__c</fullName>
         <description>House Account legal entity</description>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Legal Entity</label>
         <length>100</length>

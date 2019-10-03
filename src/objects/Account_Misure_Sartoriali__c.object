@@ -782,7 +782,6 @@
     </fields>
     <fields>
         <fullName>Misure_dubbie__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Misure dubbie</label>
         <length>32768</length>
@@ -823,7 +822,6 @@
     </fields>
     <fields>
         <fullName>New_values__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>New values</label>
         <length>32768</length>
@@ -843,7 +841,6 @@
     </fields>
     <fields>
         <fullName>Nota_approvatore_1_livello__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Nota approvatore 1 livello</label>
         <length>32768</length>
@@ -854,7 +851,6 @@
     </fields>
     <fields>
         <fullName>Nota_negozio__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Nota negozio</label>
         <length>32768</length>
@@ -865,7 +861,6 @@
     </fields>
     <fields>
         <fullName>Nota_sarto__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Nota sarto</label>
         <length>32768</length>
@@ -1147,7 +1142,6 @@
     </fields>
     <fields>
         <fullName>Taglia__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Taglia</label>
         <length>50</length>

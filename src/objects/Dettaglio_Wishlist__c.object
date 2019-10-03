@@ -75,7 +75,6 @@
     </fields>
     <fields>
         <fullName>Data_inserimento__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Data inserimento</label>
         <required>false</required>
@@ -84,7 +83,6 @@
     </fields>
     <fields>
         <fullName>Data_rimozione__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Data rimozione</label>
         <required>false</required>
@@ -93,7 +91,6 @@
     </fields>
     <fields>
         <fullName>Id_Cliente__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Id Cliente</label>
         <length>255</length>
@@ -104,7 +101,6 @@
     </fields>
     <fields>
         <fullName>ItemId__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>ItemId</label>
         <length>255</length>

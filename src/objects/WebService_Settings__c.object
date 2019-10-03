@@ -4,7 +4,6 @@
     <enableFeeds>false</enableFeeds>
     <fields>
         <fullName>OMS_Endpoint__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>OMS Endpoint</label>
         <length>255</length>
@@ -15,7 +14,6 @@
     </fields>
     <fields>
         <fullName>OMS_Enviroment__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <inlineHelpText>INT = Integration test, 
 ‘blank’ = Production</inlineHelpText>
@@ -28,7 +26,6 @@
     </fields>
     <fields>
         <fullName>OMS_Task_Parameter__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>OMS Task Parameter</label>
         <length>255</length>

@@ -56,7 +56,6 @@
     <externalSharingModel>Read</externalSharingModel>
     <fields>
         <fullName>Codice_Store__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Codice Store</label>
         <length>50</length>
@@ -67,7 +66,6 @@
     </fields>
     <fields>
         <fullName>Codice_Tipologia__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Codice Tipologia</label>
         <length>2</length>
@@ -78,7 +76,6 @@
     </fields>
     <fields>
         <fullName>Tipologia__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Tipologia</label>
         <length>100</length>
@@ -95,7 +92,6 @@
         <label>All</label>
     </listViews>
     <nameField>
-        <encrypted>false</encrypted>
         <label>Store</label>
         <type>Text</type>
     </nameField>

@@ -247,7 +247,6 @@
     </fields>
     <fields>
         <fullName>Taglia__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Taglia</label>
         <length>50</length>
@@ -260,7 +259,6 @@
     <gender>Feminine</gender>
     <label>Misura di Riferimento Sartoria</label>
     <nameField>
-        <encrypted>false</encrypted>
         <label>Nome Misura di Riferimento Sartoria</label>
         <trackHistory>false</trackHistory>
         <type>Text</type>

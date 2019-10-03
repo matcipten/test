@@ -93,7 +93,6 @@
     </fields>
     <fields>
         <fullName>Codice_Stagione__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Codice Stagione</label>
         <length>255</length>
@@ -113,7 +112,6 @@
     <gender>Feminine</gender>
     <label>Stagione</label>
     <nameField>
-        <encrypted>false</encrypted>
         <label>Stagione Name</label>
         <type>Text</type>
     </nameField>

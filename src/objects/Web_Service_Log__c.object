@@ -67,7 +67,6 @@
     </fields>
     <fields>
         <fullName>Endpoint__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Endpoint</label>
         <length>255</length>
@@ -78,7 +77,6 @@
     </fields>
     <fields>
         <fullName>Record_id__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Record id</label>
         <length>18</length>
@@ -89,7 +87,6 @@
     </fields>
     <fields>
         <fullName>Request__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Request</label>
         <length>32768</length>
@@ -99,7 +96,6 @@
     </fields>
     <fields>
         <fullName>Result_Code__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Result Code</label>
         <length>255</length>
@@ -110,7 +106,6 @@
     </fields>
     <fields>
         <fullName>Result_Detail__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Result Detail</label>
         <length>32768</length>
@@ -120,7 +115,6 @@
     </fields>
     <fields>
         <fullName>Timestamp__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Timestamp</label>
         <required>false</required>

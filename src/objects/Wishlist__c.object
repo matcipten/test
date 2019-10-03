@@ -68,7 +68,6 @@
     </fields>
     <fields>
         <fullName>Data_inserimento__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Data inserimento</label>
         <required>false</required>

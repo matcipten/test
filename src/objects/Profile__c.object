@@ -4,7 +4,6 @@
     <enableFeeds>false</enableFeeds>
     <fields>
         <fullName>Id_Admin_Apex__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Id Admin Apex</label>
         <length>18</length>
@@ -15,7 +14,6 @@
     </fields>
     <fields>
         <fullName>Id_Admin__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Id Admin</label>
         <length>20</length>
@@ -26,7 +24,6 @@
     </fields>
     <fields>
         <fullName>Id_Associate_Ecommerce_Europa_e_ROW__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Id Associate Ecommerce Europa e ROW</label>
         <length>20</length>
@@ -37,7 +34,6 @@
     </fields>
     <fields>
         <fullName>Id_Associate_Ecommerce_USA__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Id Associate Ecommerce USA</label>
         <length>20</length>
@@ -48,7 +44,6 @@
     </fields>
     <fields>
         <fullName>Id_Associate__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Id Associate</label>
         <length>18</length>
@@ -59,7 +54,6 @@
     </fields>
     <fields>
         <fullName>Id_Boutique_Apex__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Id Boutique Apex</label>
         <length>18</length>
@@ -70,7 +64,6 @@
     </fields>
     <fields>
         <fullName>Id_Boutique__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Id Boutique</label>
         <length>20</length>
@@ -81,7 +74,6 @@
     </fields>
     <fields>
         <fullName>Id_Demandware_Apex__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Id Demandware Apex</label>
         <length>18</length>
@@ -92,7 +84,6 @@
     </fields>
     <fields>
         <fullName>Id_Demandware__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Id Demandware</label>
         <length>20</length>
@@ -103,7 +94,6 @@
     </fields>
     <fields>
         <fullName>Id_First_Level_Approver_MTM__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Id First Level Approver MTM</label>
         <length>18</length>
@@ -114,7 +104,6 @@
     </fields>
     <fields>
         <fullName>Id_Location_Ecommerce_Europa_e_ROW__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Id Location Ecommerce Europa e ROW</label>
         <length>18</length>
@@ -125,7 +114,6 @@
     </fields>
     <fields>
         <fullName>Id_Location_Ecommerce_USA__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Id Location Ecommerce USA</label>
         <length>18</length>
@@ -136,7 +124,6 @@
     </fields>
     <fields>
         <fullName>Id_Sarto__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Id Sarto</label>
         <length>18</length>
@@ -147,7 +134,6 @@
     </fields>
     <fields>
         <fullName>Id_Test_Contact_Card__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Id Test Contact Card</label>
         <length>18</length>
@@ -158,7 +144,6 @@
     </fields>
     <fields>
         <fullName>Id_Xstore_Apex__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Id Xstore Apex</label>
         <length>18</length>
@@ -169,7 +154,6 @@
     </fields>
     <fields>
         <fullName>Id_Xstore__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Id Xstore</label>
         <length>20</length>

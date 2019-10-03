@@ -76,7 +76,6 @@
     <externalSharingModel>ControlledByParent</externalSharingModel>
     <fields>
         <fullName>Affidato_a__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Affidato a</label>
         <length>255</length>
@@ -88,7 +87,6 @@
     </fields>
     <fields>
         <fullName>Altra_richiesta_di_riparazione__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Altra richiesta di riparazione</label>
         <length>32768</length>
@@ -99,7 +97,6 @@
     </fields>
     <fields>
         <fullName>Altro_canale_di_acquisto__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Altro canale di acquisto</label>
         <length>255</length>
@@ -111,7 +108,6 @@
     </fields>
     <fields>
         <fullName>Altro_negozio_di_acquisto__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Altro negozio di acquisto</label>
         <length>255</length>
@@ -123,7 +119,6 @@
     </fields>
     <fields>
         <fullName>Altro_tipo_di_riparazione__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Altro</label>
         <length>1000</length>
@@ -1129,7 +1124,6 @@
     </fields>
     <fields>
         <fullName>Data_Conferma__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Data Conferma</label>
         <required>false</required>
@@ -1139,7 +1133,6 @@
     </fields>
     <fields>
         <fullName>Data_Consegna__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Data Consegna</label>
         <required>false</required>
@@ -1149,7 +1142,6 @@
     </fields>
     <fields>
         <fullName>Data_Pickup__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Data Pickup</label>
         <required>false</required>
@@ -1159,7 +1151,6 @@
     </fields>
     <fields>
         <fullName>Data_Restituzione__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Data Restituzione</label>
         <required>false</required>
@@ -1180,7 +1171,6 @@
     </fields>
     <fields>
         <fullName>Data_Spedizione_da_Solomeo__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Data Spedizione da Solomeo</label>
         <required>false</required>
@@ -1190,7 +1180,6 @@
     </fields>
     <fields>
         <fullName>Data__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Data</label>
         <required>false</required>
@@ -1200,7 +1189,6 @@
     </fields>
     <fields>
         <fullName>Data_accettazione_richiesta__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Data accettazione richiesta</label>
         <required>false</required>
@@ -1210,7 +1198,6 @@
     </fields>
     <fields>
         <fullName>Data_affidamento_riparazione__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Data affidamento riparazione</label>
         <required>false</required>
@@ -1220,7 +1207,6 @@
     </fields>
     <fields>
         <fullName>Data_riparazione_effettiva__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Data riparazione effettiva</label>
         <required>false</required>
@@ -1230,7 +1216,6 @@
     </fields>
     <fields>
         <fullName>Data_riparazione_prevista__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Data riparazione prevista</label>
         <required>false</required>
@@ -1240,7 +1225,6 @@
     </fields>
     <fields>
         <fullName>Data_riparazione_prevista_modificata__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Data riparazione prevista modificata</label>
         <required>false</required>
@@ -1250,7 +1234,6 @@
     </fields>
     <fields>
         <fullName>Descrizione_Articolo__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Descrizione</label>
         <length>1000</length>
@@ -1261,7 +1244,6 @@
     </fields>
     <fields>
         <fullName>Dimensioni_del_pacco__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Dimensioni del pacco</label>
         <length>32768</length>
@@ -1272,7 +1254,6 @@
     </fields>
     <fields>
         <fullName>Email_Responsabile_Sede__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Email Responsabile Sede</label>
         <required>false</required>
@@ -1292,7 +1273,6 @@
     </fields>
     <fields>
         <fullName>Intervento_Richiesto__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Intervento Richiesto</label>
         <required>false</required>
@@ -1314,7 +1294,6 @@
     </fields>
     <fields>
         <fullName>Nota_di_rifiuto_richiesta_riparazione__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Nota di rifiuto richiesta riparazione</label>
         <length>1000</length>
@@ -1325,7 +1304,6 @@
     </fields>
     <fields>
         <fullName>Note_Avvenuta_Riconsegna__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Note Avvenuta Riconsegna</label>
         <length>1000</length>
@@ -1336,7 +1314,6 @@
     </fields>
     <fields>
         <fullName>Note_Controllo_Qualit__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Note Controllo Qualità</label>
         <length>1000</length>
@@ -1347,7 +1324,6 @@
     </fields>
     <fields>
         <fullName>Note_sollecito__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Note sollecito</label>
         <length>255</length>
@@ -1359,7 +1335,6 @@
     </fields>
     <fields>
         <fullName>Note_su_tempistiche_di_riparazione__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Note su tempistiche di riparazione</label>
         <length>32768</length>
@@ -1370,7 +1345,6 @@
     </fields>
     <fields>
         <fullName>Numero_Autorizzazione_Sede__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Numero Autorizzazione Sede</label>
         <length>100</length>
@@ -1382,7 +1356,6 @@
     </fields>
     <fields>
         <fullName>Numero_Scontrino__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Numero Scontrino</label>
         <length>255</length>
@@ -1394,7 +1367,6 @@
     </fields>
     <fields>
         <fullName>Pickup_Number__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Pickup Number</label>
         <length>255</length>
@@ -1753,7 +1725,6 @@
     </fields>
     <fields>
         <fullName>Riparazione_completata_Note__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Note Avvenuta Riparazione</label>
         <length>1000</length>
@@ -1871,7 +1842,6 @@
     </fields>
     <fields>
         <fullName>Taglia__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Taglia</label>
         <length>50</length>
@@ -1927,7 +1897,6 @@
     </fields>
     <fields>
         <fullName>Tracking_Number_ritiro__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Tracking Number ritiro</label>
         <length>255</length>
@@ -1939,7 +1908,6 @@
     </fields>
     <fields>
         <fullName>Tracking_Number_uscita__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Tracking Number uscita</label>
         <length>255</length>

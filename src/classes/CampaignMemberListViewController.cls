@@ -427,7 +427,7 @@ public with sharing class CampaignMemberListViewController {
 		try{
 			List<CampaignMember> contactsExistInCM =  [SELECT Id, ContactId
 			                                           FROM CampaignMember
-			                                           WHERE ContactId IN :contactId
+			                                           WHERE ContactId IN :contactId and CampaignId =:camp
 			];
 
 			for(CampaignMember cm  :  contactsExistInCM) {

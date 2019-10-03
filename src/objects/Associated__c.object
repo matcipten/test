@@ -56,7 +56,6 @@
     <externalSharingModel>ControlledByParent</externalSharingModel>
     <fields>
         <fullName>Cognome__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Cognome</label>
         <length>100</length>
@@ -67,7 +66,6 @@
     </fields>
     <fields>
         <fullName>Data_Fine_Attivita__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Data Fine Attività</label>
         <required>false</required>
@@ -76,7 +74,6 @@
     </fields>
     <fields>
         <fullName>Data_Inizio_Attivita__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Data Inizio Attività</label>
         <required>false</required>
@@ -85,7 +82,6 @@
     </fields>
     <fields>
         <fullName>Id_Associate_Micros__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Id Associate Micros</label>
         <length>100</length>
@@ -96,7 +92,6 @@
     </fields>
     <fields>
         <fullName>Id_Associate__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Id Associate</label>
         <length>100</length>
@@ -107,7 +102,6 @@
     </fields>
     <fields>
         <fullName>Id_Location_Micros__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Id Location Micros</label>
         <length>100</length>
@@ -118,7 +112,6 @@
     </fields>
     <fields>
         <fullName>IsActive__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>IsActive</label>
         <length>80</length>
@@ -163,7 +156,6 @@
     </fields>
     <fields>
         <fullName>Nome_Utente__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Nome Utente</label>
         <length>100</length>
@@ -174,7 +166,6 @@
     </fields>
     <fields>
         <fullName>Nome__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Nome</label>
         <length>100</length>
@@ -185,7 +176,6 @@
     </fields>
     <fields>
         <fullName>Property__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Property</label>
         <length>100</length>
@@ -196,7 +186,6 @@
     </fields>
     <fields>
         <fullName>key_associate__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>true</externalId>
         <label>key associate</label>
         <length>255</length>
@@ -213,7 +202,6 @@
         <label>All</label>
     </listViews>
     <nameField>
-        <encrypted>false</encrypted>
         <label>Associate Name</label>
         <type>Text</type>
     </nameField>

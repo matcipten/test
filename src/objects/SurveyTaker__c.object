@@ -91,7 +91,6 @@
     <fields>
         <fullName>Taken__c</fullName>
         <description>Whether the survey was taken or not</description>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Taken</label>
         <length>10</length>

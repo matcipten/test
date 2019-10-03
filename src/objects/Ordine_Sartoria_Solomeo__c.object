@@ -206,7 +206,6 @@ CASE ( Capo__r.Record_Type_Label__c,
     </fields>
     <fields>
         <fullName>Data_approvazione_ordine_1_livello__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Data approvazione ordine 1 livello</label>
         <required>false</required>
@@ -216,7 +215,6 @@ CASE ( Capo__r.Record_Type_Label__c,
     </fields>
     <fields>
         <fullName>Data_approvazione_ordine_2_livello__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Data approvazione ordine 2 livello</label>
         <required>false</required>
@@ -226,7 +224,6 @@ CASE ( Capo__r.Record_Type_Label__c,
     </fields>
     <fields>
         <fullName>Data_consegna_a_cliente__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Data consegna a cliente</label>
         <required>false</required>
@@ -236,7 +233,6 @@ CASE ( Capo__r.Record_Type_Label__c,
     </fields>
     <fields>
         <fullName>Data_consegna_in_negozio__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Data consegna in negozio</label>
         <required>false</required>
@@ -246,7 +242,6 @@ CASE ( Capo__r.Record_Type_Label__c,
     </fields>
     <fields>
         <fullName>Data_etichetta__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Data etichetta</label>
         <length>255</length>
@@ -339,7 +334,6 @@ CASE ( Capo__r.Record_Type_Label__c,
     </fields>
     <fields>
         <fullName>Name_etichetta__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Name etichetta</label>
         <length>255</length>
@@ -375,7 +369,6 @@ CASE ( Capo__r.Record_Type_Label__c,
     </fields>
     <fields>
         <fullName>Nota_approvatore_1_livello__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Nota approvatore 1 livello</label>
         <length>32768</length>
@@ -386,7 +379,6 @@ CASE ( Capo__r.Record_Type_Label__c,
     </fields>
     <fields>
         <fullName>Nota_di_consegna_al_cliente__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Nota di consegna al cliente</label>
         <length>32768</length>
@@ -397,7 +389,6 @@ CASE ( Capo__r.Record_Type_Label__c,
     </fields>
     <fields>
         <fullName>Nota_negozio__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Nota negozio</label>
         <length>32768</length>
@@ -408,7 +399,6 @@ CASE ( Capo__r.Record_Type_Label__c,
     </fields>
     <fields>
         <fullName>Nota_sarto__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Nota sarto</label>
         <length>32768</length>
@@ -492,7 +482,6 @@ Capo_Tessuto__r.Prezzo_EUR__c)
     </fields>
     <fields>
         <fullName>Record_Type_Giacca__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Record Type Giacca</label>
         <length>255</length>

@@ -56,7 +56,6 @@
     <externalSharingModel>ControlledByParent</externalSharingModel>
     <fields>
         <fullName>Response__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Response</label>
         <length>32000</length>

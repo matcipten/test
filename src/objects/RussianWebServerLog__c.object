@@ -55,7 +55,6 @@
     <externalSharingModel>Private</externalSharingModel>
     <fields>
         <fullName>ErrorMessage__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>ErrorMessage</label>
         <length>32768</length>
@@ -87,7 +86,6 @@
     </fields>
     <fields>
         <fullName>Status__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Status</label>
         <length>32</length>
@@ -98,7 +96,6 @@
     </fields>
     <fields>
         <fullName>XMLRequest__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>XMLRequest</label>
         <length>32768</length>
@@ -108,7 +105,6 @@
     </fields>
     <fields>
         <fullName>XMLResponse__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>XMLResponse</label>
         <length>32768</length>
@@ -119,7 +115,6 @@
     <gender>Masculine</gender>
     <label>RussianWebServerLog</label>
     <nameField>
-        <encrypted>false</encrypted>
         <label>RussianWebServerLog Name</label>
         <type>Text</type>
     </nameField>

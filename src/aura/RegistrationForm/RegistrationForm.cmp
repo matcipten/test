@@ -490,7 +490,7 @@
                                 <fieldset class="slds-form-element border-bottom">
                                     <div class="slds-form-element__control">
                                         <span class="slds-checkbox">
-                                            <lightning:input type="checkbox" aura:id="checkbox_Privacy1" class="text-bold" label="{!v.translatorValue.Privacy_Yes_Label__c}" name="blue" value="{!v.newItem.Privacy1__c}" onchange="{!c.verifyCheckBox}" disabled="{!v.afterPrinting}" />
+                                            <lightning:input type="checkbox" aura:id="checkbox_Privacy1" class="text-bold" label="{!v.translatorValue.Privacy_Yes_Label__c}" name="blue" checked="{!v.newItem.Privacy1__c}" value="{!v.newItem.Privacy1__c}" onchange="{!c.verifyCheckBox}" disabled="{!v.afterPrinting}" />
                                         </span>
                                         <div>
                                             <label class="slds-checkbox__label">
@@ -506,7 +506,7 @@
                                 <fieldset class="slds-form-element border-bottom">
                                     <div class="slds-form-element__control">
                                         <span class="slds-checkbox">
-                                            <lightning:input type="checkbox" aura:id="checkbox_Privacy2" class="text-bold" label="{!v.translatorValue.Privacy_Yes_Label__c}" name="checkbox_2_yes" value="{!v.newItem.Privacy2__c}" onchange="{!c.verifyCheckBox}" disabled="{!v.afterPrinting}" />
+                                            <lightning:input type="checkbox" aura:id="checkbox_Privacy2" class="text-bold" label="{!v.translatorValue.Privacy_Yes_Label__c}" name="checkbox_2_yes" checked="{!v.newItem.Privacy2__c}" value="{!v.newItem.Privacy2__c}" onchange="{!c.verifyCheckBox}" disabled="{!v.afterPrinting}" />
                                         </span>
                                         <div>
                                             <label class="slds-checkbox__label">
@@ -522,7 +522,7 @@
                                 <fieldset class="slds-form-element">
                                     <div class="slds-form-element__control">
                                         <span class="slds-checkbox">
-                                            <lightning:input type="checkbox" aura:id="checkbox_Privacy3" class="text-bold" label="{!v.translatorValue.Privacy_Yes_Label__c}" name="checkbox_3_yes" value="{!v.newItem.Privacy3__c}" onchange="{!c.verifyCheckBox}" disabled="{!v.afterPrinting}" />
+                                            <lightning:input type="checkbox" aura:id="checkbox_Privacy3" class="text-bold" label="{!v.translatorValue.Privacy_Yes_Label__c}" name="checkbox_3_yes" checked="{!v.newItem.Privacy3__c}" value="{!v.newItem.Privacy3__c}" onchange="{!c.verifyCheckBox}" disabled="{!v.afterPrinting}" />
                                         </span>
                                         <div>
                                             <label class="slds-checkbox__label">

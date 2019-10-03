@@ -4,7 +4,6 @@
     <enableFeeds>false</enableFeeds>
     <fields>
         <fullName>Rec_Type_Misure_Cliente_Giacca_1_5_petto__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Rec Type Misure Cliente Giacca 1,5 petto</label>
         <length>18</length>
@@ -15,7 +14,6 @@
     </fields>
     <fields>
         <fullName>Rec_Type_Misure_Cliente_Giacca_1_petto__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Rec Type Misure Cliente Giacca 1 petto</label>
         <length>18</length>
@@ -26,7 +24,6 @@
     </fields>
     <fields>
         <fullName>Rec_Type_Misure_Cliente_Pantalone__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Rec Type Misure Cliente Pantalone</label>
         <length>18</length>

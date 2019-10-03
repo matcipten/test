@@ -67,7 +67,6 @@
     <externalSharingModel>Read</externalSharingModel>
     <fields>
         <fullName>Colore_ricercato__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Colore ricercato</label>
         <length>255</length>
@@ -173,7 +172,6 @@
     </fields>
     <fields>
         <fullName>Note__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Note</label>
         <length>32768</length>
@@ -362,7 +360,6 @@
     </fields>
     <fields>
         <fullName>Taglia_ricercata__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Taglia ricercata</label>
         <length>255</length>

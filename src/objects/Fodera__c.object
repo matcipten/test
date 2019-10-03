@@ -59,7 +59,6 @@
     <externalSharingModel>ReadWrite</externalSharingModel>
     <fields>
         <fullName>Codice__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Codice</label>
         <length>50</length>
@@ -99,7 +98,6 @@
     <gender>Feminine</gender>
     <label>Fodera</label>
     <nameField>
-        <encrypted>false</encrypted>
         <label>Fodera Name</label>
         <type>Text</type>
     </nameField>

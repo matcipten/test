@@ -68,7 +68,6 @@
     <externalSharingModel>Read</externalSharingModel>
     <fields>
         <fullName>Activity_Date__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Activity Date</label>
         <required>false</required>
@@ -182,7 +181,6 @@
     </fields>
     <fields>
         <fullName>Location_Out_of_store__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Where (out of store)</label>
         <length>255</length>
@@ -219,7 +217,6 @@
     </fields>
     <fields>
         <fullName>Note_Contatto__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Activity notes</label>
         <length>32768</length>

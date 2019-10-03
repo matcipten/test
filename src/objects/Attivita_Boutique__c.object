@@ -55,7 +55,6 @@
     <externalSharingModel>Read</externalSharingModel>
     <fields>
         <fullName>Descrizione_Richiesta__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Descrizione Richiesta</label>
         <required>false</required>
@@ -99,7 +98,6 @@
         <label>Tutto</label>
     </listViews>
     <nameField>
-        <encrypted>false</encrypted>
         <label>Nome Attività Boutique</label>
         <type>Text</type>
     </nameField>

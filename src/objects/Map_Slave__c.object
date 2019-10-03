@@ -67,7 +67,6 @@
     </fields>
     <fields>
         <fullName>Id_Account__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Id Account</label>
         <length>18</length>
@@ -79,7 +78,6 @@
     <gender>Masculine</gender>
     <label>Map Slave</label>
     <nameField>
-        <encrypted>false</encrypted>
         <label>Slave Map Name</label>
         <type>Text</type>
     </nameField>

@@ -131,7 +131,6 @@
     </fields>
     <fields>
         <fullName>Data_Completamento_Attivit__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Data Completamento Attività</label>
         <required>false</required>
@@ -142,7 +141,6 @@
     </fields>
     <fields>
         <fullName>Data_Consegna_Prevista__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Data Consegna Prevista</label>
         <required>false</required>
@@ -153,7 +151,6 @@
     </fields>
     <fields>
         <fullName>Data_Consegna_Richiesta__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Data Consegna Richiesta</label>
         <required>false</required>
@@ -190,7 +187,6 @@
     </fields>
     <fields>
         <fullName>Link_Issue_Jira__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Link Issue Jira</label>
         <required>false</required>
@@ -237,7 +233,6 @@
     </fields>
     <fields>
         <fullName>Note_Brunello_Cucinelli__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Note Brunello Cucinelli</label>
         <length>32768</length>
@@ -249,7 +244,6 @@
     </fields>
     <fields>
         <fullName>Note_Ten__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Note Ten</label>
         <length>32768</length>
@@ -261,7 +255,6 @@
     </fields>
     <fields>
         <fullName>Oggetto__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Oggetto</label>
         <length>255</length>
@@ -305,7 +298,6 @@
     </fields>
     <fields>
         <fullName>Richiesta__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Richiesta</label>
         <length>32768</length>
