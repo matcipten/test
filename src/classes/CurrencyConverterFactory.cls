@@ -15,6 +15,10 @@ public with sharing class CurrencyConverterFactory {
         mapCurrencyConverter.put('DKK', new Euro2ISOCodeConverter());
         mapCurrencyConverter.put('RUB', new Euro2ISOCodeConverter());
         mapCurrencyConverter.put('AUD', new Euro2ISOCodeConverter());
+        mapCurrencyConverter.put('AED', new Euro2ISOCodeConverter());
+        mapCurrencyConverter.put('QAR', new Euro2ISOCodeConverter());
+        mapCurrencyConverter.put('SAR', new Euro2ISOCodeConverter());
+        
 	}
 	
 	public static CurrencyConverter getCurrencyConverter(String currencyIsoCode){

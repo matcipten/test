@@ -207,7 +207,7 @@ public with sharing class CreateActivityTrackingController {
 	}
 
 	@AuraEnabled
-	public static String createGift(String tipo,String accountId,String actId,Date activityDate){
+	public static String createGift(String tipo,String accountId,String actId,Date activityDate,String note){
 
 		List<Associated__c> associates = new List<Associated__c>();
 		Associated__c associate = null;
@@ -242,9 +242,9 @@ public with sharing class CreateActivityTrackingController {
 			}
 
 			if(associate != null)
-				gift = new Attivita_Marketing__c(Tipologia_Attivit_picklist__c=tipo,Cliente__c=accountId,Data__c=activityDate,Associate__c=associate.Id);
+				gift = new Attivita_Marketing__c(Tipologia_Attivit_picklist__c=tipo,Cliente__c=accountId,Data__c=activityDate,Associate__c=associate.Id,Note__c=note);
 			else
-				gift = new Attivita_Marketing__c(Tipologia_Attivit_picklist__c=tipo,Cliente__c=accountId,Data__c=activityDate);
+				gift = new Attivita_Marketing__c(Tipologia_Attivit_picklist__c=tipo,Cliente__c=accountId,Data__c=activityDate,Note__c=note);
 
 
 			insert gift;

@@ -49,7 +49,13 @@
         });
         $A.enqueueAction(action);
     },
-
+	//SALESFORCE-657 ->
+    checkNotAnsiChars: function (str) {
+      var patt = new RegExp("^[a-z A-Z !\"\#\$\%\&\'\(\)\*\+\,\-\.\/\:\;\<\=\>\?\@\[\\\]\^\_\`\{\|\}\~\\¡\¢\£\¤\¥\¦\§\¨\©\ª\«\¬\­\®\¯\°\±\²\³\´\µ\¶\·\¸\¹\º\»\¼\½\¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿŒœŠšŸŽžƒˆ˜–—‘’‚“”„†‡•…‰‹›€™ ]*$");
+      var res = patt.test(str);
+      return res;
+    },
+	//SALESFORCE-657 <-
     fetchPickListCountryVal: function (component, fieldName, elementId) {
 
         //  console.log('fetchPickListCountryVal');

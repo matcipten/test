@@ -1,7 +1,7 @@
 ({
     
     doInit : function(component, event, helper) {
-        
+        console.log("INIT CONTROLLER");  
         component.set("v.newItem","{'sobjectType':'Account'}");
         var today = new Date();
         helper.getUserInfo(component);
@@ -141,6 +141,25 @@
             } else {
                 surnameFieldJp.set("v.errors",null);
             }
+            //SALESFORCE-657 ->
+        	var nameField = cmp.find("itemNameJC");
+            if(!helper.checkNotAnsiChars(item.FirstName)){
+                validitem = false;
+                nameField.set("v.errors", [{message:""}]);
+                errors.push('Please use the Local Name Field');
+            } else {
+                nameField.set("v.errors",null);
+            }
+            
+            var surnameField = cmp.find("itemSurnameJC");
+            if(!helper.checkNotAnsiChars(item.LastName)){
+                validitem = false;
+                surnameField.set("v.errors", [{message:""}]);
+                errors.push('Please use the Local Last Name Field');
+            } else {
+                surnameField.set("v.errors",null);
+            }
+        	//SALESFORCE-657 <-
         } else {
             var nameField = cmp.find("itemName");
             if(item.FirstName == null || item.FirstName == ''){
@@ -159,7 +178,29 @@
             } else {
                 surnameField.set("v.errors",null);
             }
+            //SALESFORCE-657 ->
+        	var nameField = cmp.find("itemName");
+            if(!helper.checkNotAnsiChars(item.FirstName)){
+                validitem = false;
+                nameField.set("v.errors", [{message:""}]);
+                errors.push('Please use the Local Name Field');
+            } else {
+                nameField.set("v.errors",null);
+            }
+            
+            var surnameField = cmp.find("itemSurname");
+            if(!helper.checkNotAnsiChars(item.LastName)){
+                validitem = false;
+                surnameField.set("v.errors", [{message:""}]);
+                errors.push('Please use the Local Last Name Field');
+            } else {
+                surnameField.set("v.errors",null);
+            }
+        	//SALESFORCE-657 <-
         }
+
+        
+            
         
         var canvas = cmp.find("canvas");
         var signField_value = cmp.get("v.sPad64");

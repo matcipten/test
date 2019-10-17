@@ -32,7 +32,7 @@ public without sharing class CurrencyUtils {
             Decimal prezzoVenditaEuroValue = converter.convert((Decimal)obj.get('Prezzo_di_Vendita__c'), ctMap.get(currencyIsoCode));
 
 
-            for(String isoCode : new List<String>{'BRL', 'CHF', 'CNY', 'CAD', 'EUR', 'GBP', 'HKD', 'USD', 'JPY', 'MOP', 'AUD', 'DKK', 'RUB'}){
+            for(String isoCode : new List<String>{'BRL', 'CHF', 'CNY', 'CAD', 'EUR', 'GBP', 'HKD', 'USD', 'JPY', 'MOP', 'AUD', 'DKK', 'RUB','AED','QAR','SAR'}){
 
                 if(prezzoListinoEuroValue != null){
                     Decimal prezzoListinoConverted = euroConverter.convert(prezzoListinoEuroValue, ctMap.get(isoCode));

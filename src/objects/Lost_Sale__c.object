@@ -301,6 +301,16 @@
                     <label>Woman</label>
                 </value>
                 <value>
+                    <fullName>Boy</fullName>
+                    <default>false</default>
+                    <label>Boy</label>
+                </value>
+                <value>
+                    <fullName>Girl</fullName>
+                    <default>false</default>
+                    <label>Girl</label>
+                </value>
+                <value>
                     <fullName>Lifestyle</fullName>
                     <default>false</default>
                     <label>Lifestyle</label>

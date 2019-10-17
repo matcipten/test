@@ -283,7 +283,7 @@
                             </div>
                         </div>
                     </div>
-                    <aura:if isTrue="{!v.locale == 'CN'}">
+                    <aura:if isTrue="{!v.locale == 'CN' || v.truncLanguage == 'zh' }">
                     <div class="slds-col slds-size_4-of-12 slds-medium-size_4-of-12">
                         <div class="slds-form-element">
                             <label class="slds-form-element__label" for="input-id-01">{!v.translatorValue.We_Chat_ID_Label__c}</label>
