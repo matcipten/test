@@ -1,5 +1,6 @@
 public with sharing class OnAccountTriggerHandler {
     
+    
     public static Set<Id> SetOfIDs = new Set<Id>();
 
     public static void CreateSlaveAssociation(list<Account> oldAccount){
@@ -147,7 +148,7 @@ public with sharing class OnAccountTriggerHandler {
         
         boolean IsSandbox;
         
-        User user = [SELECT id, Codice_Boutique__c, Codice_Associate__c, FirstName, LastName, Alias FROM User WHERE Id=:UserInfo.getUserId()];
+        User user = [SELECT id,Nation_Contact_Card__c, Codice_Boutique__c, Codice_Associate__c, FirstName, LastName, Alias FROM User WHERE Id=:UserInfo.getUserId()];
         
         List<organization> lstOrganization = [Select id,instanceName,isSandbox from Organization];
         if(lstOrganization.size()>0) {
@@ -184,7 +185,7 @@ public with sharing class OnAccountTriggerHandler {
                 system.debug('DEBUG@ DEV ENDPOINT');
                 req.setEndpoint('https://dev-relate.dev.brunellocucinelli.it:8443/soap/BCG/v2_3/CustomerServices');                
                 system.debug('DEBUG@ DEV CERTIFICATE');                
-                req.setClientCertificate( 
+               req.setClientCertificate( 
                    'MIIHTgIBAzCCBwcGCSqGSIb3DQEHAaCCBvgEggb0MIIG8DCCBuwGCSqGSIb3DQEHBqCCBt0wggbZ'+
 'AgEAMIIG0gYJKoZIhvcNAQcBMCkGCiqGSIb3DQEMAQYwGwQU6ahOSD3BKQrANg82p/Ddh+j+SUcC'+
 'AwDDUICCBpizcs22o9H8tSs8dQR4xTe0PVPtlhKGaqDAnWKQRziVMBOD+MUmlf3LES1NCFF3F546'+
@@ -346,16 +347,10 @@ public with sharing class OnAccountTriggerHandler {
             String xml_phone = (status == 'U') ? setValueForRelate(acc.Phone, (String)oldMap.get(acc.Id).get('Phone')) : checkStringValue(acc.Phone);
             String xml_personMobilePhone = (status == 'U') ? setValueForRelate(acc.PersonMobilePhone, (String)oldMap.get(acc.Id).get('PersonMobilePhone')) : checkStringValue(acc.PersonMobilePhone);
 
-			if (xml_personMailingStreet == '' || xml_personMailingStreet == null )
-                	xml_personMailingStreet = acc.Indirizzo_UTF_8__c;
-            if (xml_personMailingCity == '' || xml_personMailingCity == null )
-                	xml_personMailingCity = acc.Citta_UTF_8__c;
-            
+
             system.debug('DEBUG@ Id Cliente AS400: ' + IdClienteAS400);
             system.debug('DEBUG@ Id Cliente Relate: ' + IdClienteRelate);
             system.debug('DEBUG@ Id Cliente xStore: ' + IdClientexStore);
-            system.debug('DEBUG@ XML_CITY: ' + xml_personMailingCity);
-            system.debug('DEBUG@ XML_ADDRESS: ' + xml_personMailingStreet);
             
             String xml = 
             '<?xml version="1.0" encoding="UTF-8"?>'+
@@ -532,7 +527,7 @@ public with sharing class OnAccountTriggerHandler {
             relateResponse.Result_Detail__c = res.getBody();
             relateResponse.Request__c = xml;
             
-            Account a = [SELECT Id,Id_Cliente_Relate__c FROM Account WHERE Id =: acc.Id];
+        Account a = [SELECT Id,Id_Cliente_Relate__c FROM Account WHERE Id =: acc.Id];
             if (a.Id_Cliente_Relate__c == '' || a.Id_Cliente_Relate__c == null){
             DOM.Document document = new DOM.Document();
             document.load(res.getBody());
@@ -547,15 +542,14 @@ public with sharing class OnAccountTriggerHandler {
                             {
                                 system.debug('RELATE_ID = ' + node2.getText());
                                 a.Id_Cliente_Relate__c = node2.getText();
-                                Database.SaveResult sr = Database.update(a, false);
-                                //update a;
+                                update a;
                             }
                         }
                     }
                 }
-            }
-            Database.SaveResult sr = Database.insert(relateResponse, false);
-            //insert relateResponse;
+            }    
+            
+            insert relateResponse;
             
             system.debug('DEBUG@ relateResponse: ' + relateResponse);
                                
@@ -597,5 +591,9 @@ public with sharing class OnAccountTriggerHandler {
         System.debug('result: ' + result);
         return result;
     }
+    
+    
+ 
+	
   
 }

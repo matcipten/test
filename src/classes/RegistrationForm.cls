@@ -71,11 +71,24 @@ public class RegistrationForm {
                 PDFDatas = PDFDatas.replace('LocalLNPlaceHolder','');
             }
             PDFDatas = PDFDatas.replace('TitlePlaceHolder','<label>'+ Translation[0].Salutation_Label__c+' :  '+'</label><br>' +cc[0].Salutation__c);
-            PDFDatas = PDFDatas.replace('AddressPlaceHolder','<label>'+ Translation[0].Street_Label__c+' :  '+'</label><br>' +cc[0].PersonMailingStreet__c);
-            PDFDatas = PDFDatas.replace('CityPlaceHolder','<label>'+ Translation[0].City_Label__c+' :  ' +'</label><br>'+cc[0].PersonMailingCity__c);
-            PDFDatas = PDFDatas.replace('PostalCodePlaceHolder','<label>'+ Translation[0].CAP_Label__c+' :  '+'</label><br>' +cc[0].PersonMailingPostalCode__c);
+            if (locale == 'JP'){
+				PDFDatas = PDFDatas.replace('AddressPlaceHolder','<label>'+ Translation[0].CAP_Label__c+' :  '+'</label><br>' +cc[0].PersonMailingPostalCode__c); 
+				PDFDatas = PDFDatas.replace('CityPlaceHolder','<label>'+ Translation[0].Street_Label__c+' :  '+'</label><br>' +cc[0].PersonMailingStreet__c);
+                PDFDatas = PDFDatas.replace('PostalStatePlaceHolder','<label>'+ Translation[0].City_Label__c+' :  ' +'</label><br>'+cc[0].PersonMailingCity__c);
+
+            }
+            else{
+                PDFDatas = PDFDatas.replace('AddressPlaceHolder','<label>'+ Translation[0].Street_Label__c+' :  '+'</label><br>' +cc[0].PersonMailingStreet__c);
+                PDFDatas = PDFDatas.replace('CityPlaceHolder','<label>'+ Translation[0].City_Label__c+' :  ' +'</label><br>'+cc[0].PersonMailingCity__c);
+                PDFDatas = PDFDatas.replace('PostalCodePlaceHolder','<label>'+ Translation[0].CAP_Label__c+' :  '+'</label><br>' +cc[0].PersonMailingPostalCode__c); 
+            }
+           
             if (locale == 'US')
                 PDFDatas = PDFDatas.replace('PostalStatePlaceHolder','<label>'+ Translation[0].State_Label__c+' :  '+'</label><br>' +cc[0].PersonMailingState__c);
+            else if (locale == 'JP'){
+				PDFDatas = PDFDatas.replace('PostalCodePlaceHolder','<label>'+ Translation[0].State_Label__c+' :  '+'</label><br>' +cc[0].PersonMailingState__c);
+
+            }
             else{
                 PDFDatas = PDFDatas.replace('<td class="field"> PostalStatePlaceHolder </td>','');
             }
@@ -89,7 +102,7 @@ public class RegistrationForm {
             else{
                 PDFDatas = PDFDatas.replace('TelCheckboxPlaceHolder','<label>'+ Translation[0].Checkbox_Phone_Label__c+' :  '+'</label> <img src="/img/checkbox_unchecked.gif"/> ');
             }
-            if (locale == 'CN'){
+            if (locale == 'CN' || cc[0].Lingua__c == 'zh'){
                 if (cc[0].WeChat__c == true){
                     PDFDatas = PDFDatas.replace('WeChatCheckboxPlaceHolder','<label>'+ Translation[0].Checkbox_WeChat_Label__c+' :  '+'</label> <img src="/img/checkbox_checked.gif"/> ');
                 }
@@ -123,7 +136,7 @@ public class RegistrationForm {
             PDFDatas = PDFDatas.replace('PhonePlaceHolder','<label>'+ Translation[0].Phone_Label__c.substringBefore('(')+' :  '+'</label><br>' +cc[0].Phone__c);
             PDFDatas = PDFDatas.replace('NationalityPlaceHolder','<label>'+ Translation[0].Nationality_Label__c+' :  '+'</label><br>' +cc[0].Nazionalita__c);
             PDFDatas = PDFDatas.replace('EmailPlaceHolder','<label>'+ Translation[0].Email_Label__c+' :  '+'</label><br>' +cc[0].PersonEmail__c);
-            if (locale == 'CN')
+            if (locale == 'CN' || cc[0].Lingua__c == 'zh')
                 PDFDatas = PDFDatas.replace('WeChatPlaceHolder','<label>'+ Translation[0].We_Chat_ID_Label__c+' :  '+'</label><br>' +cc[0].We_Chat_ID__c);
             else{
                 PDFDatas = PDFDatas.replace('<td class="field"> WeChatPlaceHolder </td>','');

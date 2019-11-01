@@ -198,6 +198,7 @@
             }
         	//SALESFORCE-657 <-
         }
+        	
 
         
             
@@ -427,12 +428,19 @@
             } 
         }
         }
-        
-        var streetField      = cmp.find("itemPersonMailingStreet");
-        var cityField        = cmp.find("itemPersonMailingCity");
-        var postalcodeField  = cmp.find("itemPersonMailingPostalCode");
-        var countryField     = cmp.find("InputSelectDynamicCountry");
-        
+        if (locale == 'JP'){
+            var streetField      = cmp.find("itemPersonMailingStreetJP");
+            var cityField        = cmp.find("itemPersonMailingCityJP");
+            var postalcodeField  = cmp.find("itemPersonMailingPostalCodeJP");
+        }
+        else{
+            var streetField      = cmp.find("itemPersonMailingStreet");
+            var cityField        = cmp.find("itemPersonMailingCity");
+            var postalcodeField  = cmp.find("itemPersonMailingPostalCode");
+        }
+       
+        var countryField     = cmp.find("InputSelectDynamicCountry");  
+
         if(item.PersonMailingCountry == null || item.PersonMailingCountry == ''){
                 validitem = false;
                 errors.push('Please insert customer country');
