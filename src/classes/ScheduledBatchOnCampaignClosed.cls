@@ -21,7 +21,7 @@ global class ScheduledBatchOnCampaignClosed implements Schedulable {
         ScheduledBatchOnCampaignClosed reminder = new ScheduledBatchOnCampaignClosed();
         // Seconds Minutes Hours Day_of_month Month Day_of_week optional_year
         String sch = '0 30 0 ? * * *';
-        String jobID = System.schedule('ScheduledBatchOnCampaignClosed', sch, reminder);
+        String jobID = System.schedule('ScheduledBatchOnCampaignClosed'+ System.now(), sch, reminder);
     
      
    }

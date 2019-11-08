@@ -27,7 +27,7 @@ private class TestScheduledBatchOnCampaignClosed {
             
 			ScheduledBatchOnCampaignClosed sh1 = new ScheduledBatchOnCampaignClosed();      
  			String sch = '0 0 23 * * ?';
-     	   	system.schedule('Test check', sch, sh1);
+     	   	system.schedule('Test check'+ System.now(), sch, sh1);
        		ScheduledBatchOnCampaignClosed.startScheduleExecute();
 			Test.stopTest();
 

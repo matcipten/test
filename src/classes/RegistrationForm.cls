@@ -52,8 +52,12 @@ public class RegistrationForm {
             string datetimestr2;
             integer length1;
             
-            if(cc != null && cc.size() > 0 && cc[0].PersonBirthDate__c != null){
-                datetimestr = cc[0].CreatedDate.format('dd MMMMM yyyy');
+            if(cc != null && cc.size() > 0 && cc[0].PersonBirthDate__c != null && locale == 'JP'){
+                datetimestr = cc[0].CreatedDate.format('yyyy MMMMM dd');
+                datetimestr2 = ((Datetime)cc[0].PersonBirthDate__c).format('yyyy MMMMM dd');
+            }
+            else if (cc != null && cc.size() > 0 && cc[0].PersonBirthDate__c != null && locale != 'JP'){
+                 datetimestr = cc[0].CreatedDate.format('dd MMMMM yyyy');
                 datetimestr2 = ((Datetime)cc[0].PersonBirthDate__c).format('dd MMMMM yyyy');
             }
             PDFDatas = cc[0].htmlForPdf__c.unescapeHtml4();
@@ -73,7 +77,7 @@ public class RegistrationForm {
             PDFDatas = PDFDatas.replace('TitlePlaceHolder','<label>'+ Translation[0].Salutation_Label__c+' :  '+'</label><br>' +cc[0].Salutation__c);
             if (locale == 'JP'){
 				PDFDatas = PDFDatas.replace('AddressPlaceHolder','<label>'+ Translation[0].CAP_Label__c+' :  '+'</label><br>' +cc[0].PersonMailingPostalCode__c); 
-				PDFDatas = PDFDatas.replace('CityPlaceHolder','<label>'+ Translation[0].Street_Label__c+' :  '+'</label><br>' +cc[0].PersonMailingStreet__c);
+				PDFDatas = PDFDatas.replace('CityPlaceHolder','<label>'+ Translation[0].State_Label__c+' :  '+'</label><br>' +cc[0].PersonMailingState__c);
                 PDFDatas = PDFDatas.replace('PostalStatePlaceHolder','<label>'+ Translation[0].City_Label__c+' :  ' +'</label><br>'+cc[0].PersonMailingCity__c);
 
             }
@@ -86,7 +90,7 @@ public class RegistrationForm {
             if (locale == 'US')
                 PDFDatas = PDFDatas.replace('PostalStatePlaceHolder','<label>'+ Translation[0].State_Label__c+' :  '+'</label><br>' +cc[0].PersonMailingState__c);
             else if (locale == 'JP'){
-				PDFDatas = PDFDatas.replace('PostalCodePlaceHolder','<label>'+ Translation[0].State_Label__c+' :  '+'</label><br>' +cc[0].PersonMailingState__c);
+				PDFDatas = PDFDatas.replace('PostalCodePlaceHolder','<label>'+ Translation[0].Street_Label__c+' :  '+'</label><br>' +cc[0].PersonMailingStreet__c);
 
             }
             else{
