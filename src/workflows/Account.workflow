@@ -260,7 +260,7 @@
             <name>salvaId</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>true</active>
+        <active>false</active>
         <description>controlla quando viene creato un record di cliente</description>
         <formula>TRUE</formula>
         <triggerType>onCreateOnly</triggerType>
@@ -279,7 +279,7 @@
             <name>First_Location_Name</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>true</active>
+        <active>false</active>
         <criteriaItems>
             <field>Account.Creato_da_Scheda_Digitale__c</field>
             <operation>equals</operation>
