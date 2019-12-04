@@ -167,7 +167,7 @@
                         component.set("v.TranslationDCCVersion",usr_translation.Versione_DCC__c );
                         component.set("v.TranslationRichiediFirma",usr_translation.Richiedi_Firma__c );
                         // console.log(usr_translation);
-
+						
                         if (usr_translation != null  && usr_translation.Profession_Values__c != null) {
                              this.setPicklist(component, 'Professione__c','InputSelectDynamicProfession',usr_translation.Profession_Values__c , false);
                         }
@@ -185,6 +185,43 @@
                             this.setPicklist(component, 'Nazionalita__c', 'InputSelectDynamicCountry',usr_translation.Nationality_Values__c , false);
                             this.setPicklist(component, 'Nazionalita__c', 'InputSelectDynamicPassportCountry',usr_translation.Nationality_Values__c , false);
                         }*/
+                        //MC- split date
+                        var optsDay = [];
+                        var optsMonth = [];
+                        var optsYear = [];
+                        //Days
+                        optsDay.push({class: "optionClass firstSelectOption",label: "Day",value: "",selected: "selected"});
+                        for(var i=1;i < 32;i++){
+                            optsDay.push({class: "optionClass",label: i.toString(),value: i.toString()});
+                        }
+                        if (component.get("v.locale") == 'JP')
+                            component.find("InputSelectDayJP").set("v.options",optsDay);
+                        else
+                            component.find("InputSelectDay").set("v.options",optsDay);
+                        //Months
+                        optsMonth.push({class: "optionClass firstSelectOption",label: "Month",value:"",selected: "selected"});
+                        var months = [$A.get("$Label.c.January"),$A.get("$Label.c.February"),$A.get("$Label.c.March"),$A.get("$Label.c.April"),
+                                        $A.get("$Label.c.May"),$A.get("$Label.c.June"),$A.get("$Label.c.July"),
+                                        $A.get("$Label.c.August"),$A.get("$Label.c.September"),$A.get("$Label.c.October"),
+                                        $A.get("$Label.c.November"),$A.get("$Label.c.December")];
+                
+                        for(var i = 0;i < 12;i++){
+                            optsMonth.push({class: "optionClass firstSelectOption",label: months[i],value: (i+1).toString()});
+                        }
+                        if (component.get("v.locale") == 'JP')
+                        	component.find("InputSelectMonthJP").set("v.options",optsMonth);
+                        else
+                            component.find("InputSelectMonth").set("v.options",optsMonth);
+                        //Years
+                        optsYear.push({class: "optionClass firstSelectOption",label: "Year",value: "",selected: "selected"}); 
+                        for(var i = 1940;i <= (new Date()).getFullYear();i++){
+                            optsYear.push({class: "optionClass",label: i.toString(),value: i.toString()});
+                           // optsYear.push({class: "optionClass",label: i,value: i});
+                        }
+                        if (component.get("v.locale") == 'JP')
+                            component.find("InputSelectYearJP").set("v.options",optsYear);
+                        else
+                            component.find("InputSelectYear").set("v.options",optsYear);
                         var spinner = component.find("mySpinner");
                         $A.util.addClass(spinner, "slds-hide");
                     }
@@ -464,6 +501,8 @@
                 var usr = response.getReturnValue();
                 //  console.log(usr);
                 component.set("v.user", usr);
+                var locale = (usr.Nation_Contact_Card__c != null || usr.Nation_Contact_Card__c != undefined) ?  usr.Nation_Contact_Card__c : 'US' ;
+                component.set("v.locale",locale);
             } else {
                 component.set("v.user", null);
             }

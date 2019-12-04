@@ -14,7 +14,7 @@
         helper.fetchPickListVal(component, 'Lingua__c', 'InputSelectDynamicLang');
         helper.fetchPickListVal(component, 'Nazionalita__c', 'InputSelectDynamicCountry');
         helper.fetchPickListVal(component, 'Nazionalita__c', 'InputSelectDynamicPassportCountry');
-
+		
 
         
         var myPageRef = component.get("v.pageReference");
@@ -24,34 +24,9 @@
         }else{
             helper.getAccountFields(component, '');
         }
-        //MC- split date
-        var optsDay = [];
-        var optsMonth = [];
-        var optsYear = [];
-        //Days
-        optsDay.push({class: "optionClass firstSelectOption",label: "Day",value: "",selected: "selected"});
-        for(var i=1;i < 32;i++){
-            optsDay.push({class: "optionClass",label: i.toString(),value: i.toString()});
-        }
-        component.find("InputSelectDay").set("v.options",optsDay);
-        //Months
-        optsMonth.push({class: "optionClass firstSelectOption",label: "Month",value:"",selected: "selected"});
-        var months = [$A.get("$Label.c.January"),$A.get("$Label.c.February"),$A.get("$Label.c.March"),$A.get("$Label.c.April"),
-                        $A.get("$Label.c.May"),$A.get("$Label.c.June"),$A.get("$Label.c.July"),
-                        $A.get("$Label.c.August"),$A.get("$Label.c.September"),$A.get("$Label.c.October"),
-                        $A.get("$Label.c.November"),$A.get("$Label.c.December")];
-
-        for(var i = 0;i < 12;i++){
-            optsMonth.push({class: "optionClass firstSelectOption",label: months[i],value: (i+1).toString()});
-        }
-        component.find("InputSelectMonth").set("v.options",optsMonth);
-        //Years
-        optsYear.push({class: "optionClass firstSelectOption",label: "Year",value: "",selected: "selected"}); 
-        for(var i = 1940;i <= (new Date()).getFullYear();i++){
-            optsYear.push({class: "optionClass",label: i.toString(),value: i.toString()});
-           // optsYear.push({class: "optionClass",label: i,value: i});
-        }
-        component.find("InputSelectYear").set("v.options",optsYear);
+   
+        
+        
         helper.setTranslation(component);
         helper.getUserInfo(component);
         

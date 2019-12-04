@@ -1,0 +1,63 @@
+.THIS .slds-card__body {
+    margin-bottom: 1rem;
+}
+.THIS h2 {
+    font-size: 18pt;
+    display: inline-block !Important;
+}
+.THIS .containerForm{
+    padding: 12px;
+}
+.THIS .headerRegion{
+    padding: .5rem 1.5rem .5rem 1.5rem;
+    background-color: rgb(243, 242, 242);
+    border-bottom: 1px solid rgb(221, 219, 218);
+}
+.THIS .customDataNotFound{
+    width : 100%;
+    padding :5px;
+}
+.THIS .spinnerDiv {
+    position:relative;
+  
+}
+.THIS .slds-spinner_container  {
+    background-color: rgba(0, 0, 0, 0.10);
+   
+}
+.THIS .spinnerDivInside{
+    position:relative;
+    background-color: #16325c;
+}
+/* .THIS .slds-pill__remove {
+    display: none !important;
+} */
+.THIS .scrollerSize{
+    
+    height: 500px;
+}
+.THIS .scroll-container {
+  max-height: 250px;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.THIS .slds-modal__container {
+    margin: 0 auto;
+    width: 90%;
+    max-width: 1024px;
+}
+.THIS .slds-button_icon-bare {
+    line-height: 1;
+    vertical-align: middle;
+    color: rgb(112, 110, 107);
+}
+@media only screen and (max-width: 768px) {
+  
+    .THIS .slds-button_icon-bare {
+        line-height: 1;
+        vertical-align: middle;
+        color: rgb(112, 110, 107);
+        margin-top: -7px;
+    }
+
+}

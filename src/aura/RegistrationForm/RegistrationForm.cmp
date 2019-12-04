@@ -216,14 +216,15 @@
                             </div>
                         </div>
                     </div>
-                    <div class="slds-col slds-size_5-of-12 slds-large-size_5-of-12">
+                     <div class="slds-size_2-of-12 slds-large-size_2-of-12">
                         <div class="slds-form-element">
-                            <label class="slds-form-element__label" for="input-id-01">{!v.translatorValue.Street_Label__c}</label>
+                            <label class="slds-form-element__label" for="input-id-01">{!v.translatorValue.State_Label__c}</label>
                             <div class="slds-form-element__control">
-                                <ui:inputText aura:id="itemPersonMailingStreetJP" class="slds-input" placeholder="{!v.translatorValue.Street_Placeholder__c}" value="{!v.newItem.PersonMailingStreet}" onError="{!c.handleError}" onClearErrors="{!c.handleClearError}" disabled="{!v.afterPrinting}" />
+                                <ui:inputText aura:id="itemProvinceJP" class="slds-input" placeholder="{!v.translatorValue.State_Placeholder__c}" value="{!v.newItem.PersonMailingState}" onError="{!c.handleError}" onClearErrors="{!c.handleClearError}" disabled="{!v.afterPrinting}" />
                             </div>
                         </div>
                     </div>
+                    
                       <div class="slds-size_3-of-12 slds-large-size_3-of-12">
                         <div class="slds-form-element">
                             <label class="slds-form-element__label" for="input-id-01">{!v.translatorValue.City_Label__c}</label>
@@ -232,14 +233,15 @@
                             </div>
                         </div>
                     </div>
-                    <div class="slds-size_2-of-12 slds-large-size_2-of-12">
+                     <div class="slds-col slds-size_5-of-12 slds-large-size_5-of-12">
                         <div class="slds-form-element">
-                            <label class="slds-form-element__label" for="input-id-01">{!v.translatorValue.State_Label__c}</label>
+                            <label class="slds-form-element__label" for="input-id-01">{!v.translatorValue.Street_Label__c}</label>
                             <div class="slds-form-element__control">
-                                <ui:inputText aura:id="itemProvinceJP" class="slds-input" placeholder="{!v.translatorValue.State_Placeholder__c}" value="{!v.newItem.PersonMailingState}" onError="{!c.handleError}" onClearErrors="{!c.handleClearError}" disabled="{!v.afterPrinting}" />
+                                <ui:inputText aura:id="itemPersonMailingStreetJP" class="slds-input" placeholder="{!v.translatorValue.Street_Placeholder__c}" value="{!v.newItem.PersonMailingStreet}" onError="{!c.handleError}" onClearErrors="{!c.handleClearError}" disabled="{!v.afterPrinting}" />
                             </div>
                         </div>
                     </div>
+                    
                 </div>    
                  <aura:set attribute="else"> 
                 <div class="slds-grid slds-wrap row">
@@ -280,7 +282,6 @@
                 </div>
                      </aura:set>   
                 </aura:if>
-                
                 <div class="slds-grid slds-wrap row">
                     <div class="slds-col slds-size_4-of-12 slds-large-size_4-of-12">
                         <div class="slds-form-element">
@@ -375,7 +376,29 @@
                         <div class="slds-col slds-size_12-of-12 slds-large-size_12-of-12">
                             <span class="slds-form-element__label">{!v.translatorValue.Birthdate_Label__c}</span>
                         </div>
-
+						<aura:if isTrue="{!(v.locale == 'JP')}">
+                             <div class="slds-col slds-size_4-of-12 slds-large-size_4-of-12">
+                            <div class="slds-form-element">  
+                                    <div class="slds-form-element__control">
+                                        <ui:inputSelect aura:id="InputSelectYearJP" class="dynamic slds-select" value="{!v.yearBirthdate}" />
+                                    </div>
+                            </div>
+                        </div>
+                             <div class="slds-col slds-size_4-of-12 slds-large-size_4-of-12">
+                            <div class="slds-form-element">  
+                                <div class="slds-form-element__control">
+                                    <ui:inputSelect aura:id="InputSelectMonthJP" class="dynamic slds-select" value="{!v.monthBirthdate}" />
+                                </div>
+                            </div>
+                        </div>
+                           <div class="slds-col slds-size_4-of-12 slds-large-size_4-of-12">
+                            <div class="slds-form-element">  
+                                <div class="slds-form-element__control">
+                                    <ui:inputSelect aura:id="InputSelectDayJP" class="dynamic slds-select" value="{!v.dayBirthdate}" />
+                                </div>
+                            </div>
+                        </div>
+						 <aura:set attribute="else"> 
                         <div class="slds-col slds-size_4-of-12 slds-large-size_4-of-12">
                             <div class="slds-form-element">  
                                 <div class="slds-form-element__control">
@@ -399,6 +422,8 @@
                                     </div>
                             </div>
                         </div>
+                              </aura:set>   
+                </aura:if>
                             
                     </div>
                     

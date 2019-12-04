@@ -143,13 +143,34 @@
         <fullName>Associate__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <externalId>false</externalId>
-        <label>Associate</label>
+        <label>Client Advisor</label>
+        <lookupFilter>
+            <active>true</active>
+            <filterItems>
+                <field>Associated__c.Id_Location_Micros__c</field>
+                <operation>equals</operation>
+                <valueField>$User.Codice_Boutique__c</valueField>
+            </filterItems>
+            <isOptional>true</isOptional>
+        </lookupFilter>
         <referenceTo>Associated__c</referenceTo>
+        <relationshipLabel>Dettagli Riparazioni o Modifiche</relationshipLabel>
         <relationshipName>Dettagli_Riparazioni</relationshipName>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Boutique__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(RecordType.DeveloperName = &apos;Riparazione_Customer_Care&apos;, &apos;Customer Care&apos;,Associate__r.Location_Name__c)</formula>
+        <label>Boutique</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Boutique_di_Acquisto__c</fullName>
@@ -884,6 +905,19 @@
         </valueSet>
     </fields>
     <fields>
+        <fullName>Client__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Client</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Dettagli Riparazioni o Modifiche</relationshipLabel>
+        <relationshipName>Dettagli_Riparazioni_o_Modifiche</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
         <fullName>Colore__c</fullName>
         <externalId>false</externalId>
         <formula>Articolo__r.Colore__c</formula>
@@ -1206,6 +1240,16 @@
         <type>DateTime</type>
     </fields>
     <fields>
+        <fullName>Data_consegna_effettiva__c</fullName>
+        <externalId>false</externalId>
+        <formula>Riparazione__r.ClosedDate</formula>
+        <label>Data consegna effettiva</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
         <fullName>Data_riparazione_effettiva__c</fullName>
         <externalId>false</externalId>
         <label>Data riparazione effettiva</label>
@@ -1227,6 +1271,15 @@
         <fullName>Data_riparazione_prevista_modificata__c</fullName>
         <externalId>false</externalId>
         <label>Data riparazione prevista modificata</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Data_ritiro_prevista_cliente__c</fullName>
+        <externalId>false</externalId>
+        <label>Data ritiro prevista cliente</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -1403,6 +1456,91 @@
                     <fullName>Parzialmente Riparato</fullName>
                     <default>false</default>
                     <label>Parzialmente Riparato</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Product_Category__c</fullName>
+        <externalId>false</externalId>
+        <label>Product Category</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Outerwear</fullName>
+                    <default>false</default>
+                    <label>Outerwear</label>
+                </value>
+                <value>
+                    <fullName>Fur</fullName>
+                    <default>false</default>
+                    <label>Fur</label>
+                </value>
+                <value>
+                    <fullName>Leather Jacket</fullName>
+                    <default>false</default>
+                    <label>Leather Jacket</label>
+                </value>
+                <value>
+                    <fullName>Blazer</fullName>
+                    <default>false</default>
+                    <label>Blazer</label>
+                </value>
+                <value>
+                    <fullName>Knitwear</fullName>
+                    <default>false</default>
+                    <label>Knitwear</label>
+                </value>
+                <value>
+                    <fullName>Dresses / Suits</fullName>
+                    <default>false</default>
+                    <label>Dresses / Suits</label>
+                </value>
+                <value>
+                    <fullName>T-shirt / Shirt</fullName>
+                    <default>false</default>
+                    <label>T-shirt / Shirt</label>
+                </value>
+                <value>
+                    <fullName>Skirt</fullName>
+                    <default>false</default>
+                    <label>Skirt</label>
+                </value>
+                <value>
+                    <fullName>Trousers</fullName>
+                    <default>false</default>
+                    <label>Trousers</label>
+                </value>
+                <value>
+                    <fullName>Travelwear</fullName>
+                    <default>false</default>
+                    <label>Travelwear</label>
+                </value>
+                <value>
+                    <fullName>Bag</fullName>
+                    <default>false</default>
+                    <label>Bag</label>
+                </value>
+                <value>
+                    <fullName>Shoes</fullName>
+                    <default>false</default>
+                    <label>Shoes</label>
+                </value>
+                <value>
+                    <fullName>Scarf</fullName>
+                    <default>false</default>
+                    <label>Scarf</label>
+                </value>
+                <value>
+                    <fullName>Other (specify in note)</fullName>
+                    <default>false</default>
+                    <label>Other (specify in note)</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -1841,6 +1979,17 @@
         </valueSet>
     </fields>
     <fields>
+        <fullName>Supplier__c</fullName>
+        <externalId>false</externalId>
+        <label>Supplier</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Taglia__c</fullName>
         <externalId>false</externalId>
         <label>Taglia</label>
@@ -1918,7 +2067,7 @@
         <unique>false</unique>
     </fields>
     <gender>Feminine</gender>
-    <label>Dettaglio Riparazione o Modifica</label>
+    <label>Repair</label>
     <listViews>
         <fullName>All</fullName>
         <filterScope>Everything</filterScope>
@@ -1930,7 +2079,7 @@
         <trackHistory>false</trackHistory>
         <type>AutoNumber</type>
     </nameField>
-    <pluralLabel>Dettagli Riparazioni o Modifiche</pluralLabel>
+    <pluralLabel>Repairs</pluralLabel>
     <recordTypeTrackHistory>false</recordTypeTrackHistory>
     <recordTypes>
         <fullName>Riparazione_Customer_Care</fullName>
@@ -2657,6 +2806,65 @@
             </values>
             <values>
                 <fullName>Riparato</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Product_Category__c</picklist>
+            <values>
+                <fullName>Bag</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Blazer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Dresses %2F Suits</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Fur</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Knitwear</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Leather Jacket</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other %28specify in note%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Outerwear</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Scarf</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Shoes</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Skirt</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>T-shirt %2F Shirt</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Travelwear</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Trousers</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -3569,6 +3777,65 @@
             </values>
         </picklistValues>
         <picklistValues>
+            <picklist>Product_Category__c</picklist>
+            <values>
+                <fullName>Bag</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Blazer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Dresses %2F Suits</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Fur</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Knitwear</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Leather Jacket</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other %28specify in note%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Outerwear</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Scarf</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Shoes</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Skirt</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>T-shirt %2F Shirt</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Travelwear</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Trousers</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
             <picklist>Riparazione_Richiesta__c</picklist>
             <values>
                 <fullName>Abbassare cintura davanti</fullName>
@@ -4450,6 +4717,65 @@
             </values>
             <values>
                 <fullName>Riparato</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Product_Category__c</picklist>
+            <values>
+                <fullName>Bag</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Blazer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Dresses %2F Suits</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Fur</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Knitwear</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Leather Jacket</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other %28specify in note%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Outerwear</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Scarf</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Shoes</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Skirt</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>T-shirt %2F Shirt</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Travelwear</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Trousers</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -5355,6 +5681,65 @@
             </values>
         </picklistValues>
         <picklistValues>
+            <picklist>Product_Category__c</picklist>
+            <values>
+                <fullName>Bag</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Blazer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Dresses %2F Suits</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Fur</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Knitwear</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Leather Jacket</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other %28specify in note%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Outerwear</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Scarf</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Shoes</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Skirt</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>T-shirt %2F Shirt</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Travelwear</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Trousers</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
             <picklist>Riparazione_Richiesta__c</picklist>
             <values>
                 <fullName>Abbassare cintura davanti</fullName>
@@ -5528,7 +5913,7 @@ OR (
     </validationRules>
     <validationRules>
         <fullName>Allegato</fullName>
-        <active>true</active>
+        <active>false</active>
         <errorConditionFormula>Ho_caricato_l_allegato_richiesto__c = False &amp;&amp; OR (RecordType.DeveloperName = &quot;Riparazione_Sede&quot;, 
 RecordType.DeveloperName = &quot;Riparazione_Customer_Care&quot;)</errorConditionFormula>
         <errorMessage>Allegare il file richiesto</errorMessage>
