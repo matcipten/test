@@ -395,7 +395,8 @@ public without sharing class GenericDao {
                 Phone = (String)c.get('Telefono__c'),
                 PersonMailingCountry = (String)c.get('Nazione__c'),
                 PersonMailingCity = (String)c.get('Citta__c'),
-                Lingua__c = (String)c.get('Lingua_di_Preferenza__c')
+                Lingua__c = (String)c.get('Lingua_di_Preferenza__c'),
+                Customer_origin__c = 'Customer Care'
                 );
 
             SYstem.debug('insertAccountForCaseTask:' + a);
