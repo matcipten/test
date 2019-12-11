@@ -12,7 +12,7 @@ trigger OnOrdineSartoriaSolomeoTrigger on Ordine_Sartoria_Solomeo__c (before ins
         if(trigger.isBefore){
             OnOrdineSartoriaSolomeoTriggerHandler.executeOrdineSartoriaSolomeo(OnOrdineSartoriaSolomeoTriggerHandler.processOnlyStatusNotEditing(trigger.New), trigger.isBefore, trigger.isInsert, trigger.isUpdate);
         }
-        if(trigger.isAfter){
+        /* if(trigger.isAfter){
             SYSTEM.debug('TRIGGER isAfter');
             if(Rest_MTM_CalloutHandler.isFirstTimeForAfter){
                 // EXECUTE TRIGGER ONLY ONCE 
@@ -22,7 +22,7 @@ trigger OnOrdineSartoriaSolomeoTrigger on Ordine_Sartoria_Solomeo__c (before ins
                 
                 
             }
-        }
+        } */
     }
 
 }
