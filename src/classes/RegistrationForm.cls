@@ -655,8 +655,8 @@ insert cDe;
         //se presenti caratteri orientali nell'indirizzo salvo i dati relativi nei campi UTF8
         //(ex. EnglishLetters - みずずほダイレクト - 诶非)
         
-        String InputString      =   acc.PersonMailingStreet+ ' ' +
-            acc.PersonMailingCity;
+       String InputString      =   acc.PersonMailingStreet+ ' ' +
+            acc.PersonMailingCity + ' ' + acc.PersonMailingState;
         
         
         
@@ -666,12 +666,14 @@ insert cDe;
         Pattern regexPattern_1  = Pattern.compile('\\p{IsHan}');
         Matcher regexMatcher_1  = regexPattern_1.matcher(InputString);
         
+        
         if(regexMatcher.find() || regexMatcher_1.find()) {
             system.debug('Akshay@ oriental characters (true)');
             acc.Indirizzo_UTF_8__c = acc.PersonMailingStreet;
-            acc.Citta_UTF_8__c  =   acc.PersonMailingCity;
+            acc.Citta_UTF_8__c  =   acc.PersonMailingCity + acc.PersonMailingState;
             acc.PersonMailingStreet = '';
             acc.PersonMailingCity  = '';
+            acc.PersonMailingState = '';
         }
         else{
             system.debug('Akshay@ No oriental characters (false)');

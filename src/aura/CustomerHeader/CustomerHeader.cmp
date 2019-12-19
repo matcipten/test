@@ -1,0 +1,40 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,force:hasRecordId,force:lightningQuickAction,lightning:isUrlAddressable" access="global" >
+	<aura:attribute name="customerRecordId"
+                    type="String" />
+  
+    
+    <aura:handler name="init"
+              value="{!this}"
+              action="{!c.doInit}" />
+    
+    
+    
+    <lightning:recordViewForm recordId="{!v.recordId}"  objectApiName="Account">
+       
+        <lightning:card  title="Privacy and Contact Preferences">
+           <div class="slds-grid slds-m-left_medium">
+            <div class="slds-col slds-size_2-of-2">
+               <lightning:outputField fieldName="Contact_Preferences__c" />
+            </div>
+   	 	</div>
+        <div class="slds-grid slds-m-left_medium">
+            <div class="slds-col slds-size_1-of-2">
+               <lightning:outputField fieldName="marketing_spa_icon__c" />
+            </div>
+            <div class="slds-col slds-size_1-of-2">
+               <lightning:outputField fieldName="marketing_group_icon__c" />
+            </div>
+   	 	</div>
+        <div class="slds-grid slds-m-left_medium">
+            <div class="slds-col slds-size_1-of-2">
+               <lightning:outputField fieldName="Profiling__c" />
+            </div>
+            <div class="slds-col slds-size_1-of-2">
+               <lightning:outputField fieldName="Data_Ultimo_Aggiornamento_Privacy__c" />
+            </div>
+   	 	</div>
+        </lightning:card>
+        
+        
+    </lightning:recordViewForm>
+</aura:component>

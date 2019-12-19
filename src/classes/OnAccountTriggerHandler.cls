@@ -346,7 +346,13 @@ public with sharing class OnAccountTriggerHandler {
             String xml_personEmail = (status == 'U') ? setValueForRelate(acc.PersonEmail, (String)oldMap.get(acc.Id).get('PersonEmail')) : checkStringValue(acc.PersonEmail);
             String xml_phone = (status == 'U') ? setValueForRelate(acc.Phone, (String)oldMap.get(acc.Id).get('Phone')) : checkStringValue(acc.Phone);
             String xml_personMobilePhone = (status == 'U') ? setValueForRelate(acc.PersonMobilePhone, (String)oldMap.get(acc.Id).get('PersonMobilePhone')) : checkStringValue(acc.PersonMobilePhone);
-
+			
+             if(xml_personMailingStreet == '' || xml_personMailingStreet == null)
+                xml_personMailingStreet = '-';
+            if(xml_personMailingCity == '' || xml_personMailingCity == null)
+                xml_personMailingCity = '-';
+            if(xml_personMailingState == '' || xml_personMailingState == null)
+                xml_personMailingState = '-';
 
             system.debug('DEBUG@ Id Cliente AS400: ' + IdClienteAS400);
             system.debug('DEBUG@ Id Cliente Relate: ' + IdClienteRelate);

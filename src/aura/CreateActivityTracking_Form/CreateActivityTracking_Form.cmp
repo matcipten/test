@@ -1,0 +1,414 @@
+<aura:component controller="CreateActivityTrackingController">
+
+	<aura:attribute name="tipo"
+					type="String"
+					default=""
+					access="GLOBAL" />
+
+	<aura:attribute name="tipoName"
+					type="String"
+					default=""
+					access="GLOBAL" />
+
+	<aura:attribute name="showCampaignLookup"
+					type="Boolean"
+					default="true"
+					access="GLOBAL" />
+
+	<aura:attribute name="canaleName"
+					type="String"
+					access="GLOBAL" />
+
+	<aura:attribute name="tipoDevName"
+					type="String"
+					access="GLOBAL" />
+
+	<aura:attribute name="newActivityTracking"
+					type="Activity_tracking__c"
+					default="{'sobjectType':'Activity_tracking__c'}"
+					access="GLOBAL" />
+
+	<aura:attribute name="filter"
+					type="String"
+					access="GLOBAL" />
+
+	<aura:attribute name="tipi"
+					type="Object"
+					default="{}"
+					access="GLOBAL"></aura:attribute>
+
+	<aura:handler name="init"
+				  value="{!this}"
+				  action="{!c.doInit}" />
+
+	<!-- <aura:attribute name="tipoNameToShow"
+	                type="String"
+	                default=""></aura:attribute> -->
+
+	<aura:attribute name="categoriaToShow"
+					type="String"
+					default=""></aura:attribute>
+
+
+	<aura:attribute access="private"
+					type="List"
+					name="selectionCustomer"
+					default="[]" />
+	<aura:attribute access="private"
+					type="List"
+					name="errorsCustomer"
+					default="[]" />
+
+	<aura:attribute access="private"
+					type="List"
+					name="selectionCampagna"
+					default="[]" />
+	<aura:attribute access="private"
+					type="List"
+					name="errorsCampagna"
+					default="[]" />
+	<aura:attribute name="labels"
+					type="Object"
+					access="GLOBAL"></aura:attribute>
+
+	<aura:attribute name="accountId"
+					type="String"
+					access="GLOBAL"></aura:attribute>
+
+	<aura:attribute name="selectedCustomer"
+					type="Account"
+					default="{}"></aura:attribute>
+
+	<aura:attribute name="locationVisibility"
+					type="Integer"
+					default="0"></aura:attribute>
+
+	<aura:attribute name="giftPicklist"
+					type="List"
+					default="[]"></aura:attribute>
+
+	<aura:attribute name="giftSelected"
+					type="String"
+					default="" />
+
+					
+	<aura:attribute name="OTCategorie" type="List" default="[]" access="GLOBAL"></aura:attribute>
+
+	<aura:attribute name="EVCategorie" type="List" default="[]" access="GLOBAL"></aura:attribute>
+
+	<aura:attribute name="MACategorie" type="List" default="[]" access="GLOBAL"></aura:attribute>
+
+	<aura:registerEvent name="goToPreviousStepEvent"
+						type="c:CreateActivityTrackingComponentEvent" />
+
+	<aura:registerEvent name="saveActivityTrackingEvent"
+						type="c:CreateActivityTrackingComponentEventDml" />
+
+
+	<aura:registerEvent name="showSpinner"
+						type="c:CreateActivityTrackingComponentEvent" />
+	<aura:registerEvent name="hideSpinner"
+						type="c:CreateActivityTrackingComponentEvent" />
+
+
+
+	<lightning:layout multipleRows="true"
+					  class="slds-p-around_large slds-m-horizontal_xx-large slds-m-vertical_x-large">
+		<lightning:layoutItem size="12">
+			<div class="slds-page-header slds-page-header_record-home">
+				<div class="slds-page-header__row">
+					<div class="slds-page-header__col-title">
+						<div class="slds-media">
+							<div class="slds-media__figure">
+								<lightning:icon iconName="custom:custom30"
+												alternativeText="Activity"
+												size="medium" />
+							</div>
+							<div class="slds-media__body">
+								<div class="slds-page-header__name">
+									<div class="slds-page-header__name-title">
+										<h1>
+											<span>{!$Label.c.Create_New_Activity_Tracking}</span>
+											<!-- <span class="slds-page-header__title slds-truncate"
+									      title="Crea Activity Tracking">Crea Activity Tracking</span> -->
+										</h1>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="slds-page-header__row slds-page-header__row_gutters">
+					<div class="slds-page-header__col-details">
+						<ul class="slds-page-header__detail-row">
+							<li class="slds-page-header__detail-block">
+								<div class="slds-form-element__label slds-truncate"
+									 title="Field 1">{!v.labels.canale__c}</div>
+								<div class="slds-truncate slds-form-element__static"
+									 title="Canale">{!v.canaleName}</div>
+							</li>
+							<li class="slds-page-header__detail-block">
+								<div class="slds-form-element__label slds-truncate"
+									 title="Field 2">{!v.labels.recordtypeid}</div>
+								<div class="slds-truncate slds-form-element__static"
+									 title="Canale">{!v.tipoName}</div>
+							</li>
+							<li class="slds-page-header__detail-block">
+								<div class="slds-form-element__label slds-truncate"
+									 title="Field 3">{!v.labels.categoria__c}</div>
+								<div class="slds-truncate slds-form-element__static"
+									 title="Hyperlink">{!v.categoriaToShow}</div>
+							</li>
+							<!-- <aura:if isTrue="{!v.accountId != undefined &amp;&amp; v.accountId != ''}">
+								<li class="slds-page-header__detail-block">
+									<div class="slds-truncate">
+										<lightning:recordViewForm recordId="{!v.accountId}"
+										                          objectApiName="Account">
+											<lightning:outputField fieldName="Name"></lightning:outputField>
+										</lightning:recordViewForm>
+									</div>
+								</li>
+							</aura:if> -->
+						</ul>
+					</div>
+				</div>
+			</div>
+		</lightning:layoutItem>
+		<lightning:layoutItem size="12"
+							  class="slds-m-vertical_medium shadow">
+
+
+			<aura:if isTrue="{!v.accountId != undefined &amp;&amp; v.accountId != ''}">
+				<lightning:layout>
+					<lightning:layoutItem size="12"
+										  padding="around-medium">
+						<!-- <div class="slds-truncate"> -->
+						<lightning:recordViewForm recordId="{!v.accountId}"
+												  objectApiName="Account">
+							<lightning:outputField fieldName="Name"></lightning:outputField>
+						</lightning:recordViewForm>
+						<!-- </div> -->
+					</lightning:layoutItem>
+				</lightning:layout>
+			</aura:if>
+
+
+			<lightning:recordEditForm objectApiName="Activity_tracking__c"
+									  recordTypeId="{!v.tipo}"
+									  onload="{!c.onload}"
+									  onsubmit="{!c.validate}">
+
+				<lightning:layout multipleRows="true">
+
+					<aura:if isTrue="{!v.accountId == undefined || v.accountId == ''}">
+						<lightning:layoutItem size="6"
+											  padding="around-medium">
+
+							<!-- <lightning:inputField fieldName="Customer_Name__c"
+						                      value="{!v.newActivityTracking.Customer_Name__c}"
+						                      aura:id="requiredField" /> -->
+
+
+							<!-- <c:Lookup aura:id="lookupCustomer"
+						          selection="{!v.selectionCustomer}"
+						          onSearch="{!c.lookupSearchCustomer}"
+						          onSelection="{!c.clearErrorsOnChangeCustomer}"
+						          errors="{!v.errorsCustomer}"
+						          label="Customer Name"
+						          placeholder="Search Customer"
+						          isMultiEntry="false"
+								  objectName="Account" /> -->
+
+							<c:customLookup aura:id="requiredField"
+											objectAPIName="Account"
+											IconName="standard:account"
+											value="{!v.newActivityTracking.Customer_Name__c}"
+											isDisabled="{!v.selectedCustomer.Id != undefined}"
+											selectedRecord="{!v.selectedCustomer}"
+											label="{!v.labels.customer_name__c}"  
+											searchObjectKey="Titolare_Client_Advisor_Boutique__c"
+											searchObjectValue="true" />
+
+
+
+						</lightning:layoutItem>
+
+
+					</aura:if>
+
+					<lightning:layoutItem size="6"
+										  padding="around-medium">
+						<aura:if isTrue="{!v.showCampaignLookup}">
+							<!-- <lightning:inputField fieldName="Campagna__c"
+						                      value="{!v.newActivityTracking.Campagna__c}"
+						                      aura:id="requiredField" /> -->
+
+							<!-- <c:Lookup aura:id="lookupCampagna"
+						          selection="{!v.selectionCampagna}"
+						          onSearch="{!c.lookupSearchCampagna}"
+						          onSelection="{!c.clearErrorsOnChangeCampagna}"
+						          errors="{!v.errorsCampagna}"
+						          label="Campagna"
+						          placeholder="Search Campaigns..."
+						          isMultiEntry="false"
+								  objectName="Campaign" /> -->
+
+
+							<c:customLookup objectAPIName="Campaign"
+											aura:id="requiredField"
+											IconName="standard:campaign"
+											value="{!v.newActivityTracking.Campagna__c}"
+											label="{!v.labels.campagna__c}"
+											searchObjectKey="RecordType.DeveloperName"
+											searchObjectValue="{!v.tipoDevName}"
+											filter="{!v.filter}" />
+						</aura:if>
+
+					</lightning:layoutItem>
+
+					<!-- <aura:if isTrue="{!v.tipoName != 'Mailing'}"> -->
+
+					<aura:if isTrue="{!v.locationVisibility == 7 || v.locationVisibility == 4 || v.locationVisibility == 5 || v.locationVisibility == 6}">
+
+						<lightning:layoutItem size="6"
+											  padding="around-medium">
+
+							<lightning:inputField fieldName="Location__c"
+												  value="{!v.newActivityTracking.Location__c}"
+												  onchange="{!c.toggleLocation}"
+												  aura:id="requiredField" />
+
+						</lightning:layoutItem>
+					</aura:if>
+
+
+					<aura:if isTrue="{!v.locationVisibility != 0}">
+
+						<lightning:layoutItem size="6"
+											  padding="around-medium">
+							<aura:if isTrue="{!v.locationVisibility == 7 || v.locationVisibility == 2 || v.locationVisibility == 3 || v.locationVisibility == 6}">
+
+
+								<!-- <lightning:inputField fieldName="Location_Instore__c"
+								                      value="{!v.newActivityTracking.Location_Instore__c}"
+								                      aura:id="requiredField" /> -->
+
+
+								<c:customLookup objectAPIName="Location__c"
+												aura:id="requiredField"
+												IconName="custom:custom84"
+												value="{!v.newActivityTracking.Location_Instore__c}"
+												label="{!v.labels.location_instore__c}" /> <!-- searchObjectKey="Company_Code__c" searchObjectValue="{!v.myAccount.Company_Code__c}" -->
+								<!-- </lightning:layoutItem> -->
+							</aura:if>
+
+
+							<aura:if isTrue="{!v.locationVisibility == 7 || v.locationVisibility == 1 || v.locationVisibility == 3 || v.locationVisibility == 5}">
+								<!-- <lightning:layoutItem size="6"
+						                      padding="around-medium"> -->
+								<lightning:inputField fieldName="Location_Out_of_store__c"
+													  value="{!v.newActivityTracking.Location_Out_of_store__c}"
+													  aura:id="requiredField" />
+							</aura:if>
+						</lightning:layoutItem>
+
+
+					</aura:if>
+
+					<!-- </aura:if> -->
+
+					<lightning:layoutItem size="6"
+										  padding="around-medium">
+
+						<lightning:inputField fieldName="Activity_Date__c"
+											  value="{!v.newActivityTracking.Activity_Date__c}"
+											  aura:id="requiredField" />
+
+					</lightning:layoutItem>
+
+					<!-- PN 20190305 manage gifting-->
+
+					<aura:if isTrue="{!v.tipoDevName == 'One_To_One' &amp;&amp; v.newActivityTracking.Categoria__c == 'OT_Gifting'}">
+						<lightning:layoutItem size="6"
+											  padding="around-medium">
+							<lightning:select name="giftSelect"
+											  label="Select gift type:"
+											  aura:id="requiredField"
+											  value="{!v.giftSelected}">
+								<aura:iteration items="{!v.giftPicklist}"
+												var="type">
+									<option text="{!type.label}"
+											value="{!type.value}"></option>
+								</aura:iteration>
+							</lightning:select>
+						</lightning:layoutItem>
+
+					</aura:if>
+
+					<!-- PN 20190305 manage gifting END-->
+
+
+					<aura:if isTrue="{!v.tipoName != 'One_To_One'}">
+						<lightning:layoutItem size="6"
+											  padding="around-medium">
+							<aura:if isTrue="{! v.newActivityTracking.Categoria__c == 'OT_Gifting' &amp;&amp; v.giftSelected == 'Other (specify in Note)'}">
+									<lightning:inputField fieldName="Note_Contatto__c"
+									value="{!v.newActivityTracking.Note_Contatto__c}"
+									aura:id="requiredField" />
+							<aura:set attribute="else">
+									<lightning:inputField fieldName="Note_Contatto__c"
+									value="{!v.newActivityTracking.Note_Contatto__c}"/>
+							</aura:set>
+							</aura:if>
+						</lightning:layoutItem>
+					</aura:if>
+
+
+
+				</lightning:layout>
+
+				<lightning:layout>
+					<lightning:layoutItem size="4"
+										  smallDeviceSize="4"
+										  mediumDeviceSize="4"
+										  largeDeviceSize="5"
+										  padding="around-medium"></lightning:layoutItem>
+
+					<lightning:layoutItem size="2"
+										  smallDeviceSize="2"
+										  mediumDeviceSize="2"
+										  largeDeviceSize="1"
+										  padding="around-medium">
+
+						<lightning:button class="slds-m-top_small"
+										  variant="neutral"
+										  type="button"
+										  name="back"
+										  label="{!$Label.c.Back}"
+										  onclick="{!c.goToPreviousStep}" />
+
+					</lightning:layoutItem>
+
+					<lightning:layoutItem size="2"
+										  smallDeviceSize="2"
+										  mediumDeviceSize="2"
+										  largeDeviceSize="1"
+										  padding="around-medium">
+
+						<lightning:button class="slds-m-top_small"
+										  variant="brand"
+										  type="submit"
+										  name="continua"
+										  label="{!$Label.c.Next}" />
+
+					</lightning:layoutItem>
+
+
+				</lightning:layout>
+
+
+			</lightning:recordEditForm>
+		</lightning:layoutItem>
+	</lightning:layout>
+
+</aura:component>

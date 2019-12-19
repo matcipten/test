@@ -1,0 +1,49 @@
+<aura:component implements="lightning:isUrlAddressable"
+                access="global">
+
+<aura:attribute name="segmentation" type="String" access="global" />
+<aura:handler name="change" value="{!v.pageReference}" action="{!c.reInit}" />
+    
+<aura:handler name="init"
+   value="{!this}"
+   action="{!c.doInit}" />
+   
+ 
+    <img src="{!$Resource.SegmentationPyramid}" class="center" style="width: 100%" />
+    
+   <aura:if isTrue="{!v.segmentation == 'Snow'}">   
+   </aura:if>
+
+   <aura:if isTrue="{!v.segmentation == 'Ground'}">   
+   </aura:if>
+    
+    <aura:if isTrue="{!v.segmentation == 'Rain'}">   
+   </aura:if>
+    
+    <aura:if isTrue="{!v.segmentation == 'Grass'}">   
+   </aura:if>
+    
+    <aura:if isTrue="{!v.segmentation == 'Seed'}">   
+   </aura:if>
+    
+    <aura:if isTrue="{!v.segmentation == 'Bush'}">   
+   </aura:if>
+    
+    <aura:if isTrue="{!v.segmentation == 'Rainbow'}">   
+   </aura:if>
+    
+    <aura:if isTrue="{!v.segmentation == 'Trees'}">   
+   </aura:if>
+    
+    
+    <aura:if isTrue="{!v.segmentation == 'Montains'}">   
+   </aura:if>
+    
+    
+    <aura:if isTrue="{!v.segmentation == 'Sky'}">   
+   </aura:if>
+    
+    <aura:if isTrue="{!v.segmentation == 'Stars'}">   
+   </aura:if>
+
+</aura:component>

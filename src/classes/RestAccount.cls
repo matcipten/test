@@ -176,6 +176,22 @@ global without sharing class RestAccount {
         
         return a;
     }
+
+    public static SObject getMemberByExtRelateId(String id){
+         SObject a = (Account)GenericDao.getAllFieldsResultById('Account', 'Id_Cliente_Relate__c', id);
+
+        if(a == null){
+            System.debug('Master not found. Searching for slave.');
+
+            Sobject sd = GenericDao.getAllFieldsResultById('Slave_Data__c', 'Id_Cliente_Relate__c', id);
+
+            System.debug('Slave is ' + sd);
+
+            return sd;
+        }
+        
+        return a;
+    }
     
 
 
@@ -203,13 +219,29 @@ global without sharing class RestAccount {
             } else if(ou == 'x'){
                 System.debug('Before RestAccount.getMemberByExtIdXStore:' + id);
                 
-                String secondaryId = params.get('secondaryId');
-                System.debug('Before RestAccount.getMemberByExtIdXStore secondaryId:' + secondaryId);
+                
 
                 a = RestAccount.getMemberByExtIdXStore(id);
-
+                
+                String idSF = params.get('idSF');
+                System.debug('Before RestAccount.getMemberByidSF idSF:' + idSF);
+                if(a == null && !String.isEmpty(idSF)){
+                    a = RestAccount.getMember(idSF);
+                }
+                String secondaryId = params.get('secondaryId');
+                System.debug('Before RestAccount.getMemberByExtIdXStore secondaryId:' + secondaryId);
                 if(a == null && !String.isEmpty(secondaryId)){
                     a = RestAccount.getMemberByExtIdAS400(secondaryId);
+                }
+                /*String idDW = params.get('idDW');
+                System.debug('Before RestAccount.getMemberByidDW idDW:' + idDW);
+                if(a == null && !String.isEmpty(idDW)){
+                    a = RestAccount.getMemberByExtIdEcommerce(idDW);
+                }*/
+                String idRelate = params.get('idRelate');
+                System.debug('Before RestAccount.getMemberByidRelate idRelate:' + idRelate);
+                if(a == null && !String.isEmpty(idRelate)){
+                    a = RestAccount.getMemberByExtRelateId(idRelate);
                 }
 
             } else if(ou == 'a'){

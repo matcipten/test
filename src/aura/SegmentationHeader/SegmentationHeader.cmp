@@ -1,0 +1,26 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,force:hasRecordId,force:lightningQuickAction,lightning:isUrlAddressable" access="global" >
+	<aura:attribute name="customerRecordId"
+                    type="String" />
+    
+    <aura:handler name="init"
+              value="{!this}"
+              action="{!c.doInit}" />
+    
+    
+    
+    <lightning:recordViewForm recordId="{!v.recordId}"  objectApiName="Account">
+        
+         <lightning:card >
+        <div class="slds-grid slds-m-left_medium">
+            <div class="slds-col slds-size_2-of-2">
+                <lightning:outputField fieldName="Segmentation__c" />
+            </div>
+   	 	</div>
+            </lightning:card>
+       
+       
+    
+        
+        
+    </lightning:recordViewForm>
+</aura:component>
