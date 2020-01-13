@@ -23,16 +23,43 @@
             { label: 'Company', fieldName: 'CompanyOrAccount', type: 'text' },
             { type: 'action', typeAttributes: { rowActions: actions } }
         ]);*/
-        component.set('v.columns', [
-            {label: 'Account Name', fieldName: 'Contact_Account_Name', type: 'text'},
-            {label: 'Status', fieldName: 'Status', type: 'text' },
-            {label: 'Account Profiling', fieldName: 'Contact_Account_Profiling', type: 'boolean' },
-            {label: 'Account Marketing', fieldName: 'Contact_Account_Marketing', type: 'boolean' },
-            { type: 'action', typeAttributes: { rowActions: actions } }
-        ]);
 
 
-        helper.getCampaignMembers(component, helper);
+        //PN20191205 added getUserInfo at init and managed Boutique profile
+        helper.getCampaignMembersHelper(component, event, helper).then(
+
+            helper.getUserInfo(component, event, helper).then(
+                function(myUser) {
+                    let profileName = myUser.Nome_Profilo__c;
+                    console.log(profileName);
+                    if (profileName == 'BC - Boutique') {
+                        component.set('v.columns', [
+                            { label: 'Account Name', fieldName: 'Contact_Account_Name', type: 'text' },
+                            { label: 'Status', fieldName: 'Status', type: 'text' },
+                            //{ label: 'Account Profiling', fieldName: 'Contact_Account_Profiling', type: 'boolean' },
+                            //{ label: 'Account Marketing', fieldName: 'Contact_Account_Marketing', type: 'boolean' },
+                            { label: 'Allocated CA', fieldName: 'Account_Allocated_Client_Advisor', type: 'text' },
+                            { label: 'Last Purchase Date', fieldName: 'Account_Last_Purchase_Date', type: 'date' },
+                            { label: 'Total Purchase Amount', fieldName: 'Account_Total_Purchase_Amount', type: 'number' },
+                            { label: 'Marketing', fieldName: 'Account_Marketing', type: 'boolean' },
+                            { type: 'action', typeAttributes: { rowActions: actions } }
+                        ]);
+                    }
+                    else {
+                        component.set('v.columns', [
+                            { label: 'Account Name', fieldName: 'Contact_Account_Name', type: 'text' },
+                            { label: 'Status', fieldName: 'Status', type: 'text' },
+                            // { label: 'Account Profiling', fieldName: 'Contact_Account_Profiling', type: 'boolean' },
+                            // { label: 'Account Marketing', fieldName: 'Contact_Account_Marketing', type: 'boolean' },
+                            { label: 'Last Purchase Date', fieldName: 'Account_Last_Purchase_Date', type: 'date' },
+                            { label: 'Total Purchase Amount', fieldName: 'Account_Total_Purchase_Amount', type: 'number' },
+                            { label: 'Marketing', fieldName: 'Account_Marketing', type: 'boolean' },
+                            { type: 'action', typeAttributes: { rowActions: actions } }
+                        ]);
+                    }
+                }
+            )
+        );
 
     },
 
@@ -40,8 +67,8 @@
     filterCampaignMembers: function(component, event, helper) {
         console.log('Akshay');
         var searchValue = component.get("v.searchText");
-		if (searchValue != '' && searchValue != null)
-        	helper.filterCampaignMembersHelper(component, helper, searchValue);
+        if (searchValue != '' && searchValue != null)
+            helper.filterCampaignMembersHelper(component, helper, searchValue);
     },
     filterContacts: function(component, event, helper) {
         var searchValue = component.get("v.searchContact");
@@ -184,7 +211,7 @@
 
     handleItemRemove: function(component, event) {
         var name = event.getParam("item").Id;
-        
+
         // Remove the pill from view
         var items = component.get('v.items');
         var item = event.getParam("index");
@@ -194,22 +221,22 @@
         var itemsPill = component.get('v.itemsPill');
         //console.log(itemsPill.findIndex(name));
         var itemPill = event.getParam("index");
-        
-        itemsPill.splice(itemPill,1);
-        
+
+        itemsPill.splice(itemPill, 1);
+
         component.set('v.items', items);
 
         let myTableRows = component.find('contactDataTable').getSelectedRows();
         let myIdsList = [];
-        for(let i = 0 ; i < myTableRows.length; i++){
-            if(myTableRows[i].Id != itemToRemove.Id){
+        for (let i = 0; i < myTableRows.length; i++) {
+            if (myTableRows[i].Id != itemToRemove.Id) {
                 myIdsList.push(myTableRows[i].Id);
             }
-            
+
         }
 
-        component.find('contactDataTable').set('v.selectedRows',myIdsList);
-        
+        component.find('contactDataTable').set('v.selectedRows', myIdsList);
+
 
     },
     handleRowAction: function(component, event, helper) {
@@ -437,9 +464,16 @@
                         item.linkFirstName = '/lightning/r/CampaignMember/' + item.Id + '/view';
                         item.linkLastName = '/lightning/r/CampaignMember/' + item.Id + '/view';
                         item.linkType = '/lightning/r/CampaignMember/' + item.ContactId + '/view';
-                    if (item.Contact.Account.Name != null) item.Contact_Account_Name = item.Contact.Account.Name;
-                    if (item.Contact.Account.Name != null) item.Contact_Account_Profiling = item.Contact.Account.Privacy3__c;
-                    if (item.Contact.Account.Name != null) item.Contact_Account_Marketing = (item.Contact.Account.Privacy1__c || item.Contact.Account.Privacy2__c);
+                        if (item.Contact.Account.Name != null) item.Contact_Account_Name = item.Contact.Account.Name;
+                        if (item.Contact.Account.Name != null) item.Contact_Account_Profiling = item.Contact.Account.Privacy3__c;
+                        if (item.Contact.Account.Name != null) item.Contact_Account_Marketing = (item.Contact.Account.Privacy1__c || item.Contact.Account.Privacy2__c);
+                        if (item.Contact.Account.Associate__c != null) item.Account_Allocated_Client_Advisor = item.Contact.Account.Associate__c;
+                        if (item.Contact.Account.Data_Ultimo_Acquisto__c != null) item.Account_Last_Purchase_Date = item.Contact.Account.Data_Ultimo_Acquisto__c;
+                        if (item.Contact.Account.Last_contact_category__c != null) item.Account_Last_Activity_Category = item.Contact.Account.Last_contact_category__c;
+                        if (item.Contact.Account.Contact_Preferences__c != null) {
+                            console.log(item.Contact.Account.Contact_Preferences__c);
+                            item.Account_Contact_Preferences = item.Contact.Account.Contact_Preferences__c.replace('<','\<').replace('>','\>');
+                        }
                     });
 
                     var currentData = component.get('v.data');
@@ -489,9 +523,16 @@
                         item.linkFirstName = '/lightning/r/CampaignMember/' + item.Id + '/view';
                         item.linkLastName = '/lightning/r/CampaignMember/' + item.Id + '/view';
                         item.linkType = '/lightning/r/CampaignMember/' + item.ContactId + '/view';
-                    if (item.Contact.Account.Name != null) item.Contact_Account_Name = item.Contact.Account.Name;
-                    if (item.Contact.Account.Name != null) item.Contact_Account_Profiling = item.Contact.Account.Privacy3__c;
-                    if (item.Contact.Account.Name != null) item.Contact_Account_Marketing = (item.Contact.Account.Privacy1__c || item.Contact.Account.Privacy2__c);                          
+                        if (item.Contact.Account.Name != null) item.Contact_Account_Name = item.Contact.Account.Name;
+                        if (item.Contact.Account.Name != null) item.Contact_Account_Profiling = item.Contact.Account.Privacy3__c;
+                        if (item.Contact.Account.Name != null) item.Contact_Account_Marketing = (item.Contact.Account.Privacy1__c || item.Contact.Account.Privacy2__c);
+                        if (item.Contact.Account.Associate__c != null) item.Account_Allocated_Client_Advisor = item.Contact.Account.Associate__c;
+                        if (item.Contact.Account.Data_Ultimo_Acquisto__c != null) item.Account_Last_Purchase_Date = item.Contact.Account.Data_Ultimo_Acquisto__c;
+                        if (item.Contact.Account.Last_contact_category__c != null) item.Account_Last_Activity_Category = item.Contact.Account.Last_contact_category__c;
+                        if (item.Contact.Account.Contact_Preferences__c != null) {
+                            console.log(item.Contact.Account.Contact_Preferences__c);
+                            item.Account_Contact_Preferences = item.Contact.Account.Contact_Preferences__c.replace('<','\<').replace('>','\>');
+                        }
                     });
 
                     component.set("v.data", result);

@@ -1,91 +1,102 @@
 ({
-    getCampaignMembers: function(component, event, helper) {
-        var sPageURL = decodeURIComponent(window.location.search.substring(1)); //You get the whole decoded URL of the page.
-        var sURLVariables = sPageURL.split('&'); //Split by & so that you get the key value pairs separately in a list
-        var sParameterName;
-        var id;
-        var i;
+    getCampaignMembersHelper: function(component, event, helper) {
+        //added promise
+        return new Promise($A.getCallback(function(resolve, reject) {
+            var sPageURL = decodeURIComponent(window.location.search.substring(1)); //You get the whole decoded URL of the page.
+            var sURLVariables = sPageURL.split('&'); //Split by & so that you get the key value pairs separately in a list
+            var sParameterName;
+            var id;
+            var i;
 
-        for (i = 0; i < sURLVariables.length; i++) {
-            sParameterName = sURLVariables[i].split('='); //to split the key from the value.
+            for (i = 0; i < sURLVariables.length; i++) {
+                sParameterName = sURLVariables[i].split('='); //to split the key from the value.
 
-            if (sParameterName[0] === 'Id') { //lets say you are looking for param name - firstName
-                id = sParameterName[1] === undefined ? null : sParameterName[1];
+                if (sParameterName[0] === 'Id') { //lets say you are looking for param name - firstName
+                    id = sParameterName[1] === undefined ? null : sParameterName[1];
+                }
+
+            }
+            let pageReference = component.get('v.pageReference');
+            console.log(pageReference);
+            if (pageReference != undefined && pageReference.state != undefined && pageReference.state.c__recordId != undefined) {
+                component.set('v.recordId', pageReference.state.c__recordId);
+                console.log(component.get('v.recordId'));
+            }
+            if (component.get("v.recordId") == null || component.get("v.recordId") == '') {
+                component.set("v.recordId", id);
             }
 
-        }
-        let pageReference = component.get('v.pageReference');
-        console.log(pageReference);
-        if (pageReference != undefined && pageReference.state != undefined && pageReference.state.c__recordId != undefined) {
-            component.set('v.recordId', pageReference.state.c__recordId);
-            console.log(component.get('v.recordId'));
-        }
-        if (component.get("v.recordId") == null || component.get("v.recordId") == '') {
-            component.set("v.recordId", id);
-        }
+            var action = component.get("c.getCampaign");
+            action.setParams({
+                campaignId: component.get("v.recordId")
+            });
+            action.setCallback(this, function(response) {
+                var state = response.getState();
 
-        var action = component.get("c.getCampaign");
-        action.setParams({
-            campaignId: component.get("v.recordId")
-        });
-        action.setCallback(this, function(response) {
-            var state = response.getState();
+                if (state === "SUCCESS") {
+                    var result = response.getReturnValue();
+                    helper.getTotalNumberOfCampaignMems(component);
+                    component.set("v.CampaignName", result.Name);
+                    component.set("v.campaignRecord", result);
+                    component.set("v.campaignUrl", '/lightning/r/Campaign/' + result.Id + '/view');
 
-            if (state === "SUCCESS") {
-                var result = response.getReturnValue();
-                this.getTotalNumberOfCampaignMems(component);
-                component.set("v.CampaignName", result.Name);
-                component.set("v.campaignRecord", result);
-                component.set("v.campaignUrl", '/lightning/r/Campaign/' + result.Id + '/view');
+                    var action = component.get("c.getCampaignMembers");
+                    action.setParams({
+                        campaignId: component.get("v.recordId"),
+                        'offset': 0
+                    });
+                    action.setCallback(this, function(response) {
+                        var state = response.getState();
 
-                var action = component.get("c.getCampaignMembers");
-                action.setParams({
-                    campaignId: component.get("v.recordId"),
-                    'offset': 0
-                });
-                action.setCallback(this, function(response) {
-                    var state = response.getState();
+                        if (state === "SUCCESS") {
+                            var result = response.getReturnValue();
 
-                    if (state === "SUCCESS") {
-                        var result = response.getReturnValue();
-
-                        console.log(result);
-                        if (result != null) {
-                            component.set("v.CampaignName", result[0].Campaign.Name);
                             console.log(result);
-                            result.forEach(function(item) {
-                                if (item.FirstName != null) item.linkFirstName = '/lightning/r/CampaignMember/' + item.Id + '/view';
-                                if (item.LastName != null) item.linkLastName = '/lightning/r/CampaignMember/' + item.Id + '/view';
-								if (item.Contact.Account.Name != null) item.Contact_Account_Name = item.Contact.Account.Name;
-								if (item.Contact.Account.Name != null) item.Contact_Account_Profiling = item.Contact.Account.Privacy3__c;
-                                if (item.Contact.Account.Name != null) item.Contact_Account_Marketing = (item.Contact.Account.Privacy1__c || item.Contact.Account.Privacy2__c);
-                                item.linkType = '/lightning/r/CampaignMember/' + item.ContactId + '/view';
-                            });
+                            if (result != null) {
+                                component.set("v.CampaignName", result[0].Campaign.Name);
+                                console.log(result);
+                                result.forEach(function(item) {
+                                    if (item.FirstName != null) item.linkFirstName = '/lightning/r/CampaignMember/' + item.Id + '/view';
+                                    if (item.LastName != null) item.linkLastName = '/lightning/r/CampaignMember/' + item.Id + '/view';
+                                    if (item.Contact.Account.Name != null) item.Contact_Account_Name = item.Contact.Account.Name;
+                                    if (item.Contact.Account.Name != null) item.Contact_Account_Profiling = item.Contact.Account.Privacy3__c;
+                                    if (item.Contact.Account.Name != null) item.Contact_Account_Marketing = (item.Contact.Account.Privacy1__c || item.Contact.Account.Privacy2__c);
+                                    if (item.Contact.Account.Associate__c != null) item.Account_Allocated_Client_Advisor = item.Contact.Account.Associate__r.Name
+                                    if (item.Contact.Account.Data_Ultimo_Acquisto__c != null) item.Account_Last_Purchase_Date = item.Contact.Account.Data_Ultimo_Acquisto__c;
+                                    if (item.Contact.Account.Importo_Acquisti_Totale__c != null) item.Account_Total_Purchase_Amount = item.Contact.Account.Importo_Acquisti_Totale__c;
+                                    if (item.Contact.Account.Marketing_FRM__c != null) item.Account_Marketing = item.Contact.Account.Marketing_FRM__c;
+                                    
+                                    item.linkType = '/lightning/r/CampaignMember/' + item.ContactId + '/view';
+                                });
 
-                            component.set("v.data", result);
-                            console.log(component.get("v.totalCampaignMems"));
-                            console.log(component.get("v.data").length);
-                            if (component.get("v.totalCampaignMems") > component.get("v.data").length) {
-                                component.set("v.showLoadCM", true);
+                                component.set("v.data", result);
+                                console.log(component.get("v.totalCampaignMems"));
+                                console.log(component.get("v.data").length);
+                                if (component.get("v.totalCampaignMems") > component.get("v.data").length) {
+                                    component.set("v.showLoadCM", true);
 
+                                }
+
+                            } else {
+                                component.set("v.NodataFound", true);
+                                component.set("v.showLoadCM", false);
                             }
+                            resolve();
 
-                        } else {
-                            component.set("v.NodataFound", true);
-                            component.set("v.showLoadCM", false);
+                        } else if (state === "ERROR") {
+                            reject();
                         }
+                    });
+                    $A.enqueueAction(action);
 
-                    } else if (state === "ERROR") {
+                } else if (state === "ERROR") {
+                    alert('in error');
+                    reject();
+                }
+            });
+            $A.enqueueAction(action);
 
-                    }
-                });
-                $A.enqueueAction(action);
-
-            } else if (state === "ERROR") {
-                alert('in error');
-            }
-        });
-        $A.enqueueAction(action);
+        }));
 
 
     },
@@ -190,6 +201,11 @@
                         if (item.Contact.Account.Name != null) item.Contact_Account_Marketing = (item.Contact.Account.Privacy1__c || item.Contact.Account.Privacy2__c);
                         if (item.FirstName != null) item.linkFirstName = '/lightning/r/CampaignMember/' + item.Id + '/view';
                         if (item.LastName != null) item.linkLastName = '/lightning/r/CampaignMember/' + item.Id + '/view';
+                        if (item.Contact.Account.Associate__c != null) item.Account_Allocated_Client_Advisor = item.Contact.Account.Associate__r.Name
+                        if (item.Contact.Account.Data_Ultimo_Acquisto__c != null) item.Account_Last_Purchase_Date = item.Contact.Account.Data_Ultimo_Acquisto__c;
+                        if (item.Contact.Account.Importo_Acquisti_Totale__c != null) item.Account_Total_Purchase_Amount = item.Contact.Account.Importo_Acquisti_Totale__c;
+                        if (item.Contact.Account.Marketing_FRM__c != null) item.Account_Marketing = item.Contact.Account.Marketing_FRM__c;
+                       
                         item.linkType = '/lightning/r/CampaignMember/' + item.ContactId + '/view';
                     });
                     component.set("v.data", result);
@@ -347,5 +363,25 @@
         var spinner = component.find("mySpinnerInside");
         $A.util.addClass(spinner, "slds-hide");
     },
+
+    //PN 20191205
+    getUserInfo: function(component, event, helper) {
+        return new Promise($A.getCallback(function(resolve, reject) {
+            let getUserInfoAction = component.get('c.getUserInfo');
+            getUserInfoAction.setCallback(this, function(response) {
+                var state = response.getState();
+
+                if (state === "SUCCESS") {
+                    let myUser = response.getReturnValue();
+                    component.set('v.myUser', myUser);
+                    resolve(myUser);
+                }
+                else {
+                    reject();
+                }
+            });
+            $A.enqueueAction(getUserInfoAction);
+        }));
+    }
 
 })

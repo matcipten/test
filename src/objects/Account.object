@@ -8651,22 +8651,41 @@ Sconto_Medio__c)</formula>
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Segmentation_Name__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(	AND(Data_Ultimo_Acquisto__c &gt;= (TODAY()-365), Importo_Totale_Acquisti_EUR__c &gt;= 300000 ), &quot;Stars&quot;,
+IF( AND(Data_Ultimo_Acquisto__c &gt;= (TODAY()-365), Importo_Totale_Acquisti_EUR__c &gt;= 100000 ) , &quot;Sky&quot;,
+IF( AND(Data_Ultimo_Acquisto__c &gt;= (TODAY()-365), Importo_Totale_Acquisti_EUR__c &gt;= 50000 ) , &quot;Mountain&quot;,
+IF( AND(Data_Ultimo_Acquisto__c &gt;= (TODAY()-365), Importo_Totale_Acquisti_EUR__c &gt;= 20000 ) , &quot;Trees&quot;,
+IF( AND((TODAY()-365) &gt; Data_Ultimo_Acquisto__c,(TODAY()-730) &lt; Data_Ultimo_Acquisto__c, Importo_Totale_Acquisti_EUR__c &gt;= 20000 ) ,&quot;Rainbow&quot;,
+IF( AND(Data_Ultimo_Acquisto__c &gt;= (TODAY()-365), Importo_Totale_Acquisti_EUR__c &gt;= 5000),&quot;Bush&quot;,
+IF( AND(Data_Ultimo_Acquisto__c &gt;= (TODAY()-365), Importo_Totale_Acquisti_EUR__c &lt; 5000,N_Scontrini_netto_resi_netto_gift__c = 1) ,&quot;Seed&quot;,
+IF( AND(Data_Ultimo_Acquisto__c &gt;= (TODAY()-365), Importo_Totale_Acquisti_EUR__c &lt; 5000,N_Scontrini_netto_resi_netto_gift__c &gt; 1) , &quot;Grass&quot;,
+IF( AND((TODAY()-365) &gt; Data_Ultimo_Acquisto__c,(TODAY()-730) &lt; Data_Ultimo_Acquisto__c, Importo_Totale_Acquisti_EUR__c &lt; 20000 ) ,&quot;Rain&quot;,
+IF( Data_Ultimo_Acquisto__c &lt; (TODAY()-730) , &quot;Snow&quot;,&quot;Ground&quot;))))))))))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Segmentation Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Segmentation__c</fullName>
         <externalId>false</externalId>
-        <formula>IF( AND(Data_Ultimo_Acquisto__c &gt;= (TODAY()-365), Importo_Totale_Acquisti_EUR__c  &gt;= 300000 ), HYPERLINK(&quot;/lightning/cmp/c__ViewSegmentation?c__segmentation=Stars&quot; , &quot;Stars&quot;),
-IF( AND(Data_Ultimo_Acquisto__c &gt;= (TODAY()-365), Importo_Totale_Acquisti_EUR__c  &gt;= 100000 ) , HYPERLINK(&quot;/lightning/cmp/c__ViewSegmentation?c__segmentation=Sky&quot; , &quot;Sky&quot;),
-IF( AND(Data_Ultimo_Acquisto__c &gt;= (TODAY()-365), Importo_Totale_Acquisti_EUR__c  &gt;= 50000 ) , HYPERLINK(&quot;/lightning/cmp/c__ViewSegmentation?c__segmentation=Montains&quot; , &quot;Montains&quot;),
-IF( AND(Data_Ultimo_Acquisto__c &gt;= (TODAY()-365), Importo_Totale_Acquisti_EUR__c  &gt;= 20000 ) , HYPERLINK(&quot;/lightning/cmp/c__ViewSegmentation?c__segmentation=Trees&quot; , &quot;Trees&quot;),
-IF( AND((TODAY()-365) &gt; Data_Ultimo_Acquisto__c,(TODAY()-730) &lt; Data_Ultimo_Acquisto__c, Importo_Totale_Acquisti_EUR__c  &gt;= 20000 ) , HYPERLINK(&quot;/lightning/cmp/c__ViewSegmentation?c__segmentation=Rainbow&quot; , &quot;Rainbow&quot;),
-IF( AND(Data_Ultimo_Acquisto__c &gt;= (TODAY()-365), Importo_Totale_Acquisti_EUR__c  &gt;= 5000),HYPERLINK(&quot;/lightning/cmp/c__ViewSegmentation?c__segmentation=Bush&quot; , &quot;Bush&quot;),
-IF( AND(Data_Ultimo_Acquisto__c &gt;= (TODAY()-365), Importo_Totale_Acquisti_EUR__c  &lt; 5000,N_Scontrini_netto_resi_netto_gift__c = 1) , HYPERLINK(&quot;/lightning/cmp/c__ViewSegmentation?c__segmentation=Seed&quot; , &quot;Seed&quot;),
-IF( AND(Data_Ultimo_Acquisto__c &gt;= (TODAY()-365), Importo_Totale_Acquisti_EUR__c  &lt; 5000,N_Scontrini_netto_resi_netto_gift__c &gt; 1) , HYPERLINK(&quot;/lightning/cmp/c__ViewSegmentation?c__segmentation=Grass&quot; , &quot;Grass&quot;),
-IF( AND((TODAY()-365) &gt; Data_Ultimo_Acquisto__c,(TODAY()-730) &lt; Data_Ultimo_Acquisto__c, Importo_Totale_Acquisti_EUR__c  &lt; 20000 ) , HYPERLINK(&quot;/lightning/cmp/c__ViewSegmentation?c__segmentation=Rain&quot; , &quot;Rain&quot;),
-IF( Data_Ultimo_Acquisto__c &lt; (TODAY()-730) , HYPERLINK(&quot;/lightning/cmp/c__ViewSegmentation?c__segmentation=Snow&quot; , &quot;Snow&quot;),
-HYPERLINK(&quot;/lightning/cmp/c__ViewSegmentation?c__segmentation=Ground&quot;, &quot;Ground&quot;)
-))))))))))</formula>
+        <formula>HYPERLINK(&quot;/lightning/cmp/c__ViewSegmentation?c__segmentation=&quot;&amp;Segmentation_Name__c,  Segmentation_Name__c ,&quot;_self&quot;)</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <inlineHelpText>Please click on the segment name in order to access the segmentation rules.</inlineHelpText>
+        <inlineHelpText>Stars R: &lt;=1yr M:&gt;=300k€
+Sky R: &lt;=1yr M:&gt;=100k€
+Mountain R: &lt;=1yr M:&gt;=50k€
+Trees R: &lt;=1yr M:&gt;=20k€
+Rainbow 1yr&gt;R&lt;2yr M:&gt;=20k€
+Bush R: &lt;=1yr M:&gt;=5k€
+Seed R: &lt;=1yr M:&lt;5k€
+Grass R: &lt;=1yr M:&lt;5k€
+Rain 2yr&gt;R&lt;1yr M:&lt;20k€
+Snow R: &gt;2yr
+Ground R: / M: 0</inlineHelpText>
         <label>Segmentation</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -9220,6 +9239,18 @@ true, false)</formula>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Tot_Pezzi_Acquistati_Terzultima_Stagione__c</fullName>
+        <externalId>false</externalId>
+        <label>Tot Pezzi Acquistati Terzultima Stagione</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Totale_Pezzi_Acquistati_Ultima_Stagione__c</fullName>
