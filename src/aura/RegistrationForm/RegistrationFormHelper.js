@@ -167,7 +167,7 @@
                         component.set("v.TranslationDCCVersion",usr_translation.Versione_DCC__c );
                         component.set("v.TranslationRichiediFirma",usr_translation.Richiedi_Firma__c );
                         // console.log(usr_translation);
-						
+                        
                         if (usr_translation != null  && usr_translation.Profession_Values__c != null) {
                              this.setPicklist(component, 'Professione__c','InputSelectDynamicProfession',usr_translation.Profession_Values__c , false);
                         }
@@ -179,6 +179,12 @@
                         }
                         else{
                             this.orderPickLabels(component, 'Hobby__c', 'InputSelectDynamicHobby');
+                        }
+                        if (usr_translation != null  && usr_translation.Salutation_Value__c != null) {
+                            this.setPicklist(component, 'Salutation', 'InputSelectDynamicTitolo', usr_translation.Salutation_Value__c, false);
+                        }
+                        else{
+                            this.orderPickLabels(component, 'Salutation', 'InputSelectDynamicTitolo');
                         }
                         /*if(usr_translation.Nationality_Values__c != null){
                             this.setPicklist(component, 'Nazionalita__c','InputSelectDynamicNationality',usr_translation.Nationality_Values__c , false);
@@ -209,7 +215,7 @@
                             optsMonth.push({class: "optionClass firstSelectOption",label: months[i],value: (i+1).toString()});
                         }
                         if (component.get("v.locale") == 'JP')
-                        	component.find("InputSelectMonthJP").set("v.options",optsMonth);
+                            component.find("InputSelectMonthJP").set("v.options",optsMonth);
                         else
                             component.find("InputSelectMonth").set("v.options",optsMonth);
                         //Years
@@ -234,6 +240,7 @@
 
     }, 
 
+
     orderPickLabels: function(component, fieldName, elementId){
         var opts = component.find(elementId).get("v.options");
         var value = component.get("v.newItem." + fieldName);
@@ -256,7 +263,25 @@
         var optsTemp = [];
         var splitField = fieldValues.split('|');
         var options = component.find(elementId).get("v.options");
-       
+        // VS titolo dinamico
+        var opts2 = [];
+        if(elementId=='InputSelectDynamicTitolo'){
+            
+            opts2.push({
+                class: "optionClass",
+                label: "",
+                value: ""
+            });
+            for (var k in splitField){
+                opts2.push({
+                    class: "optionClass",
+                    label: splitField[k],
+                    value: splitField[k]
+                });
+            }
+            component.find(elementId).set("v.options", opts2);
+            return;
+        }
       
         for (var x in options) {
             if(options[x].label != '' && options[x].value != ''){
@@ -316,7 +341,25 @@
         var opts = [];
         var optsTemp = [];
         var splitField = fieldValues.split('|');
-       
+        // VS titolo dinamico
+        var opts2 = [];
+        if(elementId=='InputSelectDynamicTitolo' && fieldValues!=null){
+            
+            opts2.push({
+                class: "optionClass",
+                label: "",
+                value: ""
+            });
+            for (var k in splitField){
+                opts2.push({
+                    class: "optionClass",
+                    label: splitField[k],
+                    value: splitField[k]
+                });
+            }
+            component.find(elementId).set("v.options", opts2);
+            return;
+        }
        	var action = component.get("c.getselectOptions");
         action.setParams({
             "objObject": component.get("v.newAcc"),
@@ -417,21 +460,22 @@
         
     },
 	//Akshay 05/06/2019  finish 
-
     setTranslationInPicklist: function (component) {
         var language = component.get("v.language");
         // console.log(language);
         var all_translation = component.get("v.translator");
         var usr_translation = new Object();
         usr_translation = all_translation[language];
-
         if (usr_translation.Profession_Values__c != null) {
             this.setPicklist1(component, 'Professione__c', 'InputSelectDynamicProfession', usr_translation.Profession_Values__c, true);
         }
         if (usr_translation.Hobby_Values__c != null) {
             this.setPicklist1(component, 'Hobby__c', 'InputSelectDynamicHobby', usr_translation.Hobby_Values__c, true);
         }
-
+        //VS title dinamico
+        console.log('VS usr_translation.Salutation_Value__c: '+usr_translation.Salutation_Value__c);
+        if (usr_translation.Salutation_Value__c != null)
+            this.setPicklist1(component, 'Salutation','InputSelectDynamicTitolo',usr_translation.Salutation_Value__c , true);
         component.set("v.translatorValue", usr_translation);
 
     },
@@ -502,7 +546,9 @@
                 //  console.log(usr);
                 component.set("v.user", usr);
                 var locale = (usr.Nation_Contact_Card__c != null || usr.Nation_Contact_Card__c != undefined) ?  usr.Nation_Contact_Card__c : 'US' ;
+                var truncLanguage = usr.Language_Contact_Card__c;
                 component.set("v.locale",locale);
+                component.set("v.truncLanguage",truncLanguage);
             } else {
                 component.set("v.user", null);
             }

@@ -134,10 +134,18 @@
                         
                     </div>
                 </aura:if>
-                <aura:if isTrue="{!(v.locale == 'JP'|| v.locale == 'CN' || v.locale == 'RU' || v.locale == 'HK' || v.locale == 'MO' || v.truncLanguage == 'ja'|| v.truncLanguage == 'zh' || v.truncLanguage == 'ru' )}">
-                    <!-- JP/CN -->
-                    <div class="slds-grid slds-wrap row">
-                        <div class="slds-col slds-size_6-of-12 slds-large-size_6-of-12">
+                <div class="slds-grid slds-wrap row">
+                    <div class="slds-col slds-size_2-of-12 slds-large-size_2-of-12">
+                        <div class="slds-form-element">
+                            <label class="slds-form-element__label" for="input-id-01">{!v.translatorValue.Salutation_Label__c}</label>
+                            <div class="slds-form-element__control">
+                                <ui:inputSelect class="dynamic slds-select" value="{!v.newItem.Salutation}" aura:id="InputSelectDynamicTitolo" disabled="{!v.afterPrinting}" />
+                            </div>
+                        </div>
+                    </div>
+                    <aura:if isTrue="{!(v.locale == 'JP'|| v.locale == 'CN' || v.locale == 'RU' || v.locale == 'HK' || v.locale == 'MO' || v.truncLanguage == 'ja'|| v.truncLanguage == 'zh' || v.truncLanguage == 'ru' )}">
+                        <!-- JP/CN -->
+                        <div class="slds-col slds-size_5-of-12 slds-large-size_5-of-12">
                             <div class="slds-form-element">
                                 <label class="slds-form-element__label" for="input-id-01">{!v.translatorValue.Last_Name_Label__c}</label>
                                 <div class="slds-form-element__control">
@@ -145,15 +153,36 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="slds-col slds-size_6-of-12 slds-large-size_6-of-12">
+                        <div class="slds-col slds-size_5-of-12 slds-large-size_5-of-12">
                             <div class="slds-form-element">
                                 <label class="slds-form-element__label" for="input-id-01">{!v.translatorValue.First_Name_Label__c}</label>
                                 <div class="slds-form-element__control">
                                     <ui:inputText aura:id="itemNameJC" class="slds-input" placeholder="{!v.translatorValue.First_Name_Placeholder__c}" value="{!v.newItem.FirstName}" onError="{!c.handleError}" onClearErrors="{!c.handleClearError}" disabled="{!v.afterPrinting}" />
                                 </div>
                             </div>
-                        </div>
-                    </div>
+                        </div> 
+                        <aura:set attribute="else">
+                            <div class="slds-col slds-size_5-of-12 slds-large-size_5-of-12">
+                                <div class="slds-form-element">
+                                    <label class="slds-form-element__label" for="input-id-01">{!v.translatorValue.First_Name_Label__c}</label>  
+                                    <div class="slds-form-element__control">
+                                        <ui:inputText aura:id="itemName" class="slds-input" placeholder="{!v.translatorValue.First_Name_Placeholder__c}" value="{!v.newItem.FirstName}" onError="{!c.handleError}" onClearErrors="{!c.handleClearError}" disabled="{!v.afterPrinting}" />
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slds-col slds-size_5-of-12 slds-large-size_5-of-12">
+                                <div class="slds-form-element">
+                                    <label class="slds-form-element__label" for="input-id-01">{!v.translatorValue.Last_Name_Label__c}</label>
+                                    <div class="slds-form-element__control">
+                                        <ui:inputText aura:id="itemSurname" class="slds-input" placeholder="{!v.translatorValue.Last_Name_Placeholder__c}" value="{!v.newItem.LastName}" onError="{!c.handleError}" onClearErrors="{!c.handleClearError}" disabled="{!v.afterPrinting}" />
+                                    </div>
+                                </div>
+                            </div>
+                        </aura:set>    
+                    </aura:if>
+                </div>
+                <aura:if isTrue="{!(v.locale == 'JP'|| v.locale == 'CN' || v.locale == 'RU' || v.locale == 'HK' || v.locale == 'MO' || v.truncLanguage == 'ja'|| v.truncLanguage == 'zh' || v.truncLanguage == 'ru' )}">
                     <div class="slds-grid slds-wrap row">
                         <div class="slds-col slds-size_6-of-12 slds-large-size_6-of-12">
                             <div class="slds-form-element">
@@ -171,40 +200,8 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <aura:set attribute="else">
-                        <!-- ALL OTHERS -->
-                        <div class="slds-grid slds-wrap row">
-                            <div class="slds-col slds-size_2-of-12 slds-large-size_2-of-12">
-                                <div class="slds-form-element">
-                                    <label class="slds-form-element__label" for="input-id-01">{!v.translatorValue.Salutation_Label__c}</label>
-                                    <div class="slds-form-element__control">
-                                        <ui:inputSelect class="dynamic slds-select" value="{!v.newItem.Salutation}" aura:id="InputSelectDynamicTitolo" disabled="{!v.afterPrinting}" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="slds-col slds-size_5-of-12 slds-large-size_5-of-12">
-                                <div class="slds-form-element">
-                                    <label class="slds-form-element__label" for="input-id-01">{!v.translatorValue.First_Name_Label__c}</label>
-                                    
-                                    <div class="slds-form-element__control">
-                                        <ui:inputText aura:id="itemName" class="slds-input" placeholder="{!v.translatorValue.First_Name_Placeholder__c}" value="{!v.newItem.FirstName}" onError="{!c.handleError}" onClearErrors="{!c.handleClearError}" disabled="{!v.afterPrinting}" />
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="slds-col slds-size_5-of-12 slds-large-size_5-of-12">
-                                <div class="slds-form-element">
-                                    <label class="slds-form-element__label" for="input-id-01">{!v.translatorValue.Last_Name_Label__c}</label>
-                                    <div class="slds-form-element__control">
-                                        <ui:inputText aura:id="itemSurname" class="slds-input" placeholder="{!v.translatorValue.Last_Name_Placeholder__c}" value="{!v.newItem.LastName}" onError="{!c.handleError}" onClearErrors="{!c.handleClearError}" disabled="{!v.afterPrinting}" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </aura:set>           
+                    </div> 
                 </aura:if>
-                
                 <!-- US -->
                  <aura:if isTrue="{!(v.locale == 'JP')}">
                  <div class="slds-grid slds-wrap row">
@@ -321,7 +318,7 @@
                             </div>
                         </div>
                     </div>
-                    <aura:if isTrue="{!v.locale == 'CN' || v.truncLanguage == 'zh' }">
+                    <aura:if isTrue="{!(v.locale == 'CN' &amp;&amp; v.truncLanguage == 'zh') || (v.locale == 'CN' &amp;&amp; v.truncLanguage == 'en') || (v.locale == 'HK' &amp;&amp; v.truncLanguage == 'en') || (v.locale == 'MO' &amp;&amp; v.truncLanguage == 'en')}">
                     <div class="slds-col slds-size_4-of-12 slds-medium-size_4-of-12">
                         <div class="slds-form-element">
                             <label class="slds-form-element__label" for="input-id-01">{!v.translatorValue.We_Chat_ID_Label__c}</label>

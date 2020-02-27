@@ -36,7 +36,7 @@ public class RegistrationForm {
                 HelpForLike = 'en'+'_'+locale;
             system.debug('HelpforLike:::: '+HelpForLike);
             system.debug('LINGUA:::: '+cc[0].Lingua__c);
-            list<Translate__c> Translation = [SELECT Privacy_Yes_Label__c, Privacy_No_Label__c,First_Name_Label__c,Last_Name_Label__c,
+            list<Translate__c> Translation = [SELECT Privacy_Yes_Label__c, Privacy_No_Label__c,First_Name_Label__c,Last_Name_Label__c, Salutation_Value__c,
                                               Street_Label__c, City_Label__c, CAP_Label__c, Country_Label__c, Phone_Label__c, Nationality_Label__c, 
                                               Birthdate_Label__c, Gender_Label__c, Profession_Label__c, Hobby_Label__c, Preferred_Language_Label__c, 
                                               Contact_Preferences_Label__c, Privacy_1_Label__c, Privacy_2_Label__c, Privacy_3_Label__c, Date_Label__c, Signature_Label__c,
@@ -202,7 +202,7 @@ public class RegistrationForm {
                                 Informativa_Header_Label__c, Informativa_Body_Rich_Label__c, Informativa_Body_Rich_Label_Department__c,
                                 Profession_Label__c, Hobby_Label__c,  Passport_Section_Label__c, Numero_Passaporto_Label__c, Paese_di_emissione_passaporto_Label__c,
                                 Local_First_Name_Label__c, Local_Last_Name_Label__c, Button_Back_Label__c,Versione_DCC__c,Richiedi_Firma__c,Success_Message_Label__c,Data_di_emissione_passaporto_Label__c,
-                                Ente_di_emissione_passaporto_Label__c, Button_Generate_Barcode_Label__c
+                                Ente_di_emissione_passaporto_Label__c, Button_Generate_Barcode_Label__c,Salutation_Value__c
                                 FROM Translate__c WHERE Country_FRM__c = :locale]) {
                                     Mymap.put(obj.Name, obj );
                                 }
@@ -472,7 +472,7 @@ return 'false';
         return translate[0].Note_versionamento__c;	
     }
     public static Translate__c getCurrentTranslate(String name){
-        list<Translate__c> Translation = [SELECT Privacy_Yes_Label__c, Privacy_No_Label__c,First_Name_Label__c,Last_Name_Label__c,
+        list<Translate__c> Translation = [SELECT Privacy_Yes_Label__c, Privacy_No_Label__c,First_Name_Label__c,Last_Name_Label__c,Salutation_Value__c,
                                           Street_Label__c, City_Label__c, CAP_Label__c, Country_Label__c, Phone_Label__c, Nationality_Label__c, 
                                           Birthdate_Label__c, Gender_Label__c, Profession_Label__c, Hobby_Label__c, Preferred_Language_Label__c, 
                                           Contact_Preferences_Label__c, Privacy_1_Label__c, Privacy_2_Label__c, Privacy_3_Label__c, Date_Label__c, Signature_Label__c,
@@ -480,7 +480,7 @@ return 'false';
                                           Data_di_emissione_passaporto_Label__c,Ente_di_emissione_passaporto_Label__c, Country_FRM__c,State_Label__c,Local_First_Name_Label__c,Local_Last_Name_Label__c,
                                           We_Chat_ID_Label__c,Checkbox_Phone_Label__c,Checkbox_Email_Label__c,Checkbox_WeChat_Label__c,Checkbox_Mail_Label__c,
                                           Checkbox_Messaging_Label__c,Privacy_Header_Before_Link_Label__c,Privacy_Header_Link_Label__c,Privacy_Header_After_Link_Label__c,Informativa_Body_Rich_Label__c,Informativa_Header_Label__c,
-                                          Privacy_2_Label_Department__c,Informativa_Body_Rich_Label_Department__c
+                                          Privacy_2_Label_Department__c,Informativa_Body_Rich_Label_Department__c,Salutation__c
                                           FROM Translate__c WHERE Name LIKE :name];
         return Translation[0];
     }
@@ -655,7 +655,7 @@ insert cDe;
         //se presenti caratteri orientali nell'indirizzo salvo i dati relativi nei campi UTF8
         //(ex. EnglishLetters - みずずほダイレクト - 诶非)
         
-       String InputString      =   acc.PersonMailingStreet+ ' ' +
+        String InputString      =   acc.PersonMailingStreet+ ' ' +
             acc.PersonMailingCity + ' ' + acc.PersonMailingState;
         
         
