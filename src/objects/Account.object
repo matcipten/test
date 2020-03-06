@@ -1539,6 +1539,15 @@ Importo_acquisti_ultima_stagione_E_comm__c
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Associate_Inactive__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( Associate__r.IsActive__c = &quot;I&quot;, true, false)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Associate Inactive</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>Associate_Manuale__c</fullName>
         <defaultValue>false</defaultValue>
         <externalId>false</externalId>
@@ -1605,6 +1614,34 @@ IF (OUT_BIRTHDATE_CODE1__c =2 &amp;&amp; OUT_BIRTHDATE_CODE2__c  =2, IMAGE(&apos
         <required>false</required>
         <trackHistory>false</trackHistory>
         <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Boutique_Disattiva__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(Location__r.Data_Chiusura_Negozio__c &lt;= NOW(), true, false)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Boutique Disattiva</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Boutique_Disattivata__c</fullName>
+        <description>La boutique di assegnazione è quella fittizia</description>
+        <externalId>false</externalId>
+        <formula>IF( CASESAFEID(Location__c) = $Setup.Profile__c.Id_default_boutique_per_disattivaz_bout__c, true, false)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Boutique Fittizia</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Boutique_Disattivata_old__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Boutique Disattivata_old</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>Boutique_di_registrazione__c</fullName>
@@ -1753,11 +1790,6 @@ IF (OUT_BIRTHDATE_CODE1__c =2 &amp;&amp; OUT_BIRTHDATE_CODE2__c  =2, IMAGE(&apos
                     <label>VCN15</label>
                 </value>
                 <value>
-                    <fullName>VCN30</fullName>
-                    <default>false</default>
-                    <label>VCN30</label>
-                </value>
-                <value>
                     <fullName>VJP05</fullName>
                     <default>false</default>
                     <label>VJP05</label>
@@ -1803,19 +1835,24 @@ IF (OUT_BIRTHDATE_CODE1__c =2 &amp;&amp; OUT_BIRTHDATE_CODE2__c  =2, IMAGE(&apos
                     <label>Personal Shopper</label>
                 </value>
                 <value>
-                    <fullName>PS10</fullName>
-                    <default>false</default>
-                    <label>Personal Shopper 10</label>
-                </value>
-                <value>
-                    <fullName>PS15</fullName>
-                    <default>false</default>
-                    <label>Personal Shopper 15</label>
-                </value>
-                <value>
                     <fullName>BOARD60</fullName>
                     <default>false</default>
                     <label>BOARD60</label>
+                </value>
+                <value>
+                    <fullName>B60</fullName>
+                    <default>false</default>
+                    <label>B 60</label>
+                </value>
+                <value>
+                    <fullName>AGENTS30</fullName>
+                    <default>false</default>
+                    <label>AGENTS 30</label>
+                </value>
+                <value>
+                    <fullName>CONF20</fullName>
+                    <default>false</default>
+                    <label>CONF20</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -4892,6 +4929,19 @@ Email o Numero di telefono (almeno uno)</inlineHelpText>
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Last_purchase_store_is_my_store__c</fullName>
+        <businessStatus>Active</businessStatus>
+        <externalId>false</externalId>
+        <formula>IF(AND ($User.ProfileId = $Setup.Profile__c.Id_Boutique__c,
+!ISNULL( Last_Boutique__c ),
+Last_Boutique__r.Id_Location_Micros__c = $User.Codice_Boutique__c ), true, false)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Last purchase store is my store</label>
+        <securityClassification>Public</securityClassification>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>Lingua__c</fullName>
         <externalId>false</externalId>
         <label>Lingua</label>
@@ -5456,6 +5506,17 @@ IF (AND (Privacy_1__c = true,Privacy1__c = false,Privacy2__c = false,ISBLANK(Dat
         <type>Checkbox</type>
     </fields>
     <fields>
+        <fullName>Micros_ID_Store_Manager__c</fullName>
+        <externalId>false</externalId>
+        <formula>Location__r.Boutique_Store_Manager__r.Id_Associate_Micros__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Micros ID Store Manager</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Modalit_Di_Consegna_Preferita__c</fullName>
         <externalId>false</externalId>
         <label>Modalità Di Consegna Preferita</label>
@@ -5595,6 +5656,18 @@ IF (AND (
         <fullName>N_Scontrini_netto_resi_netto_gift__c</fullName>
         <externalId>false</externalId>
         <label>N Scontrini netto resi netto gift</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>N_Service_Notes__c</fullName>
+        <externalId>false</externalId>
+        <label>N° Service Notes</label>
         <precision>18</precision>
         <required>false</required>
         <scale>0</scale>
@@ -8657,12 +8730,14 @@ Sconto_Medio__c)</formula>
 IF( AND(Data_Ultimo_Acquisto__c &gt;= (TODAY()-365), Importo_Totale_Acquisti_EUR__c &gt;= 100000 ) , &quot;Sky&quot;,
 IF( AND(Data_Ultimo_Acquisto__c &gt;= (TODAY()-365), Importo_Totale_Acquisti_EUR__c &gt;= 50000 ) , &quot;Mountain&quot;,
 IF( AND(Data_Ultimo_Acquisto__c &gt;= (TODAY()-365), Importo_Totale_Acquisti_EUR__c &gt;= 20000 ) , &quot;Trees&quot;,
-IF( AND((TODAY()-365) &gt; Data_Ultimo_Acquisto__c,(TODAY()-730) &lt; Data_Ultimo_Acquisto__c, Importo_Totale_Acquisti_EUR__c &gt;= 20000 ) ,&quot;Rainbow&quot;,
+IF( AND((TODAY()-365) &gt; Data_Ultimo_Acquisto__c,(TODAY()-730) &lt; Data_Ultimo_Acquisto__c, Importo_Totale_Acquisti_EUR__c &gt;= 20000 ) , &quot;Rainbow&quot;,
 IF( AND(Data_Ultimo_Acquisto__c &gt;= (TODAY()-365), Importo_Totale_Acquisti_EUR__c &gt;= 5000),&quot;Bush&quot;,
-IF( AND(Data_Ultimo_Acquisto__c &gt;= (TODAY()-365), Importo_Totale_Acquisti_EUR__c &lt; 5000,N_Scontrini_netto_resi_netto_gift__c = 1) ,&quot;Seed&quot;,
+IF( AND(Data_Ultimo_Acquisto__c &gt;= (TODAY()-365), Importo_Totale_Acquisti_EUR__c &lt; 5000,N_Scontrini_netto_resi_netto_gift__c = 1) , &quot;Seed&quot;,
 IF( AND(Data_Ultimo_Acquisto__c &gt;= (TODAY()-365), Importo_Totale_Acquisti_EUR__c &lt; 5000,N_Scontrini_netto_resi_netto_gift__c &gt; 1) , &quot;Grass&quot;,
-IF( AND((TODAY()-365) &gt; Data_Ultimo_Acquisto__c,(TODAY()-730) &lt; Data_Ultimo_Acquisto__c, Importo_Totale_Acquisti_EUR__c &lt; 20000 ) ,&quot;Rain&quot;,
-IF( Data_Ultimo_Acquisto__c &lt; (TODAY()-730) , &quot;Snow&quot;,&quot;Ground&quot;))))))))))</formula>
+IF( AND((TODAY()-365) &gt; Data_Ultimo_Acquisto__c,(TODAY()-730) &lt; Data_Ultimo_Acquisto__c, Importo_Totale_Acquisti_EUR__c &lt; 20000) , &quot;Rain&quot;,
+IF( AND(Data_Ultimo_Acquisto__c &lt;= (TODAY()-730),N_Scontrini_netto_resi_netto_gift__c!=0,Importo_Totale_Acquisti_EUR__c!=0) , &quot;Snow&quot;,
+IF( AND(OR(Importo_Totale_Acquisti_EUR__c = 0, Importo_Totale_Acquisti_EUR__c =null)), &quot;Ground&quot;,
+null)))))))))))</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Segmentation Name</label>
         <required>false</required>
@@ -8691,6 +8766,15 @@ Ground R: / M: 0</inlineHelpText>
         <trackHistory>false</trackHistory>
         <type>Text</type>
         <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Service_Notes_Checkbox__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(N_Service_Notes__c &gt;=1, true, false)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Service Notes Checkbox</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>Sesso__c</fullName>
@@ -9126,6 +9210,17 @@ Ground R: / M: 0</inlineHelpText>
         <length>255</length>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Store_Manager_ID__c</fullName>
+        <externalId>false</externalId>
+        <formula>Location__r.Boutique_Store_Manager__r.Id</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Store Manager ID</label>
+        <required>false</required>
         <trackHistory>false</trackHistory>
         <type>Text</type>
         <unique>false</unique>
@@ -9714,6 +9809,37 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
         <label>All Customers</label>
     </listViews>
     <listViews>
+        <fullName>Clients_purchased_in_my_store_yesterday</fullName>
+        <columns>ACCOUNT.NAME</columns>
+        <columns>Last_contact_date__c</columns>
+        <columns>Categoria_Cliente__c</columns>
+        <columns>Importo_Acquisti_Totale__c</columns>
+        <columns>Marketing__c</columns>
+        <columns>Profiling__c</columns>
+        <columns>Contact_Preferences__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Last_Boutique__c</field>
+            <operation>contains</operation>
+            <value>london,londra,bicester,harrods</value>
+        </filters>
+        <filters>
+            <field>Last_purchase_store_is_my_store__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <filters>
+            <field>Data_Ultimo_Acquisto__c</field>
+            <operation>equals</operation>
+            <value>YESTERDAY</value>
+        </filters>
+        <label>Clients purchased in my store yesterday</label>
+        <sharedTo>
+            <role>BOUTIQUE_LONDON</role>
+            <role>BOUTIQUE_UK_Marcato</role>
+        </sharedTo>
+    </listViews>
+    <listViews>
         <fullName>Copy_new_12_months</fullName>
         <columns>ACCOUNT.NAME</columns>
         <columns>Categoria_Cliente_FRM__c</columns>
@@ -9806,6 +9932,97 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
             <operation>notEqual</operation>
         </filters>
         <label>My store clients - Last Purch. 6-12 mths</label>
+        <sharedTo>
+            <group>Store_Managers</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Copy_of_List_view_2_Test_My_Store_Client</fullName>
+        <booleanFilter>(1 OR 2) AND (3 OR 4) AND 5 AND 6 AND 7</booleanFilter>
+        <columns>ACCOUNT.NAME</columns>
+        <columns>ACCOUNT.SITE</columns>
+        <columns>ACCOUNT.ADDRESS1_STATE</columns>
+        <columns>ACCOUNT.PHONE1</columns>
+        <columns>ACCOUNT.TYPE</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Totale_Pezzi_Acquistati_Ultima_Stagione__c</field>
+            <operation>equals</operation>
+            <value>0</value>
+        </filters>
+        <filters>
+            <field>Totale_Pezzi_Acquistati_Ultima_Stagione__c</field>
+            <operation>equals</operation>
+        </filters>
+        <filters>
+            <field>Numero_Acquisti_ultime_2_stagioni__c</field>
+            <operation>equals</operation>
+            <value>0</value>
+        </filters>
+        <filters>
+            <field>Numero_Acquisti_ultime_2_stagioni__c</field>
+            <operation>equals</operation>
+        </filters>
+        <filters>
+            <field>Tot_Pezzi_Acquistati_Terzultima_Stagione__c</field>
+            <operation>notEqual</operation>
+            <value>0</value>
+        </filters>
+        <filters>
+            <field>Tot_Pezzi_Acquistati_Terzultima_Stagione__c</field>
+            <operation>notEqual</operation>
+        </filters>
+        <filters>
+            <field>Titolare_Boutique__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>My Store Client Season Previous Year</label>
+        <sharedTo>
+            <group>Store_Managers</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>List_view_1_Test_My_Client</fullName>
+        <booleanFilter>(1 OR 2) AND 3 AND 4 AND 5 AND 6</booleanFilter>
+        <columns>ACCOUNT.NAME</columns>
+        <columns>ACCOUNT.SITE</columns>
+        <columns>Data_Ultimo_Acquisto__c</columns>
+        <columns>ACCOUNT.ADDRESS1_STATE</columns>
+        <columns>ACCOUNT.PHONE1</columns>
+        <columns>ACCOUNT.TYPE</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Totale_Pezzi_Acquistati_Ultima_Stagione__c</field>
+            <operation>equals</operation>
+            <value>0</value>
+        </filters>
+        <filters>
+            <field>Totale_Pezzi_Acquistati_Ultima_Stagione__c</field>
+            <operation>equals</operation>
+        </filters>
+        <filters>
+            <field>Numero_Acquisti_ultime_2_stagioni__c</field>
+            <operation>notEqual</operation>
+            <value>0</value>
+        </filters>
+        <filters>
+            <field>Numero_Acquisti_ultime_2_stagioni__c</field>
+            <operation>notEqual</operation>
+        </filters>
+        <filters>
+            <field>Titolare_Boutique__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <filters>
+            <field>Data_Ultimo_Acquisto__c</field>
+            <operation>equals</operation>
+            <value>THIS_YEAR</value>
+        </filters>
+        <label>My Store Client Previous Season</label>
         <sharedTo>
             <group>Store_Managers</group>
         </sharedTo>
@@ -10276,7 +10493,7 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
         <filters>
             <field>Segmentation__c</field>
             <operation>contains</operation>
-            <value>Seed</value>
+            <value>Grass</value>
         </filters>
         <filters>
             <field>Titolare_Boutique__c</field>
@@ -10622,18 +10839,6 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
             <picklist>Categoria_Cliente_Proposta__c</picklist>
             <values>
                 <fullName>BOARD60</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>PS10</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>PS15</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>VCN30</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -11246,18 +11451,6 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
                 <default>false</default>
             </values>
             <values>
-                <fullName>PS10</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>PS15</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>VCN30</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>VRU10</fullName>
                 <default>false</default>
             </values>
@@ -11819,9 +12012,10 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
         <lookupPhoneDialogsAdditionalFields>PC_PHONE5</lookupPhoneDialogsAdditionalFields>
         <lookupPhoneDialogsAdditionalFields>PC_PHONE6</lookupPhoneDialogsAdditionalFields>
         <searchResultsAdditionalFields>ACCOUNT.NAME</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>ACCOUNT.SITE</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>ACCOUNT.PHONE1</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>CORE.USERS.ALIAS</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>PC_EMAIL</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Allocation__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Segmentation__c</searchResultsAdditionalFields>
     </searchLayouts>
     <sharingModel>ReadWrite</sharingModel>
     <validationRules>

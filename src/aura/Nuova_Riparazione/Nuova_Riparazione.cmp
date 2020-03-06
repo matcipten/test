@@ -4,7 +4,7 @@
 	           label="{!$Label.c.Nuova_Riparazione}"
 	           class="ten_button" /> -->
 	<lightning:button variant="neutral"
-	                  onclick="{!c.createRecord}"
+	                  onclick="{!c.newRepair}"
 	                  label="{!$Label.c.Nuova_Riparazione}"
 	                  title="{!$Label.c.Nuova_Riparazione}"
 	                  class="slds-m-bottom_x-small slds-m-top_x-small ten_button2" />

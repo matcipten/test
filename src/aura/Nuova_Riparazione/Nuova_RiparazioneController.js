@@ -1,5 +1,13 @@
 ({
     myAction : function(component, event, helper) {
+    },
+    newRepair: function(component,event,helper){
+        
+        var urlEvent = $A.get("e.force:navigateToURL");
+            urlEvent.setParams({
+              "url": "/lightning/o/Dettaglio_Riparazione__c/new?nooverride=1&useRecordTypeCheck=1&navigationLocation=LIST_VIEW&backgroundContext=%2Flightning%2Fn%2FHome_Page_Mobile_Client_Advisor"
+            });
+            urlEvent.fire();
         
     },
     createRecord : function (component, event, helper) {

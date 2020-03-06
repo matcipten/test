@@ -177,7 +177,7 @@
     <fields>
         <fullName>AccountId</fullName>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -251,7 +251,7 @@
         <externalId>false</externalId>
         <label>Boutique DOS</label>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
@@ -454,6 +454,11 @@
                     <default>false</default>
                     <label>Events</label>
                 </value>
+                <value>
+                    <fullName>Segnalazioni OMS</fullName>
+                    <default>false</default>
+                    <label>Segnalazioni OMS</label>
+                </value>
             </valueSetDefinition>
             <valueSettings>
                 <controllingFieldValue>Negozio</controllingFieldValue>
@@ -527,6 +532,10 @@
                 <valueName>Richieste amministrazione</valueName>
             </valueSettings>
             <valueSettings>
+                <controllingFieldValue>OMS</controllingFieldValue>
+                <valueName>Segnalazioni OMS</valueName>
+            </valueSettings>
+            <valueSettings>
                 <controllingFieldValue>Contatto Customer Care</controllingFieldValue>
                 <valueName>Catalogues</valueName>
             </valueSettings>
@@ -560,7 +569,6 @@
     </fields>
     <fields>
         <fullName>Citta_input__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Città (input)</label>
         <length>255</length>
@@ -591,7 +599,6 @@
     </fields>
     <fields>
         <fullName>Codice_Autorizzazione_Reso__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Codice Autorizzazione Reso</label>
         <length>255</length>
@@ -616,7 +623,6 @@
     </fields>
     <fields>
         <fullName>Cognome_Cliente_input__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Cognome Cliente (input)</label>
         <length>255</length>
@@ -641,7 +647,6 @@
     </fields>
     <fields>
         <fullName>Colore__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Colore</label>
         <length>20</length>
@@ -723,8 +728,43 @@
         <trackTrending>false</trackTrending>
     </fields>
     <fields>
+        <fullName>Customer_Sat__c</fullName>
+        <externalId>false</externalId>
+        <label>Customer Satisfaction</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Non soddisfatto</fullName>
+                    <default>false</default>
+                    <label>🙁 Non soddisfatto</label>
+                </value>
+                <value>
+                    <fullName>Parzialmente soddisfatto</fullName>
+                    <default>false</default>
+                    <label>🙂 Soddisfatto</label>
+                </value>
+                <value>
+                    <fullName>Soddisfatto</fullName>
+                    <default>false</default>
+                    <label>😀 Molto Soddisfatto</label>
+                </value>
+                <value>
+                    <fullName>Neutro</fullName>
+                    <default>false</default>
+                    <label>😐 Indifferente</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
         <fullName>Data_Appuntamento__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Data Appuntamento</label>
         <required>false</required>
@@ -735,7 +775,6 @@
     </fields>
     <fields>
         <fullName>Data_Produzione__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Data Produzione</label>
         <required>false</required>
@@ -746,7 +785,6 @@
     </fields>
     <fields>
         <fullName>Data_Ultima_Mail__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Data Ultima Mail</label>
         <required>false</required>
@@ -778,7 +816,6 @@
     </fields>
     <fields>
         <fullName>Data_prenotazione_capo__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Data prenotazione capo</label>
         <required>false</required>
@@ -789,7 +826,6 @@
     </fields>
     <fields>
         <fullName>Description</fullName>
-        <encrypted>false</encrypted>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
@@ -808,7 +844,6 @@
     </fields>
     <fields>
         <fullName>Email_Cliente_input__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Email Cliente (input)</label>
         <required>false</required>
@@ -891,8 +926,53 @@
         </valueSet>
     </fields>
     <fields>
+        <fullName>First_Close_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>First Close Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>First_closure_time__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(FLOOR(( First_Close_Date__c  - CreatedDate ) * 24) &lt;= 23, TEXT( FLOOR(( First_Close_Date__c  - CreatedDate ) * 24)) &amp; &quot; h &quot;,
+IF(FLOOR(( First_Close_Date__c  - CreatedDate ) * 24) &gt; 23, TEXT( FLOOR (DATETIMEVALUE(First_Close_Date__c ) - DATETIMEVALUE(CreatedDate))) &amp; &quot; d &quot;,
+		 &quot; &quot;))</formula>
+        <label>First closure time</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>First_response_date__c</fullName>
+        <externalId>false</externalId>
+        <label>First response date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>First_response_time__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(FLOOR(( First_response_date__c - CreatedDate ) * 24) &lt;= 23, TEXT( FLOOR(( First_response_date__c - CreatedDate ) * 24)) &amp; &quot; h &quot;,
+IF(FLOOR(( First_response_date__c - CreatedDate ) * 24) &gt; 23, TEXT( FLOOR (DATETIMEVALUE(First_response_date__c) - DATETIMEVALUE(CreatedDate))) &amp; &quot; d &quot;,
+		 &quot; &quot;))</formula>
+        <label>First response time</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Id_Cliente__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Id Cliente</label>
         <length>100</length>
@@ -905,7 +985,6 @@
     </fields>
     <fields>
         <fullName>Id_Ordine__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Id Ordine</label>
         <length>100</length>
@@ -918,7 +997,6 @@
     </fields>
     <fields>
         <fullName>Id_Reso__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Id Reso</label>
         <length>100</length>
@@ -931,7 +1009,6 @@
     </fields>
     <fields>
         <fullName>Id_Store__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Id Store</label>
         <length>100</length>
@@ -971,6 +1048,25 @@
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
+    </fields>
+    <fields>
+        <fullName>Language</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+    </fields>
+    <fields>
+        <fullName>Last_closure_time__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(FLOOR(( ClosedDate - CreatedDate ) * 24) &lt;= 23, TEXT( FLOOR(( ClosedDate - CreatedDate ) * 24)) &amp; &quot; h &quot;,
+IF(FLOOR(( ClosedDate - CreatedDate ) * 24) &gt; 23, TEXT( FLOOR (DATETIMEVALUE(ClosedDate) - DATETIMEVALUE(CreatedDate))) &amp; &quot; d &quot;,
+		 &quot; &quot;))</formula>
+        <label>Last closure time</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Linea__c</fullName>
@@ -1016,7 +1112,6 @@
     </fields>
     <fields>
         <fullName>Lingua_di_Preferenza_input__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Lingua di Preferenza (input)</label>
         <length>255</length>
@@ -1043,7 +1138,6 @@
     </fields>
     <fields>
         <fullName>Macro_Categoria_Colore__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Macro Categoria Colore</label>
         <length>255</length>
@@ -1056,7 +1150,6 @@
     </fields>
     <fields>
         <fullName>Macro_Categoria__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Macro Categoria</label>
         <length>255</length>
@@ -1069,7 +1162,6 @@
     </fields>
     <fields>
         <fullName>Micro_Categoria_Colore__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Micro Categoria Colore</label>
         <length>255</length>
@@ -1082,7 +1174,6 @@
     </fields>
     <fields>
         <fullName>Micro_Categoria__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Micro Categoria</label>
         <length>255</length>
@@ -1115,7 +1206,6 @@
     </fields>
     <fields>
         <fullName>Modello__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Modello</label>
         <length>20</length>
@@ -1128,7 +1218,6 @@
     </fields>
     <fields>
         <fullName>Motivazione_Reso_Cambio__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Motivazione Reso Cambio</label>
         <length>100</length>
@@ -1150,54 +1239,13 @@
         <type>Checkbox</type>
     </fields>
     <fields>
-        <fullName>N_dettagli_riparazioni__c</fullName>
-        <externalId>false</externalId>
-        <label>N° dettagli riparazioni</label>
-        <summaryForeignKey>Dettaglio_Riparazione__c.Riparazione__c</summaryForeignKey>
-        <summaryOperation>count</summaryOperation>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Summary</type>
-    </fields>
-    <fields>
-        <fullName>N_dettagli_riparazioni_chiuse__c</fullName>
-        <externalId>false</externalId>
-        <label>N° dettagli riparazioni chiuse</label>
-        <summaryFilterItems>
-            <field>Dettaglio_Riparazione__c.Status__c</field>
-            <operation>equals</operation>
-            <value>Riconsegna al cliente effettuata, Chiuso</value>
-        </summaryFilterItems>
-        <summaryForeignKey>Dettaglio_Riparazione__c.Riparazione__c</summaryForeignKey>
-        <summaryOperation>count</summaryOperation>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Summary</type>
-    </fields>
-    <fields>
-        <fullName>N_dettagli_riparazioni_in_lavorazione__c</fullName>
-        <externalId>false</externalId>
-        <label>N° dettagli riparazioni in lavorazione</label>
-        <summaryFilterItems>
-            <field>Dettaglio_Riparazione__c.Status__c</field>
-            <operation>notEqual</operation>
-            <value>Ricevimento capo danneggiato in boutique, Riconsegna al cliente effettuata, Chiuso</value>
-        </summaryFilterItems>
-        <summaryForeignKey>Dettaglio_Riparazione__c.Riparazione__c</summaryForeignKey>
-        <summaryOperation>count</summaryOperation>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Summary</type>
-    </fields>
-    <fields>
         <fullName>Nazione_Sito__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Nazione Sito</label>
         <length>100</length>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -1217,13 +1265,12 @@
     </fields>
     <fields>
         <fullName>Nazione_input__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Nazione (input)</label>
         <length>255</length>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -1252,7 +1299,6 @@
     </fields>
     <fields>
         <fullName>Nome_Cliente_input__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Nome Cliente (input)</label>
         <length>255</length>
@@ -1265,7 +1311,6 @@
     </fields>
     <fields>
         <fullName>Note_Dispo_DOS__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Note Dispo DOS</label>
         <length>131072</length>
@@ -1277,7 +1322,6 @@
     </fields>
     <fields>
         <fullName>Note_aggiuntive__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Note aggiuntive</label>
         <required>false</required>
@@ -1295,6 +1339,20 @@
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Number_of_closures_per_case__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <label>Number of closures per case</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Ordine__c</fullName>
@@ -1329,7 +1387,6 @@
     </fields>
     <fields>
         <fullName>Origine_Ticket__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Origine Ticket</label>
         <length>100</length>
@@ -1375,7 +1432,6 @@
     </fields>
     <fields>
         <fullName>Prodotto_Selezionato__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Prodotto Selezionato</label>
         <length>150</length>
@@ -1446,7 +1502,6 @@
     </fields>
     <fields>
         <fullName>Recommendations__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Recommendations</label>
         <required>false</required>
@@ -1495,20 +1550,18 @@
     </fields>
     <fields>
         <fullName>Riga_Ordine_Stock__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Riga Ordine Stock</label>
         <length>255</length>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
     </fields>
     <fields>
         <fullName>SKU__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>SKU</label>
         <length>255</length>
@@ -1533,7 +1586,6 @@
     </fields>
     <fields>
         <fullName>Sesso_input__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Sesso (input)</label>
         <length>255</length>
@@ -1787,6 +1839,11 @@
                     <label>Pagamenti</label>
                 </value>
                 <value>
+                    <fullName>Problema Articoli</fullName>
+                    <default>false</default>
+                    <label>Problema Articoli</label>
+                </value>
+                <value>
                     <fullName>Problematica tecnica</fullName>
                     <default>false</default>
                     <label>Problematica tecnica</label>
@@ -1965,6 +2022,10 @@
             <valueSettings>
                 <controllingFieldValue>Privacy</controllingFieldValue>
                 <valueName>Richieste privacy</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Segnalazioni OMS</controllingFieldValue>
+                <valueName>Problema Articoli</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Newsletter</controllingFieldValue>
@@ -2322,7 +2383,6 @@
     </fields>
     <fields>
         <fullName>Subject</fullName>
-        <encrypted>false</encrypted>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
@@ -2357,7 +2417,6 @@
     </fields>
     <fields>
         <fullName>Taglia__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Taglia</label>
         <length>5</length>
@@ -2392,7 +2451,6 @@
     </fields>
     <fields>
         <fullName>Telefono_input__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Telefono (input)</label>
         <required>false</required>
@@ -2403,7 +2461,6 @@
     </fields>
     <fields>
         <fullName>Tipologia__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Tipologia</label>
         <length>50</length>
@@ -2450,7 +2507,6 @@
     </fields>
     <fields>
         <fullName>Titolo_Cliente_input__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Titolo Cliente (input)</label>
         <length>255</length>
@@ -2463,7 +2519,6 @@
     </fields>
     <fields>
         <fullName>Tracking_Number__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Tracking Number</label>
         <length>255</length>
@@ -2483,7 +2538,6 @@
     </fields>
     <fields>
         <fullName>URL_Foto__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>URL Foto</label>
         <required>false</required>
@@ -2494,7 +2548,6 @@
     </fields>
     <fields>
         <fullName>URL_Pagina_Sito__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>URL Pagina Sito</label>
         <required>false</required>
@@ -2566,183 +2619,6 @@
         <unique>false</unique>
     </fields>
     <listViews>
-        <fullName>All_Cases_CN</fullName>
-        <booleanFilter>1 OR 2 OR 3</booleanFilter>
-        <columns>CASES.CASE_NUMBER</columns>
-        <columns>NAME</columns>
-        <columns>Titolare_Caso_c__c</columns>
-        <columns>CASES.CREATED_DATE_DATE_ONLY</columns>
-        <columns>CASES.SUBJECT</columns>
-        <columns>CASES.STATUS</columns>
-        <columns>Categoria__c</columns>
-        <columns>Sottocategoria__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>OWNER_NAME</field>
-            <operation>contains</operation>
-            <value>Min</value>
-        </filters>
-        <filters>
-            <field>Nazione_input__c</field>
-            <operation>equals</operation>
-            <value>CN</value>
-        </filters>
-        <filters>
-            <field>Nazione__c</field>
-            <operation>equals</operation>
-            <value>CN</value>
-        </filters>
-        <label>All Cases CN</label>
-        <sharedTo>
-            <group>Customer_Care_CN</group>
-        </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>All_Closed_Repairs</fullName>
-        <columns>CASES.CASE_NUMBER</columns>
-        <columns>NAME</columns>
-        <columns>CASES.SUBJECT</columns>
-        <columns>CASES.STATUS</columns>
-        <columns>CASES.PRIORITY</columns>
-        <columns>CASES.CREATED_DATE_DATE_ONLY</columns>
-        <columns>CORE.USERS.ALIAS</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>CASES.RECORDTYPE</field>
-            <operation>equals</operation>
-            <value>Case.Riparazione</value>
-        </filters>
-        <filters>
-            <field>CASES.STATUS</field>
-            <operation>equals</operation>
-            <value>Chiuso</value>
-        </filters>
-        <label>All Closed Repairs</label>
-        <language>en_US</language>
-        <sharedTo>
-            <role>Area_Austria</role>
-            <role>Area_Belgio</role>
-            <role>Area_Canada</role>
-            <role>Area_China</role>
-            <role>Area_Europa</role>
-            <role>Area_Francia</role>
-            <role>Area_Germania</role>
-            <role>Area_Grecia</role>
-            <role>Area_Headquarter_Solomeo</role>
-            <role>Area_Hong_Kong</role>
-            <role>Area_Italia</role>
-            <role>Area_Japan</role>
-            <role>Area_Olanda</role>
-            <role>Area_Spagna</role>
-            <role>Area_Switzerland</role>
-            <role>Area_UK</role>
-            <role>Area_USA</role>
-            <role>Boutique_Area_Austria</role>
-            <role>Boutique_Area_Belgio</role>
-            <role>Boutique_Area_Canada</role>
-            <role>Boutique_Area_China</role>
-            <role>Boutique_Area_Europa</role>
-            <role>Boutique_Area_Francia</role>
-            <role>Boutique_Area_Germania</role>
-            <role>Boutique_Area_Grecia</role>
-            <role>Boutique_Area_Hong_Kong</role>
-            <role>Boutique_Area_Japan</role>
-            <role>Boutique_Area_Olanda</role>
-            <role>Boutique_Area_Solomeo</role>
-            <role>Boutique_Area_Spagna</role>
-            <role>Boutique_Area_Switzerland</role>
-            <role>Boutique_Area_UK</role>
-            <role>Boutique_Area_USA</role>
-            <role>Customer_Care_Supervisor</role>
-            <role>Italia</role>
-            <role>Sede</role>
-            <role>Supervisor_US</role>
-            <role>X1_Livello</role>
-            <role>X1_Livello_US</role>
-            <role>X2_Livello_Commerciale_Monomarca</role>
-            <role>X2_Livello_Commerciale_Monomarca_Asia</role>
-            <role>X2_Livello_Commerciale_Monomarca_Europa</role>
-            <role>X2_Livello_Commerciale_Monomarca_USA</role>
-            <role>X2_Livello_Commerciale_Multimarca</role>
-            <role>X2_Livello_Commerciale_Multimarca_Europa</role>
-            <role>X2_Livello_Commerciale_Multimarca_Far_East</role>
-            <role>X2_Livello_Commerciale_Multimarca_Italia</role>
-            <role>X2_Livello_Commerciale_Multimarca_USA</role>
-            <role>X2_Livello_Gestione_VIP</role>
-            <role>X2_Livello_US</role>
-        </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>All_My_Repairs</fullName>
-        <columns>CASES.CASE_NUMBER</columns>
-        <columns>NAME</columns>
-        <columns>CASES.SUBJECT</columns>
-        <columns>CASES.STATUS</columns>
-        <columns>CASES.PRIORITY</columns>
-        <columns>CASES.CREATED_DATE_DATE_ONLY</columns>
-        <columns>CORE.USERS.ALIAS</columns>
-        <filterScope>Mine</filterScope>
-        <filters>
-            <field>CASES.RECORDTYPE</field>
-            <operation>equals</operation>
-            <value>Case.Riparazione</value>
-        </filters>
-        <label>All My Repairs</label>
-        <language>en_US</language>
-        <sharedTo>
-            <role>Area_Austria</role>
-            <role>Area_Belgio</role>
-            <role>Area_Canada</role>
-            <role>Area_China</role>
-            <role>Area_Europa</role>
-            <role>Area_Francia</role>
-            <role>Area_Germania</role>
-            <role>Area_Grecia</role>
-            <role>Area_Headquarter_Solomeo</role>
-            <role>Area_Hong_Kong</role>
-            <role>Area_Italia</role>
-            <role>Area_Japan</role>
-            <role>Area_Olanda</role>
-            <role>Area_Spagna</role>
-            <role>Area_Switzerland</role>
-            <role>Area_UK</role>
-            <role>Area_USA</role>
-            <role>Boutique_Area_Austria</role>
-            <role>Boutique_Area_Belgio</role>
-            <role>Boutique_Area_Canada</role>
-            <role>Boutique_Area_China</role>
-            <role>Boutique_Area_Europa</role>
-            <role>Boutique_Area_Francia</role>
-            <role>Boutique_Area_Germania</role>
-            <role>Boutique_Area_Grecia</role>
-            <role>Boutique_Area_Hong_Kong</role>
-            <role>Boutique_Area_Japan</role>
-            <role>Boutique_Area_Olanda</role>
-            <role>Boutique_Area_Solomeo</role>
-            <role>Boutique_Area_Spagna</role>
-            <role>Boutique_Area_Switzerland</role>
-            <role>Boutique_Area_UK</role>
-            <role>Boutique_Area_USA</role>
-            <role>Customer_Care_Supervisor</role>
-            <role>Italia</role>
-            <role>Sede</role>
-            <role>Supervisor_US</role>
-            <role>X1_Livello</role>
-            <role>X1_Livello_US</role>
-            <role>X2_Livello_Commerciale_Monomarca</role>
-            <role>X2_Livello_Commerciale_Monomarca_Asia</role>
-            <role>X2_Livello_Commerciale_Monomarca_Europa</role>
-            <role>X2_Livello_Commerciale_Monomarca_USA</role>
-            <role>X2_Livello_Commerciale_Multimarca</role>
-            <role>X2_Livello_Commerciale_Multimarca_Europa</role>
-            <role>X2_Livello_Commerciale_Multimarca_Far_East</role>
-            <role>X2_Livello_Commerciale_Multimarca_Italia</role>
-            <role>X2_Livello_Commerciale_Multimarca_USA</role>
-            <role>X2_Livello_Gestione_VIP</role>
-            <role>X2_Livello_US</role>
-        </sharedTo>
-    </listViews>
-    <listViews>
         <fullName>All_Open_Cases_CN</fullName>
         <booleanFilter>(1 OR 2 OR 3) AND 4</booleanFilter>
         <columns>CASES.CASE_NUMBER</columns>
@@ -2780,155 +2656,6 @@
         </sharedTo>
     </listViews>
     <listViews>
-        <fullName>All_Open_Repairs</fullName>
-        <columns>CASES.CASE_NUMBER</columns>
-        <columns>NAME</columns>
-        <columns>CASES.SUBJECT</columns>
-        <columns>CASES.STATUS</columns>
-        <columns>CASES.PRIORITY</columns>
-        <columns>CASES.CREATED_DATE_DATE_ONLY</columns>
-        <columns>Titolare_Caso_c__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>CASES.RECORDTYPE</field>
-            <operation>equals</operation>
-            <value>Case.Riparazione</value>
-        </filters>
-        <filters>
-            <field>CASES.STATUS</field>
-            <operation>equals</operation>
-            <value>Aperto</value>
-        </filters>
-        <label>All Open Repairs</label>
-        <sharedTo>
-            <role>Area_Austria</role>
-            <role>Area_Belgio</role>
-            <role>Area_Canada</role>
-            <role>Area_China</role>
-            <role>Area_Europa</role>
-            <role>Area_Francia</role>
-            <role>Area_Germania</role>
-            <role>Area_Grecia</role>
-            <role>Area_Headquarter_Solomeo</role>
-            <role>Area_Hong_Kong</role>
-            <role>Area_Italia</role>
-            <role>Area_Japan</role>
-            <role>Area_Olanda</role>
-            <role>Area_Spagna</role>
-            <role>Area_Switzerland</role>
-            <role>Area_UK</role>
-            <role>Area_USA</role>
-            <role>Boutique_Area_Austria</role>
-            <role>Boutique_Area_Belgio</role>
-            <role>Boutique_Area_Canada</role>
-            <role>Boutique_Area_China</role>
-            <role>Boutique_Area_Europa</role>
-            <role>Boutique_Area_Francia</role>
-            <role>Boutique_Area_Germania</role>
-            <role>Boutique_Area_Grecia</role>
-            <role>Boutique_Area_Hong_Kong</role>
-            <role>Boutique_Area_Japan</role>
-            <role>Boutique_Area_Olanda</role>
-            <role>Boutique_Area_Solomeo</role>
-            <role>Boutique_Area_Spagna</role>
-            <role>Boutique_Area_Switzerland</role>
-            <role>Boutique_Area_UK</role>
-            <role>Boutique_Area_USA</role>
-            <role>Customer_Care_Supervisor</role>
-            <role>Italia</role>
-            <role>Sede</role>
-            <role>Supervisor_US</role>
-            <role>X1_Livello</role>
-            <role>X1_Livello_US</role>
-            <role>X2_Livello_Commerciale_Monomarca</role>
-            <role>X2_Livello_Commerciale_Monomarca_Asia</role>
-            <role>X2_Livello_Commerciale_Monomarca_Europa</role>
-            <role>X2_Livello_Commerciale_Monomarca_USA</role>
-            <role>X2_Livello_Commerciale_Multimarca</role>
-            <role>X2_Livello_Commerciale_Multimarca_Europa</role>
-            <role>X2_Livello_Commerciale_Multimarca_Far_East</role>
-            <role>X2_Livello_Commerciale_Multimarca_Italia</role>
-            <role>X2_Livello_Commerciale_Multimarca_USA</role>
-            <role>X2_Livello_Gestione_VIP</role>
-            <role>X2_Livello_US</role>
-        </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>All_Repairs_in_Progress</fullName>
-        <columns>CASES.CASE_NUMBER</columns>
-        <columns>NAME</columns>
-        <columns>CASES.SUBJECT</columns>
-        <columns>CASES.STATUS</columns>
-        <columns>CASES.PRIORITY</columns>
-        <columns>CASES.CREATED_DATE_DATE_ONLY</columns>
-        <columns>CORE.USERS.ALIAS</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>CASES.RECORDTYPE</field>
-            <operation>equals</operation>
-            <value>Case.Riparazione</value>
-        </filters>
-        <filters>
-            <field>CASES.STATUS</field>
-            <operation>equals</operation>
-            <value>In Lavorazione</value>
-        </filters>
-        <label>All Repairs in Progress</label>
-        <language>en_US</language>
-        <sharedTo>
-            <role>Area_Austria</role>
-            <role>Area_Belgio</role>
-            <role>Area_Canada</role>
-            <role>Area_China</role>
-            <role>Area_Europa</role>
-            <role>Area_Francia</role>
-            <role>Area_Germania</role>
-            <role>Area_Grecia</role>
-            <role>Area_Headquarter_Solomeo</role>
-            <role>Area_Hong_Kong</role>
-            <role>Area_Italia</role>
-            <role>Area_Japan</role>
-            <role>Area_Olanda</role>
-            <role>Area_Spagna</role>
-            <role>Area_Switzerland</role>
-            <role>Area_UK</role>
-            <role>Area_USA</role>
-            <role>Boutique_Area_Austria</role>
-            <role>Boutique_Area_Belgio</role>
-            <role>Boutique_Area_Canada</role>
-            <role>Boutique_Area_China</role>
-            <role>Boutique_Area_Europa</role>
-            <role>Boutique_Area_Francia</role>
-            <role>Boutique_Area_Germania</role>
-            <role>Boutique_Area_Grecia</role>
-            <role>Boutique_Area_Hong_Kong</role>
-            <role>Boutique_Area_Japan</role>
-            <role>Boutique_Area_Olanda</role>
-            <role>Boutique_Area_Solomeo</role>
-            <role>Boutique_Area_Spagna</role>
-            <role>Boutique_Area_Switzerland</role>
-            <role>Boutique_Area_UK</role>
-            <role>Boutique_Area_USA</role>
-            <role>Customer_Care_Supervisor</role>
-            <role>Italia</role>
-            <role>Sede</role>
-            <role>Supervisor_US</role>
-            <role>X1_Livello</role>
-            <role>X1_Livello_US</role>
-            <role>X2_Livello_Commerciale_Monomarca</role>
-            <role>X2_Livello_Commerciale_Monomarca_Asia</role>
-            <role>X2_Livello_Commerciale_Monomarca_Europa</role>
-            <role>X2_Livello_Commerciale_Monomarca_USA</role>
-            <role>X2_Livello_Commerciale_Multimarca</role>
-            <role>X2_Livello_Commerciale_Multimarca_Europa</role>
-            <role>X2_Livello_Commerciale_Multimarca_Far_East</role>
-            <role>X2_Livello_Commerciale_Multimarca_Italia</role>
-            <role>X2_Livello_Commerciale_Multimarca_USA</role>
-            <role>X2_Livello_Gestione_VIP</role>
-            <role>X2_Livello_US</role>
-        </sharedTo>
-    </listViews>
-    <listViews>
         <fullName>Buying</fullName>
         <columns>CASES.CASE_NUMBER</columns>
         <columns>NAME</columns>
@@ -2944,6 +2671,41 @@
         <filterScope>Queue</filterScope>
         <label>Buying</label>
         <queue>Buying</queue>
+        <sharedTo>
+            <group>Buying_Ecommerce</group>
+            <group>Customer_Care_IT</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Cases_to_be_assigned</fullName>
+        <columns>CASES.CASE_NUMBER</columns>
+        <columns>CASES.SUBJECT</columns>
+        <columns>Nazione__c</columns>
+        <columns>CASES.CREATED_DATE_DATE_ONLY</columns>
+        <columns>OWNER_NAME</columns>
+        <columns>CASES.STATUS</columns>
+        <columns>CASES.PRIORITY</columns>
+        <columns>NAME</columns>
+        <columns>Entry_Point__c</columns>
+        <columns>Area__c</columns>
+        <columns>Canale__c</columns>
+        <columns>Categoria__c</columns>
+        <columns>Sottocategoria__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CASES.STATUS</field>
+            <operation>equals</operation>
+            <value>Nuovo</value>
+        </filters>
+        <filters>
+            <field>CASES.RECORDTYPE</field>
+            <operation>notEqual</operation>
+            <value>Case.Ticket_E_commerce_Notify_Me</value>
+        </filters>
+        <label>Cases to be assigned</label>
+        <sharedTo>
+            <group>Customer_Care_IT</group>
+        </sharedTo>
     </listViews>
     <listViews>
         <fullName>Casi_in_attesa</fullName>
@@ -2981,7 +2743,7 @@
         </sharedTo>
     </listViews>
     <listViews>
-        <fullName>Closed_Repairs</fullName>
+        <fullName>Coda_CN_Case</fullName>
         <columns>CASES.CASE_NUMBER</columns>
         <columns>NAME</columns>
         <columns>CASES.SUBJECT</columns>
@@ -2989,70 +2751,190 @@
         <columns>CASES.PRIORITY</columns>
         <columns>CASES.CREATED_DATE_DATE_ONLY</columns>
         <columns>CORE.USERS.ALIAS</columns>
-        <filterScope>Mine</filterScope>
+        <filterScope>Queue</filterScope>
+        <label>CN Queue</label>
+        <queue>Coda_CN</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Coda_DE_Case</fullName>
+        <columns>CASES.CASE_NUMBER</columns>
+        <columns>NAME</columns>
+        <columns>CASES.SUBJECT</columns>
+        <columns>CASES.STATUS</columns>
+        <columns>CASES.PRIORITY</columns>
+        <columns>CASES.CREATED_DATE_DATE_ONLY</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <filterScope>Queue</filterScope>
+        <label>DE Queue</label>
+        <queue>Coda_DE</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Coda_EN_Case</fullName>
+        <columns>CASES.CASE_NUMBER</columns>
+        <columns>NAME</columns>
+        <columns>CASES.SUBJECT</columns>
+        <columns>CASES.STATUS</columns>
+        <columns>CASES.PRIORITY</columns>
+        <columns>CASES.CREATED_DATE_DATE_ONLY</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <filterScope>Queue</filterScope>
+        <label>EN Queue</label>
+        <queue>Coda_EN</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Coda_ES_Case</fullName>
+        <columns>CASES.CASE_NUMBER</columns>
+        <columns>NAME</columns>
+        <columns>CASES.SUBJECT</columns>
+        <columns>CASES.STATUS</columns>
+        <columns>CASES.PRIORITY</columns>
+        <columns>CASES.CREATED_DATE_DATE_ONLY</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <filterScope>Queue</filterScope>
+        <label>ES  Queue</label>
+        <queue>Coda_ES</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Coda_Email_Case</fullName>
+        <columns>CASES.CASE_NUMBER</columns>
+        <columns>NAME</columns>
+        <columns>CASES.SUBJECT</columns>
+        <columns>CASES.STATUS</columns>
+        <columns>CASES.PRIORITY</columns>
+        <columns>CASES.CREATED_DATE_DATE_ONLY</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <filterScope>Queue</filterScope>
         <filters>
             <field>CASES.RECORDTYPE</field>
             <operation>equals</operation>
-            <value>Case.Riparazione</value>
+            <value>Case.Customer_Care</value>
         </filters>
-        <filters>
-            <field>CASES.STATUS</field>
-            <operation>equals</operation>
-            <value>Chiuso</value>
-        </filters>
-        <label>Closed Repairs</label>
-        <language>en_US</language>
+        <label>Email Queue</label>
+        <queue>Coda_Email</queue>
         <sharedTo>
-            <role>Area_Austria</role>
-            <role>Area_Belgio</role>
-            <role>Area_Canada</role>
-            <role>Area_China</role>
-            <role>Area_Europa</role>
-            <role>Area_Francia</role>
-            <role>Area_Germania</role>
-            <role>Area_Grecia</role>
-            <role>Area_Headquarter_Solomeo</role>
-            <role>Area_Hong_Kong</role>
-            <role>Area_Italia</role>
-            <role>Area_Japan</role>
-            <role>Area_Olanda</role>
-            <role>Area_Spagna</role>
-            <role>Area_Switzerland</role>
-            <role>Area_UK</role>
-            <role>Area_USA</role>
-            <role>Boutique_Area_Austria</role>
-            <role>Boutique_Area_Belgio</role>
-            <role>Boutique_Area_Canada</role>
-            <role>Boutique_Area_China</role>
-            <role>Boutique_Area_Europa</role>
-            <role>Boutique_Area_Francia</role>
-            <role>Boutique_Area_Germania</role>
-            <role>Boutique_Area_Grecia</role>
-            <role>Boutique_Area_Hong_Kong</role>
-            <role>Boutique_Area_Japan</role>
-            <role>Boutique_Area_Olanda</role>
-            <role>Boutique_Area_Solomeo</role>
-            <role>Boutique_Area_Spagna</role>
-            <role>Boutique_Area_Switzerland</role>
-            <role>Boutique_Area_UK</role>
-            <role>Boutique_Area_USA</role>
-            <role>Customer_Care_Supervisor</role>
-            <role>Italia</role>
-            <role>Sede</role>
-            <role>Supervisor_US</role>
-            <role>X1_Livello</role>
-            <role>X1_Livello_US</role>
-            <role>X2_Livello_Commerciale_Monomarca</role>
-            <role>X2_Livello_Commerciale_Monomarca_Asia</role>
-            <role>X2_Livello_Commerciale_Monomarca_Europa</role>
-            <role>X2_Livello_Commerciale_Monomarca_USA</role>
-            <role>X2_Livello_Commerciale_Multimarca</role>
-            <role>X2_Livello_Commerciale_Multimarca_Europa</role>
-            <role>X2_Livello_Commerciale_Multimarca_Far_East</role>
-            <role>X2_Livello_Commerciale_Multimarca_Italia</role>
-            <role>X2_Livello_Commerciale_Multimarca_USA</role>
-            <role>X2_Livello_Gestione_VIP</role>
-            <role>X2_Livello_US</role>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Coda_Email_US</fullName>
+        <columns>CASES.CASE_NUMBER</columns>
+        <columns>NAME</columns>
+        <columns>CASES.SUBJECT</columns>
+        <columns>CASES.STATUS</columns>
+        <columns>CASES.PRIORITY</columns>
+        <columns>CASES.CREATED_DATE_DATE_ONLY</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <filterScope>Queue</filterScope>
+        <filters>
+            <field>CASES.RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>Case.Customer_Care_US</value>
+        </filters>
+        <label>Email US Queue</label>
+        <queue>Coda_Email</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Coda_FR_Case</fullName>
+        <columns>CASES.CASE_NUMBER</columns>
+        <columns>NAME</columns>
+        <columns>CASES.SUBJECT</columns>
+        <columns>CASES.STATUS</columns>
+        <columns>CASES.PRIORITY</columns>
+        <columns>CASES.CREATED_DATE_DATE_ONLY</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <filterScope>Queue</filterScope>
+        <label>FR Queue</label>
+        <queue>Coda_FR</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Coda_IT_Case</fullName>
+        <columns>CASES.CASE_NUMBER</columns>
+        <columns>NAME</columns>
+        <columns>CASES.SUBJECT</columns>
+        <columns>CASES.STATUS</columns>
+        <columns>CASES.PRIORITY</columns>
+        <columns>CASES.CREATED_DATE_DATE_ONLY</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <filterScope>Queue</filterScope>
+        <label>IT Queue</label>
+        <queue>Coda_IT</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Coda_JP_Case</fullName>
+        <columns>CASES.CASE_NUMBER</columns>
+        <columns>NAME</columns>
+        <columns>CASES.SUBJECT</columns>
+        <columns>CASES.STATUS</columns>
+        <columns>CASES.PRIORITY</columns>
+        <columns>CASES.CREATED_DATE_DATE_ONLY</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <filterScope>Queue</filterScope>
+        <label>JP Queue</label>
+        <queue>Coda_JP</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Coda_RU_Case</fullName>
+        <columns>CASES.CASE_NUMBER</columns>
+        <columns>NAME</columns>
+        <columns>CASES.SUBJECT</columns>
+        <columns>CASES.STATUS</columns>
+        <columns>CASES.PRIORITY</columns>
+        <columns>CASES.CREATED_DATE_DATE_ONLY</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <filterScope>Queue</filterScope>
+        <label>RU Queue</label>
+        <queue>Coda_RU</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Coda_USA_Case</fullName>
+        <columns>CASES.CASE_NUMBER</columns>
+        <columns>NAME</columns>
+        <columns>CASES.SUBJECT</columns>
+        <columns>CASES.STATUS</columns>
+        <columns>CASES.PRIORITY</columns>
+        <columns>CASES.CREATED_DATE_DATE_ONLY</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <filterScope>Queue</filterScope>
+        <label>USA Queue</label>
+        <queue>Coda_USA</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Coda_notify_me_Case</fullName>
+        <filterScope>Queue</filterScope>
+        <label>Coda notify me</label>
+        <queue>Coda_notify_me</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
         </sharedTo>
     </listViews>
     <listViews>
@@ -3072,7 +2954,7 @@
         <label>Commerciale</label>
         <queue>Commerciale</queue>
         <sharedTo>
-            <allInternalUsers></allInternalUsers>
+            <role>Sede</role>
         </sharedTo>
     </listViews>
     <listViews>
@@ -3089,10 +2971,15 @@
         <columns>Colore_Prodotto__c</columns>
         <columns>SKU__c</columns>
         <filterScope>Queue</filterScope>
+        <filters>
+            <field>CASES.STATUS</field>
+            <operation>notEqual</operation>
+            <value>Chiuso</value>
+        </filters>
         <label>Commerciale ES - GR - Ecom - Solomeo</label>
         <queue>Commerciale_ES_GR_Ecom_Solomeo</queue>
         <sharedTo>
-            <allInternalUsers></allInternalUsers>
+            <role>Sede</role>
         </sharedTo>
     </listViews>
     <listViews>
@@ -3101,6 +2988,7 @@
         <columns>CASES.SUBJECT</columns>
         <columns>CASES.STATUS</columns>
         <columns>Responsabile_Caso__c</columns>
+        <columns>Location__c</columns>
         <columns>CASES.CREATED_DATE_DATE_ONLY</columns>
         <columns>Linea__c</columns>
         <columns>Taglia_Prodotto__c</columns>
@@ -3109,10 +2997,15 @@
         <columns>Colore_Prodotto__c</columns>
         <columns>SKU__c</columns>
         <filterScope>Queue</filterScope>
+        <filters>
+            <field>CASES.STATUS</field>
+            <operation>notEqual</operation>
+            <value>Chiuso</value>
+        </filters>
         <label>Commerciale EU</label>
         <queue>Commerciale_EU</queue>
         <sharedTo>
-            <allInternalUsers></allInternalUsers>
+            <role>Sede</role>
         </sharedTo>
     </listViews>
     <listViews>
@@ -3129,35 +3022,16 @@
         <columns>Colore_Prodotto__c</columns>
         <columns>SKU__c</columns>
         <filterScope>Queue</filterScope>
+        <filters>
+            <field>CASES.STATUS</field>
+            <operation>notEqual</operation>
+            <value>Chiuso</value>
+        </filters>
         <label>Commerciale IT - CH</label>
         <queue>Commerciale_IT_CH</queue>
         <sharedTo>
-            <allInternalUsers></allInternalUsers>
+            <role>Sede</role>
         </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>Customer_Care</fullName>
-        <booleanFilter>1 OR 2</booleanFilter>
-        <columns>CASES.CASE_NUMBER</columns>
-        <columns>NAME</columns>
-        <columns>CASES.SUBJECT</columns>
-        <columns>CASES.STATUS</columns>
-        <columns>CASES.PRIORITY</columns>
-        <columns>CASES.CREATED_DATE</columns>
-        <columns>CORE.USERS.ALIAS</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>CASES.RECORDTYPE</field>
-            <operation>equals</operation>
-            <value>Case.Customer_Care,Case.Customer_Care_Closed,Case.Customer_Care_US,Case.Customer_Care_WTC</value>
-        </filters>
-        <filters>
-            <field>CASES.RECORDTYPE</field>
-            <operation>equals</operation>
-            <value>Case.Customer_Care_US_Closed</value>
-        </filters>
-        <label>Customer Care</label>
-        <language>en_US</language>
     </listViews>
     <listViews>
         <fullName>My_Boutique_s_Notify_Me_Cases</fullName>
@@ -3178,357 +3052,25 @@
             <operation>equals</operation>
             <value>1</value>
         </filters>
-        <label>My Boutique&apos;s Notify Me Cases</label>
-    </listViews>
-    <listViews>
-        <fullName>My_Notify_Me_2_0_Open_Cases</fullName>
-        <booleanFilter>1 AND 2 AND 3</booleanFilter>
-        <columns>CASES.CASE_NUMBER</columns>
-        <columns>Responsabile_Caso__c</columns>
-        <columns>CASES.SUBJECT</columns>
-        <columns>CASES.STATUS</columns>
-        <columns>CASES.CREATED_DATE_DATE_ONLY</columns>
-        <columns>CORE.USERS.ALIAS</columns>
-        <columns>SKU__c</columns>
-        <columns>Stagione_Prodotto__c</columns>
-        <columns>Modello_Prodotto__c</columns>
-        <columns>Colore_Prodotto__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>CASES.CLOSED</field>
-            <operation>equals</operation>
-            <value>0</value>
-        </filters>
-        <filters>
-            <field>CASES.RECORDTYPE</field>
-            <operation>equals</operation>
-            <value>Case.Ticket_E_commerce_Notify_Me</value>
-        </filters>
-        <filters>
-            <field>Titolare_Caso_c__c</field>
-            <operation>contains</operation>
-            <value>buying,commerciale,livello,jacqueline,barbara,lina,giorgia,antresini,irina,akira,taissiya</value>
-        </filters>
-        <label>Kanban - Notify Me 2.0 Open Cases</label>
-        <sharedTo>
-            <group>Customer_Care_IT</group>
-        </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>My_Open_Repairs</fullName>
-        <columns>CASES.CASE_NUMBER</columns>
-        <columns>NAME</columns>
-        <columns>CASES.SUBJECT</columns>
-        <columns>CASES.STATUS</columns>
-        <columns>CASES.PRIORITY</columns>
-        <columns>CASES.CREATED_DATE_DATE_ONLY</columns>
-        <columns>CORE.USERS.ALIAS</columns>
-        <filterScope>Mine</filterScope>
-        <filters>
-            <field>CASES.RECORDTYPE</field>
-            <operation>equals</operation>
-            <value>Case.Riparazione</value>
-        </filters>
-        <filters>
-            <field>CASES.STATUS</field>
-            <operation>equals</operation>
-            <value>Aperto</value>
-        </filters>
-        <label>My Open Repairs</label>
-        <language>en_US</language>
-        <sharedTo>
-            <role>Area_Austria</role>
-            <role>Area_Belgio</role>
-            <role>Area_Canada</role>
-            <role>Area_China</role>
-            <role>Area_Europa</role>
-            <role>Area_Francia</role>
-            <role>Area_Germania</role>
-            <role>Area_Grecia</role>
-            <role>Area_Headquarter_Solomeo</role>
-            <role>Area_Hong_Kong</role>
-            <role>Area_Italia</role>
-            <role>Area_Japan</role>
-            <role>Area_Olanda</role>
-            <role>Area_Spagna</role>
-            <role>Area_Switzerland</role>
-            <role>Area_UK</role>
-            <role>Area_USA</role>
-            <role>Boutique_Area_Austria</role>
-            <role>Boutique_Area_Belgio</role>
-            <role>Boutique_Area_Canada</role>
-            <role>Boutique_Area_China</role>
-            <role>Boutique_Area_Europa</role>
-            <role>Boutique_Area_Francia</role>
-            <role>Boutique_Area_Germania</role>
-            <role>Boutique_Area_Grecia</role>
-            <role>Boutique_Area_Hong_Kong</role>
-            <role>Boutique_Area_Japan</role>
-            <role>Boutique_Area_Olanda</role>
-            <role>Boutique_Area_Solomeo</role>
-            <role>Boutique_Area_Spagna</role>
-            <role>Boutique_Area_Switzerland</role>
-            <role>Boutique_Area_UK</role>
-            <role>Boutique_Area_USA</role>
-            <role>Customer_Care_Supervisor</role>
-            <role>Italia</role>
-            <role>Sede</role>
-            <role>Supervisor_US</role>
-            <role>X1_Livello</role>
-            <role>X1_Livello_US</role>
-            <role>X2_Livello_Commerciale_Monomarca</role>
-            <role>X2_Livello_Commerciale_Monomarca_Asia</role>
-            <role>X2_Livello_Commerciale_Monomarca_Europa</role>
-            <role>X2_Livello_Commerciale_Monomarca_USA</role>
-            <role>X2_Livello_Commerciale_Multimarca</role>
-            <role>X2_Livello_Commerciale_Multimarca_Europa</role>
-            <role>X2_Livello_Commerciale_Multimarca_Far_East</role>
-            <role>X2_Livello_Commerciale_Multimarca_Italia</role>
-            <role>X2_Livello_Commerciale_Multimarca_USA</role>
-            <role>X2_Livello_Gestione_VIP</role>
-            <role>X2_Livello_US</role>
-        </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>My_Repairs_in_Progress</fullName>
-        <columns>CASES.CASE_NUMBER</columns>
-        <columns>NAME</columns>
-        <columns>CASES.SUBJECT</columns>
-        <columns>CASES.STATUS</columns>
-        <columns>CASES.PRIORITY</columns>
-        <columns>CASES.CREATED_DATE_DATE_ONLY</columns>
-        <columns>CORE.USERS.ALIAS</columns>
-        <filterScope>Mine</filterScope>
-        <filters>
-            <field>CASES.RECORDTYPE</field>
-            <operation>equals</operation>
-            <value>Case.Riparazione</value>
-        </filters>
-        <filters>
-            <field>CASES.STATUS</field>
-            <operation>equals</operation>
-            <value>In Lavorazione</value>
-        </filters>
-        <label>My Repairs in Progress</label>
-        <language>en_US</language>
-        <sharedTo>
-            <role>Area_Austria</role>
-            <role>Area_Belgio</role>
-            <role>Area_Canada</role>
-            <role>Area_China</role>
-            <role>Area_Europa</role>
-            <role>Area_Francia</role>
-            <role>Area_Germania</role>
-            <role>Area_Grecia</role>
-            <role>Area_Headquarter_Solomeo</role>
-            <role>Area_Hong_Kong</role>
-            <role>Area_Italia</role>
-            <role>Area_Japan</role>
-            <role>Area_Olanda</role>
-            <role>Area_Spagna</role>
-            <role>Area_Switzerland</role>
-            <role>Area_UK</role>
-            <role>Area_USA</role>
-            <role>Boutique_Area_Austria</role>
-            <role>Boutique_Area_Belgio</role>
-            <role>Boutique_Area_Canada</role>
-            <role>Boutique_Area_China</role>
-            <role>Boutique_Area_Europa</role>
-            <role>Boutique_Area_Francia</role>
-            <role>Boutique_Area_Germania</role>
-            <role>Boutique_Area_Grecia</role>
-            <role>Boutique_Area_Hong_Kong</role>
-            <role>Boutique_Area_Japan</role>
-            <role>Boutique_Area_Olanda</role>
-            <role>Boutique_Area_Solomeo</role>
-            <role>Boutique_Area_Spagna</role>
-            <role>Boutique_Area_Switzerland</role>
-            <role>Boutique_Area_UK</role>
-            <role>Boutique_Area_USA</role>
-            <role>Customer_Care_Supervisor</role>
-            <role>Italia</role>
-            <role>Sede</role>
-            <role>Supervisor_US</role>
-            <role>X1_Livello</role>
-            <role>X1_Livello_US</role>
-            <role>X2_Livello_Commerciale_Monomarca</role>
-            <role>X2_Livello_Commerciale_Monomarca_Asia</role>
-            <role>X2_Livello_Commerciale_Monomarca_Europa</role>
-            <role>X2_Livello_Commerciale_Monomarca_USA</role>
-            <role>X2_Livello_Commerciale_Multimarca</role>
-            <role>X2_Livello_Commerciale_Multimarca_Europa</role>
-            <role>X2_Livello_Commerciale_Multimarca_Far_East</role>
-            <role>X2_Livello_Commerciale_Multimarca_Italia</role>
-            <role>X2_Livello_Commerciale_Multimarca_USA</role>
-            <role>X2_Livello_Gestione_VIP</role>
-            <role>X2_Livello_US</role>
-        </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>Nuovi_Casi</fullName>
-        <columns>CASES.CASE_NUMBER</columns>
-        <columns>CASES.SUBJECT</columns>
-        <columns>OWNER_NAME</columns>
-        <columns>CASES.STATUS</columns>
-        <columns>CASES.PRIORITY</columns>
-        <columns>CASES.CREATED_DATE</columns>
-        <columns>NAME</columns>
-        <columns>Nazione__c</columns>
-        <columns>Entry_Point__c</columns>
-        <columns>Area__c</columns>
-        <columns>Canale__c</columns>
-        <columns>Categoria__c</columns>
-        <columns>Sottocategoria__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>CASES.CLOSED</field>
-            <operation>equals</operation>
-            <value>0</value>
-        </filters>
-        <filters>
-            <field>CASES.STATUS</field>
-            <operation>equals</operation>
-            <value>Nuovo</value>
-        </filters>
-        <label>01) Nuovi Casi</label>
-        <language>it</language>
-        <sharedTo>
-            <role>X1_Livello</role>
-        </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>Nuovi_Casi_US</fullName>
-        <booleanFilter>(1 AND 2) OR (3 AND (4 OR 5)) AND 6</booleanFilter>
-        <columns>CASES.CASE_NUMBER</columns>
-        <columns>NAME</columns>
-        <columns>CASES.SUBJECT</columns>
-        <columns>OWNER_NAME</columns>
-        <columns>CASES.STATUS</columns>
-        <columns>CASES.PRIORITY</columns>
-        <columns>CASES.CREATED_DATE</columns>
-        <columns>Nazione__c</columns>
-        <columns>Entry_Point__c</columns>
-        <columns>Canale__c</columns>
-        <columns>Categoria__c</columns>
-        <columns>Sottocategoria__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Nazione_input__c</field>
-            <operation>equals</operation>
-            <value>US</value>
-        </filters>
-        <filters>
-            <field>CASES.STATUS</field>
-            <operation>equals</operation>
-            <value>Nuovo</value>
-        </filters>
-        <filters>
-            <field>CASES.ORIGIN</field>
-            <operation>equals</operation>
-            <value>Email</value>
-        </filters>
-        <filters>
-            <field>CASES.STATUS</field>
-            <operation>equals</operation>
-            <value>Nuovo</value>
-        </filters>
-        <filters>
-            <field>CASES.STATUS</field>
-            <operation>equals</operation>
-            <value>In attesa</value>
-        </filters>
-        <filters>
-            <field>Area_Customer_Care__c</field>
-            <operation>equals</operation>
-            <value>US</value>
-        </filters>
-        <label>Nuovi Casi US</label>
-        <language>en_US</language>
-    </listViews>
-    <listViews>
-        <fullName>Open_Repairs</fullName>
-        <columns>CASES.CASE_NUMBER</columns>
-        <columns>NAME</columns>
-        <columns>CASES.SUBJECT</columns>
-        <columns>CASES.STATUS</columns>
-        <columns>CASES.PRIORITY</columns>
-        <columns>CASES.CREATED_DATE_DATE_ONLY</columns>
-        <columns>CORE.USERS.ALIAS</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>CASES.RECORDTYPE</field>
-            <operation>equals</operation>
-            <value>Case.Riparazione</value>
-        </filters>
-        <filters>
-            <field>CASES.STATUS</field>
-            <operation>equals</operation>
-            <value>Aperto</value>
-        </filters>
-        <filters>
-            <field>Titolare_Caso_c__c</field>
-            <operation>equals</operation>
-            <value>Jacqueline Autuori</value>
-        </filters>
-        <label>Open Repairs</label>
-    </listViews>
-    <listViews>
-        <fullName>Repairs_in_Progress</fullName>
-        <booleanFilter>1 AND 2</booleanFilter>
-        <columns>CASES.CASE_NUMBER</columns>
-        <columns>NAME</columns>
-        <columns>CASES.SUBJECT</columns>
-        <columns>CASES.STATUS</columns>
-        <columns>CASES.PRIORITY</columns>
-        <columns>CASES.CREATED_DATE_DATE_ONLY</columns>
-        <columns>CORE.USERS.ALIAS</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>CASES.RECORDTYPE</field>
-            <operation>equals</operation>
-            <value>Case.Riparazione</value>
-        </filters>
-        <filters>
-            <field>CASES.STATUS</field>
-            <operation>equals</operation>
-            <value>In Lavorazione</value>
-        </filters>
-        <label>Repairs in Progress</label>
-    </listViews>
-    <listViews>
-        <fullName>Riparazioni_Torino</fullName>
-        <columns>CASES.CASE_NUMBER</columns>
-        <columns>NAME</columns>
-        <columns>CASES.SUBJECT</columns>
-        <columns>CASES.STATUS</columns>
-        <columns>CASES.PRIORITY</columns>
-        <columns>CASES.CREATED_DATE</columns>
-        <columns>CORE.USERS.ALIAS</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>OWNER_NAME</field>
-            <operation>equals</operation>
-            <value>TORINO</value>
-        </filters>
         <filters>
             <field>CASES.STATUS</field>
             <operation>notEqual</operation>
-            <value>Chiuso</value>
+            <value>Chiuso,Capo Online,Inserimento recommendation</value>
         </filters>
-        <label>Riparazioni Torino</label>
-        <language>en_US</language>
+        <label>My Boutique&apos;s Notify Me Cases</label>
         <sharedTo>
-            <group>Associate_Torino</group>
+            <group>Associates</group>
+            <group>Store_Managers</group>
         </sharedTo>
     </listViews>
     <listViews>
-        <fullName>X05_Casi_Chiusi</fullName>
+        <fullName>My_Closed_Cases</fullName>
         <columns>CASES.CASE_NUMBER</columns>
         <columns>CASES.SUBJECT</columns>
         <columns>OWNER_NAME</columns>
         <columns>CASES.STATUS</columns>
         <columns>CASES.PRIORITY</columns>
-        <columns>CASES.CREATED_DATE</columns>
+        <columns>CASES.CREATED_DATE_DATE_ONLY</columns>
         <columns>CASES.CLOSED_DATE</columns>
         <columns>NAME</columns>
         <columns>Nazione__c</columns>
@@ -3543,23 +3085,22 @@
             <operation>equals</operation>
             <value>1</value>
         </filters>
-        <label>05) Casi Chiusi</label>
-        <language>it</language>
+        <label>My Closed Cases</label>
         <sharedTo>
-            <role>X1_Livello</role>
-            <roleAndSubordinatesInternal>X2_Livello_Commerciale_Monomarca</roleAndSubordinatesInternal>
-            <roleAndSubordinatesInternal>X2_Livello_Commerciale_Multimarca</roleAndSubordinatesInternal>
-            <roleAndSubordinatesInternal>X2_Livello_Gestione_VIP</roleAndSubordinatesInternal>
+            <group>Customer_Care_CN</group>
+            <group>Customer_Care_IT</group>
+            <group>Customer_Care_US</group>
         </sharedTo>
     </listViews>
     <listViews>
-        <fullName>X06_Queue_2_Level_VIP_ITA</fullName>
+        <fullName>Nuovi_Casi</fullName>
+        <booleanFilter>1 AND 2 AND 3</booleanFilter>
         <columns>CASES.CASE_NUMBER</columns>
         <columns>CASES.SUBJECT</columns>
         <columns>OWNER_NAME</columns>
         <columns>CASES.STATUS</columns>
         <columns>CASES.PRIORITY</columns>
-        <columns>CASES.CREATED_DATE</columns>
+        <columns>CASES.CREATED_DATE_DATE_ONLY</columns>
         <columns>NAME</columns>
         <columns>Nazione__c</columns>
         <columns>Entry_Point__c</columns>
@@ -3567,76 +3108,25 @@
         <columns>Canale__c</columns>
         <columns>Categoria__c</columns>
         <columns>Sottocategoria__c</columns>
-        <filterScope>Queue</filterScope>
+        <filterScope>Everything</filterScope>
         <filters>
             <field>CASES.CLOSED</field>
             <operation>equals</operation>
             <value>0</value>
         </filters>
-        <label>06) Queue 2° Level VIP ITA</label>
-        <language>it</language>
-        <queue>X2_Level_VIP_ITA</queue>
+        <filters>
+            <field>CASES.STATUS</field>
+            <operation>equals</operation>
+            <value>Nuovo</value>
+        </filters>
+        <filters>
+            <field>CASES.RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>Case.Brand_Specialist,Case.Customer_Care,Case.Customer_Care_US,Case.Customer_Care_WTC,Case.Reso_Cambio,Case.Reso_Cambio_in_Store,Case.Ticket_E_commerce,Case.Ticket_OMS</value>
+        </filters>
+        <label>Nuovi casi</label>
         <sharedTo>
             <role>X1_Livello</role>
-            <role>X2_Livello_Gestione_VIP</role>
-        </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>X07_Queue_US_List_2nd_Level</fullName>
-        <columns>CASES.CASE_NUMBER</columns>
-        <columns>CASES.SUBJECT</columns>
-        <columns>OWNER_NAME</columns>
-        <columns>CASES.STATUS</columns>
-        <columns>CASES.PRIORITY</columns>
-        <columns>CASES.CREATED_DATE</columns>
-        <columns>NAME</columns>
-        <columns>Nazione__c</columns>
-        <columns>Entry_Point__c</columns>
-        <columns>Area__c</columns>
-        <columns>Canale__c</columns>
-        <columns>Categoria__c</columns>
-        <columns>Sottocategoria__c</columns>
-        <filterScope>Queue</filterScope>
-        <filters>
-            <field>CASES.CLOSED</field>
-            <operation>equals</operation>
-            <value>0</value>
-        </filters>
-        <label>07) Queue US List 2nd Level</label>
-        <language>it</language>
-        <queue>X2_Level_US</queue>
-        <sharedTo>
-            <roleAndSubordinatesInternal>X1_Livello_US</roleAndSubordinatesInternal>
-        </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>X08_I_miei_casi_aperti</fullName>
-        <columns>CASES.CASE_NUMBER</columns>
-        <columns>CASES.SUBJECT</columns>
-        <columns>OWNER_NAME</columns>
-        <columns>CASES.STATUS</columns>
-        <columns>CASES.PRIORITY</columns>
-        <columns>CASES.CREATED_DATE</columns>
-        <columns>NAME</columns>
-        <columns>Nazione__c</columns>
-        <columns>Entry_Point__c</columns>
-        <columns>Area__c</columns>
-        <columns>Canale__c</columns>
-        <columns>Categoria__c</columns>
-        <columns>Sottocategoria__c</columns>
-        <filterScope>Mine</filterScope>
-        <filters>
-            <field>CASES.CLOSED</field>
-            <operation>equals</operation>
-            <value>0</value>
-        </filters>
-        <label>08) I miei casi aperti</label>
-        <language>it</language>
-        <sharedTo>
-            <role>X1_Livello</role>
-            <roleAndSubordinatesInternal>X2_Livello_Commerciale_Monomarca</roleAndSubordinatesInternal>
-            <roleAndSubordinatesInternal>X2_Livello_Commerciale_Multimarca</roleAndSubordinatesInternal>
-            <roleAndSubordinatesInternal>X2_Livello_Gestione_VIP</roleAndSubordinatesInternal>
         </sharedTo>
     </listViews>
     <listViews>
@@ -3660,147 +3150,13 @@
             <operation>notEqual</operation>
             <value>Chiuso</value>
         </filters>
-        <label>08) My open cases</label>
+        <label>My open cases</label>
         <sharedTo>
             <group>Customer_Care_CN</group>
+            <group>Customer_Care_IT</group>
+            <role>X1_Livello</role>
+            <role>X1_Livello_US</role>
             <roleAndSubordinatesInternal>X1_Livello_US</roleAndSubordinatesInternal>
-        </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>X10_Tutti_i_casi_ITA</fullName>
-        <columns>CASES.CASE_NUMBER</columns>
-        <columns>CASES.SUBJECT</columns>
-        <columns>OWNER_NAME</columns>
-        <columns>CASES.STATUS</columns>
-        <columns>CASES.PRIORITY</columns>
-        <columns>CASES.CREATED_DATE</columns>
-        <columns>CASES.CLOSED_DATE</columns>
-        <columns>NAME</columns>
-        <columns>Nazione__c</columns>
-        <columns>Entry_Point__c</columns>
-        <columns>Area__c</columns>
-        <columns>Canale__c</columns>
-        <columns>Categoria__c</columns>
-        <columns>Sottocategoria__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>CASES.RECORDTYPE</field>
-            <operation>equals</operation>
-            <value>Case.Customer_Care,Case.Customer_Care_Closed</value>
-        </filters>
-        <filters>
-            <field>CORE.USERS.LAST_NAME</field>
-            <operation>notEqual</operation>
-            <value>Ricotta,Meyer</value>
-        </filters>
-        <label>10) Tutti i casi ITA</label>
-        <language>it</language>
-        <sharedTo>
-            <role>X1_Livello</role>
-        </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>X11_Tutti_i_casi_USA</fullName>
-        <columns>CASES.CASE_NUMBER</columns>
-        <columns>CASES.SUBJECT</columns>
-        <columns>OWNER_NAME</columns>
-        <columns>CASES.STATUS</columns>
-        <columns>CASES.PRIORITY</columns>
-        <columns>CASES.CREATED_DATE</columns>
-        <columns>CASES.CLOSED_DATE</columns>
-        <columns>NAME</columns>
-        <columns>Nazione__c</columns>
-        <columns>Entry_Point__c</columns>
-        <columns>Area__c</columns>
-        <columns>Canale__c</columns>
-        <columns>Categoria__c</columns>
-        <columns>Sottocategoria__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>CASES.RECORDTYPE</field>
-            <operation>equals</operation>
-            <value>Case.Customer_Care_US,Case.Customer_Care_US_Closed</value>
-        </filters>
-        <label>11) Tutti i casi USA</label>
-        <language>it</language>
-        <sharedTo>
-            <role>X1_Livello</role>
-        </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>X12_Tutti_i_casi_Aperti_ITA</fullName>
-        <columns>CASES.CASE_NUMBER</columns>
-        <columns>CASES.SUBJECT</columns>
-        <columns>OWNER_NAME</columns>
-        <columns>CASES.STATUS</columns>
-        <columns>CASES.PRIORITY</columns>
-        <columns>CASES.CLOSED_DATE</columns>
-        <columns>CASES.CREATED_DATE</columns>
-        <columns>NAME</columns>
-        <columns>Nazione__c</columns>
-        <columns>Entry_Point__c</columns>
-        <columns>Area__c</columns>
-        <columns>Canale__c</columns>
-        <columns>Categoria__c</columns>
-        <columns>Sottocategoria__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>CASES.CLOSED</field>
-            <operation>notEqual</operation>
-            <value>1</value>
-        </filters>
-        <filters>
-            <field>CASES.RECORDTYPE</field>
-            <operation>notEqual</operation>
-            <value>Case.Customer_Care_Closed,Case.Customer_Care_US,Case.Customer_Care_US_Closed</value>
-        </filters>
-        <filters>
-            <field>CORE.USERS.FIRST_NAME</field>
-            <operation>notContain</operation>
-            <value>Meyer,Ricotta</value>
-        </filters>
-        <filters>
-            <field>Nazione_input__c</field>
-            <operation>notEqual</operation>
-            <value>US</value>
-        </filters>
-        <label>12) Tutti i casi Aperti ITA</label>
-        <language>it</language>
-        <sharedTo>
-            <role>X1_Livello</role>
-        </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>X13_Tutti_i_casi_Aperti_US</fullName>
-        <columns>CASES.CASE_NUMBER</columns>
-        <columns>CASES.SUBJECT</columns>
-        <columns>OWNER_NAME</columns>
-        <columns>CASES.STATUS</columns>
-        <columns>CASES.PRIORITY</columns>
-        <columns>CASES.CREATED_DATE</columns>
-        <columns>CASES.CLOSED_DATE</columns>
-        <columns>NAME</columns>
-        <columns>Nazione__c</columns>
-        <columns>Entry_Point__c</columns>
-        <columns>Area__c</columns>
-        <columns>Canale__c</columns>
-        <columns>Categoria__c</columns>
-        <columns>Sottocategoria__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>CASES.CLOSED</field>
-            <operation>notEqual</operation>
-            <value>1</value>
-        </filters>
-        <filters>
-            <field>CASES.RECORDTYPE</field>
-            <operation>equals</operation>
-            <value>Case.Customer_Care_US,Case.Customer_Care_US_Closed</value>
-        </filters>
-        <label>13) Tutti i casi Aperti US</label>
-        <language>it</language>
-        <sharedTo>
-            <role>X1_Livello</role>
         </sharedTo>
     </listViews>
     <listViews>
@@ -3847,10 +3203,10 @@
         <columns>Prodotto__c</columns>
         <columns>Entry_Point__c</columns>
         <columns>Canale__c</columns>
+        <columns>Riga_Ordine_Stock__c</columns>
         <columns>CASES.PRIORITY</columns>
         <columns>CASES.CREATED_DATE_DATE_ONLY</columns>
         <columns>NAME</columns>
-        <columns>Categoria__c</columns>
         <columns>Nazione__c</columns>
         <columns>SKU__c</columns>
         <filterScope>Everything</filterScope>
@@ -4053,6 +3409,25 @@
         </sharedTo>
     </listViews>
     <listViews>
+        <fullName>X1_Livello_ITA_NEW</fullName>
+        <columns>CASES.CASE_NUMBER</columns>
+        <columns>ACCOUNT.NAME</columns>
+        <columns>CASES.SUBJECT</columns>
+        <columns>CASES.STATUS</columns>
+        <columns>CASES.PRIORITY</columns>
+        <columns>CASES.CREATED_DATE</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <filterScope>Queue</filterScope>
+        <filters>
+            <field>CASES.STATUS</field>
+            <operation>equals</operation>
+            <value>Nuovo</value>
+        </filters>
+        <label>1 Livello ITA_NEW</label>
+        <language>it</language>
+        <queue>X1_Livello_ITA</queue>
+    </listViews>
+    <listViews>
         <fullName>X1_New_Cases</fullName>
         <columns>CASES.CASE_NUMBER</columns>
         <columns>CASES.SUBJECT</columns>
@@ -4068,11 +3443,6 @@
         <columns>Categoria__c</columns>
         <columns>Sottocategoria__c</columns>
         <filterScope>Everything</filterScope>
-        <filters>
-            <field>CASES.CLOSED</field>
-            <operation>equals</operation>
-            <value>0</value>
-        </filters>
         <filters>
             <field>CASES.STATUS</field>
             <operation>equals</operation>
@@ -4198,177 +3568,13 @@
         </sharedTo>
     </listViews>
     <listViews>
-        <fullName>X23_New_Cases_Notify_Me</fullName>
-        <columns>CASES.CASE_NUMBER</columns>
-        <columns>CASES.SUBJECT</columns>
-        <columns>OWNER_NAME</columns>
-        <columns>CASES.STATUS</columns>
-        <columns>Prodotto__c</columns>
-        <columns>Entry_Point__c</columns>
-        <columns>Canale__c</columns>
-        <columns>CASES.PRIORITY</columns>
-        <columns>CASES.CREATED_DATE_DATE_ONLY</columns>
-        <columns>NAME</columns>
-        <columns>Categoria__c</columns>
-        <columns>Sottocategoria__c</columns>
-        <columns>Nazione__c</columns>
-        <columns>SKU__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>CASES.RECORDTYPE</field>
-            <operation>equals</operation>
-            <value>Case.Ticket_E_commerce_Notify_Me</value>
-        </filters>
-        <filters>
-            <field>New_Customer_Email_Received__c</field>
-            <operation>equals</operation>
-            <value>1</value>
-        </filters>
-        <label>23) Notify Me Email Message Received</label>
-        <sharedTo>
-            <group>Notify_Me</group>
-        </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>X2_On_hold_cases</fullName>
-        <columns>CASES.CASE_NUMBER</columns>
-        <columns>CASES.SUBJECT</columns>
-        <columns>OWNER_NAME</columns>
-        <columns>CASES.STATUS</columns>
-        <columns>CASES.PRIORITY</columns>
-        <columns>CASES.CREATED_DATE</columns>
-        <columns>NAME</columns>
-        <columns>Nazione__c</columns>
-        <columns>Entry_Point__c</columns>
-        <columns>Area__c</columns>
-        <columns>Canale__c</columns>
-        <columns>Categoria__c</columns>
-        <columns>Sottocategoria__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>CASES.CLOSED</field>
-            <operation>equals</operation>
-            <value>0</value>
-        </filters>
-        <filters>
-            <field>CASES.STATUS</field>
-            <operation>equals</operation>
-            <value>In attesa</value>
-        </filters>
-        <label>02) On hold cases</label>
-        <language>it</language>
-        <sharedTo>
-            <role>X1_Livello_US</role>
-            <role>X2_Livello_US</role>
-        </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>X3_Casi_Risposta_Ricevuta</fullName>
-        <columns>CASES.CASE_NUMBER</columns>
-        <columns>CASES.SUBJECT</columns>
-        <columns>OWNER_NAME</columns>
-        <columns>CASES.STATUS</columns>
-        <columns>CASES.PRIORITY</columns>
-        <columns>CASES.CREATED_DATE</columns>
-        <columns>NAME</columns>
-        <columns>Nazione__c</columns>
-        <columns>Entry_Point__c</columns>
-        <columns>Area__c</columns>
-        <columns>Canale__c</columns>
-        <columns>Categoria__c</columns>
-        <columns>Sottocategoria__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>CASES.CLOSED</field>
-            <operation>equals</operation>
-            <value>0</value>
-        </filters>
-        <filters>
-            <field>CASES.STATUS</field>
-            <operation>equals</operation>
-            <value>Risposta ricevuta</value>
-        </filters>
-        <label>03) Casi Risposta Ricevuta</label>
-        <language>it</language>
-        <sharedTo>
-            <role>X1_Livello</role>
-            <roleAndSubordinatesInternal>X2_Livello_Commerciale_Monomarca</roleAndSubordinatesInternal>
-            <roleAndSubordinatesInternal>X2_Livello_Commerciale_Multimarca</roleAndSubordinatesInternal>
-            <roleAndSubordinatesInternal>X2_Livello_Gestione_VIP</roleAndSubordinatesInternal>
-        </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>X3_Reassigned_Cases</fullName>
-        <columns>CASES.CASE_NUMBER</columns>
-        <columns>CASES.SUBJECT</columns>
-        <columns>OWNER_NAME</columns>
-        <columns>CASES.STATUS</columns>
-        <columns>CASES.PRIORITY</columns>
-        <columns>CASES.CREATED_DATE</columns>
-        <columns>NAME</columns>
-        <columns>Nazione__c</columns>
-        <columns>Entry_Point__c</columns>
-        <columns>Area__c</columns>
-        <columns>Canale__c</columns>
-        <columns>Categoria__c</columns>
-        <columns>Sottocategoria__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>CASES.CLOSED</field>
-            <operation>equals</operation>
-            <value>0</value>
-        </filters>
-        <filters>
-            <field>CASES.STATUS</field>
-            <operation>equals</operation>
-            <value>Riassegnato</value>
-        </filters>
-        <label>04) Reassigned Cases</label>
-        <language>en_US</language>
-        <sharedTo>
-            <roleAndSubordinatesInternal>X1_Livello_US</roleAndSubordinatesInternal>
-        </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>X3_Reply_received_Cases</fullName>
-        <columns>CASES.CASE_NUMBER</columns>
-        <columns>CASES.SUBJECT</columns>
-        <columns>OWNER_NAME</columns>
-        <columns>CASES.STATUS</columns>
-        <columns>CASES.PRIORITY</columns>
-        <columns>CASES.CREATED_DATE</columns>
-        <columns>NAME</columns>
-        <columns>Nazione__c</columns>
-        <columns>Entry_Point__c</columns>
-        <columns>Area__c</columns>
-        <columns>Canale__c</columns>
-        <columns>Categoria__c</columns>
-        <columns>Sottocategoria__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>CASES.CLOSED</field>
-            <operation>equals</operation>
-            <value>0</value>
-        </filters>
-        <filters>
-            <field>CASES.STATUS</field>
-            <operation>equals</operation>
-            <value>Risposta ricevuta</value>
-        </filters>
-        <label>03) Reply received Cases</label>
-        <language>it</language>
-        <sharedTo>
-            <roleAndSubordinatesInternal>X1_Livello_US</roleAndSubordinatesInternal>
-        </sharedTo>
-    </listViews>
-    <listViews>
         <fullName>X4_Closed_Cases</fullName>
         <columns>CASES.CASE_NUMBER</columns>
         <columns>CASES.SUBJECT</columns>
         <columns>OWNER_NAME</columns>
         <columns>CASES.STATUS</columns>
         <columns>CASES.PRIORITY</columns>
-        <columns>CASES.CREATED_DATE</columns>
+        <columns>CASES.CREATED_DATE_DATE_ONLY</columns>
         <columns>CASES.CLOSED_DATE</columns>
         <columns>NAME</columns>
         <columns>Nazione__c</columns>
@@ -4383,45 +3589,9 @@
             <operation>equals</operation>
             <value>1</value>
         </filters>
-        <label>05) Closed Cases</label>
-        <language>it</language>
+        <label>All Closed Cases</label>
         <sharedTo>
             <roleAndSubordinatesInternal>X1_Livello_US</roleAndSubordinatesInternal>
-        </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>casiriassegnati</fullName>
-        <columns>CASES.CASE_NUMBER</columns>
-        <columns>CASES.SUBJECT</columns>
-        <columns>OWNER_NAME</columns>
-        <columns>CASES.STATUS</columns>
-        <columns>CASES.PRIORITY</columns>
-        <columns>CASES.CREATED_DATE</columns>
-        <columns>NAME</columns>
-        <columns>Nazione__c</columns>
-        <columns>Entry_Point__c</columns>
-        <columns>Area__c</columns>
-        <columns>Canale__c</columns>
-        <columns>Categoria__c</columns>
-        <columns>Sottocategoria__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>CASES.CLOSED</field>
-            <operation>equals</operation>
-            <value>0</value>
-        </filters>
-        <filters>
-            <field>CASES.STATUS</field>
-            <operation>equals</operation>
-            <value>Riassegnato</value>
-        </filters>
-        <label>04) Casi riassegnati</label>
-        <language>en_US</language>
-        <sharedTo>
-            <role>X1_Livello</role>
-            <roleAndSubordinatesInternal>X2_Livello_Commerciale_Monomarca</roleAndSubordinatesInternal>
-            <roleAndSubordinatesInternal>X2_Livello_Commerciale_Multimarca</roleAndSubordinatesInternal>
-            <roleAndSubordinatesInternal>X2_Livello_Gestione_VIP</roleAndSubordinatesInternal>
         </sharedTo>
     </listViews>
     <recordTypeTrackFeedHistory>false</recordTypeTrackFeedHistory>
@@ -4529,7 +3699,30 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Segnalazioni OMS</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Spam</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Customer_Sat__c</picklist>
+            <values>
+                <fullName>Neutro</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Non soddisfatto</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Parzialmente soddisfatto</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Soddisfatto</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -4771,6 +3964,10 @@
             </values>
             <values>
                 <fullName>Pagamenti</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Problema Articoli</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -5079,7 +4276,30 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Segnalazioni OMS</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Spam</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Customer_Sat__c</picklist>
+            <values>
+                <fullName>Neutro</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Non soddisfatto</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Parzialmente soddisfatto</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Soddisfatto</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -5337,6 +4557,10 @@
             </values>
             <values>
                 <fullName>Pagamenti</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Problema Articoli</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -5645,7 +4869,30 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Segnalazioni OMS</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Spam</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Customer_Sat__c</picklist>
+            <values>
+                <fullName>Neutro</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Non soddisfatto</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Parzialmente soddisfatto</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Soddisfatto</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -5879,6 +5126,10 @@
             </values>
             <values>
                 <fullName>Pagamenti</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Problema Articoli</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -6171,7 +5422,30 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Segnalazioni OMS</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Spam</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Customer_Sat__c</picklist>
+            <values>
+                <fullName>Neutro</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Non soddisfatto</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Parzialmente soddisfatto</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Soddisfatto</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -6429,6 +5703,10 @@
             </values>
             <values>
                 <fullName>Pagamenti</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Problema Articoli</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -6737,7 +6015,30 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Segnalazioni OMS</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Spam</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Customer_Sat__c</picklist>
+            <values>
+                <fullName>Neutro</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Non soddisfatto</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Parzialmente soddisfatto</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Soddisfatto</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -6971,6 +6272,10 @@
             </values>
             <values>
                 <fullName>Pagamenti</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Problema Articoli</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -7262,7 +6567,30 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Segnalazioni OMS</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Spam</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Customer_Sat__c</picklist>
+            <values>
+                <fullName>Neutro</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Non soddisfatto</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Parzialmente soddisfatto</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Soddisfatto</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -7512,6 +6840,10 @@
             </values>
             <values>
                 <fullName>Pagamenti</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Problema Articoli</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -7808,7 +7140,30 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Segnalazioni OMS</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Spam</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Customer_Sat__c</picklist>
+            <values>
+                <fullName>Neutro</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Non soddisfatto</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Parzialmente soddisfatto</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Soddisfatto</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -8050,6 +7405,10 @@
             </values>
             <values>
                 <fullName>Pagamenti</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Problema Articoli</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -8342,7 +7701,30 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Segnalazioni OMS</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Spam</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Customer_Sat__c</picklist>
+            <values>
+                <fullName>Neutro</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Non soddisfatto</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Parzialmente soddisfatto</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Soddisfatto</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -8587,6 +7969,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Problema Articoli</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Problematica tecnica</fullName>
                 <default>false</default>
             </values>
@@ -8775,7 +8161,7 @@
     </recordTypes>
     <recordTypes>
         <fullName>Riparazione</fullName>
-        <active>true</active>
+        <active>false</active>
         <businessProcess>Riparazione</businessProcess>
         <compactLayoutAssignment>Case_BC_Compact_layout</compactLayoutAssignment>
         <label>Riparazione</label>
@@ -8876,7 +8262,30 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Segnalazioni OMS</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Spam</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Customer_Sat__c</picklist>
+            <values>
+                <fullName>Neutro</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Non soddisfatto</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Parzialmente soddisfatto</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Soddisfatto</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -9114,6 +8523,10 @@
             </values>
             <values>
                 <fullName>Pagamenti</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Problema Articoli</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -9422,7 +8835,30 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Segnalazioni OMS</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Spam</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Customer_Sat__c</picklist>
+            <values>
+                <fullName>Neutro</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Non soddisfatto</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Parzialmente soddisfatto</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Soddisfatto</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -9692,6 +9128,10 @@
             </values>
             <values>
                 <fullName>Pagamenti</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Problema Articoli</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -10003,7 +9443,30 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Segnalazioni OMS</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Spam</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Customer_Sat__c</picklist>
+            <values>
+                <fullName>Neutro</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Non soddisfatto</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Parzialmente soddisfatto</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Soddisfatto</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -10257,6 +9720,10 @@
             </values>
             <values>
                 <fullName>Pagamenti</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Problema Articoli</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -10561,7 +10028,30 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Segnalazioni OMS</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Spam</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Customer_Sat__c</picklist>
+            <values>
+                <fullName>Neutro</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Non soddisfatto</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Parzialmente soddisfatto</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Soddisfatto</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -10806,6 +10296,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Problema Articoli</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Problematica tecnica</fullName>
                 <default>false</default>
             </values>
@@ -11018,6 +10512,16 @@
         <searchResultsAdditionalFields>ACCOUNT.NAME</searchResultsAdditionalFields>
     </searchLayouts>
     <sharingModel>Read</sharingModel>
+    <validationRules>
+        <fullName>Customer_Satisfaction_required</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(
+ISBLANK(TEXT(Customer_Sat__c)),
+ISPICKVAL(Status, &quot;Chiuso&quot;),
+NOT(ISPICKVAL(Categoria__c, &quot;Spam&quot;))
+)</errorConditionFormula>
+        <errorMessage>Inserire Customer Satisfation prima di chiudere il caso</errorMessage>
+    </validationRules>
     <webLinks>
         <fullName>Forward_Case_to_Email</fullName>
         <availability>online</availability>
