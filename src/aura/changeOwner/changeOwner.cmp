@@ -1,0 +1,7 @@
+<aura:component controller="changeOwnerController" implements="flexipage:availableForAllPageTypes" access="global" >
+    <aura:attribute name="userId" type="string"/>  
+    <lightning:omniToolkitAPI aura:id="omniToolkit" />  
+    <aura:handler name="init" value="this" action="{!c.doInit}"/>
+    <aura:handler event="lightning:omniChannelLogout" action="{! c.onLogout }"/>
+    
+</aura:component>

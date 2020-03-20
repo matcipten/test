@@ -207,7 +207,7 @@
                  <div class="slds-grid slds-wrap row">
                       <div class="slds-col slds-size_2-of-12 slds-large-size_2-of-12">
                         <div class="slds-form-element">
-                            <label class="slds-form-element__label" for="input-id-01">{!v.translatorValue.CAP_Label__c}</label>
+                            <label class="slds-form-element__label textSizeMobile" for="input-id-01">{!v.translatorValue.CAP_Label__c}</label>
                             <div class="slds-form-element__control">
                                 <ui:inputText aura:id="itemPersonMailingPostalCodeJP" class="slds-input" placeholder="{!v.translatorValue.CAP_Placeholder__c}" value="{!v.newItem.PersonMailingPostalCode}" onError="{!c.handleError}" onClearErrors="{!c.handleClearError}" disabled="{!v.afterPrinting}" />
                             </div>
@@ -270,7 +270,7 @@
                     </aura:if>
                     <div class="slds-col slds-size_2-of-12 slds-large-size_2-of-12">
                         <div class="slds-form-element">
-                            <label class="slds-form-element__label" for="input-id-01">{!v.translatorValue.CAP_Label__c}</label>
+                            <label class="slds-form-element__label textSizeMobile" for="input-id-01">{!v.translatorValue.CAP_Label__c}</label>
                             <div class="slds-form-element__control">
                                 <ui:inputText aura:id="itemPersonMailingPostalCode" class="slds-input" placeholder="{!v.translatorValue.CAP_Placeholder__c}" value="{!v.newItem.PersonMailingPostalCode}" onError="{!c.handleError}" onClearErrors="{!c.handleClearError}" disabled="{!v.afterPrinting}" />
                             </div>
@@ -290,7 +290,7 @@
                     </div>
                     <div class="slds-col slds-size_4-of-12 slds-large-size_4-of-12">
                         <div class="slds-form-element">
-                            <label class="slds-form-element__label" for="input-id-01">{!v.translatorValue.Phone_Label__c}</label>
+                            <label class="slds-form-element__label textSizeMobile" for="input-id-01">{!v.translatorValue.Phone_Label__c}</label>
                             <div class="slds-form-element__control">
                                 <ui:inputText aura:id="itemPhone" class="slds-input" placeholder="{!v.translatorValue.Phone_Placeholder__c}" value="{!v.newItem.Phone}" onError="{!c.handleError}" onClearErrors="{!c.handleClearError}" disabled="{!v.afterPrinting}" />
                             </div>
