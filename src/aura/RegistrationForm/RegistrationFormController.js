@@ -192,11 +192,19 @@
             
             console.log("permissionChanged:" + permissionChanged);
             
-            if ( ( cmp.get("{!v.DCCVersion_old}") != cmp.get("{!v.TranslationDCCVersion}") && cmp.get("{!v.TranslationRichiediFirma}") == true) || cmp.get("{!v.DCCVersion_old}") == null || cmp.get("{!v.DCCVersion_old}") == "" )
-            	DCCVersionChanged = true;
-            
+            // VSchia 31/03/2020 ISSUE 795
+            // rimosso controllo su DCCVersion_old quando è null o una stringa vuota
+            /*if ( ( cmp.get("{!v.DCCVersion_old}") != cmp.get("{!v.TranslationDCCVersion}") && cmp.get("{!v.TranslationRichiediFirma}") == true) || cmp.get("{!v.DCCVersion_old}") == null || cmp.get("{!v.DCCVersion_old}") == "" )
+                DCCVersionChanged = true;*/
+            if ( ( cmp.get("{!v.DCCVersion_old}") != cmp.get("{!v.TranslationDCCVersion}") && cmp.get("{!v.TranslationRichiediFirma}") == true))
+                DCCVersionChanged = true;
+            // VSchia 31/03/2020 ISSUE 795
+
+
+            /* 26022020 Silvio - tkt:795
             if (cmp.get("{!v.DCC}") == false)
             	DCCFalse = true;
+            */
             
              console.log("DCCVersion_old:" + cmp.get("{!v.DCCVersion_old}"));
              console.log("TranslationDCCVersion:" + cmp.get("{!v.TranslationDCCVersion}"));
@@ -205,12 +213,13 @@
             
             console.log("DCCVersionChanged:" + DCCVersionChanged);
             console.log("DCC:" + cmp.get("{!v.DCC}"));
-            
-            if (permissionChanged || DCCVersionChanged || DCCFalse){
+            // VSchia 31/03/2020 ISSUE 795  rimosso da l'if di seguito|| DCCFalse
+            if (permissionChanged || DCCVersionChanged){
                 validitem = false;
                 $A.util.addClass(canvas, 'changeMe');
                 errors.push('Remember to Sign and Save');
             }
+            // VSchia 31/03/2020 ISSUE 795
         }
         else {
             $A.util.removeClass(canvas, 'changeMe');
