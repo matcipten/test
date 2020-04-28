@@ -284,7 +284,7 @@ public static List<Contact> getContacts(Integer offset){
 			system.debug(contList.size());
 
 		}else{
-			contList = [SELECT Id,Name,Account.Name, Phone, Email, Owner.Name
+			contList = [SELECT Id,Name,Account.Name, Phone, Email, Owner.Name , Marketing_FRM__c
 			            FROM Contact
 			            LIMIT 20 OFFSET :offset];
 		}
@@ -527,7 +527,7 @@ public static List<CampaignMember> queryCampaignMember(Id campaignId, List<Id> c
 }
 public static List<Contact> queryContacts(List<Id> contactIds, Integer offset){
 
-	List<Contact> contList = [SELECT Id,Name,Account.Name, Phone, Email, Owner.Name
+	List<Contact> contList = [SELECT Id,Name,Account.Name, Phone, Email, Owner.Name , Marketing_FRM__c
 	                          FROM Contact
 	                          WHERE Id IN :contactIds
 	                          LIMIT 20 OFFSET :Integer.valueOf(offset)

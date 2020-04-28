@@ -1541,9 +1541,9 @@ Importo_acquisti_ultima_stagione_E_comm__c
     <fields>
         <fullName>Associate_Inactive__c</fullName>
         <externalId>false</externalId>
-        <formula>IF( Associate__r.IsActive__c = &quot;I&quot;, true, false)</formula>
+        <formula>IF( OR(Associate__r.IsActive__c &lt;&gt; &quot;A&quot;,ISBLANK(Associate__c)), true, false)</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Associate Inactive</label>
+        <label>Associate Inactive/Blank</label>
         <trackHistory>false</trackHistory>
         <type>Checkbox</type>
     </fields>
@@ -1692,29 +1692,29 @@ IF (OUT_BIRTHDATE_CODE1__c =2 &amp;&amp; OUT_BIRTHDATE_CODE2__c  =2, IMAGE(&apos
         <fullName>Categoria_Cliente_FRM__c</fullName>
         <externalId>false</externalId>
         <formula>CASE ( Categoria_Cliente__c,
-&quot;VHK10&quot;, IMAGE(&apos;/resource/categoria_vip&apos;, &apos;&apos;, 25,25),
+&quot;VHK10&quot;, IMAGE(&apos;/resource/categoria_vip&apos;, &apos;&apos;, 25,25), 
 &quot;VHK20&quot;, IMAGE(&apos;/resource/categoria_vip&apos;, &apos;&apos;, 25,25),
-&quot;VHK30&quot;, IMAGE(&apos;/resource/categoria_vip&apos;, &apos;&apos;, 25,25),
+&quot;VHK30&quot;, IMAGE(&apos;/resource/categoria_vip&apos;, &apos;&apos;, 25,25), 
 &quot;VCN10&quot;, IMAGE(&apos;/resource/categoria_vip&apos;, &apos;&apos;, 25,25),
 &quot;VCN15&quot;, IMAGE(&apos;/resource/categoria_vip&apos;, &apos;&apos;, 25,25),
+&quot;VCN20&quot;, IMAGE(&apos;/resource/categoria_vip&apos;, &apos;&apos;, 25,25),
 &quot;VCN30&quot;, IMAGE(&apos;/resource/categoria_vip&apos;, &apos;&apos;, 25,25),
 &quot;VJP05&quot;, IMAGE(&apos;/resource/categoria_vip&apos;, &apos;&apos;, 25,25),
-&quot;VJP10&quot;, IMAGE(&apos;/resource/categoria_vip&apos;, &apos;&apos;, 25,25),
-&quot;VIP5&quot;, IMAGE(&apos;/resource/categoria_vip&apos;, &apos;&apos;, 25,25),
-&quot;VIP10&quot;, IMAGE(&apos;/resource/categoria_vip&apos;, &apos;&apos;, 25,25),
-&quot;VIP15&quot;, IMAGE(&apos;/resource/categoria_vip&apos;, &apos;&apos;, 25,25),
-&quot;VIP20&quot;, IMAGE(&apos;/resource/categoria_vip&apos;, &apos;&apos;, 25,25),
-&quot;VIP30&quot;, IMAGE(&apos;/resource/categoria_vip&apos;, &apos;&apos;, 25,25),
-&quot;VIP40&quot;, IMAGE(&apos;/resource/categoria_vip&apos;, &apos;&apos;, 25,25),
-&quot;BOARD60&quot;, IMAGE(&apos;/resource/categoria_board&apos;, &apos;&apos;, 25,25),
-&quot;E-IT&quot;, IMAGE(&apos;/resource/categoria_dipendente&apos;, &apos;&apos;, 20,20),
-&quot;E-EU&quot;, IMAGE(&apos;/resource/categoria_dipendente&apos;, &apos;&apos;, 20,20),
-&quot;E-US&quot;, IMAGE(&apos;/resource/categoria_dipendente&apos;, &apos;&apos;, 20,20),
-&quot;E-OT&quot;, IMAGE(&apos;/resource/categoria_dipendente&apos;, &apos;&apos;, 20,20),
+&quot;VJP10&quot;, IMAGE(&apos;/resource/categoria_vip&apos;, &apos;&apos;, 25,25),     
+&quot;VIP5&quot;, IMAGE(&apos;/resource/categoria_vip&apos;, &apos;&apos;, 25,25), 
+&quot;VIP10&quot;, IMAGE(&apos;/resource/categoria_vip&apos;, &apos;&apos;, 25,25), 
+&quot;VIP15&quot;, IMAGE(&apos;/resource/categoria_vip&apos;, &apos;&apos;, 25,25), 
+&quot;VIP20&quot;, IMAGE(&apos;/resource/categoria_vip&apos;, &apos;&apos;, 25,25), 
+&quot;VIP30&quot;, IMAGE(&apos;/resource/categoria_vip&apos;, &apos;&apos;, 25,25), 
+&quot;VIP40&quot;, IMAGE(&apos;/resource/categoria_vip&apos;, &apos;&apos;, 25,25), 
+&quot;E-IT&quot;, IMAGE(&apos;/resource/categoria_dipendente&apos;, &apos;&apos;, 20,20), 
+&quot;E-EU&quot;, IMAGE(&apos;/resource/categoria_dipendente&apos;, &apos;&apos;, 20,20), 
+&quot;E-US&quot;, IMAGE(&apos;/resource/categoria_dipendente&apos;, &apos;&apos;, 20,20), 
+&quot;E-OT&quot;, IMAGE(&apos;/resource/categoria_dipendente&apos;, &apos;&apos;, 20,20), 
 &quot;PS&quot;, IMAGE(&apos;/resource/categoria_ps&apos;, &apos;&apos;, 20,20),
 &quot;PS10&quot;, IMAGE(&apos;/resource/categoria_ps&apos;, &apos;&apos;, 20,20),
 &quot;PS15&quot;, IMAGE(&apos;/resource/categoria_ps&apos;, &apos;&apos;, 20,20),
-&quot;&quot;) &amp; &quot; &quot; &amp; Categoria_Cliente__c</formula>
+&quot;&quot;) &amp; &quot;    &quot; &amp;  Categoria_Cliente__c</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Categoria Cliente</label>
         <required>false</required>
@@ -1790,6 +1790,16 @@ IF (OUT_BIRTHDATE_CODE1__c =2 &amp;&amp; OUT_BIRTHDATE_CODE2__c  =2, IMAGE(&apos
                     <label>VCN15</label>
                 </value>
                 <value>
+                    <fullName>VCN20</fullName>
+                    <default>false</default>
+                    <label>VCN20</label>
+                </value>
+                <value>
+                    <fullName>VCN30</fullName>
+                    <default>false</default>
+                    <label>VCN30</label>
+                </value>
+                <value>
                     <fullName>VJP05</fullName>
                     <default>false</default>
                     <label>VJP05</label>
@@ -1842,7 +1852,7 @@ IF (OUT_BIRTHDATE_CODE1__c =2 &amp;&amp; OUT_BIRTHDATE_CODE2__c  =2, IMAGE(&apos
                 <value>
                     <fullName>B60</fullName>
                     <default>false</default>
-                    <label>B 60</label>
+                    <label>B-60</label>
                 </value>
                 <value>
                     <fullName>AGENTS30</fullName>
@@ -1853,6 +1863,16 @@ IF (OUT_BIRTHDATE_CODE1__c =2 &amp;&amp; OUT_BIRTHDATE_CODE2__c  =2, IMAGE(&apos
                     <fullName>CONF20</fullName>
                     <default>false</default>
                     <label>CONF20</label>
+                </value>
+                <value>
+                    <fullName>PS10</fullName>
+                    <default>false</default>
+                    <label>PS10</label>
+                </value>
+                <value>
+                    <fullName>PS15</fullName>
+                    <default>false</default>
+                    <label>PS15</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -5677,6 +5697,18 @@ IF (AND (
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>N_of_Activity_Tracking__c</fullName>
+        <externalId>false</externalId>
+        <label>N° of Activity Tracking</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Name</fullName>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
@@ -6997,6 +7029,17 @@ IF (OUT_NATIONALITY_CODE1__c =2 &amp;&amp; OUT_NATIONALITY_CODE2__c =2, IMAGE(&a
         <type>Checkbox</type>
     </fields>
     <fields>
+        <fullName>Newsletter_icon__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(Newsletter__c = true , IMAGE(&apos;/resource/Approval&apos;,&apos;none&apos;,25,25) , IMAGE(&apos;/resource/Close&apos;,&apos;none&apos;,25,25))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Newsletter</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Nome_DQ__c</fullName>
         <externalId>false</externalId>
         <formula>IF (OUT_NAME_CODE1__c =0 &amp;&amp; OUT_NAME_CODE2__c =0, IMAGE(&apos;/resource/pallino_bianco&apos;, &apos;&apos;, 15, 15) &amp; &quot; &quot; &amp; &quot;Dato Validato senza correzioni&quot;,
@@ -7882,6 +7925,51 @@ IF (OUT_PHONE_CODE1__c =2 &amp;&amp; OUT_PHONE_CODE2__c =2, IMAGE(&apos;/resourc
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Presenza_Address__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(NOT(ISBLANK(PersonMailingAddress)) , true, false)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Presenza Address</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Presenza_Email__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(PersonEmail != &apos;&apos; || PersonEmail != null , true, false)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Presenza Email</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Presenza_Marketing__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(Privacy1__c = true || Privacy2__c = true, true , false)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Presenza Marketing</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Presenza_Phone__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(Phone != &apos;&apos; || Phone != null , true, false)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Presenza Phone</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Presenza_WeChat__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(We_Chat_ID__c != &apos;&apos; || We_Chat_ID__c != null , true, false)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Presenza WeChat</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>Privacy1__c</fullName>
         <defaultValue>false</defaultValue>
         <externalId>false</externalId>
@@ -8748,7 +8836,8 @@ null)))))))))))</formula>
     <fields>
         <fullName>Segmentation__c</fullName>
         <externalId>false</externalId>
-        <formula>HYPERLINK(&quot;/lightning/cmp/c__ViewSegmentation?c__segmentation=&quot;&amp;Segmentation_Name__c,  Segmentation_Name__c ,&quot;_self&quot;)</formula>
+        <formula>IF(CONTAINS(Categoria_Cliente__c, &quot;E-&quot;),&quot;Not Applicable&quot;,
+HYPERLINK(&quot;/lightning/cmp/c__ViewSegmentation?c__segmentation=&quot;&amp;Segmentation_Name__c, Segmentation_Name__c ,&quot;_self&quot;))</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <inlineHelpText>Stars R: &lt;=1yr M:&gt;=300k€
 Sky R: &lt;=1yr M:&gt;=100k€
@@ -10047,7 +10136,11 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
             <operation>equals</operation>
             <value>1</value>
         </filters>
-        <label>My Bush</label>
+        <label>My segmentation Clients - Bush</label>
+        <sharedTo>
+            <group>Associates</group>
+            <group>Store_Managers</group>
+        </sharedTo>
     </listViews>
     <listViews>
         <fullName>My_Grass</fullName>
@@ -10069,7 +10162,7 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
             <operation>equals</operation>
             <value>1</value>
         </filters>
-        <label>My Grass</label>
+        <label>My segmentation Clients - Grass</label>
     </listViews>
     <listViews>
         <fullName>My_Ground</fullName>
@@ -10091,7 +10184,11 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
             <operation>equals</operation>
             <value>1</value>
         </filters>
-        <label>My Ground</label>
+        <label>My segmentation Clients - Ground</label>
+        <sharedTo>
+            <group>Associates</group>
+            <group>Store_Managers</group>
+        </sharedTo>
     </listViews>
     <listViews>
         <fullName>My_Mountain</fullName>
@@ -10113,7 +10210,11 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
             <operation>equals</operation>
             <value>1</value>
         </filters>
-        <label>My Mountain</label>
+        <label>My segmentation Clients - Mountain</label>
+        <sharedTo>
+            <group>Associates</group>
+            <group>Store_Managers</group>
+        </sharedTo>
     </listViews>
     <listViews>
         <fullName>My_Rain</fullName>
@@ -10135,7 +10236,11 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
             <operation>equals</operation>
             <value>1</value>
         </filters>
-        <label>My Rain</label>
+        <label>My segmentation Clients - Rain</label>
+        <sharedTo>
+            <group>Associates</group>
+            <group>Store_Managers</group>
+        </sharedTo>
     </listViews>
     <listViews>
         <fullName>My_Rainbow</fullName>
@@ -10157,7 +10262,11 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
             <operation>equals</operation>
             <value>1</value>
         </filters>
-        <label>My Rainbow</label>
+        <label>My segmentation Clients - Rainbow</label>
+        <sharedTo>
+            <group>Associates</group>
+            <group>Store_Managers</group>
+        </sharedTo>
     </listViews>
     <listViews>
         <fullName>My_Seed</fullName>
@@ -10179,7 +10288,11 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
             <operation>equals</operation>
             <value>1</value>
         </filters>
-        <label>My Seed</label>
+        <label>My segmentation Clients - Seed</label>
+        <sharedTo>
+            <group>Associates</group>
+            <group>Store_Managers</group>
+        </sharedTo>
     </listViews>
     <listViews>
         <fullName>My_Sky</fullName>
@@ -10201,7 +10314,11 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
             <operation>equals</operation>
             <value>1</value>
         </filters>
-        <label>My Sky</label>
+        <label>My segmentation Clients - Sky</label>
+        <sharedTo>
+            <group>Associates</group>
+            <group>Store_Managers</group>
+        </sharedTo>
     </listViews>
     <listViews>
         <fullName>My_Snow</fullName>
@@ -10223,7 +10340,11 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
             <operation>equals</operation>
             <value>1</value>
         </filters>
-        <label>My Snow</label>
+        <label>My segmentation Clients - Snow</label>
+        <sharedTo>
+            <group>Associates</group>
+            <group>Store_Managers</group>
+        </sharedTo>
     </listViews>
     <listViews>
         <fullName>My_Stars</fullName>
@@ -10245,7 +10366,11 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
             <operation>equals</operation>
             <value>1</value>
         </filters>
-        <label>My Stars</label>
+        <label>My segmentation Clients - Stars</label>
+        <sharedTo>
+            <group>Associates</group>
+            <group>Store_Managers</group>
+        </sharedTo>
     </listViews>
     <listViews>
         <fullName>My_Tress</fullName>
@@ -10267,7 +10392,11 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
             <operation>equals</operation>
             <value>1</value>
         </filters>
-        <label>My Trees</label>
+        <label>My segmentation Clients - Trees</label>
+        <sharedTo>
+            <group>Associates</group>
+            <group>Store_Managers</group>
+        </sharedTo>
     </listViews>
     <listViews>
         <fullName>My_VIP_clients</fullName>
@@ -10290,6 +10419,10 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
             <value>VIP;VCN,VRU,VHK,VJP</value>
         </filters>
         <label>My VIP clients</label>
+        <sharedTo>
+            <group>Associates</group>
+            <group>Store_Managers</group>
+        </sharedTo>
     </listViews>
     <listViews>
         <fullName>My_VIP_store_clients</fullName>
@@ -10312,6 +10445,9 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
             <value>VIP,VCN,VRU,VHK,VJP</value>
         </filters>
         <label>My VIP store clients</label>
+        <sharedTo>
+            <group>Store_Managers</group>
+        </sharedTo>
     </listViews>
     <listViews>
         <fullName>My_clients</fullName>
@@ -10329,6 +10465,10 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
             <value>1</value>
         </filters>
         <label>My clients</label>
+        <sharedTo>
+            <group>Associates</group>
+            <group>Store_Managers</group>
+        </sharedTo>
     </listViews>
     <listViews>
         <fullName>My_clients_who_don_t_buy_since_12_months</fullName>
@@ -10348,13 +10488,17 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
         <filters>
             <field>Data_Ultimo_Acquisto__c</field>
             <operation>lessThan</operation>
-            <value>LAST_N_MONTHS:11</value>
+            <value>LAST_N_MONTHS:12</value>
         </filters>
         <filters>
             <field>Data_Ultimo_Acquisto__c</field>
             <operation>notEqual</operation>
         </filters>
-        <label>My clients who don&apos;t buy since 12 months</label>
+        <label>My clients - Last Purch. + 12 mths</label>
+        <sharedTo>
+            <group>Associates</group>
+            <group>Store_Managers</group>
+        </sharedTo>
     </listViews>
     <listViews>
         <fullName>My_clients_who_don_t_buy_since_3_months</fullName>
@@ -10380,7 +10524,16 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
             <field>Data_Ultimo_Acquisto__c</field>
             <operation>notEqual</operation>
         </filters>
-        <label>My clients who don&apos;t buy since 3 months</label>
+        <filters>
+            <field>Data_Ultimo_Acquisto__c</field>
+            <operation>greaterOrEqual</operation>
+            <value>LAST_N_MONTHS:5</value>
+        </filters>
+        <label>My clients - Last Purch. 3-6 mths</label>
+        <sharedTo>
+            <group>Associates</group>
+            <group>Store_Managers</group>
+        </sharedTo>
     </listViews>
     <listViews>
         <fullName>My_clients_who_don_t_buy_since_6_months</fullName>
@@ -10406,7 +10559,16 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
             <field>Data_Ultimo_Acquisto__c</field>
             <operation>notEqual</operation>
         </filters>
-        <label>My clients who don&apos;t buy since 6 months</label>
+        <filters>
+            <field>Data_Ultimo_Acquisto__c</field>
+            <operation>greaterOrEqual</operation>
+            <value>LAST_N_MONTHS:12</value>
+        </filters>
+        <label>My clients - Last Purch. 6-12 mths</label>
+        <sharedTo>
+            <group>Associates</group>
+            <group>Store_Managers</group>
+        </sharedTo>
     </listViews>
     <listViews>
         <fullName>My_new_clients</fullName>
@@ -10429,6 +10591,10 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
             <value>THIS_YEAR</value>
         </filters>
         <label>My new clients</label>
+        <sharedTo>
+            <group>Associates</group>
+            <group>Store_Managers</group>
+        </sharedTo>
     </listViews>
     <listViews>
         <fullName>My_new_store_clients</fullName>
@@ -10475,7 +10641,7 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
             <operation>equals</operation>
             <value>1</value>
         </filters>
-        <label>My store Bush</label>
+        <label>My store segmentation Clients - Bush</label>
         <sharedTo>
             <group>Store_Managers</group>
         </sharedTo>
@@ -10500,7 +10666,7 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
             <operation>equals</operation>
             <value>1</value>
         </filters>
-        <label>My store Grass</label>
+        <label>My store segmentation Clients - Grass</label>
         <sharedTo>
             <group>Store_Managers</group>
         </sharedTo>
@@ -10525,7 +10691,7 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
             <operation>equals</operation>
             <value>1</value>
         </filters>
-        <label>My store Ground</label>
+        <label>My store segmentation Clients - Ground</label>
         <sharedTo>
             <group>Store_Managers</group>
         </sharedTo>
@@ -10550,7 +10716,7 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
             <operation>equals</operation>
             <value>1</value>
         </filters>
-        <label>My store Mountain</label>
+        <label>My store segmentation Clients - Mountain</label>
         <sharedTo>
             <group>Store_Managers</group>
         </sharedTo>
@@ -10575,7 +10741,7 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
             <operation>equals</operation>
             <value>1</value>
         </filters>
-        <label>My store Rain</label>
+        <label>My store segmentation Clients - Rain</label>
         <sharedTo>
             <group>Store_Managers</group>
         </sharedTo>
@@ -10600,7 +10766,7 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
             <operation>equals</operation>
             <value>1</value>
         </filters>
-        <label>My store Rainbow</label>
+        <label>My store segmentation Clients - Rainbow</label>
         <sharedTo>
             <group>Store_Managers</group>
         </sharedTo>
@@ -10625,7 +10791,7 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
             <operation>equals</operation>
             <value>1</value>
         </filters>
-        <label>My store Seed</label>
+        <label>My store segmentation Clients - Seed</label>
         <sharedTo>
             <group>Store_Managers</group>
         </sharedTo>
@@ -10650,7 +10816,7 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
             <operation>equals</operation>
             <value>1</value>
         </filters>
-        <label>My store Sky</label>
+        <label>My store segmentation Clients - Sky</label>
         <sharedTo>
             <group>Store_Managers</group>
         </sharedTo>
@@ -10675,7 +10841,7 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
             <operation>equals</operation>
             <value>1</value>
         </filters>
-        <label>My store Snow</label>
+        <label>My store segmentation Clients - Snow</label>
         <sharedTo>
             <group>Store_Managers</group>
         </sharedTo>
@@ -10700,7 +10866,7 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
             <operation>equals</operation>
             <value>1</value>
         </filters>
-        <label>My store Stars</label>
+        <label>My store segmentation Clients - Stars</label>
         <sharedTo>
             <group>Store_Managers</group>
         </sharedTo>
@@ -10725,7 +10891,7 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
             <operation>equals</operation>
             <value>1</value>
         </filters>
-        <label>My store Trees</label>
+        <label>My store segmentation Clients - Trees</label>
         <sharedTo>
             <group>Store_Managers</group>
         </sharedTo>
@@ -10751,6 +10917,56 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
         </sharedTo>
     </listViews>
     <listViews>
+        <fullName>My_store_thank_you_note</fullName>
+        <columns>ACCOUNT.NAME</columns>
+        <columns>ACCOUNT.SITE</columns>
+        <columns>ACCOUNT.ADDRESS1_STATE</columns>
+        <columns>ACCOUNT.PHONE1</columns>
+        <columns>ACCOUNT.TYPE</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Data_Ultimo_Acquisto__c</field>
+            <operation>equals</operation>
+            <value>LAST_WEEK</value>
+        </filters>
+        <filters>
+            <field>Titolare_Boutique__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>My store thank you note</label>
+        <sharedTo>
+            <role>BOUTIQUE_DEUTSCHLAND_Meyer</role>
+            <role>Boutique_Area_Germania</role>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>My_thank_you_note</fullName>
+        <columns>ACCOUNT.NAME</columns>
+        <columns>ACCOUNT.SITE</columns>
+        <columns>ACCOUNT.ADDRESS1_STATE</columns>
+        <columns>ACCOUNT.PHONE1</columns>
+        <columns>ACCOUNT.TYPE</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Data_Ultimo_Acquisto__c</field>
+            <operation>equals</operation>
+            <value>LAST_WEEK</value>
+        </filters>
+        <filters>
+            <field>Titolare_Client_Advisor__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>My thank you note</label>
+        <sharedTo>
+            <role>ASSOCIATE_DEUTSCHLAND_Meyer</role>
+            <role>BOUTIQUE_DEUTSCHLAND_Meyer</role>
+        </sharedTo>
+    </listViews>
+    <listViews>
         <fullName>Prospect_Clients</fullName>
         <columns>ACCOUNT.NAME</columns>
         <columns>ACCOUNT.PHONE1</columns>
@@ -10773,6 +10989,10 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
             <value>1</value>
         </filters>
         <label>My Prospects</label>
+        <sharedTo>
+            <group>Associates</group>
+            <group>Store_Managers</group>
+        </sharedTo>
     </listViews>
     <recordTypeTrackFeedHistory>false</recordTypeTrackFeedHistory>
     <recordTypeTrackHistory>false</recordTypeTrackHistory>
@@ -10838,7 +11058,107 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
         <picklistValues>
             <picklist>Categoria_Cliente_Proposta__c</picklist>
             <values>
+                <fullName>AGENTS30</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>B60</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>BOARD60</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CONF20</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>E-EU</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>E-IT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>E-OT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>E-US</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PS10</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PS15</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>VCN10</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>VCN15</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>VCN20</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>VCN30</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>VHK10</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>VHK15</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>VHK30</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>VIP10</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>VIP15</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>VIP20</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>VIP30</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>VIP40</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>VIP5</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>VJP05</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>VJP10</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -11447,7 +11767,107 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
         <picklistValues>
             <picklist>Categoria_Cliente_Proposta__c</picklist>
             <values>
+                <fullName>AGENTS30</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>B60</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>BOARD60</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CONF20</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>E-EU</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>E-IT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>E-OT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>E-US</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PS10</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PS15</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>VCN10</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>VCN15</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>VCN20</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>VCN30</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>VHK10</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>VHK15</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>VHK30</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>VIP10</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>VIP15</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>VIP20</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>VIP30</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>VIP40</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>VIP5</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>VJP05</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>VJP10</fullName>
                 <default>false</default>
             </values>
             <values>

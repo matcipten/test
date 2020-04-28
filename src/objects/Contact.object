@@ -118,7 +118,6 @@
     </fields>
     <fields>
         <fullName>Apertura_ultima_Newsletter__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Apertura ultima Newsletter</label>
         <required>false</required>
@@ -127,12 +126,10 @@
     </fields>
     <fields>
         <fullName>AssistantName</fullName>
-        <encrypted>false</encrypted>
         <trackFeedHistory>false</trackFeedHistory>
     </fields>
     <fields>
         <fullName>AssistantPhone</fullName>
-        <encrypted>false</encrypted>
         <trackFeedHistory>false</trackFeedHistory>
     </fields>
     <fields>
@@ -159,7 +156,6 @@
     <fields>
         <fullName>CloudingoAgent__MAR__c</fullName>
         <deprecated>false</deprecated>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Mailing Address Record Type</label>
         <length>1</length>
@@ -184,7 +180,6 @@
     <fields>
         <fullName>CloudingoAgent__MAV__c</fullName>
         <deprecated>false</deprecated>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Mailing Address Vacancy</label>
         <length>1</length>
@@ -196,7 +191,6 @@
     <fields>
         <fullName>CloudingoAgent__MRDI__c</fullName>
         <deprecated>false</deprecated>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Mailing Residential Delivery Indicator</label>
         <length>12</length>
@@ -208,7 +202,6 @@
     <fields>
         <fullName>CloudingoAgent__MTZ__c</fullName>
         <deprecated>false</deprecated>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Mailing Timezone</label>
         <length>48</length>
@@ -220,7 +213,6 @@
     <fields>
         <fullName>CloudingoAgent__OAR__c</fullName>
         <deprecated>false</deprecated>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Other Address Record Type</label>
         <length>1</length>
@@ -245,7 +237,6 @@
     <fields>
         <fullName>CloudingoAgent__OAV__c</fullName>
         <deprecated>false</deprecated>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Other Address Vacancy</label>
         <length>1</length>
@@ -257,7 +248,6 @@
     <fields>
         <fullName>CloudingoAgent__ORDI__c</fullName>
         <deprecated>false</deprecated>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Other Residential Delivery Indicator</label>
         <length>12</length>
@@ -269,7 +259,6 @@
     <fields>
         <fullName>CloudingoAgent__OTZ__c</fullName>
         <deprecated>false</deprecated>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Other Timezone</label>
         <length>48</length>
@@ -297,7 +286,6 @@
     </fields>
     <fields>
         <fullName>Description</fullName>
-        <encrypted>false</encrypted>
         <trackFeedHistory>false</trackFeedHistory>
     </fields>
     <fields>
@@ -306,7 +294,6 @@
     </fields>
     <fields>
         <fullName>Email</fullName>
-        <encrypted>false</encrypted>
         <trackFeedHistory>false</trackFeedHistory>
     </fields>
     <fields>
@@ -320,7 +307,6 @@
     </fields>
     <fields>
         <fullName>Fax</fullName>
-        <encrypted>false</encrypted>
         <trackFeedHistory>false</trackFeedHistory>
     </fields>
     <fields>
@@ -333,7 +319,6 @@
     </fields>
     <fields>
         <fullName>HomePhone</fullName>
-        <encrypted>false</encrypted>
         <trackFeedHistory>false</trackFeedHistory>
     </fields>
     <fields>
@@ -358,27 +343,30 @@
     </fields>
     <fields>
         <fullName>MailingAddress</fullName>
-        <encrypted>false</encrypted>
         <trackFeedHistory>false</trackFeedHistory>
     </fields>
     <fields>
+        <fullName>Marketing_FRM__c</fullName>
+        <externalId>false</externalId>
+        <formula>Account.Marketing_FRM__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Marketing FRM</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>MobilePhone</fullName>
-        <encrypted>false</encrypted>
         <trackFeedHistory>false</trackFeedHistory>
     </fields>
     <fields>
         <fullName>Name</fullName>
-        <encrypted>false</encrypted>
         <trackFeedHistory>false</trackFeedHistory>
     </fields>
     <fields>
         <fullName>OtherAddress</fullName>
-        <encrypted>false</encrypted>
         <trackFeedHistory>false</trackFeedHistory>
     </fields>
     <fields>
         <fullName>OtherPhone</fullName>
-        <encrypted>false</encrypted>
         <trackFeedHistory>false</trackFeedHistory>
     </fields>
     <fields>
@@ -388,7 +376,6 @@
     </fields>
     <fields>
         <fullName>Phone</fullName>
-        <encrypted>false</encrypted>
         <trackFeedHistory>false</trackFeedHistory>
     </fields>
     <fields>
@@ -407,12 +394,10 @@
     </fields>
     <fields>
         <fullName>Title</fullName>
-        <encrypted>false</encrypted>
         <trackFeedHistory>false</trackFeedHistory>
     </fields>
     <fields>
         <fullName>Ultima_apertura_newsletter__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Ultima apertura newsletter</label>
         <required>false</required>
@@ -421,7 +406,6 @@
     </fields>
     <fields>
         <fullName>Ultimo_invio_Newsletter__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Ultimo invio Newsletter</label>
         <required>false</required>
@@ -3893,6 +3877,7 @@
         <lookupPhoneDialogsAdditionalFields>CONTACT.PHONE4</lookupPhoneDialogsAdditionalFields>
         <lookupPhoneDialogsAdditionalFields>CONTACT.PHONE5</lookupPhoneDialogsAdditionalFields>
         <lookupPhoneDialogsAdditionalFields>CONTACT.PHONE6</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>ACCOUNT.PHONE1</lookupPhoneDialogsAdditionalFields>
         <searchResultsAdditionalFields>FULL_NAME</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>ACCOUNT.NAME</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>ACCOUNT.SITE</searchResultsAdditionalFields>

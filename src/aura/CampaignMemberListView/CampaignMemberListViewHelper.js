@@ -115,7 +115,6 @@
             if (state === "SUCCESS") {
                 if (result != null) {
                     console.log(result.length);
-
                     component.set("v.dataContacts", response.getReturnValue());
                     if (component.get("v.totalContacts") > component.get("v.dataContacts").length) {
                         component.set("v.showLoadCont", true);

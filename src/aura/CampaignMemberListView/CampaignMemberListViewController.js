@@ -161,7 +161,7 @@
             { label: 'Phone', fieldName: 'Phone', type: 'text' },
             { label: 'Email', fieldName: 'Email', type: 'text' },
             { label: 'Contact Owner Alias', fieldName: 'Owner.Name', type: 'text' },
-
+            { label: 'Marketing', fieldName: 'Marketing_FRM__c', type: 'boolean' },
         ]);
         helper.getContactsFromApex(component, event, helper);
 

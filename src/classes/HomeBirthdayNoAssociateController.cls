@@ -77,7 +77,7 @@ public class HomeBirthdayNoAssociateController {
 		// }
 		// if(campaignsId != null && campaignsId.size() > 0) {
 		List<Account> birthdays = [
-			SELECT Id,Name,PersonBirthdate,Marketing_Y_N__c,Posta__c,Email__c,Telefono__c,Privacy3__c,Associate__r.Name
+			SELECT Id,Name,PersonBirthdate,Marketing_Y_N__c,Posta__c,Email__c,Telefono__c,Privacy3__c,Presenza_Address__c, Presenza_Email__c, Presenza_Marketing__c, Presenza_Phone__c, Presenza_WeChat__c
 			FROM Account
 			WHERE (IsPersonAccount = true AND PersonBirthdate = NEXT_N_DAYS:30 AND Titolare_Client_Advisor_Boutique__c = true)
 			ORDER BY PersonBirthdate ASC NULLS LAST
