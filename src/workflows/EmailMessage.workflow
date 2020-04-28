@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
     <fieldUpdates>
+        <fullName>Aggiorna_First_Response_Date</fullName>
+        <field>First_response_date__c</field>
+        <formula>NOW()</formula>
+        <name>Aggiorna First Response Date</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <targetObject>ParentId</targetObject>
+    </fieldUpdates>
+    <fieldUpdates>
         <fullName>Aggiornamento_di_stato_in_attesa</fullName>
         <description>Aggiornamento di stato in attesa in caso di risposta inviata a cliente</description>
         <field>Status</field>
@@ -153,5 +163,15 @@
         </criteriaItems>
         <description>Sbianca checkbox per messaggio inviato da customer care</description>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>First response</fullName>
+        <actions>
+            <name>Aggiorna_First_Response_Date</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>Incoming = false &amp;&amp;  ISBLANK(Parent.First_response_date__c ) &amp;&amp;  (FromAddress = &apos;customer.care@brunellocucinelli.it&apos; || FromAddress = &apos;customerserviceusa@brunellocucinelli.com&apos;)</formula>
+        <triggerType>onAllChanges</triggerType>
     </rules>
 </Workflow>

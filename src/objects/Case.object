@@ -1511,6 +1511,16 @@ IF(FLOOR(( ClosedDate - CreatedDate ) * 24) &gt; 23, TEXT( FLOOR (DATETIMEVALUE(
         <type>TextArea</type>
     </fields>
     <fields>
+        <fullName>Reopen__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Reopen</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>Reso__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <externalId>false</externalId>
@@ -2693,14 +2703,19 @@ IF(FLOOR(( ClosedDate - CreatedDate ) * 24) &gt; 23, TEXT( FLOOR (DATETIMEVALUE(
         <columns>Sottocategoria__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
-            <field>CASES.STATUS</field>
-            <operation>equals</operation>
-            <value>Nuovo</value>
-        </filters>
-        <filters>
             <field>CASES.RECORDTYPE</field>
             <operation>notEqual</operation>
             <value>Case.Ticket_E_commerce_Notify_Me</value>
+        </filters>
+        <filters>
+            <field>Titolare_Caso_c__c</field>
+            <operation>contains</operation>
+            <value>livello,email,queue,coda</value>
+        </filters>
+        <filters>
+            <field>CASES.STATUS</field>
+            <operation>equals</operation>
+            <value>Nuovo,Riassegnato,In attesa,Risposta ricevuta</value>
         </filters>
         <label>Cases to be assigned</label>
         <sharedTo>
@@ -10517,7 +10532,8 @@ IF(FLOOR(( ClosedDate - CreatedDate ) * 24) &gt; 23, TEXT( FLOOR (DATETIMEVALUE(
         <active>true</active>
         <errorConditionFormula>AND(
 ISBLANK(TEXT(Customer_Sat__c)),
-ISPICKVAL(Status, &quot;Chiuso&quot;),
+AND(ISPICKVAL(Status, &quot;Chiuso&quot;),
+ISCHANGED(Status)),
 NOT(ISPICKVAL(Categoria__c, &quot;Spam&quot;))
 )</errorConditionFormula>
         <errorMessage>Inserire Customer Satisfation prima di chiudere il caso</errorMessage>

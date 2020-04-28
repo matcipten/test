@@ -25,6 +25,30 @@
         <template>Email_template_US/Auto_Reply_Customer_Care_Americano_Christmas</template>
     </alerts>
     <alerts>
+        <fullName>Auto_Reply_Customer_Care_Chinese_New_Year_CN</fullName>
+        <description>Auto-Reply Customer Care Chinese New Year CN</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Email_Cliente_input__c</field>
+            <type>email</type>
+        </recipients>
+        <senderAddress>no-reply.customercare@brunellocucinelli.it</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Out_of_Office_Customer_Care_Festa/Auto_Reply_Customer_Care_Chinese_New_Year_CN</template>
+    </alerts>
+    <alerts>
+        <fullName>Auto_Reply_Customer_Care_Chinese_New_Year_HK_TW_MO</fullName>
+        <description>Auto-Reply Customer Care Chinese New Year HK,TW,MO</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Email_Cliente_input__c</field>
+            <type>email</type>
+        </recipients>
+        <senderAddress>no-reply.customercare@brunellocucinelli.it</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Out_of_Office_Customer_Care_Festa/Auto_Reply_Customer_Care_Chinese_New_Year_HK_TW_MO</template>
+    </alerts>
+    <alerts>
         <fullName>Auto_Reply_Customer_Care_Cinese_CN</fullName>
         <description>Auto-Reply Customer Care Cinese CN</description>
         <protected>false</protected>
@@ -37,8 +61,8 @@
         <template>Modelli_Email_Customer_care/Auto_Reply_Customer_Care_Cinese_CN</template>
     </alerts>
     <alerts>
-        <fullName>Auto_Reply_Customer_Care_Cinese_HK_TW_MO</fullName>
-        <description>Auto-Reply Customer Care Cinese HK,TW,MO</description>
+        <fullName>Auto_Reply_Customer_Care_Festa_America</fullName>
+        <description>Auto_Reply_Customer_Care_Festa_America</description>
         <protected>false</protected>
         <recipients>
             <field>Email_Cliente_input__c</field>
@@ -46,7 +70,7 @@
         </recipients>
         <senderAddress>no-reply.customercare@brunellocucinelli.it</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Modelli_Email_Customer_care/Auto_Reply_Customer_Care_Cinese_HK_TW_MO</template>
+        <template>Out_of_Office_Customer_Care_Festa/Auto_Reply_Customer_Care_Festa_America</template>
     </alerts>
     <alerts>
         <fullName>Auto_Reply_Customer_Care_Festa_Cinese_CN</fullName>
@@ -692,11 +716,11 @@
         <description>Email Alert - Notify Me -Chiusura Caso</description>
         <protected>false</protected>
         <recipients>
-            <type>owner</type>
+            <recipient>Buying_Ecommerce</recipient>
+            <type>group</type>
         </recipients>
         <recipients>
-            <recipient>Buying</recipient>
-            <type>role</type>
+            <type>owner</type>
         </recipients>
         <senderType>CurrentUser</senderType>
         <template>Assignment_Templates/Email_Template_Notify_Me_Chiusura_caso</template>
@@ -742,6 +766,24 @@
         <senderType>CurrentUser</senderType>
         <template>Assignment_Templates/Email_Template_Notify_Me_Richiesta_Annullata</template>
     </alerts>
+    <fieldUpdates>
+        <fullName>Aggiorna_contatore_chiusure</fullName>
+        <field>Number_of_closures_per_case__c</field>
+        <formula>Number_of_closures_per_case__c + 1</formula>
+        <name>Aggiorna contatore chiusure</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Aggiornamento_Prima_Chiusura</fullName>
+        <field>First_Close_Date__c</field>
+        <formula>NOW()</formula>
+        <name>Aggiornamento Prima Chiusura</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
     <fieldUpdates>
         <fullName>Case_Ubicazione_Boutique_Checkbox_Update</fullName>
         <field>Boutique_DOS__c</field>
@@ -828,6 +870,35 @@
         <operation>Literal</operation>
         <protected>false</protected>
     </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Reopen_Case</fullName>
+        <field>Reopen__c</field>
+        <literalValue>1</literalValue>
+        <name>Update Reopen Case</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <rules>
+        <fullName>Aggiornamento Prima Chiusura</fullName>
+        <actions>
+            <name>Aggiornamento_Prima_Chiusura</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>AND(ISBLANK(First_Close_Date__c),  ISCHANGED(Status),  TEXT(Status) = &quot;Chiuso&quot;  )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Aggiornamento Reopen</fullName>
+        <actions>
+            <name>Update_Reopen_Case</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>ISPICKVAL(PRIORVALUE(Status),&apos;Chiuso&apos;) &amp;&amp; NOT(ISPICKVAL(Status,&apos;Chiuso&apos;))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
     <rules>
         <fullName>Auto-Response Ticket Ecomm ROW</fullName>
         <actions>
@@ -907,6 +978,16 @@
         </criteriaItems>
         <description>If status is closed set RecordType to Customer Care US - Closed</description>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Contatore chiusura caso</fullName>
+        <actions>
+            <name>Aggiorna_contatore_chiusure</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>AND(ISCHANGED(Status), ISPICKVAL(Status,&quot;Chiuso&quot;))</formula>
+        <triggerType>onAllChanges</triggerType>
     </rules>
     <rules>
         <fullName>Ecommerce Case %22Notify Me - Non trovi la tua taglia%3F%22 ROW</fullName>
@@ -1149,6 +1230,26 @@ Nazione_input__c = &quot;US&quot;,
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>
     <rules>
+        <fullName>REChange RT Customer Care ITA Send Email</fullName>
+        <actions>
+            <name>Ritorno_al_record_type_precedente_ITA</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Case.Status</field>
+            <operation>equals</operation>
+            <value>In attesa</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Customer Care - Closed</value>
+        </criteriaItems>
+        <description>If RecordType is Customer Care - Closed and a new email is sent</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
         <fullName>REChange RT Customer Care US</fullName>
         <actions>
             <name>Ritorno_al_record_type_precedente_US</name>
@@ -1166,6 +1267,26 @@ Nazione_input__c = &quot;US&quot;,
             <value>Customer Care US - Closed</value>
         </criteriaItems>
         <description>If RecordType is Customer Care  US- Closed and a new email si received rechange the record type to Customer Care US</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>REChange RT Customer Care US Send Email</fullName>
+        <actions>
+            <name>Ritorno_al_record_type_precedente_US</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Case.Status</field>
+            <operation>equals</operation>
+            <value>In attesa</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Customer Care US - Closed</value>
+        </criteriaItems>
+        <description>If RecordType is Customer Care  US- Closed and a new email is sent</description>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>
     <rules>

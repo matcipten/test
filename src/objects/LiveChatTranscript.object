@@ -1,0 +1,930 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Chat_Transcript_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Chat_Transcript_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <enableFeeds>false</enableFeeds>
+    <externalSharingModel>Private</externalSharingModel>
+    <fields>
+        <fullName>Abandoned</fullName>
+    </fields>
+    <fields>
+        <fullName>AccountId</fullName>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>AverageResponseTimeOperator</fullName>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>AverageResponseTimeVisitor</fullName>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>Body</fullName>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>Browser</fullName>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>BrowserLanguage</fullName>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>CaseId</fullName>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Categoria__c</fullName>
+        <externalId>false</externalId>
+        <label>Categoria</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Acquisti Negozio</fullName>
+                    <default>false</default>
+                    <label>Acquisti Negozio</label>
+                </value>
+                <value>
+                    <fullName>Acquisti E-commerce</fullName>
+                    <default>false</default>
+                    <label>Acquisti E-commerce</label>
+                </value>
+                <value>
+                    <fullName>Acquisti Yoox</fullName>
+                    <default>false</default>
+                    <label>Acquisti Yoox</label>
+                </value>
+                <value>
+                    <fullName>Problematiche E-commerce</fullName>
+                    <default>false</default>
+                    <label>Problematiche E-commerce</label>
+                </value>
+                <value>
+                    <fullName>Problematiche Segnalate</fullName>
+                    <default>false</default>
+                    <label>Problematiche Segnalate</label>
+                </value>
+                <value>
+                    <fullName>Problematiche Yoox</fullName>
+                    <default>false</default>
+                    <label>Problematiche Yoox</label>
+                </value>
+                <value>
+                    <fullName>Cura prodotti</fullName>
+                    <default>false</default>
+                    <label>Cura prodotti</label>
+                </value>
+                <value>
+                    <fullName>Feedback del cliente</fullName>
+                    <default>false</default>
+                    <label>Feedback del cliente</label>
+                </value>
+                <value>
+                    <fullName>Corporate</fullName>
+                    <default>false</default>
+                    <label>Corporate</label>
+                </value>
+                <value>
+                    <fullName>Spam</fullName>
+                    <default>false</default>
+                    <label>Spam</label>
+                </value>
+                <value>
+                    <fullName>Comunicazione</fullName>
+                    <default>false</default>
+                    <label>Comunicazione</label>
+                </value>
+                <value>
+                    <fullName>Proposte collaborazione</fullName>
+                    <default>false</default>
+                    <label>Proposte collaborazione</label>
+                </value>
+                <value>
+                    <fullName>Risorse umane</fullName>
+                    <default>false</default>
+                    <label>Risorse umane</label>
+                </value>
+                <value>
+                    <fullName>Richieste amministrazione</fullName>
+                    <default>false</default>
+                    <label>Richieste amministrazione</label>
+                </value>
+                <value>
+                    <fullName>Privacy</fullName>
+                    <default>false</default>
+                    <label>Privacy</label>
+                </value>
+                <value>
+                    <fullName>Newsletter</fullName>
+                    <default>false</default>
+                    <label>Newsletter</label>
+                </value>
+                <value>
+                    <fullName>Catalogues</fullName>
+                    <default>false</default>
+                    <label>Catalogues</label>
+                </value>
+                <value>
+                    <fullName>Events</fullName>
+                    <default>false</default>
+                    <label>Events</label>
+                </value>
+                <value>
+                    <fullName>Segnalazioni OMS</fullName>
+                    <default>false</default>
+                    <label>Segnalazioni OMS</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>ChatDuration</fullName>
+    </fields>
+    <fields>
+        <fullName>ContactId</fullName>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Conversation__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Conversation</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Customer_Satisfaction__c</fullName>
+        <externalId>false</externalId>
+        <label>Customer Satisfaction</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Non soddisfatto</fullName>
+                    <default>false</default>
+                    <label>🙁</label>
+                </value>
+                <value>
+                    <fullName>Parzialmente soddisfatto</fullName>
+                    <default>false</default>
+                    <label>🙂</label>
+                </value>
+                <value>
+                    <fullName>Soddisfatto</fullName>
+                    <default>false</default>
+                    <label>😀</label>
+                </value>
+                <value>
+                    <fullName>Neutro</fullName>
+                    <default>false</default>
+                    <label>😐</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>EndTime</fullName>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>EndedBy</fullName>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>IpAddress</fullName>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>LeadId</fullName>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>LiveChatButtonId</fullName>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>LiveChatDeploymentId</fullName>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>LiveChatVisitorId</fullName>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Location</fullName>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>MaxResponseTimeOperator</fullName>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>MaxResponseTimeVisitor</fullName>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>OperatorMessageCount</fullName>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>OwnerId</fullName>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Platform</fullName>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>ReferrerUri</fullName>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>RequestTime</fullName>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>ScreenResolution</fullName>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>SkillId</fullName>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Sottocategoria__c</fullName>
+        <externalId>false</externalId>
+        <label>Sottocategoria</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <controllingField>Categoria__c</controllingField>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Acquisti</fullName>
+                    <default>false</default>
+                    <label>Acquisti</label>
+                </value>
+                <value>
+                    <fullName>Acquisti potenziali</fullName>
+                    <default>false</default>
+                    <label>Acquisti potenziali</label>
+                </value>
+                <value>
+                    <fullName>Altro</fullName>
+                    <default>false</default>
+                    <label>Altro</label>
+                </value>
+                <value>
+                    <fullName>Amministrazione</fullName>
+                    <default>false</default>
+                    <label>Amministrazione</label>
+                </value>
+                <value>
+                    <fullName>Assistenza generica prodotto</fullName>
+                    <default>false</default>
+                    <label>Assistenza generica prodotto</label>
+                </value>
+                <value>
+                    <fullName>Boutique</fullName>
+                    <default>false</default>
+                    <label>Contatta Boutique</label>
+                </value>
+                <value>
+                    <fullName>Cambi e resi</fullName>
+                    <default>false</default>
+                    <label>Cambi e resi</label>
+                </value>
+                <value>
+                    <fullName>Can&apos;t find my size</fullName>
+                    <default>false</default>
+                    <label>Can&apos;t find my size</label>
+                </value>
+                <value>
+                    <fullName>Cancellazione Ordini</fullName>
+                    <default>false</default>
+                    <label>Cancellazione Ordini</label>
+                </value>
+                <value>
+                    <fullName>Comunicazione</fullName>
+                    <default>false</default>
+                    <label>Comunicazione</label>
+                </value>
+                <value>
+                    <fullName>Crosschannel</fullName>
+                    <default>false</default>
+                    <label>Crosschannel</label>
+                </value>
+                <value>
+                    <fullName>Dati di login</fullName>
+                    <default>false</default>
+                    <label>Dati di login</label>
+                </value>
+                <value>
+                    <fullName>Digital &amp; ICT</fullName>
+                    <default>false</default>
+                    <label>Digital &amp; ICT</label>
+                </value>
+                <value>
+                    <fullName>Feedback negativi</fullName>
+                    <default>false</default>
+                    <label>Feedback negativi</label>
+                </value>
+                <value>
+                    <fullName>Feedback positivi</fullName>
+                    <default>false</default>
+                    <label>Feedback positivi</label>
+                </value>
+                <value>
+                    <fullName>Finanza</fullName>
+                    <default>false</default>
+                    <label>Finanza</label>
+                </value>
+                <value>
+                    <fullName>Frodi</fullName>
+                    <default>false</default>
+                    <label>Frodi</label>
+                </value>
+                <value>
+                    <fullName>Info Generiche</fullName>
+                    <default>false</default>
+                    <label>Info Generiche</label>
+                </value>
+                <value>
+                    <fullName>Informazioni su care</fullName>
+                    <default>false</default>
+                    <label>Informazioni su care</label>
+                </value>
+                <value>
+                    <fullName>Informazioni su composizione</fullName>
+                    <default>false</default>
+                    <label>Informazioni su composizione</label>
+                </value>
+                <value>
+                    <fullName>Informazioni su ordini acquistati</fullName>
+                    <default>false</default>
+                    <label>Informazioni su ordini acquistati</label>
+                </value>
+                <value>
+                    <fullName>Informazioni su pagamento</fullName>
+                    <default>false</default>
+                    <label>Informazioni su pagamento</label>
+                </value>
+                <value>
+                    <fullName>Invio candidatura</fullName>
+                    <default>false</default>
+                    <label>Invio candidatura</label>
+                </value>
+                <value>
+                    <fullName>Legale</fullName>
+                    <default>false</default>
+                    <label>Legale</label>
+                </value>
+                <value>
+                    <fullName>Logistica</fullName>
+                    <default>false</default>
+                    <label>Logistica</label>
+                </value>
+                <value>
+                    <fullName>Pagamenti</fullName>
+                    <default>false</default>
+                    <label>Pagamenti</label>
+                </value>
+                <value>
+                    <fullName>Problematica tecnica</fullName>
+                    <default>false</default>
+                    <label>Problematica tecnica</label>
+                </value>
+                <value>
+                    <fullName>Problemi di relazione</fullName>
+                    <default>false</default>
+                    <label>Problemi di relazione</label>
+                </value>
+                <value>
+                    <fullName>Problemi su ordini</fullName>
+                    <default>false</default>
+                    <label>Problemi su ordini</label>
+                </value>
+                <value>
+                    <fullName>Problemi su pagamento</fullName>
+                    <default>false</default>
+                    <label>Problemi su pagamento</label>
+                </value>
+                <value>
+                    <fullName>Problemi su prodotto</fullName>
+                    <default>false</default>
+                    <label>Problemi su prodotto</label>
+                </value>
+                <value>
+                    <fullName>Produzione</fullName>
+                    <default>false</default>
+                    <label>Produzione</label>
+                </value>
+                <value>
+                    <fullName>Promozioni</fullName>
+                    <default>false</default>
+                    <label>Promozioni</label>
+                </value>
+                <value>
+                    <fullName>Regali</fullName>
+                    <default>false</default>
+                    <label>Regali</label>
+                </value>
+                <value>
+                    <fullName>Resi e riaccrediti</fullName>
+                    <default>false</default>
+                    <label>Resi e riaccrediti</label>
+                </value>
+                <value>
+                    <fullName>Richiesta informazioni Corporate</fullName>
+                    <default>false</default>
+                    <label>Richiesta informazioni Corporate</label>
+                </value>
+                <value>
+                    <fullName>Richiesta informazioni Investors</fullName>
+                    <default>false</default>
+                    <label>Richiesta informazioni Investors</label>
+                </value>
+                <value>
+                    <fullName>Richiesta posizioni aperte</fullName>
+                    <default>false</default>
+                    <label>Richiesta posizioni aperte</label>
+                </value>
+                <value>
+                    <fullName>Richiesta Riparazione</fullName>
+                    <default>false</default>
+                    <label>Richiesta Riparazione</label>
+                </value>
+                <value>
+                    <fullName>Richieste amministrazione</fullName>
+                    <default>false</default>
+                    <label>Richieste amministrazione</label>
+                </value>
+                <value>
+                    <fullName>Richieste privacy</fullName>
+                    <default>false</default>
+                    <label>Richieste privacy</label>
+                </value>
+                <value>
+                    <fullName>Sartoria Solomeo</fullName>
+                    <default>false</default>
+                    <label>Sartoria Solomeo</label>
+                </value>
+                <value>
+                    <fullName>Segnalazione da magazzino</fullName>
+                    <default>false</default>
+                    <label>Segnalazione da magazzino</label>
+                </value>
+                <value>
+                    <fullName>Segreteria</fullName>
+                    <default>false</default>
+                    <label>Segreteria</label>
+                </value>
+                <value>
+                    <fullName>Servizi generali</fullName>
+                    <default>false</default>
+                    <label>Servizi generali</label>
+                </value>
+                <value>
+                    <fullName>Showroom</fullName>
+                    <default>false</default>
+                    <label>Showroom</label>
+                </value>
+                <value>
+                    <fullName>Spedizioni</fullName>
+                    <default>false</default>
+                    <label>Spedizioni</label>
+                </value>
+                <value>
+                    <fullName>Stampa</fullName>
+                    <default>false</default>
+                    <label>Stampa</label>
+                </value>
+                <value>
+                    <fullName>Stile</fullName>
+                    <default>false</default>
+                    <label>Stile</label>
+                </value>
+                <value>
+                    <fullName>Stock</fullName>
+                    <default>false</default>
+                    <label>Stock</label>
+                </value>
+                <value>
+                    <fullName>Supporto tecnico generico</fullName>
+                    <default>false</default>
+                    <label>Supporto tecnico generico</label>
+                </value>
+                <value>
+                    <fullName>Visual Merchandising</fullName>
+                    <default>false</default>
+                    <label>Visual Merchandising</label>
+                </value>
+                <value>
+                    <fullName>Invio Cataloghi</fullName>
+                    <default>false</default>
+                    <label>Invio Cataloghi</label>
+                </value>
+                <value>
+                    <fullName>Customer Feedback</fullName>
+                    <default>false</default>
+                    <label>Customer Feedback</label>
+                </value>
+                <value>
+                    <fullName>Sending Request</fullName>
+                    <default>false</default>
+                    <label>Sending Request</label>
+                </value>
+                <value>
+                    <fullName>Invitation</fullName>
+                    <default>false</default>
+                    <label>Invitation</label>
+                </value>
+                <value>
+                    <fullName>Informazioni su policy di acquisto</fullName>
+                    <default>false</default>
+                    <label>Informazioni su policy di acquisto</label>
+                </value>
+                <value>
+                    <fullName>Disponibilità in negozio</fullName>
+                    <default>false</default>
+                    <label>Disponibilità in negozio</label>
+                </value>
+                <value>
+                    <fullName>Problema Articoli</fullName>
+                    <default>false</default>
+                    <label>Problema Articoli</label>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>Comunicazione</controllingFieldValue>
+                <controllingFieldValue>Proposte collaborazione</controllingFieldValue>
+                <valueName>Amministrazione</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Comunicazione</controllingFieldValue>
+                <valueName>Stampa</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Proposte collaborazione</controllingFieldValue>
+                <controllingFieldValue>Risorse umane</controllingFieldValue>
+                <controllingFieldValue>Acquisti E-commerce</controllingFieldValue>
+                <controllingFieldValue>Acquisti Yoox</controllingFieldValue>
+                <controllingFieldValue>Problematiche E-commerce</controllingFieldValue>
+                <controllingFieldValue>Problematiche Segnalate</controllingFieldValue>
+                <controllingFieldValue>Problematiche Yoox</controllingFieldValue>
+                <controllingFieldValue>Cura prodotti</controllingFieldValue>
+                <valueName>Altro</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Proposte collaborazione</controllingFieldValue>
+                <controllingFieldValue>Acquisti Negozio</controllingFieldValue>
+                <controllingFieldValue>Acquisti E-commerce</controllingFieldValue>
+                <valueName>Boutique</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Proposte collaborazione</controllingFieldValue>
+                <valueName>Digital &amp; ICT</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Proposte collaborazione</controllingFieldValue>
+                <valueName>Finanza</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Proposte collaborazione</controllingFieldValue>
+                <valueName>Legale</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Proposte collaborazione</controllingFieldValue>
+                <valueName>Logistica</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Proposte collaborazione</controllingFieldValue>
+                <valueName>Servizi generali</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Risorse umane</controllingFieldValue>
+                <valueName>Invio candidatura</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Risorse umane</controllingFieldValue>
+                <valueName>Problematica tecnica</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Risorse umane</controllingFieldValue>
+                <valueName>Richiesta posizioni aperte</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Privacy</controllingFieldValue>
+                <valueName>Richieste privacy</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Newsletter</controllingFieldValue>
+                <valueName>Customer Feedback</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Catalogues</controllingFieldValue>
+                <valueName>Sending Request</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Events</controllingFieldValue>
+                <valueName>Invitation</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Segnalazioni OMS</controllingFieldValue>
+                <valueName>Problema Articoli</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Acquisti Negozio</controllingFieldValue>
+                <valueName>Acquisti</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Acquisti Negozio</controllingFieldValue>
+                <controllingFieldValue>Acquisti E-commerce</controllingFieldValue>
+                <controllingFieldValue>Acquisti Yoox</controllingFieldValue>
+                <valueName>Acquisti potenziali</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Acquisti Negozio</controllingFieldValue>
+                <controllingFieldValue>Acquisti E-commerce</controllingFieldValue>
+                <valueName>Cambi e resi</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Acquisti Negozio</controllingFieldValue>
+                <controllingFieldValue>Acquisti E-commerce</controllingFieldValue>
+                <valueName>Frodi</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Acquisti Negozio</controllingFieldValue>
+                <valueName>Pagamenti</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Acquisti Negozio</controllingFieldValue>
+                <controllingFieldValue>Acquisti E-commerce</controllingFieldValue>
+                <valueName>Regali</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Acquisti Negozio</controllingFieldValue>
+                <controllingFieldValue>Acquisti E-commerce</controllingFieldValue>
+                <valueName>Informazioni su policy di acquisto</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Acquisti E-commerce</controllingFieldValue>
+                <valueName>Can&apos;t find my size</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Acquisti E-commerce</controllingFieldValue>
+                <valueName>Cancellazione Ordini</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Acquisti E-commerce</controllingFieldValue>
+                <controllingFieldValue>Acquisti Yoox</controllingFieldValue>
+                <valueName>Crosschannel</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Acquisti E-commerce</controllingFieldValue>
+                <valueName>Informazioni su ordini acquistati</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Acquisti E-commerce</controllingFieldValue>
+                <valueName>Informazioni su pagamento</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Acquisti E-commerce</controllingFieldValue>
+                <valueName>Promozioni</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Acquisti E-commerce</controllingFieldValue>
+                <valueName>Resi e riaccrediti</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Acquisti E-commerce</controllingFieldValue>
+                <valueName>Sartoria Solomeo</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Acquisti E-commerce</controllingFieldValue>
+                <valueName>Segnalazione da magazzino</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Acquisti E-commerce</controllingFieldValue>
+                <valueName>Spedizioni</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Acquisti E-commerce</controllingFieldValue>
+                <valueName>Disponibilità in negozio</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Problematiche E-commerce</controllingFieldValue>
+                <valueName>Dati di login</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Problematiche E-commerce</controllingFieldValue>
+                <controllingFieldValue>Problematiche Segnalate</controllingFieldValue>
+                <controllingFieldValue>Problematiche Yoox</controllingFieldValue>
+                <valueName>Problemi di relazione</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Problematiche E-commerce</controllingFieldValue>
+                <valueName>Problemi su ordini</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Problematiche E-commerce</controllingFieldValue>
+                <valueName>Problemi su pagamento</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Problematiche E-commerce</controllingFieldValue>
+                <valueName>Supporto tecnico generico</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Problematiche Segnalate</controllingFieldValue>
+                <controllingFieldValue>Problematiche Yoox</controllingFieldValue>
+                <valueName>Problemi su prodotto</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Problematiche Segnalate</controllingFieldValue>
+                <valueName>Richiesta Riparazione</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cura prodotti</controllingFieldValue>
+                <valueName>Assistenza generica prodotto</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cura prodotti</controllingFieldValue>
+                <valueName>Info Generiche</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cura prodotti</controllingFieldValue>
+                <valueName>Informazioni su care</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Cura prodotti</controllingFieldValue>
+                <valueName>Informazioni su composizione</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Feedback del cliente</controllingFieldValue>
+                <valueName>Feedback negativi</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Feedback del cliente</controllingFieldValue>
+                <valueName>Feedback positivi</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Corporate</controllingFieldValue>
+                <valueName>Comunicazione</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Corporate</controllingFieldValue>
+                <valueName>Richiesta informazioni Corporate</valueName>
+            </valueSettings>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>StartTime</fullName>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>Status</fullName>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>SupervisorTranscriptBody</fullName>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>UserAgent</fullName>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>VisitorMessageCount</fullName>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>VisitorNetwork</fullName>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>WaitTime</fullName>
+    </fields>
+    <listViews>
+        <fullName>All_Chat_Transcripts</fullName>
+        <columns>Name</columns>
+        <columns>LiveChatVisitor</columns>
+        <columns>Status</columns>
+        <columns>StartTime</columns>
+        <columns>EndTime</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Status</field>
+            <operation>equals</operation>
+            <value>0,1,2,3,4,5</value>
+        </filters>
+        <label>All Chat Transcripts</label>
+    </listViews>
+    <listViews>
+        <fullName>Chat_Button_LiveChatTranscript</fullName>
+        <filterScope>Queue</filterScope>
+        <label>Live Agent</label>
+        <queue>Live_Agent</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>My_Chat_Transcripts</fullName>
+        <columns>Name</columns>
+        <columns>LiveChatVisitor</columns>
+        <columns>Status</columns>
+        <columns>StartTime</columns>
+        <columns>EndTime</columns>
+        <filterScope>Mine</filterScope>
+        <label>My Chat Transcripts</label>
+    </listViews>
+    <searchLayouts>
+        <customTabListAdditionalFields>LiveChatVisitor</customTabListAdditionalFields>
+        <customTabListAdditionalFields>StartTime</customTabListAdditionalFields>
+        <customTabListAdditionalFields>EndTime</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Status</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>LiveChatVisitor</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>StartTime</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>EndTime</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Status</lookupDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>LiveChatVisitor</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>StartTime</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>EndTime</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Status</lookupPhoneDialogsAdditionalFields>
+        <searchResultsAdditionalFields>LiveChatVisitor</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>StartTime</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>EndTime</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Status</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>Private</sharingModel>
+</CustomObject>
