@@ -1,0 +1,88 @@
+<aura:component>
+
+	<aura:attribute name="OTCategorie" type="List" default="[]" access="GLOBAL"></aura:attribute>
+
+	<aura:attribute name="EVCategorie" type="List" default="[]" access="GLOBAL"></aura:attribute>
+
+	<aura:attribute name="MACategorie" type="List" default="[]" access="GLOBAL"></aura:attribute>
+
+	<aura:attribute name="categoria" type="String" default="" access="GLOBAL" />
+
+	<aura:attribute name="labels" type="Object" access="GLOBAL"></aura:attribute>
+	<aura:attribute name="rtLabels" type="Object" access="GLOBAL"></aura:attribute>
+
+	<aura:registerEvent name="categoryChosenEvent" type="c:CreateActivityTrackingComponentEvent" />
+
+	<div id="step2_div" class="slds-p-around_large slds-m-horizontal_small slds-m-vertical_x-large"
+		style="box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24);/*margin:2% 5% 0 5%;*/">
+
+		<h1 style="font-size:20px">{!v.labels.categoria__c}</h1>
+		
+		<!-- MC- One To One-->
+		<lightning:layout class="step2_layout slds-p-around_large slds-m-horizontal_small slds-m-vertical_x-large"
+			aura:id="step2">
+			<!-- MC
+			<lightning:layoutItem size="3" class="text_align" padding="around-small">
+
+				<h1 style="font-size:20px">{!v.rtLabels.One_To_One}</h1>
+			</lightning:layoutItem>
+			-->
+			<lightning:layoutItem size="12" class="text_align" padding="around-small">
+				<h1 class="slds-p-bottom_large" style="font-size:20px">{!v.rtLabels.One_To_One}</h1>
+				<lightning:layout multipleRows="true">
+					<aura:iteration items="{!v.OTCategorie}" var="item" indexVar="ind">
+						<lightning:layoutItem size="6">
+							<lightning:input type="radio" aura:id="{!'radio_'+ind}" label="{!item.label}" value="{!item.value}" class="slds-m-top_small" name="categoria"
+												style="text-align: left !important" onchange="{!c.changeCategoria}" checked="{!v.categoria == item.value}">
+							</lightning:input>
+						</lightning:layoutItem>
+					</aura:iteration>
+				</lightning:layout>
+			</lightning:layoutItem>
+		</lightning:layout>
+		<!-- MC- One To One-->
+		<lightning:layout class="step2_layout slds-p-around_large slds-m-horizontal_small slds-m-vertical_x-large"
+			aura:id="step2">
+			<!--
+			<lightning:layoutItem size="3" class="text_align" padding="around-small">
+				<h1 style="font-size:20px">{!v.rtLabels.Events}</h1>
+			</lightning:layoutItem>
+			-->
+			<lightning:layoutItem size="12" class="text_align" padding="around-small">
+				<h1 class="slds-p-bottom_large" style="font-size:20px">{!v.rtLabels.Events}</h1>
+				<lightning:layout multipleRows="true">
+					<aura:iteration items="{!v.EVCategorie}" var="item" indexVar="ind">
+						<lightning:layoutItem size="6">
+							<lightning:input type="radio" aura:id="{!'radio_'+ind}" label="{!item.label}" value="{!item.value}" class="slds-m-top_small" name="categoria"
+												style="text-align: left" onchange="{!c.changeCategoria}" checked="{!v.categoria == item.value}">
+							</lightning:input>
+						</lightning:layoutItem>
+					</aura:iteration>
+				</lightning:layout>
+
+			</lightning:layoutItem>
+		</lightning:layout>
+		<!-- MC- Mailing-->
+		<lightning:layout class="step2_layout slds-p-around_large slds-m-horizontal_small slds-m-vertical_x-large"
+			aura:id="step2">
+			<!--
+			<lightning:layoutItem size="3" class="text_align" padding="around-small">
+				<h1 style="font-size:20px">{!v.rtLabels.Mailing}</h1>
+			</lightning:layoutItem>
+			-->
+			<lightning:layoutItem size="12" class="text_align" padding="around-small">
+				<h1 class="slds-p-bottom_large" style="font-size:20px">{!v.rtLabels.Mailing}</h1>
+				<lightning:layout multipleRows="true">
+					<aura:iteration items="{!v.MACategorie}" var="item" indexVar="ind">
+						<lightning:layoutItem size="6">
+							<lightning:input type="radio" aura:id="{!'radio_'+ind}" label="{!item.label}" value="{!item.value}" class="slds-m-top_small" name="categoria"
+												style="text-align: left" onchange="{!c.changeCategoria}" checked="{!v.categoria == item.value}">
+							</lightning:input>
+						</lightning:layoutItem>
+					</aura:iteration>
+				</lightning:layout>
+			</lightning:layoutItem>
+		</lightning:layout>
+		<!-- MC- Mailing-->
+	</div>
+</aura:component>

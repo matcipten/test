@@ -1,0 +1,135 @@
+<aura:component>
+
+	<aura:attribute name="canale"
+	                type="Object"
+	                default=""
+	                access="GLOBAL" />
+
+
+	<!-- <aura:attribute name="canaleValue"
+	                type="String"
+	                default=""
+	                access="GLOBAL" /> -->
+
+	<aura:attribute name="labels"
+	                type="Object"
+	                access="GLOBAL"></aura:attribute>
+
+
+	<aura:attribute name="picklistLabelsCanaleC"
+	                type="Object"
+	                access="GLOBAL"></aura:attribute>
+
+	<aura:registerEvent name="channelChosenEvent"
+	                    type="c:CreateActivityTrackingComponentEvent" />
+
+
+	<aura:handler name="init"
+	              value="{!this}"
+	              action="{!c.doInit}" />
+
+	<div id="step1_div"
+	     class="slds-p-around_large slds-m-horizontal_small slds-m-vertical_x-large"
+	     style="box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24);/*margin:0 5%;*/">
+
+		<h1 style="font-size:20px">{!v.labels.canale__c}</h1>
+		<lightning:layout aura:id="step1" multipleRows="true"
+		                  class="text_center">
+
+			<!-- <lightning:layoutItem size="1"></lightning:layoutItem> -->
+
+			<lightning:layoutItem size="4">
+
+				<lightning:icon iconName="utility:call"
+				                alternativeText="Phone"
+				                size="large"
+								class="slds-m-left_x-small" />
+				<div class="slds-align_absolute-center">
+					<lightning:input type="radio"
+				                 aura:id="phone_radio"
+				                 label="{!v.picklistLabelsCanaleC.Phone}"
+				                 value="Phone"
+				                 name="canale"
+				                 onchange="{!c.changeCanale}"
+				                 checked="{!v.canale.value == 'Phone'}"
+				                 class="slds-m-top_medium "></lightning:input>
+				</div>
+				
+
+			</lightning:layoutItem>
+
+			<lightning:layoutItem size="4">
+
+				<img src="{!$Resource.ChiocciolaGrigia}"
+				     style="width:48px;height:48px;"
+					 class="slds-m-left_x-small"></img>
+				<div class="slds-align_absolute-center">
+					<lightning:input type="radio"
+									aura:id="email_radio"
+									label="{!v.picklistLabelsCanaleC.Email}"
+									value="Email"
+									name="canale"
+									onchange="{!c.changeCanale}"
+									checked="{!v.canale.value == 'Email'}"
+									class="slds-m-top_medium "></lightning:input>
+				</div>
+			</lightning:layoutItem>
+
+			<lightning:layoutItem size="4">
+
+				<lightning:icon iconName="utility:chat"
+				                alternativeText="Chat"
+				                size="large"
+				                class="slds-m-left_x-small" />
+				<div class="slds-align_absolute-center">
+					<lightning:input type="radio"
+									aura:id="chat_radio"
+									label="{!v.picklistLabelsCanaleC.Chat}"
+									value="Chat"
+									name="canale"
+									onchange="{!c.changeCanale}"
+									checked="{!v.canale.value == 'Chat'}"
+									class="slds-m-top_medium "></lightning:input>
+				</div>
+			</lightning:layoutItem>
+
+			<lightning:layoutItem size="2"></lightning:layoutItem>
+			<lightning:layoutItem size="4">
+
+				<lightning:icon iconName="utility:user"
+				                alternativeText="Personal Contact (rendez-vous)"
+				                size="large"
+				                class="slds-m-left_x-small" />
+				<div class="slds-align_absolute-center">
+					<lightning:input type="radio"
+									aura:id="personal_radio"
+									label="{!v.picklistLabelsCanaleC.Personal_Contact}"
+									value="Personal_Contact"
+									name="canale"
+									onchange="{!c.changeCanale}"
+									checked="{!v.canale.value == 'Personal_Contact'}"
+									class="slds-m-top_medium "></lightning:input>
+				</div>
+			</lightning:layoutItem>
+
+			<lightning:layoutItem size="4">
+
+				<lightning:icon iconName="utility:email"
+				                alternativeText="Mail"
+				                size="large"
+				                class="slds-m-left_x-small" />
+				<div class="slds-align_absolute-center">
+					<lightning:input type="radio"
+									aura:id="mail_radio"
+									label="{!v.picklistLabelsCanaleC.Mail}"
+									value="Mail"
+									name="canale"
+									onchange="{!c.changeCanale}"
+									checked="{!v.canale.value == 'Mail'}"
+									class="slds-m-top_medium "></lightning:input>
+				</div>
+			</lightning:layoutItem>
+			<lightning:layoutItem size="2"></lightning:layoutItem>
+		</lightning:layout>
+	</div>
+</aura:component>

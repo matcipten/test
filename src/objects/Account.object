@@ -9846,6 +9846,11 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
                     <default>false</default>
                     <label>AS400</label>
                 </value>
+                <value>
+                    <fullName>BC_SNGPR</fullName>
+                    <default>false</default>
+                    <label>Singapore customer</label>
+                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
@@ -10033,7 +10038,7 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
         <columns>ACCOUNT.ADDRESS1_STATE</columns>
         <columns>ACCOUNT.PHONE1</columns>
         <columns>ACCOUNT.TYPE</columns>
-        <columns>CORE.USERS.ALIAS</columns>
+        <columns>Associate__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>Totale_Pezzi_Acquistati_Ultima_Stagione__c</field>

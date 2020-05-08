@@ -1,0 +1,7 @@
+.THIS .text_center{
+	text-align:center;
+}
+
+.THIS .bigFontCheckboxes, .THIS .slds-form-element__label,.THIS .slds-radio .slds-form-element__label {
+	font-weight: bold;
+}
