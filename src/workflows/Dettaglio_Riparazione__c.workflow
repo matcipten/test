@@ -92,6 +92,46 @@
         <template>Riparazione/Riparazione_4_capo_ricevuto_in_sede_ITA</template>
     </alerts>
     <alerts>
+        <fullName>Controllo_caricamento_stock</fullName>
+        <description>Controllo caricamento stock</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Riparazione/Controllo_caricamento_stock</template>
+    </alerts>
+    <alerts>
+        <fullName>Controllo_ritiro_capo_e_chiusura_riparazione</fullName>
+        <description>Controllo ritiro capo e chiusura riparazione</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Riparazione/Controllo_ritiro_capo_e_chiusura_riparazione</template>
+    </alerts>
+    <alerts>
+        <fullName>Controllo_ritiro_divisa</fullName>
+        <description>Controllo ritiro divisa</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Riparazione/Controllo_ritiro_divisa</template>
+    </alerts>
+    <alerts>
+        <fullName>Controllo_stato_riparazione_e_contatto_cliente</fullName>
+        <description>Controllo stato riparazione e contatto cliente</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Riparazione/Controllo_stato_riparazione_e_contatto_cliente</template>
+    </alerts>
+    <alerts>
         <fullName>Data_riparazione_prevista_modificata_ENG</fullName>
         <description>Data riparazione prevista modificata - ENG</description>
         <protected>false</protected>
@@ -178,6 +218,16 @@
         </recipients>
         <senderType>CurrentUser</senderType>
         <template>Riparazione/Riparazione_6_riparazone_effettuata_CC</template>
+    </alerts>
+    <alerts>
+        <fullName>Riparazione_effettuata_e_spedita</fullName>
+        <description>Riparazione effettuata e spedita</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Riparazione/Riparazione_effettuata_e_spedita</template>
     </alerts>
     <alerts>
         <fullName>Riparazione_effettuata_e_spedita_sede_ENG</fullName>
@@ -271,12 +321,76 @@
         <template>Riparazione/Riparazione_sollecito_invio_verso_sede</template>
     </alerts>
     <fieldUpdates>
+        <fullName>Aggiornamento_Prodotto_Riparato</fullName>
+        <description>Per RT Uniform/Personal Item_In Boutique (Tailor) e Item from Stock_In Boutique (Tailor)</description>
+        <field>Status__c</field>
+        <literalValue>Prodotto Riparato</literalValue>
+        <name>Aggiornamento Prodotto Riparato</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Aggiornamento_Prodotto_consegnato</fullName>
+        <field>Status__c</field>
+        <literalValue>Prodotto riconsegnato</literalValue>
+        <name>Aggiornamento Prodotto consegnato</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Aggiornamento_Prodotto_riconsegnato</fullName>
+        <field>Status__c</field>
+        <literalValue>Prodotto riconsegnato in Boutique</literalValue>
+        <name>Aggiornamento Prodotto riconsegnato</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Aggiornamento_Stato_Capo_Ricevuto</fullName>
+        <field>Status__c</field>
+        <literalValue>Capo ricevuto in Boutique</literalValue>
+        <name>Aggiornamento Stato Capo Ricevuto</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Aggiornamento_Status_Prodotto_Consegnato</fullName>
+        <field>Status__c</field>
+        <literalValue>Prodotto consegnato al cliente</literalValue>
+        <name>Aggiornamento Status Prodotto Consegnato</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
         <fullName>Close_Dettaglio_Riparazione</fullName>
         <field>Status__c</field>
         <literalValue>Chiuso</literalValue>
         <name>Close Dettaglio Riparazione</name>
         <notifyAssignee>false</notifyAssignee>
         <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Customer_contacted</fullName>
+        <field>Status__c</field>
+        <literalValue>Prodotto consegnato al cliente</literalValue>
+        <name>Customer contacted</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Data_contatto_cliente</fullName>
+        <field>Data_contatto_cliente__c</field>
+        <formula>NOW()</formula>
+        <name>Data contatto cliente</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
         <protected>false</protected>
     </fieldUpdates>
     <fieldUpdates>
@@ -341,7 +455,7 @@
     <fieldUpdates>
         <fullName>Status_Repaired_Product_Shipped</fullName>
         <field>Status__c</field>
-        <literalValue>Spedizione capo riparato effettuata</literalValue>
+        <literalValue>Cliente contattato</literalValue>
         <name>Status: Repaired Product Shipped</name>
         <notifyAssignee>false</notifyAssignee>
         <operation>Literal</operation>
@@ -368,12 +482,329 @@
     <fieldUpdates>
         <fullName>Status_capo_riconsegnato_a_cliente</fullName>
         <field>Status__c</field>
-        <literalValue>Riconsegna al cliente effettuata</literalValue>
+        <literalValue>Prodotto consegnato al cliente</literalValue>
         <name>Status &quot;capo riconsegnato a cliente&quot;</name>
         <notifyAssignee>false</notifyAssignee>
         <operation>Literal</operation>
         <protected>false</protected>
     </fieldUpdates>
+    <rules>
+        <fullName>Alert Caricamento stock</fullName>
+        <active>true</active>
+        <description>Secondo alert per RT:
+
+Item from Stock _ IN BOUTIQUE (TAILOR)
+Item from Stock _ LOCAL EXTERNAL SERVICE</description>
+        <formula>AND( OR(   RecordType.Name = &apos;Item from Stock_External Service&apos;,  RecordType.Name = &apos;Item from Stock_In Boutique (Tailor)&apos; ),   OR(ISPICKVAL(Status__c, &quot;Prodotto Riparato&quot;), ISPICKVAL(Status__c, &quot;Prodotto riconsegnato in Boutique&quot;)), OR( NOT(ISNULL(Data_riparazione_prevista__c)),  NOT(ISNULL(Data_riparazione_prevista_modificata__c)) ))</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+        <workflowTimeTriggers>
+            <actions>
+                <name>Controllo_caricamento_stock</name>
+                <type>Alert</type>
+            </actions>
+            <offsetFromField>Dettaglio_Riparazione__c.Data_riparazione_prevista_modificata__c</offsetFromField>
+            <timeLength>1</timeLength>
+            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+        <workflowTimeTriggers>
+            <actions>
+                <name>Controllo_caricamento_stock</name>
+                <type>Alert</type>
+            </actions>
+            <offsetFromField>Dettaglio_Riparazione__c.Data_riparazione_prevista__c</offsetFromField>
+            <timeLength>1</timeLength>
+            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+    </rules>
+    <rules>
+        <fullName>Alert Controllo caricamento stock</fullName>
+        <active>true</active>
+        <description>Quinto alert per RT:
+
+ITEM FROM STOCK _ TO HEADQUARTER SOLOMEO</description>
+        <formula>AND( RecordType.Name = &apos;Riparazione Stock&apos;, ISPICKVAL(Status__c, &quot;Capo ricevuto in Boutique&quot;),  ISBLANK(Data_ritiro_prevista_cliente__c))</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+        <workflowTimeTriggers>
+            <actions>
+                <name>Controllo_caricamento_stock</name>
+                <type>Alert</type>
+            </actions>
+            <timeLength>5</timeLength>
+            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+    </rules>
+    <rules>
+        <fullName>Alert Controllo ritiro capo e chiusura riparazione</fullName>
+        <active>true</active>
+        <description>Second Alert per RT:
+
+Client Return _ IN BOUTIQUE (TAILOR)
+Client Return _ LOCAL EXTERNAL SERVICE</description>
+        <formula>AND(  OR( RecordType.Name = &apos;Riparazione Boutique - Tailor&apos;,   RecordType.Name = &apos;Riparazione Boutique - External Service&apos; ),   ISPICKVAL(Status__c, &quot;Cliente contattato&quot;),   OR( NOT(ISNULL(Data_riparazione_prevista__c)),   NOT(ISNULL(Data_riparazione_prevista_modificata__c)) ))</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+        <workflowTimeTriggers>
+            <actions>
+                <name>Controllo_ritiro_capo_e_chiusura_riparazione</name>
+                <type>Alert</type>
+            </actions>
+            <offsetFromField>Dettaglio_Riparazione__c.Data_riparazione_prevista__c</offsetFromField>
+            <timeLength>1</timeLength>
+            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+        <workflowTimeTriggers>
+            <actions>
+                <name>Controllo_ritiro_capo_e_chiusura_riparazione</name>
+                <type>Alert</type>
+            </actions>
+            <offsetFromField>Dettaglio_Riparazione__c.Data_riparazione_prevista_modificata__c</offsetFromField>
+            <timeLength>1</timeLength>
+            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+    </rules>
+    <rules>
+        <fullName>Alert Controllo ritiro capo e chiusura riparazione Sede</fullName>
+        <active>true</active>
+        <description>Sesto alert per RT:
+
+CLIENT RETURN _ TO HEADQUARTER SOLOMEO</description>
+        <formula>AND( RecordType.Name = &apos;Riparazione - Sede&apos;, NOT(ISNULL(Data_ritiro_prevista_cliente__c)), ISPICKVAL(Status__c, &quot;Prodotto consegnato al cliente&quot;) )</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+        <workflowTimeTriggers>
+            <actions>
+                <name>Controllo_ritiro_capo_e_chiusura_riparazione</name>
+                <type>Alert</type>
+            </actions>
+            <offsetFromField>Dettaglio_Riparazione__c.Data_ritiro_prevista_cliente__c</offsetFromField>
+            <timeLength>1</timeLength>
+            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+    </rules>
+    <rules>
+        <fullName>Alert Controllo ritiro divisa</fullName>
+        <active>true</active>
+        <description>Quinto alert per RT
+
+UNIFORM / PERSONAL ITEM _ TO HEADQUARTER SOLOMEO</description>
+        <formula>AND( RecordType.Name = &apos;Riparazione Uniform&apos;, ISPICKVAL(Status__c, &quot;Capo ricevuto in Boutique&quot;),  ISBLANK(Data_ritiro_prevista_cliente__c))</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+        <workflowTimeTriggers>
+            <actions>
+                <name>Controllo_ritiro_divisa</name>
+                <type>Alert</type>
+            </actions>
+            <timeLength>5</timeLength>
+            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+    </rules>
+    <rules>
+        <fullName>Alert Controllo ritiro divisa - local</fullName>
+        <active>true</active>
+        <description>Secondo alert per RT:
+
+Uniform/Personal Item _ IN BOUTIQUE (TAILOR)
+Uniform/Personal Item _ LOCAL EXTERNAL SERVICE</description>
+        <formula>AND( OR(   RecordType.Name = &apos;Uniform/Personal Item_In Boutique (Tailor)&apos;,  RecordType.Name = &apos;Uniform/Personal Item_External Service&apos; ),   OR(ISPICKVAL(Status__c, &quot;Prodotto Riparato&quot;), ISPICKVAL(Status__c, &quot;Prodotto riconsegnato&quot;)), OR( NOT(ISNULL(Data_riparazione_prevista__c)),  NOT(ISNULL(Data_riparazione_prevista_modificata__c)) ))</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+        <workflowTimeTriggers>
+            <actions>
+                <name>Controllo_ritiro_divisa</name>
+                <type>Alert</type>
+            </actions>
+            <offsetFromField>Dettaglio_Riparazione__c.Data_riparazione_prevista__c</offsetFromField>
+            <timeLength>1</timeLength>
+            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+        <workflowTimeTriggers>
+            <actions>
+                <name>Controllo_ritiro_divisa</name>
+                <type>Alert</type>
+            </actions>
+            <offsetFromField>Dettaglio_Riparazione__c.Data_riparazione_prevista_modificata__c</offsetFromField>
+            <timeLength>1</timeLength>
+            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+    </rules>
+    <rules>
+        <fullName>Alert Controllo stato riparazione e contatto cliente</fullName>
+        <active>true</active>
+        <description>Primo alert per RT:
+
+Client Return _ IN BOUTIQUE (TAILOR)
+Client Return _ LOCAL EXTERNAL SERVICE</description>
+        <formula>AND(OR( 	 RecordType.Name = &apos;Riparazione Boutique - External Service&apos;, 	 RecordType.Name = &apos;Riparazione Boutique - Tailor&apos; ), 	 ISPICKVAL(Status__c, &quot;Aperto&quot;),   NOT(ISNULL(Data_riparazione_prevista__c)) )</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+        <workflowTimeTriggers>
+            <actions>
+                <name>Controllo_stato_riparazione_e_contatto_cliente</name>
+                <type>Alert</type>
+            </actions>
+            <offsetFromField>Dettaglio_Riparazione__c.Data_riparazione_prevista__c</offsetFromField>
+            <timeLength>1</timeLength>
+            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+    </rules>
+    <rules>
+        <fullName>Alert Nota di chiusura</fullName>
+        <active>true</active>
+        <description>Sesto alert per RT:
+
+Repair Customer Care</description>
+        <formula>AND( RecordType.Name = &apos;Riparazione - Customer Care&apos;, NOT(ISNULL(Riparazione_completata_Note__c)), ISPICKVAL(Status__c, &quot;Prodotto consegnato al cliente&quot;) )</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+        <workflowTimeTriggers>
+            <actions>
+                <name>Sollecito_invio_verso_sede</name>
+                <type>Alert</type>
+            </actions>
+            <timeLength>2</timeLength>
+            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+    </rules>
+    <rules>
+        <fullName>Alert Riparazione effettuata CC</fullName>
+        <active>true</active>
+        <description>Quinto alert per RT
+
+Repair Customer Care</description>
+        <formula>AND( RecordType.Name = &apos;Riparazione - Customer Care&apos;, ISBLANK(Data_ritiro_prevista_cliente__c), ISPICKVAL(Status__c, &quot;Cliente contattato&quot;) )</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+        <workflowTimeTriggers>
+            <actions>
+                <name>Riparazione_effettuata_e_spedita</name>
+                <type>Alert</type>
+            </actions>
+            <timeLength>1</timeLength>
+            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+    </rules>
+    <rules>
+        <fullName>Alert Riparazione effettuata Sede</fullName>
+        <active>true</active>
+        <description>Quinto Alert per RT
+
+CLIENT RETURN _ TO HEADQUARTER SOLOMEO</description>
+        <formula>AND( RecordType.Name = &apos;Riparazione - Sede&apos;, ISPICKVAL(Status__c, &quot;Cliente contattato&quot;), ISBLANK(Data_ritiro_prevista_cliente__c) )</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+        <workflowTimeTriggers>
+            <actions>
+                <name>Riparazione_effettuata_e_spedita</name>
+                <type>Alert</type>
+            </actions>
+            <timeLength>5</timeLength>
+            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+    </rules>
+    <rules>
+        <fullName>Alert chiusura riparazione</fullName>
+        <active>true</active>
+        <description>Quarto alert per RT:
+
+CLIENT RETURN _ TO HEADQUARTER SOLOMEO
+Repair Customer Care
+UNIFORM / PERSONAL ITEM _ TO HEADQUARTER SOLOMEO
+ITEM FROM STOCK _ TO HEADQUARTER SOLOMEO</description>
+        <formula>AND( OR( NOT(ISNULL(Data_riparazione_prevista__c)), NOT(ISNULL(Data_riparazione_prevista_modificata__c)) ), ISPICKVAL(Status__c, &quot;Riparazione effettuata&quot;), OR( RecordType.Name = &apos;Riparazione Uniform&apos;, RecordType.Name = &apos;Riparazione Stock&apos;, RecordType.Name = &apos;Riparazione - Sede&apos;, RecordType.Name = &apos;Riparazione - Customer Care&apos; ))</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+        <workflowTimeTriggers>
+            <actions>
+                <name>Sollecito_invio_verso_sede</name>
+                <type>Alert</type>
+            </actions>
+            <offsetFromField>Dettaglio_Riparazione__c.Data_riparazione_prevista_modificata__c</offsetFromField>
+            <timeLength>1</timeLength>
+            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+        <workflowTimeTriggers>
+            <actions>
+                <name>Sollecito_invio_verso_sede</name>
+                <type>Alert</type>
+            </actions>
+            <offsetFromField>Dettaglio_Riparazione__c.Data_riparazione_prevista__c</offsetFromField>
+            <timeLength>1</timeLength>
+            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+    </rules>
+    <rules>
+        <fullName>Alert fine riparazione</fullName>
+        <active>true</active>
+        <description>Primo alert per RT
+
+Item from Stock _ IN BOUTIQUE (TAILOR)
+Item from Stock _ LOCAL EXTERNAL SERVICE
+Uniform/Personal Item _ IN BOUTIQUE (TAILOR)
+Uniform/Personal Item _ LOCAL EXTERNAL SERVICE</description>
+        <formula>AND(OR( 	 RecordType.Name = &apos;Uniform/Personal Item_In Boutique (Tailor)&apos;, 	 RecordType.Name = &apos;Uniform/Personal Item_External Service&apos;, 	 RecordType.Name = &apos;Item from Stock_External Service&apos;, 	 RecordType.Name = &apos;Item from Stock_In Boutique (Tailor)&apos; ), 	 ISPICKVAL(Status__c, &quot;Aperto&quot;),   NOT(ISNULL(Data_riparazione_prevista__c)) )</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+        <workflowTimeTriggers>
+            <actions>
+                <name>Sollecito_fine_riparazione</name>
+                <type>Alert</type>
+            </actions>
+            <offsetFromField>Dettaglio_Riparazione__c.Data_riparazione_prevista__c</offsetFromField>
+            <timeLength>1</timeLength>
+            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+    </rules>
+    <rules>
+        <fullName>Alert inserimento affidato a</fullName>
+        <active>true</active>
+        <description>Terzo alert per RT:
+
+CLIENT RETURN _ TO HEADQUARTER SOLOMEO
+Repair Customer Care
+UNIFORM / PERSONAL ITEM _ TO HEADQUARTER SOLOMEO
+ITEM FROM STOCK _ TO HEADQUARTER SOLOMEO</description>
+        <formula>AND( ISPICKVAL(Status__c, &quot;Ricevimento capo danneggiato in sede&quot;), ISBLANK(Affidato_a__c) )</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+        <workflowTimeTriggers>
+            <actions>
+                <name>Sollecito_invio_verso_sede</name>
+                <type>Alert</type>
+            </actions>
+            <timeLength>5</timeLength>
+            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+    </rules>
+    <rules>
+        <fullName>Alert inserimento n%2E autorizzazione</fullName>
+        <active>true</active>
+        <description>Primo alert per RT:
+
+CLIENT RETURN _ TO HEADQUARTER SOLOMEO
+Repair Customer Care
+UNIFORM / PERSONAL ITEM _ TO HEADQUARTER SOLOMEO
+ITEM FROM STOCK _ TO HEADQUARTER SOLOMEO</description>
+        <formula>AND( OR( ISPICKVAL(Status__c, &quot;Ricevimento capo danneggiato in boutique&quot;), ISPICKVAL(Status__c, &quot;Riparazione richiesta al Customer Care&quot;), ISPICKVAL(Status__c, &quot;Numero di autorizzazione inserito&quot;)), ISBLANK(Numero_Autorizzazione_Sede__c) )</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+        <workflowTimeTriggers>
+            <actions>
+                <name>Sollecito_invio_verso_sede</name>
+                <type>Alert</type>
+            </actions>
+            <timeLength>1</timeLength>
+            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+    </rules>
+    <rules>
+        <fullName>Alert inserimento n%2E tracking</fullName>
+        <active>true</active>
+        <description>Secondo alert per RT
+
+CLIENT RETURN _ TO HEADQUARTER SOLOMEO
+Repair Customer Care
+UNIFORM / PERSONAL ITEM _ TO HEADQUARTER SOLOMEO
+ITEM FROM STOCK _ TO HEADQUARTER SOLOMEO</description>
+        <formula>AND( ISPICKVAL(Status__c, &quot;Invio capo verso sede&quot;), ISBLANK(Tracking_Number_uscita__c ) )</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+        <workflowTimeTriggers>
+            <actions>
+                <name>Numero_Autorizzazione_inserito_ITA</name>
+                <type>Alert</type>
+            </actions>
+            <timeLength>3</timeLength>
+            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+    </rules>
     <rules>
         <fullName>Capo affidato e data riparazione prevista</fullName>
         <actions>
@@ -588,8 +1019,9 @@ ISCHANGED(Riparazione_completata_Note__c ), NOT(ISBLANK(Riparazione_completata_N
             <name>Close_Dettaglio_Riparazione</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>true</active>
-        <formula>ISCHANGED(Note_Avvenuta_Riconsegna__c) &amp;&amp; NOT(ISBLANK(Note_Avvenuta_Riconsegna__c))</formula>
+        <active>false</active>
+        <formula>/*ISCHANGED(Note_Avvenuta_Riconsegna__c) &amp;&amp; NOT(ISBLANK(Note_Avvenuta_Riconsegna__c))*/
+true</formula>
         <triggerType>onAllChanges</triggerType>
     </rules>
     <rules>
@@ -678,7 +1110,7 @@ CreatedBy.Language_Email__c = &quot;Italian&quot;)</formula>
     </rules>
     <rules>
         <fullName>Sollecito chiusura operazione %28da creazione%29</fullName>
-        <active>true</active>
+        <active>false</active>
         <criteriaItems>
             <field>Dettaglio_Riparazione__c.Status__c</field>
             <operation>notEqual</operation>
@@ -734,7 +1166,7 @@ CreatedBy.Language_Email__c = &quot;Italian&quot;)</formula>
     </rules>
     <rules>
         <fullName>Sollecito chiusura operazione %28da spedizione in boutique%29</fullName>
-        <active>true</active>
+        <active>false</active>
         <formula>AND(  NOT(ISPICKVAL(Status__c, &quot;Riconsegna al cliente effettuata&quot;)), NOT(ISPICKVAL(Status__c, &quot;Chiuso&quot;)),  NOT(ISNULL( Data_Spedizione_da_Solomeo__c )))</formula>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
         <workflowTimeTriggers>
@@ -776,7 +1208,7 @@ CreatedBy.Language_Email__c = &quot;Italian&quot;)</formula>
     </rules>
     <rules>
         <fullName>Sollecito fine riparazione</fullName>
-        <active>true</active>
+        <active>false</active>
         <formula>ISPICKVAL(Status__c, &quot;Riparazione effettuata&quot;) &amp;&amp; NOT(ISNULL( Data_affidamento_riparazione__c ))</formula>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
         <workflowTimeTriggers>
@@ -818,7 +1250,7 @@ CreatedBy.Language_Email__c = &quot;Italian&quot;)</formula>
     </rules>
     <rules>
         <fullName>Sollecito spedizione verso sede</fullName>
-        <active>true</active>
+        <active>false</active>
         <formula>ISPICKVAL(Status__c, &quot;Invio capo verso sede&quot;) &amp;&amp; NOT(ISNULL(Data_accettazione_richiesta__c))</formula>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
         <workflowTimeTriggers>
@@ -888,5 +1320,200 @@ CreatedBy.Language_Email__c = &quot;Italian&quot;)</formula>
         <formula>AND(RecordType.DeveloperName = &quot;Riparazione_Sede&quot;, 
 ISCHANGED( Tracking_Number_uscita__c ), NOT(ISBLANK(Tracking_Number_uscita__c )))</formula>
         <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Update Status Capo ricevuto in Boutique</fullName>
+        <actions>
+            <name>Aggiornamento_Stato_Capo_Ricevuto</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>Aggiornamento Status per RT
+
+UNIFORM / PERSONAL ITEM _ TO HEADQUARTER SOLOMEO
+ITEM FROM STOCK _ TO HEADQUARTER SOLOMEO</description>
+        <formula>AND( OR( RecordType.Name = &apos;Riparazione Stock&apos;, RecordType.Name = &apos;Riparazione Uniform&apos;), ISPICKVAL(Status__c, &quot;Riparazione effettuata&quot;), OR(NOT(ISBLANK(Riparazione_completata_Note__c)), NOT(ISBLANK(TEXT(Prodotto_riparato__c)))) )</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Update Status Chiuso</fullName>
+        <actions>
+            <name>Close_Dettaglio_Riparazione</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>Aggiorna lo status in chiuso dopo inserimento ultimi key field per tutti i RT</description>
+        <formula>OR(
+AND(
+ISCHANGED(Note_Avvenuta_Riconsegna__c),
+NOT(ISBLANK(TEXT(Note_Avvenuta_Riconsegna__c))),
+RecordType.Name &lt;&gt; &apos;Riparazione Boutique - External Service&apos;,
+RecordType.Name &lt;&gt; &apos;Item from Stock_External Service&apos;,
+RecordType.Name &lt;&gt; &apos;Item from Stock_In Boutique (Tailor)&apos;,
+RecordType.Name &lt;&gt; &apos;Riparazione Stock&apos;,
+RecordType.Name &lt;&gt; &apos;Riparazione Uniform&apos;,
+RecordType.Name &lt;&gt; &apos;Uniform/Personal Item_In Boutique (Tailor)&apos;,
+RecordType.Name &lt;&gt; &apos;Uniform/Personal Item_External Service&apos;
+),
+/* Riparazioni Stock e Uniform */
+AND(
+OR(
+RecordType.Name = &apos;Riparazione Stock&apos;,
+RecordType.Name = &apos;Riparazione Uniform&apos;),
+ISPICKVAL(Status__c, &quot;Capo ricevuto in Boutique&quot;),
+OR(NOT(ISBLANK(TEXT(Ritirato__c))),
+NOT(ISBLANK(TEXT(Prodotto_caricato_a_stock__c))))),
+/* Riparazione External Service */
+AND(
+RecordType.Name = &apos;Riparazione Boutique - External Service&apos;,
+NOT(ISBLANK(TEXT(Note_Avvenuta_Riconsegna__c))),
+NOT(ISBLANK(Costo__c)),
+NOT(ISBLANK(TEXT(CurrencyIsoCode))),
+NOT(ISBLANK(Fornitore__c))
+),
+/* Item from Stock_In Boutique (Tailor) */
+AND(
+RecordType.Name = &apos;Item from Stock_In Boutique (Tailor)&apos;,
+ISCHANGED(Prodotto_caricato_a_stock__c),
+NOT(ISBLANK(TEXT(Prodotto_caricato_a_stock__c)))),
+/* Item from Stock_External Service */
+AND(
+RecordType.Name = &apos;Item from Stock_External Service&apos;,
+ISCHANGED(Prodotto_caricato_a_stock__c),
+NOT(ISBLANK(TEXT(Prodotto_caricato_a_stock__c))),
+NOT(ISBLANK(Costo__c)),
+NOT(ISBLANK(TEXT(CurrencyIsoCode))),
+NOT(ISBLANK(Fornitore__c))),
+/* Uniform/Personal Item_In Boutique (Tailor) */
+AND(
+RecordType.Name = &apos;Uniform/Personal Item_In Boutique (Tailor)&apos;,
+NOT(ISBLANK(TEXT(Note_Avvenuta_Riconsegna__c))),
+NOT(ISBLANK(TEXT(Ritirato__c)))),
+/* Uniform/Personal Item_External Service */
+AND(
+RecordType.Name = &apos;Uniform/Personal Item_External Service&apos;,
+NOT(ISBLANK(TEXT(Note_Avvenuta_Riconsegna__c))),
+NOT(ISBLANK(TEXT(Ritirato__c))),
+NOT(ISBLANK(Fornitore__c)),
+NOT(ISBLANK(TEXT(CurrencyIsoCode))),
+NOT(ISBLANK(Fornitore__c)))
+)</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Update Status Cliente contattato</fullName>
+        <actions>
+            <name>Status_Repaired_Product_Shipped</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>Aggiornamento status per RT
+
+CLIENT RETURN _ TO HEADQUARTER SOLOMEO
+Repair Customer Care</description>
+        <formula>AND( OR( RecordType.DeveloperName = &quot;Riparazione_Sede&quot;,  RecordType.DeveloperName = &quot;Riparazione_Customer_Care&quot;),  ISCHANGED(Riparazione_completata_Note__c ), NOT(ISBLANK(Riparazione_completata_Note__c )))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Update Status Invio verso sede</fullName>
+        <actions>
+            <name>Stato_inviato_verso_sede</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>Aggiornamento status per RT
+
+CLIENT RETURN _ TO HEADQUARTER SOLOMEO
+Repair Customer Care
+UNIFORM / PERSONAL ITEM _ TO HEADQUARTER SOLOMEO
+ITEM FROM STOCK _ TO HEADQUARTER SOLOMEO</description>
+        <formula>AND (OR( RecordType.DeveloperName = &quot;Riparazione_Sede&quot;,  RecordType.DeveloperName = &quot;Riparazione_Customer_Care&quot;, RecordType.DeveloperName = &quot;Riparazione_Stock&quot;, RecordType.DeveloperName = &quot;Riparazione_Uniform&quot;),  ISCHANGED( Numero_Autorizzazione_Sede__c ),  !ISBLANK(Numero_Autorizzazione_Sede__c ))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Update Status Prodotto consegnato al cliente</fullName>
+        <actions>
+            <name>Customer_contacted</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>Dopo inserimento Data ritiro prevista cliente inserita per RT
+
+CLIENT RETURN _ TO HEADQUARTER SOLOMEO
+Repair Customer Care</description>
+        <formula>AND (OR( RecordType.DeveloperName = &quot;Riparazione_Sede&quot;,  RecordType.DeveloperName = &quot;Riparazione_Customer_Care&quot;),  ISCHANGED( Data_ritiro_prevista_cliente__c ),  !ISBLANK(Data_ritiro_prevista_cliente__c ))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Update Status Prodotto consegnato clt Tailor - External</fullName>
+        <actions>
+            <name>Status_capo_riconsegnato_a_cliente</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>Aggiornamento status Prodotto consegnato al cliente per RT
+
+Client Return _ IN BOUTIQUE (TAILOR)
+Client Return _ LOCAL EXTERNAL SERVICE</description>
+        <formula>AND(  NOT(ISNULL(Data_ritiro_prevista_cliente__c)), ISPICKVAL(Status__c, &quot;Cliente contattato&quot;),  OR( RecordType.Name = &apos;Riparazione Boutique - External Service&apos;, RecordType.Name = &apos;Riparazione Boutique - Tailor&apos; ))</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Update Status Prodotto riconsegnato</fullName>
+        <actions>
+            <name>Aggiornamento_Prodotto_consegnato</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>Aggiornamento status per RT:
+
+Uniform/Personal Item _ LOCAL EXTERNAL SERVICE</description>
+        <formula>AND( RecordType.Name = &apos;Uniform/Personal Item_External Service&apos;, NOT(ISBLANK(TEXT(Prodotto_riparato__c))), ISPICKVAL(Status__c, &quot;Prodotto in Riparazione&quot;), NOT(ISBLANK(Riparazione_completata_Note__c)) )</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Update Status Prodotto riconsegnato in Boutique</fullName>
+        <actions>
+            <name>Aggiornamento_Prodotto_riconsegnato</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>Aggiornamento status per RT
+
+Item from Stock _ LOCAL EXTERNAL SERVICE</description>
+        <formula>AND( RecordType.Name = &apos;Item from Stock_External Service&apos;, NOT(ISBLANK(TEXT(Prodotto_riparato__c))), ISPICKVAL(Status__c, &quot;Prodotto in Riparazione&quot;), NOT(ISBLANK(Riparazione_completata_Note__c)) )</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Update Status Prodotto riparato</fullName>
+        <actions>
+            <name>Aggiornamento_Prodotto_Riparato</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>Aggiornamento status per RT
+
+Item from Stock _ IN BOUTIQUE (TAILOR)
+Uniform/Personal Item _ IN BOUTIQUE (TAILOR)</description>
+        <formula>AND(OR(  RecordType.Name = &apos;Uniform/Personal Item_In Boutique (Tailor)&apos;,  RecordType.Name = &apos;Item from Stock_In Boutique (Tailor)&apos;),   NOT(ISBLANK(TEXT(Prodotto_riparato__c))), ISPICKVAL(Status__c, &quot;Prodotto in Riparazione&quot;),  NOT(ISBLANK(Riparazione_completata_Note__c)) )</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Valorizza Data Contatto Cliente</fullName>
+        <actions>
+            <name>Data_contatto_cliente</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>WF per il calcolo del campo Data contatto cliente e del contatore
+Durata Processo Riparazione (giorni)</description>
+        <formula>OR(
+ISPICKVAL(Status__c, &quot;Cliente Contattato&quot;),
+ISPICKVAL(Status__c, &quot;Capo ricevuto in Boutique&quot;),
+ISPICKVAL(Status__c, &quot;Prodotto Riparato&quot;),
+ISPICKVAL(Status__c, &quot;Prodotto riconsegnato in Boutique&quot;),
+ISPICKVAL(Status__c, &quot;Prodotto riconsegnato&quot;)
+)</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>
 </Workflow>

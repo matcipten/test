@@ -152,14 +152,26 @@
         <label>Client Advisor</label>
         <lookupFilter>
             <active>true</active>
+            <booleanFilter>(1 AND 2) OR 3</booleanFilter>
             <filterItems>
                 <field>Associated__c.Id_Location_Micros__c</field>
                 <operation>equals</operation>
                 <valueField>$User.Codice_Boutique__c</valueField>
             </filterItems>
+            <filterItems>
+                <field>$Profile.Name</field>
+                <operation>equals</operation>
+                <value>BC - Associate, BC - Boutique</value>
+            </filterItems>
+            <filterItems>
+                <field>$Profile.Name</field>
+                <operation>notEqual</operation>
+                <value>BC - Associate, BC - Boutique</value>
+            </filterItems>
             <isOptional>true</isOptional>
         </lookupFilter>
         <referenceTo>Associated__c</referenceTo>
+        <relationshipLabel>Repairs (Client Advisor)</relationshipLabel>
         <relationshipName>Dettagli_Riparazioni</relationshipName>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
@@ -2322,7 +2334,6 @@
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
-            <restricted>true</restricted>
             <valueSetDefinition>
                 <sorted>false</sorted>
                 <value>
@@ -2359,11 +2370,6 @@
                     <fullName>Spedizione capo riparato effettuata</fullName>
                     <default>false</default>
                     <label>Spedizione capo riparato effettuata</label>
-                </value>
-                <value>
-                    <fullName>Ricevimento capo riparato in boutique</fullName>
-                    <default>false</default>
-                    <label>Ricevimento capo riparato in boutique</label>
                 </value>
                 <value>
                     <fullName>Riconsegna al cliente effettuata</fullName>
@@ -2414,6 +2420,11 @@
                     <fullName>Chiuso</fullName>
                     <default>false</default>
                     <label>Chiuso</label>
+                </value>
+                <value>
+                    <fullName>Ricevimento capo riparato in boutique</fullName>
+                    <default>false</default>
+                    <label>Ricevimento capo riparato in boutique</label>
                 </value>
             </valueSetDefinition>
         </valueSet>

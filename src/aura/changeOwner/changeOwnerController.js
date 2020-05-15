@@ -19,4 +19,8 @@
 
 		
     },
+
+    onWorkAccepted: function(component, event, helper) {        
+        helper.setCheckHours(component,event);
+    }
 })

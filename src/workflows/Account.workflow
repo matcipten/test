@@ -227,6 +227,15 @@
         <protected>false</protected>
     </fieldUpdates>
     <fieldUpdates>
+        <fullName>Update_Associate_ID</fullName>
+        <field>Id_Associate__c</field>
+        <formula>Associate__r.Id_Associate_Micros__c</formula>
+        <name>Update Associate ID</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
         <fullName>Update_Categoria_Cliente</fullName>
         <field>Categoria_Cliente__c</field>
         <formula>Categoria_Cliente_Shadow__c</formula>
@@ -286,6 +295,16 @@
             <value>False</value>
         </criteriaItems>
         <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Ricalcolo ID Assegnazione Clienti</fullName>
+        <actions>
+            <name>Update_Associate_ID</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>NOT($User.Id = $Setup.BC_Settings__c.Id_Admin_Ten__c) &amp;&amp; ISCHANGED(Associate__c) &amp;&amp; NOT(ISBLANK(Associate__c))</formula>
+        <triggerType>onAllChanges</triggerType>
     </rules>
     <rules>
         <fullName>Utente Registrato E-commerce Yoox</fullName>

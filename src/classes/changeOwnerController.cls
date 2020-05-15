@@ -36,6 +36,9 @@ public class changeOwnerController {
                 
                 if(c.OwnerId == cH.NewValue){
                     c.OwnerId=cH.OldValue.toString();
+                    //PALUMBO (START)
+                    c.Assegnato_Da_OmniChannel__c = false;
+                    //PALUMBO (END)
                 } 
             caseMap.put(ch.CaseId, c);
             
@@ -45,4 +48,16 @@ public class changeOwnerController {
         update caseMap.values();
 
     }
+
+    //PALUMBO (START)
+    @AuraEnabled
+    public static void setOmniChannel(Id userId, String caseId){
+        List<Case> cases = [SELECT BusinessHoursId FROM Case WHERE Id=: caseId];
+        if (!cases.isEmpty()){
+            Case c = cases.get(0);
+            c.Assegnato_Da_OmniChannel__c = true;
+            update c;
+        }
+    }
+    //PALUMBO (END)
 }

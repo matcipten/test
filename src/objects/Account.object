@@ -8235,6 +8235,11 @@ IF (OUT_PHONE_CODE1__c =2 &amp;&amp; OUT_PHONE_CODE2__c =2, IMAGE(&apos;/resourc
                     <default>false</default>
                     <label>Unemployed</label>
                 </value>
+                <value>
+                    <fullName>Stylist</fullName>
+                    <default>false</default>
+                    <label>Stylist</label>
+                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
@@ -11609,6 +11614,13 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
             </values>
         </picklistValues>
         <picklistValues>
+            <picklist>Professione__c</picklist>
+            <values>
+                <fullName>Stylist</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
             <picklist>Rating</picklist>
             <values>
                 <fullName>Cold</fullName>
@@ -12314,6 +12326,13 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
             </values>
             <values>
                 <fullName>Short Messages</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Professione__c</picklist>
+            <values>
+                <fullName>Stylist</fullName>
                 <default>false</default>
             </values>
         </picklistValues>

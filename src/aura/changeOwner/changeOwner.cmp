@@ -3,5 +3,7 @@
     <lightning:omniToolkitAPI aura:id="omniToolkit" />  
     <aura:handler name="init" value="this" action="{!c.doInit}"/>
     <aura:handler event="lightning:omniChannelLogout" action="{! c.onLogout }"/>
-    
+    <!-- PALUMBO START -->
+    <aura:handler event="lightning:omniChannelWorkAccepted" action="{!c.onWorkAccepted}"/>
+    <!-- PALUMBO END -->
 </aura:component>

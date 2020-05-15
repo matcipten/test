@@ -1,6 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
     <alerts>
+        <fullName>Alert_First_Escalation_Status_New_Reassigned</fullName>
+        <description>Alert First Escalation Status New &amp; Reassigned</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Escalation_Template_1st_Level</template>
+    </alerts>
+    <alerts>
+        <fullName>Alert_First_Escalation_Status_Reply_Received</fullName>
+        <description>Alert First Escalation Status Reply Received</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Escalation_Template_1st_Level_Reply_Rec</template>
+    </alerts>
+    <alerts>
+        <fullName>Alert_Second_Escalation_Status_New_Reassigned</fullName>
+        <description>Alert Second Escalation Status New &amp; Reassigned</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Mail_Owner_s_Manager__c</field>
+            <type>email</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Escalation_Template_2nd_Level</template>
+    </alerts>
+    <alerts>
+        <fullName>Alert_Second_Escalation_Status_Reply_Received</fullName>
+        <description>Alert Second Escalation Status Reply Received</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Mail_Owner_s_Manager__c</field>
+            <type>email</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Escalation_Template_2nd_Level_Reply_Rec</template>
+    </alerts>
+    <alerts>
         <fullName>Auto_Reply_Customer_Care_Americano</fullName>
         <description>Auto-Reply Customer Care Americano</description>
         <protected>false</protected>
@@ -871,10 +913,37 @@
         <protected>false</protected>
     </fieldUpdates>
     <fieldUpdates>
+        <fullName>Update_New_Shadow_T</fullName>
+        <field>Status_New_First_Shadow__c</field>
+        <literalValue>1</literalValue>
+        <name>Update New Shadow T</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Reasigned_Shadow_T</fullName>
+        <field>Status_Reassigned_First_Shadow__c</field>
+        <literalValue>1</literalValue>
+        <name>Update Reasigned Shadow T</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
         <fullName>Update_Reopen_Case</fullName>
         <field>Reopen__c</field>
         <literalValue>1</literalValue>
         <name>Update Reopen Case</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Reply_Receiv_Shadow_T</fullName>
+        <field>Status_Reply_Received_First_Shadow__c</field>
+        <literalValue>1</literalValue>
+        <name>Update Reply Receiv Shadow T</name>
         <notifyAssignee>false</notifyAssignee>
         <operation>Literal</operation>
         <protected>false</protected>
