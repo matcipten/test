@@ -73,6 +73,35 @@
         <visibleLines>5</visibleLines>
     </fields>
     <fields>
+        <fullName>Business_Hour_lun_ven__c</fullName>
+        <externalId>false</externalId>
+        <label>Business Hour (lun-ven)</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Roma 8-22</fullName>
+                    <default>false</default>
+                    <label>Roma 8-22</label>
+                </value>
+                <value>
+                    <fullName>New York 8.30-13; 14.30-17.30</fullName>
+                    <default>false</default>
+                    <label>New York 8.30-13; 14.30-17.30</label>
+                </value>
+                <value>
+                    <fullName>Shanghai 8-13; 14.30-17.30</fullName>
+                    <default>false</default>
+                    <label>Shanghai 8-13; 14.30-17.30</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
         <fullName>Canale_di_Vendita__c</fullName>
         <externalId>false</externalId>
         <label>Canale di Vendita</label>
@@ -103,7 +132,6 @@
     </fields>
     <fields>
         <fullName>Codice_Associate__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Codice Associate</label>
         <length>100</length>
@@ -114,7 +142,6 @@
     </fields>
     <fields>
         <fullName>Codice_Boutique__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Codice Boutique</label>
         <length>100</length>
@@ -125,7 +152,6 @@
     </fields>
     <fields>
         <fullName>CurrencyISOcode__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>CurrencyISOcode</label>
         <length>100</length>
@@ -163,7 +189,6 @@
     </fields>
     <fields>
         <fullName>Id_Store_Manager__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Id Store Manager</label>
         <length>18</length>
@@ -186,7 +211,6 @@
     </fields>
     <fields>
         <fullName>Language_Email__c</fullName>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Language_Email</label>
         <length>100</length>
@@ -233,7 +257,6 @@
     <fields>
         <fullName>et4ae5__Default_ET_Page__c</fullName>
         <deprecated>false</deprecated>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Default Marketing Cloud Page</label>
         <length>255</length>
@@ -245,7 +268,6 @@
     <fields>
         <fullName>et4ae5__Default_MID__c</fullName>
         <deprecated>false</deprecated>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Default MID</label>
         <length>20</length>
@@ -275,7 +297,6 @@
     <fields>
         <fullName>et4ae5__ExactTargetUsername__c</fullName>
         <deprecated>false</deprecated>
-        <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Marketing Cloud Username</label>
         <length>255</length>
@@ -350,13 +371,14 @@
     </listViews>
     <listViews>
         <fullName>AdminUsers</fullName>
-        <booleanFilter>1 OR 2</booleanFilter>
+        <booleanFilter>(1 OR 2) and 3</booleanFilter>
         <columns>FULL_NAME</columns>
         <columns>CORE.USERS.ALIAS</columns>
         <columns>CORE.USERS.USERNAME</columns>
         <columns>CORE.USERS.LAST_LOGIN</columns>
         <columns>CORE.USER_ROLE.NAME</columns>
         <columns>CORE.USERS.ACTIVE</columns>
+        <columns>CORE.PROFILE.NAME</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>CORE.PROFILE.NAME</field>
@@ -365,8 +387,13 @@
         </filters>
         <filters>
             <field>CORE.PROFILE.NAME</field>
+            <operation>contains</operation>
+            <value>admin</value>
+        </filters>
+        <filters>
+            <field>CORE.USERS.ACTIVE</field>
             <operation>equals</operation>
-            <value>Amministratore del Sistema</value>
+            <value>1</value>
         </filters>
         <label>Utenti amministratore</label>
         <language>it</language>
@@ -482,6 +509,7 @@
     </listViews>
     <listViews>
         <fullName>Associate_IT</fullName>
+        <booleanFilter>2 AND 3 AND (1 OR 4)</booleanFilter>
         <columns>FULL_NAME</columns>
         <columns>CORE.USERS.ALIAS</columns>
         <columns>CORE.USERS.USERNAME</columns>
@@ -509,6 +537,11 @@
             <field>CORE.USERS.ADDRESS_COUNTRY</field>
             <operation>equals</operation>
             <value>IT</value>
+        </filters>
+        <filters>
+            <field>CORE.PROFILE.NAME</field>
+            <operation>contains</operation>
+            <value>boutique</value>
         </filters>
         <label>Associate IT</label>
         <language>en_US</language>
@@ -657,7 +690,7 @@
     </listViews>
     <listViews>
         <fullName>Boutiques_China</fullName>
-        <booleanFilter>1 AND (2 OR 3 OR 4) AND 5</booleanFilter>
+        <booleanFilter>1 AND (2 OR 3 OR 4)</booleanFilter>
         <columns>FULL_NAME</columns>
         <columns>Codice_Boutique__c</columns>
         <columns>CORE.USERS.USERNAME</columns>
@@ -674,24 +707,19 @@
             <value>boutique</value>
         </filters>
         <filters>
-            <field>CORE.USERS.ADDRESS_COUNTRY</field>
+            <field>Nation_Contact_Card__c</field>
             <operation>equals</operation>
             <value>CN</value>
         </filters>
         <filters>
-            <field>CORE.USERS.ADDRESS_COUNTRY</field>
+            <field>Nation_Contact_Card__c</field>
             <operation>equals</operation>
             <value>MO</value>
         </filters>
         <filters>
-            <field>CORE.USERS.ADDRESS_COUNTRY</field>
+            <field>Nation_Contact_Card__c</field>
             <operation>equals</operation>
             <value>HK</value>
-        </filters>
-        <filters>
-            <field>CORE.USERS.ACTIVE</field>
-            <operation>equals</operation>
-            <value>1</value>
         </filters>
         <label>Boutiques China</label>
         <language>it</language>
@@ -806,6 +834,11 @@
             <operation>equals</operation>
             <value>BC - Customer Care 1° Level US,BC - Customer Care 2° Level US</value>
         </filters>
+        <filters>
+            <field>CORE.USERS.ACTIVE</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
         <label>Customer Care US</label>
         <language>en_US</language>
     </listViews>
@@ -899,6 +932,7 @@
         <columns>CREATED_DATE</columns>
         <columns>CurrencyISOcode__c</columns>
         <columns>Codice_Boutique__c</columns>
+        <columns>Codice_Associate__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>CORE.PROFILE.NAME</field>
@@ -937,6 +971,11 @@
             <field>CORE.USERS.USERNAME</field>
             <operation>contains</operation>
             <value>usa.com</value>
+        </filters>
+        <filters>
+            <field>CORE.USERS.ACTIVE</field>
+            <operation>equals</operation>
+            <value>1</value>
         </filters>
         <label>Associate US</label>
         <language>en_US</language>
@@ -987,7 +1026,7 @@
         <filterScope>Everything</filterScope>
         <filters>
             <field>CORE.PROFILE.NAME</field>
-            <operation>contains</operation>
+            <operation>startsWith</operation>
             <value>BC -</value>
         </filters>
         <filters>

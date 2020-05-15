@@ -54,7 +54,7 @@ public without sharing class CaseMilestoneAction {
 				// COMPLETA IL CASE MILESTONE CORRETTO
 				List<CaseMilestone> cmList = mapCaseMilestone.get(c.Id);
 
-				if(cmList != null && !cmList.isEmpty()){
+				if(primaRispostaMT != null && cmList != null && !cmList.isEmpty()){
 					for(CaseMilestone cm : cmList){
 						if(cm.MilestoneTypeId == primaRispostaMT.Id && !cm.isCompleted){
 							System.debug('COMPLETA IL MILESTONE DI PRIMA RISPOSTA');
@@ -70,7 +70,7 @@ public without sharing class CaseMilestoneAction {
 				// COMPLETA IL CASE MILESTONE CORRETTO
 				List<CaseMilestone> cmList = mapCaseMilestone.get(c.Id);
 
-				if(cmList != null && !cmList.isEmpty()){
+				if(chiusuraCasoMT != null && cmList != null && !cmList.isEmpty()){
 					for(CaseMilestone cm : cmList){
 						if(cm.MilestoneTypeId == chiusuraCasoMT.Id && !cm.isCompleted){
 							System.debug('COMPLETA IL MILESTONE DI CHIUSURA CASO');
@@ -88,5 +88,24 @@ public without sharing class CaseMilestoneAction {
 		if(!cm2Update.isEmpty()){
 			update cm2Update;
 		}
+	}
+
+	public static void checkMilestoneStatus(List<Case> cases){
+		List<Id> caseToWork = new List<Id>();
+		for (Case c : cases){            
+            if (c.Status_New_First_Shadow__c || c.Status_Reassigned_First_Shadow__c || c.Status_Reply_Received_First_Shadow__c){         
+                caseToWork.add(c.Id);
+            }
+		}		
+		
+		if (!caseToWork.isEmpty()){
+			dummyUpdate(caseToWork);
+		}		
+	}
+
+	@future
+	private static void dummyUpdate(List<Id> cases){
+		System.debug('future method called');
+		update [SELECT Id FROM Case WHERE Id IN: cases];
 	}
 }

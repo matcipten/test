@@ -147,4 +147,67 @@ public class OnContentDocumentTriggerHandler {
 			);
 
 	}
+	
+	public static void ImageDeleteActTracking(list<ContentDocument> listContentDocument){
+		system.debug('fire delete trigger');
+		system.debug('listContentDocument '+ listContentDocument);
+
+		Boolean isImage = false;
+
+		for(ContentDocument doc : listContentDocument){
+			if(doc.FileType == 'PNG'|| doc.FileType == 'JPG'){
+				isImage = true;
+			}
+		}		
+
+		if(isImage){
+
+			set<Id> cDocListId = new set<Id>();
+			for(ContentDocument doc : listContentDocument){
+            	cDocListId.add(doc.Id);
+			}
+		
+			system.debug('cDocListId: ' + cDocListId);
+
+        	List<ContentDocumentLink> listAttach =  [ SELECT Id, ContentDocumentID,LinkedEntityId  
+                                                 	FROM ContentDocumentLink 
+												 	WHERE ContentDocumentID IN : cDocListId ];
+			system.debug('listAttach: ' + listAttach);
+			set<Id> actId = new set<Id>();												 
+			for(ContentDocumentLink cnl : listAttach){
+				if(string.valueOf(cnl.LinkedEntityId).startsWith('a1M')){
+					actId.add(cnl.LinkedEntityId);
+				}
+			}		
+			system.debug('ActivityTrackingId: ' + actId);
+
+        	List<ContentDocumentLink> totalListAttach =  [ SELECT Id, ContentDocument.Id,LinkedEntity.Id,SystemModstamp, ContentDocument.LatestPublishedVersionId   
+                                                 	FROM ContentDocumentLink 
+													 WHERE LinkedEntity.Id IN : actId 
+													 AND ContentDocument.Id != :cDocListId 
+													 AND (ContentDocument.FileType = 'PNG' OR ContentDocument.FileType = 'JPG') ORDER BY SystemModstamp desc];
+													 			
+			system.debug('totalListAttach: ' + totalListAttach);
+			//system.debug('my version '+totalListAttach[0].ContentDocument.LatestPublishedVersionId);
+
+        	List<Activity_tracking__c > activityList = new List<Activity_tracking__c >([SELECT Id,Image_Reference__c FROM Activity_tracking__c WHERE Id IN : actId]);
+			system.debug('activityList: ' + activityList);
+			
+			if(totalListAttach.size()>0){
+        		for(Activity_tracking__c act : activityList){
+            		act.Image_Reference__c = totalListAttach[0].ContentDocument.LatestPublishedVersionId;
+            		update act;
+				}
+			} else {
+				for(Activity_tracking__c act : activityList){
+            		act.Image_Reference__c = null;
+            		update act;
+				}	
+			}	
+		} else {
+			System.debug('Do Nothing');
+		}
+	}
+
+
 }

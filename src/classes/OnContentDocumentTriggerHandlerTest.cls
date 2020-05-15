@@ -24,9 +24,18 @@ public class OnContentDocumentTriggerHandlerTest {
 			ContentDocumentLink cDe = AllDataFactory.create_ContentDocumentLink(cv);
 			cDe.LinkedEntityId = acc.Id;
 			insert cDe;
+			
+            Activity_tracking__c act = AllDataFactory.create_Activity_Tracking('One_To_One');
+			insert act;
 
+			ContentDocumentLink cDetrac = AllDataFactory.create_ContentDocumentLink(cv);
+			cDetrac.LinkedEntityId = act.Id;
+			insert cDetrac;
+			
 			ContentVersion contentVersionSelect = [SELECT Id, Title, ContentDocumentId FROM ContentVersion WHERE Id = :cv.Id LIMIT 1];
 			List<ContentDocument> documents = [SELECT Id, Title, LatestPublishedVersionId FROM ContentDocument WHERE Id = : contentVersionSelect.ContentDocumentId];
+			
+			
 			delete(documents);
 		}
 		Test.stopTest();

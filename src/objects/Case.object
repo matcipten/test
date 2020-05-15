@@ -239,6 +239,16 @@
         </valueSet>
     </fields>
     <fields>
+        <fullName>Assegnato_Da_OmniChannel__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Assegnato Da OmniChannel</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>AssetId</fullName>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
@@ -1161,6 +1171,29 @@ IF(FLOOR(( ClosedDate - CreatedDate ) * 24) &gt; 23, TEXT( FLOOR (DATETIMEVALUE(
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Mail_Owner_s_Manager__c</fullName>
+        <externalId>false</externalId>
+        <label>Mail Owner&apos;s Manager</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Manager_Name__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(OR(OwnerId = Owner:Queue.Id,ISBLANK(Owner:User.ManagerId)),&apos;Giorgia Alunni&apos;,  Owner:User.Manager.FirstName  &amp;  &apos;&apos; &amp; Owner:User.Manager.LastName  )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Manager Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Micro_Categoria_Colore__c</fullName>
         <externalId>false</externalId>
         <label>Micro Categoria Colore</label>
@@ -2052,6 +2085,11 @@ IF(FLOOR(( ClosedDate - CreatedDate ) * 24) &gt; 23, TEXT( FLOOR (DATETIMEVALUE(
             <valueSettings>
                 <controllingFieldValue>Acquisti Negozio</controllingFieldValue>
                 <controllingFieldValue>Acquisti E-commerce</controllingFieldValue>
+                <valueName>Cambi e resi</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Acquisti Negozio</controllingFieldValue>
+                <controllingFieldValue>Acquisti E-commerce</controllingFieldValue>
                 <controllingFieldValue>Proposte collaborazione</controllingFieldValue>
                 <valueName>Boutique</valueName>
             </valueSettings>
@@ -2064,16 +2102,6 @@ IF(FLOOR(( ClosedDate - CreatedDate ) * 24) &gt; 23, TEXT( FLOOR (DATETIMEVALUE(
                 <controllingFieldValue>Acquisti Negozio</controllingFieldValue>
                 <controllingFieldValue>Acquisti E-commerce</controllingFieldValue>
                 <valueName>Regali</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Acquisti Negozio</controllingFieldValue>
-                <controllingFieldValue>Acquisti E-commerce</controllingFieldValue>
-                <valueName>Informazioni su policy di acquisto</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Acquisti Negozio</controllingFieldValue>
-                <controllingFieldValue>Acquisti E-commerce</controllingFieldValue>
-                <valueName>Cambi e resi</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Acquisti Negozio</controllingFieldValue>
@@ -2090,6 +2118,15 @@ IF(FLOOR(( ClosedDate - CreatedDate ) * 24) &gt; 23, TEXT( FLOOR (DATETIMEVALUE(
                 <valueName>Acquisti</valueName>
             </valueSettings>
             <valueSettings>
+                <controllingFieldValue>Acquisti Negozio</controllingFieldValue>
+                <controllingFieldValue>Acquisti E-commerce</controllingFieldValue>
+                <valueName>Informazioni su policy di acquisto</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Acquisti E-commerce</controllingFieldValue>
+                <valueName>Disponibilità in negozio</valueName>
+            </valueSettings>
+            <valueSettings>
                 <controllingFieldValue>Acquisti E-commerce</controllingFieldValue>
                 <valueName>Can&apos;t find my size</valueName>
             </valueSettings>
@@ -2101,10 +2138,6 @@ IF(FLOOR(( ClosedDate - CreatedDate ) * 24) &gt; 23, TEXT( FLOOR (DATETIMEVALUE(
             <valueSettings>
                 <controllingFieldValue>Acquisti E-commerce</controllingFieldValue>
                 <valueName>Spedizioni</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Acquisti E-commerce</controllingFieldValue>
-                <valueName>Disponibilità in negozio</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Acquisti E-commerce</controllingFieldValue>
@@ -2362,6 +2395,36 @@ IF(FLOOR(( ClosedDate - CreatedDate ) * 24) &gt; 23, TEXT( FLOOR (DATETIMEVALUE(
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Status_New_First_Shadow__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Status New First Shadow</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Status_Reassigned_First_Shadow__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Status Reassigned First Shadow</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Status_Reply_Received_First_Shadow__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Status Reply Received First Shadow</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>Stock__c</fullName>

@@ -35,6 +35,7 @@ trigger OnContentDocumentTrigger on ContentDocument (before delete,after delete,
 			OnContentDocumentTriggerHandler.SetAllegatiInAccount(trigger.old);
 			system.debug('secondTrigger');
 			OnContentDocumentTriggerHandler.getLinkForUpdateGiftImageDelete(Trigger.oldMap);
+			OnContentDocumentTriggerHandler.ImageDeleteActTracking(trigger.old);
 		}
 		//PN20190118
 		else if(Trigger.isAfter) {
@@ -44,6 +45,7 @@ trigger OnContentDocumentTrigger on ContentDocument (before delete,after delete,
 				return;
 			}
 			OnContentDocumentTriggerHandler.fireUpdateGiftImage();
+			//OnContentDocumentTriggerHandler.ImageDeleteActTracking(trigger.old);
 		}
 	}
 	//PN20190118

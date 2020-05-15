@@ -162,9 +162,34 @@
         <relationshipLabel>Activity tracking</relationshipLabel>
         <relationshipName>Activity_tracking</relationshipName>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Image_Attachm__c</fullName>
+        <externalId>false</externalId>
+        <formula>HYPERLINK(
+	IF(Image_Reference__c != &apos;&apos;, SUBSTITUTE(&apos;/sfc/servlet.shepherd/version/renditionDownload?rendition=ORIGINAL_Jpg&amp;versionId=$$$$$$$$$$$$$&amp;operationContext=CHATTER&amp;contentId=05T0D000002Lt6Y&apos;, &apos;$$$$$$$$$$$$$&apos;, Image_Reference__c ),&apos;&apos;), 
+	IF(Image_Reference__c != &apos;&apos;, SUBSTITUTE(IMAGE(&apos;/sfc/servlet.shepherd/version/download/$$$$$$$$$$$$$&apos;, &apos;attachment image&apos;,150,150), &apos;$$$$$$$$$$$$$&apos;, Image_Reference__c ),&apos;&apos;),&quot;_self&quot;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Attachment Image</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Image_Reference__c</fullName>
+        <externalId>false</externalId>
+        <label>Image Reference</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Location_Instore__c</fullName>
@@ -250,9 +275,9 @@
         <columns>CREATED_DATE</columns>
         <filterScope>Everything</filterScope>
         <filters>
-            <field>Campagna__c</field>
-            <operation>contains</operation>
-            <value>pitti</value>
+            <field>NAME</field>
+            <operation>equals</operation>
+            <value>266517</value>
         </filters>
         <label>All</label>
     </listViews>

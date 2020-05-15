@@ -69,9 +69,9 @@
 	margin: 10px 0;
 }
 
-.THIS .slds-form-element__control {
+/* .THIS .slds-form-element__control {
         padding: 0 5px;
-}
+} */
 
 .THIS .slds-form-element__legend {
         width: 100%;
@@ -273,13 +273,18 @@
     transform: rotate(270deg);
 }
 
+
 /* MC- */
 .THIS .firstSelectOption {
     color: #787878;
     opacity: 0.2;
     visibility: visible;
 }
-
+.THIS .slds-dropdown_fluid, .THIS.slds-dropdown--fluid {
+    min-width: var(--lwc-sizeXSmall,12rem);
+    /* max-width: 100%; */
+    width: 100%;
+}
 
 /* 2019/12/10  VS */
 .THIS .slds-select {
@@ -295,6 +300,48 @@
     min-height: calc(1.875rem + (3px * 2));
 }
 
+.THIS .scrollerSize{
+    min-height: 33px;
+    max-height: 300px;
+} 
+.THIS .slds-dropdown {
+    position: absolute;
+    z-index: var(--lwc-zIndexDropdown,7000);
+    left: 50%;
+    float: left;
+    min-width: var(--lwc-sizeXxSmall,6rem);
+    max-width: 600px;
+    margin-top: var(--lwc-spacingXxxSmall,0.125rem);
+    margin-bottom: var(--lwc-spacingXxxSmall,0.125rem);
+    border: var(--lwc-borderWidthThin,1px) solid var(--lwc-colorBorder,rgb(221, 219, 218));
+    border-radius: var(--lwc-borderRadiusMedium,0.25rem);
+    padding: var(--lwc-spacingXxSmall,0.25rem) 0;
+    font-size: var(--lwc-fontSize2,0.75rem);
+    background: var(--lwc-colorBackgroundAlt,rgb(255, 255, 255));
+    box-shadow: var(--lwc-shadowDropDown,0 2px 3px 0 rgba(0, 0, 0, 0.16));
+    transform: translateX(-50%);
+}
+
+.THIS .button-custom{
+    padding-left: 12px;
+}
+
+.THIS .left1{
+    width: 520px;
+}
+
+.THIS .left2 {
+    /* left: 23%!important; */
+    width: 385px;
+}
+.THIS .left3{
+    /* left: 23%!important; */
+    width: 385px;
+}
+
+.THIS .hideBTN{
+    display: none;
+}
 @media only screen 
 and (min-device-width : 768px) 
 and (max-device-width : 1024px) 
@@ -356,4 +403,18 @@ and (-webkit-min-device-pixel-ratio: 2) {
         transition: border var(--lwc-durationQuickly,0.1s) linear,background-color var(--lwc-durationQuickly,0.1s) linear;
         height: calc(1.875rem + (4px * 3));
     } 
+    .THIS .left1{
+        /* left: 37% !important; */
+        width: 160px;
+    }
+    
+    .THIS .left2{
+        /* left: 37% !important; */
+        width: 180px;
+    }
+    .THIS .left3{
+        /* left: 27% !important; */
+        width: 180px;
+    }
+
 }

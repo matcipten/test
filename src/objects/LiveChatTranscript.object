@@ -624,6 +624,21 @@
                     <default>false</default>
                     <label>Problema Articoli</label>
                 </value>
+                <value>
+                    <fullName>Info su spedizioni</fullName>
+                    <default>false</default>
+                    <label>Info su spedizioni</label>
+                </value>
+                <value>
+                    <fullName>Misure prodotto_suggerimenti fit</fullName>
+                    <default>false</default>
+                    <label>Product Size/Fit Suggestion</label>
+                </value>
+                <value>
+                    <fullName>Info su tasse</fullName>
+                    <default>false</default>
+                    <label>Info su tasse</label>
+                </value>
             </valueSetDefinition>
             <valueSettings>
                 <controllingFieldValue>Comunicazione</controllingFieldValue>
@@ -783,6 +798,18 @@
                 <valueName>Disponibilità in negozio</valueName>
             </valueSettings>
             <valueSettings>
+                <controllingFieldValue>Acquisti E-commerce</controllingFieldValue>
+                <valueName>Info su spedizioni</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Acquisti E-commerce</controllingFieldValue>
+                <valueName>Misure prodotto_suggerimenti fit</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Acquisti E-commerce</controllingFieldValue>
+                <valueName>Info su tasse</valueName>
+            </valueSettings>
+            <valueSettings>
                 <controllingFieldValue>Problematiche E-commerce</controllingFieldValue>
                 <valueName>Dati di login</valueName>
             </valueSettings>
@@ -881,6 +908,8 @@
         <columns>Status</columns>
         <columns>StartTime</columns>
         <columns>EndTime</columns>
+        <columns>Browser</columns>
+        <columns>ReferrerUri</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>Status</field>
@@ -888,6 +917,22 @@
             <value>0,1,2,3,4,5</value>
         </filters>
         <label>All Chat Transcripts</label>
+    </listViews>
+    <listViews>
+        <fullName>All_Chat_US_CA</fullName>
+        <columns>Name</columns>
+        <columns>Status</columns>
+        <columns>StartTime</columns>
+        <columns>EndTime</columns>
+        <columns>Owner</columns>
+        <columns>Conversation__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>LiveChatButton</field>
+            <operation>contains</operation>
+            <value>US/CA</value>
+        </filters>
+        <label>All Chat US&amp;CA</label>
     </listViews>
     <listViews>
         <fullName>Chat_Button_LiveChatTranscript</fullName>

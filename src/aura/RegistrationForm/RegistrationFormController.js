@@ -6,33 +6,48 @@
         var today = new Date();
         helper.getUserInfo(component);
         component.set('v.myDateTime', today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate());
-        helper.fetchPickListVal(component, 'Professione__c', 'InputSelectDynamicProfession');
-        helper.fetchPickListVal(component, 'Hobby__c', 'InputSelectDynamicHobby');
+         // helper.fetchPickListVal(component, 'Professione__c', 'InputSelectDynamicProfession');
+        // helper.fetchPickListVal(component, 'Hobby__c', 'InputSelectDynamicHobby');
         helper.fetchPickListVal(component, 'Salutation', 'InputSelectDynamicTitolo');
         helper.fetchPickListVal(component, 'Sesso__c', 'InputSelectDynamicGenere');
-        helper.fetchPickListVal(component, 'Nazionalita__c', 'InputSelectDynamicNationality');
-        helper.fetchPickListVal(component, 'Lingua__c', 'InputSelectDynamicLang');
-        helper.fetchPickListVal(component, 'Nazionalita__c', 'InputSelectDynamicCountry');
-        helper.fetchPickListVal(component, 'Nazionalita__c', 'InputSelectDynamicPassportCountry');
-		
+        // helper.fetchPickListVal(component, 'Nazionalita__c', 'InputSelectDynamicNationality');
+        // helper.fetchPickListVal(component, 'Lingua__c', 'InputSelectDynamicLang');
+        // helper.fetchPickListVal(component, 'Nazionalita__c', 'InputSelectDynamicCountry');
+        // helper.fetchPickListVal(component, 'Nazionalita__c', 'InputSelectDynamicPassportCountry');
 
-        
+        //PALUMBO (START)
+        // helper.fetchPickListVal(component, 'Nazionalita__c', 'InputSelectDynamicContactCountry');
+        // helper.fetchPickListVal(component, 'Nazionalita__c', 'InputSelectDynamicOtherCountry');
+        //PALUMBO (END)
+		
+        helper.fetchPickListVal2(component, 'Nazionalita__c', 'InputSelectDynamicCountry', 'Country');
+        helper.fetchPickListVal2(component, 'Nazionalita__c', 'InputSelectDynamicNationality', 'Nationality');
+        helper.fetchPickListVal2(component, 'Professione__c', 'InputSelectDynamicProfession', 'Profession');
+        helper.fetchPickListVal2(component, 'Lingua__c', 'InputSelectDynamicLang', 'PreferredLanguage');
+        helper.fetchPickListVal2(component, 'Hobby__c', 'InputSelectDynamicHobby', 'Hobby');
+        helper.fetchPickListVal2(component, 'Nazionalita__c', 'InputSelectDynamicContactCountry', "CountryOther");
+        helper.fetchPickListVal2(component, 'Nazionalita__c', 'InputSelectDynamicOtherCountry', "CountryContact");
+
         var myPageRef = component.get("v.pageReference");
         if(myPageRef){
             var accId = myPageRef.state.c__recordId;
-            helper.getAccountFields(component, accId);
+            helper.getAccountFields(component, accId);   
+            //PALUMBO (START)
+            if (accId !=undefined){
+                component.set("v.DCCBool",true);
+            }            
+            //PALUMBO (END)        
         }else{
-            helper.getAccountFields(component, '');
+            helper.getAccountFields(component, '');      
         }
-   
         
         
-        helper.setTranslation(component);
-        helper.getUserInfo(component);
+        helper.setTranslation(component);      
         
         
         component.set("v.successOpen", false);
         component.set("v.formOpen", true);
+        
         
       
     },
@@ -423,14 +438,14 @@
             var postalcodeField  = cmp.find("itemPersonMailingPostalCode");
         }
        
-        var countryField     = cmp.find("InputSelectDynamicCountry");  
+        var countryField     = cmp.find("inputCountry");  
 
         if(item.PersonMailingCountry == null || item.PersonMailingCountry == ''){
                 validitem = false;
                 errors.push('Please insert customer country');
-                countryField.set("v.errors", [{message:""}]);
+                countryField.set("v.messageWhenBadInput", [{message:""}]);
             } else {
-                countryField.set("v.errors", null);
+                countryField.set("v.messageWhenBadInput", null);
             } 
         
         if(locale == 'US'){
@@ -614,6 +629,17 @@
         }
 
         */
+
+        //PALUMBO (START)
+        if (!cmp.get("v.showContactAddress")){
+            cmp.set("v.newItem.BillingCountry",'');
+        }
+
+        if (!cmp.get("v.showOtherAddress")){
+            cmp.set("v.newItem.PersonOtherCountry",'');
+        }
+
+        //PALUMBO (END)
 
         
         if(validitem){
@@ -861,5 +887,113 @@
         
 
     },    
+
+    //PALUMBO (START)
+    handleAddressSection : function(component,event,helper){
+        var sectionAuraId = event.target.getAttribute("data-auraId");  
+        var sectionIcon =  event.target.getAttribute("data-iconId");     
+        var sectionDiv = component.find(sectionAuraId).getElement();       
+        var sectionState = sectionDiv.getAttribute('class').search('slds-is-open');         
+        
+        if(sectionState == -1){
+            sectionDiv.setAttribute('class' , 'slds-section slds-is-open');          
+            $A.util.removeClass(component.find(sectionIcon),'expandSection');
+        }else{
+            sectionDiv.setAttribute('class' , 'slds-section slds-is-close');
+            $A.util.addClass(component.find(sectionIcon),'expandSection');
+        }                
+    },
     
+    handleAddAddress : function(component,event,helper){
+        var buttonSelected = event.getSource().getLocalId(); 
+        if (buttonSelected == 'defaultAddButton'){            
+            component.set("v.showContactAddress",true);
+        }else {
+            component.set("v.showOtherAddress",true);
+        }
+    },
+
+    //PALUMBO (END) // VS - 20/04/2020 ISSUE 745
+    onChangePickList: function (component, event, helper) {
+        // var searchString = component.find("countryPicklist").get("v.value");;
+        var searchString = event.getSource().get("v.value");
+        var f = event.getSource().getLocalId().replace("input","");
+        console.log("onChangePickList");
+        helper.openListbox(component, searchString);
+        helper.displayPredictions(component,f, searchString);
+    },
+    
+    onFocusPickList: function (component, event, helper) {
+        // var searchString = component.get("v.newItem.SingleLineAddress__c");
+        console.log("onFocusPickList");
+        var value = event.getSource().getLocalId()
+        var searchString= value.replace("input","");
+        
+        helper.openListbox(component, "searchLookup"+searchString);
+        //helper.displayPredictions(component, searchString);
+    },
+    onBlurPickList: function (component, event, helper) {
+        var value = event.getSource().getLocalId()
+        var searchString= value.replace("input","");
+        console.log("onBlurPickList"+searchString);
+        
+        window.setTimeout(
+            $A.getCallback(function() {
+                helper.closeListbox(component, "searchLookup"+searchString)
+            }), 250
+        );
+        //helper.displayPredictions(component, searchString);
+    },
+    selectOption: function(component, event,helper){
+        var value = event.getSource().get("v.name");
+        var searchString= value.split("_");
+        var selection  = event.getSource().get("v.name");
+        var value  = event.getSource().get("v.label");
+        var path = "input"+selection.split('_')[1];
+        component.find(path).set("v.value",value);
+        console.log("input"+path);
+        helper.closeListbox(component, "searchLookup"+searchString[1]);
+    },
+    getValueFromLwc : function(component, event, helper) {
+        console.log('VS getValueFromLwc: '+event.getParam('value'));        
+        var str = event.getParam('value');
+        var arr = component.get('v.hobbyBackup');
+        var arr2 = component.get('v.newItem.Hobby__c');
+        
+        
+        const set1 = new Set(arr);
+        if(arr2 != undefined){
+            if(arr2.includes(";")){
+                var backup=arr2.split(";")
+                for(var i=0; i<backup.length;i++)
+                set1.add(backup[i]);
+            }else if(arr2.length>0 && !arr2.includes(";")){
+                set1.add(arr2);
+            }
+        }
+        
+        
+        if(str.startsWith("r_")){
+            str = str.replace('r_',"")
+            set1.delete(str);
+        }        
+        else{
+            set1.add(str);
+        }
+        var arrFin= Array.from(set1);
+        var strFin =arrFin.join(";");
+        console.log(strFin);
+        component.set('v.hobbyBackup',arrFin);
+        component.set('v.newItem.Hobby__c',strFin);
+	},
+    
+    handleComponentEvent : function (component,event,helper){
+        var message = event.getParam("message");
+        var payload = event.getParam("payload");
+        if (message == 'showDCC'){
+            component.set("v.DCCBool",true);
+        } else if (message == 'makeCallout'){
+            helper.makeCalloutWithTaxFreeInfo(component,event,payload);
+        }
+    }
 })

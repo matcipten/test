@@ -24,8 +24,8 @@
                         value: allValues[k]
                     });
                 }
-                
-                 if (elementId == 'InputSelectDynamicCountry'){
+                    // PALUMBO
+                 if (elementId == 'InputSelectDynamicCountry' || elementId=='InputSelectDynamicContactCountry' || elementId == 'InputSelectDynamicOtherCountry'){
                      console.log(opts);
                      var defaultIndex = opts.findIndex(function(opts){return opts.value === component.get("v.user.Nation_Contact_Card__c")});
                      
@@ -45,6 +45,127 @@
                 	component.find(elementId).set("v.options", opts);
                
                
+            }
+        });
+        $A.enqueueAction(action);
+    },
+
+    fetchPickListVal2: function (component, fieldName, elementId,label) {
+        var action = component.get("c.getselectOptions");
+        action.setParams({
+            "objObject": component.get("v.newItem"),
+            "fld": fieldName
+        });
+        var opts = [];
+        var valueInput="";
+        action.setCallback(this, function (response) {
+            if (response.getState() == "SUCCESS") {
+                var allValues = response.getReturnValue();
+                //console.log(allValues);
+                if(label=="Hobby"){
+                    opts.push({
+                        label: "",
+                        value: ""
+                    });
+    
+                    for (var k in allValues) {
+                        //console.log(JSON.stringify(allValues));
+                        opts.push({
+                            label: k,
+                            value: allValues[k],
+                            selected:false
+                        });
+                    }
+                }
+                else{
+                    opts.push({
+                        class: "optionClass",
+                        label: "",
+                        value: ""
+                    });
+    
+                    for (var k in allValues) {
+                        //console.log(JSON.stringify(allValues));
+                        opts.push({
+                            class: "optionClass",
+                            label: k,
+                            value: allValues[k]
+                        });
+                        if(component.get("v.user.Nation_Contact_Card__c") == allValues[k] && (label == "Country" || label == "CountryContact" || label == "CountryOther")){
+                            valueInput=k.toString(); 
+                            console.log('vs k value: '+k);  
+                            switch(label) {
+                                case "Country":
+                                    // code block 
+                                    // component.set("v.newItem.PersonMailingCountry", valueInput);
+                                    setTimeout(
+                                        $A.getCallback(
+                                            function() {
+                                                if (component.find("inputCountry").get("v.value")=='undefined' || component.find("inputCountry").get("v.value")=='' || component.find("inputCountry").get("v.value")==undefined)
+                                                    component.find("inputCountry").set("v.value", valueInput);
+                                            }
+                                        )
+                                    );
+                                    // component.find("inputCountry").set("v.value", valueInput);
+                                    break;
+                                case "CountryContact":
+                                    // code block
+                                    // component.set("v.newItem.BillingCountry", valueInput);
+                                    setTimeout(
+                                        $A.getCallback(
+                                            function() {
+                                                if (component.find("inputCountryContact").get("v.value")=='undefined' || component.find("inputCountryContact").get("v.value")=='' || component.find("inputCountryContact").get("v.value")==undefined)
+                                                    component.find("inputCountryContact").set("v.value", valueInput);
+                                            }
+                                        )
+                                    );
+                                    // component.find("inputCountryContact").set("v.value", valueInput);
+                                    break;
+                                case "CountryOther":
+                                    // code block
+                                    // component.set("v.newItem.PersonOtherCountry", valueInput);
+                                    setTimeout(
+                                        $A.getCallback(
+                                            function() {
+                                                if (component.find("inputCountryOther").get("v.value")=='undefined' || component.find("inputCountryOther").get("v.value")=='' || component.find("inputCountryOther").get("v.value")==undefined)
+                                                    component.find("inputCountryOther").set("v.value", valueInput);
+                                            }
+                                        )
+                                    );
+                                    // component.find("inputCountryOther").set("v.value", valueInput);
+                                    break;
+                                default:
+                                    // code block
+                            }        
+                        }
+
+
+                    }
+                }
+                
+                 
+                if(label == "Salutation" || label =="Sesso"){
+                    var x = "v.opt"+label;
+                    component.set(x, opts);
+                }else{
+                    // console.log("set opts picklist "+label+" "+opts);
+                    // console.log("VS nationCC: "+component.get("v.user.Nation_Contact_Card__c"))
+                    var x = "v.customPicklist"+label;
+                    var y = "v.customPicklist"+label+"BU";
+                    
+                    component.set(x, opts);
+                    component.set(y, opts);  
+                    // if(label == "Country" || label == "CountryContact" || label == "CountryOther") {
+                    //     var input= "input"+label;
+                    //     var cmp = component.find(input).set("v.value",valueInput)
+                    //     console.log("VS value: "+component.find(input).get("v.value"));
+                    // }       
+                    
+                    console.log("VS preselected country:"+component.get("v.newItem.PersonMailingCountry"));
+                }
+
+                
+                
             }
         });
         $A.enqueueAction(action);
@@ -155,7 +276,8 @@
                             $A.util.removeClass(picklistShow, "slds-wrap");
                         }
 
-                        component.find("InputSelectDynamicLanguage").set("v.options", optsLang);
+                        // component.find("InputSelectDynamicLanguage").set("v.options", optsLang);
+                        component.set("v.optLang",optsLang);
 
                         var usr_translation = new Object();
                         usr_translation = all_translation[locale_lang];
@@ -169,19 +291,19 @@
                         // console.log(usr_translation);
                         
                         if (usr_translation != null  && usr_translation.Profession_Values__c != null) {
-                             this.setPicklist(component, 'Professione__c','InputSelectDynamicProfession',usr_translation.Profession_Values__c , false);
+                            //  this.setPicklist(component, 'Professione__c','InputSelectDynamicProfession',usr_translation.Profession_Values__c , false);
                         }
                         else{
                             this.orderPickLabels(component, 'Professione__c','InputSelectDynamicProfession');
                         }
                         if (usr_translation != null  && usr_translation.Hobby_Values__c != null) {
-                            this.setPicklist(component, 'Hobby__c', 'InputSelectDynamicHobby', usr_translation.Hobby_Values__c, false);
+                            // this.setPicklist(component, 'Hobby__c', 'InputSelectDynamicHobby', usr_translation.Hobby_Values__c, false);
                         }
                         else{
                             this.orderPickLabels(component, 'Hobby__c', 'InputSelectDynamicHobby');
                         }
                         if (usr_translation != null  && usr_translation.Salutation_Value__c != null) {
-                            this.setPicklist(component, 'Salutation', 'InputSelectDynamicTitolo', usr_translation.Salutation_Value__c, false);
+                            // this.setPicklist(component, 'Salutation', 'InputSelectDynamicTitolo', usr_translation.Salutation_Value__c, false);
                         }
                         else{
                             this.orderPickLabels(component, 'Salutation', 'InputSelectDynamicTitolo');
@@ -228,8 +350,10 @@
                             component.find("InputSelectYearJP").set("v.options",optsYear);
                         else
                             component.find("InputSelectYear").set("v.options",optsYear);
-                        var spinner = component.find("mySpinner");
-                        $A.util.addClass(spinner, "slds-hide");
+                        // var spinner = component.find("mySpinner");
+                        // $A.util.addClass(spinner, "slds-hide");
+
+                        component.set("v.hideBody", false);
                     }
                 });
                 $A.enqueueAction(action);
@@ -459,6 +583,134 @@
      
         
     },
+
+    setPicklist1v2: function (component, fieldName, elementId, fieldValues, bool,fieldUpdate) {
+       
+        var value = component.get("v.newItem." + fieldName);
+        var opts = [];
+        var optsTemp = [];
+        var splitField = fieldValues.split('|');
+        // VS titolo dinamico
+        var opts2 = [];
+        if(elementId=='InputSelectDynamicTitolo' && fieldValues!=null){
+            
+            opts2.push({
+                class: "optionClass",
+                label: "",
+                value: ""
+            });
+            for (var k in splitField){
+                opts2.push({
+                    class: "optionClass",
+                    label: splitField[k],
+                    value: splitField[k]
+                });
+            }
+            component.find(elementId).set("v.options", opts2);
+            return;
+        }
+       	var action = component.get("c.getselectOptions");
+        action.setParams({
+            "objObject": component.get("v.newAcc"),
+            "fld": fieldName
+        });
+        var options = [];
+          action.setCallback(this, function(response) {
+            var state = response.getState();
+            if (state === "SUCCESS") {
+             
+                 var allValues = response.getReturnValue();
+                //console.log(allValues);
+                options.push({
+                    class: "optionClass",
+                    label: "",
+                    value: ""
+                });
+
+                for (var k in allValues) {
+                    //console.log(JSON.stringify(allValues));
+                    options.push({
+                        class: "optionClass",
+                        label: k,
+                        value: allValues[k]
+                    });
+                }
+                
+                //var options = component.find(elementId).get("v.options");
+                for (var x in options) {
+            console.log(options[x].label + ' && ' +options[x].value);
+            if(options[x].label != '' && options[x].value != ''){
+                optsTemp.push({
+                    class: "optionClass",
+                    label: options[x].label,
+                    value: options[x].value
+                });
+    
+
+            }
+            
+        }
+        
+        
+        //compilare nuovo lista con label e value vuoto
+        opts.push({
+            class: "optionClass",
+            label: "",
+            value: ""
+        });
+
+        if (optsTemp.length == splitField.length) {
+            //component.find(elementId).set("v.options", opts);
+            for (var k in optsTemp) {
+
+                opts.push({
+                    class: "optionClass",
+                    label: splitField[k],
+                    value: optsTemp[k].value
+                });
+
+               
+            }
+           
+        }
+        else{
+            opts = options;
+        }
+        
+             opts.sort(function(a, b) { 
+                return a.label < b.label ? -1 : 1;
+            });
+            
+            console.log(opts);
+            
+            //component.find(elementId).set("v.options", opts);
+            var x = "v.customPicklist"+fieldUpdate;
+                var y = "v.customPicklist"+fieldUpdate+"BU";
+                component.set(x, opts);
+                component.set(y, opts);
+        if (value != null && value != '')
+            component.set("v.newItem." + fieldName, value);
+
+            }
+            else if (state === "INCOMPLETE") {
+               
+            }
+            else if (state === "ERROR") {
+                var errors = response.getError();
+                if (errors) {
+                    if (errors[0] && errors[0].message) {
+                        console.log("Error message: " + 
+                                 errors[0].message);
+                    }
+                } else {
+                    console.log("Unknown error");
+                }
+            }
+        });
+        $A.enqueueAction(action);
+     
+        
+    },
 	//Akshay 05/06/2019  finish 
     setTranslationInPicklist: function (component) {
         var language = component.get("v.language");
@@ -467,10 +719,10 @@
         var usr_translation = new Object();
         usr_translation = all_translation[language];
         if (usr_translation.Profession_Values__c != null) {
-            this.setPicklist1(component, 'Professione__c', 'InputSelectDynamicProfession', usr_translation.Profession_Values__c, true);
+            this.setPicklist1v2(component, 'Professione__c', 'InputSelectDynamicProfession', usr_translation.Profession_Values__c, true,"Profession");
         }
         if (usr_translation.Hobby_Values__c != null) {
-            this.setPicklist1(component, 'Hobby__c', 'InputSelectDynamicHobby', usr_translation.Hobby_Values__c, true);
+            this.setPicklist1v2(component, 'Hobby__c', 'InputSelectDynamicHobby', usr_translation.Hobby_Values__c, true,"Hobby");
         }
         //VS title dinamico
         console.log('VS usr_translation.Salutation_Value__c: '+usr_translation.Salutation_Value__c);
@@ -482,7 +734,8 @@
 
     getAccountFields: function (component, id) {
         console.log('ID: ' + id);
-
+        // component.set("v.GBBool",false);
+        // component.set("v.DCCBool",true);
         var action = component.get("c.getAccount");
         action.setParams({
             "AccountId": id
@@ -521,9 +774,18 @@
                     //component.set("v.newItem", null);
                 }
 
+                //PALUMBO
+                if (acc.hasOwnProperty('BillingPostalCode') || acc.hasOwnProperty('BillingState') || acc.hasOwnProperty('BillingCity') || acc.hasOwnProperty('BillingStreet') || acc.hasOwnProperty('BillingCountry')){
+                    component.set("v.showContactAddress",true);
+                }
+        
+                if (acc.hasOwnProperty('PersonOtherPostalCode') || acc.hasOwnProperty('PersonOtherState') || acc.hasOwnProperty('PersonOtherCity') || acc.hasOwnProperty('PersonOtherStreet') || acc.hasOwnProperty('PersonOtherCountry') ){
+                    component.set("v.showOtherAddress",true);
+                }
+
 
             }
-
+            
         });
         $A.enqueueAction(action);
 
@@ -549,6 +811,20 @@
                 var truncLanguage = usr.Language_Contact_Card__c;
                 component.set("v.locale",locale);
                 component.set("v.truncLanguage",truncLanguage);
+                //PALUMBO (START)
+                // VS - 11/05/2020
+                // var nationAction = component.get("c.checkNationUser");
+                // nationAction.setParams({nation: usr.Nation_Contact_Card__c});
+                // nationAction.setCallback(this, function (response) {
+                //     if (response.getState() == "SUCCESS") {
+                //         var check = response.getReturnValue();
+                //         if (!check){
+                //             component.set("v.DCCBool",true);
+                //         }
+                //     }
+                // });
+                // $A.enqueueAction(nationAction);
+                //PALUMBO (END)
             } else {
                 component.set("v.user", null);
             }
@@ -615,7 +891,90 @@
 
     isMonthInRange: function (month) {
         return (month > 0 && month < 13);
+    },
+    
+
+    displayPredictions: function(component,f, searchString) {
+        var field ="v.customPicklist"+f+"BU";
+        var fieldupdate ="v.customPicklist"+f;
+        var arr = component.get(field);
+        console.log("VS searchString: -"+searchString+'-');
+        var filteredOpt =[];
+        var s;
+        if(f=="PreferredLanguage" || f=="Profession"){
+            
+            s = searchString.substring(0,1).toUpperCase() + searchString.substring(1).toLowerCase();
+        }
+        else{
+            s =searchString.toUpperCase();
+        }
+
+       
+        if(searchString!= null|| searchString!=''){
+            for (let i=0; i < arr.length; i++) {
+                const element = arr[i].label;
+                if(element.startsWith(s)){
+                    filteredOpt.push(arr[i]);
+                }
+            }
+            if(filteredOpt.length==0){
+                console.log(0);
+                filteredOpt.push({
+                    class: "optionClass",
+                    label: "campo non trovato",
+                    value: "error"
+                });
+            }
+            component.set(fieldupdate, filteredOpt); 
+        }
+        else{
+            component.set(fieldupdate, arr);
+        }
+    },
+    openListbox: function(component, searchString) {
+        var searchLookup = component.find(searchString);
+        $A.util.addClass(searchLookup, "slds-is-open");
+        $A.util.removeClass(searchLookup, "slds-combobox-lookup");
+    },
+    closeListbox: function(component, searchString) {
+        var searchLookup = component.find(searchString);
+        $A.util.addClass(searchLookup, "slds-combobox-lookup");
+        $A.util.removeClass(searchLookup, "slds-is-open");
+    },
+    
+    makeCalloutWithTaxFreeInfo : function(component,event,payload){
+        var action = component.get("c.makeCalloutForTaxFree");
+        action.setParams({
+            passportNumber : payload.passport ,
+            countryIso : payload.country
+            });
+
+       
+        action.setCallback(this, function(response) {
+            var state = response.getState();
+            if (state === "SUCCESS") {
+                component.set("v.initializeModal", false);
+                var result = response.getReturnValue();
+                //TODO: popolare il form con la risposta del servizio
+                // sovrascrivere oggetto newItem
+                component.set("v.DCCBool",true);
+            }
+            else if (state === "INCOMPLETE") {
+                component.set("v.initializeModal", false);
+            }
+            else if (state === "ERROR") {
+                component.set("v.initializeModal", false);
+                var errors = response.getError();
+                if (errors) {
+                    if (errors[0] && errors[0].message) {
+                        console.log("Error message: " + 
+                                 errors[0].message);
+                    }
+                } else {
+                    console.log("Unknown error");
+                }
+            }            
+        });
+        $A.enqueueAction(action);
     }
-
-
 })

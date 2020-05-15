@@ -65,6 +65,61 @@
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>ControlledByParent</externalSharingModel>
     <fields>
+        <fullName>BillingCity__c</fullName>
+        <externalId>false</externalId>
+        <label>Contact Address City</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>BillingCountry__c</fullName>
+        <externalId>false</externalId>
+        <label>Contact Address Country</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>BillingPostalCode__c</fullName>
+        <externalId>false</externalId>
+        <label>Contact Address Postal Code</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>BillingState__c</fullName>
+        <externalId>false</externalId>
+        <label>Contact Address State</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>BillingStreet__c</fullName>
+        <externalId>false</externalId>
+        <label>Contact Address Street</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Boutique__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <externalId>false</externalId>
@@ -144,7 +199,7 @@
     </fields>
     <fields>
         <fullName>HTMLforPDF__c</fullName>
-        <defaultValue>&quot;&lt;div class=\&quot;header\&quot; style=\&quot;margin: 75; \&quot;&gt;    &lt;div class=\&quot;header-logo\&quot;&gt;&lt;img class=\&quot;image-header\&quot; src=\&quot;/resource/logoBC2\&quot; &lt;/img&gt; &lt;/div&gt;    &lt;div class=\&quot;header-text\&quot;&gt;Our commitment to protect dignity and human privacy&lt;/div&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;table style=\&quot;width:100% \&quot;&gt;    &lt;tr&gt;        &lt;td class=\&quot;field\&quot;&gt;LanguagePlaceHolder&lt;/td&gt;    &lt;/tr&gt;    &lt;tr&gt;        &lt;td class=\&quot;field\&quot;&gt; TitlePlaceHolder &lt;/td&gt;        &lt;td class=\&quot;field\&quot;&gt; FirstNamePlaceHolder &lt;/td&gt;        &lt;td class=\&quot;field\&quot;&gt; LastNamePlaceHolder &lt;/td&gt;    &lt;/tr&gt;	&lt;tr/&gt;	&lt;tr&gt;        &lt;td class=\&quot;field\&quot;&gt; LocalFNPlaceHolder &lt;/td&gt;        &lt;td class=\&quot;field\&quot;&gt; LocalLNPlaceHolder &lt;/td&gt;    &lt;/tr&gt;    &lt;tr/&gt;    &lt;tr&gt;        &lt;td class=\&quot;field\&quot;&gt; AddressPlaceHolder &lt;/td&gt;        &lt;td class=\&quot;field\&quot;&gt; CityPlaceHolder &lt;/td&gt;		&lt;td class=\&quot;field\&quot;&gt; PostalStatePlaceHolder &lt;/td&gt;        &lt;td class=\&quot;field\&quot;&gt; PostalCodePlaceHolder &lt;/td&gt;    &lt;/tr&gt;    &lt;tr/&gt;    &lt;tr&gt;        &lt;td class=\&quot;field\&quot;&gt; CountryPlaceHolder &lt;/td&gt;        &lt;td class=\&quot;field\&quot;&gt; PhonePlaceHolder &lt;/td&gt;        &lt;td class=\&quot;field\&quot;&gt; NationalityPlaceHolder &lt;/td&gt;    &lt;/tr&gt;    &lt;tr/&gt;    &lt;tr&gt;        &lt;td class=\&quot;field\&quot;&gt; EmailPlaceHolder &lt;/td&gt;		&lt;td class=\&quot;field\&quot;&gt; WeChatPlaceHolder &lt;/td&gt;    &lt;/tr&gt;    &lt;tr/&gt;	&lt;tr&gt;		&lt;td&gt; ContactPreferencesPlaceHolder &lt;/td&gt;	&lt;tr/&gt;	&lt;tr&gt;        &lt;td&gt; TelCheckboxPlaceHolder &lt;/td&gt;		&lt;td&gt; WeChatCheckboxPlaceHolder &lt;/td&gt;		&lt;td&gt; EmailCheckboxPlaceHolder &lt;/td&gt;		&lt;td&gt; PostaCheckboxPlaceHolder &lt;/td&gt;		&lt;td&gt; MessCheckboxPlaceHolder &lt;/td&gt;    &lt;/tr&gt;	    &lt;tr&gt;        &lt;td class=\&quot;field\&quot;&gt; DateofBirthPlaceHolder &lt;/td&gt;        &lt;td class=\&quot;field\&quot;&gt; GenderPlaceHolder &lt;/td&gt;    &lt;/tr&gt;    &lt;tr/&gt;    &lt;tr&gt;        &lt;td class=\&quot;field\&quot;&gt; ProfessionPlaceHolder &lt;/td&gt;        &lt;td class=\&quot;field\&quot;&gt; HobbyPlaceHolder &lt;/td&gt;        &lt;td class=\&quot;field\&quot;&gt; PreferredLanguagePlaceHolder &lt;/td&gt;    &lt;/tr&gt;    &lt;tr&gt;        &lt;td class=\&quot;field\&quot;&gt; PassportNumberPlaceHolder &lt;/td&gt;        &lt;td class=\&quot;field\&quot;&gt; PassportCPlaceHolder &lt;/td&gt;        &lt;td class=\&quot;field\&quot;&gt; PassportIssuedFromPlaceHolder &lt;/td&gt;        &lt;td class=\&quot;field\&quot;&gt; PassportIssuedDPlaceHolder &lt;/td&gt;    &lt;/tr&gt;&lt;/table&gt;&lt;p style=\&quot;page-break-before: always\&quot;&gt;	&lt;p class=\&quot;field\&quot;&gt;PrivacyHeaderPlaceHolder&lt;/p&gt;    &lt;p class=\&quot;field\&quot;&gt;LegalNotePlaceHolder1&lt;/p&gt;    &lt;p class=\&quot;field\&quot;&gt;LegalNotePlaceHolder2&lt;/p&gt;    &lt;p class=\&quot;field\&quot;&gt;LegalNotePlaceHolder3&lt;/p&gt;	&lt;p class=\&quot;field\&quot;&gt;DatePlaceHolder&lt;/p&gt;    &lt;p class=\&quot;field\&quot;&gt;SignaturePlaceHolder&lt;/p&gt; &lt;p style=\&quot;page-break-before: always\&quot;&gt; &lt;p class=\&quot;privacy\&quot;&gt;InformativaPrivacyPlaceHolder&lt;/p&gt;&quot;</defaultValue>
+        <defaultValue>&quot;&lt;div class=\&quot;header\&quot; style=\&quot;margin: 75; \&quot;&gt;    &lt;div class=\&quot;header-logo\&quot;&gt;&lt;img class=\&quot;image-header\&quot; src=\&quot;/resource/logoBC2\&quot; &lt;/img&gt; &lt;/div&gt;    &lt;div class=\&quot;header-text\&quot;&gt;Our commitment to protect dignity and human privacy&lt;/div&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;table style=\&quot;width:100% \&quot;&gt;    &lt;tr&gt;        &lt;td class=\&quot;field\&quot;&gt;LanguagePlaceHolder&lt;/td&gt;    &lt;/tr&gt;    &lt;tr&gt;        &lt;td class=\&quot;field\&quot;&gt; TitlePlaceHolder &lt;/td&gt;        &lt;td class=\&quot;field\&quot;&gt; FirstNamePlaceHolder &lt;/td&gt;        &lt;td class=\&quot;field\&quot;&gt; LastNamePlaceHolder &lt;/td&gt;    &lt;/tr&gt;	&lt;tr/&gt;	&lt;tr&gt;        &lt;td class=\&quot;field\&quot;&gt; LocalFNPlaceHolder &lt;/td&gt;        &lt;td class=\&quot;field\&quot;&gt; LocalLNPlaceHolder &lt;/td&gt;    &lt;/tr&gt;    &lt;tr/&gt;    &lt;tr&gt;        &lt;td class=\&quot;field\&quot;&gt; AddressPlaceHolder &lt;/td&gt;        &lt;td class=\&quot;field\&quot;&gt; CityPlaceHolder &lt;/td&gt;		&lt;td class=\&quot;field\&quot;&gt; PostalStatePlaceHolder &lt;/td&gt;        &lt;td class=\&quot;field\&quot;&gt; PostalCodePlaceHolder &lt;/td&gt; &lt;td class=\&quot;field\&quot;&gt; CountryPlaceHolder &lt;/td&gt;   &lt;/tr&gt;    &lt;tr/&gt;   &lt;tr&gt;        &lt;td class=\&quot;field\&quot;&gt; ContactAddressPlaceHolder &lt;/td&gt;        &lt;td class=\&quot;field\&quot;&gt; ContactCityPlaceHolder &lt;/td&gt;		&lt;td class=\&quot;field\&quot;&gt; ContactPostalStatePlaceHolder &lt;/td&gt;        &lt;td class=\&quot;field\&quot;&gt; ContactPostalCodePlaceHolder &lt;/td&gt; &lt;td class=\&quot;field\&quot;&gt; ContactCountryPlaceHolder &lt;/td&gt;   &lt;/tr&gt; &lt;tr/&gt;  &lt;tr&gt;        &lt;td class=\&quot;field\&quot;&gt; OtherAddressPlaceHolder &lt;/td&gt;        &lt;td class=\&quot;field\&quot;&gt; OtherCityPlaceHolder &lt;/td&gt;		&lt;td class=\&quot;field\&quot;&gt; OtherPostalStatePlaceHolder &lt;/td&gt;        &lt;td class=\&quot;field\&quot;&gt; OtherPostalCodePlaceHolder &lt;/td&gt; &lt;td class=\&quot;field\&quot;&gt; OtherCountryPlaceHolder &lt;/td&gt;   &lt;/tr&gt; &lt;tr/&gt;  &lt;tr&gt;       &lt;td class=\&quot;field\&quot;&gt; PhonePlaceHolder &lt;/td&gt;        &lt;td class=\&quot;field\&quot;&gt; NationalityPlaceHolder &lt;/td&gt;    &lt;/tr&gt;    &lt;tr/&gt;    &lt;tr&gt;        &lt;td class=\&quot;field\&quot;&gt; EmailPlaceHolder &lt;/td&gt;		&lt;td class=\&quot;field\&quot;&gt; WeChatPlaceHolder &lt;/td&gt;    &lt;/tr&gt;    &lt;tr/&gt;	&lt;tr&gt;		&lt;td&gt; ContactPreferencesPlaceHolder &lt;/td&gt;	&lt;tr/&gt;	&lt;tr&gt;        &lt;td&gt; TelCheckboxPlaceHolder &lt;/td&gt;		&lt;td&gt; WeChatCheckboxPlaceHolder &lt;/td&gt;		&lt;td&gt; EmailCheckboxPlaceHolder &lt;/td&gt;		&lt;td&gt; PostaCheckboxPlaceHolder &lt;/td&gt;		&lt;td&gt; MessCheckboxPlaceHolder &lt;/td&gt;    &lt;/tr&gt;	    &lt;tr&gt;        &lt;td class=\&quot;field\&quot;&gt; DateofBirthPlaceHolder &lt;/td&gt;        &lt;td class=\&quot;field\&quot;&gt; GenderPlaceHolder &lt;/td&gt;    &lt;/tr&gt;    &lt;tr/&gt;    &lt;tr&gt;        &lt;td class=\&quot;field\&quot;&gt; ProfessionPlaceHolder &lt;/td&gt;        &lt;td class=\&quot;field\&quot;&gt; PreferredLanguagePlaceHolder &lt;/td&gt;        &lt;td class=\&quot;field\&quot;&gt; PassportNumberPlaceHolder &lt;/td&gt;    &lt;/tr&gt;    &lt;tr&gt;        &lt;td class=\&quot;field\&quot;&gt; PassportCPlaceHolder &lt;/td&gt;        &lt;td class=\&quot;field\&quot;&gt; PassportIssuedFromPlaceHolder &lt;/td&gt;        &lt;td class=\&quot;field\&quot;&gt; PassportIssuedDPlaceHolder &lt;/td&gt;        &lt;td class=\&quot;field\&quot;&gt; HobbyPlaceHolder &lt;/td&gt;    &lt;/tr&gt;&lt;/table&gt;&lt;p style=\&quot;page-break-before: always\&quot;&gt;	&lt;p class=\&quot;field\&quot;&gt;PrivacyHeaderPlaceHolder&lt;/p&gt;    &lt;p class=\&quot;field\&quot;&gt;LegalNotePlaceHolder1&lt;/p&gt;    &lt;p class=\&quot;field\&quot;&gt;LegalNotePlaceHolder2&lt;/p&gt;    &lt;p class=\&quot;field\&quot;&gt;LegalNotePlaceHolder3&lt;/p&gt;	&lt;p class=\&quot;field\&quot;&gt;DatePlaceHolder&lt;/p&gt;    &lt;p class=\&quot;field\&quot;&gt;SignaturePlaceHolder&lt;/p&gt; &lt;p style=\&quot;page-break-before: always\&quot;&gt; &lt;p class=\&quot;privacy\&quot;&gt;InformativaPrivacyPlaceHolder&lt;/p&gt;&quot;</defaultValue>
         <externalId>false</externalId>
         <label>HTMLforPDF</label>
         <length>131072</length>
@@ -284,6 +339,61 @@
         <length>255</length>
         <required>false</required>
         <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>OtherCity__c</fullName>
+        <externalId>false</externalId>
+        <label>Other Address City</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>OtherCountry__c</fullName>
+        <externalId>false</externalId>
+        <label>Other Address Country</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>OtherPostalCode__c</fullName>
+        <externalId>false</externalId>
+        <label>Other Address Postal Code</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>OtherState__c</fullName>
+        <externalId>false</externalId>
+        <label>Other Address State</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>OtherStreet__c</fullName>
+        <externalId>false</externalId>
+        <label>Other Address Street</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>

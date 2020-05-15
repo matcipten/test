@@ -175,7 +175,7 @@ public class AllDataFactory {
             We_Chat_ID_Label__c='We_Chat_ID_Label__c' ,Checkbox_Phone_Label__c='Checkbox_Phone_Label__c' ,Checkbox_Email_Label__c= 'Checkbox_Email_Label__c',
             Checkbox_WeChat_Label__c= 'Checkbox_WeChat_Label__c',Checkbox_Mail_Label__c='Checkbox_Mail_Label__c' ,
             Checkbox_Messaging_Label__c='Checkbox_Messaging_Label__c' ,Privacy_Header_Before_Link_Label__c= 'Privacy_Header_Before_Link_Label__c',
-            Privacy_Header_Link_Label__c='Privacy_Header_Link_Label__c' ,Privacy_Header_After_Link_Label__c= 'Privacy_Header_After_Link_Label__c'
+            Privacy_Header_Link_Label__c='Privacy_Header_Link_Label__c' ,Privacy_Header_After_Link_Label__c= 'Privacy_Header_After_Link_Label__c',State_Contact_Address_Label__c='State_Contact_Address_Label__c'
             );
 
         return result;

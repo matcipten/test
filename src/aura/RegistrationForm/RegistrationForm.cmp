@@ -1,8 +1,7 @@
 <aura:component controller="RegistrationForm" access="global" 
                 implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction,lightning:actionOverride,lightning:isUrlAddressable" >
 							
-    <ltng:require scripts="/resource/sPad"
-                  afterScriptsLoaded="{!c.doneRendering}" />
+   
 
     <ltng:require scripts="/resource/JsBarcode" />
     <!-- ltng:require scripts="/resource/jquery_3_3_1"
@@ -57,9 +56,6 @@
 
     <aura:attribute name="viewBarcode" type="boolean"/>
     
-
-
-
     
     <aura:attribute name="Id" type="String" />
     
@@ -75,809 +71,1234 @@
 	              action="{!c.refreshCmp}" />
      <lightning:navigation aura:id="navService"/>
 
-    <aura:if isTrue="{!v.formOpen}">
-        
-        <div class="spinnerDiv">
-            <lightning:spinner aura:id="mySpinner" class=""/>
-        </div>
-        
-        <aura:if isTrue="{!v.isUpdate}">
-            <div class="noPrint text-update" style="color: #d9dbdd; padding:5px;">
-                <p><span class="noPrint" style="font-weight: bold;">Update: </span><span class="noPrint" style="font-style: italic;">{!v.newItem.FirstName}&nbsp;{!v.newItem.LastName}</span></p>
-            </div>
-        </aura:if>
-        <div class="container component" id="container" aura:id="container">
-            <div class="header">
-                <div class="header-logo">
-                    <img src="/resource/logoBC2" class="image-header"/>
-                </div>
-                <div class="header-text">
-                    {!v.translatorValue.Subheader_Label__c}<br />
-                    <!--{!v.language}<br /> -->
-                    <!--{!v.locale} -->
-                </div>
-            </div>
-            
-            <div class="slds-form slds-form_stacked">
-                <div aura:id="picklistShow" class="slds-grid slds-wrap">
-                    <div class="slds-col slds-size_2-of-12 slds-large-size_1-of-12 language-picker">
-                        <div class="slds-form-element">
-                            <label class="slds-form-element__label" for="input-id-01">{!v.translatorValue.Language_Label__c}</label>
-                            <div class="slds-form-element__control">
-                                <ui:inputSelect aura:id="InputSelectDynamicLanguage" class="dynamic slds-select" change="{!c.onPicklistChange}"/>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <aura:if isTrue="{! !empty(v.errors)}">
-                    
-                    <div aura:id="errors-container" class="slds-grid slds-wrap row padding slds-theme_alert-texture slds-theme_error noPrint" role="alert">
-                        <div class="slds-col slds-size_12-of-12 slds-large-size_12-of-12">
-                            <div class="slds-form-element">
-                                
-                                <button class="slds-button slds-button_icon slds-float_right" onclick="{!c.closeError}">
-                                    <lightning:buttonIcon iconName="utility:close" variant="bare" size="small"  alternativeText="expand" />
-                                    
-                                    <span class="slds-assistive-text">Provide description of action</span>
-                                </button>
-                            </div>
-                        </div>
-                        
-                        
-                        <aura:iteration items="{!v.errors}" var="r">
-                            <div class="slds-col slds-size_12-of-12 slds-large-size_12-of-12">
-                                <div class="slds-form-element">
-                                    <li>{!r}</li>
-                                </div>
-                            </div>
-                        </aura:iteration>
-                        
-                    </div>
-                </aura:if>
-                <div class="slds-grid slds-wrap row">
-                    <div class="slds-col slds-size_2-of-12 slds-large-size_2-of-12">
-                        <div class="slds-form-element">
-                            <label class="slds-form-element__label" for="input-id-01">{!v.translatorValue.Salutation_Label__c}</label>
-                            <div class="slds-form-element__control">
-                                <ui:inputSelect class="dynamic slds-select" value="{!v.newItem.Salutation}" aura:id="InputSelectDynamicTitolo" disabled="{!v.afterPrinting}" />
-                            </div>
-                        </div>
-                    </div>
-                    <aura:if isTrue="{!(v.locale == 'JP'|| v.locale == 'CN' || v.locale == 'RU' || v.locale == 'HK' || v.locale == 'MO' || v.truncLanguage == 'ja'|| v.truncLanguage == 'zh' || v.truncLanguage == 'ru' )}">
-                        <!-- JP/CN -->
-                        <div class="slds-col slds-size_5-of-12 slds-large-size_5-of-12">
-                            <div class="slds-form-element">
-                                <label class="slds-form-element__label" for="input-id-01">{!v.translatorValue.Last_Name_Label__c}</label>
-                                <div class="slds-form-element__control">
-                                    <ui:inputText aura:id="itemSurnameJC" class="slds-input" placeholder="{!v.translatorValue.Last_Name_Placeholder__c}" value="{!v.newItem.LastName}" onError="{!c.handleError}" onClearErrors="{!c.handleClearError}" disabled="{!v.afterPrinting}" />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="slds-col slds-size_5-of-12 slds-large-size_5-of-12">
-                            <div class="slds-form-element">
-                                <label class="slds-form-element__label" for="input-id-01">{!v.translatorValue.First_Name_Label__c}</label>
-                                <div class="slds-form-element__control">
-                                    <ui:inputText aura:id="itemNameJC" class="slds-input" placeholder="{!v.translatorValue.First_Name_Placeholder__c}" value="{!v.newItem.FirstName}" onError="{!c.handleError}" onClearErrors="{!c.handleClearError}" disabled="{!v.afterPrinting}" />
-                                </div>
-                            </div>
-                        </div> 
-                        <aura:set attribute="else">
-                            <div class="slds-col slds-size_5-of-12 slds-large-size_5-of-12">
-                                <div class="slds-form-element">
-                                    <label class="slds-form-element__label" for="input-id-01">{!v.translatorValue.First_Name_Label__c}</label>  
-                                    <div class="slds-form-element__control">
-                                        <ui:inputText aura:id="itemName" class="slds-input" placeholder="{!v.translatorValue.First_Name_Placeholder__c}" value="{!v.newItem.FirstName}" onError="{!c.handleError}" onClearErrors="{!c.handleClearError}" disabled="{!v.afterPrinting}" />
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="slds-col slds-size_5-of-12 slds-large-size_5-of-12">
-                                <div class="slds-form-element">
-                                    <label class="slds-form-element__label" for="input-id-01">{!v.translatorValue.Last_Name_Label__c}</label>
-                                    <div class="slds-form-element__control">
-                                        <ui:inputText aura:id="itemSurname" class="slds-input" placeholder="{!v.translatorValue.Last_Name_Placeholder__c}" value="{!v.newItem.LastName}" onError="{!c.handleError}" onClearErrors="{!c.handleClearError}" disabled="{!v.afterPrinting}" />
-                                    </div>
-                                </div>
-                            </div>
-                        </aura:set>    
-                    </aura:if>
-                </div>
-                <aura:if isTrue="{!(v.locale == 'JP'|| v.locale == 'CN' || v.locale == 'RU' || v.locale == 'HK' || v.locale == 'MO' || v.truncLanguage == 'ja'|| v.truncLanguage == 'zh' || v.truncLanguage == 'ru' )}">
-                    <div class="slds-grid slds-wrap row">
-                        <div class="slds-col slds-size_6-of-12 slds-large-size_6-of-12">
-                            <div class="slds-form-element">
-                                <label class="slds-form-element__label" for="input-id-01">{!v.translatorValue.Local_Last_Name_Label__c }</label>
-                                <div class="slds-form-element__control">
-                                    <ui:inputText aura:id="itemSurnameJP" class="slds-input" placeholder="{!v.translatorValue.Local_Last_Name_Placeholder__c}" value="{!v.newItem.Cognome_UTF_8__c}" onError="{!c.handleError}" onClearErrors="{!c.handleClearError}" disabled="{!v.afterPrinting}" />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="slds-col slds-size_6-of-12 slds-large-size_6-of-12">
-                            <div class="slds-form-element">
-                                <label class="slds-form-element__label" for="input-id-01">{!v.translatorValue.Local_First_Name_Label__c }</label>
-                                <div class="slds-form-element__control">
-                                    <ui:inputText aura:id="itemNameJP" class="slds-input" placeholder="{!v.translatorValue.Local_First_Name_Placeholder__c}" value="{!v.newItem.Nome_UTF_8__c}" onError="{!c.handleError}" onClearErrors="{!c.handleClearError}" disabled="{!v.afterPrinting}" />
-                                </div>
-                            </div>
-                        </div>
-                    </div> 
-                </aura:if>
-                <!-- US -->
-                 <aura:if isTrue="{!(v.locale == 'JP')}">
-                 <div class="slds-grid slds-wrap row">
-                      <div class="slds-col slds-size_2-of-12 slds-large-size_2-of-12">
-                        <div class="slds-form-element">
-                            <label class="slds-form-element__label textSizeMobile" for="input-id-01">{!v.translatorValue.CAP_Label__c}</label>
-                            <div class="slds-form-element__control">
-                                <ui:inputText aura:id="itemPersonMailingPostalCodeJP" class="slds-input" placeholder="{!v.translatorValue.CAP_Placeholder__c}" value="{!v.newItem.PersonMailingPostalCode}" onError="{!c.handleError}" onClearErrors="{!c.handleClearError}" disabled="{!v.afterPrinting}" />
-                            </div>
-                        </div>
-                    </div>
-                     <div class="slds-size_2-of-12 slds-large-size_2-of-12">
-                        <div class="slds-form-element">
-                            <label class="slds-form-element__label" for="input-id-01">{!v.translatorValue.State_Label__c}</label>
-                            <div class="slds-form-element__control">
-                                <ui:inputText aura:id="itemProvinceJP" class="slds-input" placeholder="{!v.translatorValue.State_Placeholder__c}" value="{!v.newItem.PersonMailingState}" onError="{!c.handleError}" onClearErrors="{!c.handleClearError}" disabled="{!v.afterPrinting}" />
-                            </div>
-                        </div>
-                    </div>
-                    
-                      <div class="slds-size_3-of-12 slds-large-size_3-of-12">
-                        <div class="slds-form-element">
-                            <label class="slds-form-element__label" for="input-id-01">{!v.translatorValue.City_Label__c}</label>
-                            <div class="slds-form-element__control">
-                                <ui:inputText aura:id="itemPersonMailingCityJP" class="slds-input" placeholder="{!v.translatorValue.City_Placeholder__c}" value="{!v.newItem.PersonMailingCity}" onError="{!c.handleError}" onClearErrors="{!c.handleClearError}" disabled="{!v.afterPrinting}" />
-                            </div>
-                        </div>
-                    </div>
-                     <div class="slds-col slds-size_5-of-12 slds-large-size_5-of-12">
-                        <div class="slds-form-element">
-                            <label class="slds-form-element__label" for="input-id-01">{!v.translatorValue.Street_Label__c}</label>
-                            <div class="slds-form-element__control">
-                                <ui:inputText aura:id="itemPersonMailingStreetJP" class="slds-input" placeholder="{!v.translatorValue.Street_Placeholder__c}" value="{!v.newItem.PersonMailingStreet}" onError="{!c.handleError}" onClearErrors="{!c.handleClearError}" disabled="{!v.afterPrinting}" />
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>    
-                 <aura:set attribute="else"> 
-                <div class="slds-grid slds-wrap row">
-                    <div class="slds-col slds-size_5-of-12 slds-large-size_5-of-12">
-                        <div class="slds-form-element">
-                            <label class="slds-form-element__label" for="input-id-01">{!v.translatorValue.Street_Label__c}</label>
-                            <div class="slds-form-element__control">
-                                <ui:inputText aura:id="itemPersonMailingStreet" class="slds-input" placeholder="{!v.translatorValue.Street_Placeholder__c}" value="{!v.newItem.PersonMailingStreet}" onError="{!c.handleError}" onClearErrors="{!c.handleClearError}" disabled="{!v.afterPrinting}" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="{! 'slds-col' + ' ' +  (v.locale == 'US' ? 'slds-size_3-of-12 slds-large-size_3-of-12' : 'slds-size_5-of-12 slds-large-size_5-of-12' )}">
-                        <div class="slds-form-element">
-                            <label class="slds-form-element__label" for="input-id-01">{!v.translatorValue.City_Label__c}</label>
-                            <div class="slds-form-element__control">
-                                <ui:inputText aura:id="itemPersonMailingCity" class="slds-input" placeholder="{!v.translatorValue.City_Placeholder__c}" value="{!v.newItem.PersonMailingCity}" onError="{!c.handleError}" onClearErrors="{!c.handleClearError}" disabled="{!v.afterPrinting}" />
-                            </div>
-                        </div>
-                    </div>
-                    <aura:if isTrue="{!v.locale == 'US'}">
-                        <div class="slds-col slds-size_2-of-12 slds-large-size_2-of-12">
-                            <div class="slds-form-element">
-                                <label class="slds-form-element__label" for="input-id-01">{!v.translatorValue.State_Label__c}</label>
-                                <div class="slds-form-element__control">
-                                    <ui:inputText aura:id="itemPersonMailingState" class="slds-input" placeholder="{!v.translatorValue.State_Placeholder__c}" value="{!v.newItem.PersonMailingState}" onError="{!c.handleError}" onClearErrors="{!c.handleClearError}" disabled="{!v.afterPrinting}" />
-                                </div>
-                            </div>
-                        </div>
-                    </aura:if>
-                    <div class="slds-col slds-size_2-of-12 slds-large-size_2-of-12">
-                        <div class="slds-form-element">
-                            <label class="slds-form-element__label textSizeMobile" for="input-id-01">{!v.translatorValue.CAP_Label__c}</label>
-                            <div class="slds-form-element__control">
-                                <ui:inputText aura:id="itemPersonMailingPostalCode" class="slds-input" placeholder="{!v.translatorValue.CAP_Placeholder__c}" value="{!v.newItem.PersonMailingPostalCode}" onError="{!c.handleError}" onClearErrors="{!c.handleClearError}" disabled="{!v.afterPrinting}" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                     </aura:set>   
-                </aura:if>
-                <div class="slds-grid slds-wrap row">
-                    <div class="slds-col slds-size_4-of-12 slds-large-size_4-of-12">
-                        <div class="slds-form-element">
-                            <label class="slds-form-element__label" for="input-id-01">{!v.translatorValue.Country_Label__c}</label>
-                            <div class="slds-form-element__control">
-                                <ui:inputSelect class="dynamic slds-select" value="{!v.newItem.PersonMailingCountry}" aura:id="InputSelectDynamicCountry" disabled="{!v.afterPrinting}"/>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="slds-col slds-size_4-of-12 slds-large-size_4-of-12">
-                        <div class="slds-form-element">
-                            <label class="slds-form-element__label textSizeMobile" for="input-id-01">{!v.translatorValue.Phone_Label__c}</label>
-                            <div class="slds-form-element__control">
-                                <ui:inputText aura:id="itemPhone" class="slds-input" placeholder="{!v.translatorValue.Phone_Placeholder__c}" value="{!v.newItem.Phone}" onError="{!c.handleError}" onClearErrors="{!c.handleClearError}" disabled="{!v.afterPrinting}" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="slds-col slds-size_4-of-12 slds-large-size_4-of-12">
-                        <div class="slds-form-element">
-                              <label class="slds-form-element__label" for="InputSelectDynamicNationality">{!v.translatorValue.Nationality_Label__c}</label>
-                            <div class="slds-form-element__control">
-                                <ui:inputSelect aura:id="InputSelectDynamicNationality" class="dynamic slds-select" value="{!v.newItem.Nazionalita__c}" disabled="{!v.afterPrinting}" />
-                            </div>
-                            <!--label class="slds-form-element__label" for="input-id-01">{!v.translatorValue.Mobile_Label__c}</label>
-                            <div class="slds-form-element__control">
-                                <ui:inputText aura:id="itemPersonMobilePhone" class="slds-input" placeholder="{!v.translatorValue.Mobile_Placeholder__c}" value="{!v.newItem.PersonMobilePhone}" onError="{!c.handleError}" onClearErrors="{!c.handleClearError}" disabled="{!v.afterPrinting}" />
-                            </div-->
-                        </div>
-                    </div>
-                </div>
-                <div class="slds-grid slds-wrap row">
-                    <div class="{!v.locale == 'CN' ? 'slds-col slds-size_4-of-12 slds-medium-size_4-of-12' : 'slds-col slds-size_6-of-12 slds-medium-size_6-of-12'}">
-                        <div class="slds-form-element">
-                            <label class="slds-form-element__label" for="input-id-01">{!v.translatorValue.Email_Label__c}</label>
-                            <div class="slds-form-element__control">
-                                <ui:inputText aura:id="itemPersonEmail" class="slds-input" placeholder="{!v.translatorValue.Email_Placeholder__c}" value="{!v.newItem.PersonEmail}" onError="{!c.handleError}" onClearErrors="{!c.handleClearError}" disabled="{!v.afterPrinting}" />
-                            </div>
-                        </div>
-                    </div>
-                    <aura:if isTrue="{!(v.locale == 'CN' &amp;&amp; v.truncLanguage == 'zh') || (v.locale == 'CN' &amp;&amp; v.truncLanguage == 'en') || (v.locale == 'HK' &amp;&amp; v.truncLanguage == 'en') || (v.locale == 'MO' &amp;&amp; v.truncLanguage == 'en')}">
-                    <div class="slds-col slds-size_4-of-12 slds-medium-size_4-of-12">
-                        <div class="slds-form-element">
-                            <label class="slds-form-element__label" for="input-id-01">{!v.translatorValue.We_Chat_ID_Label__c}</label>
-                            <div class="slds-form-element__control">
-                                <ui:inputText aura:id="itemWechatId" class="slds-input" placeholder="{!v.translatorValue.We_Chat_ID_Placeholder__c}" value="{!v.newItem.We_Chat_ID__c}" onError="{!c.handleError}" onClearErrors="{!c.handleClearError}" disabled="{!v.afterPrinting}" />
-                            </div>
-                        </div>
-                    </div>
-                    </aura:if>
-                    <div class="{!v.locale == 'CN' ? 'slds-col slds-size_4-of-12 slds-medium-size_4-of-12' : 'slds-col slds-size_6-of-12 slds-medium-size_6-of-12'}">
-                        <div class="slds-form-element">
-                            <fieldset class="">
-                                <legend class="slds-form-element__legend slds-form-element__label">{!v.translatorValue.Contact_Preferences_Label__c}</legend>
-                                <div class="check-container">
-                                    <span class="slds-checkbox">
-                                        <lightning:input type="checkbox" aura:id="checkbox_Telefono" class="" label="{!v.translatorValue.Checkbox_Phone_Label__c}" name="checkbox-phone" value="{!v.newItem.Telefono__c}" onchange="{!c.verifyCheckBox}" disabled="{!v.afterPrinting}" checked="{!v.newItem.Telefono__c}" />
-                                    </span>                                        
-                                    <span class="slds-checkbox">
-                                        <lightning:input type="checkbox" aura:id="checkbox_Email" class="" label="{!v.translatorValue.Checkbox_Email_Label__c}" name="checkbox-email" value="{!v.newItem.Email__c}" onchange="{!c.verifyCheckBox}" disabled="{!v.afterPrinting}" checked="{!v.newItem.Email__c}" />
-                                    </span>
-                                    <aura:if isTrue="{!v.locale == 'CN'}">
-                                    <span class="slds-checkbox">
-                                        <lightning:input type="checkbox" aura:id="checkbox_WeChat" class="" label="{!v.translatorValue.Checkbox_WeChat_Label__c}" name="checkbox-wechat" value="{!v.newItem.WeChat__c}" onchange="{!c.verifyCheckBox}" disabled="{!v.afterPrinting}" checked="{!v.newItem.WeChat__c}" />
-                                    </span>
-                                    </aura:if>
-                                    <span class="slds-checkbox">
-                                        <lightning:input type="checkbox" aura:id="checkbox_Posta" class="" label="{!v.translatorValue.Checkbox_Mail_Label__c}" name="checkbox-mail" value="{!v.newItem.Posta__c}" onchange="{!c.verifyCheckBox}" disabled="{!v.afterPrinting}" checked="{!v.newItem.Posta__c}" />
-                                    </span>
-                                    <span class="slds-checkbox">
-                                        <lightning:input type="checkbox" aura:id="checkbox_Other" class="" label="{!v.translatorValue.Checkbox_Messaging_Label__c}" name="checkbox-other" value="{!v.newItem.Messaging__c}"  onchange="{!c.verifyCheckBox}" disabled="{!v.afterPrinting}" checked="{!v.newItem.Messaging__c}" />                                            
-                                    </span>
-                                </div>
-                            </fieldset>
+    <!-- PALUMBO (START) -->
+    <aura:attribute name="showContactAddress" type="Boolean" default="false"/>
+    <aura:attribute name="showOtherAddress" type="Boolean" default="false"/>
+    <!-- PALUMBO (END) -->
 
-                        </div>
-                    </div>
-                </div>
-                <aura:if isTrue="{!v.newItem.Messaging__c}">
-                    <div class="slds-grid slds-wrap row slds-grid_align-end">
-                        <div class="{!v.locale == 'CN' ? 'slds-col slds-size_4-of-12 slds-medium-size_4-of-12' : 'slds-col slds-size_6-of-12 slds-medium-size_6-of-12'}">
-                            <div class="slds-form-element">
-                                <div class="slds-form-element__control">
-                                	<ui:inputText aura:id="itemOtherText" class="slds-input" placeholder="{!v.translatorValue.Checkbox_Other_Placeholder__c}" value="{!v.newItem.Other_text__c}" onError="{!c.handleError}" onClearErrors="{!c.handleClearError}" disabled="{!v.afterPrinting}" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </aura:if>
-                <div class="slds-grid slds-wrap row"> 
-                    <!-- MC- Split Birthdate -->
-                    <div class="slds-grid slds-size_8-of-12 slds-large-size_5-of-12 slds-wrap">  <!-- slds-size_3-of-12 slds-large-size_3-of-12 slds-wrap"> -->
-                        <div class="slds-col slds-size_12-of-12 slds-large-size_12-of-12">
-                            <span class="slds-form-element__label">{!v.translatorValue.Birthdate_Label__c}</span>
-                        </div>
-						<aura:if isTrue="{!(v.locale == 'JP')}">
-                             <div class="slds-col slds-size_4-of-12 slds-large-size_4-of-12">
-                            <div class="slds-form-element">  
-                                    <div class="slds-form-element__control">
-                                        <ui:inputSelect aura:id="InputSelectYearJP" class="dynamic slds-select" value="{!v.yearBirthdate}" />
-                                    </div>
-                            </div>
-                        </div>
-                             <div class="slds-col slds-size_4-of-12 slds-large-size_4-of-12">
-                            <div class="slds-form-element">  
-                                <div class="slds-form-element__control">
-                                    <ui:inputSelect aura:id="InputSelectMonthJP" class="dynamic slds-select" value="{!v.monthBirthdate}" />
-                                </div>
-                            </div>
-                        </div>
-                           <div class="slds-col slds-size_4-of-12 slds-large-size_4-of-12">
-                            <div class="slds-form-element">  
-                                <div class="slds-form-element__control">
-                                    <ui:inputSelect aura:id="InputSelectDayJP" class="dynamic slds-select" value="{!v.dayBirthdate}" />
-                                </div>
-                            </div>
-                        </div>
-						 <aura:set attribute="else"> 
-                        <div class="slds-col slds-size_4-of-12 slds-large-size_4-of-12">
-                            <div class="slds-form-element">  
-                                <div class="slds-form-element__control">
-                                    <ui:inputSelect aura:id="InputSelectDay" class="dynamic slds-select" value="{!v.dayBirthdate}" />
-                                </div>
-                            </div>
-                        </div>
+    <!-- VS - 20/04/2020 ISSUE 745 -->
+    <aura:attribute name="customPicklistCountry" type="Object" />
+    <aura:attribute name="customPicklistCountryBU" type="Object" />
 
-                        <div class="slds-col slds-size_4-of-12 slds-large-size_4-of-12">
-                            <div class="slds-form-element">  
-                                <div class="slds-form-element__control">
-                                    <ui:inputSelect aura:id="InputSelectMonth" class="dynamic slds-select" value="{!v.monthBirthdate}" />
-                                </div>
-                            </div>
-                        </div>
+    <aura:attribute name="customPicklistNationality" type="Object" />
+    <aura:attribute name="customPicklistNationalityBU" type="Object" />
 
-                        <div class="slds-col slds-size_4-of-12 slds-large-size_4-of-12">
-                            <div class="slds-form-element">  
-                                    <div class="slds-form-element__control">
-                                        <ui:inputSelect aura:id="InputSelectYear" class="dynamic slds-select" value="{!v.yearBirthdate}" />
-                                    </div>
-                            </div>
-                        </div>
-                              </aura:set>   
-                </aura:if>
-                            
-                    </div>
-                    
-                    
-                    <div class="slds-col slds-size_4-of-12 slds-large-size_4-of-12" > <!-- slds-col slds-size_3-of-12 slds-large-size_3-of-12"> -->
-                        <div class="slds-form-element">
-                            <label class="slds-form-element__label" for="InputSelectDynamicGenere">{!v.translatorValue.Gender_Label__c}</label>
-                            <div class="slds-form-element__control">
-                                <ui:inputSelect aura:id="InputSelectDynamicGenere" class="dynamic slds-select" value="{!v.newItem.Sesso__c}" disabled="{!v.afterPrinting}" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                               
-                <div class="slds-grid slds-wrap row">
-                    <div class="slds-col slds-size_4-of-12 slds-large-size_3-of-12">
-                        <div class="slds-form-element">
-                                <label class="slds-form-element__label" for="InputSelectDynamicProfession">{!v.translatorValue.Profession_Label__c}</label>
-                            <div class="slds-form-element__control">
-                                <ui:inputSelect aura:id="InputSelectDynamicProfession" class="dynamic slds-select" value="{!v.newItem.Professione__c}" disabled="{!v.afterPrinting}" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="slds-col slds-size_4-of-12 slds-large-size_3-of-12">
-                        <div class="slds-form-element">
-                                <label class="slds-form-element__label" for="InputSelectDynamicHobby">{!v.translatorValue.Hobby_Label__c}</label>
-                            <div class="slds-form-element__control">
-                                <ui:inputSelect aura:id="InputSelectDynamicHobby" class="dynamic slds-select" value="{!v.newItem.Hobby__c}" disabled="{!v.afterPrinting}" />
-                            </div>                          
-                        </div>
-                    </div>
-                    
-                    <div class="slds-col slds-size_4-of-12 slds-large-size_3-of-12">
-                        <div class="slds-form-element">
-                            <label class="slds-form-element__label" for="input-id-01">{!v.translatorValue.Preferred_Language_Label__c}</label>
-                            <div class="slds-form-element__control">
-                                <ui:inputSelect aura:id="InputSelectDynamicLang" class="dynamic slds-select" value="{!v.newItem.Lingua__c}" disabled="{!v.afterPrinting}" />
-                            </div>
-                        </div>
-                    </div>
-                    <!--
-                    <div class="slds-col slds-size_3-of-12 slds-large-size_3-of-12">
-                        <div class="slds-form-element">
-                            label class="slds-form-element__label" for="InputSelectDynamicHobby">{!v.translatorValue.Hobby_Label__c}</label>
-                            <div class="slds-form-element__control">
-                                <ui:inputSelect aura:id="InputSelectDynamicHobby" class="dynamic slds-select" value="{!v.newItem.Hobby__c}" disabled="{!v.afterPrinting}" />
-                            </div
-                        </div>
-                    </div> -->
-                </div>
-                <aura:if isTrue="{!and((v.locale != 'US'),(v.locale != 'CA'))}">
-                <div class="slds-grid slds-wrap row">
-                    <div class="slds-col slds-size_12-of-12 slds-large-size_12-of-12">
-                    <div class="{! 'slds-section'+ (or((v.isexpanded),(v.locale == 'RU')) ? ' slds-is-open' : '') }">
-                        <aura:if isTrue="{!(v.locale != 'RU')}">
-                        <h3 class="slds-section__title">
-                            <button aria-controls="expando-unique-id" aria-expanded="true" class="slds-button slds-section__title-action" onclick="{!c.changeState}" >
-                                <lightning:icon aura:id="articleOne" iconName="utility:switch" size="xx-small" alternativeText="switch" class="expandSection"/>
-                                <span class="slds-truncate" title="Section Title"> &nbsp;{!v.translatorValue.Passport_Section_Label__c }</span>
-                            </button>
-                        </h3>
-                        </aura:if>
-                        <div aria-hidden="false" class="slds-section__content" id="expando-unique-id">
-                            <div class="slds-grid slds-wrap row">
-                                <div class="slds-col slds-size_6-of-12 slds-large-size_6-of-12">
-                                    <div class="slds-form-element">
-                                        <label class="slds-form-element__label" for="input-id-01">{!v.translatorValue.Numero_Passaporto_Label__c}</label>
-                                        <div class="slds-form-element__control">
-                                            <ui:inputText aura:id="itemPassportNum" class="slds-input" placeholder="{!v.translatorValue.Numero_Passaporto_Placeholder__c}" value="{!v.newItem.Numero_Passaporto__c}" onError="{!c.handleError}" onClearErrors="{!c.handleClearError}" disabled="{!v.afterPrinting}" />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="slds-col slds-size_6-of-12 slds-large-size_6-of-12">
-                                    <div class="slds-form-element">
-                                        <label class="slds-form-element__label" for="InputSelectDynamicPassportCountry">{!v.translatorValue.Paese_di_emissione_passaporto_Label__c}</label>
-                                        <div class="slds-form-element__control">
-                                            <ui:inputSelect class="dynamic slds-select" value="{!v.newItem.Paese_di_emissione_passaporto__c}" aura:id="InputSelectDynamicPassportCountry" onError="{!c.handleError}" onClearErrors="{!c.handleClearError}"  disabled="{!v.afterPrinting}" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                           
-                        </div>
-                    </div>
-                    </div>
-                    
-                </div>
-                </aura:if>
+    <aura:attribute name="customPicklistProfession" type="Object" />
+    <aura:attribute name="customPicklistProfessionBU" type="Object" />
+
+    <aura:attribute name="customPicklistPreferredLanguage" type="Object" />
+    <aura:attribute name="customPicklistPreferredLanguageBU" type="Object" />
+    <!-- VS - 20/04/2020 ISSUE 745 -->
+    
+
+    <aura:attribute name="customPicklistHobby" type="Object" />
+    <aura:attribute name="customPicklistHobbyBU" type="Object" />
+
+    
+    
+    <aura:attribute name="customPicklistCountryContact" type="Object" />
+    <aura:attribute name="customPicklistCountryContactBU" type="Object" />
+
+    <aura:attribute name="customPicklistCountryOther" type="Object" />
+    <aura:attribute name="customPicklistCountryOtherBU" type="Object" />
+    <aura:attribute name="hobbyBackup" type="String[]" default=""/>
+
+
+
+    <aura:attribute name="GBBool" type="boolean" default="false"/>
+    <aura:attribute name="DCCBool" type="boolean" default="true"/>
+
+    <aura:attribute name="optSalutation" type="Object" />
+    <aura:attribute name="optSesso" type="Object" />
+    <aura:attribute name="optLang" type="Object" />
+    <!-- VS 11/05/2020 -->
+    <!-- <aura:handler name="registrationFormEvent" event="c:registrationFormEvent" action="{!c.handleComponentEvent}"/> -->
+
+    <aura:attribute name="hideBody" type="Boolean" default="true"/>
+
+    <aura:if isTrue="{!v.hideBody}">
+        <lightning:spinner size="medium" alternativeText="Loading"/>
+    </aura:if>
+
+    <aura:renderIf isTrue="{!!v.hideBody}">
+
+        <!-- REGISTRATION WITH TAX FREE -->
+        <!-- VS 11/05/2020 -->
+        <!-- <c:createCustomerTaxFreeComponent translations="{!v.translatorValue}" show="{!!v.DCCBool}" country="{!v.customPicklistCountry}"/> -->
+
+        <!-- STANDARD CUSTOMER FORM -->
+        <aura:renderIf isTrue="{!v.DCCBool}">
+            <ltng:require scripts="/resource/sPad"
+            afterScriptsLoaded="{!c.doneRendering}" />
+
+            <aura:if isTrue="{!v.formOpen}">
                 
-                 <aura:if isTrue="{!v.locale == 'RU'}">
-                    <div class="slds-col slds-size_12-of-12 slds-large-size_12-of-12">
-                            <div class="slds-grid slds-wrap row">
-                                    <div class="slds-col slds-size_6-of-12 slds-large-size_6-of-12">
-                                        <div class="slds-form-element">
-                                            <label class="slds-form-element__label" for="input-id-01">{!v.translatorValue.Ente_di_emissione_passaporto_Label__c}</label>
-                                            <div class="slds-form-element__control">
-                                                <ui:inputText aura:id="itemPassportIssuedBy" class="slds-input" placeholder="{!v.translatorValue.Ente_di_emissione_passaporto_Label__c}" value="{!v.newItem.Ente_di_emissione_passaporto__c}" onError="{!c.handleError}" onClearErrors="{!c.handleClearError}" disabled="{!v.afterPrinting}" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="slds-col slds-size_6-of-12 slds-large-size_6-of-12">
-                                        <div class="slds-form-element">
-                                            <label class="slds-form-element__label" for="input-id-01">{!v.translatorValue.Data_di_emissione_passaporto_Label__c}</label>
-                                            <div class="slds-form-element__control">
-                                                <ui:inputDate class="dynamic slds-select" displayDatePicker="true" value="{!v.newItem.Data_di_emissione_passaporto__c}" aura:id="itemPassportIssuedOn" onError="{!c.handleError}" onClearErrors="{!c.handleClearError}"  disabled="{!v.afterPrinting}" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                     </div>
-                                     
-                 </aura:if>
-                   
-                <aura:if isTrue="{!v.locale == 'DE'}">
-                    <!-- DE -->
-                    <div class="slds-wrap privacy-police">
-                        <div class="slds-col slds-size_12-0f-12 slds-large-size_12-of-12">
-                            <div class="slds-form-element slds-text-align_left privacy-police-title">
-                                <span>{!v.translatorValue.Privacy_Header_Before_Link_Label__c}&ensp;</span>
-                                <a onclick="{!c.openModel}">{!v.translatorValue.Privacy_Header_Link_Label__c}</a>
-                                <span>&ensp;{!v.translatorValue.Privacy_Header_After_Link_Label__c}</span>
-                            </div>
-                        </div>                    
-                        <div class="slds-col slds-size_12-of-12 slds-large-size_12-of-12">
-                            <div class="slds-form-element">
-                                <fieldset class="slds-form-element border-bottom">
-                                    <div class="slds-form-element__control">
-                                        <span class="slds-checkbox">
-                                            <lightning:input type="checkbox" aura:id="checkbox_Privacy1" class="text-bold" label="{!v.translatorValue.Privacy_Yes_Label__c}" name="blue" checked="{!v.newItem.Privacy1__c}" value="{!v.newItem.Privacy1__c}" onchange="{!c.verifyCheckBox}" disabled="{!v.afterPrinting}" />
-                                        </span>
-                                        <div>
-                                            <label class="slds-checkbox__label">
-                                                {!v.translatorValue.Privacy_1_Label__c}                               
-                                            </label>
-                                        </div>
-                                    </div>
-                                </fieldset>
-                            </div>
-                        </div>
-                        <div class="slds-col slds-size_12-of-12 slds-large-size_12-of-12">
-                            <div class="slds-form-element">
-                                <fieldset class="slds-form-element border-bottom">
-                                    <div class="slds-form-element__control">
-                                        <span class="slds-checkbox">
-                                            <lightning:input type="checkbox" aura:id="checkbox_Privacy2" class="text-bold" label="{!v.translatorValue.Privacy_Yes_Label__c}" name="checkbox_2_yes" checked="{!v.newItem.Privacy2__c}" value="{!v.newItem.Privacy2__c}" onchange="{!c.verifyCheckBox}" disabled="{!v.afterPrinting}" />
-                                        </span>
-                                        <div>
-                                            <label class="slds-checkbox__label">
-                                                {!v.translatorValue.Privacy_2_Label__c}                               
-                                            </label>
-                                        </div>
-                                    </div>
-                                </fieldset>               
-                            </div>
-                        </div>
-                        <div class="slds-col slds-size_12-of-12 slds-large-size_12-of-12">
-                            <div class="slds-form-element">
-                                <fieldset class="slds-form-element">
-                                    <div class="slds-form-element__control">
-                                        <span class="slds-checkbox">
-                                            <lightning:input type="checkbox" aura:id="checkbox_Privacy3" class="text-bold" label="{!v.translatorValue.Privacy_Yes_Label__c}" name="checkbox_3_yes" checked="{!v.newItem.Privacy3__c}" value="{!v.newItem.Privacy3__c}" onchange="{!c.verifyCheckBox}" disabled="{!v.afterPrinting}" />
-                                        </span>
-                                        <div>
-                                            <label class="slds-checkbox__label">
-                                                {!v.translatorValue.Privacy_3_Label__c}                               
-                                            </label>
-                                        </div>
-                                    </div>
-                                </fieldset>
-                            </div>
-                        </div>      
-                        <div class="slds-col slds-size_12-of-12 slds-large-size_12-of-12 slds-text-align_center footer-privacy-police">
-                            <div class="slds-form-element">
-                                <label class="slds-checkbox__label">{!v.translatorValue.Privacy_Footer_Label__c}</label>
-                            </div>
-                        </div>      
+                <!-- <div class="spinnerDiv">
+                    <lightning:spinner aura:id="mySpinner" class=""/>
+                </div> -->
+                
+                <aura:if isTrue="{!v.isUpdate}">
+                    <div class="noPrint text-update" style="color: #d9dbdd; padding:5px;">
+                        <p><span class="noPrint" style="font-weight: bold;">Update: </span><span class="noPrint" style="font-style: italic;">{!v.newItem.FirstName}&nbsp;{!v.newItem.LastName}</span></p>
                     </div>
-                    <aura:set attribute="else">
-                        <!-- ALL OTHERS -->
-                        <div class="slds-wrap privacy-police">
-                            <div class="slds-col slds-size_12-0f-12 slds-large-size_12-of-12">
-                                <div class="slds-form-element slds-text-align_left privacy-police-title">
-                                    <span>{!v.translatorValue.Privacy_Header_Before_Link_Label__c}&ensp;</span>
-                                    <a onclick="{!c.openModel}">{!v.translatorValue.Privacy_Header_Link_Label__c}</a>
-                                    <span>&ensp;{!v.translatorValue.Privacy_Header_After_Link_Label__c}</span>
+                </aura:if>
+                <div class="container component" id="container" aura:id="container">
+                    <div class="header">
+                        <div class="header-logo">
+                            <img src="/resource/logoBC2" class="image-header"/>
+                        </div>
+                        <div class="header-text">
+                            {!v.translatorValue.Subheader_Label__c}<br />
+                            <!--{!v.language}<br /> -->
+                            <!--{!v.locale} -->
+                        </div>
+                    </div>
+                    
+                    <div class="slds-form slds-form_stacked">
+                        <div aura:id="picklistShow" class="slds-grid slds-wrap">
+                            <div class="slds-col slds-size_2-of-12 slds-large-size_1-of-12 language-picker">
+                                <div class="slds-form-element">
+                                    <label class="slds-form-element__label" for="input-id-01">{!v.translatorValue.Language_Label__c}</label>
+                                    <div class="slds-form-element__control">
+                                        <ui:inputSelect aura:id="InputSelectDynamicLanguage" class="dynamic slds-select" change="{!c.onPicklistChange}" options="{!v.optLang}"/>
+                                    </div>
                                 </div>
                             </div>
+                        </div>
+                        <aura:if isTrue="{! !empty(v.errors)}">
                             
-                            <div class="slds-col slds-size_12-of-12 slds-large-size_12-of-12">
-                                <div class="slds-form-element">
-                                    <fieldset class="slds-form-element border-bottom">
-                                        <div class="slds-form-element__control">
-                                            <span class="slds-checkbox">
-                                                <lightning:input type="checkbox"  aura:id="checkbox_1_yes" class="text-bold" label="{!v.translatorValue.Privacy_Yes_Label__c}" name="checkbox_1_yes" checked="{!v.newItem.Privacy1__c}" onchange="{!c.verifyCheckQuestion}" disabled="{!v.afterPrinting}" />
-                                            </span>
-                                            <span class="slds-checkbox">
-                                                <lightning:input type="checkbox" aura:id="checkbox_1_no" class="text-bold" label="{!v.translatorValue.Privacy_No_Label__c}" name="checkbox_1_no" value="" checked="{! (v.newItem.Privacy1__c == false)}" onchange="{!c.verifyCheckQuestion}" disabled="{!v.afterPrinting}" />
-                                            </span>
-                                            <div>
-                                                <label aura:id="checkbox_1_label" class="slds-checkbox__label">
-                                                    {!v.translatorValue.Privacy_1_Label__c}                            
-                                                </label>
-                                            </div>
+                            <div aura:id="errors-container" class="slds-grid slds-wrap row padding slds-theme_alert-texture slds-theme_error noPrint" role="alert">
+                                <div class="slds-col slds-size_12-of-12 slds-large-size_12-of-12">
+                                    <div class="slds-form-element">
+                                        
+                                        <button class="slds-button slds-button_icon slds-float_right" onclick="{!c.closeError}">
+                                            <lightning:buttonIcon iconName="utility:close" variant="bare" size="small"  alternativeText="expand" />
+                                            
+                                            <span class="slds-assistive-text">Provide description of action</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                
+                                <aura:iteration items="{!v.errors}" var="r">
+                                    <div class="slds-col slds-size_12-of-12 slds-large-size_12-of-12">
+                                        <div class="slds-form-element">
+                                            <li>{!r}</li>
                                         </div>
-                                    </fieldset>
+                                    </div>
+                                </aura:iteration>
+                                
+                            </div>
+                        </aura:if>
+                        <div class="slds-grid slds-wrap row">
+                            <div class="slds-col slds-size_2-of-12 slds-large-size_2-of-12">
+                                <div class="slds-form-element">
+                                    <label class="slds-form-element__label" for="input-id-01">{!v.translatorValue.Salutation_Label__c}</label>
+                                    <div class="slds-form-element__control">
+                                        <ui:inputSelect class="dynamic slds-select" value="{!v.newItem.Salutation}" aura:id="InputSelectDynamicTitolo" disabled="{!v.afterPrinting}" options="{!v.optSalutation}"/>
+                                    </div>
                                 </div>
                             </div>
-                            
-                            <div class="slds-col slds-size_12-of-12 slds-large-size_12-of-12">
-                                <div class="slds-form-element">
-                                    <fieldset aura:id="checkbox2" class="slds-form-element border-bottom">
+                            <aura:if isTrue="{!(v.locale == 'JP'|| v.locale == 'CN' || v.locale == 'RU' || v.locale == 'HK' || v.locale == 'MO' || v.truncLanguage == 'ja'|| v.truncLanguage == 'zh' || v.truncLanguage == 'ru' )}">
+                                <!-- JP/CN -->
+                                <div class="slds-col slds-size_5-of-12 slds-large-size_5-of-12">
+                                    <div class="slds-form-element">
+                                        <label class="slds-form-element__label" for="input-id-01">{!v.translatorValue.Last_Name_Label__c}</label>
                                         <div class="slds-form-element__control">
-                                            <span class="slds-checkbox">
-                                                <lightning:input type="checkbox" aura:id="checkbox_2_yes" class="text-bold" label="{!v.translatorValue.Privacy_Yes_Label__c}" name="checkbox_2_yes" value="" checked="{!v.newItem.Privacy2__c}" onchange="{!c.verifyCheckQuestion}" disabled="{!v.afterPrinting}" />
-                                            </span>
-                                            <span class="slds-checkbox">
-                                                <lightning:input type="checkbox" aura:id="checkbox_2_no" class="text-bold" label="{!v.translatorValue.Privacy_No_Label__c}" name="checkbox_2_no" value="" checked="{! (v.newItem.Privacy2__c == false)}" onchange="{!c.verifyCheckQuestion}" disabled="{!v.afterPrinting}" />
-                                            </span>
-                                            <div>
-                                                <label aura:id="checkbox_2_label" class="slds-checkbox__label">
-                                                    <aura:if isTrue="{!v.user.Canale_di_Vendita__c == 'Department'}">
-                                                        {!v.translatorValue.Privacy_2_Label_Department__c}  
-                                                        <aura:set attribute="else">
-                                                             <aura:if isTrue="{!v.user.Canale_di_Vendita__c == 'Monobrand'}">
-                                                                 {!v.translatorValue.Privacy_2_Label__c}
-                                                            	<aura:set attribute="else">
-                                                                 {!v.translatorValue.Privacy_2_Label__c}  
-                                                                 </aura:set>
-                                                              </aura:if>
-                                                        </aura:set>
-                                                    </aura:if>                                  
-                                                </label>
-                                            </div>
+                                            <ui:inputText aura:id="itemSurnameJC" class="slds-input" placeholder="{!v.translatorValue.Last_Name_Placeholder__c}" value="{!v.newItem.LastName}" onError="{!c.handleError}" onClearErrors="{!c.handleClearError}" disabled="{!v.afterPrinting}" />
                                         </div>
-                                    </fieldset>
+                                    </div>
                                 </div>
-                            </div>
-                            
-                            <div class="slds-col slds-size_12-of-12 slds-large-size_12-of-12">
-                                <div class="slds-form-element">
-                                    <fieldset class="slds-form-element">
+                                <div class="slds-col slds-size_5-of-12 slds-large-size_5-of-12">
+                                    <div class="slds-form-element">
+                                        <label class="slds-form-element__label" for="input-id-01">{!v.translatorValue.First_Name_Label__c}</label>
                                         <div class="slds-form-element__control">
-                                            <span class="slds-checkbox">
-                                                <lightning:input type="checkbox" aura:id="checkbox_3_yes" class="text-bold" label="{!v.translatorValue.Privacy_Yes_Label__c}" name="checkbox_3_yes" value="" checked="{!v.newItem.Privacy3__c}" onchange="{!c.verifyCheckQuestion}" disabled="{!v.afterPrinting}" />
-                                            </span>
-                                            <span class="slds-checkbox">
-                                                <lightning:input type="checkbox" aura:id="checkbox_3_no" class="text-bold" label="{!v.translatorValue.Privacy_No_Label__c}" name="checkbox_3_no" value="" checked="{! (v.newItem.Privacy3__c == false)}" onchange="{!c.verifyCheckQuestion}" disabled="{!v.afterPrinting}" />
-                                            </span>
-                                            <div>
-                                                <label aura:id="checkbox_3_label" class="slds-checkbox__label">
-                                                    {!v.translatorValue.Privacy_3_Label__c}   
-                                                </label>
+                                            <ui:inputText aura:id="itemNameJC" class="slds-input" placeholder="{!v.translatorValue.First_Name_Placeholder__c}" value="{!v.newItem.FirstName}" onError="{!c.handleError}" onClearErrors="{!c.handleClearError}" disabled="{!v.afterPrinting}" />
+                                        </div>
+                                    </div>
+                                </div> 
+                                <aura:set attribute="else">
+                                    <div class="slds-col slds-size_5-of-12 slds-large-size_5-of-12">
+                                        <div class="slds-form-element">
+                                            <label class="slds-form-element__label" for="input-id-01">{!v.translatorValue.First_Name_Label__c}</label>  
+                                            <div class="slds-form-element__control">
+                                                <ui:inputText aura:id="itemName" class="slds-input" placeholder="{!v.translatorValue.First_Name_Placeholder__c}" value="{!v.newItem.FirstName}" onError="{!c.handleError}" onClearErrors="{!c.handleClearError}" disabled="{!v.afterPrinting}" />
+                                                
                                             </div>
                                         </div>
-                                    </fieldset>
+                                    </div>
+                                    <div class="slds-col slds-size_5-of-12 slds-large-size_5-of-12">
+                                        <div class="slds-form-element">
+                                            <label class="slds-form-element__label" for="input-id-01">{!v.translatorValue.Last_Name_Label__c}</label>
+                                            <div class="slds-form-element__control">
+                                                <ui:inputText aura:id="itemSurname" class="slds-input" placeholder="{!v.translatorValue.Last_Name_Placeholder__c}" value="{!v.newItem.LastName}" onError="{!c.handleError}" onClearErrors="{!c.handleClearError}" disabled="{!v.afterPrinting}" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </aura:set>    
+                            </aura:if>
+                        </div>
+                        <aura:if isTrue="{!(v.locale == 'JP'|| v.locale == 'CN' || v.locale == 'RU' || v.locale == 'HK' || v.locale == 'MO' || v.truncLanguage == 'ja'|| v.truncLanguage == 'zh' || v.truncLanguage == 'ru' )}">
+                            <div class="slds-grid slds-wrap row">
+                                <div class="slds-col slds-size_6-of-12 slds-large-size_6-of-12">
+                                    <div class="slds-form-element">
+                                        <label class="slds-form-element__label" for="input-id-01">{!v.translatorValue.Local_Last_Name_Label__c }</label>
+                                        <div class="slds-form-element__control">
+                                            <ui:inputText aura:id="itemSurnameJP" class="slds-input" placeholder="{!v.translatorValue.Local_Last_Name_Placeholder__c}" value="{!v.newItem.Cognome_UTF_8__c}" onError="{!c.handleError}" onClearErrors="{!c.handleClearError}" disabled="{!v.afterPrinting}" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="slds-col slds-size_6-of-12 slds-large-size_6-of-12">
+                                    <div class="slds-form-element">
+                                        <label class="slds-form-element__label" for="input-id-01">{!v.translatorValue.Local_First_Name_Label__c }</label>
+                                        <div class="slds-form-element__control">
+                                            <ui:inputText aura:id="itemNameJP" class="slds-input" placeholder="{!v.translatorValue.Local_First_Name_Placeholder__c}" value="{!v.newItem.Nome_UTF_8__c}" onError="{!c.handleError}" onClearErrors="{!c.handleClearError}" disabled="{!v.afterPrinting}" />
+                                        </div>
+                                    </div>
                                 </div>
                             </div> 
+                        </aura:if>
+                        <!-- US -->
+
+                        <!-- PALUMBO (START) -->
+
+                        <!-- DEFAULT ADDRESS -->
+                        <div class="slds-section slds-is-open" aura:id="default-address-id">
+                            <h3 class="slds-section__title">
+                                <button aria-controls="default-address" aria-expanded="true" data-auraId ="default-address-id" data-iconId ="default-address-icon" class="slds-button slds-section__title-action" onclick="{!c.handleAddressSection}" >
+                                    <lightning:icon aura:id="default-address-icon" iconName="utility:switch" size="xx-small" alternativeText="switch" class=""/>
+                                    <span data-auraId ="default-address-id" data-iconId ="default-address-icon" class="slds-truncate" title="Section Title"> &nbsp;{!v.translatorValue.Billing_Address_Section_Label__c }</span>
+                                </button>
+                            </h3> 
+
+                            <div aria-hidden="false" class="slds-section__content" id="default-address">
+                                <aura:if isTrue="{!(v.locale == 'JP')}">
+                                    <div class="slds-grid slds-wrap row">
+                                        <div class="slds-col slds-size_2-of-12 slds-large-size_2-of-12">
+                                            <div class="slds-form-element">
+                                                <label class="slds-form-element__label textSizeMobile" for="input-id-01">{!v.translatorValue.CAP_Label__c}</label>
+                                                <div class="slds-form-element__control">
+                                                    <ui:inputText aura:id="itemPersonMailingPostalCodeJP" class="slds-input" placeholder="{!v.translatorValue.CAP_Placeholder__c}" value="{!v.newItem.PersonMailingPostalCode}" onError="{!c.handleError}" onClearErrors="{!c.handleClearError}" disabled="{!v.afterPrinting}" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="slds-size_2-of-12 slds-large-size_2-of-12">
+                                            <div class="slds-form-element">
+                                                <label class="slds-form-element__label" for="input-id-01">{!v.translatorValue.State_Label__c}</label>
+                                                <div class="slds-form-element__control">
+                                                    <ui:inputText aura:id="itemProvinceJP" class="slds-input" placeholder="{!v.translatorValue.State_Placeholder__c}" value="{!v.newItem.PersonMailingState}" onError="{!c.handleError}" onClearErrors="{!c.handleClearError}" disabled="{!v.afterPrinting}" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="slds-size_3-of-12 slds-large-size_3-of-12">
+                                            <div class="slds-form-element">
+                                                <label class="slds-form-element__label" for="input-id-01">{!v.translatorValue.City_Label__c}</label>
+                                                <div class="slds-form-element__control">
+                                                    <ui:inputText aura:id="itemPersonMailingCityJP" class="slds-input" placeholder="{!v.translatorValue.City_Placeholder__c}" value="{!v.newItem.PersonMailingCity}" onError="{!c.handleError}" onClearErrors="{!c.handleClearError}" disabled="{!v.afterPrinting}" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="slds-col slds-size_5-of-12 slds-large-size_5-of-12">
+                                            <div class="slds-form-element">
+                                                <label class="slds-form-element__label" for="input-id-01">{!v.translatorValue.Street_Label__c}</label>
+                                                <div class="slds-form-element__control">
+                                                    <ui:inputText aura:id="itemPersonMailingStreetJP" class="slds-input" placeholder="{!v.translatorValue.Street_Placeholder__c}" value="{!v.newItem.PersonMailingStreet}" onError="{!c.handleError}" onClearErrors="{!c.handleClearError}" disabled="{!v.afterPrinting}" />
+                                                </div>
+                                            </div>
+                                        </div>                    
+                                    </div>  
+
+                                    <aura:set attribute="else">                                              
+                                        <div class="slds-grid slds-wrap row">
+                                            <div class="slds-col slds-size_5-of-12 slds-large-size_5-of-12">
+                                                <div class="slds-form-element">
+                                                    <label class="slds-form-element__label" for="input-id-01">{!v.translatorValue.Street_Label__c}</label>
+                                                    <div class="slds-form-element__control">
+                                                        <ui:inputText aura:id="itemPersonMailingStreet" class="slds-input" placeholder="{!v.translatorValue.Street_Placeholder__c}" value="{!v.newItem.PersonMailingStreet}" onError="{!c.handleError}" onClearErrors="{!c.handleClearError}" disabled="{!v.afterPrinting}" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="{! 'slds-col' + ' ' +  (v.locale == 'US' ? 'slds-size_3-of-12 slds-large-size_3-of-12' : 'slds-size_5-of-12 slds-large-size_5-of-12' )}">
+                                                <div class="slds-form-element">
+                                                    <label class="slds-form-element__label" for="input-id-01">{!v.translatorValue.City_Label__c}</label>
+                                                    <div class="slds-form-element__control">
+                                                        <ui:inputText aura:id="itemPersonMailingCity" class="slds-input" placeholder="{!v.translatorValue.City_Placeholder__c}" value="{!v.newItem.PersonMailingCity}" onError="{!c.handleError}" onClearErrors="{!c.handleClearError}" disabled="{!v.afterPrinting}" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <aura:if isTrue="{!v.locale == 'US'}">
+                                                <div class="slds-col slds-size_2-of-12 slds-large-size_2-of-12">
+                                                    <div class="slds-form-element">
+                                                        <label class="slds-form-element__label" for="input-id-01">{!v.translatorValue.State_Label__c}</label>
+                                                        <div class="slds-form-element__control">
+                                                            <ui:inputText aura:id="itemPersonMailingState" class="slds-input" placeholder="{!v.translatorValue.State_Placeholder__c}" value="{!v.newItem.PersonMailingState}" onError="{!c.handleError}" onClearErrors="{!c.handleClearError}" disabled="{!v.afterPrinting}" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </aura:if>
+                                            <div class="slds-col slds-size_2-of-12 slds-large-size_2-of-12">
+                                                <div class="slds-form-element">
+                                                    <label class="slds-form-element__label textSizeMobile" for="input-id-01">{!v.translatorValue.CAP_Label__c}</label>
+                                                    <div class="slds-form-element__control">
+                                                        <ui:inputText aura:id="itemPersonMailingPostalCode" class="slds-input" placeholder="{!v.translatorValue.CAP_Placeholder__c}" value="{!v.newItem.PersonMailingPostalCode}" onError="{!c.handleError}" onClearErrors="{!c.handleClearError}" disabled="{!v.afterPrinting}" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>    
+                                    </aura:set>                            
+                                </aura:if>  
+
+                                <div class="slds-col slds-size_4-of-12 slds-large-size_4-of-12">
+                                    <!-- <div class="slds-form-element">
+                                        <label class="slds-form-element__label" for="input-id-01">{!v.translatorValue.Country_Label__c}</label>
+                                        <div class="slds-form-element__control">
+                                            <ui:inputSelect class="dynamic slds-select" value="{!v.newItem.PersonMailingCountry}" aura:id="InputSelectDynamicCountry" disabled="{!v.afterPrinting}"/>
+                                        </div>
+                                    </div> -->
+                                    <div class="slds-form-element">
+                                        <div class="slds-combobox  slds-combobox-lookup slds-dropdown-trigger slds-dropdown-trigger_click"  aura:id="searchLookupCountry"
+                                        aria-expanded="false" aria-haspopup="listbox" role="combobox">
+                                        <lightning:input aura:id="inputCountry" name="inputCountry" label="{!v.translatorValue.Country_Label__c}" onfocus="{!c.onFocusPickList}" onchange="{!c.onChangePickList}" onblur="{!c.onBlurPickList}" value="{!v.newItem.PersonMailingCountry}"/>
+                                        <div role="listbox">                   
+                                            <ul class="slds-listbox slds-listbox_vertical slds-dropdown left1">
+                                                <ui:scrollerWrapper class="scrollerSize">
+                                                    <aura:iteration items="{!v.customPicklistCountry}" var="option">
+                                                        <div>
+                                                            <lightning:button name="{!'btn_Country_' + option.value}" class="button-custom" variant="base" label="{!option.label}" value="{!option.value}" onclick="{! c.selectOption }"/>
+                                                        </div>
+                                                    </aura:iteration>
+                                                </ui:scrollerWrapper>
+                                                
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="slds-grid slds-wrap row">
+                                    <div class="slds-col slds-size_12-of-12 slds-large-size_12-of-12">
+                                        <lightning:button variant="brand-outline" aura:id="defaultAddButton" label="{!v.translatorValue.Button_Add_Address_Label__c}" title="{!v.translatorValue.Button_Add_Address_Label__c}" onclick="{! c.handleAddAddress }" iconName="utility:add" disabled="{!v.showContactAddress}"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- CONTACT ADDRESS -->
+                        <aura:renderif isTrue="{!v.showContactAddress}">
+                            <div class="slds-section slds-is-open" aura:id="contact-address-id">
+                                <h3 class="slds-section__title">
+                                    <button aria-controls="contact-address" aria-expanded="true" data-auraId ="contact-address-id" data-iconId ="contact-address-icon" class="slds-button slds-section__title-action" onclick="{!c.handleAddressSection}" >
+                                        <lightning:icon aura:id="contact-address-icon" iconName="utility:switch" size="xx-small" alternativeText="switch" class=""/>
+                                        <span data-auraId ="contact-address-id" data-iconId ="contact-address-icon" class="slds-truncate" title="Section Title"> &nbsp;{!v.translatorValue.Contact_Address_Section_Label__c }</span>
+                                    </button>
+                                </h3> 
+
+                                <div aria-hidden="false" class="slds-section__content" id="contact-address">
+                                    <aura:if isTrue="{!(v.locale == 'JP')}">
+                                        <div class="slds-grid slds-wrap row">
+                                            <div class="slds-col slds-size_2-of-12 slds-large-size_2-of-12">
+                                                <div class="slds-form-element">
+                                                    <label class="slds-form-element__label textSizeMobile" for="input-id-01">{!v.translatorValue.CAP_Contact_Address_Label__c}</label>
+                                                    <div class="slds-form-element__control">
+                                                        <ui:inputText aura:id="itemBillingPostalCodeJP" class="slds-input" placeholder="{!v.translatorValue.CAP_Placeholder__c}" value="{!v.newItem.BillingPostalCode}" onError="{!c.handleError}" onClearErrors="{!c.handleClearError}" disabled="{!v.afterPrinting}" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="slds-size_2-of-12 slds-large-size_2-of-12">
+                                                <div class="slds-form-element">
+                                                    <label class="slds-form-element__label" for="input-id-01">{!v.translatorValue.State_Contact_Address_Label__c}</label>
+                                                    <div class="slds-form-element__control">
+                                                        <ui:inputText aura:id="itemBillingProvinceJP" class="slds-input" placeholder="{!v.translatorValue.State_Placeholder__c}" value="{!v.newItem.BillingState}" onError="{!c.handleError}" onClearErrors="{!c.handleClearError}" disabled="{!v.afterPrinting}" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="slds-size_3-of-12 slds-large-size_3-of-12">
+                                                <div class="slds-form-element">
+                                                    <label class="slds-form-element__label" for="input-id-01">{!v.translatorValue.City_Contact_Address_Label__c}</label>
+                                                    <div class="slds-form-element__control">
+                                                        <ui:inputText aura:id="itemBillingCityJP" class="slds-input" placeholder="{!v.translatorValue.City_Placeholder__c}" value="{!v.newItem.BillingCity}" onError="{!c.handleError}" onClearErrors="{!c.handleClearError}" disabled="{!v.afterPrinting}" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="slds-col slds-size_5-of-12 slds-large-size_5-of-12">
+                                                <div class="slds-form-element">
+                                                    <label class="slds-form-element__label" for="input-id-01">{!v.translatorValue.Street_Contact_Address_Label__c}</label>
+                                                    <div class="slds-form-element__control">
+                                                        <ui:inputText aura:id="itemBillingStreetJP" class="slds-input" placeholder="{!v.translatorValue.Street_Placeholder__c}" value="{!v.newItem.BillingStreet}" onError="{!c.handleError}" onClearErrors="{!c.handleClearError}" disabled="{!v.afterPrinting}" />
+                                                    </div>
+                                                </div>
+                                            </div>                    
+                                        </div>  
+
+                                        <aura:set attribute="else">                                              
+                                            <div class="slds-grid slds-wrap row">
+                                                <div class="slds-col slds-size_5-of-12 slds-large-size_5-of-12">
+                                                    <div class="slds-form-element">
+                                                        <label class="slds-form-element__label" for="input-id-01">{!v.translatorValue.Street_Contact_Address_Label__c}</label>
+                                                        <div class="slds-form-element__control">
+                                                            <ui:inputText aura:id="itemPBillingStreet" class="slds-input" placeholder="{!v.translatorValue.Street_Placeholder__c}" value="{!v.newItem.BillingStreet}" onError="{!c.handleError}" onClearErrors="{!c.handleClearError}" disabled="{!v.afterPrinting}" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="{! 'slds-col' + ' ' +  (v.locale == 'US' ? 'slds-size_3-of-12 slds-large-size_3-of-12' : 'slds-size_5-of-12 slds-large-size_5-of-12' )}">
+                                                    <div class="slds-form-element">
+                                                        <label class="slds-form-element__label" for="input-id-01">{!v.translatorValue.City_Contact_Address_Label__c}</label>
+                                                        <div class="slds-form-element__control">
+                                                            <ui:inputText aura:id="itemBillingCity" class="slds-input" placeholder="{!v.translatorValue.City_Placeholder__c}" value="{!v.newItem.BillingCity}" onError="{!c.handleError}" onClearErrors="{!c.handleClearError}" disabled="{!v.afterPrinting}" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <aura:if isTrue="{!v.locale == 'US'}">
+                                                    <div class="slds-col slds-size_2-of-12 slds-large-size_2-of-12">
+                                                        <div class="slds-form-element">
+                                                            <label class="slds-form-element__label" for="input-id-01">{!v.translatorValue.State_Contact_Address_Label__c}</label>
+                                                            <div class="slds-form-element__control">
+                                                                <ui:inputText aura:id="itemBillingState" class="slds-input" placeholder="{!v.translatorValue.State_Placeholder__c}" value="{!v.newItem.BillingState}" onError="{!c.handleError}" onClearErrors="{!c.handleClearError}" disabled="{!v.afterPrinting}" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </aura:if>
+                                                <div class="slds-col slds-size_2-of-12 slds-large-size_2-of-12">
+                                                    <div class="slds-form-element">
+                                                        <label class="slds-form-element__label textSizeMobile" for="input-id-01">{!v.translatorValue.CAP_Contact_Address_Label__c}</label>
+                                                        <div class="slds-form-element__control">
+                                                            <ui:inputText aura:id="itemPBillingPostalCode" class="slds-input" placeholder="{!v.translatorValue.CAP_Placeholder__c}" value="{!v.newItem.BillingPostalCode}" onError="{!c.handleError}" onClearErrors="{!c.handleClearError}" disabled="{!v.afterPrinting}" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>    
+                                        </aura:set>                            
+                                    </aura:if>  
+
+                                    <div class="slds-col slds-size_4-of-12 slds-large-size_4-of-12">
+                                        <!-- <div class="slds-form-element">
+                                            <label class="slds-form-element__label" for="input-id-01">{!v.translatorValue.Country_Contact_Address_Label__c}</label>
+                                            <div class="slds-form-element__control">
+                                                <ui:inputSelect class="dynamic slds-select" value="{!v.newItem.BillingCountry}" aura:id="InputSelectDynamicContactCountry" disabled="{!v.afterPrinting}"/>
+                                            </div>
+                                        </div> -->
+                                        <div class="slds-form-element">
+                                            <div class="slds-combobox  slds-combobox-lookup slds-dropdown-trigger slds-dropdown-trigger_click" aura:id="searchLookupCountryContact"
+                                            aria-expanded="false" aria-haspopup="listbox" role="combobox">
+                                            <lightning:input aura:id="inputCountryContact" name="inputCountryContact" label="{!v.translatorValue.Country_Contact_Address_Label__c}" onfocus="{!c.onFocusPickList}" onchange="{!c.onChangePickList}" onblur="{!c.onBlurPickList}" value="{!v.newItem.BillingCountry}"/>
+                                            <div role="listbox">                   
+                                                <ul class="slds-listbox slds-listbox_vertical slds-dropdown left1">
+                                                    <ui:scrollerWrapper class="scrollerSize">
+                                                        <aura:iteration items="{!v.customPicklistCountryContact}" var="option">
+                                                            <div>
+                                                                <lightning:button name="{!'btn_CountryContact_' + option.value}" class="button-custom" variant="base" label="{!option.label}" value="{!option.value}" onclick="{! c.selectOption }"/>
+                                                            </div>
+                                                        </aura:iteration>
+                                                    </ui:scrollerWrapper>
+                                                    
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="slds-grid slds-wrap row">
+                                        <div class="slds-col slds-size_12-of-12 slds-large-size_12-of-12">
+                                            <lightning:button variant="brand-outline" aura:id="contactAddButton" label="{!v.translatorValue.Button_Add_Address_Label__c}" title="{!v.translatorValue.Button_Add_Address_Label__c}" onclick="{! c.handleAddAddress }" iconName="utility:add" disabled="{!v.showOtherAddress}"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </aura:renderif>
+
+                        <!-- OTHER ADDRESS -->
+                        <aura:renderif isTrue="{!v.showOtherAddress}">
+                            <div class="slds-section slds-is-open" aura:id="other-address-id">
+                                <h3 class="slds-section__title">
+                                    <button aria-controls="other-address" aria-expanded="true" data-auraId ="other-address-id" data-iconId ="other-address-icon" class="slds-button slds-section__title-action" onclick="{!c.handleAddressSection}" >
+                                        <lightning:icon aura:id="other-address-icon" iconName="utility:switch" size="xx-small" alternativeText="switch" class=""/>
+                                        <span data-auraId ="other-address-id" data-iconId ="other-address-icon" class="slds-truncate" title="Section Title"> &nbsp;{!v.translatorValue.Other_Address_Section_Label__c }</span>
+                                    </button>
+                                </h3> 
+
+                                <div aria-hidden="false" class="slds-section__content" id="other-address">
+                                    <aura:if isTrue="{!(v.locale == 'JP')}">
+                                        <div class="slds-grid slds-wrap row">
+                                            <div class="slds-col slds-size_2-of-12 slds-large-size_2-of-12">
+                                                <div class="slds-form-element">
+                                                    <label class="slds-form-element__label textSizeMobile" for="input-id-01">{!v.translatorValue.CAP_Other_Address_Label__c}</label>
+                                                    <div class="slds-form-element__control">
+                                                        <ui:inputText aura:id="itemPersonOtherPostalCodeJP" class="slds-input" placeholder="{!v.translatorValue.CAP_Placeholder__c}" value="{!v.newItem.PersonOtherPostalCode}" onError="{!c.handleError}" onClearErrors="{!c.handleClearError}" disabled="{!v.afterPrinting}" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="slds-size_2-of-12 slds-large-size_2-of-12">
+                                                <div class="slds-form-element">
+                                                    <label class="slds-form-element__label" for="input-id-01">{!v.translatorValue.State_Other_Address_Label__c}</label>
+                                                    <div class="slds-form-element__control">
+                                                        <ui:inputText aura:id="itemPersonOtherProvinceJP" class="slds-input" placeholder="{!v.translatorValue.State_Placeholder__c}" value="{!v.newItem.PersonOtherState}" onError="{!c.handleError}" onClearErrors="{!c.handleClearError}" disabled="{!v.afterPrinting}" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="slds-size_3-of-12 slds-large-size_3-of-12">
+                                                <div class="slds-form-element">
+                                                    <label class="slds-form-element__label" for="input-id-01">{!v.translatorValue.City_Other_Address_Label__c}</label>
+                                                    <div class="slds-form-element__control">
+                                                        <ui:inputText aura:id="itemPersonOtherCityJP" class="slds-input" placeholder="{!v.translatorValue.City_Placeholder__c}" value="{!v.newItem.PersonOtherCity}" onError="{!c.handleError}" onClearErrors="{!c.handleClearError}" disabled="{!v.afterPrinting}" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="slds-col slds-size_5-of-12 slds-large-size_5-of-12">
+                                                <div class="slds-form-element">
+                                                    <label class="slds-form-element__label" for="input-id-01">{!v.translatorValue.Street_Other_Address_Label__c}</label>
+                                                    <div class="slds-form-element__control">
+                                                        <ui:inputText aura:id="itemPersonOtherStreetJP" class="slds-input" placeholder="{!v.translatorValue.Street_Placeholder__c}" value="{!v.newItem.PersonOtherStreet}" onError="{!c.handleError}" onClearErrors="{!c.handleClearError}" disabled="{!v.afterPrinting}" />
+                                                    </div>
+                                                </div>
+                                            </div>                    
+                                        </div>  
+
+                                        <aura:set attribute="else">                                              
+                                            <div class="slds-grid slds-wrap row">
+                                                <div class="slds-col slds-size_5-of-12 slds-large-size_5-of-12">
+                                                    <div class="slds-form-element">
+                                                        <label class="slds-form-element__label" for="input-id-01">{!v.translatorValue.Street_Other_Address_Label__c}</label>
+                                                        <div class="slds-form-element__control">
+                                                            <ui:inputText aura:id="itemPersonOtherStreet" class="slds-input" placeholder="{!v.translatorValue.Street_Placeholder__c}" value="{!v.newItem.PersonOtherStreet}" onError="{!c.handleError}" onClearErrors="{!c.handleClearError}" disabled="{!v.afterPrinting}" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="{! 'slds-col' + ' ' +  (v.locale == 'US' ? 'slds-size_3-of-12 slds-large-size_3-of-12' : 'slds-size_5-of-12 slds-large-size_5-of-12' )}">
+                                                    <div class="slds-form-element">
+                                                        <label class="slds-form-element__label" for="input-id-01">{!v.translatorValue.City_Other_Address_Label__c}</label>
+                                                        <div class="slds-form-element__control">
+                                                            <ui:inputText aura:id="itemPersonOtherCity" class="slds-input" placeholder="{!v.translatorValue.City_Placeholder__c}" value="{!v.newItem.PersonOtherCity}" onError="{!c.handleError}" onClearErrors="{!c.handleClearError}" disabled="{!v.afterPrinting}" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <aura:if isTrue="{!v.locale == 'US'}">
+                                                    <div class="slds-col slds-size_2-of-12 slds-large-size_2-of-12">
+                                                        <div class="slds-form-element">
+                                                            <label class="slds-form-element__label" for="input-id-01">{!v.translatorValue.State_Other_Address_Label__c}</label>
+                                                            <div class="slds-form-element__control">
+                                                                <ui:inputText aura:id="itemPersonOtherState" class="slds-input" placeholder="{!v.translatorValue.State_Placeholder__c}" value="{!v.newItem.PersonOtherState}" onError="{!c.handleError}" onClearErrors="{!c.handleClearError}" disabled="{!v.afterPrinting}" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </aura:if>
+                                                <div class="slds-col slds-size_2-of-12 slds-large-size_2-of-12">
+                                                    <div class="slds-form-element">
+                                                        <label class="slds-form-element__label textSizeMobile" for="input-id-01">{!v.translatorValue.CAP_Other_Address_Label__c}</label>
+                                                        <div class="slds-form-element__control">
+                                                            <ui:inputText aura:id="itemPersonOtherPostalCode" class="slds-input" placeholder="{!v.translatorValue.CAP_Placeholder__c}" value="{!v.newItem.PersonOtherPostalCode}" onError="{!c.handleError}" onClearErrors="{!c.handleClearError}" disabled="{!v.afterPrinting}" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>    
+                                        </aura:set>                            
+                                    </aura:if>   
+
+                                    <div class="slds-col slds-size_4-of-12 slds-large-size_4-of-12">
+                                        <!-- <div class="slds-form-element">
+                                            <label class="slds-form-element__label" for="input-id-01">{!v.translatorValue.Country_Other_Address_Label__c}</label>
+                                            <div class="slds-form-element__control">
+                                                <ui:inputSelect class="dynamic slds-select" value="{!v.newItem.PersonOtherCountry}" aura:id="InputSelectDynamicOtherCountry" disabled="{!v.afterPrinting}"/>
+                                            </div>
+                                        </div> -->
+                                        <div class="slds-form-element">
+                                            <div class="slds-combobox  slds-combobox-lookup slds-dropdown-trigger slds-dropdown-trigger_click " aura:id="searchLookupCountryOther"
+                                            aria-expanded="false" aria-haspopup="listbox" role="combobox">
+                                            <lightning:input aura:id="inputCountryOther" name="inputCountryOther" label="{!v.translatorValue.Country_Other_Address_Label__c}" onfocus="{!c.onFocusPickList}" onchange="{!c.onChangePickList}" onblur="{!c.onBlurPickList}" value="{!v.newItem.PersonOtherCountry}"/>
+                                            <div role="listbox">                   
+                                                <ul class="slds-listbox slds-listbox_vertical slds-dropdown left1">
+                                                    <ui:scrollerWrapper class="scrollerSize">
+                                                        <aura:iteration items="{!v.customPicklistCountryOther}" var="option">
+                                                            <div>
+                                                                <lightning:button name="{!'btn_CountryOther_' + option.value}" class="button-custom" variant="base" label="{!option.label}" value="{!option.value}" onclick="{! c.selectOption }"/>
+                                                            </div>
+                                                        </aura:iteration>
+                                                    </ui:scrollerWrapper>
+                                                    
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </aura:renderif>
+
+                        <!-- PALUMBO (END) -->
+
+                        <div class="slds-grid slds-wrap row">                   
+                            <div class="slds-col slds-size_4-of-12 slds-large-size_4-of-12">
+                                <div class="slds-form-element">
+                                    <label class="slds-form-element__label textSizeMobile" for="input-id-01">{!v.translatorValue.Phone_Label__c}</label>
+                                    <div class="slds-form-element__control">
+                                        <ui:inputText aura:id="itemPhone" class="slds-input" placeholder="{!v.translatorValue.Phone_Placeholder__c}" value="{!v.newItem.Phone}" onError="{!c.handleError}" onClearErrors="{!c.handleClearError}" disabled="{!v.afterPrinting}" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slds-col slds-size_4-of-12 slds-large-size_4-of-12">
+                                <!-- <div class="slds-form-element">
+                                    <label class="slds-form-element__label" for="InputSelectDynamicNationality">{!v.translatorValue.Nationality_Label__c}</label>
+                                    <div class="slds-form-element__control">
+                                        <ui:inputSelect aura:id="InputSelectDynamicNationality" class="dynamic slds-select" value="{!v.newItem.Nazionalita__c}" disabled="{!v.afterPrinting}" />
+                                    </div>
+                                    label class="slds-form-element__label" for="input-id-01">{!v.translatorValue.Mobile_Label__c}</label>
+                                    <div class="slds-form-element__control">
+                                        <ui:inputText aura:id="itemPersonMobilePhone" class="slds-input" placeholder="{!v.translatorValue.Mobile_Placeholder__c}" value="{!v.newItem.PersonMobilePhone}" onError="{!c.handleError}" onClearErrors="{!c.handleClearError}" disabled="{!v.afterPrinting}" />
+                                    </div
+                                </div> -->
+                                <div class="slds-form-element">
+                                    <!-- <label class="slds-form-element__label" for="InputSelectDynamicNationality">{!v.translatorValue.Nationality_Label__c}</label>
+                                <div class="slds-form-element__control">
+                                    <ui:inputSelect aura:id="InputSelectDynamicNationality" class="dynamic slds-select" value="{!v.newItem.Nazionalita__c}" disabled="{!v.afterPrinting}" />
+                                </div> -->
+                                <!--label class="slds-form-element__label" for="input-id-01">{!v.translatorValue.Mobile_Label__c}</label>
+                                <div class="slds-form-element__control">
+                                    <ui:inputText aura:id="itemPersonMobilePhone" class="slds-input" placeholder="{!v.translatorValue.Mobile_Placeholder__c}" value="{!v.newItem.PersonMobilePhone}" onError="{!c.handleError}" onClearErrors="{!c.handleClearError}" disabled="{!v.afterPrinting}" />
+                                </div-->
+                                <!-- VS - 20/04/2020 ISSUE 745 -->
+                                <div class="slds-combobox  slds-combobox-lookup slds-dropdown-trigger slds-dropdown-trigger_click " aura:id="searchLookupNationality"
+                                    aria-expanded="false" aria-haspopup="listbox" role="combobox">
+                                    <lightning:input aura:id="inputNationality" label="{!v.translatorValue.Nationality_Label__c}" onfocus="{!c.onFocusPickList}" onchange="{!c.onChangePickList}" onblur="{!c.onBlurPickList}" value="{!v.newItem.Nazionalita__c}"/>
+                                    <div role="listbox">                   
+                                        <ul class="slds-listbox slds-listbox_vertical slds-dropdown left1">
+                                            <ui:scrollerWrapper class="scrollerSize">
+                                                <aura:iteration items="{!v.customPicklistNationality}" var="option">
+                                                    <div>
+                                                        <lightning:button name="{!'btn_Nationality_' + option.value}" class="button-custom" variant="base" label="{!option.label}" value="{!option.value}" onclick="{! c.selectOption }"/>
+                                                    </div>
+                                                </aura:iteration>
+                                            </ui:scrollerWrapper>
+                                            
+                                        </ul>
+                                    </div>
+                                </div>
+                            <!-- VS - 20/04/2020 ISSUE 745 -->
+                            </div>
+                            </div>
+                        </div>
+                        <div class="slds-grid slds-wrap row">
+                            <div class="{!v.locale == 'CN' ? 'slds-col slds-size_4-of-12 slds-medium-size_4-of-12' : 'slds-col slds-size_6-of-12 slds-medium-size_6-of-12'}">
+                                <div class="slds-form-element">
+                                    <label class="slds-form-element__label" for="input-id-01">{!v.translatorValue.Email_Label__c}</label>
+                                    <div class="slds-form-element__control">
+                                        <ui:inputText aura:id="itemPersonEmail" class="slds-input" placeholder="{!v.translatorValue.Email_Placeholder__c}" value="{!v.newItem.PersonEmail}" onError="{!c.handleError}" onClearErrors="{!c.handleClearError}" disabled="{!v.afterPrinting}" />
+                                    </div>
+                                </div>
+                            </div>
+                            <aura:if isTrue="{!(v.locale == 'CN' &amp;&amp; v.truncLanguage == 'zh') || (v.locale == 'CN' &amp;&amp; v.truncLanguage == 'en') || (v.locale == 'HK' &amp;&amp; v.truncLanguage == 'en') || (v.locale == 'MO' &amp;&amp; v.truncLanguage == 'en')}">
+                            <div class="slds-col slds-size_4-of-12 slds-medium-size_4-of-12">
+                                <div class="slds-form-element">
+                                    <label class="slds-form-element__label" for="input-id-01">{!v.translatorValue.We_Chat_ID_Label__c}</label>
+                                    <div class="slds-form-element__control">
+                                        <ui:inputText aura:id="itemWechatId" class="slds-input" placeholder="{!v.translatorValue.We_Chat_ID_Placeholder__c}" value="{!v.newItem.We_Chat_ID__c}" onError="{!c.handleError}" onClearErrors="{!c.handleClearError}" disabled="{!v.afterPrinting}" />
+                                    </div>
+                                </div>
+                            </div>
+                            </aura:if>
+                            <div class="{!v.locale == 'CN' ? 'slds-col slds-size_4-of-12 slds-medium-size_4-of-12' : 'slds-col slds-size_6-of-12 slds-medium-size_6-of-12'}">
+                                <div class="slds-form-element">
+                                    <fieldset class="">
+                                        <legend class="slds-form-element__legend slds-form-element__label">{!v.translatorValue.Contact_Preferences_Label__c}</legend>
+                                        <div class="check-container">
+                                            <span class="slds-checkbox">
+                                                <lightning:input type="checkbox" aura:id="checkbox_Telefono" class="" label="{!v.translatorValue.Checkbox_Phone_Label__c}" name="checkbox-phone" value="{!v.newItem.Telefono__c}" onchange="{!c.verifyCheckBox}" disabled="{!v.afterPrinting}" checked="{!v.newItem.Telefono__c}" />
+                                            </span>                                        
+                                            <span class="slds-checkbox">
+                                                <lightning:input type="checkbox" aura:id="checkbox_Email" class="" label="{!v.translatorValue.Checkbox_Email_Label__c}" name="checkbox-email" value="{!v.newItem.Email__c}" onchange="{!c.verifyCheckBox}" disabled="{!v.afterPrinting}" checked="{!v.newItem.Email__c}" />
+                                            </span>
+                                            <aura:if isTrue="{!v.locale == 'CN'}">
+                                            <span class="slds-checkbox">
+                                                <lightning:input type="checkbox" aura:id="checkbox_WeChat" class="" label="{!v.translatorValue.Checkbox_WeChat_Label__c}" name="checkbox-wechat" value="{!v.newItem.WeChat__c}" onchange="{!c.verifyCheckBox}" disabled="{!v.afterPrinting}" checked="{!v.newItem.WeChat__c}" />
+                                            </span>
+                                            </aura:if>
+                                            <span class="slds-checkbox">
+                                                <lightning:input type="checkbox" aura:id="checkbox_Posta" class="" label="{!v.translatorValue.Checkbox_Mail_Label__c}" name="checkbox-mail" value="{!v.newItem.Posta__c}" onchange="{!c.verifyCheckBox}" disabled="{!v.afterPrinting}" checked="{!v.newItem.Posta__c}" />
+                                            </span>
+                                            <span class="slds-checkbox">
+                                                <lightning:input type="checkbox" aura:id="checkbox_Other" class="" label="{!v.translatorValue.Checkbox_Messaging_Label__c}" name="checkbox-other" value="{!v.newItem.Messaging__c}"  onchange="{!c.verifyCheckBox}" disabled="{!v.afterPrinting}" checked="{!v.newItem.Messaging__c}" />                                            
+                                            </span>
+                                        </div>
+                                    </fieldset>
+
+                                </div>
+                            </div>
+                        </div>
+                        <aura:if isTrue="{!v.newItem.Messaging__c}">
+                            <div class="slds-grid slds-wrap row slds-grid_align-end">
+                                <div class="{!v.locale == 'CN' ? 'slds-col slds-size_4-of-12 slds-medium-size_4-of-12' : 'slds-col slds-size_6-of-12 slds-medium-size_6-of-12'}">
+                                    <div class="slds-form-element">
+                                        <div class="slds-form-element__control">
+                                            <ui:inputText aura:id="itemOtherText" class="slds-input" placeholder="{!v.translatorValue.Checkbox_Other_Placeholder__c}" value="{!v.newItem.Other_text__c}" onError="{!c.handleError}" onClearErrors="{!c.handleClearError}" disabled="{!v.afterPrinting}" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </aura:if>
+                        <div class="slds-grid slds-wrap row"> 
+                            <!-- MC- Split Birthdate -->
+                            <div class="slds-grid slds-size_8-of-12 slds-large-size_5-of-12 slds-wrap">  <!-- slds-size_3-of-12 slds-large-size_3-of-12 slds-wrap"> -->
+                                <div class="slds-col slds-size_12-of-12 slds-large-size_12-of-12">
+                                    <span class="slds-form-element__label">{!v.translatorValue.Birthdate_Label__c}</span>
+                                </div>
+                                <aura:if isTrue="{!(v.locale == 'JP')}">
+                                    <div class="slds-col slds-size_4-of-12 slds-large-size_4-of-12">
+                                    <div class="slds-form-element">  
+                                            <div class="slds-form-element__control">
+                                                <ui:inputSelect aura:id="InputSelectYearJP" class="dynamic slds-select" value="{!v.yearBirthdate}" />
+                                            </div>
+                                    </div>
+                                </div>
+                                    <div class="slds-col slds-size_4-of-12 slds-large-size_4-of-12">
+                                    <div class="slds-form-element">  
+                                        <div class="slds-form-element__control">
+                                            <ui:inputSelect aura:id="InputSelectMonthJP" class="dynamic slds-select" value="{!v.monthBirthdate}" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="slds-col slds-size_4-of-12 slds-large-size_4-of-12">
+                                    <div class="slds-form-element">  
+                                        <div class="slds-form-element__control">
+                                            <ui:inputSelect aura:id="InputSelectDayJP" class="dynamic slds-select" value="{!v.dayBirthdate}" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <aura:set attribute="else"> 
+                                <div class="slds-col slds-size_4-of-12 slds-large-size_4-of-12">
+                                    <div class="slds-form-element">  
+                                        <div class="slds-form-element__control">
+                                            <ui:inputSelect aura:id="InputSelectDay" class="dynamic slds-select" value="{!v.dayBirthdate}" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="slds-col slds-size_4-of-12 slds-large-size_4-of-12">
+                                    <div class="slds-form-element">  
+                                        <div class="slds-form-element__control">
+                                            <ui:inputSelect aura:id="InputSelectMonth" class="dynamic slds-select" value="{!v.monthBirthdate}" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="slds-col slds-size_4-of-12 slds-large-size_4-of-12">
+                                    <div class="slds-form-element">  
+                                            <div class="slds-form-element__control">
+                                                <ui:inputSelect aura:id="InputSelectYear" class="dynamic slds-select" value="{!v.yearBirthdate}" />
+                                            </div>
+                                    </div>
+                                </div>
+                                    </aura:set>   
+                        </aura:if>
+                                    
+                            </div>
                             
+                            
+                            <div class="slds-col slds-size_4-of-12 slds-large-size_4-of-12" > <!-- slds-col slds-size_3-of-12 slds-large-size_3-of-12"> -->
+                                <div class="slds-form-element">
+                                    <label class="slds-form-element__label" for="InputSelectDynamicGenere">{!v.translatorValue.Gender_Label__c}</label>
+                                    <div class="slds-form-element__control">
+                                        <ui:inputSelect aura:id="InputSelectDynamicGenere" class="dynamic slds-select" value="{!v.newItem.Sesso__c}" disabled="{!v.afterPrinting}" options="{!v.optSesso}"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                                    
+                        <div class="slds-grid slds-wrap row">
+                            <div class="slds-col slds-size_4-of-12 slds-large-size_3-of-12">
+                                <!-- <div class="slds-form-element">
+                                        <label class="slds-form-element__label" for="InputSelectDynamicProfession">{!v.translatorValue.Profession_Label__c}</label>
+                                    <div class="slds-form-element__control">
+                                        <ui:inputSelect aura:id="InputSelectDynamicProfession" class="dynamic slds-select" value="{!v.newItem.Professione__c}" disabled="{!v.afterPrinting}" />
+                                    </div>
+                                </div> -->
+                                <div class="slds-form-element">
+                                    <!-- <label class="slds-form-element__label" for="InputSelectDynamicProfession">{!v.translatorValue.Profession_Label__c}</label>
+                                <div class="slds-form-element__control">
+                                    <ui:inputSelect aura:id="InputSelectDynamicProfession" class="dynamic slds-select" value="{!v.newItem.Professione__c}" disabled="{!v.afterPrinting}" />
+                                </div> -->
+                                <div class="slds-combobox  slds-combobox-lookup slds-dropdown-trigger slds-dropdown-trigger_click " aura:id="searchLookupProfession"
+                                aria-expanded="false" aria-haspopup="listbox" role="combobox">
+                                    <lightning:input aura:id="inputProfession" label="{!v.translatorValue.Profession_Label__c}" onfocus="{!c.onFocusPickList}" onchange="{!c.onChangePickList}" onblur="{!c.onBlurPickList}" value="{!v.newItem.Professione__c}"/>
+                                        <div role="listbox">                   
+                                            <ul class="slds-listbox slds-listbox_vertical slds-dropdown left2">
+                                                <ui:scrollerWrapper class="scrollerSize">
+                                                    <aura:iteration items="{!v.customPicklistProfession}" var="option">
+                                                        <div>
+                                                            <lightning:button name="{!'btn_Profession_' + option.value}" class="button-custom" variant="base" label="{!option.label}" value="{!option.value}" onclick="{! c.selectOption }"/>
+                                                        </div>
+                                                    </aura:iteration>
+                                                </ui:scrollerWrapper>
+                                                
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slds-col slds-size_4-of-12 slds-large-size_3-of-12">
+                                <!-- <div class="slds-form-element">
+                                        <label class="slds-form-element__label" for="InputSelectDynamicHobby">{!v.translatorValue.Hobby_Label__c}</label>
+                                    <div class="slds-form-element__control">
+                                        <ui:inputSelect aura:id="InputSelectDynamicHobby" class="dynamic slds-select" value="{!v.newItem.Hobby__c}" disabled="{!v.afterPrinting}" />
+                                    </div>                          
+                                </div> -->
+                                <div class="slds-form-element">
+                                <div class="slds-combobox  slds-combobox-lookup slds-dropdown-trigger slds-dropdown-trigger_click " aura:id="searchLookupHobby"
+                                aria-expanded="false" aria-haspopup="listbox" role="combobox">
+                                    <aura:if isTrue="{!(v.customPicklistHobby != undefined)}">
+                                        <c:lwcMultiSelect label="Hobby" options="{!v.customPicklistHobbyBU}" onvaluechange="{!c.getValueFromLwc}" oldvalue="{!v.newItem.Hobby__c}"></c:lwcMultiSelect>
+                                    </aura:if>
+                                    
+                                </div>
+                            </div>
+                            </div>
+                            
+                            <div class="slds-col slds-size_4-of-12 slds-large-size_3-of-12">
+                                <!-- <div class="slds-form-element">
+                                    <label class="slds-form-element__label" for="input-id-01">{!v.translatorValue.Preferred_Language_Label__c}</label>
+                                    <div class="slds-form-element__control">
+                                        <ui:inputSelect aura:id="InputSelectDynamicLang" class="dynamic slds-select" value="{!v.newItem.Lingua__c}" disabled="{!v.afterPrinting}" />
+                                    </div>
+                                </div> -->
+                                <div class="slds-form-element">
+                                    <div class="slds-combobox  slds-combobox-lookup slds-dropdown-trigger slds-dropdown-trigger_click " aura:id="searchLookupPreferredLanguage"
+                                    aria-expanded="false" aria-haspopup="listbox" role="combobox">
+                                    <lightning:input aura:id="inputPreferredLanguage" label="{!v.translatorValue.Preferred_Language_Label__c}" onfocus="{!c.onFocusPickList}" onchange="{!c.onChangePickList}" onblur="{!c.onBlurPickList}" value="{!v.newItem.Lingua__c}"/>
+                                    <div role="listbox">                   
+                                        <ul class="slds-listbox slds-listbox_vertical slds-dropdown left3">
+                                            <ui:scrollerWrapper class="scrollerSize">
+                                                <aura:iteration items="{!v.customPicklistPreferredLanguage}" var="option">
+                                                    <div>
+                                                        <lightning:button name="{!'btn_PreferredLanguage_' + option.value}" class="button-custom" variant="base" label="{!option.label}" value="{!option.value}" onclick="{! c.selectOption }"/>
+                                                    </div>
+                                                </aura:iteration>
+                                            </ui:scrollerWrapper>
+                                            
+                                        </ul>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
                             <!--
-                            <aura:if isTrue="{!v.locale == 'JP'}">
-                                <aura:set attribute="else">
+                            <div class="slds-col slds-size_3-of-12 slds-large-size_3-of-12">
+                                <div class="slds-form-element">
+                                    label class="slds-form-element__label" for="InputSelectDynamicHobby">{!v.translatorValue.Hobby_Label__c}</label>
+                                    <div class="slds-form-element__control">
+                                        <ui:inputSelect aura:id="InputSelectDynamicHobby" class="dynamic slds-select" value="{!v.newItem.Hobby__c}" disabled="{!v.afterPrinting}" />
+                                    </div
+                                </div>
+                            </div> -->
+                        </div>
+                        <aura:if isTrue="{!and((v.locale != 'US'),(v.locale != 'CA'))}">
+                        <div class="slds-grid slds-wrap row">
+                            <div class="slds-col slds-size_12-of-12 slds-large-size_12-of-12">
+                            <div class="{! 'slds-section'+ (or((v.isexpanded),(v.locale == 'RU')) ? ' slds-is-open' : '') }">
+                                <aura:if isTrue="{!(v.locale != 'RU')}">
+                                <h3 class="slds-section__title">
+                                    <button aria-controls="expando-unique-id" aria-expanded="true" class="slds-button slds-section__title-action" onclick="{!c.changeState}" >
+                                        <lightning:icon aura:id="articleOne" iconName="utility:switch" size="xx-small" alternativeText="switch" class="expandSection"/>
+                                        <span class="slds-truncate" title="Section Title"> &nbsp;{!v.translatorValue.Passport_Section_Label__c }</span>
+                                    </button>
+                                </h3>
+                                </aura:if>
+                                <div aria-hidden="false" class="slds-section__content" id="expando-unique-id">
+                                    <div class="slds-grid slds-wrap row">
+                                        <div class="slds-col slds-size_6-of-12 slds-large-size_6-of-12">
+                                            <div class="slds-form-element">
+                                                <label class="slds-form-element__label" for="input-id-01">{!v.translatorValue.Numero_Passaporto_Label__c}</label>
+                                                <div class="slds-form-element__control">
+                                                    <ui:inputText aura:id="itemPassportNum" class="slds-input" placeholder="{!v.translatorValue.Numero_Passaporto_Placeholder__c}" value="{!v.newItem.Numero_Passaporto__c}" onError="{!c.handleError}" onClearErrors="{!c.handleClearError}" disabled="{!v.afterPrinting}" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="slds-col slds-size_6-of-12 slds-large-size_6-of-12">
+                                            <div class="slds-form-element">
+                                                <label class="slds-form-element__label" for="InputSelectDynamicPassportCountry">{!v.translatorValue.Paese_di_emissione_passaporto_Label__c}</label>
+                                                <div class="slds-form-element__control">
+                                                    <ui:inputSelect class="dynamic slds-select" value="{!v.newItem.Paese_di_emissione_passaporto__c}" aura:id="InputSelectDynamicPassportCountry" onError="{!c.handleError}" onClearErrors="{!c.handleClearError}"  disabled="{!v.afterPrinting}" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                
+                                </div>
+                            </div>
+                            </div>
+                            
+                        </div>
+                        </aura:if>
+                        
+                        <aura:if isTrue="{!v.locale == 'RU'}">
+                            <div class="slds-col slds-size_12-of-12 slds-large-size_12-of-12">
+                                    <div class="slds-grid slds-wrap row">
+                                            <div class="slds-col slds-size_6-of-12 slds-large-size_6-of-12">
+                                                <div class="slds-form-element">
+                                                    <label class="slds-form-element__label" for="input-id-01">{!v.translatorValue.Ente_di_emissione_passaporto_Label__c}</label>
+                                                    <div class="slds-form-element__control">
+                                                        <ui:inputText aura:id="itemPassportIssuedBy" class="slds-input" placeholder="{!v.translatorValue.Ente_di_emissione_passaporto_Label__c}" value="{!v.newItem.Ente_di_emissione_passaporto__c}" onError="{!c.handleError}" onClearErrors="{!c.handleClearError}" disabled="{!v.afterPrinting}" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="slds-col slds-size_6-of-12 slds-large-size_6-of-12">
+                                                <div class="slds-form-element">
+                                                    <label class="slds-form-element__label" for="input-id-01">{!v.translatorValue.Data_di_emissione_passaporto_Label__c}</label>
+                                                    <div class="slds-form-element__control">
+                                                        <ui:inputDate class="dynamic slds-select" displayDatePicker="true" value="{!v.newItem.Data_di_emissione_passaporto__c}" aura:id="itemPassportIssuedOn" onError="{!c.handleError}" onClearErrors="{!c.handleClearError}"  disabled="{!v.afterPrinting}" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                            </div>
+                                            
+                        </aura:if>
+                        
+                        <aura:if isTrue="{!v.locale == 'DE'}">
+                            <!-- DE -->
+                            <div class="slds-wrap privacy-police">
+                                <div class="slds-col slds-size_12-0f-12 slds-large-size_12-of-12">
+                                    <div class="slds-form-element slds-text-align_left privacy-police-title">
+                                        <span>{!v.translatorValue.Privacy_Header_Before_Link_Label__c}&ensp;</span>
+                                        <a onclick="{!c.openModel}">{!v.translatorValue.Privacy_Header_Link_Label__c}</a>
+                                        <span>&ensp;{!v.translatorValue.Privacy_Header_After_Link_Label__c}</span>
+                                    </div>
+                                </div>                    
+                                <div class="slds-col slds-size_12-of-12 slds-large-size_12-of-12">
+                                    <div class="slds-form-element">
+                                        <fieldset class="slds-form-element border-bottom">
+                                            <div class="slds-form-element__control">
+                                                <span class="slds-checkbox">
+                                                    <lightning:input type="checkbox" aura:id="checkbox_Privacy1" class="text-bold" label="{!v.translatorValue.Privacy_Yes_Label__c}" name="blue" checked="{!v.newItem.Privacy1__c}" value="{!v.newItem.Privacy1__c}" onchange="{!c.verifyCheckBox}" disabled="{!v.afterPrinting}" />
+                                                </span>
+                                                <div>
+                                                    <label class="slds-checkbox__label">
+                                                        {!v.translatorValue.Privacy_1_Label__c}                               
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                                <div class="slds-col slds-size_12-of-12 slds-large-size_12-of-12">
+                                    <div class="slds-form-element">
+                                        <fieldset class="slds-form-element border-bottom">
+                                            <div class="slds-form-element__control">
+                                                <span class="slds-checkbox">
+                                                    <lightning:input type="checkbox" aura:id="checkbox_Privacy2" class="text-bold" label="{!v.translatorValue.Privacy_Yes_Label__c}" name="checkbox_2_yes" checked="{!v.newItem.Privacy2__c}" value="{!v.newItem.Privacy2__c}" onchange="{!c.verifyCheckBox}" disabled="{!v.afterPrinting}" />
+                                                </span>
+                                                <div>
+                                                    <label class="slds-checkbox__label">
+                                                        {!v.translatorValue.Privacy_2_Label__c}                               
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </fieldset>               
+                                    </div>
+                                </div>
+                                <div class="slds-col slds-size_12-of-12 slds-large-size_12-of-12">
+                                    <div class="slds-form-element">
+                                        <fieldset class="slds-form-element">
+                                            <div class="slds-form-element__control">
+                                                <span class="slds-checkbox">
+                                                    <lightning:input type="checkbox" aura:id="checkbox_Privacy3" class="text-bold" label="{!v.translatorValue.Privacy_Yes_Label__c}" name="checkbox_3_yes" checked="{!v.newItem.Privacy3__c}" value="{!v.newItem.Privacy3__c}" onchange="{!c.verifyCheckBox}" disabled="{!v.afterPrinting}" />
+                                                </span>
+                                                <div>
+                                                    <label class="slds-checkbox__label">
+                                                        {!v.translatorValue.Privacy_3_Label__c}                               
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                </div>      
+                                <div class="slds-col slds-size_12-of-12 slds-large-size_12-of-12 slds-text-align_center footer-privacy-police">
+                                    <div class="slds-form-element">
+                                        <label class="slds-checkbox__label">{!v.translatorValue.Privacy_Footer_Label__c}</label>
+                                    </div>
+                                </div>      
+                            </div>
+                            <aura:set attribute="else">
+                                <!-- ALL OTHERS -->
+                                <div class="slds-wrap privacy-police">
+                                    <div class="slds-col slds-size_12-0f-12 slds-large-size_12-of-12">
+                                        <div class="slds-form-element slds-text-align_left privacy-police-title">
+                                            <span>{!v.translatorValue.Privacy_Header_Before_Link_Label__c}&ensp;</span>
+                                            <a onclick="{!c.openModel}">{!v.translatorValue.Privacy_Header_Link_Label__c}</a>
+                                            <span>&ensp;{!v.translatorValue.Privacy_Header_After_Link_Label__c}</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="slds-col slds-size_12-of-12 slds-large-size_12-of-12">
+                                        <div class="slds-form-element">
+                                            <fieldset class="slds-form-element border-bottom">
+                                                <div class="slds-form-element__control">
+                                                    <span class="slds-checkbox">
+                                                        <lightning:input type="checkbox"  aura:id="checkbox_1_yes" class="text-bold" label="{!v.translatorValue.Privacy_Yes_Label__c}" name="checkbox_1_yes" checked="{!v.newItem.Privacy1__c}" onchange="{!c.verifyCheckQuestion}" disabled="{!v.afterPrinting}" />
+                                                    </span>
+                                                    <span class="slds-checkbox">
+                                                        <lightning:input type="checkbox" aura:id="checkbox_1_no" class="text-bold" label="{!v.translatorValue.Privacy_No_Label__c}" name="checkbox_1_no" value="" checked="{! (v.newItem.Privacy1__c == false)}" onchange="{!c.verifyCheckQuestion}" disabled="{!v.afterPrinting}" />
+                                                    </span>
+                                                    <div>
+                                                        <label aura:id="checkbox_1_label" class="slds-checkbox__label">
+                                                            {!v.translatorValue.Privacy_1_Label__c}                            
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="slds-col slds-size_12-of-12 slds-large-size_12-of-12">
+                                        <div class="slds-form-element">
+                                            <fieldset aura:id="checkbox2" class="slds-form-element border-bottom">
+                                                <div class="slds-form-element__control">
+                                                    <span class="slds-checkbox">
+                                                        <lightning:input type="checkbox" aura:id="checkbox_2_yes" class="text-bold" label="{!v.translatorValue.Privacy_Yes_Label__c}" name="checkbox_2_yes" value="" checked="{!v.newItem.Privacy2__c}" onchange="{!c.verifyCheckQuestion}" disabled="{!v.afterPrinting}" />
+                                                    </span>
+                                                    <span class="slds-checkbox">
+                                                        <lightning:input type="checkbox" aura:id="checkbox_2_no" class="text-bold" label="{!v.translatorValue.Privacy_No_Label__c}" name="checkbox_2_no" value="" checked="{! (v.newItem.Privacy2__c == false)}" onchange="{!c.verifyCheckQuestion}" disabled="{!v.afterPrinting}" />
+                                                    </span>
+                                                    <div>
+                                                        <label aura:id="checkbox_2_label" class="slds-checkbox__label">
+                                                            <aura:if isTrue="{!v.user.Canale_di_Vendita__c == 'Department'}">
+                                                                {!v.translatorValue.Privacy_2_Label_Department__c}  
+                                                                <aura:set attribute="else">
+                                                                    <aura:if isTrue="{!v.user.Canale_di_Vendita__c == 'Monobrand'}">
+                                                                        {!v.translatorValue.Privacy_2_Label__c}
+                                                                        <aura:set attribute="else">
+                                                                        {!v.translatorValue.Privacy_2_Label__c}  
+                                                                        </aura:set>
+                                                                    </aura:if>
+                                                                </aura:set>
+                                                            </aura:if>                                  
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                    </div>
+                                    
                                     <div class="slds-col slds-size_12-of-12 slds-large-size_12-of-12">
                                         <div class="slds-form-element">
                                             <fieldset class="slds-form-element">
                                                 <div class="slds-form-element__control">
                                                     <span class="slds-checkbox">
-                                                        <lightning:input type="checkbox" aura:id="checkbox_3_yes" class="text-bold" label="{!v.translatorValue.Privacy_Yes_Label__c}" name="checkbox_3_yes" value="" onchange="{!c.verifyCheckQuestion}" disabled="{!v.afterPrinting}" />
+                                                        <lightning:input type="checkbox" aura:id="checkbox_3_yes" class="text-bold" label="{!v.translatorValue.Privacy_Yes_Label__c}" name="checkbox_3_yes" value="" checked="{!v.newItem.Privacy3__c}" onchange="{!c.verifyCheckQuestion}" disabled="{!v.afterPrinting}" />
                                                     </span>
                                                     <span class="slds-checkbox">
-                                                        <lightning:input type="checkbox" aura:id="checkbox_3_no" class="text-bold" label="{!v.translatorValue.Privacy_No_Label__c}" name="checkbox_3_no" value="" onchange="{!c.verifyCheckQuestion}" disabled="{!v.afterPrinting}" />
+                                                        <lightning:input type="checkbox" aura:id="checkbox_3_no" class="text-bold" label="{!v.translatorValue.Privacy_No_Label__c}" name="checkbox_3_no" value="" checked="{! (v.newItem.Privacy3__c == false)}" onchange="{!c.verifyCheckQuestion}" disabled="{!v.afterPrinting}" />
                                                     </span>
-                                                    <span>
+                                                    <div>
                                                         <label aura:id="checkbox_3_label" class="slds-checkbox__label">
                                                             {!v.translatorValue.Privacy_3_Label__c}   
                                                         </label>
-                                                    </span>
+                                                    </div>
                                                 </div>
                                             </fieldset>
                                         </div>
                                     </div> 
                                     
-                                </aura:set>
-                            </aura:if>
-							-->
-                            
-                            <div class="slds-grid slds-grid_align-end footer-privacy-police">
-                                <div class="slds-col slds-size_9-of-12 slds-large-size_9-of-12">
-                                    <div class="slds-form-element">
-                                        <label class="slds-checkbox__label">{!v.translatorValue.Privacy_Footer_Label__c}</label>
+                                    <!--
+                                    <aura:if isTrue="{!v.locale == 'JP'}">
+                                        <aura:set attribute="else">
+                                            <div class="slds-col slds-size_12-of-12 slds-large-size_12-of-12">
+                                                <div class="slds-form-element">
+                                                    <fieldset class="slds-form-element">
+                                                        <div class="slds-form-element__control">
+                                                            <span class="slds-checkbox">
+                                                                <lightning:input type="checkbox" aura:id="checkbox_3_yes" class="text-bold" label="{!v.translatorValue.Privacy_Yes_Label__c}" name="checkbox_3_yes" value="" onchange="{!c.verifyCheckQuestion}" disabled="{!v.afterPrinting}" />
+                                                            </span>
+                                                            <span class="slds-checkbox">
+                                                                <lightning:input type="checkbox" aura:id="checkbox_3_no" class="text-bold" label="{!v.translatorValue.Privacy_No_Label__c}" name="checkbox_3_no" value="" onchange="{!c.verifyCheckQuestion}" disabled="{!v.afterPrinting}" />
+                                                            </span>
+                                                            <span>
+                                                                <label aura:id="checkbox_3_label" class="slds-checkbox__label">
+                                                                    {!v.translatorValue.Privacy_3_Label__c}   
+                                                                </label>
+                                                            </span>
+                                                        </div>
+                                                    </fieldset>
+                                                </div>
+                                            </div> 
+                                            
+                                        </aura:set>
+                                    </aura:if>
+                                    -->
+                                    
+                                    <div class="slds-grid slds-grid_align-end footer-privacy-police">
+                                        <div class="slds-col slds-size_9-of-12 slds-large-size_9-of-12">
+                                            <div class="slds-form-element">
+                                                <label class="slds-checkbox__label">{!v.translatorValue.Privacy_Footer_Label__c}</label>
+                                            </div>
+                                        </div>
+                                    </div>           
+                                    
+                                </div>
+                            </aura:set>           
+                        </aura:if>
+                        
+                        <div class="slds-grid slds-wrap row">
+                            <div class="slds-col slds-size_3-of-12 slds-large-size_3-of-12">
+                                <div class="slds-form-element">
+                                    <label class="slds-form-element__label" for="input-id-01">{!v.translatorValue.Date_Label__c}</label>
+                                    <div class="slds-form-element__control">
+                                        <ui:inputDate aura:id="date-input-id" class="input-date slds-input" value="{!v.myDateTime}" displayDatePicker="true" disabled="true" />     
                                     </div>
                                 </div>
-                            </div>           
-                            
-                        </div>
-                    </aura:set>           
-                </aura:if>
-                
-                <div class="slds-grid slds-wrap row">
-                    <div class="slds-col slds-size_3-of-12 slds-large-size_3-of-12">
-                        <div class="slds-form-element">
-                            <label class="slds-form-element__label" for="input-id-01">{!v.translatorValue.Date_Label__c}</label>
-                            <div class="slds-form-element__control">
-                                <ui:inputDate aura:id="date-input-id" class="input-date slds-input" value="{!v.myDateTime}" displayDatePicker="true" disabled="true" />     
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="slds-grid slds-wrap row slds-text-align_right">
-                    <div class="slds-col slds-size_12-of-12 slds-large-size_12-of-12">
-                        <div class="slds-form-element">
-                            <label class="slds-form-element__label">{!v.translatorValue.Signature_Label__c}</label>
-                            <div class="{! 'canvas_spad' + ' ' +  (v.locale == 'CN' ? '' : 'margin-cn' )}">
-                                <canvas class="canvasWidth" id="canvas" aura:id="canvas" ontouchstart="{!c.blockScroll}"></canvas>
-                            </div>
-                            <aura:if isTrue="{!v.locale == 'CN'}">
-                                <label class="slds-form-element__label margin-cn">{!v.translatorValue.Signature_Asterisco_Label__c}</label>
-                            </aura:if>
-                            <div class="slds-form-element noPrint">
-                                <lightning:button class="slds-button slds-button_neutral noPrint" label="{!v.translatorValue.Button_Signature_Clear_Label__c}" onclick="{!c.sPadClear}"/>
-                            </div>
-                            <lightning:input aura:id="quoteField" name="name" label="Name" value="{!v.sPad64}" required="true" class="slds-hidden" />
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="slds-grid slds-wrap row slds-text-align_center noPrint">
-                    <div class="slds-col slds-size_12-of-12 slds-large-size_12-of-12">
-                        <div class="slds-button-group noPrint" role="group">
-                            <lightning:button class="slds-button slds-button_neutral" label="{!v.translatorValue.Button_Back_Label__c}" onclick="{!c.backButton}" disabled="{!v.buttonDisable}" />
-                            <lightning:button class="slds-button slds-button_neutral" label="{!v.translatorValue.Button_Form_Registration_Label__c}" onclick="{!c.validateAndRegistration}" disabled="{!v.buttonDisable}" />
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="page-break"></div>
-                <div class='privacy'>
-                    <br/>
-                    <br/>
-                    <div class="header-logo-privacy">
-                        <img src="/resource/logoBC"/>
-                    </div>
-                    <!--###### MODAL BOX BODY Part Start From Here ######-->
-                    <div>
-                        <div class="header-text-policy">{!v.translatorValue.Informativa_Header_Label__c}</div>
-                        <aura:if isTrue="{!v.user.Canale_di_Vendita__c == 'Department'}">
-                        	<ui:outputRichText class="text-rich-privacy" aura:id="outputRT" value="{!v.translatorValue.Informativa_Body_Rich_Label_Department__c}" />                       
-                            <aura:set attribute="else">
-								<aura:if isTrue="{!v.user.Canale_di_Vendita__c == 'Monobrand'}">
-                                	<ui:outputRichText class="text-rich-privacy" aura:id="outputRT" value="{!v.translatorValue.Informativa_Body_Rich_Label__c}" /> 
-                                     <aura:set attribute="else">
-                                     	<ui:outputRichText class="text-rich-privacy" aura:id="outputRT" value="{!v.translatorValue.Informativa_Body_Rich_Label__c}" />
-                                    </aura:set>
-                                </aura:if>  
-                            </aura:set>
-                        </aura:if>  
-                    </div>
-                    
-                </div>
-                
-                <!--Use aura:if tag to display Model Box, on the bese of conditions. [isOpen boolean attribute] -->   
-                <aura:if isTrue="{!v.isOpen}">
-                    <!--###### MODAL BOX Start From Here ######--> 
-                    <div aura:id="modal-privacy" role="dialog" tabindex="-1" aria-labelledby="header99" class="slds-modal slds-fade-in-open print">
-                        <div class="slds-modal__container" id="modal-container" aura:id="modal-container" >
-                            <!-- ###### MODAL BOX HEADER Part Start From Here ######-->
-                            <div class="slds-modal__header">
-                                <button class="slds-button slds-modal__close slds-button_icon-inverse noPrint" title="Close" onclick="{!c.closeModel}">
-                                    X
-                                    <span class="slds-assistive-text">Close</span>
-                                </button>
-                                <div class="header-logo-privacy">
-                                    <img src="/resource/logoBC"/>
+                        <div class="slds-grid slds-wrap row slds-text-align_right">
+                            <div class="slds-col slds-size_12-of-12 slds-large-size_12-of-12">
+                                <div class="slds-form-element">
+                                    <label class="slds-form-element__label">{!v.translatorValue.Signature_Label__c}</label>
+                                    <div class="{! 'canvas_spad' + ' ' +  (v.locale == 'CN' ? '' : 'margin-cn' )}">
+                                        <canvas class="canvasWidth" id="canvas" aura:id="canvas" ontouchstart="{!c.blockScroll}"></canvas>
+                                    </div>
+                                    <aura:if isTrue="{!v.locale == 'CN'}">
+                                        <label class="slds-form-element__label margin-cn">{!v.translatorValue.Signature_Asterisco_Label__c}</label>
+                                    </aura:if>
+                                    <div class="slds-form-element noPrint">
+                                        <lightning:button class="slds-button slds-button_neutral noPrint" label="{!v.translatorValue.Button_Signature_Clear_Label__c}" onclick="{!c.sPadClear}"/>
+                                    </div>
+                                    <lightning:input aura:id="quoteField" name="name" label="Name" value="{!v.sPad64}" required="true" class="slds-hidden" />
                                 </div>
+                            </div>
+                        </div>
+                        
+                        <div class="slds-grid slds-wrap row slds-text-align_center noPrint">
+                            <div class="slds-col slds-size_12-of-12 slds-large-size_12-of-12">
+                                <div class="slds-button-group noPrint" role="group">
+                                    <lightning:button class="slds-button slds-button_neutral" label="{!v.translatorValue.Button_Back_Label__c}" onclick="{!c.backButton}" disabled="{!v.buttonDisable}" />
+                                    <lightning:button class="slds-button slds-button_neutral" label="{!v.translatorValue.Button_Form_Registration_Label__c}" onclick="{!c.validateAndRegistration}" disabled="{!v.buttonDisable}" />
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="page-break"></div>
+                        <div class='privacy'>
+                            <br/>
+                            <br/>
+                            <div class="header-logo-privacy">
+                                <img src="/resource/logoBC"/>
                             </div>
                             <!--###### MODAL BOX BODY Part Start From Here ######-->
-                            <div class="slds-modal__content slds-p-around_medium">
-                                <div class="slds-text-body_regular header-text-policy">{!v.translatorValue.Informativa_Header_Label__c}</div>
+                            <div>
+                                <div class="header-text-policy">{!v.translatorValue.Informativa_Header_Label__c}</div>
                                 <aura:if isTrue="{!v.user.Canale_di_Vendita__c == 'Department'}">
-                                    <div class="uiOutputRichText" linkify="true" >
-                                        <aura:unescapedHtml value="{!v.translatorValue.Informativa_Body_Rich_Label_Department__c}"/>
-                                    </div>
+                                    <ui:outputRichText class="text-rich-privacy" aura:id="outputRT" value="{!v.translatorValue.Informativa_Body_Rich_Label_Department__c}" />                       
                                     <aura:set attribute="else">
+                                        <aura:if isTrue="{!v.user.Canale_di_Vendita__c == 'Monobrand'}">
+                                            <ui:outputRichText class="text-rich-privacy" aura:id="outputRT" value="{!v.translatorValue.Informativa_Body_Rich_Label__c}" /> 
+                                            <aura:set attribute="else">
+                                                <ui:outputRichText class="text-rich-privacy" aura:id="outputRT" value="{!v.translatorValue.Informativa_Body_Rich_Label__c}" />
+                                            </aura:set>
+                                        </aura:if>  
+                                    </aura:set>
+                                </aura:if>  
+                            </div>
+                            
+                        </div>
+                        
+                        <!--Use aura:if tag to display Model Box, on the bese of conditions. [isOpen boolean attribute] -->   
+                        <aura:if isTrue="{!v.isOpen}">
+                            <!--###### MODAL BOX Start From Here ######--> 
+                            <div aura:id="modal-privacy" role="dialog" tabindex="-1" aria-labelledby="header99" class="slds-modal slds-fade-in-open print">
+                                <div class="slds-modal__container" id="modal-container" aura:id="modal-container" >
+                                    <!-- ###### MODAL BOX HEADER Part Start From Here ######-->
+                                    <div class="slds-modal__header">
+                                        <button class="slds-button slds-modal__close slds-button_icon-inverse noPrint" title="Close" onclick="{!c.closeModel}">
+                                            X
+                                            <span class="slds-assistive-text">Close</span>
+                                        </button>
+                                        <div class="header-logo-privacy">
+                                            <img src="/resource/logoBC"/>
+                                        </div>
+                                    </div>
+                                    <!--###### MODAL BOX BODY Part Start From Here ######-->
+                                    <div class="slds-modal__content slds-p-around_medium">
+                                        <div class="slds-text-body_regular header-text-policy">{!v.translatorValue.Informativa_Header_Label__c}</div>
                                         <aura:if isTrue="{!v.user.Canale_di_Vendita__c == 'Department'}">
                                             <div class="uiOutputRichText" linkify="true" >
-                                        <aura:unescapedHtml value="{!v.translatorValue.Informativa_Body_Rich_Label__c}"/>
-                                    </div>   
+                                                <aura:unescapedHtml value="{!v.translatorValue.Informativa_Body_Rich_Label_Department__c}"/>
+                                            </div>
                                             <aura:set attribute="else">
-                                                  <div class="uiOutputRichText" linkify="true" >
-                                        <aura:unescapedHtml value="{!v.translatorValue.Informativa_Body_Rich_Label__c}"/>
-                                    </div>  
+                                                <aura:if isTrue="{!v.user.Canale_di_Vendita__c == 'Department'}">
+                                                    <div class="uiOutputRichText" linkify="true" >
+                                                <aura:unescapedHtml value="{!v.translatorValue.Informativa_Body_Rich_Label__c}"/>
+                                            </div>   
+                                                    <aura:set attribute="else">
+                                                        <div class="uiOutputRichText" linkify="true" >
+                                                <aura:unescapedHtml value="{!v.translatorValue.Informativa_Body_Rich_Label__c}"/>
+                                            </div>  
+                                                    </aura:set>
+                                                </aura:if>
+                                                                    
                                             </aura:set>
                                         </aura:if>
-                                                            
-                                    </aura:set>
-                                </aura:if>
-                                <!--iframe src="https://www.repubblica.it/"
-                                        width="100%"
-                                        height="100%"
-                                        style=""
-                                        frameBorder=""
-                                        sandbox=""
-                                        scrolling="yes"/-->
+                                        <!--iframe src="https://www.repubblica.it/"
+                                                width="100%"
+                                                height="100%"
+                                                style=""
+                                                frameBorder=""
+                                                sandbox=""
+                                                scrolling="yes"/-->
+                                    </div>
+                                </div>
+                            </div>
+                            <div aura:id="modal-backdrop" class="slds-backdrop slds-backdrop_open"></div>
+                            <!--###### MODAL BOX Part END Here ######-->
+                        </aura:if>
+                    </div>
+                </div>
+            </aura:if>
+            
+            <aura:if isTrue="{!v.successOpen}">
+                <div class="container component" id="container" aura:id="container">
+                    <div class="header thanks">
+                        <div class="headerDivsion"> 
+                        <div class="header-logo">
+                            <img src="/resource/logoBC2" class="image-header-thanks" />
+                        </div>
+                        <div class="header-text-thanks">
+                            {!v.translatorValue.Subheader_Label__c}<br />
+                            <!--{!v.language}<br /> -->
+                            <!--{!v.locale} -->
+                        </div>
+                    </div>
+                        <div class="text-thanks">
+                            <!-- <p>Grazie per la tua registrazione {!v.newItem.FirstName} &nbsp;{!v.newItem.LastName}</p> -->
+                            <p>{!v.translatorValue.Success_Message_Label__c}</p>
+
+                        </div>
+                </div>
+                    
+                    <div class="slds-grid slds-wrap row slds-text-align_center noPrint">
+                        <div class="slds-col slds-size_12-of-12 slds-large-size_12-of-12">
+                            <div class="slds-form-element button-registration">
+                            
+                                <lightning:button class="slds-button slds-button_neutral" label="{!v.translatorValue.Button_Back_Label__c}" onclick="{!c.backButton}"  />
+                                <lightning:button class="slds-button slds-button_neutral" label="{!v.translatorValue.Button_Generate_Barcode_Label__c}" onclick="{!c.showbar}" disabled="{!v.buttonDisable}"  />
+                                
+                                <!--<div class="slds-text-align_center slds-text-heading_medium margin-text">Barcode Id</div> -->
+
+                            
+                                    <!-- lightning:button label="Return" onclick="{!c.returnToForm}"/ -->
                             </div>
                         </div>
                     </div>
-                    <div aura:id="modal-backdrop" class="slds-backdrop slds-backdrop_open"></div>
-                    <!--###### MODAL BOX Part END Here ######-->
-                </aura:if>
-            </div>
-        </div>
-    </aura:if>
-    
-    <aura:if isTrue="{!v.successOpen}">
-        <div class="container component" id="container" aura:id="container">
-            <div class="header thanks">
-                <div class="headerDivsion"> 
-                <div class="header-logo">
-                    <img src="/resource/logoBC2" class="image-header-thanks" />
-                </div>
-                <div class="header-text-thanks">
-                    {!v.translatorValue.Subheader_Label__c}<br />
-                    <!--{!v.language}<br /> -->
-                    <!--{!v.locale} -->
-                </div>
-              </div>
-                <div class="text-thanks">
-                    <!-- <p>Grazie per la tua registrazione {!v.newItem.FirstName} &nbsp;{!v.newItem.LastName}</p> -->
-                    <p>{!v.translatorValue.Success_Message_Label__c}</p>
-
-                </div>
-           </div>
-            
-            <div class="slds-grid slds-wrap row slds-text-align_center noPrint">
-                <div class="slds-col slds-size_12-of-12 slds-large-size_12-of-12">
-                    <div class="slds-form-element button-registration">
-                       
-                        <lightning:button class="slds-button slds-button_neutral" label="{!v.translatorValue.Button_Back_Label__c}" onclick="{!c.backButton}"  />
-                        <lightning:button class="slds-button slds-button_neutral" label="{!v.translatorValue.Button_Generate_Barcode_Label__c}" onclick="{!c.showbar}" disabled="{!v.buttonDisable}"  />
-                        
-                        <!--<div class="slds-text-align_center slds-text-heading_medium margin-text">Barcode Id</div> -->
-
-                    
-                            <!-- lightning:button label="Return" onclick="{!c.returnToForm}"/ -->
+                    <aura:if isTrue="{!v.viewBarcode}">
+                    <div class="slds-grid slds-wrap row slds-text-align_center noPrint">
+                        <div class="slds-col slds-size_12-of-12 slds-large-size_12-of-12">
+                                <br />
+                                <div class="slds-text-align_center slds-text-heading_medium margin-text">Barcode Id</div>
+                                <br />
+                        </div>
                     </div>
+                    </aura:if>
+                    <div class="slds-text-align_center slds-text-heading_medium margin-text" id="barcode" aura:id="barcode" />            
                 </div>
-            </div>
-            <aura:if isTrue="{!v.viewBarcode}">
-            <div class="slds-grid slds-wrap row slds-text-align_center noPrint">
-                <div class="slds-col slds-size_12-of-12 slds-large-size_12-of-12">
-                        <br />
-                        <div class="slds-text-align_center slds-text-heading_medium margin-text">Barcode Id</div>
-                        <br />
-                </div>
-            </div>
             </aura:if>
-            <div class="slds-text-align_center slds-text-heading_medium margin-text" id="barcode" aura:id="barcode" />            
-        </div>
-    </aura:if>
-    
+        </aura:renderIf>  
+        
+    </aura:renderIf>
 </aura:component>

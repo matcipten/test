@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>Hierarchy</customSettingsType>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Entitlement_Id__c</fullName>
+        <externalId>false</externalId>
+        <label>Entitlement Id</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Manager_Default_Mail__c</fullName>
+        <externalId>false</externalId>
+        <label>Manager Default Mail</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Milestone_First_Status_New__c</fullName>
+        <externalId>false</externalId>
+        <label>Milestone First Status New</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Milestone_First_Status_Reassigned__c</fullName>
+        <externalId>false</externalId>
+        <label>Milestone First Status Reassigned</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Milestone_First_Status_Reply_Received__c</fullName>
+        <externalId>false</externalId>
+        <label>Milestone First Status Reply Received</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Milestone_Second_Status_New__c</fullName>
+        <externalId>false</externalId>
+        <label>Milestone Second Status New</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Milestone_Second_Status_Reassigned__c</fullName>
+        <externalId>false</externalId>
+        <label>Milestone Second Status Reassigned</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Milestone_Second_Status_Reply_Received__c</fullName>
+        <externalId>false</externalId>
+        <label>Milestone Second Status Reply Received</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Id Automatismi Milestone</label>
+    <visibility>Public</visibility>
+</CustomObject>

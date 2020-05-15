@@ -54,12 +54,33 @@
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>ReadWrite</externalSharingModel>
     <fields>
+        <fullName>Billing_Address_Section_Label__c</fullName>
+        <externalId>false</externalId>
+        <label>Billing Address Section Label</label>
+        <length>5000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
         <fullName>Birthdate_Label__c</fullName>
         <externalId>false</externalId>
         <label>Birthdate_Label</label>
         <length>255</length>
         <required>false</required>
         <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Button_Add_Address_Label__c</fullName>
+        <externalId>false</externalId>
+        <label>Button Add Address Label</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -120,12 +141,34 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>CAP_Contact_Address_Label__c</fullName>
+        <externalId>false</externalId>
+        <label>CAP_Contact_Address_Label</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>CAP_Label__c</fullName>
         <externalId>false</externalId>
         <label>CAP_Label</label>
         <length>255</length>
         <required>false</required>
         <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CAP_Other_Address_Label__c</fullName>
+        <externalId>false</externalId>
+        <label>CAP_Other_Address_Label</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -219,12 +262,34 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>City_Contact_Address_Label__c</fullName>
+        <externalId>false</externalId>
+        <label>City_Contact_Address_Label</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>City_Label__c</fullName>
         <externalId>false</externalId>
         <label>City_Label</label>
         <length>255</length>
         <required>false</required>
         <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>City_Other_Address_Label__c</fullName>
+        <externalId>false</externalId>
+        <label>City_Other_Address_Label</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -241,12 +306,33 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Contact_Address_Section_Label__c</fullName>
+        <externalId>false</externalId>
+        <label>Contact Address Section Label</label>
+        <length>131072</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
         <fullName>Contact_Preferences_Label__c</fullName>
         <externalId>false</externalId>
         <label>Contact_Preferences_Label</label>
         <length>255</length>
         <required>false</required>
         <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Country_Contact_Address_Label__c</fullName>
+        <externalId>false</externalId>
+        <label>Country_Contact_Address_Label</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -270,6 +356,17 @@
         <length>255</length>
         <required>false</required>
         <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Country_Other_Address_Label__c</fullName>
+        <externalId>false</externalId>
+        <label>Country_Other_Address_Label</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -630,6 +727,16 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Other_Address_Section_Label__c</fullName>
+        <externalId>false</externalId>
+        <label>Other_Address_Section_Label</label>
+        <length>5000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
         <fullName>Paese_di_emissione_passaporto_Label__c</fullName>
         <externalId>false</externalId>
         <label>Paese_di_emissione_passaporto_Label</label>
@@ -860,6 +967,16 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Salutation__c</fullName>
+        <externalId>false</externalId>
+        <label>Salutation</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
         <fullName>Signature_Asterisco_Label__c</fullName>
         <externalId>false</externalId>
         <label>Signature_Asterisco_Label</label>
@@ -882,12 +999,34 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>State_Contact_Address_Label__c</fullName>
+        <externalId>false</externalId>
+        <label>State_Contact_Address_Label</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>State_Label__c</fullName>
         <externalId>false</externalId>
         <label>State_Label</label>
         <length>255</length>
         <required>false</required>
         <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>State_Other_Address_Label__c</fullName>
+        <externalId>false</externalId>
+        <label>State_Other_Address_Label</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -904,12 +1043,34 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Street_Contact_Address_Label__c</fullName>
+        <externalId>false</externalId>
+        <label>Street_Contact_Address_Label</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Street_Label__c</fullName>
         <externalId>false</externalId>
         <label>Street_Label</label>
         <length>255</length>
         <required>false</required>
         <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Street_Other_Address_Label__c</fullName>
+        <externalId>false</externalId>
+        <label>Street_Other_Address_Label</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
