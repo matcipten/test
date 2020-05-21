@@ -924,6 +924,7 @@
                     label: "campo non trovato",
                     value: "error"
                 });
+                
             }
             component.set(fieldupdate, filteredOpt); 
         }

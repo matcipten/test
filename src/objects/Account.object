@@ -2987,6 +2987,15 @@ YEAR(TODAY())-YEAR(PersonBirthdate),
         <trackHistory>false</trackHistory>
     </fields>
     <fields>
+        <fullName>Firma__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Firma</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>First_ID_Location__c</fullName>
         <externalId>false</externalId>
         <label>First ID Location</label>

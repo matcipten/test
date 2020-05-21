@@ -239,6 +239,11 @@
         else {
             $A.util.removeClass(canvas, 'changeMe');
         }
+
+
+
+
+        
         
         var phoneField  = cmp.find("itemPhone");
         //var mobileField = cmp.find("itemPersonMobilePhone");
@@ -439,14 +444,110 @@
         }
        
         var countryField     = cmp.find("inputCountry");  
-
-        if(item.PersonMailingCountry == null || item.PersonMailingCountry == ''){
+        var arrCountry=cmp.get("v.customPicklistCountryBU");
+        var checkCountry =   arrCountry.filter(function(x) {
+            return x.label == item.PersonMailingCountry && item.PersonMailingCountry!=undefined ;
+        });
+        // if(item.PersonMailingCountry == null || item.PersonMailingCountry == ''){
+        //         validitem = false;
+        //         errors.push('Please insert customer country');
+        //         countryField.set("v.messageWhenBadInput", [{message:""}]);
+        //     } else {
+        //         countryField.set("v.messageWhenBadInput", null);
+        //     }
+        if(checkCountry.length==0 && (item.PersonMailingCountry!=undefined||item.PersonMailingCountry!='campo non trovato')){
                 validitem = false;
-                errors.push('Please insert customer country');
+                errors.push('Please enter a correct value in the field: Billing Country');
                 countryField.set("v.messageWhenBadInput", [{message:""}]);
             } else {
                 countryField.set("v.messageWhenBadInput", null);
-            } 
+            }
+            
+
+        var countryContactField     = cmp.find("inputCountryContact");  
+        var arrCountryContact=cmp.get("v.customPicklistCountryContactBU");
+        var checkCountryContact =   arrCountryContact.filter(function(x) {
+            return x.label == item.BillingCountry && item.BillingCountry!=undefined ;
+        });
+        // if(item.BillingCountry == null || item.BillingCountry == ''){
+        //         validitem = false;
+        //         errors.push('Please insert customer country');
+        //         countryContactField.set("v.messageWhenBadInput", [{message:""}]);
+        //     } else {
+        //         countryContactField.set("v.messageWhenBadInput", null);
+        //     }
+        if(checkCountryContact.length==0 && (item.BillingCountry!=undefined||item.BillingCountry!='campo non trovato')){
+                validitem = false;
+                errors.push('Please enter a correct value in the field: Mailing Country');
+                countryContactField.set("v.messageWhenBadInput", [{message:""}]);
+            } else {
+                countryContactField.set("v.messageWhenBadInput", null);
+            }
+
+
+        var countryOtherField     = cmp.find("inputCountryOther");  
+        var arrCountryOther=cmp.get("v.customPicklistCountryOtherBU");
+        var checkCountryOther =   arrCountryOther.filter(function(x) {
+            return x.label == item.PersonOtherCountry && item.PersonOtherCountry!=undefined ;
+        });
+        // if(item.PersonOtherCountry == null || item.PersonOtherCountry == ''){
+        //         validitem = false;
+        //         errors.push('Please insert customer country');
+        //         countryOtherField.set("v.messageWhenBadInput", [{message:""}]);
+        //     } else {
+        //         countryOtherField.set("v.messageWhenBadInput", null);
+        //     }
+        if(checkCountryOther.length==0 && (item.PersonOtherCountry!=undefined||item.PersonOtherCountry!='campo non trovato')){
+                validitem = false;
+                errors.push('Please enter a correct value in the field: Other Country');
+                countryOtherField.set("v.messageWhenBadInput", [{message:""}]);
+            } else {
+                countryOtherField.set("v.messageWhenBadInput", null);
+            }    
+
+        
+
+        var nationalityField     = cmp.find("inputNationality");  
+        var arrNationality=cmp.get("v.customPicklistNationalityBU");
+        var checkNationality =   arrNationality.filter(function(x) {
+            return x.label == item.Nazionalita__c && item.Nazionalita__c!=undefined ;
+        });
+        if(checkNationality.length==0 && (item.Nazionalita__c!=undefined||item.Nazionalita__c=='campo non trovato')){
+                validitem = false;
+                errors.push('Please enter a correct value in the field: Nationality');
+                nationalityField.set("v.messageWhenBadInput", [{message:""}]);
+            } else {
+                nationalityField.set("v.messageWhenBadInput", null);
+            }
+
+        
+        var professionField     = cmp.find("inputProfession"); 
+        var arrProfession=cmp.get("v.customPicklistProfessionBU");
+        var checkProfession =   arrProfession.filter(function(x) {
+            return x.label == item.Professione__c && item.Professione__c!=undefined  ;
+        });
+        if(checkProfession.length==0 && (item.Professione__c!=undefined||item.Professione__c=='campo non trovato')){
+                validitem = false;
+                errors.push('Please enter a correct value in the field: Profession');
+                professionField.set("v.messageWhenBadInput", [{message:""}]);
+            } else {
+                professionField.set("v.messageWhenBadInput", null);
+            }
+        
+
+        var preferredLanguageField     = cmp.find("inputPreferredLanguage");
+        var arrLang=cmp.get("v.customPicklistPreferredLanguageBU");
+        var checkLang =   arrLang.filter(function(x) {
+            return x.label == item.Lingua__c && item.Lingua__c!=undefined ;
+        });
+        if(checkLang.length==0 && (item.Lingua__c!=undefined||item.Lingua__c=='campo non trovato')){
+                validitem = false;
+                errors.push('Please enter a correct value in the field: Preferred language');
+                preferredLanguageField.set("v.messageWhenBadInput", [{message:""}]);
+            } else {
+                preferredLanguageField.set("v.messageWhenBadInput", null);
+            }
+
         
         if(locale == 'US'){
             var stateField  = cmp.find("itemPersonMailingState");
@@ -641,46 +742,69 @@
 
         //PALUMBO (END)
 
+        if(signField_value != ''&& !update){
+            cmp.set("v.newItem.Firma__c", true);
+
+        }
         
         if(validitem){
             
-            helper.showSpinner(cmp);
-            
+            // helper.showSpinner(cmp);
+            cmp.set("v.hideBody", true);
             cmp.set("v.errors", null);
             var update = cmp.get("v.isUpdate");
             
             if(update){
-                var action = cmp.get("c.updateNewAccount");
-                action.setParams({ 
-                    "account" : cmp.get("v.newItem"), 
-                    "sPad64"  : signField_value
-                });
-                action.setCallback(this, function(response) {
-                    var state = response.getState();
-                    if(state =='SUCCESS'){
-                        var allValues = JSON.parse(response.getReturnValue());
-                        //console.log(allValues);
-                        cmp.set("v.Id",allValues.Id);
-                        //do what you need here
-                        cmp.set("v.isOpen", false);
-                        cmp.set("v.formOpen", false);
-                        cmp.set("v.successOpen", true);
-                        
-                    }else if (state=="ERROR") {
-                        var errorMsg = action.getError()[0].message;
-                        console.log(errorMsg);
-                        
-                        cmp.set("v.buttonDisable",false);
-                        cmp.set("v.errors",errorMsg);
-                        document.body.scrollTop = 0;
-                        document.documentElement.scrollTop = 0;
-                        helper.hideSpinner(cmp);
-                        
+                var check = cmp.get('c.checkFirmeContactCard');
+            check.setParams({
+                "customerID": cmp.get("v.newItem.Id")
+            });
+            check.setCallback(this, function(response) {
+                var state = response.getState();
+                if(state =='SUCCESS'){
+                    var value = JSON.parse(response.getReturnValue());
+                    if(value || signField_value != ''){
+                        cmp.set("v.newItem.Firma__c", true);
                     }
                     
-                    
-                });
-                $A.enqueueAction(action);
+                    console.log('VS risposta mio metodo2: '+cmp.get("v.newItem.Firma__c"));
+
+
+                    var action = cmp.get("c.updateNewAccount");
+                    action.setParams({ 
+                        "account" : cmp.get("v.newItem"), 
+                        "sPad64"  : signField_value
+                    });
+                    action.setCallback(this, function(response) {
+                        var state = response.getState();
+                        if(state =='SUCCESS'){
+                            var allValues = JSON.parse(response.getReturnValue());
+                            //console.log(allValues);
+                            cmp.set("v.Id",allValues.Id);
+                            //do what you need here
+                            cmp.set("v.hideBody", false);
+                            cmp.set("v.isOpen", false);
+                            cmp.set("v.formOpen", false);
+                            cmp.set("v.successOpen", true);
+                            
+                        }else if (state=="ERROR") {
+                            var errorMsg = action.getError()[0].message;
+                            console.log(errorMsg);
+                            
+                            cmp.set("v.buttonDisable",false);
+                            cmp.set("v.errors",errorMsg);
+                            document.body.scrollTop = 0;
+                            document.documentElement.scrollTop = 0;
+                            helper.hideSpinner(cmp);
+                            cmp.set("v.hideBody", false);
+                        }
+                        
+                        
+                    });
+                    $A.enqueueAction(action);
+                }
+            });
+            $A.enqueueAction(check);
                 
             } else {
                // console.log(cmp.get("v.newItem"));
@@ -695,6 +819,7 @@
                         var allValues = JSON.parse(response.getReturnValue());
                         cmp.set("v.Id",allValues.Id);
                         //do what you need here
+                        cmp.set("v.hideBody", false);
                         cmp.set("v.isOpen", false);
                         cmp.set("v.formOpen", false);
                         cmp.set("v.successOpen", true);
@@ -708,6 +833,7 @@
                         document.body.scrollTop = 0;
                         document.documentElement.scrollTop = 0;
                         helper.hideSpinner(cmp);
+                        cmp.set("v.hideBody", false);
                     }
                     
                     

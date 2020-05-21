@@ -23,7 +23,9 @@ trigger chatter_answers_question_escalation_to_case_trigger on Question (after u
             mail.setToAddresses(toAddresses);
             mail.setSubject(subjectText);
             mail.setPlainTextBody(bodyText);
-            Messaging.sendEmail(new Messaging.SingleEmailMessage[] { mail });
+            if(!Test.isRunningTest()){
+                Messaging.sendEmail(new Messaging.SingleEmailMessage[] { mail });
+            }
         }
     }
 }

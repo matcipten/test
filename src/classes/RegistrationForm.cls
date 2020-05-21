@@ -53,7 +53,7 @@ public class RegistrationForm {
             //                                   Button_Add_Address_Label__c, Billing_Address_Section_Label__c, Contact_Address_Section_Label__c, Other_Address_Section_Label__c,
             //                                   Street_Contact_Address_Label__c, City_Contact_Address_Label__c, CAP_Contact_Address_Label__c, Country_Contact_Address_Label__c,
             //                                   Street_Other_Address_Label__c, City_Other_Address_Label__c, State_Other_Address_Label__c, CAP_Other_Address_Label__c, 
-            //                                   Country_Other_Address_Label__c, Rich_Text_Registration__c,State_Contact_Address_Label__c
+            //                                   Country_Other_Address_Label__c, Rich_Text_Registration__c
             //                                   FROM Translate__c WHERE Name LIKE :HelpForLike];
 
             list<Translate__c> Translation = [SELECT Privacy_Yes_Label__c, Privacy_No_Label__c,First_Name_Label__c,Last_Name_Label__c, Salutation_Value__c,
@@ -239,8 +239,9 @@ public class RegistrationForm {
             PDFDatas = PDFDatas.replace('ProfessionPlaceHolder', '<label>'+Translation[0].Profession_Label__c+' :  '+'</label><br>' +cc[0].Professione__c);
             PDFDatas = PDFDatas.replace('HobbyPlaceHolder', '<label>'+Translation[0].Hobby_Label__c+' :  '+'</label><br>' +cc[0].Hobby__c);
             //PDFDatas = PDFDatas.replace(Translation[0].Passport_Section_Label__c, '');
-            PDFDatas = PDFDatas.replace('PassportNumberPlaceHolder', '<label>'+Translation[0].Numero_Passaporto_Label__c+' :  '+'</label><br>' +cc[0].Numero_Passaporto__c);
-            PDFDatas = PDFDatas.replace('PassportCPlaceHolder', '<label>'+Translation[0].Paese_di_emissione_passaporto_Label__c+' :  '+'</label><br>' +cc[0].Paese_di_emissione_passaporto__c);
+            // VS - 11/05/2020
+            // PDFDatas = PDFDatas.replace('PassportNumberPlaceHolder', '<label>'+Translation[0].Numero_Passaporto_Label__c+' :  '+'</label><br>' +cc[0].Numero_Passaporto__c);
+            // PDFDatas = PDFDatas.replace('PassportCPlaceHolder', '<label>'+Translation[0].Paese_di_emissione_passaporto_Label__c+' :  '+'</label><br>' +cc[0].Paese_di_emissione_passaporto__c);
             if (locale == 'RU'){
                 PDFDatas = PDFDatas.replace('PassportIssuedFromPlaceHolder', '<label>'+Translation[0].Ente_di_emissione_passaporto_Label__c+' :  '+'</label><br>' +cc[0].Ente_di_emissione_passaporto__c);
                 PDFDatas = PDFDatas.replace('PassportIssuedDPlaceHolder', '<label>'+Translation[0].Data_di_emissione_passaporto_Label__c+' :  '+'</label><br>' +cc[0].Data_di_emissione_passaporto__c);
@@ -890,7 +891,6 @@ insert cDe;
     // Akshay@
 
     //PALUMBO (START)
-    //VS - 11/05/2020
     // @AuraEnabled
     // public static Boolean checkNationUser(String nation){
     //     List<DCC_Visibility__mdt> dccVisibility = [SELECT Label, IsValid__c FROM DCC_Visibility__mdt WHERE IsValid__c = true AND Label =: nation];
@@ -898,6 +898,21 @@ insert cDe;
     // }
     //PALUMBO (END)
     
+    @AuraEnabled
+    public static boolean checkFirmeContactCard(Id customerID){
+        List<Attachment> listAtt= [SELECT Id
+                    FROM Attachment
+                    WHERE Parent.Type='Contact_Card__c' AND Name Like 'sign_%' AND ParentId IN (SELECT id FROM Contact_Card__c WHERE Customer_ID__c =: customerID)
+                    ORDER BY CreatedDate Desc
+                    LIMIT 1];
+        Boolean check= false;
+        if(listAtt.size()>0){
+            check=true;
+        }
+            
+        System.debug('VS check firme: '+check);
+        return check;
+    }
     
     
     public class returnData {
