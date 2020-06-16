@@ -27,6 +27,7 @@
         helper.fetchPickListVal2(component, 'Hobby__c', 'InputSelectDynamicHobby', 'Hobby');
         helper.fetchPickListVal2(component, 'Nazionalita__c', 'InputSelectDynamicContactCountry', "CountryOther");
         helper.fetchPickListVal2(component, 'Nazionalita__c', 'InputSelectDynamicOtherCountry', "CountryContact");
+        helper.fetchPickListVal2(component, 'Nazionalita__c', 'InputSelectDynamicPassportCountry',"PassportCountry");
 
         var myPageRef = component.get("v.pageReference");
         if(myPageRef){
@@ -387,19 +388,22 @@
         //Akshay 22/01/2019
         if (locale != 'US' && locale != 'CA'){
         var passportNumField      = cmp.find("itemPassportNum");
-        var luogoField      = cmp.find("InputSelectDynamicPassportCountry");
-        var enteField = cmp.find("itemPassportIssuedBy");
+        var luogoField      = cmp.find("inputPassportCountry");
+        if(locale=="RU"){
+            var enteField = cmp.find("itemPassportIssuedBy");
         var dataissuedField = cmp.find("itemPassportIssuedOn");    
             if (enteField)
                 enteField.set("v.errors", null);
             if (dataissuedField)
                 enteField.set("v.errors", null);
-            luogoField.set("v.errors", null);
+        }
+        
+            luogoField.set("v.messageWhenBadInput", null);
         if(item.Numero_Passaporto__c != null && item.Numero_Passaporto__c != '' ){
             if(item.Paese_di_emissione_passaporto__c == null || item.Paese_di_emissione_passaporto__c ==''){
                 validitem = false;
                 errors.push('Please insert country of issue');
-                luogoField.set("v.errors", [{message:""}]); //Data_di_emissione_passaporto__c
+                luogoField.set("v.messageWhenBadInput", [{message:""}]); //Data_di_emissione_passaporto__c
             }
             else if (locale == 'RU' && (item.Ente_di_emissione_passaporto__c == null || item.Ente_di_emissione_passaporto__c == ''))
             {
@@ -414,7 +418,7 @@
                 dataissuedField.set("v.errors", [{message:""}]); 
             }
             else {
-                luogoField.set("v.errors", null);
+                luogoField.set("v.messageWhenBadInput", null);
                 if (enteField)
                     enteField.set("v.errors", null);
                 if (dataissuedField)
@@ -748,7 +752,15 @@
         }
         
         if(validitem){
-            
+            helper.searchValuePicklist(cmp,item.PersonMailingCountry, "Country", "validate");
+            helper.searchValuePicklist(cmp,item.BillingCountry, 'CountryContact', "validate");
+            helper.searchValuePicklist(cmp,item.PersonOtherCountry, 'CountryOther', "validate");
+            helper.searchValuePicklist(cmp,item.Nazionalita__c, 'Nationality', "validate");
+            // helper.searchValuePicklist(cmp,item.Professione__c, 'Profession', "validate");
+            helper.searchValuePicklist(cmp,item.Lingua__c, 'PreferredLanguage', "validate");
+            helper.searchValuePicklist(cmp,item.Paese_di_emissione_passaporto__c, 'PassportCountry', "validate");
+            helper.searchValuePicklist(cmp,item.Professione__c, 'Profession', "validate");
+            console.log("VS Valid item"+JSON.stringify(item));
             // helper.showSpinner(cmp);
             cmp.set("v.hideBody", true);
             cmp.set("v.errors", null);
@@ -1071,14 +1083,26 @@
         //helper.displayPredictions(component, searchString);
     },
     selectOption: function(component, event,helper){
-        var value = event.getSource().get("v.name");
-        var searchString= value.split("_");
+        
+        // var selection  = event.getSource().get("v.name");
+        // var searchString= selection.split("_");
+        // var value  = event.getSource().get("v.label");
+        // var path = "input"+searchString[1];
+        // console.log("Value selected:"+value);
+        // component.find(path).set("v.value",value);
+        // helper.closeListbox(component, "searchLookup"+searchString[1]);
+        // console.log(component.find(path).get("v.value"));
+        // var value = event.getSource().get("v.name");
+        
         var selection  = event.getSource().get("v.name");
-        var value  = event.getSource().get("v.label");
-        var path = "input"+selection.split('_')[1];
-        component.find(path).set("v.value",value);
-        console.log("input"+path);
-        helper.closeListbox(component, "searchLookup"+searchString[1]);
+        var value  = event.getSource().get("v.value");
+        var label  = event.getSource().get("v.label");
+        var field= selection.split("_")[1];
+        var path = "input"+field;
+        helper.searchValuePicklist(component,value, field, "validate");
+        component.find(path).set("v.value",label)
+        helper.closeListbox(component, "searchLookup"+field);
+        
     },
     getValueFromLwc : function(component, event, helper) {
         console.log('VS getValueFromLwc: '+event.getParam('value'));        

@@ -17,7 +17,7 @@
                 });
 
                 for (var k in allValues) {
-                    //console.log(JSON.stringify(allValues));
+                    console.log(JSON.stringify(k));
                     opts.push({
                         class: "optionClass",
                         label: k,
@@ -26,7 +26,7 @@
                 }
                     // PALUMBO
                  if (elementId == 'InputSelectDynamicCountry' || elementId=='InputSelectDynamicContactCountry' || elementId == 'InputSelectDynamicOtherCountry'){
-                     console.log(opts);
+                    //  console.log(opts);
                      var defaultIndex = opts.findIndex(function(opts){return opts.value === component.get("v.user.Nation_Contact_Card__c")});
                      
                      //opts.unshift({class: "optionClass", label: opts[defaultIndex].label, value: opts[defaultIndex].value});
@@ -46,6 +46,7 @@
                
                
             }
+            // console.log("Vs opts 1: "+JSON.stringify(opts));
         });
         $A.enqueueAction(action);
     },
@@ -93,7 +94,7 @@
                         });
                         if(component.get("v.user.Nation_Contact_Card__c") == allValues[k] && (label == "Country" || label == "CountryContact" || label == "CountryOther")){
                             valueInput=k.toString(); 
-                            console.log('vs k value: '+k);  
+                            // console.log('vs k value: '+k);  
                             switch(label) {
                                 case "Country":
                                     // code block 
@@ -102,7 +103,8 @@
                                         $A.getCallback(
                                             function() {
                                                 if (component.find("inputCountry").get("v.value")=='undefined' || component.find("inputCountry").get("v.value")=='' || component.find("inputCountry").get("v.value")==undefined)
-                                                    component.find("inputCountry").set("v.value", valueInput);
+                                                    // component.find("inputCountry").set("v.value", valueInput);
+                                                    component.set("v.newItem.PersonMailingCountry", valueInput);
                                             }
                                         )
                                     );
@@ -115,7 +117,8 @@
                                         $A.getCallback(
                                             function() {
                                                 if (component.find("inputCountryContact").get("v.value")=='undefined' || component.find("inputCountryContact").get("v.value")=='' || component.find("inputCountryContact").get("v.value")==undefined)
-                                                    component.find("inputCountryContact").set("v.value", valueInput);
+                                                    //component.find("inputCountryContact").set("v.value", valueInput);
+                                                    component.set("v.newItem.BillingCountry", valueInput);
                                             }
                                         )
                                     );
@@ -128,7 +131,8 @@
                                         $A.getCallback(
                                             function() {
                                                 if (component.find("inputCountryOther").get("v.value")=='undefined' || component.find("inputCountryOther").get("v.value")=='' || component.find("inputCountryOther").get("v.value")==undefined)
-                                                    component.find("inputCountryOther").set("v.value", valueInput);
+                                                    // component.find("inputCountryOther").set("v.value", valueInput);
+                                                    component.set("v.newItem.PersonOtherCountry", valueInput);
                                             }
                                         )
                                     );
@@ -146,22 +150,16 @@
                  
                 if(label == "Salutation" || label =="Sesso"){
                     var x = "v.opt"+label;
+                    // console.log("Vs opts2 salutationORSesso: "+JSON.stringify(opts));
                     component.set(x, opts);
+                    
                 }else{
-                    // console.log("set opts picklist "+label+" "+opts);
-                    // console.log("VS nationCC: "+component.get("v.user.Nation_Contact_Card__c"))
                     var x = "v.customPicklist"+label;
                     var y = "v.customPicklist"+label+"BU";
-                    
+                    // console.log("Vs opts2: "+JSON.stringify(opts));
                     component.set(x, opts);
                     component.set(y, opts);  
-                    // if(label == "Country" || label == "CountryContact" || label == "CountryOther") {
-                    //     var input= "input"+label;
-                    //     var cmp = component.find(input).set("v.value",valueInput)
-                    //     console.log("VS value: "+component.find(input).get("v.value"));
-                    // }       
                     
-                    console.log("VS preselected country:"+component.get("v.newItem.PersonMailingCountry"));
                 }
 
                 
@@ -228,7 +226,7 @@
         action.setCallback(this, function (response) {
             if (response.getState() == "SUCCESS") {
                 var usr = response.getReturnValue();
-                console.log(usr.Nation_Contact_Card__c);
+                // console.log(usr.Nation_Contact_Card__c);
                 var locale = (usr.Nation_Contact_Card__c != null || usr.Nation_Contact_Card__c != undefined) ?  usr.Nation_Contact_Card__c : 'US' ;
                 var prefer_language = usr.Language_Contact_Card__c;
                 var action = component.get('c.getTranslatorForm');
@@ -242,12 +240,12 @@
                         var multilanguage = false;
 
                         all_translation = JSON.parse(JSON.stringify(response.getReturnValue()));
-                        console.log('********************************all_translation.length');
-                        console.log(response.getReturnValue().length);
+                        // console.log('********************************all_translation.length');
+                        // console.log(response.getReturnValue().length);
                         component.set("v.translator", all_translation);
 
                         var locale_lang = (prefer_language == null ) ? 'en' + '_' + locale.toUpperCase() : prefer_language.toLowerCase() + '_' + locale.toUpperCase();
-                         console.log(locale_lang);
+                        //  console.log(locale_lang);
                         var all_key = Object.keys(all_translation);
 
                         //var container = [];
@@ -265,6 +263,7 @@
                             pick_lang.label = all_key[i].split('_')[0];
                             pick_lang.value = all_key[i];
                             pick_lang.selected = (prefer_language == null) ? ('en'.localeCompare(all_key[i].split('_')[0]) == 0) ? 'true' : '' : (prefer_language.localeCompare(all_key[i].split('_')[0]) == 0) ? 'true' : '';
+                            // console.log('VS #'+i+' : '+JSON.stringify(pick_lang));
                             optsLang.push(pick_lang);
                         }
                         //});
@@ -285,34 +284,52 @@
                         component.set("v.translatorValue", usr_translation);
                         component.set("v.multiLanguage", multilanguage);
                         component.set("v.language", locale_lang);
-                        component.set("v.locale", locale_lang.split('_')[1]);
+                        component.set("v.locale", locale_lang.split('_')[i]);
                         component.set("v.TranslationDCCVersion",usr_translation.Versione_DCC__c );
                         component.set("v.TranslationRichiediFirma",usr_translation.Richiedi_Firma__c );
                         // console.log(usr_translation);
                         
+                        // if (usr_translation != null  && usr_translation.Profession_Values__c != null) {
+                        //     this.setPicklist(component, 'Professione__c','InputSelectDynamicProfession',usr_translation.Profession_Values__c , false);
+                        // }
+                        // else{
+                        //     this.orderPickLabels(component, 'Professione__c','InputSelectDynamicProfession');
+                        // }
+                        // if (usr_translation != null  && usr_translation.Hobby_Values__c != null) {
+                        //      this.setPicklist(component, 'Hobby__c', 'InputSelectDynamicHobby', usr_translation.Hobby_Values__c, false);
+                        // }
+                        // else{
+                        //     this.orderPickLabels(component, 'Hobby__c', 'InputSelectDynamicHobby');
+                        // }
+                        if (usr_translation != null  && usr_translation.Salutation_Value__c != null) {
+                            this.setPicklist(component, 'Salutation', 'InputSelectDynamicTitolo', usr_translation.Salutation_Value__c, false);
+                        }
+                        else{
+                            this.orderPickLabels(component, 'Salutation', 'InputSelectDynamicTitolo');
+                        }
+
+
                         if (usr_translation != null  && usr_translation.Profession_Values__c != null) {
-                            //  this.setPicklist(component, 'Professione__c','InputSelectDynamicProfession',usr_translation.Profession_Values__c , false);
+                            this.setPicklist1v2(component, 'Professione__c', 'InputSelectDynamicProfession', usr_translation.Profession_Values__c, false,"Profession");
                         }
                         else{
                             this.orderPickLabels(component, 'Professione__c','InputSelectDynamicProfession');
                         }
                         if (usr_translation != null  && usr_translation.Hobby_Values__c != null) {
-                            // this.setPicklist(component, 'Hobby__c', 'InputSelectDynamicHobby', usr_translation.Hobby_Values__c, false);
+                            this.setPicklist1v2(component, 'Hobby__c', 'InputSelectDynamicHobby', usr_translation.Hobby_Values__c, false,"Hobby");
                         }
                         else{
                             this.orderPickLabels(component, 'Hobby__c', 'InputSelectDynamicHobby');
                         }
-                        if (usr_translation != null  && usr_translation.Salutation_Value__c != null) {
-                            // this.setPicklist(component, 'Salutation', 'InputSelectDynamicTitolo', usr_translation.Salutation_Value__c, false);
-                        }
-                        else{
-                            this.orderPickLabels(component, 'Salutation', 'InputSelectDynamicTitolo');
-                        }
+
+
+
                         /*if(usr_translation.Nationality_Values__c != null){
                             this.setPicklist(component, 'Nazionalita__c','InputSelectDynamicNationality',usr_translation.Nationality_Values__c , false);
                             this.setPicklist(component, 'Nazionalita__c', 'InputSelectDynamicCountry',usr_translation.Nationality_Values__c , false);
                             this.setPicklist(component, 'Nazionalita__c', 'InputSelectDynamicPassportCountry',usr_translation.Nationality_Values__c , false);
                         }*/
+                        
                         //MC- split date
                         var optsDay = [];
                         var optsMonth = [];
@@ -368,13 +385,13 @@
     orderPickLabels: function(component, fieldName, elementId){
         var opts = component.find(elementId).get("v.options");
         var value = component.get("v.newItem." + fieldName);
-        console.log('opt222');
-        console.log(opts);
+        // console.log('opt222');
+        // console.log(opts);
         opts.sort(function(a, b) { 
             return a.label < b.label ? -1 : 1;
         });
         
-        console.log(opts);
+        // console.log(opts);
 
         component.find(elementId).set("v.options", opts);
         if (value != null && value != '')
@@ -451,7 +468,7 @@
                 return a.label < b.label ? -1 : 1;
             });
             
-            console.log(opts);
+            // console.log(opts);
 
             component.find(elementId).set("v.options", opts);
 
@@ -513,7 +530,7 @@
                 
                 //var options = component.find(elementId).get("v.options");
                 for (var x in options) {
-            console.log(options[x].label + ' && ' +options[x].value);
+            // console.log(options[x].label + ' && ' +options[x].value);
             if(options[x].label != '' && options[x].value != ''){
                 optsTemp.push({
                     class: "optionClass",
@@ -556,7 +573,7 @@
                 return a.label < b.label ? -1 : 1;
             });
             
-            console.log(opts);
+            // console.log(opts);
 
             component.find(elementId).set("v.options", opts);
 
@@ -586,49 +603,50 @@
 
     setPicklist1v2: function (component, fieldName, elementId, fieldValues, bool,fieldUpdate) {
        
-        var value = component.get("v.newItem." + fieldName);
+        
         var opts = [];
         var optsTemp = [];
         var splitField = fieldValues.split('|');
         // VS titolo dinamico
-        var opts2 = [];
-        if(elementId=='InputSelectDynamicTitolo' && fieldValues!=null){
-            
-            opts2.push({
-                class: "optionClass",
-                label: "",
-                value: ""
-            });
-            for (var k in splitField){
-                opts2.push({
-                    class: "optionClass",
-                    label: splitField[k],
-                    value: splitField[k]
-                });
+        var valToSet;
+
+        if(bool && fieldUpdate!="Hobby"){
+            var oldPath = "input"+fieldUpdate;
+            var oldValue = component.find(oldPath).get("v.value");
+            if(oldValue!=undefined ){
+                var field ="v.customPicklist"+fieldUpdate+"BU";
+                var arr = component.get(field);
+                for (let i=0; i < arr.length; i++) {
+                    const value = arr[i].value;
+                    const label = arr[i].label;
+                    if(label==oldValue){
+                        // console.log('VS oldvalue: '+value);
+                        valToSet=value;
+                    }
+                }
             }
-            component.find(elementId).set("v.options", opts2);
-            return;
         }
+        
        	var action = component.get("c.getselectOptions");
         action.setParams({
             "objObject": component.get("v.newAcc"),
             "fld": fieldName
         });
         var options = [];
-          action.setCallback(this, function(response) {
+        action.setCallback(this, function(response) {
             var state = response.getState();
             if (state === "SUCCESS") {
              
                  var allValues = response.getReturnValue();
-                //console.log(allValues);
-                options.push({
-                    class: "optionClass",
-                    label: "",
-                    value: ""
-                });
+                // console.log('VS allValues: '+allValues);
+                // options.push({
+                //     class: "optionClass",
+                //     label: "",
+                //     value: ""
+                // });
 
                 for (var k in allValues) {
-                    //console.log(JSON.stringify(allValues));
+                    console.log(JSON.stringify(allValues));
                     options.push({
                         class: "optionClass",
                         label: k,
@@ -637,80 +655,84 @@
                 }
                 
                 //var options = component.find(elementId).get("v.options");
-                for (var x in options) {
-            console.log(options[x].label + ' && ' +options[x].value);
-            if(options[x].label != '' && options[x].value != ''){
-                optsTemp.push({
-                    class: "optionClass",
-                    label: options[x].label,
-                    value: options[x].value
-                });
-    
-
-            }
-            
-        }
-        
-        
-        //compilare nuovo lista con label e value vuoto
-        opts.push({
-            class: "optionClass",
-            label: "",
-            value: ""
-        });
-
-        if (optsTemp.length == splitField.length) {
-            //component.find(elementId).set("v.options", opts);
-            for (var k in optsTemp) {
-
-                opts.push({
-                    class: "optionClass",
-                    label: splitField[k],
-                    value: optsTemp[k].value
-                });
-
-               
-            }
-           
-        }
-        else{
-            opts = options;
-        }
-        
-             opts.sort(function(a, b) { 
-                return a.label < b.label ? -1 : 1;
-            });
-            
-            console.log(opts);
-            
-            //component.find(elementId).set("v.options", opts);
-            var x = "v.customPicklist"+fieldUpdate;
-                var y = "v.customPicklist"+fieldUpdate+"BU";
-                component.set(x, opts);
-                component.set(y, opts);
-        if (value != null && value != '')
-            component.set("v.newItem." + fieldName, value);
-
-            }
-            else if (state === "INCOMPLETE") {
-               
-            }
-            else if (state === "ERROR") {
-                var errors = response.getError();
-                if (errors) {
-                    if (errors[0] && errors[0].message) {
-                        console.log("Error message: " + 
-                                 errors[0].message);
-                    }
-                } else {
-                    console.log("Unknown error");
+                var i =0;
+                for (var x=0; x<options.length;x++) {
+                    // console.log('vs: '+splitField[x] + ' && ' +options[x].value);
+                    // if(splitField[i]!= '' && options[x].value != ''){
+                        optsTemp.push({
+                            class: "optionClass",
+                            label: splitField[x],
+                            value: options[x].value
+                        });
+                        if(bool && valToSet!=undefined && valToSet==options[x].value){
+                            component.find(oldPath).set("v.value",splitField[x]);
+                        }
+                    // }
+                    i++;
                 }
+                console.log('VS optsTemp'+JSON.stringify(optsTemp));
+                optsTemp.sort(function(a, b) { 
+                    return a.label < b.label ? -1 : 1;
+                });
+
+                
+                if(fieldUpdate!="Hobby"){
+                    opts.push({
+                        class: "optionClass",
+                        label: "",
+                        value: ""
+                    });
+                }
+                                // console.log("VSTempOpt"+JSON.stringify(optsTemp));
+
+                optsTemp.forEach(element => opts.push(element));
+                // console.log(opts);
+                // console.log('VS '+fieldUpdate+': '+JSON.stringify(opts));
+                //component.find(elementId).set("v.options", opts);
+                var x = "v.customPicklist"+fieldUpdate;
+                var y = "v.customPicklist"+fieldUpdate+"BU";
+                
+                
+                if(fieldUpdate=="Hobby"){
+                    // console.log("Hobby");
+                    var old = component.get("v.newItem.Hobby__c");
+                    // console.log("Hobby old: "+old);
+                    if(old == null|| old == undefined){
+                        old='';
+                    }
+                    var cmp = component.find('lwcMultiSelect');
+                    
+                    cmp.setOptionField(opts,old)
+                    
+                }else if(fieldUpdate=="Profession"){
+                    // console.log("Profession");
+                    var prof = component.get('v.ProfessionBU');
+                    // console.log("Profession: "+prof);
+                    console.log("Vs PROFESSIONE"+JSON.stringify(opts));
+                    opts.forEach(element =>{
+                        if(element.value== prof){
+                            console.log('VS PROFESSION LABEL: '+element.label);
+                            console.log('VS PROFESSION VALUE: '+element.value);
+                            component.find("inputProfession").set("v.value",element.label);
+                        }
+                    });
+                    component.set(x, opts);
+                    component.set(y, opts);
+                } else{
+                    console.log("AltrePicklist");
+                    component.set(x, opts);
+                    component.set(y, opts);
+                }
+                
+                
+                
             }
         });
         $A.enqueueAction(action);
      
         
     },
+
 	//Akshay 05/06/2019  finish 
     setTranslationInPicklist: function (component) {
         var language = component.get("v.language");
@@ -729,7 +751,7 @@
         if (usr_translation.Salutation_Value__c != null)
             this.setPicklist1(component, 'Salutation','InputSelectDynamicTitolo',usr_translation.Salutation_Value__c , true);
         component.set("v.translatorValue", usr_translation);
-
+        
     },
 
     getAccountFields: function (component, id) {
@@ -769,6 +791,13 @@
                         component.set("v.yearBirthdate",(birthdate.getFullYear() == 2038) ? "" : (birthdate.getFullYear()).toString());
                     }
                     //MC-End
+                    this.searchValuePicklist(component,acc.PersonMailingCountry, "Country", "loadAcc");
+                    this.searchValuePicklist(component,acc.BillingCountry, 'CountryContact', "loadAcc");
+                    this.searchValuePicklist(component,acc.PersonOtherCountry, 'CountryOther', "loadAcc");
+                    this.searchValuePicklist(component,acc.Nazionalita__c, 'Nationality', "loadAcc");
+                    // this.searchValuePicklist(component,acc.Professione__c, 'Profession', "loadAcc");
+                    this.searchValuePicklist(component,acc.Lingua__c, 'PreferredLanguage', "loadAcc");
+
                 } else {
                     component.set("v.isUpdate", false);
                     //component.set("v.newItem", null);
@@ -781,6 +810,10 @@
         
                 if (acc.hasOwnProperty('PersonOtherPostalCode') || acc.hasOwnProperty('PersonOtherState') || acc.hasOwnProperty('PersonOtherCity') || acc.hasOwnProperty('PersonOtherStreet') || acc.hasOwnProperty('PersonOtherCountry') ){
                     component.set("v.showOtherAddress",true);
+                }
+                if(acc.Professione__c != '' || acc.Professione__c != null || acc.Professione__c != undefined){
+                    // console.log("PROFESSIONE: "+acc.Professione__c);
+                    component.set("v.ProfessionBU",acc.Professione__c);
                 }
 
 
@@ -977,5 +1010,91 @@
             }            
         });
         $A.enqueueAction(action);
-    }
+    },
+
+    setPicklistValue : function(component,path,value){
+        var fieldOnItem="v.newItem.";
+        
+        switch(path) {
+            case "Country":
+            fieldOnItem+="PersonMailingCountry"
+            break;
+            case 'CountryContact':
+            fieldOnItem+='BillingCountry'
+            break;
+            case 'CountryOther':
+            fieldOnItem+='PersonOtherCountry'
+            break;
+            case 'Nationality':
+            fieldOnItem+='Nazionalita__c'
+            break;
+            case 'Profession':
+            fieldOnItem+='Professione__c'
+            break;
+            case 'PreferredLanguage':
+            fieldOnItem+='Lingua__c'
+            break;
+            
+          }
+        //   console.log("VS fieldOnItem: "+fieldOnItem);
+        // console.log("VS Value: "+value);
+        component.set(fieldOnItem,value);
+    },
+
+    getPicklistValue : function(component,path){
+        var fieldOnItem="v.newItem.";
+        
+        switch(path) {
+            case "Country":
+            fieldOnItem+="PersonMailingCountry"
+            break;
+            case 'CountryContact':
+            fieldOnItem+='BillingCountry'
+            break;
+            case 'CountryOther':
+            fieldOnItem+='PersonOtherCountry'
+            break;
+            case 'Nationality':
+            fieldOnItem+='Nazionalita__c'
+            break;
+            case 'Profession':
+            fieldOnItem+='Professione__c'
+            break;
+            case 'PreferredLanguage':
+            fieldOnItem+='Lingua__c'
+            break;
+            
+          }
+        //   console.log("VS fieldOnItem: "+fieldOnItem);
+        return component.get(fieldOnItem);
+    },
+
+    searchValuePicklist : function(component,value, picklist, type){
+        var field ="v.customPicklist"+picklist+"BU";
+        var arr = component.get(field);
+        var getValue = this.getPicklistValue(component,picklist);
+        // var item = component.get(getValue);
+        if( type =="validate"){
+            for (let i=0; i < arr.length; i++) {
+                const value = arr[i].value;
+                const label = arr[i].label;
+                if(value==getValue||label==getValue){
+                    this.setPicklistValue(component,picklist,value);
+                }
+            } 
+        }else if(type =="loadAcc"){
+            for (let i=0; i < arr.length; i++) {
+                const value = arr[i].value;
+                const label = arr[i].label;
+                if(value==getValue||label==getValue){
+                    this.setPicklistValue(component,picklist,label);
+                }
+            } 
+
+        }
+
+
+        // this.setPicklistValue(component,path,value);
+        
+    },
 })

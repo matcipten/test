@@ -85,6 +85,7 @@
 
     <aura:attribute name="customPicklistProfession" type="Object" />
     <aura:attribute name="customPicklistProfessionBU" type="Object" />
+    <aura:attribute name="ProfessionBU" type="String"/>
 
     <aura:attribute name="customPicklistPreferredLanguage" type="Object" />
     <aura:attribute name="customPicklistPreferredLanguageBU" type="Object" />
@@ -101,9 +102,12 @@
 
     <aura:attribute name="customPicklistCountryOther" type="Object" />
     <aura:attribute name="customPicklistCountryOtherBU" type="Object" />
+
+    <aura:attribute name="customPicklistPassportCountry" type="Object" />
+    <aura:attribute name="customPicklistPassportCountryBU" type="Object" />
     <aura:attribute name="hobbyBackup" type="String[]" default=""/>
 
-
+    
 
     <aura:attribute name="GBBool" type="boolean" default="false"/>
     <aura:attribute name="DCCBool" type="boolean" default="true"/>
@@ -319,7 +323,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="{! 'slds-col' + ' ' +  (v.locale == 'US' ? 'slds-size_3-of-12 slds-large-size_3-of-12' : 'slds-size_5-of-12 slds-large-size_5-of-12' )}">
+                                            <div class="{! 'slds-col' + ' ' +  (v.locale == 'US' ? 'slds-size_2-of-12 slds-large-size_2-of-12' : 'slds-size_4-of-12 slds-large-size_3-of-12' )}">
                                                 <div class="slds-form-element">
                                                     <label class="slds-form-element__label" for="input-id-01">{!v.translatorValue.City_Label__c}</label>
                                                     <div class="slds-form-element__control">
@@ -337,7 +341,7 @@
                                                     </div>
                                                 </div>
                                             </aura:if>
-                                            <div class="slds-col slds-size_2-of-12 slds-large-size_2-of-12">
+                                            <div class="slds-col slds-size_3-of-12 slds-large-size_3-of-12">
                                                 <div class="slds-form-element">
                                                     <label class="slds-form-element__label textSizeMobile" for="input-id-01">{!v.translatorValue.CAP_Label__c}</label>
                                                     <div class="slds-form-element__control">
@@ -443,7 +447,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="{! 'slds-col' + ' ' +  (v.locale == 'US' ? 'slds-size_3-of-12 slds-large-size_3-of-12' : 'slds-size_5-of-12 slds-large-size_5-of-12' )}">
+                                                <div class="{! 'slds-col' + ' ' +  (v.locale == 'US' ? 'slds-size_2-of-12 slds-large-size_2-of-12' : 'slds-size_4-of-12 slds-large-size_4-of-12' )}">
                                                     <div class="slds-form-element">
                                                         <label class="slds-form-element__label" for="input-id-01">{!v.translatorValue.City_Contact_Address_Label__c}</label>
                                                         <div class="slds-form-element__control">
@@ -461,7 +465,7 @@
                                                         </div>
                                                     </div>
                                                 </aura:if>
-                                                <div class="slds-col slds-size_2-of-12 slds-large-size_2-of-12">
+                                                <div class="slds-col slds-size_3-of-12 slds-large-size_3-of-12">
                                                     <div class="slds-form-element">
                                                         <label class="slds-form-element__label textSizeMobile" for="input-id-01">{!v.translatorValue.CAP_Contact_Address_Label__c}</label>
                                                         <div class="slds-form-element__control">
@@ -567,7 +571,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="{! 'slds-col' + ' ' +  (v.locale == 'US' ? 'slds-size_3-of-12 slds-large-size_3-of-12' : 'slds-size_5-of-12 slds-large-size_5-of-12' )}">
+                                                <div class="{! 'slds-col' + ' ' +  (v.locale == 'US' ? 'slds-size_2-of-12 slds-large-size_2-of-12' : 'slds-size_4-of-12 slds-large-size_4-of-12' )}">
                                                     <div class="slds-form-element">
                                                         <label class="slds-form-element__label" for="input-id-01">{!v.translatorValue.City_Other_Address_Label__c}</label>
                                                         <div class="slds-form-element__control">
@@ -585,7 +589,7 @@
                                                         </div>
                                                     </div>
                                                 </aura:if>
-                                                <div class="slds-col slds-size_2-of-12 slds-large-size_2-of-12">
+                                                <div class="slds-col slds-size_3-of-12 slds-large-size_3-of-12">
                                                     <div class="slds-form-element">
                                                         <label class="slds-form-element__label textSizeMobile" for="input-id-01">{!v.translatorValue.CAP_Other_Address_Label__c}</label>
                                                         <div class="slds-form-element__control">
@@ -847,7 +851,7 @@
                                 <div class="slds-combobox  slds-combobox-lookup slds-dropdown-trigger slds-dropdown-trigger_click " aura:id="searchLookupHobby"
                                 aria-expanded="false" aria-haspopup="listbox" role="combobox">
                                     <aura:if isTrue="{!(v.customPicklistHobby != undefined)}">
-                                        <c:lwcMultiSelect label="Hobby" options="{!v.customPicklistHobbyBU}" onvaluechange="{!c.getValueFromLwc}" oldvalue="{!v.newItem.Hobby__c}"></c:lwcMultiSelect>
+                                        <c:lwcMultiSelect aura:id="lwcMultiSelect" label="Hobby" options="{!v.customPicklistHobbyBU}" onvaluechange="{!c.getValueFromLwc}" oldvalue="{!v.newItem.Hobby__c}"></c:lwcMultiSelect>
                                     </aura:if>
                                     
                                 </div>
@@ -908,17 +912,37 @@
                                             <div class="slds-form-element">
                                                 <label class="slds-form-element__label" for="input-id-01">{!v.translatorValue.Numero_Passaporto_Label__c}</label>
                                                 <div class="slds-form-element__control">
-                                                    <ui:inputText aura:id="itemPassportNum" class="slds-input" placeholder="{!v.translatorValue.Numero_Passaporto_Placeholder__c}" value="{!v.newItem.Numero_Passaporto__c}" onError="{!c.handleError}" onClearErrors="{!c.handleClearError}" disabled="{!v.afterPrinting}" />
+                                                    <ui:inputText aura:id="itemPassportNum" class="slds-input passport-num-height" placeholder="{!v.translatorValue.Numero_Passaporto_Placeholder__c}" value="{!v.newItem.Numero_Passaporto__c}" onError="{!c.handleError}" onClearErrors="{!c.handleClearError}" disabled="{!v.afterPrinting}" />
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="slds-col slds-size_6-of-12 slds-large-size_6-of-12">
-                                            <div class="slds-form-element">
+                                        <div class="slds-col slds-size_6-of-12 slds-large-size_6-of-12 passport-country-pos">
+                                            <!-- <div class="slds-form-element">
                                                 <label class="slds-form-element__label" for="InputSelectDynamicPassportCountry">{!v.translatorValue.Paese_di_emissione_passaporto_Label__c}</label>
                                                 <div class="slds-form-element__control">
                                                     <ui:inputSelect class="dynamic slds-select" value="{!v.newItem.Paese_di_emissione_passaporto__c}" aura:id="InputSelectDynamicPassportCountry" onError="{!c.handleError}" onClearErrors="{!c.handleClearError}"  disabled="{!v.afterPrinting}" />
                                                 </div>
+                                            </div> -->
+                                            <div class="slds-form-element">
+                                                <div class="slds-combobox  slds-combobox-lookup slds-dropdown-trigger slds-dropdown-trigger_click"  aura:id="searchLookupPassportCountry"
+                                                aria-expanded="false" aria-haspopup="listbox" role="combobox">
+                                                <lightning:input aura:id="inputPassportCountry" name="inputPassportCountry" class="" label="{!v.translatorValue.Paese_di_emissione_passaporto_Label__c}" onfocus="{!c.onFocusPickList}" onchange="{!c.onChangePickList}" onblur="{!c.onBlurPickList}" value="{!v.newItem.Paese_di_emissione_passaporto__c}"/>
+                                                <div role="listbox">                   
+                                                    <ul class="slds-listbox slds-listbox_vertical slds-dropdown left4">
+                                                        <ui:scrollerWrapper class="scrollerSize">
+                                                            <aura:iteration items="{!v.customPicklistPassportCountry}" var="option">
+                                                                <div>
+                                                                    <lightning:button name="{!'btn_PassportCountry_' + option.value}" class="button-custom" variant="base" label="{!option.label}" value="{!option.value}" onclick="{! c.selectOption }"/>
+                                                                </div>
+                                                            </aura:iteration>
+                                                        </ui:scrollerWrapper>
+                                                        
+                                                    </ul>
+                                                </div>
                                             </div>
+                                            </div>
+
+
                                         </div>
                                     </div>
                                 

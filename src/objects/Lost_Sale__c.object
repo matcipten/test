@@ -275,6 +275,11 @@
                     <default>false</default>
                     <label>Other (specify in note)</label>
                 </value>
+                <value>
+                    <fullName>Knitwear Basics Project</fullName>
+                    <default>false</default>
+                    <label>Knitwear Basics Project</label>
+                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
@@ -383,6 +388,7 @@
     <label>Lost Sale</label>
     <listViews>
         <fullName>All1</fullName>
+        <columns>NAME</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
@@ -401,5 +407,13 @@
         <searchResultsAdditionalFields>OWNER.ALIAS</searchResultsAdditionalFields>
     </searchLayouts>
     <sharingModel>Read</sharingModel>
+    <validationRules>
+        <fullName>Size_or_Colour_Mandatory</fullName>
+        <active>true</active>
+        <errorConditionFormula>OR(AND(ISBLANK(  Taglia_ricercata__c ),(ISPICKVAL(Lost_sale_reason__c , &quot;Missing size&quot;))),
+AND(ISBLANK( Colore_ricercato__c ),ISPICKVAL(Lost_sale_reason__c , &quot;Missing color&quot;)))</errorConditionFormula>
+        <errorMessage>If &quot;Missing Size&quot; has been selected enter the Size, 
+If &quot;Missing Color&quot; has been selected enter the Colour</errorMessage>
+    </validationRules>
     <visibility>Public</visibility>
 </CustomObject>

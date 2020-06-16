@@ -467,7 +467,7 @@
                         if (item.Contact.Account.Name != null) item.Contact_Account_Name = item.Contact.Account.Name;
                         if (item.Contact.Account.Name != null) item.Contact_Account_Profiling = item.Contact.Account.Privacy3__c;
                         if (item.Contact.Account.Name != null) item.Contact_Account_Marketing = (item.Contact.Account.Privacy1__c || item.Contact.Account.Privacy2__c);
-                        if (item.Contact.Account.Associate__c != null) item.Account_Allocated_Client_Advisor = item.Contact.Account.Associate__c;
+                        if (item.Contact.Account.Associate__c != null) item.Account_Allocated_Client_Advisor = item.Contact.Account.Associate__r.Name;
                         if (item.Contact.Account.Data_Ultimo_Acquisto__c != null) item.Account_Last_Purchase_Date = item.Contact.Account.Data_Ultimo_Acquisto__c;
                         if (item.Contact.Account.Last_contact_category__c != null) item.Account_Last_Activity_Category = item.Contact.Account.Last_contact_category__c;
                         if (item.Contact.Account.Contact_Preferences__c != null) {
@@ -526,7 +526,7 @@
                         if (item.Contact.Account.Name != null) item.Contact_Account_Name = item.Contact.Account.Name;
                         if (item.Contact.Account.Name != null) item.Contact_Account_Profiling = item.Contact.Account.Privacy3__c;
                         if (item.Contact.Account.Name != null) item.Contact_Account_Marketing = (item.Contact.Account.Privacy1__c || item.Contact.Account.Privacy2__c);
-                        if (item.Contact.Account.Associate__c != null) item.Account_Allocated_Client_Advisor = item.Contact.Account.Associate__c;
+                        if (item.Contact.Account.Associate__c != null) item.Account_Allocated_Client_Advisor = item.Contact.Account.Associate__r.Name;
                         if (item.Contact.Account.Data_Ultimo_Acquisto__c != null) item.Account_Last_Purchase_Date = item.Contact.Account.Data_Ultimo_Acquisto__c;
                         if (item.Contact.Account.Last_contact_category__c != null) item.Account_Last_Activity_Category = item.Contact.Account.Last_contact_category__c;
                         if (item.Contact.Account.Contact_Preferences__c != null) {
@@ -534,7 +534,7 @@
                             item.Account_Contact_Preferences = item.Contact.Account.Contact_Preferences__c.replace('<','\<').replace('>','\>');
                         }
                     });
-
+                    console.log("VS result: "+JSON.stringify(result));
                     component.set("v.data", result);
                     if (component.get("v.totalCampaignMems") > component.get("v.data").length) {
                         component.set("v.showLoadCM", true);

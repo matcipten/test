@@ -82,6 +82,16 @@
         <type>Text</type>
         <unique>false</unique>
     </fields>
+    <fields>
+        <fullName>Record_Type_Notify_Me__c</fullName>
+        <externalId>false</externalId>
+        <label>Record Type Notify Me</label>
+        <length>20</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
     <label>Id Automatismi Milestone</label>
     <visibility>Public</visibility>
 </CustomObject>
