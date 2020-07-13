@@ -39,6 +39,9 @@ public class onTransactionTriggerHandler {
 			trans.Sconto_SAR__c  = (trans.Prezzo_di_Vendita_SAR__c != 0 && trans.Prezzo_di_Vendita_SAR__c <= trans.Prezzo_di_listino_SAR__c) ? (trans.Prezzo_di_listino_SAR__c - trans.Prezzo_di_Vendita_SAR__c) : 0;
 			trans.PSconto_SAR__c = (trans.Prezzo_di_listino_SAR__c > 0 && trans.Sconto_SAR__c > 0) ? (trans.Sconto_SAR__c / trans.Prezzo_di_listino_SAR__c)*100 : 0;
 			
+			trans.Sconto_TWD__c  = (trans.Prezzo_di_vendita_TWD__c != 0 && trans.Prezzo_di_vendita_TWD__c <= trans.Prezzo_di_listino_TWD__c) ? (trans.Prezzo_di_listino_TWD__c - trans.Prezzo_di_vendita_TWD__c) : 0;
+			trans.PSconto_TWD__c = (trans.Prezzo_di_listino_TWD__c > 0 && trans.Sconto_TWD__c > 0) ? (trans.Sconto_TWD__c / trans.Prezzo_di_listino_TWD__c)*100 : 0;
+			
 			System.debug('SET SCONTO INside TRANSACTION ' + trans.Sconto_MOP__c + ' -Sconto_MOP__c- ');
 		}
 	}
@@ -86,6 +89,10 @@ public class onTransactionTriggerHandler {
 			if((TransactionNew.get(trans.Id).Prezzo_di_listino_SAR__c != TransactionOld.get(trans.Id).Prezzo_di_listino_SAR__c) || (TransactionNew.get(trans.Id).Prezzo_di_Vendita_SAR__c != TransactionOld.get(trans.Id).Prezzo_di_Vendita_SAR__c)) {
 				trans.Sconto_SAR__c  = (trans.Prezzo_di_listino_SAR__c != 0 && trans.Prezzo_di_Vendita_SAR__c <= trans.Prezzo_di_listino_SAR__c) ? (trans.Prezzo_di_listino_SAR__c - trans.Prezzo_di_Vendita_SAR__c) : 0;
 				trans.PSconto_SAR__c = (trans.Prezzo_di_listino_SAR__c > 0 && trans.Sconto_SAR__c > 0) ? (trans.Sconto_SAR__c / trans.Prezzo_di_listino_SAR__c)*100 : 0;
+			}
+			if((TransactionNew.get(trans.Id).Prezzo_di_listino_TWD__c != TransactionOld.get(trans.Id).Prezzo_di_listino_TWD__c) || (TransactionNew.get(trans.Id).Prezzo_di_vendita_TWD__c != TransactionOld.get(trans.Id).Prezzo_di_vendita_TWD__c)) {
+				trans.Sconto_TWD__c  = (trans.Prezzo_di_listino_TWD__c != 0 && trans.Prezzo_di_vendita_TWD__c <= trans.Prezzo_di_listino_TWD__c) ? (trans.Prezzo_di_listino_TWD__c - trans.Prezzo_di_vendita_TWD__c) : 0;
+				trans.PSconto_TWD__c = (trans.Prezzo_di_listino_TWD__c > 0 && trans.Sconto_TWD__c > 0) ? (trans.Sconto_TWD__c / trans.Prezzo_di_listino_TWD__c)*100 : 0;
 			}
 		}
 	}

@@ -66,6 +66,18 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Boutique_Endless_aisle__c</fullName>
+        <externalId>false</externalId>
+        <label>Boutique Endless aisle</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Check_Data_Scontrino_Testata__c</fullName>
         <externalId>false</externalId>
         <formula>IF(DATEVALUE(Data_Scontrino__c)!= DATEVALUE(Transaction__r.Data_Scontrino__c) , &apos;KO&apos;, &apos;OK&apos;)</formula>
@@ -117,6 +129,18 @@
         <type>Checkbox</type>
     </fields>
     <fields>
+        <fullName>Client_Advisor_Endless_aisle__c</fullName>
+        <externalId>false</externalId>
+        <label>Client Advisor Endless aisle</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Codice_Cassa__c</fullName>
         <externalId>false</externalId>
         <label>Codice Cassa</label>
@@ -159,6 +183,16 @@
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Endless_Aisle_Transaction__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Endless Aisle Transaction</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>Full_Price__c</fullName>
@@ -613,6 +647,18 @@ Importo_Sconto__c)</formula>
         <type>Percent</type>
     </fields>
     <fields>
+        <fullName>PSconto_TWD__c</fullName>
+        <externalId>false</externalId>
+        <label>% di Sconto (TWD)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
         <fullName>PSconto_USD__c</fullName>
         <externalId>false</externalId>
         <label>% di Sconto (USD)</label>
@@ -789,6 +835,20 @@ Importo_Sconto__c / Prezzo_di_Listino__c
         <formula>Prezzo_di_vendita_SGD__c /( IVA__c +1)</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Prezzo Netto IVA (SGD)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Prezzo_Netto_IVA_TWD__c</fullName>
+        <externalId>false</externalId>
+        <formula>Prezzo_di_vendita_TWD__c /( IVA__c +1)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Prezzo Netto IVA (TWD)</label>
         <precision>18</precision>
         <required>false</required>
         <scale>2</scale>
@@ -1159,6 +1219,19 @@ Prezzo_Netto_Iva__c)</formula>
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Prezzo_di_listino_TWD__c</fullName>
+        <externalId>false</externalId>
+        <label>Prezzo di listino (TWD)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Prezzo_di_listino_USD__c</fullName>
         <externalId>false</externalId>
         <label>Prezzo di listino (USD)</label>
@@ -1403,6 +1476,19 @@ Prezzo_di_Listino__c)</formula>
         <fullName>Prezzo_di_vendita_SGD__c</fullName>
         <externalId>false</externalId>
         <label>Prezzo di vendita (SGD)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Prezzo_di_vendita_TWD__c</fullName>
+        <externalId>false</externalId>
+        <label>Prezzo di vendita (TWD)</label>
         <precision>18</precision>
         <required>false</required>
         <scale>2</scale>
@@ -1979,6 +2065,19 @@ Prezzo_di_listino_JPY__c   - Prezzo_di_vendita_JPY__c
         <fullName>Sconto_SGD__c</fullName>
         <externalId>false</externalId>
         <label>Sconto (SGD)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sconto_TWD__c</fullName>
+        <externalId>false</externalId>
+        <label>Sconto (TWD)</label>
         <precision>18</precision>
         <required>false</required>
         <scale>2</scale>
@@ -2596,7 +2695,18 @@ true, false)</formula>
     <label>Dettaglio Transazione</label>
     <listViews>
         <fullName>All</fullName>
+        <columns>NAME</columns>
         <filterScope>Everything</filterScope>
+        <filters>
+            <field>SKU__c</field>
+            <operation>equals</operation>
+            <value>201MBLPD2155C783001</value>
+        </filters>
+        <filters>
+            <field>Id_Location__c</field>
+            <operation>equals</operation>
+            <value>MOS</value>
+        </filters>
         <label>All</label>
     </listViews>
     <nameField>

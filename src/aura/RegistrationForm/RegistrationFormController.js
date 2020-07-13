@@ -752,6 +752,7 @@
         }
         
         if(validitem){
+            // alert(item.PersonMailingCountry);
             helper.searchValuePicklist(cmp,item.PersonMailingCountry, "Country", "validate");
             helper.searchValuePicklist(cmp,item.BillingCountry, 'CountryContact', "validate");
             helper.searchValuePicklist(cmp,item.PersonOtherCountry, 'CountryOther', "validate");
@@ -1055,9 +1056,10 @@
     onChangePickList: function (component, event, helper) {
         // var searchString = component.find("countryPicklist").get("v.value");;
         var searchString = event.getSource().get("v.value");
+
         var f = event.getSource().getLocalId().replace("input","");
         console.log("onChangePickList");
-        helper.openListbox(component, searchString);
+        // helper.openListbox(component, searchString);
         helper.displayPredictions(component,f, searchString);
     },
     

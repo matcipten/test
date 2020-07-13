@@ -80,6 +80,7 @@
 			&& categoria != 'OT_Attending Corporate Event'
 			&& categoria != 'OT_Greetings'
 			&& categoria != 'OT_Gifting'
+			&& categoria != 'OT_Keep in Touch'
 		)) {
 			if (location == 'Instore')
 				locationVisibility = 6;

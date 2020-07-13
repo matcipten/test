@@ -162,7 +162,10 @@
                     
                 }
 
-                
+                if(label=="Nationality"){
+                    console.log('VS customPicklistNationality: '+JSON.stringify(component.get("v.customPicklistNationality")));
+                    console.log('VS customPicklistNationalityBU: '+JSON.stringify(component.get("v.customPicklistNationalityBU")));
+                }
                 
             }
         });
@@ -284,7 +287,7 @@
                         component.set("v.translatorValue", usr_translation);
                         component.set("v.multiLanguage", multilanguage);
                         component.set("v.language", locale_lang);
-                        component.set("v.locale", locale_lang.split('_')[i]);
+                        component.set("v.locale", locale_lang.split('_')[1]);
                         component.set("v.TranslationDCCVersion",usr_translation.Versione_DCC__c );
                         component.set("v.TranslationRichiediFirma",usr_translation.Richiedi_Firma__c );
                         // console.log(usr_translation);
@@ -638,7 +641,7 @@
             if (state === "SUCCESS") {
              
                  var allValues = response.getReturnValue();
-                // console.log('VS allValues: '+allValues);
+                console.log('VS allValues: '+JSON.stringify(allValues));
                 // options.push({
                 //     class: "optionClass",
                 //     label: "",
@@ -655,10 +658,10 @@
                 }
                 
                 //var options = component.find(elementId).get("v.options");
-                var i =0;
-                for (var x=0; x<options.length;x++) {
+                var i =1;
+                for (var x in options) {
                     // console.log('vs: '+splitField[x] + ' && ' +options[x].value);
-                    // if(splitField[i]!= '' && options[x].value != ''){
+                    if(splitField[i]!= '' && options[x].value != ''){
                         optsTemp.push({
                             class: "optionClass",
                             label: splitField[x],
@@ -667,10 +670,10 @@
                         if(bool && valToSet!=undefined && valToSet==options[x].value){
                             component.find(oldPath).set("v.value",splitField[x]);
                         }
-                    // }
+                    }
                     i++;
                 }
-                console.log('VS optsTemp'+JSON.stringify(optsTemp));
+                
                 optsTemp.sort(function(a, b) { 
                     return a.label < b.label ? -1 : 1;
                 });
@@ -683,8 +686,7 @@
                         value: ""
                     });
                 }
-                                // console.log("VSTempOpt"+JSON.stringify(optsTemp));
-
+                
                 optsTemp.forEach(element => opts.push(element));
                 // console.log(opts);
                 // console.log('VS '+fieldUpdate+': '+JSON.stringify(opts));
@@ -696,7 +698,7 @@
                 if(fieldUpdate=="Hobby"){
                     // console.log("Hobby");
                     var old = component.get("v.newItem.Hobby__c");
-                    // console.log("Hobby old: "+old);
+                    console.log("Hobby old: "+old);
                     if(old == null|| old == undefined){
                         old='';
                     }
@@ -708,11 +710,10 @@
                     // console.log("Profession");
                     var prof = component.get('v.ProfessionBU');
                     // console.log("Profession: "+prof);
-                    console.log("Vs PROFESSIONE"+JSON.stringify(opts));
                     opts.forEach(element =>{
                         if(element.value== prof){
-                            console.log('VS PROFESSION LABEL: '+element.label);
-                            console.log('VS PROFESSION VALUE: '+element.value);
+                            // console.log('VS PROFESSION LABEL: '+element.label);
+                            // console.log('VS PROFESSION VALUE: '+element.value);
                             component.find("inputProfession").set("v.value",element.label);
                         }
                     });
@@ -797,6 +798,7 @@
                     this.searchValuePicklist(component,acc.Nazionalita__c, 'Nationality', "loadAcc");
                     // this.searchValuePicklist(component,acc.Professione__c, 'Profession', "loadAcc");
                     this.searchValuePicklist(component,acc.Lingua__c, 'PreferredLanguage', "loadAcc");
+                    this.searchValuePicklist(component,acc.Paese_di_emissione_passaporto__c, 'PassportCountry', "loadAcc");
 
                 } else {
                     component.set("v.isUpdate", false);
@@ -1034,6 +1036,9 @@
             case 'PreferredLanguage':
             fieldOnItem+='Lingua__c'
             break;
+            case 'PassportCountry':
+            fieldOnItem+='Paese_di_emissione_passaporto__c'
+            break;
             
           }
         //   console.log("VS fieldOnItem: "+fieldOnItem);
@@ -1062,6 +1067,9 @@
             break;
             case 'PreferredLanguage':
             fieldOnItem+='Lingua__c'
+            break;
+            case 'PassportCountry':
+            fieldOnItem+='Paese_di_emissione_passaporto__c'
             break;
             
           }

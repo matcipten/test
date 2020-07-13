@@ -8,7 +8,7 @@
             <type>owner</type>
         </recipients>
         <senderType>CurrentUser</senderType>
-        <template>unfiled$public/Escalation_Template_1st_Level</template>
+        <template>Escalation_Template/Escalation_Template_1st_Level</template>
     </alerts>
     <alerts>
         <fullName>Alert_First_Escalation_Status_Reply_Received</fullName>
@@ -18,7 +18,7 @@
             <type>owner</type>
         </recipients>
         <senderType>CurrentUser</senderType>
-        <template>unfiled$public/Escalation_Template_1st_Level_Reply_Rec</template>
+        <template>Escalation_Template/Escalation_Template_1st_Level_Reply_Rec</template>
     </alerts>
     <alerts>
         <fullName>Alert_Second_Escalation_Status_New_Reassigned</fullName>
@@ -29,7 +29,7 @@
             <type>email</type>
         </recipients>
         <senderType>CurrentUser</senderType>
-        <template>unfiled$public/Escalation_Template_2nd_Level</template>
+        <template>Escalation_Template/Escalation_Template_2nd_Level</template>
     </alerts>
     <alerts>
         <fullName>Alert_Second_Escalation_Status_Reply_Received</fullName>
@@ -40,7 +40,7 @@
             <type>email</type>
         </recipients>
         <senderType>CurrentUser</senderType>
-        <template>unfiled$public/Escalation_Template_2nd_Level_Reply_Rec</template>
+        <template>Escalation_Template/Escalation_Template_2nd_Level_Reply_Rec</template>
     </alerts>
     <alerts>
         <fullName>Auto_Reply_Customer_Care_Americano</fullName>
@@ -807,6 +807,174 @@
         </recipients>
         <senderType>CurrentUser</senderType>
         <template>Assignment_Templates/Email_Template_Notify_Me_Richiesta_Annullata</template>
+    </alerts>
+    <alerts>
+        <fullName>Notify_Me_Product_back_online_DE</fullName>
+        <description>Notify Me - Product back online DE</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Email_Cliente_input__c</field>
+            <type>email</type>
+        </recipients>
+        <senderAddress>no-reply.customercare@brunellocucinelli.it</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Notify_Me/Product_back_online_DE</template>
+    </alerts>
+    <alerts>
+        <fullName>Notify_Me_Product_back_online_EN</fullName>
+        <description>Notify Me - Product back online EN</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Email_Cliente_input__c</field>
+            <type>email</type>
+        </recipients>
+        <senderAddress>no-reply.customercare@brunellocucinelli.it</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Notify_Me/Product_back_online_EN</template>
+    </alerts>
+    <alerts>
+        <fullName>Notify_Me_Product_back_online_EN_CN</fullName>
+        <description>Notify Me - Product back online EN_CN</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Email_Cliente_input__c</field>
+            <type>email</type>
+        </recipients>
+        <senderAddress>no-reply.customercare@brunellocucinelli.it</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Notify_Me/Product_back_online_EN_CN</template>
+    </alerts>
+    <alerts>
+        <fullName>Notify_Me_Product_back_online_EN_US</fullName>
+        <description>Notify Me - Product back online EN_US</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Email_Cliente_input__c</field>
+            <type>email</type>
+        </recipients>
+        <senderAddress>no-reply.customercare@brunellocucinelli.it</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Notify_Me/Product_back_online_EN_US</template>
+    </alerts>
+    <alerts>
+        <fullName>Notify_Me_Product_back_online_ES</fullName>
+        <description>Notify Me - Product back online ES</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Email_Cliente_input__c</field>
+            <type>email</type>
+        </recipients>
+        <senderAddress>no-reply.customercare@brunellocucinelli.it</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Notify_Me/Product_back_online_ES</template>
+    </alerts>
+    <alerts>
+        <fullName>Notify_Me_Product_back_online_ES_US</fullName>
+        <description>Notify Me - Product back online ES_US</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Email_Cliente_input__c</field>
+            <type>email</type>
+        </recipients>
+        <senderAddress>no-reply.customercare@brunellocucinelli.it</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Notify_Me/Product_back_online_ES_US</template>
+    </alerts>
+    <alerts>
+        <fullName>Notify_Me_Product_back_online_FR</fullName>
+        <description>Notify Me - Product back online FR</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Email_Cliente_input__c</field>
+            <type>email</type>
+        </recipients>
+        <senderAddress>no-reply.customercare@brunellocucinelli.it</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Notify_Me/Product_back_online_FR</template>
+    </alerts>
+    <alerts>
+        <fullName>Notify_Me_Product_back_online_IT</fullName>
+        <description>Notify Me - Product back online IT</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Email_Cliente_input__c</field>
+            <type>email</type>
+        </recipients>
+        <senderAddress>no-reply.customercare@brunellocucinelli.it</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Notify_Me/Product_back_online_IT</template>
+    </alerts>
+    <alerts>
+        <fullName>Notify_Me_Product_back_online_IT_CN</fullName>
+        <description>Notify Me - Product back online IT_CN</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Email_Cliente_input__c</field>
+            <type>email</type>
+        </recipients>
+        <senderAddress>no-reply.customercare@brunellocucinelli.it</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Notify_Me/Product_back_online_IT_CN</template>
+    </alerts>
+    <alerts>
+        <fullName>Notify_Me_Product_back_online_IT_US</fullName>
+        <description>Notify Me - Product back online IT_US</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Email_Cliente_input__c</field>
+            <type>email</type>
+        </recipients>
+        <senderAddress>no-reply.customercare@brunellocucinelli.it</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Notify_Me/Product_back_online_IT_US</template>
+    </alerts>
+    <alerts>
+        <fullName>Notify_Me_Product_back_online_JA</fullName>
+        <description>Notify Me - Product back online JA</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Email_Cliente_input__c</field>
+            <type>email</type>
+        </recipients>
+        <senderAddress>no-reply.customercare@brunellocucinelli.it</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Notify_Me/Product_back_online_JA</template>
+    </alerts>
+    <alerts>
+        <fullName>Notify_Me_Product_back_online_RU</fullName>
+        <description>Notify Me - Product back online RU</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Email_Cliente_input__c</field>
+            <type>email</type>
+        </recipients>
+        <senderAddress>no-reply.customercare@brunellocucinelli.it</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Notify_Me/Product_back_online_RU</template>
+    </alerts>
+    <alerts>
+        <fullName>Notify_Me_Product_back_online_ZH</fullName>
+        <description>Notify Me - Product back online ZH</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Email_Cliente_input__c</field>
+            <type>email</type>
+        </recipients>
+        <senderAddress>no-reply.customercare@brunellocucinelli.it</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Notify_Me/Product_back_online_ZH_ROW</template>
+    </alerts>
+    <alerts>
+        <fullName>Notify_Me_Product_back_online_ZH_CN</fullName>
+        <description>Notify Me - Product back online ZH_CN</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Email_Cliente_input__c</field>
+            <type>email</type>
+        </recipients>
+        <senderAddress>no-reply.customercare@brunellocucinelli.it</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Notify_Me/Product_back_online_ZH_CN</template>
     </alerts>
     <fieldUpdates>
         <fullName>Aggiorna_contatore_chiusure</fullName>

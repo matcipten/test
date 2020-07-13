@@ -68,6 +68,17 @@
         <type>Lookup</type>
     </fields>
     <fields>
+        <fullName>Boutique_Endless_aisle__c</fullName>
+        <externalId>false</externalId>
+        <label>Boutique Endless aisle</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Citta_Fatturazione__c</fullName>
         <externalId>false</externalId>
         <label>Città Fatturazione</label>
@@ -83,6 +94,17 @@
         <externalId>false</externalId>
         <label>Città Spedizione</label>
         <length>40</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Client_Advisor_Endless_aisle__c</fullName>
+        <externalId>false</externalId>
+        <label>Client Advisor Endless aisle</label>
+        <length>255</length>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -225,6 +247,15 @@
         <trackTrending>false</trackTrending>
         <type>Email</type>
         <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Endless_Aisle_Transaction__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Endless Aisle Transaction</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>Generic_customer_import__c</fullName>
@@ -684,6 +715,17 @@ Importo_Sconto__c)</formula>
         <fullName>PSconto_SGD__c</fullName>
         <externalId>false</externalId>
         <label>% di Sconto (SGD)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>PSconto_TWD__c</fullName>
+        <externalId>false</externalId>
+        <label>% di Sconto (TWD)</label>
         <precision>18</precision>
         <required>false</required>
         <scale>2</scale>
@@ -1156,6 +1198,18 @@ Prezzo_di_Vendita__c)</formula>
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Prezzo_di_listino_TWD__c</fullName>
+        <externalId>false</externalId>
+        <label>Prezzo di listino (TWD)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Prezzo_di_listino_USD__c</fullName>
         <externalId>false</externalId>
         <label>Prezzo di listino (USD)</label>
@@ -1374,6 +1428,18 @@ Prezzo_di_Vendita__c)</formula>
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Prezzo_di_vendita_TWD__c</fullName>
+        <externalId>false</externalId>
+        <label>Prezzo di vendita (TWD)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Prezzo_di_vendita_USD__c</fullName>
         <externalId>false</externalId>
         <label>Prezzo di vendita (USD)</label>
@@ -1515,6 +1581,18 @@ Prezzo_di_Vendita__c)</formula>
         <required>false</required>
         <scale>2</scale>
         <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Prezzo_netto_IVA_TWD__c</fullName>
+        <externalId>false</externalId>
+        <label>Prezzo netto IVA (TWD)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
@@ -1879,6 +1957,18 @@ Prezzo_di_listino_JPY__c   - Prezzo_di_vendita_JPY__c
         <fullName>Sconto_SGD__c</fullName>
         <externalId>false</externalId>
         <label>Sconto (SGD)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sconto_TWD__c</fullName>
+        <externalId>false</externalId>
+        <label>Sconto (TWD)</label>
         <precision>18</precision>
         <required>false</required>
         <scale>2</scale>
@@ -2392,9 +2482,9 @@ PSconto__c)</formula>
         <columns>Prezzo_di_Vendita_formula__c</columns>
         <columns>Sconto_formula__c</columns>
         <columns>Codice_Nazione_Fatturazione__c</columns>
+        <columns>Id_Transazione_originaria_Ecommerce__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
-        <language>it</language>
     </listViews>
     <listViews>
         <fullName>Store_Firenze</fullName>

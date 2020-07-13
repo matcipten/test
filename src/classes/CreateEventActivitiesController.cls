@@ -103,7 +103,7 @@ public class CreateEventActivitiesController {
                     if(f.getvalue() == 'Other') tipi.put(f.getValue(),f.getLabel());
             }
         }
-        if ((rtype == 'One_To_One' && (pickval == 'OT_Proposte di stile' || pickval == 'OT_Repair follow-up' || pickval == 'OT_Follow-up after store visit' || pickval == 'OT_Thank you note' || pickval == 'OT_Tour Visit' || pickval == 'OT_Greetings' || pickval == 'OT_Gifting')) || Test.isRunningTest()){
+        if ((rtype == 'One_To_One' && (pickval == 'OT_Proposte di stile' || pickval == 'OT_Keep in Touch' || pickval == 'OT_Repair follow-up' || pickval == 'OT_Follow-up after store visit' || pickval == 'OT_Thank you note' || pickval == 'OT_Tour Visit' || pickval == 'OT_Greetings' || pickval == 'OT_Gifting')) || Test.isRunningTest()){
 			for (Schema.PicklistEntry f : typePicklist.getPicklistValues()) {
                     if(f.getvalue() == 'Other') tipi.put(f.getValue(),f.getLabel());
             }  

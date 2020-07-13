@@ -1,8 +1,14 @@
-<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction,lightning:isUrlAddressable"
-                access="global">
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction,lightning:isUrlAddressable" 
+                 access="global"
+                 controller="NavigatetoRegistrationFormController">
     <aura:attribute name="textButton"
                     type="String"
                     default="New Digital customer card" />
+    <aura:attribute name="type"
+                    type="String" />
+    <aura:attribute name="showSecondSection"
+                    type="Boolean"
+                    default="false" />
     <aura:handler name="init"
                   value="{!this}"
                   action="{!c.doInit}" />
@@ -15,5 +21,13 @@
                       label="{!$Label.c.New_DCC}"
 	                  title="{!$Label.c.New_DCC}"
                       class="slds-m-bottom_x-small slds-m-top_x-small ten_button2" />
+    <!--aura:if isTrue="{!v.showSecondSection}">
+        <lightning:button variant="neutral"
+                      onclick="{!c.openActionWindow}"
+                      label="test"
+	                  title="{!$Label.c.New_DCC}"
+                      class="slds-m-bottom_x-small slds-m-top_x-small ten_button2" />
+    
+    </aura:if-->
 
 </aura:component>

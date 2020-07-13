@@ -1557,6 +1557,17 @@ Importo_acquisti_ultima_stagione_E_comm__c
         <type>Checkbox</type>
     </fields>
     <fields>
+        <fullName>Associate_Registrazione_ID__c</fullName>
+        <externalId>false</externalId>
+        <label>Associate Registrazione ID</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Associate__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <externalId>false</externalId>
@@ -1618,7 +1629,7 @@ IF (OUT_BIRTHDATE_CODE1__c =2 &amp;&amp; OUT_BIRTHDATE_CODE2__c  =2, IMAGE(&apos
     <fields>
         <fullName>Boutique_Disattiva__c</fullName>
         <externalId>false</externalId>
-        <formula>IF(Location__r.Data_Chiusura_Negozio__c &lt;= NOW(), true, false)</formula>
+        <formula>IF(OR(Location__r.Data_Chiusura_Negozio__c &lt;= NOW(), AND(ISBLANK(Location__c), ISBLANK(First_Location__c))), true, false)</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Boutique Disattiva</label>
         <trackHistory>false</trackHistory>
@@ -3029,6 +3040,24 @@ YEAR(TODAY())-YEAR(PersonBirthdate),
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Flag_Debole__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Flag Debole</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Flag_Forte__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Flag Forte</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>Frequenza_di_contatto__c</fullName>
         <externalId>false</externalId>
         <label>Frequenza di contatto</label>
@@ -3192,6 +3221,17 @@ YEAR(TODAY())-YEAR(PersonBirthdate),
             </valueSetDefinition>
         </valueSet>
         <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Id_Associate_Registrazione__c</fullName>
+        <externalId>false</externalId>
+        <formula>Associate_di_registrazione__r.Id_Associate_Micros__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Id Associate Registrazione</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Id_Associate__c</fullName>
@@ -9865,6 +9905,11 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
                     <default>false</default>
                     <label>Singapore customer</label>
                 </value>
+                <value>
+                    <fullName>BC_TWPR</fullName>
+                    <default>false</default>
+                    <label>Taiwan customer</label>
+                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
@@ -9948,6 +9993,37 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
         </sharedTo>
     </listViews>
     <listViews>
+        <fullName>Clients_purchased_in_my_store_yesterday_FR</fullName>
+        <columns>ACCOUNT.NAME</columns>
+        <columns>Last_contact_date__c</columns>
+        <columns>Categoria_Cliente__c</columns>
+        <columns>Importo_Acquisti_Totale__c</columns>
+        <columns>Marketing__c</columns>
+        <columns>Profiling__c</columns>
+        <columns>Contact_Preferences__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Last_Boutique__c</field>
+            <operation>contains</operation>
+            <value>paris,parigi,lafayette,galeries</value>
+        </filters>
+        <filters>
+            <field>Last_purchase_store_is_my_store__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <filters>
+            <field>Data_Ultimo_Acquisto__c</field>
+            <operation>equals</operation>
+            <value>YESTERDAY</value>
+        </filters>
+        <label>Clients purchased in my store yesterday</label>
+        <sharedTo>
+            <roleAndSubordinates>BOUTIQUE_FRANCE_Marcato</roleAndSubordinates>
+            <roleAndSubordinates>BOUTIQUE_FRANCE_Miele</roleAndSubordinates>
+        </sharedTo>
+    </listViews>
+    <listViews>
         <fullName>Copy_new_12_months</fullName>
         <columns>ACCOUNT.NAME</columns>
         <columns>Categoria_Cliente_FRM__c</columns>
@@ -9956,6 +10032,7 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
         <columns>Marketing__c</columns>
         <columns>Profiling__c</columns>
         <columns>Contact_Preferences__c</columns>
+        <columns>Associate__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>Data_Ultimo_Acquisto__c</field>
@@ -9985,6 +10062,7 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
         <columns>Marketing__c</columns>
         <columns>Profiling__c</columns>
         <columns>Contact_Preferences__c</columns>
+        <columns>Associate__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>Data_Ultimo_Acquisto__c</field>
@@ -10048,10 +10126,11 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
         <fullName>Copy_of_List_view_2_Test_My_Store_Client</fullName>
         <booleanFilter>(1 OR 2) AND (3 OR 4) AND 5 AND 6 AND 7</booleanFilter>
         <columns>ACCOUNT.NAME</columns>
-        <columns>ACCOUNT.SITE</columns>
-        <columns>ACCOUNT.ADDRESS1_STATE</columns>
-        <columns>ACCOUNT.PHONE1</columns>
-        <columns>ACCOUNT.TYPE</columns>
+        <columns>Categoria_Cliente__c</columns>
+        <columns>Data_Ultimo_Acquisto__c</columns>
+        <columns>Marketing__c</columns>
+        <columns>Profiling__c</columns>
+        <columns>Contact_Preferences__c</columns>
         <columns>Associate__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
@@ -10095,12 +10174,12 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
         <fullName>List_view_1_Test_My_Client</fullName>
         <booleanFilter>(1 OR 2) AND 3 AND 4 AND 5 AND 6</booleanFilter>
         <columns>ACCOUNT.NAME</columns>
-        <columns>ACCOUNT.SITE</columns>
+        <columns>Categoria_Cliente_picklist__c</columns>
         <columns>Data_Ultimo_Acquisto__c</columns>
-        <columns>ACCOUNT.ADDRESS1_STATE</columns>
-        <columns>ACCOUNT.PHONE1</columns>
-        <columns>ACCOUNT.TYPE</columns>
-        <columns>CORE.USERS.ALIAS</columns>
+        <columns>Marketing__c</columns>
+        <columns>Profiling__c</columns>
+        <columns>Contact_Preferences__c</columns>
+        <columns>Associate__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>Totale_Pezzi_Acquistati_Ultima_Stagione__c</field>
@@ -10624,6 +10703,7 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
         <columns>Marketing__c</columns>
         <columns>Profiling__c</columns>
         <columns>Contact_Preferences__c</columns>
+        <columns>Associate__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>Titolare_Boutique__c</field>
@@ -10649,6 +10729,7 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
         <columns>Marketing__c</columns>
         <columns>Profiling__c</columns>
         <columns>Contact_Preferences__c</columns>
+        <columns>Associate__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>Segmentation__c</field>
@@ -10674,6 +10755,7 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
         <columns>Marketing__c</columns>
         <columns>Profiling__c</columns>
         <columns>Contact_Preferences__c</columns>
+        <columns>Associate__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>Segmentation__c</field>
@@ -10699,6 +10781,7 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
         <columns>Marketing__c</columns>
         <columns>Profiling__c</columns>
         <columns>Contact_Preferences__c</columns>
+        <columns>Associate__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>Segmentation__c</field>
@@ -10724,6 +10807,7 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
         <columns>Marketing__c</columns>
         <columns>Profiling__c</columns>
         <columns>Contact_Preferences__c</columns>
+        <columns>Associate__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>Segmentation__c</field>
@@ -10749,6 +10833,7 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
         <columns>Marketing__c</columns>
         <columns>Profiling__c</columns>
         <columns>Contact_Preferences__c</columns>
+        <columns>Associate__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>Segmentation__c</field>
@@ -10774,6 +10859,7 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
         <columns>Marketing__c</columns>
         <columns>Profiling__c</columns>
         <columns>Contact_Preferences__c</columns>
+        <columns>Associate__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>Segmentation__c</field>
@@ -10799,6 +10885,7 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
         <columns>Marketing__c</columns>
         <columns>Profiling__c</columns>
         <columns>Contact_Preferences__c</columns>
+        <columns>Associate__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>Segmentation__c</field>
@@ -10824,6 +10911,7 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
         <columns>Marketing__c</columns>
         <columns>Profiling__c</columns>
         <columns>Contact_Preferences__c</columns>
+        <columns>Associate__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>Segmentation__c</field>
@@ -10849,6 +10937,7 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
         <columns>Marketing__c</columns>
         <columns>Profiling__c</columns>
         <columns>Contact_Preferences__c</columns>
+        <columns>Associate__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>Segmentation__c</field>
@@ -10874,6 +10963,7 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
         <columns>Marketing__c</columns>
         <columns>Profiling__c</columns>
         <columns>Contact_Preferences__c</columns>
+        <columns>Associate__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>Segmentation__c</field>
@@ -10899,6 +10989,7 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
         <columns>Marketing__c</columns>
         <columns>Profiling__c</columns>
         <columns>Contact_Preferences__c</columns>
+        <columns>Associate__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>Segmentation__c</field>
@@ -10924,6 +11015,7 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
         <columns>Marketing__c</columns>
         <columns>Profiling__c</columns>
         <columns>Contact_Preferences__c</columns>
+        <columns>Associate__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>Titolare_Boutique__c</field>
@@ -10938,11 +11030,11 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
     <listViews>
         <fullName>My_store_thank_you_note</fullName>
         <columns>ACCOUNT.NAME</columns>
-        <columns>ACCOUNT.SITE</columns>
-        <columns>ACCOUNT.ADDRESS1_STATE</columns>
-        <columns>ACCOUNT.PHONE1</columns>
-        <columns>ACCOUNT.TYPE</columns>
-        <columns>CORE.USERS.ALIAS</columns>
+        <columns>Data_Ultimo_Acquisto__c</columns>
+        <columns>Marketing__c</columns>
+        <columns>Profiling__c</columns>
+        <columns>Contact_Preferences__c</columns>
+        <columns>Associate__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>Data_Ultimo_Acquisto__c</field>
@@ -11694,6 +11786,14 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
                 <default>false</default>
             </values>
             <values>
+                <fullName>BC_SNGPR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BC_TWPR</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Customer Care</fullName>
                 <default>false</default>
             </values>
@@ -12410,6 +12510,14 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
                 <default>false</default>
             </values>
             <values>
+                <fullName>BC_SNGPR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BC_TWPR</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Customer Care</fullName>
                 <default>false</default>
             </values>
@@ -12675,5 +12783,30 @@ ISCHANGED(Categoria_Cliente_Proposta__c))</errorConditionFormula>
         <openType>onClickJavaScript</openType>
         <protected>false</protected>
         <url>alert(&quot;{!$Label.et4ae5__deprecateaccountjscomponents}&quot;);</url>
+    </webLinks>
+    <webLinks>
+        <fullName>grax__Object_Time_Machine</fullName>
+        <availability>online</availability>
+        <description>Button to view records updated via Object Time Machine</description>
+        <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>Object Time Machine</masterLabel>
+        <openType>noSidebar</openType>
+        <protected>false</protected>
+        <url>/apex/grax__GRAXTimeMachine?Id={!Account.Id}&amp;recordName={!Account.Name}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>grax__Restore</fullName>
+        <availability>online</availability>
+        <description>Button to be used to view backed up/archived records via GRAX</description>
+        <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <linkType>url</linkType>
+        <masterLabel>Restore</masterLabel>
+        <openType>replace</openType>
+        <protected>false</protected>
+        <url>/apex/grax__GRAXRestore?Id={!Account.Id}&amp;recordName={!Account.Name}</url>
     </webLinks>
 </CustomObject>

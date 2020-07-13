@@ -732,6 +732,17 @@
         <trackTrending>false</trackTrending>
     </fields>
     <fields>
+        <fullName>Country_Lowercase__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( Nazione_input__c=&quot;CN&quot;, &quot;cn&quot;, IF( Nazione_input__c=&quot;JP&quot;, &quot;jp&quot;, IF( Nazione_input__c=&quot;HK&quot;,&quot;hk&quot;, IF( Nazione_input__c=&quot;MO&quot;,&quot;mo&quot;, IF( Nazione_input__c=&quot;MY&quot;,&quot;my&quot;, IF( Nazione_input__c=&quot;SG&quot;,&quot;sg&quot;, IF( Nazione_input__c=&quot;KR&quot;,&quot;kr&quot;, IF( Nazione_input__c=&quot;TW&quot;,&quot;tw&quot;, IF( Nazione_input__c=&quot;TH&quot;,&quot;th&quot;, IF( Nazione_input__c=&quot;US&quot;,&quot;us&quot;, IF( Nazione_input__c=&quot;AU&quot;,&quot;au&quot;, IF( Nazione_input__c=&quot;AT&quot;,&quot;at&quot;, IF( Nazione_input__c=&quot;BE&quot;,&quot;be&quot;, IF( Nazione_input__c=&quot;GB&quot;,&quot;gb&quot;, IF( Nazione_input__c=&quot;CA&quot;,&quot;ca&quot;, IF( Nazione_input__c=&quot;CL&quot;,&quot;cl&quot;, IF( Nazione_input__c=&quot;DK&quot;,&quot;dk&quot;, IF( Nazione_input__c=&quot;EE&quot;,&quot;ee&quot;, IF( Nazione_input__c=&quot;FI&quot;,&quot;fi&quot;, IF( Nazione_input__c=&quot;FR&quot;,&quot;fr&quot;, IF( Nazione_input__c=&quot;DE&quot;,&quot;de&quot;, IF( Nazione_input__c=&quot;GR&quot;,&quot;gr&quot;, IF( Nazione_input__c=&quot;IE&quot;,&quot;ie&quot;, IF( Nazione_input__c=&quot;IL&quot;,&quot;il&quot;, IF( Nazione_input__c=&quot;IT&quot;,&quot;it&quot;, IF( Nazione_input__c=&quot;KZ&quot;,&quot;kz&quot;, IF( Nazione_input__c=&quot;LV&quot;,&quot;lv&quot;, IF( Nazione_input__c=&quot;LT&quot;,&quot;lt&quot;, IF( Nazione_input__c=&quot;LU&quot;,&quot;lu&quot;, IF( Nazione_input__c=&quot;NO&quot;,&quot;no&quot;, IF( Nazione_input__c=&quot;NZ&quot;,&quot;nz&quot;, IF( Nazione_input__c=&quot;NL&quot;,&quot;nl&quot;, IF( Nazione_input__c=&quot;PL&quot;,&quot;pl&quot;, IF( Nazione_input__c=&quot;PT&quot;,&quot;pt&quot;, IF( Nazione_input__c=&quot;MC&quot;,&quot;mc&quot;, IF( Nazione_input__c=&quot;CZ&quot;,&quot;cz&quot;, IF( Nazione_input__c=&quot;RO&quot;,&quot;ro&quot;, IF( Nazione_input__c=&quot;RU&quot;,&quot;ru&quot;, IF( Nazione_input__c=&quot;SK&quot;,&quot;sk&quot;, IF( Nazione_input__c=&quot;SI&quot;,&quot;si&quot;, IF( Nazione_input__c=&quot;ES&quot;,&quot;es&quot;, IF( Nazione_input__c=&quot;ZA&quot;,&quot;za&quot;, IF( Nazione_input__c=&quot;SE&quot;,&quot;se&quot;, IF( Nazione_input__c=&quot;CH&quot;,&quot;ch&quot;, IF( Nazione_input__c=&quot;TN&quot;,&quot;tn&quot;, IF( Nazione_input__c=&quot;TR&quot;,&quot;tr&quot;, IF( Nazione_input__c=&quot;UA&quot;,&quot;ua&quot;, IF( Nazione_input__c=&quot;GB&quot;,&quot;gb&quot;, IF( Nazione_input__c=&quot;HU&quot;,&quot;hu&quot;, IF( Nazione_input__c=&quot;QA&quot;,&quot;qa&quot;, IF( Nazione_input__c=&quot;KW&quot;,&quot;kw&quot;, IF( Nazione_input__c=&quot;SA&quot;,&quot;sa&quot;, IF( Nazione_input__c=&quot;OM&quot;,&quot;om&quot;, IF( Nazione_input__c=&quot;NH&quot;,&quot;nh&quot;, IF( Nazione_input__c=&quot;AE&quot;,&quot;ae&quot;,&quot;&quot;)))))))))))))))))))))))))))))))))))))))))))))))))))))))</formula>
+        <label>Country Lowercase</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>CurrencyIsoCode</fullName>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
@@ -1184,7 +1195,7 @@ IF(FLOOR(( ClosedDate - CreatedDate ) * 24) &gt; 23, TEXT( FLOOR (DATETIMEVALUE(
     <fields>
         <fullName>Manager_Name__c</fullName>
         <externalId>false</externalId>
-        <formula>IF(OR(OwnerId = Owner:Queue.Id,ISBLANK(Owner:User.ManagerId)),&apos;Giorgia Alunni&apos;,  Owner:User.Manager.FirstName  &amp;  &apos;&apos; &amp; Owner:User.Manager.LastName  )</formula>
+        <formula>IF(OR(OwnerId = Owner:Queue.Id,ISBLANK(Owner:User.ManagerId)),&apos;Giorgia Alunni&apos;,  Owner:User.Manager.FirstName  &amp;  &apos; &apos; &amp; Owner:User.Manager.LastName  )</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Manager Name</label>
         <required>false</required>
@@ -1372,6 +1383,17 @@ IF(FLOOR(( ClosedDate - CreatedDate ) * 24) &gt; 23, TEXT( FLOOR (DATETIMEVALUE(
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Notify_Me_Product_URL__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(Nazione_input__c =&quot;CN&quot;, &quot;https://shop.brunellocucinelli.cn/&quot;&amp; Lingua_di_Preferenza_input__c &amp;&quot;-&quot;&amp;&quot;cn&quot;&amp;&quot;/&quot;&amp; SKU__c &amp;&quot;.html&quot;&amp;&quot;?utm_source=service_cloud&amp;utm_medium=email&amp;utm_campaign=product_back_online&amp;utm_content=notify_me&amp;utm_term=&quot; &amp; Nazione_input__c, &quot;https://shop.brunellocucinelli.com/&quot;&amp; Lingua_di_Preferenza_input__c &amp;&quot;-&quot;&amp; Country_Lowercase__c &amp;&quot;/&quot;&amp; SKU__c &amp;&quot;.html&quot;&amp;&quot;?utm_source=service_cloud&amp;utm_medium=email&amp;utm_campaign=product_back_online&amp;utm_content=notify_me&amp;utm_term=&quot; &amp; Nazione_input__c)</formula>
+        <label>Notify Me Product URL</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Number_of_closures_per_case__c</fullName>
@@ -2742,6 +2764,11 @@ IF(FLOOR(( ClosedDate - CreatedDate ) * 24) &gt; 23, TEXT( FLOOR (DATETIMEVALUE(
         <columns>Colore_Prodotto__c</columns>
         <columns>Taglia_Prodotto__c</columns>
         <filterScope>Queue</filterScope>
+        <filters>
+            <field>CASES.STATUS</field>
+            <operation>notEqual</operation>
+            <value>Riassegnato,In attesa,Risposta ricevuta,Chiuso,Closed,Capo spedito/scaricato,Capo in magazzino,Capo Online</value>
+        </filters>
         <label>Buying</label>
         <queue>Buying</queue>
         <sharedTo>
@@ -10619,5 +10646,31 @@ NOT(ISPICKVAL(Categoria__c, &quot;Spam&quot;))
         <showsLocation>false</showsLocation>
         <showsStatus>false</showsStatus>
         <url>/flow/Email_Caso_Ecommerce?caseid={!Case.Id}&amp;retURL=/console</url>
+    </webLinks>
+    <webLinks>
+        <fullName>grax__Object_Time_Machine</fullName>
+        <availability>online</availability>
+        <description>Button to view records updated via Object Time Machine</description>
+        <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>Object Time Machine</masterLabel>
+        <openType>noSidebar</openType>
+        <protected>false</protected>
+        <url>/apex/grax__GRAXTimeMachine?Id={!Case.Id}&amp;recordName={!Case.CaseNumber}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>grax__Restore</fullName>
+        <availability>online</availability>
+        <description>Button to be used to view backed up/archived records via GRAX</description>
+        <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>Restore</masterLabel>
+        <openType>noSidebar</openType>
+        <protected>false</protected>
+        <url>/apex/grax__GRAXRestore?Id={!Account.Id}&amp;recordName={!Account.Name}</url>
     </webLinks>
 </CustomObject>

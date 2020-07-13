@@ -89,14 +89,14 @@
                     <label>Roma 8-22</label>
                 </value>
                 <value>
-                    <fullName>New York 8.30-13; 14.30-17.30</fullName>
+                    <fullName>New York 8.30-17.30</fullName>
                     <default>false</default>
-                    <label>New York 8.30-13; 14.30-17.30</label>
+                    <label>New York 8.30-17.30</label>
                 </value>
                 <value>
-                    <fullName>Shanghai 8-13; 14.30-17.30</fullName>
+                    <fullName>Shanghai 11-12:30; 13.30-20.00</fullName>
                     <default>false</default>
-                    <label>Shanghai 8-13; 14.30-17.30</label>
+                    <label>Shanghai 11-12:30; 13.30-20.00</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -1057,7 +1057,7 @@
             <value>BC -</value>
         </filters>
         <filters>
-            <field>CORE.USERS.USERNAME</field>
+            <field>CORE.USERS.EMAIL</field>
             <operation>contains</operation>
             <value>@brunellocucinelli.co.uk</value>
         </filters>

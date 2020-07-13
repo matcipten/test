@@ -68,8 +68,8 @@ public class RegistrationForm {
                                               Button_Add_Address_Label__c, Billing_Address_Section_Label__c, Contact_Address_Section_Label__c, Other_Address_Section_Label__c,
                                               Street_Contact_Address_Label__c, City_Contact_Address_Label__c, CAP_Contact_Address_Label__c, Country_Contact_Address_Label__c,
                                               Street_Other_Address_Label__c, City_Other_Address_Label__c, State_Other_Address_Label__c, CAP_Other_Address_Label__c, 
-                                              Country_Other_Address_Label__c,State_Contact_Address_Label__c
-                                              FROM Translate__c WHERE Name LIKE :HelpForLike];
+                                              Country_Other_Address_Label__c, State_Contact_Address_Label__c
+                                             FROM Translate__c WHERE Name LIKE :HelpForLike];
             system.debug('TRAN:::: '+Translation);
             system.debug('cc::: '+cc);
             system.debug('LOCALE::: '+locale);
@@ -476,15 +476,24 @@ return 'false';
         
         User user = [SELECT Id, LastName, Codice_Boutique__c, Id_Store_Manager__c, Codice_Associate__c, Nome_Profilo__c FROM User WHERE Id=:UserInfo.getUserId()];
         Location__c loc = new Location__c();
+        System.debug('VS user: '+user);
+        System.debug('VS codice boutique: '+user.Codice_Boutique__c);
         if([SELECT Id, Name, Id_Location_Micros__c FROM Location__c WHERE Id_Location_Micros__c=: user.Codice_Boutique__c].size() != 0) {
             loc = [SELECT Id, Name, Id_Location_Micros__c FROM Location__c WHERE Id_Location_Micros__c=: user.Codice_Boutique__c];
         }
         Associated__c ass = new Associated__c();
-        if(user.Nome_Profilo__c == 'BC - Associate') {
-            if([SELECT Id, Id_Associate__c FROM Associated__c WHERE Id_Associate__c =: user.Codice_Associate__c].size() != 0) {
-                ass = [SELECT Id, Id_Associate__c FROM Associated__c WHERE Id_Associate__c =: user.Codice_Associate__c AND Id_Location_Micros__c =: user.Codice_Boutique__c];
+        // VS - 08/06/2020 -  SALESFORCE-868
+        // if(user.Nome_Profilo__c == 'BC - Associate') {
+            if(user.Codice_Associate__c != null && user.Codice_Associate__c != '') {
+                system.debug('VS dentro if campi user');
+                System.debug('user.Codice_Associate__c '+user.Codice_Associate__c);
+                System.debug('user.Codice_Boutique__c '+user.Codice_Boutique__c);
+                if([SELECT Id, Id_Associate__c FROM Associated__c WHERE Id_Associate__c =: user.Codice_Associate__c].size() != 0) {
+                    ass = [SELECT Id, Id_Associate__c FROM Associated__c WHERE Id_Associate__c =: user.Codice_Associate__c AND Id_Location_Micros__c =: user.Codice_Boutique__c];
+                }
             }
-        }
+            system.debug('VS fuori if campi user');
+        // VS - 08/06/2020 -  SALESFORCE-868
         returnData ret = new returnData();
         ret.success = true;
         ret.message = 'Account create successfully';

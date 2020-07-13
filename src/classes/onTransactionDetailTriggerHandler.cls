@@ -4,8 +4,8 @@ public with sharing class onTransactionDetailTriggerHandler {
     //PN20190121 update picture on transactionDetail
     public static Boolean isMassiveUpdate = false;
     // public static Map<String,String> blockTriggerMap = new Map<String,String>();
-
-    public static void CreateGiftActivity(list<Transaction_Detail__c> TransactionDetail){
+ 
+    public static void CreateGiftActivity(Map<Id, Transaction_Detail__c> oldMap, list<Transaction_Detail__c> TransactionDetail){
 
         // if(onTransactionDetailTriggerHandler.blockTriggerMap.get('CreateGiftActivity') != null)
         //  return;
@@ -20,7 +20,7 @@ public with sharing class onTransactionDetailTriggerHandler {
 
         for(Transaction_Detail__c t:TransactionDetail) {
 
-            if(t.Gift__c) {
+            if(t.Gift__c) {           
 
                 SetTransactionIds.add(t.Transaction__c);
 
@@ -38,21 +38,30 @@ public with sharing class onTransactionDetailTriggerHandler {
 
         for(Transaction_Detail__c td:TransactionDetail) {
 
-            if(td.Gift__c && MapTransactions.containsKey(td.Transaction__c)) {
+            if(MapTransactions.containsKey(td.Transaction__c)) { 
+                System.debug('oldMap: '+oldMap);
+                System.debug('td: '+td);
+                if (oldMap==null && td.Gift__c|| oldMap!=null && oldMap.containsKey(td.Id) && oldMap.get(td.Id).Gift__c != td.Gift__c){
 
-                Attivita_Marketing__c am    = new Attivita_Marketing__c();
-                am.RecordTypeId             = GiftRecTypeId;
-                am.Cliente__c               = MapTransactions.get(td.Transaction__c);
-                am.Product__c               = td.Product__c;
-                am.Dettaglio_Transazione__c = td.Id;
-                am.Data__c                  = system.today();
-                am.Gift__c                  = true;
-                ListNewActivity.add(am);
-
+                    Attivita_Marketing__c am    = new Attivita_Marketing__c();
+                    am.RecordTypeId             = GiftRecTypeId;
+                    am.Cliente__c               = MapTransactions.get(td.Transaction__c);
+                    am.Product__c               = td.Product__c;
+                    am.Dettaglio_Transazione__c = td.Id;
+                    am.Gift__c                  = true;
+                    //SALESFORCE-878 VS 15/06/2020
+                    Date myDate = date.newinstance(td.Data_Scontrino__c.year(), td.Data_Scontrino__c.month(), td.Data_Scontrino__c.day());
+                    System.debug('VS  data: '+myDate);
+                    System.debug('VS  Seller__c: '+td.Seller__c);
+                    am.Data__c = myDate;
+                    am.Associate__c = td.Seller__c;
+                    //SALESFORCE-878 VS 15/06/2020
+                    ListNewActivity.add(am);
+                }
             }
 
         }
-
+        System.debug('VS size: '+ListNewActivity.size());
         if(ListNewActivity.size()>0) {
             insert ListNewActivity;
         }
@@ -84,7 +93,8 @@ public with sharing class onTransactionDetailTriggerHandler {
                                                                               Prezzo_di_vendita_PLN__c, Prezzo_netto_IVA_PLN__c, Prezzo_di_listino_PLN__c,
                                                                               Prezzo_di_vendita_QAR__c, Prezzo_netto_IVA_QAR__c, Prezzo_di_listino_QAR__c,
                                                                               Prezzo_di_vendita_SGD__c, Prezzo_netto_IVA_SGD__c, Prezzo_di_listino_SGD__c,
-                                                                              Prezzo_di_vendita_SAR__c, Prezzo_netto_IVA_SAR__c, Prezzo_di_listino_SAR__c
+                                                                              Prezzo_di_vendita_SAR__c, Prezzo_netto_IVA_SAR__c, Prezzo_di_listino_SAR__c,
+                                                                              Prezzo_di_vendita_TWD__c, Prezzo_netto_IVA_TWD__c, Prezzo_di_listino_TWD__c
 
                                                                               FROM Transaction__c
                                                                               WHERE Id IN: transaction_SetId]);
@@ -98,7 +108,8 @@ public with sharing class onTransactionDetailTriggerHandler {
                                                              Prezzo_di_vendita_PLN__c, Prezzo_netto_IVA_PLN__c, Prezzo_di_listino_PLN__c,
                                                              Prezzo_di_vendita_QAR__c, Prezzo_netto_IVA_QAR__c, Prezzo_di_listino_QAR__c,
                                                              Prezzo_di_vendita_SGD__c, Prezzo_netto_IVA_SGD__c, Prezzo_di_listino_SGD__c,
-                                                             Prezzo_di_vendita_SAR__c, Prezzo_netto_IVA_SAR__c, Prezzo_di_listino_SAR__c
+                                                             Prezzo_di_vendita_SAR__c, Prezzo_netto_IVA_SAR__c, Prezzo_di_listino_SAR__c,
+                                                             Prezzo_di_vendita_TWD__c, Prezzo_Netto_IVA_TWD__c, Prezzo_di_listino_TWD__c
                                                              FROM Transaction_Detail__c
                                                              WHERE Transaction__c IN : transaction_SetId];
 
@@ -166,9 +177,12 @@ public with sharing class onTransactionDetailTriggerHandler {
             tempTr.Prezzo_netto_IVA_SGD__c = 0;
             tempTr.Prezzo_di_Vendita_SAR__c = 0;
             tempTr.Prezzo_di_listino_SAR__c = 0;
-            tempTr.Prezzo_netto_IVA_SAR__c = 0;                                                                
+            tempTr.Prezzo_netto_IVA_SAR__c = 0;
+            tempTr.Prezzo_di_vendita_TWD__c = 0;
+            tempTr.Prezzo_di_listino_TWD__c = 0;
+            tempTr.Prezzo_netto_IVA_TWD__c = 0; 
         }
-
+        
         for (Transaction_Detail__c trsd : transectionDetailList) {
 
             if(trsd.Prezzo_di_Vendita_DKK__c != NULL) {
@@ -341,8 +355,25 @@ public with sharing class onTransactionDetailTriggerHandler {
                     }
                     transectionMap.get(trsd.Transaction__c).Prezzo_netto_IVA_SAR__c = transectionMap.get(trsd.Transaction__c).Prezzo_netto_IVA_SAR__c+trsd.Prezzo_netto_IVA_SAR__c;
             }
+            if(trsd.Prezzo_di_vendita_TWD__c != NULL) {
+                if(transectionMap.get(trsd.Transaction__c).Prezzo_di_vendita_TWD__c == null){
+                        transectionMap.get(trsd.Transaction__c).Prezzo_di_vendita_TWD__c = 0;
+                    }
+                    transectionMap.get(trsd.Transaction__c).Prezzo_di_vendita_TWD__c = transectionMap.get(trsd.Transaction__c).Prezzo_di_vendita_TWD__c+trsd.Prezzo_di_vendita_TWD__c;
+            }
+            if(trsd.Prezzo_di_listino_TWD__c != NULL) {
+                if(transectionMap.get(trsd.Transaction__c).Prezzo_di_listino_TWD__c == null){
+                        transectionMap.get(trsd.Transaction__c).Prezzo_di_listino_TWD__c = 0;
+                    }
+                    transectionMap.get(trsd.Transaction__c).Prezzo_di_listino_TWD__c = transectionMap.get(trsd.Transaction__c).Prezzo_di_listino_TWD__c+trsd.Prezzo_di_listino_TWD__c;
+            }
+            if(trsd.Prezzo_netto_IVA_TWD__c != NULL) {
+                if(transectionMap.get(trsd.Transaction__c).Prezzo_netto_IVA_TWD__c == null){
+                        transectionMap.get(trsd.Transaction__c).Prezzo_netto_IVA_TWD__c = 0;
+                    }
+                    transectionMap.get(trsd.Transaction__c).Prezzo_netto_IVA_TWD__c = transectionMap.get(trsd.Transaction__c).Prezzo_netto_IVA_TWD__c+trsd.Prezzo_netto_IVA_TWD__c;
+            }
         }
-
 
         for(Id Id_transaction : transectionMap.keySet()) {
 
@@ -522,6 +553,9 @@ public with sharing class onTransactionDetailTriggerHandler {
             tDetail.Sconto_SAR__c  = (tDetail.Prezzo_di_listino_SAR__c != 0 && tDetail.Prezzo_di_Vendita_SAR__c <= tDetail.Prezzo_di_listino_SAR__c) ? (tDetail.Prezzo_di_listino_SAR__c - tDetail.Prezzo_di_Vendita_SAR__c) : 0;
             tDetail.PSconto_SAR__c = (tDetail.Prezzo_di_listino_SAR__c > 0 && tDetail.Sconto_SAR__c > 0) ? (tDetail.Sconto_SAR__c / tDetail.Prezzo_di_listino_SAR__c)*100 : 0;
 
+            tDetail.Sconto_TWD__c  = (tDetail.Prezzo_di_listino_TWD__c != 0 && tDetail.Prezzo_di_vendita_TWD__c <= tDetail.Prezzo_di_listino_TWD__c) ? (tDetail.Prezzo_di_listino_TWD__c - tDetail.Prezzo_di_vendita_TWD__c) : 0;
+            tDetail.PSconto_TWD__c = (tDetail.Prezzo_di_listino_TWD__c > 0 && tDetail.Sconto_TWD__c > 0) ? (tDetail.Sconto_TWD__c / tDetail.Prezzo_di_listino_TWD__c)*100 : 0;
+
         }
 
         // onTransactionDetailTriggerHandler.blockTriggerMap.put('setScontoInTransactionDetailsInsert','setScontoInTransactionDetailsInsert');
@@ -574,6 +608,10 @@ public with sharing class onTransactionDetailTriggerHandler {
             if((TransactionDetailNew.get(tDetail.Id).Prezzo_di_listino_SAR__c != TransactionDetailOld.get(tDetail.Id).Prezzo_di_listino_SAR__c) || (TransactionDetailNew.get(tDetail.Id).Prezzo_di_Vendita_SAR__c != TransactionDetailOld.get(tDetail.Id).Prezzo_di_Vendita_SAR__c)) {
                 tDetail.Sconto_SAR__c  = (tDetail.Prezzo_di_listino_SAR__c != 0 && tDetail.Prezzo_di_Vendita_SAR__c <= tDetail.Prezzo_di_listino_SAR__c) ? (tDetail.Prezzo_di_listino_SAR__c - tDetail.Prezzo_di_Vendita_SAR__c) : 0;
                 tDetail.PSconto_SAR__c = (tDetail.Prezzo_di_listino_SAR__c > 0 && tDetail.Sconto_SAR__c > 0) ? (tDetail.Sconto_SAR__c / tDetail.Prezzo_di_listino_SAR__c)*100 : 0;
+            }
+            if((TransactionDetailNew.get(tDetail.Id).Prezzo_di_listino_TWD__c != TransactionDetailOld.get(tDetail.Id).Prezzo_di_listino_TWD__c) || (TransactionDetailNew.get(tDetail.Id).Prezzo_di_vendita_TWD__c != TransactionDetailOld.get(tDetail.Id).Prezzo_di_vendita_TWD__c)) {
+                tDetail.Sconto_TWD__c  = (tDetail.Prezzo_di_listino_TWD__c != 0 && tDetail.Prezzo_di_vendita_TWD__c <= tDetail.Prezzo_di_listino_TWD__c) ? (tDetail.Prezzo_di_listino_TWD__c - tDetail.Prezzo_di_vendita_TWD__c) : 0;
+                tDetail.PSconto_TWD__c = (tDetail.Prezzo_di_listino_TWD__c > 0 && tDetail.Sconto_TWD__c > 0) ? (tDetail.Sconto_TWD__c / tDetail.Prezzo_di_listino_TWD__c)*100 : 0;
             }
 
         }

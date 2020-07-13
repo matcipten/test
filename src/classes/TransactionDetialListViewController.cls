@@ -21,7 +21,7 @@ public with sharing class TransactionDetialListViewController {
 		                                         WHERE Gift__c = false
 		                                                         AND AccountId__c  =:accId
 		                                                                             //AND Product_Image_Reference__c != null
-		                                                                             Order By CreatedDate Desc
+		                                                                             Order By Data_Scontrino__c Desc
 		                                                                             LIMIT 5];
 
 		system.System.debug(tDetails);
@@ -52,7 +52,7 @@ public with sharing class TransactionDetialListViewController {
 		                                         WHERE Gift__c = false
 		                                                         AND AccountId__c =:accId
 		                                                                            //AND Product_Image_Reference__c != null
-		                                                                            Order By CreatedDate Desc
+		                                                                            Order By Data_Scontrino__c Desc
 		];
 
 		system.System.debug(tDetails);

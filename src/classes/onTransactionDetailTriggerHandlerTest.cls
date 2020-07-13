@@ -34,6 +34,7 @@ private class onTransactionDetailTriggerHandlerTest {
             td.Codice_Cassa__c ='1';
             td.Prezzo_di_Listino__c = 300.00;
             td.Prezzo_di_Vendita__c = 150.00;
+            td.Data_Scontrino__c = system.today();
             
             insert td;
             

@@ -63,6 +63,7 @@
                                             <img src="{!'/sfc/servlet.shepherd/version/download/'+a.imageId}" class="{!'image' + ' ' +  (a.productReso ? '' : '' )}" />
                                             <div class="middle">
                                                 <div class="text">{! a.productSeason} - {! a.productModel}</div>
+                                                <div class="text"> Size: {! a.productSize}</div>
                                             </div>
                                             <aura:if isTrue="{!a.productGift}">
                                                 <div class="shadow-gift"></div>
