@@ -6,10 +6,12 @@ public class AllDataFactory {
     public static User create_User() {
 
         Profile p = [SELECT Id FROM Profile WHERE Name='System Administrator'];
-
+        String orgId = UserInfo.getOrganizationId();
+        Integer randomInt = Integer.valueOf(math.rint(math.random()*1000000));
+        String uniqueName = orgId + randomInt;
         User result = new User(
             Alias = 'standt1',
-            Email='user1@testorg.com',
+            Email=uniqueName + '@test' + orgId + '.org',
             EmailEncodingKey='UTF-8',
             LastName='Testing1',
             LanguageLocaleKey='en_US',
@@ -17,7 +19,7 @@ public class AllDataFactory {
             ProfileId = p.Id,
             Extension = '9988',
             TimeZoneSidKey='America/Los_Angeles',
-            UserName='standard1@testorg.com'
+            UserName=uniqueName + '@test' + orgId + '.org'
             );
 
         return result;

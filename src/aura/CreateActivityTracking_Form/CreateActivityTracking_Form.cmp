@@ -90,7 +90,15 @@
 	<aura:attribute name="giftSelected"
 					type="String"
 					default="" />
+	
+	<aura:attribute name="loggedUser"
+					type="Object"					
+					access="GLOBAL" />
 
+	<aura:attribute name="profileCheck"
+					type="Boolean"
+					default="true"
+					access="GLOBAL" />
 					
 	<aura:attribute name="OTCategorie" type="List" default="[]" access="GLOBAL"></aura:attribute>
 
@@ -266,6 +274,36 @@
 
 					</lightning:layoutItem>
 
+					<!-- PALUMBO (START) -->
+					<lightning:layoutItem size="6" padding="around-medium">
+						<aura:if isTrue="{!v.profileCheck}">
+							<c:customLookup objectAPIName="Location__c"											
+											IconName="custom:custom18"											
+											label="{!v.labels.user_boutique__c}"
+											searchObjectKey="Id_Location_Micros__c"
+											aura:id="locationLookup"	
+											value="{!v.newActivityTracking.User_Boutique__c}"
+											/>
+						</aura:if>
+					</lightning:layoutItem>
+					
+					<lightning:layoutItem size="6" padding="around-medium">
+						<aura:if isTrue="{!v.profileCheck}">
+							<c:customLookup objectAPIName="Associated__c"											
+											IconName="custom:custom15"																						
+											label="{!v.labels.user_client_advisor__c}"
+											searchObjectKey="Id_Associate_Micros__c"
+											aura:id="associateLookup"	
+											value="{!v.newActivityTracking.User_Client_Advisor__c}"
+											idLocMicros="{!v.newActivityTracking.User_Boutique__c}"								
+											/>
+						</aura:if>
+					</lightning:layoutItem>
+
+					
+
+					<!-- PALUMBO (END) -->
+					
 					<!-- <aura:if isTrue="{!v.tipoName != 'Mailing'}"> -->
 
 					<aura:if isTrue="{!v.locationVisibility == 7 || v.locationVisibility == 4 || v.locationVisibility == 5 || v.locationVisibility == 6}">

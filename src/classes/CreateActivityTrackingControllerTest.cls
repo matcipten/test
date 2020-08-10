@@ -85,4 +85,21 @@ public class CreateActivityTrackingControllerTest {
 		}
 
 	}
+
+	@isTest static void getUserInfo(){
+		User usr = AllDataFactory.create_User();
+		usr.Codice_Associate__c = 'codiceAss';
+		usr.Codice_Boutique__c = 'codiceBout';
+		insert usr;
+
+		Location__c location = new Location__c(Id_Location__c = 'codiceBout', Name = 'test');
+		insert location;
+
+		Associated__c associate = new Associated__c(Id_Associate__c = 'codiceAss', Name = 'test', Location__c= location.Id);
+		insert associate;		
+
+		System.runAs(usr){
+			CreateActivityTrackingController.getUserInfo();
+		}
+	}
 }

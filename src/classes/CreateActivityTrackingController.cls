@@ -317,4 +317,59 @@ public with sharing class CreateActivityTrackingController {
 
 	//  return results;
 	// }
+
+	// PALUMBO (START)
+	@AuraEnabled
+    public static WrapperValues getUserInfo(){
+		WrapperValues wrapper = new WrapperValues();
+        User u = [SELECT ID, Name, Codice_Associate__c,Codice_Boutique__c	FROM User WHERE ID=: UserInfo.getUserId()];
+		if (u.Codice_Associate__c != null){
+			List<Associated__c> associates = [SELECT Id, Name, Id_Associate_Micros__c FROM Associated__c WHERE Id_Associate_Micros__c =:u.Codice_Associate__c LIMIT 1];
+			if (!associates.isEmpty()){
+				Associated__c ass = associates.get(0);
+				wrapper.ass = new WrapperItem(ass.Id,ass.Name,ass.Id_Associate_Micros__c);
+			}
+		}
+
+		if (u.Codice_Boutique__c != null){
+			List<Location__c> locations = [SELECT Id, Name, Id_Location_Micros__c FROM Location__c WHERE Id_Location_Micros__c =:u.Codice_Boutique__c LIMIT 1];
+			if (!locations.isEmpty()){
+				Location__c loc = locations.get(0);
+				wrapper.bout = new WrapperItem(loc.Id,loc.Name,loc.Id_Location_Micros__c);
+			}
+		}
+
+		return wrapper;
+	} 
+	@AuraEnabled
+	public static Boolean getUserCheckProfile(){
+		User u = [SELECT Id,name, profile.Name	FROM User WHERE ID=: UserInfo.getUserId()];
+		if(u.profile.Name=='BC - CRM Local' || u.profile.Name=='System Administrator')
+			return true;
+		else
+			return false;
+	}
+
+	public class WrapperValues{
+		@AuraEnabled		
+		public WrapperItem bout{get;set;}
+		@AuraEnabled	
+		public WrapperItem ass {get;set;}
+	}
+
+	public class WrapperItem{	
+		@AuraEnabled		
+		public String Id;
+		@AuraEnabled
+		public String Name;
+		@AuraEnabled
+		public String value;
+
+		public WrapperItem(String i, String name, String value){
+			this.Id = i;
+			this.Name = name;
+			this.value = value;
+		}
+	}	
+	// PALUMBO (START)
 }

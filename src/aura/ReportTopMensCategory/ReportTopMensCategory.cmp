@@ -1,0 +1,125 @@
+<aura:component controller="AccountReportController"
+                implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global" >
+    <ltng:require scripts="{!$Resource.ChartJs}"
+                  afterScriptsLoaded="{!c.afterScriptsLoaded}" />
+    <aura:attribute name="ready" type="Boolean" default="false"/>
+    <aura:attribute name="showChart" type="Boolean" default="true"/>
+    <aura:attribute name="reportId" type="String"/>
+    <aura:attribute name="wrapLabelsList" type="List"/>
+    <aura:attribute name="wrapList" type="List"/>
+    
+    <div class="cardCustomCss" >
+        <lightning:card title="Top Men's Category" class="sldsCardCustom">
+            <aura:if isTrue="{!v.showChart}">
+                
+                <div >
+                    <lightning:layout >
+                        <lightning:layoutItem size="12" >
+                            <div class="slds-box" >
+                                <lightning:layout >
+                                    <lightning:layoutItem size="7" class="fontBold">
+                                        <lightning:layout >
+                                            <lightning:layoutItem size="5"  class="slds-text-align_center fontBold">
+                                                <span>Line</span>
+                                            </lightning:layoutItem>
+                                            <lightning:layoutItem size="6"  class="slds-text-align_center fontBold">
+                                                <span>Category</span>
+                                            </lightning:layoutItem>
+                                        </lightning:layout>
+                                    </lightning:layoutItem>  
+                                    <lightning:layoutItem size="5" class="displayCss">
+                                        <lightning:layout >
+                                            <lightning:layoutItem size="4"  class="slds-text-align_center fontBold">
+                                                <span>Size</span>
+                                            </lightning:layoutItem>
+                                            <lightning:layoutItem size="7"  class="slds-text-align_center fontBold">
+                                                <span>Record Count</span>
+                                            </lightning:layoutItem>
+                                        </lightning:layout>
+                                    </lightning:layoutItem>
+                                    
+                                </lightning:layout>
+                            </div>
+                        </lightning:layoutItem>
+                    </lightning:layout>
+                </div>
+                <div >
+                    <ui:scrollerwrapper class="scrollerSize">
+                        <lightning:layout >
+                            <lightning:layoutItem size="12" >
+                                <aura:iteration items="{!v.wrapLabelsList}" var="wrapLabels">
+                                    <div class="slds-box" >
+                                        <lightning:layout class="slds-align_absolute-center" >
+                                            
+                                            <lightning:layoutItem size="3" class="horizontalWidth">
+                                                
+                                                <lightning:layout >
+                                                    <lightning:layoutItem size="12"  class="slds-align_absolute-center fontBold">
+                                                        <span>{!wrapLabels}</span>
+                                                    </lightning:layoutItem>
+                                                </lightning:layout>
+                                                
+                                            </lightning:layoutItem>  
+                                            <lightning:layoutItem size="9" class="displayCss">
+                                                
+                                                <aura:iteration items="{!v.wrapList}" var="wrap">
+                                                    <aura:if isTrue="{! (wrap.outerLabel == wrapLabels)}">
+                                                        <lightning:layout >
+                                                            <lightning:layoutItem size="5" >
+                                                                <div class="slds-box platformBoxCss slds-align_absolute-center" style="height:100%;">
+                                                                    <span>{!wrap.innerLabel}</span>
+                                                                </div>  
+                                                            </lightning:layoutItem>
+                                                            <lightning:layoutItem size="3" >
+                                                                <lightning:layout multipleRows="true">
+                                                                    <aura:iteration items="{!wrap.size}" var="wrapSize">
+                                                                        <lightning:layoutItem size="12" class="fontBold">
+                                                                            <div class="slds-box platformBoxCss slds-align_absolute-center">
+                                                                                <span>{!wrapSize.label}</span>
+                                                                            </div>
+                                                                        </lightning:layoutItem>
+                                                                    </aura:iteration>                                                                            
+                                                                </lightning:layout>
+                                                            </lightning:layoutItem>
+                                                            <lightning:layoutItem size="4">
+                                                                <lightning:layout multipleRows="true">
+                                                                    <aura:iteration items="{! wrap.value }" var="wrapValue">
+                                                                        <lightning:layoutItem size="12" class="fontBold">
+                                                                            <div class="slds-box platformBoxCss slds-align_absolute-center">
+                                                                                <div  class="">
+                                                                                    <span>{!wrapValue}</span>
+                                                                                </div>
+                                                                            </div>  
+                                                                        </lightning:layoutItem>
+                                                                    </aura:iteration>
+                                                                </lightning:layout>
+                                                            </lightning:layoutItem>
+                                                        </lightning:layout>
+                                                    </aura:if>
+                                                </aura:iteration>
+                                                
+                                            </lightning:layoutItem>
+                                            
+                                        </lightning:layout>
+                                    </div>
+                                </aura:iteration>
+                            </lightning:layoutItem>
+                        </lightning:layout>
+                    </ui:scrollerwrapper>
+                </div>
+                <aura:set attribute="else">
+                    <lightning:layoutItem size="12" class="" >
+                        <div class="slds-align_absolute-center setDivHeight footerCss">
+                            {!$Label.c.We_can_t_draw_this_chart_because_there_is_no_chart_data}
+                        </div>  
+                    </lightning:layoutItem>
+                    
+                </aura:set>
+            </aura:if>            
+            <div class="footerBottom" >
+                <lightning:button variant="variant" label="{!$Label.c.View_Report}" onclick="{! c.handleClick }" />
+            </div>
+        </lightning:card>
+    </div>
+  
+</aura:component>

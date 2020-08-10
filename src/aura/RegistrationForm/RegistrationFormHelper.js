@@ -162,10 +162,10 @@
                     
                 }
 
-                if(label=="Nationality"){
+                /*if(label=="Nationality"){
                     console.log('VS customPicklistNationality: '+JSON.stringify(component.get("v.customPicklistNationality")));
                     console.log('VS customPicklistNationalityBU: '+JSON.stringify(component.get("v.customPicklistNationalityBU")));
-                }
+                }*/
                 
             }
         });
@@ -324,7 +324,25 @@
                         else{
                             this.orderPickLabels(component, 'Hobby__c', 'InputSelectDynamicHobby');
                         }
-
+                       
+                        var bool = component.get("v.isUpdate");
+                        if(!bool){
+                            setTimeout(
+                                $A.getCallback(
+                                    function() {
+                                        var langList = component.get("v.customPicklistPreferredLanguageBU");
+                                        console.log('VS langList: '+langList);
+                                        var lang=locale_lang.split("_")[0];
+                                        langList.forEach(element => {
+                                            if(element.value == lang){
+                                                console.log("check "+element.label);
+                                                component.set("v.newItem.Lingua__c",element.label);
+                                            }});
+                                        
+                                    }
+                                )
+                            );
+                        }
 
 
                         /*if(usr_translation.Nationality_Values__c != null){
@@ -407,23 +425,42 @@
         var optsTemp = [];
         var splitField = fieldValues.split('|');
         var options = component.find(elementId).get("v.options");
+
+
+        console.log('splitField: '+splitField);
+
         // VS titolo dinamico
         var opts2 = [];
         if(elementId=='InputSelectDynamicTitolo'){
-            
+        //     var oldvalue= component.get("v.newItem");
+        // console.log('VS salutation oldvalue: '+JSON.stringify(oldvalue));
+        // var opt = component.find('InputSelectDynamicTitolo').get("v.options");
+        // console.log('VS salutation opt: '+JSON.stringify(opts2));   
+        var salutation = component.get("v.salutationBackuo");
             opts2.push({
                 class: "optionClass",
                 label: "",
                 value: ""
             });
             for (var k in splitField){
-                opts2.push({
-                    class: "optionClass",
-                    label: splitField[k],
-                    value: splitField[k]
-                });
+                if(salutation!= undefined &&salutation!= ''&& salutation==splitField[k]){
+                    opts2.push({
+                        class: "optionClass",
+                        label: splitField[k],
+                        value: splitField[k],
+                        selected: true
+                    });
+                }else{
+                    opts2.push({
+                        class: "optionClass",
+                        label: splitField[k],
+                        value: splitField[k]
+                    });
+                }
+                
             }
             component.find(elementId).set("v.options", opts2);
+            
             return;
         }
       
@@ -474,7 +511,8 @@
             // console.log(opts);
 
             component.find(elementId).set("v.options", opts);
-
+        
+        // if(){}
         if (value != null && value != '')
             component.set("v.newItem." + fieldName, value);
     },
@@ -641,7 +679,7 @@
             if (state === "SUCCESS") {
              
                  var allValues = response.getReturnValue();
-                console.log('VS allValues: '+JSON.stringify(allValues));
+                // console.log('VS allValues: '+JSON.stringify(allValues));
                 // options.push({
                 //     class: "optionClass",
                 //     label: "",
@@ -649,7 +687,7 @@
                 // });
 
                 for (var k in allValues) {
-                    console.log(JSON.stringify(allValues));
+                    // console.log(JSON.stringify(allValues));
                     options.push({
                         class: "optionClass",
                         label: k,
@@ -737,7 +775,7 @@
 	//Akshay 05/06/2019  finish 
     setTranslationInPicklist: function (component) {
         var language = component.get("v.language");
-        // console.log(language);
+        console.log(language);
         var all_translation = component.get("v.translator");
         var usr_translation = new Object();
         usr_translation = all_translation[language];
@@ -752,7 +790,24 @@
         if (usr_translation.Salutation_Value__c != null)
             this.setPicklist1(component, 'Salutation','InputSelectDynamicTitolo',usr_translation.Salutation_Value__c , true);
         component.set("v.translatorValue", usr_translation);
+        var langList = component.get("v.customPicklistPreferredLanguageBU");
+        var lang=language.split("_")[0];
+        var bool = component.get("v.isUpdate");
+        console.log('langList: '+JSON.stringify(langList));
+        if(!bool){langList.forEach(element => {
+            if(element.value == lang){
+                setTimeout(
+                    $A.getCallback(
+                        function() {
+                            console.log("check "+element.label);
+                            component.set("v.newItem.Lingua__c",element.label);
+                        }
+                    )
+                );
+                
+            }});}
         
+
     },
 
     getAccountFields: function (component, id) {
@@ -770,7 +825,10 @@
                 /*acc.Privacy1__c = null;
                 acc.Privacy2__c = null;
                 acc.Privacy3__c = null;*/
-                //  console.log(JSON.stringify(acc));
+                
+                console.log(JSON.stringify(acc));
+                console.log(acc.Salutation);
+                component.set("v.salutationBackuo",acc.Salutation);
                 component.set("v.newItem", acc);
                 console.log("MC-getAccount 0 --> acc.Id: " + acc.Id + " - (acc.hasOwnProperty(Id): " + acc.hasOwnProperty("Id"));
                 if (acc.hasOwnProperty("Id")) {
@@ -780,7 +838,9 @@
                     component.set("v.Privacy_2_old",acc.Privacy2__c);
                     component.set("v.Privacy_3_old",acc.Privacy3__c);
                     component.set("v.DCCVersion_old",acc.Versione_DCC__c);
-					component.set("v.DCC",acc.DCC__c);
+                    component.set("v.DCC",acc.DCC__c);
+                    
+                    
 
                     //MC-start Get Birthdate and split on three fields
                     if(acc.PersonBirthdate != '' && acc.PersonBirthdate != null){
@@ -1079,6 +1139,7 @@
 
     searchValuePicklist : function(component,value, picklist, type){
         var field ="v.customPicklist"+picklist+"BU";
+        console.log("VS searchValuePicklist field: "+field  );
         var arr = component.get(field);
         var getValue = this.getPicklistValue(component,picklist);
         // var item = component.get(getValue);

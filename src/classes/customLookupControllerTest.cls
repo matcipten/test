@@ -14,9 +14,9 @@ public class customLookupControllerTest {
 			insert a;
 
 			Test.startTest();
-			customLookUpController.fetchLookUpValues('','Account','','', '');
-			customLookUpController.fetchLookUpValues(a.Name,'Account','','', '');
-			customLookUpController.fetchLookUpValues(a.Name,'Account','PersonEmail','', '');
+			customLookUpController.fetchLookUpValues('','Account','','', '','');
+			customLookUpController.fetchLookUpValues(a.Name,'Account','','', '','');
+			customLookUpController.fetchLookUpValues(a.Name,'Account','PersonEmail','', '','');
 			Test.stopTest();
 		}
 	}

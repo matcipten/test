@@ -1853,7 +1853,7 @@ IF (OUT_BIRTHDATE_CODE1__c =2 &amp;&amp; OUT_BIRTHDATE_CODE2__c  =2, IMAGE(&apos
                 <value>
                     <fullName>PS</fullName>
                     <default>false</default>
-                    <label>Personal Shopper</label>
+                    <label>PS</label>
                 </value>
                 <value>
                     <fullName>BOARD60</fullName>
@@ -1863,12 +1863,12 @@ IF (OUT_BIRTHDATE_CODE1__c =2 &amp;&amp; OUT_BIRTHDATE_CODE2__c  =2, IMAGE(&apos
                 <value>
                     <fullName>B60</fullName>
                     <default>false</default>
-                    <label>B-60</label>
+                    <label>B60</label>
                 </value>
                 <value>
                     <fullName>AGENTS30</fullName>
                     <default>false</default>
-                    <label>AGENTS 30</label>
+                    <label>AGENTS30</label>
                 </value>
                 <value>
                     <fullName>CONF20</fullName>
@@ -8322,6 +8322,17 @@ IMAGE(&apos;/resource/Profilo_0&apos;, &apos;&apos;))</formula>
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Province_UTF_8__c</fullName>
+        <externalId>false</externalId>
+        <label>Local Province/State</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Psconto_medio__c</fullName>
         <externalId>false</externalId>
         <formula>if 
@@ -9836,6 +9847,17 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
         <scale>0</scale>
         <trackHistory>false</trackHistory>
         <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Zip_Code_UTF_8__c</fullName>
+        <externalId>false</externalId>
+        <label>Local Postal Code</label>
+        <length>40</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
         <unique>false</unique>
     </fields>
     <fields>

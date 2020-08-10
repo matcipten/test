@@ -107,7 +107,7 @@
     <aura:attribute name="customPicklistPassportCountryBU" type="Object" />
     <aura:attribute name="hobbyBackup" type="String[]" default=""/>
 
-    
+    <aura:attribute name="salutationBackuo" type="String"/>
 
     <aura:attribute name="GBBool" type="boolean" default="false"/>
     <aura:attribute name="DCCBool" type="boolean" default="true"/>

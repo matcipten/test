@@ -470,6 +470,8 @@
                         if (item.Contact.Account.Associate__c != null) item.Account_Allocated_Client_Advisor = item.Contact.Account.Associate__r.Name;
                         if (item.Contact.Account.Data_Ultimo_Acquisto__c != null) item.Account_Last_Purchase_Date = item.Contact.Account.Data_Ultimo_Acquisto__c;
                         if (item.Contact.Account.Last_contact_category__c != null) item.Account_Last_Activity_Category = item.Contact.Account.Last_contact_category__c;
+                        if (item.Contact.Account.Importo_Acquisti_Totale__c != null) item.Account_Total_Purchase_Amount = item.Contact.Account.Importo_Acquisti_Totale__c;
+                        if (item.Contact.Account.Marketing_FRM__c != null) item.Account_Marketing = item.Contact.Account.Marketing_FRM__c;
                         if (item.Contact.Account.Contact_Preferences__c != null) {
                             console.log(item.Contact.Account.Contact_Preferences__c);
                             item.Account_Contact_Preferences = item.Contact.Account.Contact_Preferences__c.replace('<','\<').replace('>','\>');
@@ -529,6 +531,8 @@
                         if (item.Contact.Account.Associate__c != null) item.Account_Allocated_Client_Advisor = item.Contact.Account.Associate__r.Name;
                         if (item.Contact.Account.Data_Ultimo_Acquisto__c != null) item.Account_Last_Purchase_Date = item.Contact.Account.Data_Ultimo_Acquisto__c;
                         if (item.Contact.Account.Last_contact_category__c != null) item.Account_Last_Activity_Category = item.Contact.Account.Last_contact_category__c;
+                        if (item.Contact.Account.Importo_Acquisti_Totale__c != null) item.Account_Total_Purchase_Amount = item.Contact.Account.Importo_Acquisti_Totale__c;
+                        if (item.Contact.Account.Marketing_FRM__c != null) item.Account_Marketing = item.Contact.Account.Marketing_FRM__c;
                         if (item.Contact.Account.Contact_Preferences__c != null) {
                             console.log(item.Contact.Account.Contact_Preferences__c);
                             item.Account_Contact_Preferences = item.Contact.Account.Contact_Preferences__c.replace('<','\<').replace('>','\>');

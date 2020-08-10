@@ -1,11 +1,13 @@
 ({
 
 	doInit: function(component, event, helper) {
-
+		
 		let cmpEvent = component.getEvent("showSpinner");
 		cmpEvent.fire();
 
 		let newActivityTracking = component.get('v.newActivityTracking');
+		
+
 
 
 		let categoria = newActivityTracking.Categoria__c;
@@ -130,8 +132,46 @@
 
 			$A.enqueueAction(actionGift);
 		}
+		var checkprofile = component.get("c.getUserCheckProfile");
+		checkprofile.setCallback(this,response =>{
+			let state = response.getState();
+			if(state === 'SUCCESS'){
+				console.log('VS check profile: '+response.getReturnValue());
+				component.set('v.profileCheck',response.getReturnValue());
+
+			}
+		});
+
+		$A.enqueueAction(checkprofile);
 
 
+
+		
+
+			
+		// PALUMBO (START) todo
+		// console.log(component.get("v.loggedUser"));
+		var getUserInfo = component.get("c.getUserInfo");
+		getUserInfo.setCallback(this,response =>{
+			let state = response.getState();
+			if(state === 'SUCCESS'){
+
+				if (response.getReturnValue()!=undefined){
+					if (response.getReturnValue().ass!=undefined){
+						var associateLookup = component.find("associateLookup");
+						associateLookup.forceInitValue(response.getReturnValue().ass);
+					}
+
+					if (response.getReturnValue().bout!=undefined){
+						var locationLookup = component.find("locationLookup");
+						locationLookup.forceInitValue(response.getReturnValue().bout);
+					}
+				}	
+			}
+		});
+
+		$A.enqueueAction(getUserInfo);	
+		// PALUMBO (END)
 
 	},
 

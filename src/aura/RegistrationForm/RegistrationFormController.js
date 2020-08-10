@@ -28,7 +28,6 @@
         helper.fetchPickListVal2(component, 'Nazionalita__c', 'InputSelectDynamicContactCountry', "CountryOther");
         helper.fetchPickListVal2(component, 'Nazionalita__c', 'InputSelectDynamicOtherCountry', "CountryContact");
         helper.fetchPickListVal2(component, 'Nazionalita__c', 'InputSelectDynamicPassportCountry',"PassportCountry");
-
         var myPageRef = component.get("v.pageReference");
         if(myPageRef){
             var accId = myPageRef.state.c__recordId;
@@ -44,7 +43,6 @@
         
         
         helper.setTranslation(component);      
-        
         
         component.set("v.successOpen", false);
         component.set("v.formOpen", true);
@@ -446,6 +444,29 @@
             var cityField        = cmp.find("itemPersonMailingCity");
             var postalcodeField  = cmp.find("itemPersonMailingPostalCode");
         }
+
+        var PassCountryField     = cmp.find("inputPassportCountry");  
+        var arrPassCountry=cmp.get("v.customPicklistPassportCountryBU");
+        var checkPassCountry =   arrPassCountry.filter(function(x) {
+            return x.label == item.Paese_di_emissione_passaporto__c && item.Paese_di_emissione_passaporto__c!=undefined ;
+        });
+        // if(item.Paese_di_emissione_passaporto__c == null || item.Paese_di_emissione_passaporto__c == ''){
+        //         validitem = false;
+        //         errors.push('Please insert customer country');
+        //         countryField.set("v.messageWhenBadInput", [{message:""}]);
+        //     } else {
+        //         countryField.set("v.messageWhenBadInput", null);
+        //     }
+        if(checkPassCountry.length==0 && item.Paese_di_emissione_passaporto__c!=undefined){
+            
+            validitem = false;
+            errors.push('Please enter a correct value in the field: Passport Country');
+            PassCountryField.set("v.messageWhenBadInput", [{message:""}]);
+            
+                
+            } else {
+                PassCountryField.set("v.messageWhenBadInput", null);
+            }
        
         var countryField     = cmp.find("inputCountry");  
         var arrCountry=cmp.get("v.customPicklistCountryBU");
