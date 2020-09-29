@@ -70,6 +70,15 @@
         <deleteConstraint>SetNull</deleteConstraint>
         <externalId>false</externalId>
         <label>Associate</label>
+        <lookupFilter>
+            <active>true</active>
+            <filterItems>
+                <field>Associated__c.IsActive__c</field>
+                <operation>equals</operation>
+                <value>A</value>
+            </filterItems>
+            <isOptional>true</isOptional>
+        </lookupFilter>
         <referenceTo>Associated__c</referenceTo>
         <relationshipLabel>Ordini Sartoria Solomeo</relationshipLabel>
         <relationshipName>Ordini_Sartoria_Solomeo</relationshipName>

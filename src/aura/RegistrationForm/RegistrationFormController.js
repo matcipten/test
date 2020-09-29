@@ -445,6 +445,7 @@
             var postalcodeField  = cmp.find("itemPersonMailingPostalCode");
         }
 
+        if (locale != 'US' && locale != 'CA'){
         var PassCountryField     = cmp.find("inputPassportCountry");  
         var arrPassCountry=cmp.get("v.customPicklistPassportCountryBU");
         var checkPassCountry =   arrPassCountry.filter(function(x) {
@@ -467,7 +468,7 @@
             } else {
                 PassCountryField.set("v.messageWhenBadInput", null);
             }
-       
+        }
         var countryField     = cmp.find("inputCountry");  
         var arrCountry=cmp.get("v.customPicklistCountryBU");
         var checkCountry =   arrCountry.filter(function(x) {

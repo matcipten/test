@@ -6,7 +6,7 @@ public class changeOwnerController {
 
     @AuraEnabled
     public static void changeOwner(Id userId){
-        List<Case> casi= [SELECT id,Owner.Name, OwnerId, CreatedDate, RecordType.name
+        List<Case> casi= [SELECT id,Owner.Name, OwnerId, CreatedDate, RecordType.name,Assigned_to_Personal_Client_Assistant__c
                             FROM Case
                             WHERE OwnerId =: userId AND (Status = 'Nuovo' OR Status = 'Riassegnato')];
         System.debug('VS Case : '+ casi);
@@ -35,9 +35,11 @@ public class changeOwnerController {
                 
                 
                 if(c.OwnerId == cH.NewValue){
-                    c.OwnerId=cH.OldValue.toString();
-                    //PALUMBO (START)
-                    c.Assegnato_Da_OmniChannel__c = false;
+                     //PALUMBO (START)
+                    if (!c.Assigned_to_Personal_Client_Assistant__c){
+                        c.OwnerId=cH.OldValue.toString();                   
+                        c.Assegnato_Da_OmniChannel__c = false;
+                    }                    
                     //PALUMBO (END)
                 } 
             caseMap.put(ch.CaseId, c);

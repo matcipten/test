@@ -256,6 +256,16 @@
         <type>Lookup</type>
     </fields>
     <fields>
+        <fullName>Assigned_to_Personal_Client_Assistant__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Assigned to Personal Client Assistant</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>Boutique_DOS__c</fullName>
         <defaultValue>false</defaultValue>
         <externalId>false</externalId>
@@ -1115,6 +1125,16 @@ IF(FLOOR(( ClosedDate - CreatedDate ) * 24) &gt; 23, TEXT( FLOOR (DATETIMEVALUE(
                     <fullName>Lifestyle</fullName>
                     <default>false</default>
                     <label>Lifestyle</label>
+                </value>
+                <value>
+                    <fullName>Bambino</fullName>
+                    <default>false</default>
+                    <label>Bambino</label>
+                </value>
+                <value>
+                    <fullName>Bambina</fullName>
+                    <default>false</default>
+                    <label>Bambina</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -3114,6 +3134,22 @@ IF(FLOOR(( ClosedDate - CreatedDate ) * 24) &gt; 23, TEXT( FLOOR (DATETIMEVALUE(
         </sharedTo>
     </listViews>
     <listViews>
+        <fullName>Commerciale_E_commerce_Case</fullName>
+        <columns>CASES.CASE_NUMBER</columns>
+        <columns>NAME</columns>
+        <columns>CASES.SUBJECT</columns>
+        <columns>CASES.STATUS</columns>
+        <columns>CASES.PRIORITY</columns>
+        <columns>CASES.CREATED_DATE_DATE_ONLY</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <filterScope>Queue</filterScope>
+        <label>Commerciale E-commerce</label>
+        <queue>Commerciale_E_commerce</queue>
+        <sharedTo>
+            <role>Sede</role>
+        </sharedTo>
+    </listViews>
+    <listViews>
         <fullName>Commerciale_IT_CH_Case</fullName>
         <columns>CASES.CASE_NUMBER</columns>
         <columns>CASES.SUBJECT</columns>
@@ -3873,6 +3909,14 @@ IF(FLOOR(( ClosedDate - CreatedDate ) * 24) &gt; 23, TEXT( FLOOR (DATETIMEVALUE(
         <picklistValues>
             <picklist>Linea__c</picklist>
             <values>
+                <fullName>Bambina</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Bambino</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Donna</fullName>
                 <default>false</default>
             </values>
@@ -4449,6 +4493,14 @@ IF(FLOOR(( ClosedDate - CreatedDate ) * 24) &gt; 23, TEXT( FLOOR (DATETIMEVALUE(
         </picklistValues>
         <picklistValues>
             <picklist>Linea__c</picklist>
+            <values>
+                <fullName>Bambina</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Bambino</fullName>
+                <default>false</default>
+            </values>
             <values>
                 <fullName>Donna</fullName>
                 <default>false</default>
@@ -5043,6 +5095,14 @@ IF(FLOOR(( ClosedDate - CreatedDate ) * 24) &gt; 23, TEXT( FLOOR (DATETIMEVALUE(
         <picklistValues>
             <picklist>Linea__c</picklist>
             <values>
+                <fullName>Bambina</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Bambino</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Donna</fullName>
                 <default>false</default>
             </values>
@@ -5595,6 +5655,14 @@ IF(FLOOR(( ClosedDate - CreatedDate ) * 24) &gt; 23, TEXT( FLOOR (DATETIMEVALUE(
         </picklistValues>
         <picklistValues>
             <picklist>Linea__c</picklist>
+            <values>
+                <fullName>Bambina</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Bambino</fullName>
+                <default>false</default>
+            </values>
             <values>
                 <fullName>Donna</fullName>
                 <default>false</default>
@@ -6189,6 +6257,14 @@ IF(FLOOR(( ClosedDate - CreatedDate ) * 24) &gt; 23, TEXT( FLOOR (DATETIMEVALUE(
         <picklistValues>
             <picklist>Linea__c</picklist>
             <values>
+                <fullName>Bambina</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Bambino</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Donna</fullName>
                 <default>false</default>
             </values>
@@ -6744,6 +6820,14 @@ IF(FLOOR(( ClosedDate - CreatedDate ) * 24) &gt; 23, TEXT( FLOOR (DATETIMEVALUE(
         </picklistValues>
         <picklistValues>
             <picklist>Linea__c</picklist>
+            <values>
+                <fullName>Bambina</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Bambino</fullName>
+                <default>false</default>
+            </values>
             <values>
                 <fullName>Donna</fullName>
                 <default>false</default>
@@ -7314,6 +7398,14 @@ IF(FLOOR(( ClosedDate - CreatedDate ) * 24) &gt; 23, TEXT( FLOOR (DATETIMEVALUE(
         <picklistValues>
             <picklist>Linea__c</picklist>
             <values>
+                <fullName>Bambina</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Bambino</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Donna</fullName>
                 <default>false</default>
             </values>
@@ -7874,6 +7966,14 @@ IF(FLOOR(( ClosedDate - CreatedDate ) * 24) &gt; 23, TEXT( FLOOR (DATETIMEVALUE(
         </picklistValues>
         <picklistValues>
             <picklist>Linea__c</picklist>
+            <values>
+                <fullName>Bambina</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Bambino</fullName>
+                <default>false</default>
+            </values>
             <values>
                 <fullName>Donna</fullName>
                 <default>false</default>
@@ -9013,6 +9113,14 @@ IF(FLOOR(( ClosedDate - CreatedDate ) * 24) &gt; 23, TEXT( FLOOR (DATETIMEVALUE(
         <picklistValues>
             <picklist>Linea__c</picklist>
             <values>
+                <fullName>Bambina</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Bambino</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Donna</fullName>
                 <default>false</default>
             </values>
@@ -9621,6 +9729,14 @@ IF(FLOOR(( ClosedDate - CreatedDate ) * 24) &gt; 23, TEXT( FLOOR (DATETIMEVALUE(
         <picklistValues>
             <picklist>Linea__c</picklist>
             <values>
+                <fullName>Bambina</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Bambino</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Donna</fullName>
                 <default>false</default>
             </values>
@@ -10201,6 +10317,14 @@ IF(FLOOR(( ClosedDate - CreatedDate ) * 24) &gt; 23, TEXT( FLOOR (DATETIMEVALUE(
         </picklistValues>
         <picklistValues>
             <picklist>Linea__c</picklist>
+            <values>
+                <fullName>Bambina</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Bambino</fullName>
+                <default>false</default>
+            </values>
             <values>
                 <fullName>Donna</fullName>
                 <default>false</default>

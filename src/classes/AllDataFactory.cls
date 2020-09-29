@@ -387,8 +387,8 @@ public class AllDataFactory {
         insert l;
         Associated__c a = new Associated__c(
             Location__c = l.Id,
-            Name = 'Name'
-
+            Name = 'Name',
+            IsActive__c = 'A'
             );
         insert a;
         return a;

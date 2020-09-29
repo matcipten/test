@@ -105,6 +105,7 @@ global without sharing class RestAccount {
                 m.Id_Cliente__c,
                 m.Id_Cliente_DW__c,
                 m.Id_Cliente_xStore__c,
+                // m.Id_Cliente_MDM__c,
                 m.Master_Record_Id__c
                 From Account m
                 WHERE m.Id = :id
@@ -175,7 +176,7 @@ global without sharing class RestAccount {
         }
         
         return a;
-    }
+    }    
 
     public static SObject getMemberByExtRelateId(String id){
          SObject a = (Account)GenericDao.getAllFieldsResultById('Account', 'Id_Cliente_Relate__c', id);
@@ -193,7 +194,22 @@ global without sharing class RestAccount {
         return a;
     }
     
+    public static SObject getMemberByExtIdMDM(String id){
+        SObject a = (Account)GenericDao.getAllFieldsResultById('Account', 'Id_Cliente_MDM__c', id);
 
+       if(a == null){
+           System.debug('Master not found. Searching for slave.');
+
+           Sobject sd = GenericDao.getAllFieldsResultById('Slave_Data__c', 'Id_Cliente_MDM__c', id);
+
+           System.debug('Slave is ' + sd);
+
+           return sd;
+       }
+       
+       return a;
+    }    
+    
 
     public class RestAccountHandler extends ProvaHandler{
 
@@ -220,9 +236,13 @@ global without sharing class RestAccount {
                 System.debug('Before RestAccount.getMemberByExtIdXStore:' + id);
                 
                 
-
                 a = RestAccount.getMemberByExtIdXStore(id);
-                
+
+                String idMDM = params.get('idMDM');
+                System.debug('Before RestAccount.getMemberByidMDM idMDM:' + idMDM);
+                if(a == null && !String.isEmpty(idMDM)){
+                    a = RestAccount.getMemberByExtIdMDM(idMDM);
+                }
                 String idSF = params.get('idSF');
                 System.debug('Before RestAccount.getMemberByidSF idSF:' + idSF);
                 if(a == null && !String.isEmpty(idSF)){
@@ -233,11 +253,11 @@ global without sharing class RestAccount {
                 if(a == null && !String.isEmpty(secondaryId)){
                     a = RestAccount.getMemberByExtIdAS400(secondaryId);
                 }
-                /*String idDW = params.get('idDW');
+                String idDW = params.get('idDW');
                 System.debug('Before RestAccount.getMemberByidDW idDW:' + idDW);
                 if(a == null && !String.isEmpty(idDW)){
                     a = RestAccount.getMemberByExtIdEcommerce(idDW);
-                }*/
+                }
                 String idRelate = params.get('idRelate');
                 System.debug('Before RestAccount.getMemberByidRelate idRelate:' + idRelate);
                 if(a == null && !String.isEmpty(idRelate)){
@@ -247,6 +267,9 @@ global without sharing class RestAccount {
             } else if(ou == 'a'){
                 System.debug('Before RestAccount.getMemberByExtIdAS400:' + id);            
                 a = RestAccount.getMemberByExtIdAS400(id);
+            } else if(ou == 'm'){
+                System.debug('Before RestAccount.getMemberByidMDM idMDM:' + id);            
+                a = RestAccount.getMemberByExtIdMDM(id);                
             } else{
                 a = RestAccount.getMember(id);
             }
@@ -287,11 +310,13 @@ global without sharing class RestAccount {
 
             if(ou == 'e'){
                 a = RestAccount.getMemberByExtIdEcommerce(id);
-            } else if(ou == 'x'){
+            } else if(ou == 'x'){ 
                 a = RestAccount.getMemberByExtIdXStore(id);
             } else if(ou == 'a'){
                 a = RestAccount.getMemberByExtIdAS400(id);
-            } else{
+            } else if(ou == 'm'){
+                a = RestAccount.getMemberByExtIdMDM(id);
+            } else {
                 a = RestAccount.getMember(id);
             }
 
@@ -348,6 +373,8 @@ global without sharing class RestAccount {
                 a = RestAccount.getMemberByExtIdXStore(id);
             } else if(ou == 'a'){
                 a = RestAccount.getMemberByExtIdAS400(id);
+            } else if(ou == 'm'){
+                a = RestAccount.getMemberByExtIdMDM(id);
             } else{
                 a = RestAccount.getMember(id);
             }

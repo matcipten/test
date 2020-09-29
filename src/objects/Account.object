@@ -1573,6 +1573,15 @@ Importo_acquisti_ultima_stagione_E_comm__c
         <externalId>false</externalId>
         <inlineHelpText>Once the boutique is allocated the preferred client advisor is defined considering both amount and recency of purchases, as above</inlineHelpText>
         <label>Allocated Client Advisor</label>
+        <lookupFilter>
+            <active>true</active>
+            <filterItems>
+                <field>Associated__c.IsActive__c</field>
+                <operation>equals</operation>
+                <value>A</value>
+            </filterItems>
+            <isOptional>true</isOptional>
+        </lookupFilter>
         <referenceTo>Associated__c</referenceTo>
         <relationshipLabel>Accounts</relationshipLabel>
         <relationshipName>Accounts</relationshipName>
@@ -1586,6 +1595,15 @@ Importo_acquisti_ultima_stagione_E_comm__c
         <deleteConstraint>SetNull</deleteConstraint>
         <externalId>false</externalId>
         <label>Associate di registrazione</label>
+        <lookupFilter>
+            <active>false</active>
+            <filterItems>
+                <field>Associated__c.IsActive__c</field>
+                <operation>equals</operation>
+                <value>A</value>
+            </filterItems>
+            <isOptional>true</isOptional>
+        </lookupFilter>
         <referenceTo>Associated__c</referenceTo>
         <relationshipLabel>Accounts (Associate di registrazione)</relationshipLabel>
         <relationshipName>Accounts1</relationshipName>
@@ -3312,6 +3330,15 @@ YEAR(TODAY())-YEAR(PersonBirthdate),
         <trackHistory>false</trackHistory>
         <type>Text</type>
         <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Id_Personal_Client_Assistant__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF($User.Id =  Personal_Client_Assistant__r.Id, true, false)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Id Personal Client Assistant</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>Importo_Acquisti_E_commerce_BRL__c</fullName>
@@ -5411,6 +5438,15 @@ Listino_Acquisti_netto_resi_e_gift__c )</formula>
         <type>Lookup</type>
     </fields>
     <fields>
+        <fullName>Lock__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Lock</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>Loyalty_Anno_Ultimi_12_Mesi__c</fullName>
         <externalId>false</externalId>
         <formula>IF(Totale_Pezzi_Acquistati_Ultimi_12_Mesi__c &gt;=4, IMAGE(&apos;/resource/Loyalty_3&apos;, &apos;Hight&apos;, 15, 170), 
@@ -5482,6 +5518,15 @@ IMAGE(&apos;/resource/Loyalty_0&apos;, &apos;Very Low&apos;, 15, 170)
         <trackHistory>false</trackHistory>
         <type>Text</type>
         <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>MC_Sync__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>MC Sync</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>Mandare_ad_AS400__c</fullName>
@@ -6788,11 +6833,6 @@ IF (OUT_NATIONALITY_CODE1__c =2 &amp;&amp; OUT_NATIONALITY_CODE2__c =2, IMAGE(&a
                     <label>Serbia</label>
                 </value>
                 <value>
-                    <fullName>CS</fullName>
-                    <default>false</default>
-                    <label>Serbia And Montenegro</label>
-                </value>
-                <value>
                     <fullName>SC</fullName>
                     <default>false</default>
                     <label>Seychelles</label>
@@ -7808,6 +7848,18 @@ IF(ISBLANK(TEXT(Nazionalita__c)),0,2)
         <trackHistory>true</trackHistory>
     </fields>
     <fields>
+        <fullName>Personal_Client_Assistant__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Personal Client Assistant</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Customers</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
         <fullName>Phone</fullName>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
@@ -7934,7 +7986,7 @@ IF (OUT_PHONE_CODE1__c =2 &amp;&amp; OUT_PHONE_CODE2__c =2, IMAGE(&apos;/resourc
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
-        <type>Picklist</type>
+        <type>MultiselectPicklist</type>
         <valueSet>
             <valueSetDefinition>
                 <sorted>false</sorted>
@@ -7948,8 +8000,19 @@ IF (OUT_PHONE_CODE1__c =2 &amp;&amp; OUT_PHONE_CODE2__c =2, IMAGE(&apos;/resourc
                     <default>false</default>
                     <label>Donna</label>
                 </value>
+                <value>
+                    <fullName>Bambini</fullName>
+                    <default>false</default>
+                    <label>Bambini</label>
+                </value>
+                <value>
+                    <fullName>Lifestyle</fullName>
+                    <default>false</default>
+                    <label>Lifestyle</label>
+                </value>
             </valueSetDefinition>
         </valueSet>
+        <visibleLines>3</visibleLines>
     </fields>
     <fields>
         <fullName>Preferred_shipping_country__c</fullName>
@@ -9932,6 +9995,11 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
                     <default>false</default>
                     <label>Taiwan customer</label>
                 </value>
+                <value>
+                    <fullName>NGE</fullName>
+                    <default>false</default>
+                    <label>New generic</label>
+                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
@@ -11844,6 +11912,10 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
                 <default>false</default>
             </values>
             <values>
+                <fullName>NGE</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Newsletter</fullName>
                 <default>false</default>
             </values>
@@ -12565,6 +12637,10 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
             </values>
             <values>
                 <fullName>Komide guest</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NGE</fullName>
                 <default>false</default>
             </values>
             <values>

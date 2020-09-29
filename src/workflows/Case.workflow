@@ -43,6 +43,16 @@
         <template>Escalation_Template/Escalation_Template_2nd_Level_Reply_Rec</template>
     </alerts>
     <alerts>
+        <fullName>Alert_per_caso_assegnato_al_Personal_Client_Assistant</fullName>
+        <description>Alert per caso assegnato al Personal Client Assistant</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Personal_Client_Assistant</template>
+    </alerts>
+    <alerts>
         <fullName>Auto_Reply_Customer_Care_Americano</fullName>
         <description>Auto-Reply Customer Care Americano</description>
         <protected>false</protected>
@@ -1135,6 +1145,16 @@
         <active>true</active>
         <formula>ISPICKVAL(PRIORVALUE(Status),&apos;Chiuso&apos;) &amp;&amp; NOT(ISPICKVAL(Status,&apos;Chiuso&apos;))</formula>
         <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Assigned to Personal Client Assistant</fullName>
+        <actions>
+            <name>Alert_per_caso_assegnato_al_Personal_Client_Assistant</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <formula>Assigned_to_Personal_Client_Assistant__c = true</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>
     <rules>
         <fullName>Auto-Response Ticket Ecomm ROW</fullName>

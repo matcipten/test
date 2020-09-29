@@ -72,7 +72,7 @@
         <length>255</length>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -135,7 +135,7 @@
         <length>255</length>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -193,6 +193,16 @@
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Formula_Data_Scontrino__c</fullName>
+        <externalId>false</externalId>
+        <formula>DATEVALUE( Data_Scontrino__c )</formula>
+        <label>Formula Data Scontrino</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
     </fields>
     <fields>
         <fullName>Full_Price__c</fullName>
@@ -2145,6 +2155,15 @@ PSconto__c)</formula>
         <description>Associated al quale è stata associata la vendita</description>
         <externalId>false</externalId>
         <label>Seller</label>
+        <lookupFilter>
+            <active>true</active>
+            <filterItems>
+                <field>Associated__c.IsActive__c</field>
+                <operation>equals</operation>
+                <value>A</value>
+            </filterItems>
+            <isOptional>true</isOptional>
+        </lookupFilter>
         <referenceTo>Associated__c</referenceTo>
         <relationshipLabel>Dettagli Transazione</relationshipLabel>
         <relationshipName>Dettagli_Transazione</relationshipName>

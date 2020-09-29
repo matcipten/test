@@ -1,23 +1,36 @@
 public with sharing class CaseOmniChannelHandler {
     
-    public static void setBusinessHours(List<Case> cases){
-        handleBusinessHours(cases);
+    public static void setBusinessHours(List<Case> cases){        
+        List<Case> cas = setClientAssistant(cases,true);
+        handleBusinessHours(cas);
     }
 
-    public static void setBusinessHoursUpdate(Map<Id, Case> oldMap, List<Case> cases){
+    public static void setBusinessHoursUpdate(Map<Id, Case> oldMap, List<Case> cases){        
         List<Case> caseToWork = new List<Case>();
+        List<Case> caseToHandleClientAssistant = new List<Case>();
         for (Case c : cases){
             System.debug('OLD VALUE OMNICHANNEL: '+oldMap.get(c.Id).Assegnato_Da_OmniChannel__c);
             System.debug('New VALUE OMNICHANNEL: '+c.Assegnato_Da_OmniChannel__c);
             System.debug('OLD VALUE OWNER ID: '+oldMap.get(c.Id).OwnerId);
             System.debug('New VALUE OWNER ID: '+c.OwnerId);
-            if (oldMap.get(c.Id).Assegnato_Da_OmniChannel__c != c.Assegnato_Da_OmniChannel__c || oldMap.get(c.Id).OwnerId != c.OwnerId){         
+            if (oldMap.get(c.Id).Assegnato_Da_OmniChannel__c != c.Assegnato_Da_OmniChannel__c || oldMap.get(c.Id).OwnerId != c.OwnerId){    
                 caseToWork.add(c);
+            }
+
+            if (oldMap.get(c.Id).AccountId != c.AccountId){
+                caseToHandleClientAssistant.add(c);
             }
         }
 
         System.debug('Case to work: '+caseToWork);
-        handleBusinessHours(caseToWork);
+        if (!caseToWork.isEmpty()){
+            handleBusinessHours(caseToWork);
+        }
+
+        if (!caseToHandleClientAssistant.isEmpty()){
+            List<Case> cas = setClientAssistant(caseToHandleClientAssistant,true);           
+            handleBusinessHours(cas);
+        }        
     }
 
     private static void handleBusinessHours(List<Case> cases){
@@ -25,11 +38,13 @@ public with sharing class CaseOmniChannelHandler {
         Set<Id> queues = new Set<Id>();
         
         for (Case c : cases){
-            if(String.valueOf(c.OwnerId).startsWith('005')){
-                users.add(c.OwnerId);
-            }else if(String.valueOf(c.OwnerId).startsWith('00G')){
-                queues.add(c.OwnerId);
-            }
+            if (c.OwnerId!=null){
+                if(String.valueOf(c.OwnerId).startsWith('005')){
+                    users.add(c.OwnerId);
+                }else if(String.valueOf(c.OwnerId).startsWith('00G')){
+                    queues.add(c.OwnerId);
+                }
+            }            
         }
 
         Id businessHourQueueDefault = getDefaultBusinessHour();
@@ -93,5 +108,67 @@ public with sharing class CaseOmniChannelHandler {
         }
 
         return null;
+    }
+
+    private static List<Case> setClientAssistant(List<Case> cases, Boolean isUpdate){
+        Map<Id,Id> caseContactIds = new Map<Id,Id>();
+        Id recordType = Schema.SObjectType.Case.getRecordTypeInfosByDeveloperName().get('Ticket_E_commerce_Notify_Me').getRecordTypeId();
+        for (Case c : cases){
+            if (c.AccountId!=null && c.RecordTypeId != recordType){
+                caseContactIds.put(c.AccountId,c.Id);
+            }
+        }
+
+        Map<Id,Id> contactClientIds = new Map<Id,Id>();
+        List<Account> accounts = [SELECT Id, Personal_Client_Assistant__c FROM  Account WHERE Id IN:  caseContactIds.keySet()];
+        for (Account con : accounts){
+            if (con.Personal_Client_Assistant__c!=null){
+                contactClientIds.put(con.Id,con.Personal_Client_Assistant__c);
+            }
+        }
+
+        System.debug('contactClientIds: '+contactClientIds);
+        Map<Id,Boolean> onlineUser = getOnlineUser();
+        System.debug('onlineUser: '+onlineUser);
+        for (Case c : cases){
+            if (c.AccountId!=null && c.RecordTypeId != recordType){                
+                if (contactClientIds.containsKey(c.AccountId)){  
+                    String message = '';
+                    Id oldOwner = c.OwnerId;
+                    System.debug('oldOwner: '+oldOwner);
+                    if (onlineUser.containsKey(contactClientIds.get(c.AccountId))){
+                        c.OwnerId = contactClientIds.get(c.AccountId);
+                        c.Assigned_to_Personal_Client_Assistant__c = true;  
+                        message = System.Label.Reassign_Case_Success;
+                        System.debug('VS IF: '+message);
+                    }else {
+                        c.OwnerId = oldOwner;
+                        message = System.Label.Reassign_Case_Error;
+                        System.debug('VS ELSE: '+message);
+                    }
+                    
+                    if (isUpdate){
+                        CaseClientAssistant__e event = new CaseClientAssistant__e (UserId__c = UserInfo.getUserId(), Message__c = message);
+                        System.debug('@@@@@publish event');
+                        EventBus.publish(event);
+                    }                    
+                }                          
+            }
+        }
+
+        return cases;
+    }
+
+    private static Map<Id,Boolean> getOnlineUser(){
+        Map<Id,Boolean> onlineUser = new Map<Id,Boolean>();
+        List<UserServicePresence> servicePresences = [SELECT UserId, User.Name 
+                                                      FROM UserServicePresence 
+                                                      WHERE IsCurrentState = true 
+                                                      AND (ServicePresenceStatus.MasterLabel ='Disponibile' OR ServicePresenceStatus.MasterLabel LIKE 'Available%')];
+        for (UserServicePresence usp : servicePresences){
+            onlineUser.put(usp.UserId,true);
+        }
+
+        return onlineUser;
     }
 }

@@ -152,7 +152,7 @@
         <label>Client Advisor</label>
         <lookupFilter>
             <active>true</active>
-            <booleanFilter>(1 AND 2) OR 3</booleanFilter>
+            <booleanFilter>((1 AND 2) OR 3) AND 4</booleanFilter>
             <filterItems>
                 <field>Associated__c.Id_Location_Micros__c</field>
                 <operation>equals</operation>
@@ -167,6 +167,11 @@
                 <field>$Profile.Name</field>
                 <operation>notEqual</operation>
                 <value>BC - Associate, BC - Boutique</value>
+            </filterItems>
+            <filterItems>
+                <field>Associated__c.IsActive__c</field>
+                <operation>equals</operation>
+                <value>A</value>
             </filterItems>
             <isOptional>true</isOptional>
         </lookupFilter>
@@ -2567,7 +2572,17 @@ true, false)</formula>
         <deleteConstraint>SetNull</deleteConstraint>
         <externalId>false</externalId>
         <label>Uniform Owner</label>
+        <lookupFilter>
+            <active>true</active>
+            <filterItems>
+                <field>Associated__c.IsActive__c</field>
+                <operation>equals</operation>
+                <value>A</value>
+            </filterItems>
+            <isOptional>true</isOptional>
+        </lookupFilter>
         <referenceTo>Associated__c</referenceTo>
+        <relationshipLabel>Repairs (Uniform Owner)</relationshipLabel>
         <relationshipName>Dettagli_Riparazioni_o_Modifiche</relationshipName>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
@@ -2581,6 +2596,29 @@ true, false)</formula>
         <fullName>All</fullName>
         <filterScope>Everything</filterScope>
         <label>All</label>
+    </listViews>
+    <listViews>
+        <fullName>Commerciale_E_commerce_Dettaglio_Riparazione</fullName>
+        <filterScope>Queue</filterScope>
+        <label>Commerciale E-commerce</label>
+        <queue>Commerciale_E_commerce</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>My_Open_Repairs</fullName>
+        <columns>NAME</columns>
+        <columns>Client__c</columns>
+        <columns>Articolo__c</columns>
+        <columns>Status__c</columns>
+        <columns>CREATED_DATE</columns>
+        <filterScope>Mine</filterScope>
+        <label>My Open Repairs</label>
+        <sharedTo>
+            <group>Customer_Care_IT</group>
+            <role>X1_Livello</role>
+        </sharedTo>
     </listViews>
     <listViews>
         <fullName>My_Repairs_Waiting_for_Pickup</fullName>

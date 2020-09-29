@@ -112,6 +112,16 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Contact_ID__c</fullName>
+        <externalId>false</externalId>
+        <label>Contact ID</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Country_Newsletter__c</fullName>
         <externalId>false</externalId>
         <label>Country Newsletter</label>

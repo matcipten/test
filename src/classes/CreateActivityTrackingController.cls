@@ -344,7 +344,7 @@ public with sharing class CreateActivityTrackingController {
 	@AuraEnabled
 	public static Boolean getUserCheckProfile(){
 		User u = [SELECT Id,name, profile.Name	FROM User WHERE ID=: UserInfo.getUserId()];
-		if(u.profile.Name=='BC - CRM Local' || u.profile.Name=='System Administrator')
+		if(u.profile.Name=='BC - CRM Local' || u.profile.Name=='System Administrator'|| u.profile.Name=='BC - Customer Care 1° Level'|| u.profile.Name=='BC - Customer Care 1° Level US')
 			return true;
 		else
 			return false;

@@ -2,7 +2,7 @@ public with sharing class OnAccountTriggerHandler {
     
     
     public static Set<Id> SetOfIDs = new Set<Id>();
-
+    private static boolean run = true;
     public static void CreateSlaveAssociation(list<Account> oldAccount){
  
         set<string> AccountIds                  = new set<string>();
@@ -83,7 +83,7 @@ public with sharing class OnAccountTriggerHandler {
                 sd.Telefono_Lavoro__c                   = MapAccount.get(m.Id_Account__c).Telefono_Lavoro__c;
                 sd.Country_Newsletter__c                = MapAccount.get(m.Id_Account__c).Country_Newsletter__c;                
                 sd.Master_Slave__c                      = MapAccount.get(m.Id_Account__c).Master_Slave__c;
-                
+                sd.Contact_ID__c                        = MapAccount.get(m.Id_Account__c).Contact_ID__pc;
                 ListSlave.add(sd);
                 ListMapSlaveToDelete.add(m);                
                 MasterAccountIds.add(m.Account__c);
@@ -598,6 +598,15 @@ public with sharing class OnAccountTriggerHandler {
         return result;
     }
     
+    
+    public static boolean runOnce(){
+    if(run){
+     run=false;
+     return true;
+    }else{
+        return run;
+    }
+    }
     
  
 	
