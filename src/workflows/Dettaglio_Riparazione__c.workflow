@@ -27,15 +27,15 @@
         <description>Avviso Nuova Riparazione - IT</description>
         <protected>false</protected>
         <recipients>
-            <recipient>arianna.ricci@brunellocucinelli.it</recipient>
+            <recipient>chiara.rossi@brunellocucinelli.it</recipient>
             <type>user</type>
         </recipients>
         <recipients>
-            <recipient>simona.caterina@brunellocucinelli.it</recipient>
+            <recipient>elena.cipolletta@brunellocucinelli.it</recipient>
             <type>user</type>
         </recipients>
         <recipients>
-            <recipient>vincenza.tralli@brunellocucinelli.it</recipient>
+            <recipient>laura.tartacca@brunellocucinelli.it</recipient>
             <type>user</type>
         </recipients>
         <senderType>CurrentUser</senderType>
@@ -50,7 +50,26 @@
             <type>user</type>
         </recipients>
         <recipients>
+            <recipient>laura.tartacca@brunellocucinelli.it</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
             <recipient>silvia.conti@brunellocucinelli.it</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Riparazione/Riparazione_1_avviso_nuova_riparazione</template>
+    </alerts>
+    <alerts>
+        <fullName>Avviso_Nuova_Riparazione_WW</fullName>
+        <description>Avviso Nuova Riparazione WW</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>arianna.ricci@brunellocucinelli.it</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>simona.caterina@brunellocucinelli.it</recipient>
             <type>user</type>
         </recipients>
         <senderType>CurrentUser</senderType>
@@ -172,6 +191,50 @@
         <template>Riparazione/Riparazione_2_numero_autorizzazione_inserito_ITA</template>
     </alerts>
     <alerts>
+        <fullName>Nuova_riparazione_AT</fullName>
+        <description>Nuova riparazione AT</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>irene.tarini@brunellocucinelli.it</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Riparazione/Riparazione_1_avviso_nuova_riparazione</template>
+    </alerts>
+    <alerts>
+        <fullName>Nuova_riparazione_BE</fullName>
+        <description>Nuova riparazione BE</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>flavia.miluzzi@brunellocucinelli.it</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Riparazione/Riparazione_1_avviso_nuova_riparazione</template>
+    </alerts>
+    <alerts>
+        <fullName>Nuova_riparazione_DE</fullName>
+        <description>Nuova riparazione DE</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>francesca.defelice@brunellocucinelli.it</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Riparazione/Riparazione_1_avviso_nuova_riparazione</template>
+    </alerts>
+    <alerts>
+        <fullName>Nuova_riparazione_DK</fullName>
+        <description>Nuova riparazione DK</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>marta.barluzzi@brunellocucinelli.it</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Riparazione/Riparazione_1_avviso_nuova_riparazione</template>
+    </alerts>
+    <alerts>
         <fullName>Nuova_riparazione_DK_GB</fullName>
         <description>Nuova riparazione GB, DK, BE, AT, FR, DE</description>
         <protected>false</protected>
@@ -195,15 +258,60 @@
         <description>Nuova riparazione ES, GR</description>
         <protected>false</protected>
         <recipients>
+            <recipient>eleonora.bisogni@brunellocucinelli.it</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>vincenza.tralli@brunellocucinelli.it</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>yosi.casuscelli@brunellocucinelli.it</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Riparazione/Riparazione_1_avviso_nuova_riparazione</template>
+    </alerts>
+    <alerts>
+        <fullName>Nuova_riparazione_FR</fullName>
+        <description>Nuova riparazione FR</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>flavia.miluzzi@brunellocucinelli.it</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>sara.dibello@brunellocucinelli.it</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Riparazione/Riparazione_1_avviso_nuova_riparazione</template>
+    </alerts>
+    <alerts>
+        <fullName>Nuova_riparazione_GB</fullName>
+        <description>Nuova riparazione GB</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>irene.tarini@brunellocucinelli.it</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>marta.barluzzi@brunellocucinelli.it</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Riparazione/Riparazione_1_avviso_nuova_riparazione</template>
+    </alerts>
+    <alerts>
+        <fullName>Nuova_riparazione_ROW</fullName>
+        <description>Nuova riparazione ROW</description>
+        <protected>false</protected>
+        <recipients>
             <recipient>arianna.ricci@brunellocucinelli.it</recipient>
             <type>user</type>
         </recipients>
         <recipients>
             <recipient>simona.caterina@brunellocucinelli.it</recipient>
-            <type>user</type>
-        </recipients>
-        <recipients>
-            <recipient>vincenza.tralli@brunellocucinelli.it</recipient>
             <type>user</type>
         </recipients>
         <senderType>CurrentUser</senderType>
@@ -856,17 +964,17 @@ NOT(ISBLANK(Data_riparazione_prevista__c )))</formula>
         <triggerType>onCreateOnly</triggerType>
     </rules>
     <rules>
-        <fullName>Creazione Riparazione Sede - ES%2C GR%2C GB%2C DK</fullName>
+        <fullName>Creazione Riparazione Sede - ES%2C GR</fullName>
         <actions>
             <name>Nuova_riparazione_ES_GR</name>
             <type>Alert</type>
         </actions>
-        <active>true</active>
-        <booleanFilter>1 AND (2 OR 3)</booleanFilter>
+        <active>false</active>
+        <booleanFilter>(1 OR 4 OR 5) AND (2 OR 3)</booleanFilter>
         <criteriaItems>
             <field>Dettaglio_Riparazione__c.RecordTypeId</field>
             <operation>equals</operation>
-            <value>Riparazione - Sede</value>
+            <value>Client Return_To Headquarters Solomeo</value>
         </criteriaItems>
         <criteriaItems>
             <field>User.Nation_Contact_Card__c</field>
@@ -878,6 +986,16 @@ NOT(ISBLANK(Data_riparazione_prevista__c )))</formula>
             <operation>equals</operation>
             <value>GR</value>
         </criteriaItems>
+        <criteriaItems>
+            <field>Dettaglio_Riparazione__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Item from Stock_To Headquarters Solomeo</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Dettaglio_Riparazione__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Uniform/Personal Items_To Headquarters Solomeo</value>
+        </criteriaItems>
         <description>Invio alert nuova riparazione per Spagna, Grecia</description>
         <triggerType>onCreateOnly</triggerType>
     </rules>
@@ -887,7 +1005,7 @@ NOT(ISBLANK(Data_riparazione_prevista__c )))</formula>
             <name>Nuova_riparazione_DK_GB</name>
             <type>Alert</type>
         </actions>
-        <active>true</active>
+        <active>false</active>
         <booleanFilter>1 AND (2 OR 3 OR 4 OR 5 OR 6 OR 7 OR 8)</booleanFilter>
         <criteriaItems>
             <field>Dettaglio_Riparazione__c.RecordTypeId</field>
@@ -938,7 +1056,7 @@ NOT(ISBLANK(Data_riparazione_prevista__c )))</formula>
             <name>Avviso_Nuova_Riparazione_IT_Svizzera</name>
             <type>Alert</type>
         </actions>
-        <active>true</active>
+        <active>false</active>
         <booleanFilter>1 AND 2</booleanFilter>
         <criteriaItems>
             <field>Dettaglio_Riparazione__c.RecordTypeId</field>
@@ -958,7 +1076,7 @@ NOT(ISBLANK(Data_riparazione_prevista__c )))</formula>
             <name>Avviso_Nuova_Riparazione_Svizzera</name>
             <type>Alert</type>
         </actions>
-        <active>true</active>
+        <active>false</active>
         <booleanFilter>1 AND 2</booleanFilter>
         <criteriaItems>
             <field>Dettaglio_Riparazione__c.RecordTypeId</field>
@@ -998,6 +1116,67 @@ NOT(ISBLANK(Data_riparazione_prevista__c )))</formula>
             <field>User.Country</field>
             <operation>notEqual</operation>
             <value>CH</value>
+        </criteriaItems>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Creazione Riparazione Sede Team Riparazioni</fullName>
+        <active>false</active>
+        <booleanFilter>1 OR 2 OR 3 OR 4 OR 5</booleanFilter>
+        <criteriaItems>
+            <field>Dettaglio_Riparazione__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Client Return_To Headquarters Solomeo</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Dettaglio_Riparazione__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Item from Stock_To Headquarters Solomeo</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Dettaglio_Riparazione__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Uniform/Personal Items_To Headquarters Solomeo</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Dettaglio_Riparazione__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Repair - Customer Care</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Dettaglio_Riparazione__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Riparazione_Sede</value>
+        </criteriaItems>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Creazione Riparazione Sede WW</fullName>
+        <actions>
+            <name>Avviso_Nuova_Riparazione_WW</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>1 OR 2 OR 3 OR 4</booleanFilter>
+        <criteriaItems>
+            <field>Dettaglio_Riparazione__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Riparazione - Sede</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Dettaglio_Riparazione__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Riparazione - Customer Care</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Dettaglio_Riparazione__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Riparazione Uniform</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Dettaglio_Riparazione__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Riparazione Stock</value>
         </criteriaItems>
         <triggerType>onCreateOnly</triggerType>
     </rules>

@@ -1684,6 +1684,37 @@ IF (OUT_BIRTHDATE_CODE1__c =2 &amp;&amp; OUT_BIRTHDATE_CODE2__c  =2, IMAGE(&apos
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Call_Priority__c</fullName>
+        <description>Prioritization of the customer for inbound calls</description>
+        <externalId>false</externalId>
+        <label>Call Priority</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>High</fullName>
+                    <default>false</default>
+                    <label>High</label>
+                </value>
+                <value>
+                    <fullName>Normal</fullName>
+                    <default>true</default>
+                    <label>Normal</label>
+                </value>
+                <value>
+                    <fullName>Low</fullName>
+                    <default>false</default>
+                    <label>Low</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
         <fullName>Canale_Acquisto_Preferenziale__c</fullName>
         <externalId>false</externalId>
         <label>Canale acquisto preferenziale</label>
@@ -2962,7 +2993,7 @@ YEAR(TODAY())-YEAR(PersonBirthdate),
         <label>Fascia Di Età</label>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <type>Picklist</type>
         <valueSet>
             <valueSetDefinition>
@@ -3063,7 +3094,7 @@ YEAR(TODAY())-YEAR(PersonBirthdate),
         <externalId>false</externalId>
         <label>Flag Debole</label>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <type>Checkbox</type>
     </fields>
     <fields>
@@ -3072,7 +3103,7 @@ YEAR(TODAY())-YEAR(PersonBirthdate),
         <externalId>false</externalId>
         <label>Flag Forte</label>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <type>Checkbox</type>
     </fields>
     <fields>
@@ -3267,6 +3298,18 @@ YEAR(TODAY())-YEAR(PersonBirthdate),
         <caseSensitive>false</caseSensitive>
         <externalId>true</externalId>
         <label>Id cliente E-commerce</label>
+        <length>100</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>Id_Cliente_MDM__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <externalId>true</externalId>
+        <label>MDM Customer ID</label>
         <length>100</length>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
@@ -4990,6 +5033,39 @@ Email o Numero di telefono (almeno uno)</inlineHelpText>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Last_contact_bc_s_category__c</fullName>
+        <externalId>false</externalId>
+        <label>Last bc&apos;s activity category</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>Activity_Category</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Last_contact_bc_s_date__c</fullName>
+        <externalId>false</externalId>
+        <label>Last bc&apos;s activity date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Last_contact_bc_s_type__c</fullName>
+        <externalId>false</externalId>
+        <label>Last bc&apos;s activity type</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Last_contact_category__c</fullName>
@@ -7767,7 +7843,7 @@ IF(ISBLANK(TEXT(Nazionalita__c)),0,2)
     <fields>
         <fullName>PersonAssistantPhone</fullName>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
     </fields>
     <fields>
         <fullName>PersonBirthdate</fullName>
@@ -7846,6 +7922,18 @@ IF(ISBLANK(TEXT(Nazionalita__c)),0,2)
         <fullName>PersonTitle</fullName>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
+    </fields>
+    <fields>
+        <fullName>Personal_Agent_Voice__c</fullName>
+        <description>Field to allow the retrieval of the personal agent by Amazon Connect</description>
+        <externalId>false</externalId>
+        <formula>Personal_Client_Assistant__c &amp; &quot;@00D36000000ICDu&quot;</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Personal Agent Voice</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Personal_Client_Assistant__c</fullName>
@@ -8948,9 +9036,9 @@ IF( AND(Data_Ultimo_Acquisto__c &gt;= (TODAY()-365), Importo_Totale_Acquisti_EUR
 IF( AND(Data_Ultimo_Acquisto__c &gt;= (TODAY()-365), Importo_Totale_Acquisti_EUR__c &gt;= 20000 ) , &quot;Trees&quot;,
 IF( AND((TODAY()-365) &gt; Data_Ultimo_Acquisto__c,(TODAY()-730) &lt; Data_Ultimo_Acquisto__c, Importo_Totale_Acquisti_EUR__c &gt;= 20000 ) , &quot;Rainbow&quot;,
 IF( AND(Data_Ultimo_Acquisto__c &gt;= (TODAY()-365), Importo_Totale_Acquisti_EUR__c &gt;= 5000),&quot;Bush&quot;,
-IF( AND(Data_Ultimo_Acquisto__c &gt;= (TODAY()-365), Importo_Totale_Acquisti_EUR__c &lt; 5000,N_Scontrini_netto_resi_netto_gift__c = 1) , &quot;Seed&quot;,
-IF( AND(Data_Ultimo_Acquisto__c &gt;= (TODAY()-365), Importo_Totale_Acquisti_EUR__c &lt; 5000,N_Scontrini_netto_resi_netto_gift__c &gt; 1) , &quot;Grass&quot;,
-IF( AND((TODAY()-365) &gt; Data_Ultimo_Acquisto__c,(TODAY()-730) &lt; Data_Ultimo_Acquisto__c, Importo_Totale_Acquisti_EUR__c &lt; 20000) , &quot;Rain&quot;,
+IF( AND(Data_Ultimo_Acquisto__c &gt;= (TODAY()-365), Importo_Totale_Acquisti_EUR__c != 0,Importo_Totale_Acquisti_EUR__c &lt; 5000,N_Scontrini_netto_resi_netto_gift__c = 1) , &quot;Seed&quot;,
+IF( AND(Data_Ultimo_Acquisto__c &gt;= (TODAY()-365), Importo_Totale_Acquisti_EUR__c != 0,Importo_Totale_Acquisti_EUR__c &lt; 5000,N_Scontrini_netto_resi_netto_gift__c &gt; 1) , &quot;Grass&quot;,
+IF( AND((TODAY()-365) &gt; Data_Ultimo_Acquisto__c,(TODAY()-730) &lt; Data_Ultimo_Acquisto__c, Importo_Totale_Acquisti_EUR__c != 0,Importo_Totale_Acquisti_EUR__c &lt; 20000) , &quot;Rain&quot;,
 IF( AND(Data_Ultimo_Acquisto__c &lt;= (TODAY()-730),N_Scontrini_netto_resi_netto_gift__c!=0,Importo_Totale_Acquisti_EUR__c!=0) , &quot;Snow&quot;,
 IF( AND(OR(Importo_Totale_Acquisti_EUR__c = 0, Importo_Totale_Acquisti_EUR__c =null)), &quot;Ground&quot;,
 null)))))))))))</formula>
@@ -9065,7 +9153,7 @@ Ground R: / M: 0</inlineHelpText>
         <externalId>false</externalId>
         <label>SMS/MMS</label>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <type>Checkbox</type>
     </fields>
     <fields>
@@ -11119,6 +11207,7 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
     </listViews>
     <listViews>
         <fullName>My_store_thank_you_note</fullName>
+        <booleanFilter>1 AND 2 AND 3</booleanFilter>
         <columns>ACCOUNT.NAME</columns>
         <columns>Data_Ultimo_Acquisto__c</columns>
         <columns>Marketing__c</columns>
@@ -11136,6 +11225,11 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
             <operation>equals</operation>
             <value>1</value>
         </filters>
+        <filters>
+            <field>Last_Boutique__c</field>
+            <operation>contains</operation>
+            <value>FRANCOFORTE,BERLINO,DUESSELDORF,MUNICH,MONACO</value>
+        </filters>
         <label>My store thank you note</label>
         <sharedTo>
             <role>BOUTIQUE_DEUTSCHLAND_Meyer</role>
@@ -11144,6 +11238,7 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
     </listViews>
     <listViews>
         <fullName>My_thank_you_note</fullName>
+        <booleanFilter>1 AND 2 AND 3</booleanFilter>
         <columns>ACCOUNT.NAME</columns>
         <columns>ACCOUNT.SITE</columns>
         <columns>ACCOUNT.ADDRESS1_STATE</columns>
@@ -11160,6 +11255,11 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
             <field>Titolare_Client_Advisor__c</field>
             <operation>equals</operation>
             <value>1</value>
+        </filters>
+        <filters>
+            <field>Last_Boutique__c</field>
+            <operation>contains</operation>
+            <value>FRANCOFORTE,BERLINO,DUESSELDORF,MUNICH,MONACO</value>
         </filters>
         <label>My thank you note</label>
         <sharedTo>
@@ -11254,6 +11354,21 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
             <values>
                 <fullName>AD</fullName>
                 <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Call_Priority__c</picklist>
+            <values>
+                <fullName>High</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Low</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Normal</fullName>
+                <default>true</default>
             </values>
         </picklistValues>
         <picklistValues>
@@ -11611,6 +11726,113 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
             </values>
             <values>
                 <fullName>Utilities</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Last_contact_bc_s_category__c</picklist>
+            <values>
+                <fullName>EVMA_Seasonal opening</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EV_In store animation%2FEvent</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EV_Networking - Charity</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EV_Out of store Event</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EV_Private Sales</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EV_Store opening%2FPop-up</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EV_VIP Event Solomeo</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MA_Catalogues</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MA_Direct Emailing</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MA_Lookbooks</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Attending Corporate Event</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Eating out%2FVip dinner or lunch</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Follow-up after store visit</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Gifting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Greetings</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Keep in Touch</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Preview</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Product Home Delivery</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Proposte di stile</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Repair follow-up</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Sartoria Solomeo</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Solomeo Experience</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Spend time with clients</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Thank you note</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Tour Visit</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Trunk Show</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -11985,6 +12207,21 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
             </values>
         </picklistValues>
         <picklistValues>
+            <picklist>Call_Priority__c</picklist>
+            <values>
+                <fullName>High</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Low</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Normal</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
             <picklist>Categoria_Cliente_Proposta__c</picklist>
             <values>
                 <fullName>AGENTS30</fullName>
@@ -12343,6 +12580,113 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
             </values>
         </picklistValues>
         <picklistValues>
+            <picklist>Last_contact_bc_s_category__c</picklist>
+            <values>
+                <fullName>EVMA_Seasonal opening</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EV_In store animation%2FEvent</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EV_Networking - Charity</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EV_Out of store Event</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EV_Private Sales</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EV_Store opening%2FPop-up</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EV_VIP Event Solomeo</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MA_Catalogues</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MA_Direct Emailing</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MA_Lookbooks</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Attending Corporate Event</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Eating out%2FVip dinner or lunch</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Follow-up after store visit</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Gifting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Greetings</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Keep in Touch</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Preview</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Product Home Delivery</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Proposte di stile</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Repair follow-up</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Sartoria Solomeo</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Solomeo Experience</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Spend time with clients</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Thank you note</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Tour Visit</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OT_Trunk Show</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
             <picklist>Last_contact_category__c</picklist>
             <values>
                 <fullName>EVMA_Seasonal opening</fullName>
@@ -12655,21 +12999,23 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
     </recordTypes>
     <searchLayouts>
         <customTabListAdditionalFields>ACCOUNT.NAME</customTabListAdditionalFields>
-        <customTabListAdditionalFields>ACCOUNT.ADDRESS1_CITY</customTabListAdditionalFields>
         <customTabListAdditionalFields>ACCOUNT.PHONE1</customTabListAdditionalFields>
+        <customTabListAdditionalFields>PC_EMAIL</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Allocation__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>ACCOUNT.CREATED_DATE</customTabListAdditionalFields>
+        <customTabListAdditionalFields>CREATEDBY_USER.ALIAS</customTabListAdditionalFields>
         <lookupDialogsAdditionalFields>ACCOUNT.NAME</lookupDialogsAdditionalFields>
-        <lookupDialogsAdditionalFields>ACCOUNT.SITE</lookupDialogsAdditionalFields>
-        <lookupDialogsAdditionalFields>CORE.USERS.ALIAS</lookupDialogsAdditionalFields>
-        <lookupDialogsAdditionalFields>ACCOUNT.TYPE</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>ACCOUNT.PHONE1</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>PC_EMAIL</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Allocation__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>ACCOUNT.CREATED_DATE</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>CREATEDBY_USER.ALIAS</lookupDialogsAdditionalFields>
         <lookupPhoneDialogsAdditionalFields>ACCOUNT.NAME</lookupPhoneDialogsAdditionalFields>
-        <lookupPhoneDialogsAdditionalFields>ACCOUNT.SITE</lookupPhoneDialogsAdditionalFields>
-        <lookupPhoneDialogsAdditionalFields>CORE.USERS.ALIAS</lookupPhoneDialogsAdditionalFields>
-        <lookupPhoneDialogsAdditionalFields>ACCOUNT.TYPE</lookupPhoneDialogsAdditionalFields>
         <lookupPhoneDialogsAdditionalFields>ACCOUNT.PHONE1</lookupPhoneDialogsAdditionalFields>
-        <lookupPhoneDialogsAdditionalFields>PC_PHONE3</lookupPhoneDialogsAdditionalFields>
-        <lookupPhoneDialogsAdditionalFields>PC_PHONE4</lookupPhoneDialogsAdditionalFields>
-        <lookupPhoneDialogsAdditionalFields>PC_PHONE5</lookupPhoneDialogsAdditionalFields>
-        <lookupPhoneDialogsAdditionalFields>PC_PHONE6</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>PC_EMAIL</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Allocation__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>ACCOUNT.CREATED_DATE</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>CREATEDBY_USER.ALIAS</lookupPhoneDialogsAdditionalFields>
         <searchResultsAdditionalFields>ACCOUNT.NAME</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>ACCOUNT.PHONE1</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>PC_EMAIL</searchResultsAdditionalFields>

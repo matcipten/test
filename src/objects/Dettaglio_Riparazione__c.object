@@ -1802,6 +1802,32 @@
         </valueSet>
     </fields>
     <fields>
+        <fullName>Prodotto_riparabile__c</fullName>
+        <externalId>false</externalId>
+        <label>Prodotto riparabile?</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Si</fullName>
+                    <default>false</default>
+                    <label>Si</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
         <fullName>Prodotto_riparato__c</fullName>
         <defaultValue>&quot;To be repaired&quot;</defaultValue>
         <externalId>false</externalId>
@@ -2249,6 +2275,7 @@
                 <value>
                     <fullName>Si</fullName>
                     <default>false</default>
+                    <isActive>false</isActive>
                     <label>Si</label>
                 </value>
             </valueSetDefinition>
@@ -2339,6 +2366,7 @@
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
+            <restricted>true</restricted>
             <valueSetDefinition>
                 <sorted>false</sorted>
                 <value>
@@ -2350,6 +2378,21 @@
                     <fullName>Riparazione richiesta al Customer Care</fullName>
                     <default>false</default>
                     <label>Riparazione richiesta al Customer Care</label>
+                </value>
+                <value>
+                    <fullName>Invio prodotto in laboratorio</fullName>
+                    <default>false</default>
+                    <label>Invio prodotto in laboratorio</label>
+                </value>
+                <value>
+                    <fullName>Ricevimento capo in laboratorio</fullName>
+                    <default>false</default>
+                    <label>Ricevimento capo in laboratorio</label>
+                </value>
+                <value>
+                    <fullName>Riparazione in progress</fullName>
+                    <default>false</default>
+                    <label>Riparazione in progress</label>
                 </value>
                 <value>
                     <fullName>Numero di autorizzazione inserito</fullName>
@@ -2375,6 +2418,11 @@
                     <fullName>Spedizione capo riparato effettuata</fullName>
                     <default>false</default>
                     <label>Spedizione capo riparato effettuata</label>
+                </value>
+                <value>
+                    <fullName>Ricevimento capo riparato in boutique</fullName>
+                    <default>false</default>
+                    <label>Ricevimento capo riparato in boutique</label>
                 </value>
                 <value>
                     <fullName>Riconsegna al cliente effettuata</fullName>
@@ -2427,9 +2475,10 @@
                     <label>Chiuso</label>
                 </value>
                 <value>
-                    <fullName>Ricevimento capo riparato in boutique</fullName>
+                    <fullName>non modificare</fullName>
                     <default>false</default>
-                    <label>Ricevimento capo riparato in boutique</label>
+                    <isActive>false</isActive>
+                    <label>non modificare</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -2883,6 +2932,1171 @@ true, false)</formula>
     <pluralLabel>Riparazioni</pluralLabel>
     <recordTypeTrackFeedHistory>false</recordTypeTrackFeedHistory>
     <recordTypeTrackHistory>true</recordTypeTrackHistory>
+    <recordTypes>
+        <fullName>Customer_Care_US</fullName>
+        <active>true</active>
+        <label>Riparazione - Customer Care US</label>
+        <picklistValues>
+            <picklist>Boutique_di_Acquisto__c</picklist>
+            <values>
+                <fullName>026 - PORTO CERVO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ALA - ALA MOANA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AMB - AMBURGO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AMS - AMSTERDAM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ASP - ASPEN</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ATA - ATLANTA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ATH - ATHENE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Altro</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BAR - BARCELLONA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BEIJING %28China World Mall%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BER - BERLINO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BIC - BPS BICESTER</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BLG - BOLOGNA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BR2 - BRUXELLES 2</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BVH - BEVERLY HILLS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CA1 - CAPRI</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CA2 - CAPRI</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CAN - CANNES</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CH2 - CHICAGO BPS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CHA - CHANGCHUN CHARTER</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CHANGSHA IFS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CHENGDU IFS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CHI - CHICAGO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CHO - CHONGQING IFS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CN2 - CANNES</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>COU - COURCHEVEL</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CPH - COPENHAGEN DOS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DA1 - DAIMARU SHINSAIBASHI</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DA2 - DAIMARU HAKATA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DAL - DALIAN TIMES SQUARE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DHS - DESERT HILLS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DLL - DALLAS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DUS - DUESSELDORF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EAS - EAST HAMPTON</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EC1 - Ecommerce Europa e ROW</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EC2 - Ecommerce USA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EHP - EAST HAMPTON POP UP STORE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FIR - FIRENZE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FRK - FRANCOFORTE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FU1 - FUKUYA HIROSHIMA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>GI1 - TOKYO GINZA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>GIN - GINEVRA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>GOT - GOTEMBA BPS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HA1 - HANKYU OSAKA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HA2 - HANKYU YURAKUCHO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HA3 - HANKYU OSAKA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HAR - HARBIN CHARTER</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HCA - HOLT CALGARY RETAIL</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HMO - HOLT MONTREAL RETAIL</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HO3 - HONG KONG QUEEN%27S ROAD</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HO4 - HONG KONG LEE GARDEN ONE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HON - HONG KONG IFC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HOU - HOUSTON</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HSQ - HOLT SQUARE ONE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HTO - HOLT TORONTO RETAIL</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HVA - HOLT VANCOUVER RETAIL</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HYO - HOLT YORKDALE RETAIL</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HZT - HANGZHOU TOWER</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IBZ - IBIZA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IF1 - IWATAYA FUKUOKA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IS1 - ISETAN TOKYO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IS2 - ISETAN TOKYO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>KIS - KISARAZU BPS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>KNK - KNOKKE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>KOB - KOBE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>LAS - LAS VEGAS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>LAS VEGAS 2 %28WYNN%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>LIV - LIVERMORE BPS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>LO2 - LONDRA BURLINGTON</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>LO3 - LONDRA SLOANE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>LUG - LUGANO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MA1 - MATSUZAKAYA NAGOYA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MAD - MADRID</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MAR - MARITTIMA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MI1 - MITSUKOSHI NIHONBASHI</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MI2 - MITSUKOSHI GINZA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MI3 - MITSUKOSHI SAPPORO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MI4 - MITSUKOSHI NIHONBASHI</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MIA - MIAMI</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MIL - MILANO MONTENAPOLEONE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MOC - MOSCA CROCUS DOS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MOG - MOSCA GUM DOS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MON - MONACO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MOR - ST%2E MORITZ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MOS - MOSCA STOLESHNIKOV DOS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MOV - MOSCA VREMENA GODA DOS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MTC - MONTECARLO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NAG - NAGASHIMA NAGOYA-BPS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NAN - NANJING DEJI</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NY2 - NEW YORK MADISON</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ORL - ORLANDO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PA2 - PARIGI FAUBOURG</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PA3 - PARIGI FRANÇOIS PREMIER</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PAL - PALMA DI MALLORCA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PAR - PARIGI ST%2EGERMAIN</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PBC - PALM BEACH</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PPA - PACIFIC PALISADES</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PTB - PORTO BANUS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>QINGDAO %28Hisense Plaza%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SAN - SANDA BPS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SAW - SAWGRASS BPS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SCP - SOUTH COAST PLAZA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SFR - SAN FRANCISCO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SH2 - SHENGYANG CHARTER</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SHC - SHANGHAI CENTRE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SHORT HILLS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SINGAPORE MARINA BAY SANDS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SINGAPORE PARAGON</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SK2 - BEIJING SKP MAN</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SKP - BEIJING SKP WOMAN</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SLM - SOLOMEO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SO1 - SEIBU SOGO IKEBUKURO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SO2 - SEIBU SOGO IKEBUKURO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SOH - SOHO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SP6 - SHANGHAI PLAZA 66</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SPA - SAN PAOLO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>TA1 - TAKASHIMAYA KYOTO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>TA2 - TAKASHIMAYA NIHONBASHI</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>TA3 - TAKASHIMAYA NANBA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>TAM - TAMAGAWA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>TOK - TOKYO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>TOR - TORINO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>TR2 - ST TROPEZ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>TRO - ST TROPEZ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>TRT - TORONTO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>VAN - VANCOUVER</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>VEN - VENEZIA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>VIE - VIENNA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WAI - WAIKIKI</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WDB - WOODBURY</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WUHAN %28International Mall%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>XIA - XIAN ZHONGDA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ZUR - ZURIGO</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Canale_di_Acquisto__c</picklist>
+            <values>
+                <fullName>Altro</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BPS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DOS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Ecommerce</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Franchising</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Multibrand</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Categoria_Prodotto__c</picklist>
+            <values>
+                <fullName>Bag</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Blazer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Dresses %2F Suits</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Fur</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Knitwear</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Leather Jacket</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other %28specify in note%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Outerwear</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Scarf</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Shoes</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Skirt</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>T-shirt %2F Shirt</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Travelwear</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Trousers</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Causa_difetto_riscontrato__c</picklist>
+            <values>
+                <fullName>Prodotto difettato</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Prodotto usurato</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Consegna_a_Domicilio__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sì</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Corriere_rientro__c</picklist>
+            <values>
+                <fullName>DHL</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FEDEX</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>TNT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>UPS</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Corriere_uscita__c</picklist>
+            <values>
+                <fullName>DHL</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FEDEX</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>TNT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>UPS</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Country_Repair__c</picklist>
+            <values>
+                <fullName>AT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CH</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CN</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DK</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ES</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>GB</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>GR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HK</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>JP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NL</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RU</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>US</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Intervento_Richiesto__c</picklist>
+            <values>
+                <fullName>Capo Da Ricondizionare</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Capo Rovinato Allestimento</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Capo Rovinato Sartoria</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Difetto Bagno Colore</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Difetto Buchi</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Difetto Calzata</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Difetto Causato Dal Cliente</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Difetto Colore</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Difetto Cuciture</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Difetto Lavorazione</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Difetto Macchie Impurita</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Difetto Peeling</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Difetto Pelle Rovinata</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Difetto Rifiniture</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Difetto Smagliature</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Difetto Tessuto Filato</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Difetto Tessuto Strappato</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Difetto Vestibilita</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Difetto Zip%2FAutomatici%2FBottoni</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Lfd Lifestyle Danneggiato</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Lifestyle Danneggiato</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Motivi Commerciali</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Riparazione Di Cortesia</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Note_Avvenuta_Riconsegna__c</picklist>
+            <values>
+                <fullName>Neutro</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Non soddisfatto</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Parzialmente soddisfatto</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Soddisfatto</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Prodotto_caricato_a_stock__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Si</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Prodotto_riparabile__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Si</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Prodotto_riparato__c</picklist>
+            <values>
+                <fullName>Non Riparato</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Parzialmente Riparato</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Riparato</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Product_Category__c</picklist>
+            <values>
+                <fullName>Bag</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Blazer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Dresses %2F Suits</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Fur</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Knitwear</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Leather Jacket</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other %28specify in note%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Outerwear</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Scarf</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Shoes</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Skirt</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>T-shirt %2F Shirt</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Travelwear</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Trousers</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Riparazione_Richiesta__c</picklist>
+            <values>
+                <fullName>Abbassare cintura davanti</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Abbassare cintura dietro</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Abbassare collo</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Accorciare fondo</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Accorciare maniche</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Allargare centro schiena</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Allargare fianchi%2Fbacino</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Allargare punta cavallo</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Allargare vita%2Fbacino</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Allungare maniche</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Altro</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Aprire asole</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Fare risvolto</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pulire cannelli</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Ridurre coscia</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Ridurre fondo</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Rinforzare spalline</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Riprendere punta spalla</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Stringere centro schiena</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Stringere fianchi e giri</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Stringere fianchi%2Fbacino</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Stringere gamba</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Stringere incollatura e accorciare collo</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Stringere maniche</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Stringere punta cavallo</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Stringere vita%2Fbacino</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Riparazione_autorizzata__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sì</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Ritirato__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Si</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Scontrino__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sì</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Status__c</picklist>
+            <values>
+                <fullName>Chiuso</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Invio prodotto in laboratorio</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Ricevimento capo in laboratorio</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Riparazione effettuata</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Riparazione in progress</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Riparazione richiesta al Customer Care</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Tipo_Riparazione__c</picklist>
+            <values>
+                <fullName>Altra riparazione</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Capospalla</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pantaloni</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
     <recordTypes>
         <fullName>Item_from_Stock_External_Service</fullName>
         <active>true</active>
@@ -3781,6 +4995,17 @@ true, false)</formula>
             </values>
         </picklistValues>
         <picklistValues>
+            <picklist>Prodotto_riparabile__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Si</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
             <picklist>Prodotto_riparato__c</picklist>
             <values>
                 <fullName>Non Riparato</fullName>
@@ -3965,10 +5190,6 @@ true, false)</formula>
             <picklist>Riparazione_autorizzata__c</picklist>
             <values>
                 <fullName>No</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Si</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -4931,6 +6152,17 @@ true, false)</formula>
             </values>
         </picklistValues>
         <picklistValues>
+            <picklist>Prodotto_riparabile__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Si</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
             <picklist>Prodotto_riparato__c</picklist>
             <values>
                 <fullName>Non Riparato</fullName>
@@ -5115,10 +6347,6 @@ true, false)</formula>
             <picklist>Riparazione_autorizzata__c</picklist>
             <values>
                 <fullName>No</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Si</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -6081,6 +7309,17 @@ true, false)</formula>
             </values>
         </picklistValues>
         <picklistValues>
+            <picklist>Prodotto_riparabile__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Si</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
             <picklist>Prodotto_riparato__c</picklist>
             <values>
                 <fullName>Non Riparato</fullName>
@@ -6265,10 +7504,6 @@ true, false)</formula>
             <picklist>Riparazione_autorizzata__c</picklist>
             <values>
                 <fullName>No</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Si</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -7231,6 +8466,17 @@ true, false)</formula>
             </values>
         </picklistValues>
         <picklistValues>
+            <picklist>Prodotto_riparabile__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Si</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
             <picklist>Prodotto_riparato__c</picklist>
             <values>
                 <fullName>Non Riparato</fullName>
@@ -7415,10 +8661,6 @@ true, false)</formula>
             <picklist>Riparazione_autorizzata__c</picklist>
             <values>
                 <fullName>No</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Si</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -8381,6 +9623,17 @@ true, false)</formula>
             </values>
         </picklistValues>
         <picklistValues>
+            <picklist>Prodotto_riparabile__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Si</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
             <picklist>Prodotto_riparato__c</picklist>
             <values>
                 <fullName>Non Riparato</fullName>
@@ -8565,10 +9818,6 @@ true, false)</formula>
             <picklist>Riparazione_autorizzata__c</picklist>
             <values>
                 <fullName>No</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Si</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -9548,6 +10797,17 @@ true, false)</formula>
             </values>
         </picklistValues>
         <picklistValues>
+            <picklist>Prodotto_riparabile__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Si</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
             <picklist>Prodotto_riparato__c</picklist>
             <values>
                 <fullName>Non Riparato</fullName>
@@ -9732,10 +10992,6 @@ true, false)</formula>
             <picklist>Riparazione_autorizzata__c</picklist>
             <values>
                 <fullName>No</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Si</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -10714,6 +11970,17 @@ true, false)</formula>
             </values>
         </picklistValues>
         <picklistValues>
+            <picklist>Prodotto_riparabile__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Si</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
             <picklist>Prodotto_riparato__c</picklist>
             <values>
                 <fullName>Non Riparato</fullName>
@@ -10898,10 +12165,6 @@ true, false)</formula>
             <picklist>Riparazione_autorizzata__c</picklist>
             <values>
                 <fullName>No</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Si</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -11876,6 +13139,17 @@ true, false)</formula>
             </values>
         </picklistValues>
         <picklistValues>
+            <picklist>Prodotto_riparabile__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Si</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
             <picklist>Prodotto_riparato__c</picklist>
             <values>
                 <fullName>Non Riparato</fullName>
@@ -12060,10 +13334,6 @@ true, false)</formula>
             <picklist>Riparazione_autorizzata__c</picklist>
             <values>
                 <fullName>No</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Si</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -13038,6 +14308,17 @@ true, false)</formula>
             </values>
         </picklistValues>
         <picklistValues>
+            <picklist>Prodotto_riparabile__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Si</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
             <picklist>Prodotto_riparato__c</picklist>
             <values>
                 <fullName>Non Riparato</fullName>
@@ -13222,10 +14503,6 @@ true, false)</formula>
             <picklist>Riparazione_autorizzata__c</picklist>
             <values>
                 <fullName>No</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Si</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -14188,6 +15465,17 @@ true, false)</formula>
             </values>
         </picklistValues>
         <picklistValues>
+            <picklist>Prodotto_riparabile__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Si</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
             <picklist>Prodotto_riparato__c</picklist>
             <values>
                 <fullName>Non Riparato</fullName>
@@ -14375,10 +15663,6 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Si</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Sì</fullName>
                 <default>false</default>
             </values>
@@ -14463,7 +15747,8 @@ OR (
 RecordType.DeveloperName = &quot;Riparazione_Customer_Care&quot;,RecordType.DeveloperName = &quot;Riparazione_Boutique_External_Service&quot;,
 RecordType.DeveloperName = &quot;Riparazione_Boutique_Tailor&quot;,RecordType.DeveloperName = &quot;Riparazione_Stock&quot;,RecordType.DeveloperName = &quot;Riparazione_Uniform&quot;,
 RecordType.DeveloperName = &quot;Item_from_Stock_In_Boutique_Tailor&quot;,RecordType.DeveloperName = &quot;Item_from_Stock_External_Service&quot;,
-RecordType.DeveloperName = &quot;Uniform_Personal_Item_External_Service&quot;,RecordType.DeveloperName = &quot;Uniform_Personal_Item_In_Boutique_Tailor&quot;)</errorConditionFormula>
+RecordType.DeveloperName = &quot;Uniform_Personal_Item_External_Service&quot;,RecordType.DeveloperName = &quot;Uniform_Personal_Item_In_Boutique_Tailor&quot;,RecordType.DeveloperName = &quot;Customer_Care_US&quot;
+)</errorConditionFormula>
         <errorMessage>Allegare il file richiesto</errorMessage>
     </validationRules>
     <validationRules>
@@ -14501,7 +15786,7 @@ RecordType.DeveloperName = &quot;Riparazione_Boutique_External_Service&quot;
     <validationRules>
         <fullName>Invio_capo_verso_sede_CC</fullName>
         <active>true</active>
-        <errorConditionFormula>AND (RecordType.DeveloperName = &quot;Riparazione_Customer_Care&quot;,
+        <errorConditionFormula>AND (OR(RecordType.DeveloperName = &quot;Riparazione_Customer_Care&quot;,RecordType.DeveloperName = &quot;Customer_Care_US&quot;),
 ISPICKVAL(Status__c, &quot;Ricevimento capo danneggiato in sede&quot;), OR (ISBLANK( Tracking_Number_ritiro__c ),
     ISBLANK(Data_Pickup__c),
     ISBLANK(Pickup_Number__c),
@@ -14540,17 +15825,17 @@ $Profile.Id = $Setup.Profile__c.Id_Associate__c)</errorConditionFormula>
 	TEXT(Status__c) &lt;&gt; &quot;Prodotto riconsegnato in Boutique&quot; &amp;&amp; 
 	TEXT(Status__c) &lt;&gt; &quot;Prodotto Riparato&quot; &amp;&amp; 
 	TEXT(Status__c) &lt;&gt; &quot;Prodotto riconsegnato&quot; &amp;&amp;
-	TEXT(Status__c) &lt;&gt; &quot;Capo ricevuto in Boutique&quot;</errorConditionFormula>
+	RecordType.Name &lt;&gt; &apos;Riparazione - Customer Care US&apos;</errorConditionFormula>
         <errorMessage>Possono essere inserite note di avvenuta riconsegna solo al momento dell&apos;effettiva riconsegna al cliente del capo riparato</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Numero_di_autorizzazione_inserito</fullName>
         <active>true</active>
-        <errorConditionFormula>(ISPICKVAL(Status__c, &quot;Invio capo verso sede&quot;) &amp;&amp; ISBLANK(Numero_Autorizzazione_Sede__c)) 
+        <errorConditionFormula>(RecordType.Name &lt;&gt; &apos;Riparazione - Customer Care US&apos;&amp;&amp; ISPICKVAL(Status__c, &quot;Invio capo verso sede&quot;) &amp;&amp; ISBLANK(Numero_Autorizzazione_Sede__c)) 
 
 ||
 
-(ISPICKVAL(Riparazione_autorizzata__c, &quot;Sì&quot;) &amp;&amp; ISBLANK(Numero_Autorizzazione_Sede__c))</errorConditionFormula>
+(RecordType.Name &lt;&gt; &apos;Riparazione - Customer Care US&apos;&amp;&amp; ISPICKVAL(Riparazione_autorizzata__c, &quot;Sì&quot;) &amp;&amp; ISBLANK(Numero_Autorizzazione_Sede__c))</errorConditionFormula>
         <errorDisplayField>Numero_Autorizzazione_Sede__c</errorDisplayField>
         <errorMessage>A richiesta approvata, è necessario inserire il numero di autorizzazione</errorMessage>
     </validationRules>
@@ -14558,7 +15843,7 @@ $Profile.Id = $Setup.Profile__c.Id_Associate__c)</errorConditionFormula>
         <fullName>Prodotto_Riparato_e_Note</fullName>
         <active>true</active>
         <errorConditionFormula>OR(RecordType.DeveloperName = &quot;Riparazione_Sede&quot;, 
-RecordType.DeveloperName = &quot;Riparazione_Customer_Care&quot;) &amp;&amp; 
+RecordType.DeveloperName = &quot;Riparazione_Customer_Care&quot;,RecordType.DeveloperName = &quot;Customer_Care_US&quot;) &amp;&amp; 
 
 OR ( 
 
@@ -14571,7 +15856,7 @@ OR (
     <validationRules>
         <fullName>Ricevimento_capo_danneggiato_in_sede</fullName>
         <active>true</active>
-        <errorConditionFormula>ISPICKVAL(Status__c, &quot;Riparazione effettuata&quot;) &amp;&amp; OR( ISBLANK(Affidato_a__c), ISBLANK(Data_riparazione_prevista__c) )</errorConditionFormula>
+        <errorConditionFormula>RecordType.Name &lt;&gt; &apos;Riparazione - Customer Care US&apos; &amp;&amp; ISPICKVAL(Status__c, &quot;Riparazione effettuata&quot;) &amp;&amp; OR( ISBLANK(Affidato_a__c), ISBLANK(Data_riparazione_prevista__c) )</errorConditionFormula>
         <errorMessage>Quando il capo arriva in sede, è necessario stabilire la persona a cui viene affidato e prevedere una data di riparazione</errorMessage>
     </validationRules>
     <validationRules>

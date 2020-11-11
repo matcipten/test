@@ -84,6 +84,7 @@ public with sharing class OnAccountTriggerHandler {
                 sd.Country_Newsletter__c                = MapAccount.get(m.Id_Account__c).Country_Newsletter__c;                
                 sd.Master_Slave__c                      = MapAccount.get(m.Id_Account__c).Master_Slave__c;
                 sd.Contact_ID__c                        = MapAccount.get(m.Id_Account__c).Contact_ID__pc;
+                sd.Id_Cliente_MDM__c                        = MapAccount.get(m.Id_Account__c).Id_Cliente_MDM__c;
                 ListSlave.add(sd);
                 ListMapSlaveToDelete.add(m);                
                 MasterAccountIds.add(m.Account__c);
