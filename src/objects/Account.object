@@ -1613,6 +1613,15 @@ Importo_acquisti_ultima_stagione_E_comm__c
         <type>Lookup</type>
     </fields>
     <fields>
+        <fullName>BC_Related_List_Visibility__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(OR($User.Id = &apos;0050Y000002UAjx&apos;,$User.Id = &apos;0051v000004jhRH&apos;, $User.Id = &apos;0053600000130bT&apos;, $User.Id = &apos;005360000011saj&apos;), true, false)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>BC Related List Visibility</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>BillingAddress</fullName>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
@@ -1647,7 +1656,8 @@ IF (OUT_BIRTHDATE_CODE1__c =2 &amp;&amp; OUT_BIRTHDATE_CODE2__c  =2, IMAGE(&apos
     <fields>
         <fullName>Boutique_Disattiva__c</fullName>
         <externalId>false</externalId>
-        <formula>IF(OR(Location__r.Data_Chiusura_Negozio__c &lt;= NOW(), AND(ISBLANK(Location__c), ISBLANK(First_Location__c))), true, false)</formula>
+        <formula>IF(OR(Location__r.Data_Chiusura_Negozio__c &lt;= NOW(), AND(ISBLANK(Location__c), ISBLANK(First_Location__c)),
+AND(ISBLANK(Location__r.Data_Chiusura_Negozio__c),NOT(ISBLANK(Location__r.Boutique_reallocated_transactions__c)))), true, false)</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Boutique Disattiva</label>
         <trackHistory>false</trackHistory>
@@ -2311,6 +2321,15 @@ IF( WeChat__c = false &amp;&amp; NOT(ISBLANK(We_Chat_ID__c)), IMAGE(&apos;/resou
         <type>Lookup</type>
     </fields>
     <fields>
+        <fullName>Contatto_BC__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Contatto BC</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>Count_Data_Quality__c</fullName>
         <externalId>false</externalId>
         <formula>FLOOR(( 
@@ -2667,6 +2686,18 @@ IF (!ISBLANK(TEXT(Country_Newsletter__c)), TEXT(Country_Newsletter__c), PersonMa
         <fullName>CurrencyIsoCode</fullName>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>Customer_Information__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(Contatto_BC__c = true, 
+IMAGE(&quot;https://brunellocucinelli--preprod--c.visualforce.com/resource/1604935429000/BC_Contact&quot;, &apos;Contatto BC&apos;, 150,150),&quot;&quot;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Customer Information</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>DCC__c</fullName>
@@ -5277,7 +5308,7 @@ Last_Boutique__r.Id_Location_Micros__c = $User.Codice_Boutique__c ), true, false
                 <value>
                     <fullName>zh</fullName>
                     <default>false</default>
-                    <label>漢字</label>
+                    <label>Cinese Semplificato</label>
                 </value>
                 <value>
                     <fullName>–</fullName>
@@ -10128,14 +10159,19 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
             <value>platinum</value>
         </filters>
         <filters>
-            <field>ACCOUNT.NAME</field>
-            <operation>contains</operation>
-            <value>gene</value>
-        </filters>
-        <filters>
             <field>ACCOUNT.CREATED_DATE</field>
             <operation>lessOrEqual</operation>
             <value>TODAY</value>
+        </filters>
+        <filters>
+            <field>ACCOUNT.NAME</field>
+            <operation>notContain</operation>
+            <value>Generic</value>
+        </filters>
+        <filters>
+            <field>ACCOUNT.NAME</field>
+            <operation>notContain</operation>
+            <value>Generico</value>
         </filters>
         <label>All Customers</label>
     </listViews>
@@ -10163,6 +10199,16 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
             <field>Data_Ultimo_Acquisto__c</field>
             <operation>equals</operation>
             <value>YESTERDAY</value>
+        </filters>
+        <filters>
+            <field>ACCOUNT.NAME</field>
+            <operation>notContain</operation>
+            <value>generico</value>
+        </filters>
+        <filters>
+            <field>ACCOUNT.NAME</field>
+            <operation>notContain</operation>
+            <value>generic</value>
         </filters>
         <label>Clients purchased in my store yesterday</label>
         <sharedTo>
@@ -10195,6 +10241,16 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
             <operation>equals</operation>
             <value>YESTERDAY</value>
         </filters>
+        <filters>
+            <field>ACCOUNT.NAME</field>
+            <operation>notContain</operation>
+            <value>generic</value>
+        </filters>
+        <filters>
+            <field>ACCOUNT.NAME</field>
+            <operation>notContain</operation>
+            <value>generico</value>
+        </filters>
         <label>Clients purchased in my store yesterday</label>
         <sharedTo>
             <roleAndSubordinates>BOUTIQUE_FRANCE_Marcato</roleAndSubordinates>
@@ -10225,6 +10281,16 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
         <filters>
             <field>Data_Ultimo_Acquisto__c</field>
             <operation>notEqual</operation>
+        </filters>
+        <filters>
+            <field>ACCOUNT.NAME</field>
+            <operation>notContain</operation>
+            <value>generic</value>
+        </filters>
+        <filters>
+            <field>ACCOUNT.NAME</field>
+            <operation>notContain</operation>
+            <value>generico</value>
         </filters>
         <label>My store clients - Last Purch. + 12 mths</label>
         <sharedTo>
@@ -10261,6 +10327,16 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
             <field>Data_Ultimo_Acquisto__c</field>
             <operation>notEqual</operation>
         </filters>
+        <filters>
+            <field>ACCOUNT.NAME</field>
+            <operation>notContain</operation>
+            <value>generic</value>
+        </filters>
+        <filters>
+            <field>ACCOUNT.NAME</field>
+            <operation>notContain</operation>
+            <value>generico</value>
+        </filters>
         <label>My store clients - Last Purch. 3-6 mths</label>
         <sharedTo>
             <group>Store_Managers</group>
@@ -10295,6 +10371,16 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
             <field>Data_Ultimo_Acquisto__c</field>
             <operation>notEqual</operation>
         </filters>
+        <filters>
+            <field>ACCOUNT.NAME</field>
+            <operation>notContain</operation>
+            <value>generico</value>
+        </filters>
+        <filters>
+            <field>ACCOUNT.NAME</field>
+            <operation>notContain</operation>
+            <value>generic</value>
+        </filters>
         <label>My store clients - Last Purch. 6-12 mths</label>
         <sharedTo>
             <group>Store_Managers</group>
@@ -10302,7 +10388,7 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
     </listViews>
     <listViews>
         <fullName>Copy_of_List_view_2_Test_My_Store_Client</fullName>
-        <booleanFilter>(1 OR 2) AND (3 OR 4) AND 5 AND 6 AND 7</booleanFilter>
+        <booleanFilter>(1 OR 2) AND (3 OR 4) AND 5 AND 6 AND 7 AND 8 AND 9</booleanFilter>
         <columns>ACCOUNT.NAME</columns>
         <columns>Categoria_Cliente__c</columns>
         <columns>Data_Ultimo_Acquisto__c</columns>
@@ -10343,6 +10429,16 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
             <operation>equals</operation>
             <value>1</value>
         </filters>
+        <filters>
+            <field>ACCOUNT.NAME</field>
+            <operation>notContain</operation>
+            <value>generico</value>
+        </filters>
+        <filters>
+            <field>ACCOUNT.NAME</field>
+            <operation>notContain</operation>
+            <value>generic</value>
+        </filters>
         <label>My Store Client Season Previous Year</label>
         <sharedTo>
             <group>Store_Managers</group>
@@ -10350,7 +10446,7 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
     </listViews>
     <listViews>
         <fullName>List_view_1_Test_My_Client</fullName>
-        <booleanFilter>(1 OR 2) AND 3 AND 4 AND 5 AND 6</booleanFilter>
+        <booleanFilter>(1 OR 2) AND 3 AND 4 AND 5 AND 6 AND 7 AND 8</booleanFilter>
         <columns>ACCOUNT.NAME</columns>
         <columns>Categoria_Cliente_picklist__c</columns>
         <columns>Data_Ultimo_Acquisto__c</columns>
@@ -10387,6 +10483,16 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
             <operation>equals</operation>
             <value>THIS_YEAR</value>
         </filters>
+        <filters>
+            <field>ACCOUNT.NAME</field>
+            <operation>notContain</operation>
+            <value>generico</value>
+        </filters>
+        <filters>
+            <field>ACCOUNT.NAME</field>
+            <operation>notContain</operation>
+            <value>generic</value>
+        </filters>
         <label>My Store Client Previous Season</label>
         <sharedTo>
             <group>Store_Managers</group>
@@ -10411,6 +10517,16 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
             <field>Titolare_Client_Advisor__c</field>
             <operation>equals</operation>
             <value>1</value>
+        </filters>
+        <filters>
+            <field>ACCOUNT.NAME</field>
+            <operation>notContain</operation>
+            <value>generico</value>
+        </filters>
+        <filters>
+            <field>ACCOUNT.NAME</field>
+            <operation>notContain</operation>
+            <value>generic</value>
         </filters>
         <label>My segmentation Clients - Bush</label>
         <sharedTo>
@@ -10438,6 +10554,16 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
             <operation>equals</operation>
             <value>1</value>
         </filters>
+        <filters>
+            <field>ACCOUNT.NAME</field>
+            <operation>notContain</operation>
+            <value>generic</value>
+        </filters>
+        <filters>
+            <field>ACCOUNT.NAME</field>
+            <operation>notContain</operation>
+            <value>generico</value>
+        </filters>
         <label>My segmentation Clients - Grass</label>
     </listViews>
     <listViews>
@@ -10459,6 +10585,16 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
             <field>Titolare_Client_Advisor__c</field>
             <operation>equals</operation>
             <value>1</value>
+        </filters>
+        <filters>
+            <field>ACCOUNT.NAME</field>
+            <operation>notContain</operation>
+            <value>generico</value>
+        </filters>
+        <filters>
+            <field>ACCOUNT.NAME</field>
+            <operation>notContain</operation>
+            <value>generic</value>
         </filters>
         <label>My segmentation Clients - Ground</label>
         <sharedTo>
@@ -10486,6 +10622,16 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
             <operation>equals</operation>
             <value>1</value>
         </filters>
+        <filters>
+            <field>ACCOUNT.NAME</field>
+            <operation>notContain</operation>
+            <value>generic</value>
+        </filters>
+        <filters>
+            <field>ACCOUNT.NAME</field>
+            <operation>notContain</operation>
+            <value>generico</value>
+        </filters>
         <label>My segmentation Clients - Mountain</label>
         <sharedTo>
             <group>Associates</group>
@@ -10511,6 +10657,16 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
             <field>Titolare_Client_Advisor__c</field>
             <operation>equals</operation>
             <value>1</value>
+        </filters>
+        <filters>
+            <field>ACCOUNT.NAME</field>
+            <operation>notContain</operation>
+            <value>generico</value>
+        </filters>
+        <filters>
+            <field>ACCOUNT.NAME</field>
+            <operation>notContain</operation>
+            <value>generic</value>
         </filters>
         <label>My segmentation Clients - Rain</label>
         <sharedTo>
@@ -10538,6 +10694,16 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
             <operation>equals</operation>
             <value>1</value>
         </filters>
+        <filters>
+            <field>ACCOUNT.NAME</field>
+            <operation>notContain</operation>
+            <value>generico</value>
+        </filters>
+        <filters>
+            <field>ACCOUNT.NAME</field>
+            <operation>notContain</operation>
+            <value>generic</value>
+        </filters>
         <label>My segmentation Clients - Rainbow</label>
         <sharedTo>
             <group>Associates</group>
@@ -10563,6 +10729,16 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
             <field>Titolare_Client_Advisor__c</field>
             <operation>equals</operation>
             <value>1</value>
+        </filters>
+        <filters>
+            <field>ACCOUNT.NAME</field>
+            <operation>notContain</operation>
+            <value>generico</value>
+        </filters>
+        <filters>
+            <field>ACCOUNT.NAME</field>
+            <operation>notContain</operation>
+            <value>generic</value>
         </filters>
         <label>My segmentation Clients - Seed</label>
         <sharedTo>
@@ -10590,6 +10766,16 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
             <operation>equals</operation>
             <value>1</value>
         </filters>
+        <filters>
+            <field>ACCOUNT.NAME</field>
+            <operation>notContain</operation>
+            <value>generico</value>
+        </filters>
+        <filters>
+            <field>ACCOUNT.NAME</field>
+            <operation>notContain</operation>
+            <value>generic</value>
+        </filters>
         <label>My segmentation Clients - Sky</label>
         <sharedTo>
             <group>Associates</group>
@@ -10615,6 +10801,16 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
             <field>Titolare_Client_Advisor__c</field>
             <operation>equals</operation>
             <value>1</value>
+        </filters>
+        <filters>
+            <field>ACCOUNT.NAME</field>
+            <operation>notContain</operation>
+            <value>generico</value>
+        </filters>
+        <filters>
+            <field>ACCOUNT.NAME</field>
+            <operation>notContain</operation>
+            <value>generic</value>
         </filters>
         <label>My segmentation Clients - Snow</label>
         <sharedTo>
@@ -10642,6 +10838,16 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
             <operation>equals</operation>
             <value>1</value>
         </filters>
+        <filters>
+            <field>ACCOUNT.NAME</field>
+            <operation>notContain</operation>
+            <value>generico</value>
+        </filters>
+        <filters>
+            <field>ACCOUNT.NAME</field>
+            <operation>notContain</operation>
+            <value>generic</value>
+        </filters>
         <label>My segmentation Clients - Stars</label>
         <sharedTo>
             <group>Associates</group>
@@ -10667,6 +10873,16 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
             <field>Titolare_Client_Advisor__c</field>
             <operation>equals</operation>
             <value>1</value>
+        </filters>
+        <filters>
+            <field>ACCOUNT.NAME</field>
+            <operation>notContain</operation>
+            <value>generico</value>
+        </filters>
+        <filters>
+            <field>ACCOUNT.NAME</field>
+            <operation>notContain</operation>
+            <value>generic</value>
         </filters>
         <label>My segmentation Clients - Trees</label>
         <sharedTo>
@@ -10694,6 +10910,16 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
             <operation>contains</operation>
             <value>VIP;VCN,VRU,VHK,VJP</value>
         </filters>
+        <filters>
+            <field>ACCOUNT.NAME</field>
+            <operation>notContain</operation>
+            <value>generic</value>
+        </filters>
+        <filters>
+            <field>ACCOUNT.NAME</field>
+            <operation>notContain</operation>
+            <value>generico</value>
+        </filters>
         <label>My VIP clients</label>
         <sharedTo>
             <group>Associates</group>
@@ -10720,6 +10946,16 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
             <operation>contains</operation>
             <value>VIP,VCN,VRU,VHK,VJP</value>
         </filters>
+        <filters>
+            <field>ACCOUNT.NAME</field>
+            <operation>notContain</operation>
+            <value>generico</value>
+        </filters>
+        <filters>
+            <field>ACCOUNT.NAME</field>
+            <operation>notContain</operation>
+            <value>generic</value>
+        </filters>
         <label>My VIP store clients</label>
         <sharedTo>
             <group>Store_Managers</group>
@@ -10739,6 +10975,16 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
             <field>Titolare_Client_Advisor__c</field>
             <operation>equals</operation>
             <value>1</value>
+        </filters>
+        <filters>
+            <field>ACCOUNT.NAME</field>
+            <operation>notContain</operation>
+            <value>generico</value>
+        </filters>
+        <filters>
+            <field>ACCOUNT.NAME</field>
+            <operation>notContain</operation>
+            <value>generic</value>
         </filters>
         <label>My clients</label>
         <sharedTo>
@@ -10769,6 +11015,16 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
         <filters>
             <field>Data_Ultimo_Acquisto__c</field>
             <operation>notEqual</operation>
+        </filters>
+        <filters>
+            <field>ACCOUNT.NAME</field>
+            <operation>notContain</operation>
+            <value>generico</value>
+        </filters>
+        <filters>
+            <field>ACCOUNT.NAME</field>
+            <operation>notContain</operation>
+            <value>generic</value>
         </filters>
         <label>My clients - Last Purch. + 12 mths</label>
         <sharedTo>
@@ -10805,6 +11061,21 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
             <operation>greaterOrEqual</operation>
             <value>LAST_N_MONTHS:5</value>
         </filters>
+        <filters>
+            <field>ACCOUNT.NAME</field>
+            <operation>notContain</operation>
+            <value>generico</value>
+        </filters>
+        <filters>
+            <field>ACCOUNT.NAME</field>
+            <operation>notContain</operation>
+            <value>generic</value>
+        </filters>
+        <filters>
+            <field>ACCOUNT.NAME</field>
+            <operation>notContain</operation>
+            <value>generico</value>
+        </filters>
         <label>My clients - Last Purch. 3-6 mths</label>
         <sharedTo>
             <group>Associates</group>
@@ -10840,6 +11111,16 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
             <operation>greaterOrEqual</operation>
             <value>LAST_N_MONTHS:12</value>
         </filters>
+        <filters>
+            <field>ACCOUNT.NAME</field>
+            <operation>notContain</operation>
+            <value>generico</value>
+        </filters>
+        <filters>
+            <field>ACCOUNT.NAME</field>
+            <operation>notContain</operation>
+            <value>generic</value>
+        </filters>
         <label>My clients - Last Purch. 6-12 mths</label>
         <sharedTo>
             <group>Associates</group>
@@ -10865,6 +11146,16 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
             <field>Data_Primo_Acquisto__c</field>
             <operation>equals</operation>
             <value>THIS_YEAR</value>
+        </filters>
+        <filters>
+            <field>ACCOUNT.NAME</field>
+            <operation>notContain</operation>
+            <value>generico</value>
+        </filters>
+        <filters>
+            <field>ACCOUNT.NAME</field>
+            <operation>notContain</operation>
+            <value>generic</value>
         </filters>
         <label>My new clients</label>
         <sharedTo>
@@ -10893,6 +11184,16 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
             <operation>equals</operation>
             <value>THIS_YEAR</value>
         </filters>
+        <filters>
+            <field>ACCOUNT.NAME</field>
+            <operation>notContain</operation>
+            <value>generic</value>
+        </filters>
+        <filters>
+            <field>ACCOUNT.NAME</field>
+            <operation>notContain</operation>
+            <value>generico</value>
+        </filters>
         <label>My store new clients</label>
         <sharedTo>
             <group>Store_Managers</group>
@@ -10918,6 +11219,16 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
             <field>Titolare_Boutique__c</field>
             <operation>equals</operation>
             <value>1</value>
+        </filters>
+        <filters>
+            <field>ACCOUNT.NAME</field>
+            <operation>notContain</operation>
+            <value>generico</value>
+        </filters>
+        <filters>
+            <field>ACCOUNT.NAME</field>
+            <operation>notContain</operation>
+            <value>generic</value>
         </filters>
         <label>My store segmentation Clients - Bush</label>
         <sharedTo>
@@ -10945,6 +11256,16 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
             <operation>equals</operation>
             <value>1</value>
         </filters>
+        <filters>
+            <field>ACCOUNT.NAME</field>
+            <operation>notContain</operation>
+            <value>generico</value>
+        </filters>
+        <filters>
+            <field>ACCOUNT.NAME</field>
+            <operation>notContain</operation>
+            <value>generico</value>
+        </filters>
         <label>My store segmentation Clients - Grass</label>
         <sharedTo>
             <group>Store_Managers</group>
@@ -10970,6 +11291,16 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
             <field>Titolare_Boutique__c</field>
             <operation>equals</operation>
             <value>1</value>
+        </filters>
+        <filters>
+            <field>ACCOUNT.NAME</field>
+            <operation>notContain</operation>
+            <value>generico</value>
+        </filters>
+        <filters>
+            <field>ACCOUNT.NAME</field>
+            <operation>notContain</operation>
+            <value>generic</value>
         </filters>
         <label>My store segmentation Clients - Ground</label>
         <sharedTo>
@@ -10997,6 +11328,16 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
             <operation>equals</operation>
             <value>1</value>
         </filters>
+        <filters>
+            <field>ACCOUNT.NAME</field>
+            <operation>notContain</operation>
+            <value>generic</value>
+        </filters>
+        <filters>
+            <field>ACCOUNT.NAME</field>
+            <operation>notContain</operation>
+            <value>generico</value>
+        </filters>
         <label>My store segmentation Clients - Mountain</label>
         <sharedTo>
             <group>Store_Managers</group>
@@ -11022,6 +11363,16 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
             <field>Titolare_Boutique__c</field>
             <operation>equals</operation>
             <value>1</value>
+        </filters>
+        <filters>
+            <field>ACCOUNT.NAME</field>
+            <operation>notContain</operation>
+            <value>generico</value>
+        </filters>
+        <filters>
+            <field>ACCOUNT.NAME</field>
+            <operation>notContain</operation>
+            <value>generic</value>
         </filters>
         <label>My store segmentation Clients - Rain</label>
         <sharedTo>
@@ -11049,6 +11400,16 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
             <operation>equals</operation>
             <value>1</value>
         </filters>
+        <filters>
+            <field>ACCOUNT.NAME</field>
+            <operation>notContain</operation>
+            <value>generic</value>
+        </filters>
+        <filters>
+            <field>ACCOUNT.NAME</field>
+            <operation>notContain</operation>
+            <value>generico</value>
+        </filters>
         <label>My store segmentation Clients - Rainbow</label>
         <sharedTo>
             <group>Store_Managers</group>
@@ -11074,6 +11435,16 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
             <field>Titolare_Boutique__c</field>
             <operation>equals</operation>
             <value>1</value>
+        </filters>
+        <filters>
+            <field>ACCOUNT.NAME</field>
+            <operation>notContain</operation>
+            <value>generic</value>
+        </filters>
+        <filters>
+            <field>ACCOUNT.NAME</field>
+            <operation>notContain</operation>
+            <value>generico</value>
         </filters>
         <label>My store segmentation Clients - Seed</label>
         <sharedTo>
@@ -11101,6 +11472,16 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
             <operation>equals</operation>
             <value>1</value>
         </filters>
+        <filters>
+            <field>ACCOUNT.NAME</field>
+            <operation>notContain</operation>
+            <value>generic</value>
+        </filters>
+        <filters>
+            <field>ACCOUNT.NAME</field>
+            <operation>notContain</operation>
+            <value>generico</value>
+        </filters>
         <label>My store segmentation Clients - Sky</label>
         <sharedTo>
             <group>Store_Managers</group>
@@ -11126,6 +11507,16 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
             <field>Titolare_Boutique__c</field>
             <operation>equals</operation>
             <value>1</value>
+        </filters>
+        <filters>
+            <field>ACCOUNT.NAME</field>
+            <operation>notContain</operation>
+            <value>generic</value>
+        </filters>
+        <filters>
+            <field>ACCOUNT.NAME</field>
+            <operation>notContain</operation>
+            <value>generico</value>
         </filters>
         <label>My store segmentation Clients - Snow</label>
         <sharedTo>
@@ -11153,6 +11544,16 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
             <operation>equals</operation>
             <value>1</value>
         </filters>
+        <filters>
+            <field>ACCOUNT.NAME</field>
+            <operation>notContain</operation>
+            <value>generico</value>
+        </filters>
+        <filters>
+            <field>ACCOUNT.NAME</field>
+            <operation>notContain</operation>
+            <value>generic</value>
+        </filters>
         <label>My store segmentation Clients - Stars</label>
         <sharedTo>
             <group>Store_Managers</group>
@@ -11179,6 +11580,16 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
             <operation>equals</operation>
             <value>1</value>
         </filters>
+        <filters>
+            <field>ACCOUNT.NAME</field>
+            <operation>notContain</operation>
+            <value>generico</value>
+        </filters>
+        <filters>
+            <field>ACCOUNT.NAME</field>
+            <operation>notContain</operation>
+            <value>generic</value>
+        </filters>
         <label>My store segmentation Clients - Trees</label>
         <sharedTo>
             <group>Store_Managers</group>
@@ -11200,6 +11611,16 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
             <operation>equals</operation>
             <value>1</value>
         </filters>
+        <filters>
+            <field>ACCOUNT.NAME</field>
+            <operation>notContain</operation>
+            <value>generico</value>
+        </filters>
+        <filters>
+            <field>ACCOUNT.NAME</field>
+            <operation>notContain</operation>
+            <value>generic</value>
+        </filters>
         <label>My store clients</label>
         <sharedTo>
             <group>Store_Managers</group>
@@ -11207,7 +11628,6 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
     </listViews>
     <listViews>
         <fullName>My_store_thank_you_note</fullName>
-        <booleanFilter>1 AND 2 AND 3</booleanFilter>
         <columns>ACCOUNT.NAME</columns>
         <columns>Data_Ultimo_Acquisto__c</columns>
         <columns>Marketing__c</columns>
@@ -11226,19 +11646,24 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
             <value>1</value>
         </filters>
         <filters>
-            <field>Last_Boutique__c</field>
-            <operation>contains</operation>
-            <value>FRANCOFORTE,BERLINO,DUESSELDORF,MUNICH,MONACO</value>
+            <field>ACCOUNT.NAME</field>
+            <operation>notContain</operation>
+            <value>generico</value>
+        </filters>
+        <filters>
+            <field>ACCOUNT.NAME</field>
+            <operation>notContain</operation>
+            <value>generic</value>
         </filters>
         <label>My store thank you note</label>
         <sharedTo>
             <role>BOUTIQUE_DEUTSCHLAND_Meyer</role>
+            <role>BOUTIQUE_MONACO_Meyer</role>
             <role>Boutique_Area_Germania</role>
         </sharedTo>
     </listViews>
     <listViews>
         <fullName>My_thank_you_note</fullName>
-        <booleanFilter>1 AND 2 AND 3</booleanFilter>
         <columns>ACCOUNT.NAME</columns>
         <columns>ACCOUNT.SITE</columns>
         <columns>ACCOUNT.ADDRESS1_STATE</columns>
@@ -11257,9 +11682,14 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
             <value>1</value>
         </filters>
         <filters>
-            <field>Last_Boutique__c</field>
-            <operation>contains</operation>
-            <value>FRANCOFORTE,BERLINO,DUESSELDORF,MUNICH,MONACO</value>
+            <field>ACCOUNT.NAME</field>
+            <operation>notContain</operation>
+            <value>generico</value>
+        </filters>
+        <filters>
+            <field>ACCOUNT.NAME</field>
+            <operation>notContain</operation>
+            <value>generic</value>
         </filters>
         <label>My thank you note</label>
         <sharedTo>
@@ -11288,6 +11718,16 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
             <field>Titolare_Client_Advisor__c</field>
             <operation>equals</operation>
             <value>1</value>
+        </filters>
+        <filters>
+            <field>ACCOUNT.NAME</field>
+            <operation>notContain</operation>
+            <value>generic</value>
+        </filters>
+        <filters>
+            <field>ACCOUNT.NAME</field>
+            <operation>notContain</operation>
+            <value>generico</value>
         </filters>
         <label>My Prospects</label>
         <sharedTo>

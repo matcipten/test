@@ -130,6 +130,18 @@
         </valueSet>
     </fields>
     <fields>
+        <fullName>Client_Name_templ__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(NOT(ISNULL(Customer_Name__r.FirstName)),Customer_Name__r.FirstName+&apos; &apos;+Customer_Name__r.LastName,Customer_Name__r.LastName)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Client Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Customer_Name__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <externalId>false</externalId>
@@ -251,6 +263,76 @@
         <visibleLines>3</visibleLines>
     </fields>
     <fields>
+        <fullName>Status_Campaign_Member__c</fullName>
+        <externalId>false</externalId>
+        <label>Status Campaign Member</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Inviato</fullName>
+                    <default>false</default>
+                    <label>Inviato</label>
+                </value>
+                <value>
+                    <fullName>Risposta</fullName>
+                    <default>false</default>
+                    <label>Risposta</label>
+                </value>
+                <value>
+                    <fullName>Invitation sent</fullName>
+                    <default>false</default>
+                    <label>Invitation sent</label>
+                </value>
+                <value>
+                    <fullName>Presence confirmed</fullName>
+                    <default>false</default>
+                    <label>Presence confirmed</label>
+                </value>
+                <value>
+                    <fullName>Presence declined</fullName>
+                    <default>false</default>
+                    <label>Presence declined</label>
+                </value>
+                <value>
+                    <fullName>Sent</fullName>
+                    <default>false</default>
+                    <label>Sent</label>
+                </value>
+                <value>
+                    <fullName>Suggested Target</fullName>
+                    <default>false</default>
+                    <label>Suggested Target</label>
+                </value>
+                <value>
+                    <fullName>Customer attended</fullName>
+                    <default>false</default>
+                    <label>Customer attended</label>
+                </value>
+                <value>
+                    <fullName>Responded</fullName>
+                    <default>false</default>
+                    <label>Responded</label>
+                </value>
+                <value>
+                    <fullName>Target confirmed</fullName>
+                    <default>false</default>
+                    <label>Target confirmed</label>
+                </value>
+                <value>
+                    <fullName>Customer did not attend</fullName>
+                    <default>false</default>
+                    <label>Customer did not attend</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
         <fullName>Sum_of_final_costs__c</fullName>
         <externalId>false</externalId>
         <label>Sum of final costs</label>
@@ -280,6 +362,15 @@
         <deleteConstraint>SetNull</deleteConstraint>
         <externalId>false</externalId>
         <label>User Client Advisor</label>
+        <lookupFilter>
+            <active>true</active>
+            <filterItems>
+                <field>Associated__c.IsActive__c</field>
+                <operation>equals</operation>
+                <value>A</value>
+            </filterItems>
+            <isOptional>true</isOptional>
+        </lookupFilter>
         <referenceTo>Associated__c</referenceTo>
         <relationshipLabel>Activity tracking</relationshipLabel>
         <relationshipName>Activity_tracking</relationshipName>
@@ -316,6 +407,127 @@
     <pluralLabel>Activity tracking</pluralLabel>
     <recordTypeTrackHistory>true</recordTypeTrackHistory>
     <recordTypes>
+        <fullName>Brunello_s_Contact</fullName>
+        <active>true</active>
+        <label>Brunello&apos;s Contact</label>
+        <picklistValues>
+            <picklist>Canale__c</picklist>
+            <values>
+                <fullName>Chat</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Mail</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Personal_Contact</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Phone</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Video_Call</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Categoria__c</picklist>
+            <values>
+                <fullName>BC_BC_s Call</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BC_BC_s Event</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BC_BC_s Gift</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BC_BC_s Mailing</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BC_BC_s Meeting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BC_BC_s Note</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BC_Client to Brunello</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Location__c</picklist>
+            <values>
+                <fullName>Instore</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Out of store</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Status_Campaign_Member__c</picklist>
+            <values>
+                <fullName>Customer attended</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Customer did not attend</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Inviato</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Invitation sent</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Presence confirmed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Presence declined</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Responded</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Risposta</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sent</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Suggested Target</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Target confirmed</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
         <fullName>Events</fullName>
         <active>true</active>
         <compactLayoutAssignment>Activity_tracking</compactLayoutAssignment>
@@ -340,6 +552,10 @@
             </values>
             <values>
                 <fullName>Phone</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Video_Call</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -385,6 +601,53 @@
                 <default>false</default>
             </values>
         </picklistValues>
+        <picklistValues>
+            <picklist>Status_Campaign_Member__c</picklist>
+            <values>
+                <fullName>Customer attended</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Customer did not attend</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Inviato</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Invitation sent</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Presence confirmed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Presence declined</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Responded</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Risposta</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sent</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Suggested Target</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Target confirmed</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
     </recordTypes>
     <recordTypes>
         <fullName>Mailing</fullName>
@@ -411,6 +674,10 @@
             </values>
             <values>
                 <fullName>Phone</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Video_Call</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -444,6 +711,53 @@
                 <default>false</default>
             </values>
         </picklistValues>
+        <picklistValues>
+            <picklist>Status_Campaign_Member__c</picklist>
+            <values>
+                <fullName>Customer attended</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Customer did not attend</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Inviato</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Invitation sent</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Presence confirmed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Presence declined</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Responded</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Risposta</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sent</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Suggested Target</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Target confirmed</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
     </recordTypes>
     <recordTypes>
         <fullName>One_To_One</fullName>
@@ -470,6 +784,10 @@
             </values>
             <values>
                 <fullName>Phone</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Video_Call</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -548,6 +866,53 @@
             </values>
             <values>
                 <fullName>Out of store</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Status_Campaign_Member__c</picklist>
+            <values>
+                <fullName>Customer attended</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Customer did not attend</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Inviato</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Invitation sent</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Presence confirmed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Presence declined</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Responded</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Risposta</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sent</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Suggested Target</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Target confirmed</fullName>
                 <default>false</default>
             </values>
         </picklistValues>

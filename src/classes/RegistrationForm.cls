@@ -29,7 +29,7 @@ public class RegistrationForm {
                                         FROM Contact_Card__c WHERE Id = :contactCId LIMIT 1 ];
             list<Attachment> Firma = [SELECT Id, Name, ParentId, Parent.Type 
                                       FROM Attachment where Parent.Type = 'Contact_Card__c' AND parentId = :cc[0].id AND contenttype = 'image/png'];
-            string locale = cc[0].Versione_DCC__c.substring(cc[0].Versione_DCC__c.indexOf('.')+1,cc[0].Versione_DCC__c.lastIndexOf('.'));//Translation[0].Country_FRM__c;
+            string locale = cc[0].Versione_DCC__c.substring(cc[0].Versione_DCC__c.indexOf('.')+1,cc[0].Versione_DCC__c.indexOf('.')+3);//Translation[0].Country_FRM__c;
             string HelpForLike;
             User userRecord = getUserInformation();
             string pdfLanguage = cc[0].SignedLanguage__c;
@@ -68,7 +68,7 @@ public class RegistrationForm {
                                               Button_Add_Address_Label__c, Billing_Address_Section_Label__c, Contact_Address_Section_Label__c, Other_Address_Section_Label__c,
                                               Street_Contact_Address_Label__c, City_Contact_Address_Label__c, CAP_Contact_Address_Label__c, Country_Contact_Address_Label__c,
                                               Street_Other_Address_Label__c, City_Other_Address_Label__c, State_Other_Address_Label__c, CAP_Other_Address_Label__c, 
-                                              Country_Other_Address_Label__c, State_Contact_Address_Label__c
+                                              Country_Other_Address_Label__c, DateBirthday_Label__c, Month_Label__c,State_Contact_Address_Label__c
                                              FROM Translate__c WHERE Name LIKE :HelpForLike];
             system.debug('TRAN:::: '+Translation);
             system.debug('cc::: '+cc);
@@ -91,7 +91,7 @@ public class RegistrationForm {
             PDFDatas = PDFDatas.replacefirst('LanguagePlaceHolder','<label>'+ Translation[0].Language_Label__c+' :  '+'</label><br>' +pdfLanguage);
             PDFDatas = PDFDatas.replace('FirstNamePlaceHolder','<label>'+Translation[0].First_Name_Label__c+ ' :  '+'</label><br>' +cc[0].FirstName__c);
             PDFDatas = PDFDatas.replace('LastNamePlaceHolder','<label>'+ Translation[0].Last_Name_Label__c+' :  '+'</label><br>' +cc[0].LastName__c);
-            if (locale == 'JP'|| locale == 'CN' || locale == 'RU' || locale == 'HK' || locale == 'MO' || cc[0].Lingua__c == 'ja'|| cc[0].Lingua__c == 'zh' || cc[0].Lingua__c == 'ru' ){
+            if (locale == 'JP'|| locale == 'CN' || locale == 'RU' || locale == 'HK' || locale == 'MO' || cc[0].Lingua__c == 'ja'|| cc[0].Lingua__c == 'zhs' || cc[0].Lingua__c == 'zh' || cc[0].Lingua__c == 'ru' ){
                 PDFDatas = PDFDatas.replace('LocalFNPlaceHolder','<label>'+Translation[0].Local_First_Name_Label__c+ ' :  '+'</label><br>' +cc[0].Nome_UTF_8__c);
                 PDFDatas = PDFDatas.replace('LocalLNPlaceHolder','<label>'+ Translation[0].Local_Last_Name_Label__c+' :  '+'</label><br>' +cc[0].Cognome_UTF_8__c);
             }
@@ -191,7 +191,7 @@ public class RegistrationForm {
             else{
                 PDFDatas = PDFDatas.replace('TelCheckboxPlaceHolder','<label>'+ Translation[0].Checkbox_Phone_Label__c+' :  '+'</label> <img src="/img/checkbox_unchecked.gif"/> ');
             }
-            if (locale == 'CN' || cc[0].Lingua__c == 'zh'){
+            if (locale == 'CN' || cc[0].Lingua__c == 'zhs' || cc[0].Lingua__c == 'zh'){
                 if (cc[0].WeChat__c == true){
                     PDFDatas = PDFDatas.replace('WeChatCheckboxPlaceHolder','<label>'+ Translation[0].Checkbox_WeChat_Label__c+' :  '+'</label> <img src="/img/checkbox_checked.gif"/> ');
                 }
@@ -309,7 +309,7 @@ public class RegistrationForm {
                                 Checkbox_Phone_Label__c, Contact_Preferences_Label__c, Checkbox_Email_Label__c, Checkbox_Mail_Label__c, Checkbox_WeChat_Label__c,
                                 Checkbox_Messaging_Label__c, Checkbox_Other_Placeholder__c, Birthdate_Label__c, Gender_Label__c, Nationality_Label__c, Preferred_Language_Label__c,
                                 Privacy_Header_Label__c, Privacy_Header_Before_Link_Label__c, Privacy_Header_Link_Label__c,
-                                Privacy_Header_After_Link_Label__c, Privacy_Yes_Label__c, Privacy_No_Label__c, Privacy_1_Label__c,
+                                Privacy_Header_After_Link_Label__c, Privacy_Yes_Label__c, Privacy_No_Label__c, Privacy_1_Label__c,Privacy_1_Label_Department__c, 
                                 Privacy_2_Label__c, Privacy_2_Label_Department__c, Privacy_3_Label__c, Privacy_Footer_Label__c, Date_Label__c, Signature_Label__c,
                                 Signature_Asterisco_Label__c, Button_Signature_Clear_Label__c, Button_Signature_Save_Label__c, Button_Form_Registration_Label__c,
                                 Informativa_Header_Label__c, Informativa_Body_Rich_Label__c, Informativa_Body_Rich_Label_Department__c,
@@ -320,7 +320,7 @@ public class RegistrationForm {
                                 Button_Add_Address_Label__c, Billing_Address_Section_Label__c, Contact_Address_Section_Label__c, Other_Address_Section_Label__c,
                                 Street_Contact_Address_Label__c, City_Contact_Address_Label__c, CAP_Contact_Address_Label__c, Country_Contact_Address_Label__c,
                                 Street_Other_Address_Label__c, City_Other_Address_Label__c, State_Other_Address_Label__c, CAP_Other_Address_Label__c, 
-                                Country_Other_Address_Label__c,State_Contact_Address_Label__c
+                                Country_Other_Address_Label__c,State_Contact_Address_Label__c, DateBirthday_Label__c, Month_Label__c
                                 //PALUMBO (END)
                                 FROM Translate__c WHERE Country_FRM__c = :locale]) {
                                     Mymap.put(obj.Name, obj );
@@ -369,7 +369,7 @@ public class RegistrationForm {
         returnData insertAccount;
         try{
             User user = getUserInformation();
-            if (user.Nation_Contact_Card__c == 'RU'){
+            if (user.Area_Contact_Card__c == 'RU'){
                 RussianWebServer.RussianWebServerInvocation(account);
             }
         }
@@ -378,6 +378,7 @@ public class RegistrationForm {
         }
         try{
             Savepoint sp = Database.setSavepoint();
+            System.debug('dopo setSavePoint');
             insertAccount = (returnData)JSON.deserializeStrict( insertAccount(account), returnData.class);
             System.debug('returnData1OK');
             returnData insertContactCard = (returnData)JSON.deserializeStrict( insertContactCard(account, insertAccount.Id), returnData.class);
@@ -432,7 +433,7 @@ return 'false';
     
     @AuraEnabled
     public static User getUserInformation() {
-        return [SELECT Id, Name, Nation_Contact_Card__c, Language_Contact_Card__c, Department__c, Codice_Boutique__c, Canale_di_Vendita__c FROM User WHERE Id =: UserInfo.getuserid() ];
+        return [SELECT Id, Name, Nation_Contact_Card__c,Area_Contact_Card__c, Language_Contact_Card__c, Department__c, Codice_Boutique__c, Canale_di_Vendita__c FROM User WHERE Id =: UserInfo.getuserid() ];
     }
     @AuraEnabled
     public static Account getAccount(Id AccountId) {
@@ -462,6 +463,16 @@ return 'false';
                     acc.PersonMailingCity = acc.Citta_UTF_8__c;
                 }
             }
+            if(acc.PersonMailingState == null || acc.PersonMailingState =='') {
+                if(acc.Province_UTF_8__c !=  null  ||  acc.Province_UTF_8__c != '' ) {
+                    acc.PersonMailingState = acc.Province_UTF_8__c;
+                }
+            }
+            if(acc.PersonMailingPostalCode == null || acc.PersonMailingPostalCode =='') {
+                if(acc.Zip_Code_UTF_8__c !=  null  ||  acc.Zip_Code_UTF_8__c != '' ) {
+                    acc.PersonMailingPostalCode = acc.Zip_Code_UTF_8__c;
+                }
+            }
             system.debug('acc : ' + acc);
         } Catch(Exception ex){
             system.debug('Exception  : '+ ex.getMessage());
@@ -476,23 +487,21 @@ return 'false';
         
         User user = [SELECT Id, LastName, Codice_Boutique__c, Id_Store_Manager__c, Codice_Associate__c, Nome_Profilo__c FROM User WHERE Id=:UserInfo.getUserId()];
         Location__c loc = new Location__c();
-        System.debug('VS user: '+user);
-        System.debug('VS codice boutique: '+user.Codice_Boutique__c);
         if([SELECT Id, Name, Id_Location_Micros__c FROM Location__c WHERE Id_Location_Micros__c=: user.Codice_Boutique__c].size() != 0) {
             loc = [SELECT Id, Name, Id_Location_Micros__c FROM Location__c WHERE Id_Location_Micros__c=: user.Codice_Boutique__c];
         }
         Associated__c ass = new Associated__c();
         // VS - 08/06/2020 -  SALESFORCE-868
         // if(user.Nome_Profilo__c == 'BC - Associate') {
-            if(user.Codice_Associate__c != null && user.Codice_Associate__c != '') {
-                system.debug('VS dentro if campi user');
-                System.debug('user.Codice_Associate__c '+user.Codice_Associate__c);
-                System.debug('user.Codice_Boutique__c '+user.Codice_Boutique__c);
-                if([SELECT Id, Id_Associate__c FROM Associated__c WHERE Id_Associate__c =: user.Codice_Associate__c].size() != 0) {
-                    ass = [SELECT Id, Id_Associate__c FROM Associated__c WHERE Id_Associate__c =: user.Codice_Associate__c AND Id_Location_Micros__c =: user.Codice_Boutique__c];
-                }
+        if(user.Codice_Associate__c != null && user.Codice_Associate__c != '') {
+            system.debug('VS dentro if campi user');
+            System.debug('user.Codice_Associate__c '+user.Codice_Associate__c);
+            System.debug('user.Codice_Boutique__c '+user.Codice_Boutique__c);
+            if([SELECT Id, Id_Associate__c FROM Associated__c WHERE Id_Associate__c =: user.Codice_Associate__c].size() != 0) {
+                ass = [SELECT Id, Id_Associate__c FROM Associated__c WHERE Id_Associate__c =: user.Codice_Associate__c AND Id_Location_Micros__c =: user.Codice_Boutique__c];
             }
-            system.debug('VS fuori if campi user');
+        }
+        system.debug('VS fuori if campi user');
         // VS - 08/06/2020 -  SALESFORCE-868
         returnData ret = new returnData();
         ret.success = true;
@@ -512,6 +521,7 @@ return 'false';
                 newPersonAccount.First_Location_Name__c  = loc.Name;
                 newPersonAccount.Location__c             = loc.Id;
             }
+            
             newPersonAccount.Id_Location__c          = user.Codice_Boutique__c;
             if (ass != null) {
                 newPersonAccount.Associate_di_registrazione__c = ass.Id;
@@ -519,6 +529,12 @@ return 'false';
                 newPersonAccount.Associate__c                  = ass.Id;
             }
             
+            if(user.Nome_Profilo__c == 'BC - Boutique' && !String.isBlank(user.Codice_Boutique__c) && String.isBlank(user.Codice_Associate__c)) {
+                Location__c loc2 = [SELECT Store_Manager_Id__c FROM Location__c WHERE Id_Location_Micros__c=: user.Codice_Boutique__c];
+                newPersonAccount.Associate_Registrazione_ID__c= loc2.Store_Manager_Id__c ;
+            }else{
+                newPersonAccount.Associate_Registrazione_ID__c= user.Codice_Associate__c;
+            }
             newPersonAccount.customer_origin__c	= 'DCC customer';
             
             if(user.Nome_Profilo__c == 'BC - Associate') {
@@ -636,11 +652,15 @@ return 'false';
     public static String getDCCVersion(){
         User userRecord = getUserInformation();
         String returnVersion = '';
-        Decimal translateVersion = getVersionFromTranslate(userRecord.Nation_Contact_Card__c);
+        Decimal translateVersion = getVersionFromTranslate(userRecord.Area_Contact_Card__c);
+        String areaContactCard = userRecord.Area_Contact_Card__c;
         String nationContactCard = userRecord.Nation_Contact_Card__c;
         String sellingChannel = userRecord.Canale_di_Vendita__c;
         if (translateVersion != null)
             returnVersion += translateVersion;
+        returnVersion += '.';
+        if (areaContactCard != null)
+            returnVersion += areaContactCard;
         returnVersion += '.';
         if (nationContactCard != null)
             returnVersion += nationContactCard;
@@ -659,7 +679,7 @@ return 'false';
         Contact_Card__c newContactCard = new Contact_Card__c();
         try{
             User userRecord = getUserInformation();
-            Translate__c currentTranslate = getCurrentTranslate(acc.SignedLanguage__c+'_'+userRecord.Nation_Contact_Card__c);
+            Translate__c currentTranslate = getCurrentTranslate(acc.SignedLanguage__c+'_'+userRecord.Area_Contact_Card__c);
             newContactCard.Customer_ID__c               = Id;
             newContactCard.Salutation__c                = acc.Salutation;
             newContactCard.FirstName__c                 = acc.FirstName;
@@ -702,7 +722,7 @@ return 'false';
             newContactCard.Ente_di_emissione_passaporto__c = acc.Ente_di_emissione_passaporto__c;
             newContactCard.Data_di_emissione_passaporto__c = acc.Data_di_emissione_passaporto__c;
             
-            newContactCard.Note_versionamento__c = getVersionNoteFromTranslate(userRecord.Nation_Contact_Card__c);
+            newContactCard.Note_versionamento__c = getVersionNoteFromTranslate(userRecord.Area_Contact_Card__c);
             if (acc.SignedLanguage__c != null && acc.SignedLanguage__c != ''){
             newContactCard.PrivacyHeaderSignedText__c = currentTranslate.Privacy_Header_Before_Link_Label__c+' '+ currentTranslate.Privacy_Header_Link_Label__c+' '+ currentTranslate.Privacy_Header_After_Link_Label__c;
             if (acc.Privacy1__c)
@@ -816,45 +836,77 @@ insert cDe;
          system.debug('Akshay@ countryIso  : ' + countryIso);
         try{
             if(passportNumber !='' && countryIso != ''){
-                Http http = new Http();
-                HttpRequest request = new HttpRequest();   
-                // makeCalloutForTaxFreerequest.setEndpoint('https://46.30.169.235:8085/secured/dispatch/customers/globalblue/gettraveler');
-                //request.setEndpoint('https://172.16.3.135:8085/secured/dispatch/customers/globalblue/gettraveler');
-                request.setEndpoint('https://46.30.169.234:8085/secured/dispatch/customers/globalblue/gettraveler');
-                request.setClientCertificateName('srvesb');
-                // request.setClientCertificate('MIIDpzCCAo+gAwIBAgIESroAhzANBgkqhkiG9w0BAQsFADCBgzELMAkGA1UEBhMC' +
-                //                             'SVQxEDAOBgNVBAgTB1BlcnVnaWExEDAOBgNVBAcTB1NvbG9tZW8xIjAgBgNVBAoT' +
-                //                             'GUJydW5lbGxvIEN1Y2luZWxsaSBzLnAuYS4xDzANBgNVBAsTBnNydmVzYjEbMBkG' +
-                //                             'A1UEAxMSQnJ1bmVsbG8gQ3VjaW5lbGxpMB4XDTE2MDkxNDEwMDM0NVoXDTIyMDMw' +
-                //                             'NzEwMDM0NVowgYMxCzAJBgNVBAYTAklUMRAwDgYDVQQIEwdQZXJ1Z2lhMRAwDgYD' +
-                //                             'VQQHEwdTb2xvbWVvMSIwIAYDVQQKExlCcnVuZWxsbyBDdWNpbmVsbGkgcy5wLmEu' +
-                //                             'MQ8wDQYDVQQLEwZzcnZlc2IxGzAZBgNVBAMTEkJydW5lbGxvIEN1Y2luZWxsaTCC' +
-                //                             'ASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAI4ULaux7juiK6T+Mp/I6VQS' +
-                //                             'X/LDoX3ZBM9jqeVms2pqMb39kzDcPu87NE/Mjdl01QvOUVShxx49HGo/A55OKnRs' +
-                //                             'Inw7STTiECojikKbFGTYNg9BVzxx2ki8LtSPrxJFJv+iH8DrxdezehrxkVmEDlwy' +
-                //                             'hsQICe2EyTFbVx1ItRthDKkBkxsmyViUiYUhq148QHlsO7mVzh6852NiNnW0WEaq' +
-                //                             '3LqBU4F+UXG8pcSvV+gAQPaDrEbDCZvW1qdjlKTLioBtOe3pJxCpYRMe4IqYvhNx' +
-                //                             'chMWVDvurhY6X1OoCqt12ei5SDiHj+SS8RsTlEfeKyWScjxlampmyX4/4XaiwiUC' +
-                //                             'AwEAAaMhMB8wHQYDVR0OBBYEFJ1NfFx7vWVDVOyDUnY4bS/31NPcMA0GCSqGSIb3' +
-                //                             'DQEBCwUAA4IBAQAcI8eRYuQjg40YQemY9FUOywkzppc0bH9KYyT94Na2Z/Yhr7o8' +
-                //                             'IUf1x1Z9orKma/iurVHUQxumu2gUoHUCAJro0Was//ynHEypDCGOjgprdYdOtICm' +
-                //                             '+q9N9xUfRKn7zGmuHoIBo5k0ZTNWQqKmqXyxCgdAT3Uo2eAb9DhBE0ZtFw6CEF9g' +
-                //                             'gWt4m2f7KIbfSy1YCyY72lI2I0eCTtj1k4TOR2gPhdRZLCsD/o15EKgWhH03gvcP' +
-                //                             'bhxnuUMua1G6S3f9I9DVvtbnIuuBvEN2GD2AuJVBjZIpcXwvYMuocazqf2fTNE+n' +
-                //                             'e3Q8jmMmZNwF5GbomwOffWtQbF5pDz+QGG/p','DaInserireLaChiave');
-                request.setMethod('POST');
-                request.setHeader('Content-Type', 'application/json;charset=UTF-8');
-                // Set the body as a JSON object
-                request.setBody('{"passportNumber__c":"'+passportNumber+'","countryCode__c":"'+countryIso+'"}');
-                system.debug('Request : ' + request);
-                HttpResponse response = http.send(request);
-                // Parse the JSON response
-                if (response.getStatusCode() != 201) {
-                    System.debug('The status code returned was not expected: ' +
-                                 response.getStatusCode() + ' ' + response.getStatus());
-                } else {
-                    System.debug(response.getBody());
-                }
+                // Http http = new Http();
+                // HttpRequest request = new HttpRequest();   
+                // // makeCalloutForTaxFreerequest.setEndpoint('https://46.30.169.235:8085/secured/dispatch/customers/globalblue/gettraveler');
+                // //request.setEndpoint('https://172.16.3.135:8085/secured/dispatch/customers/globalblue/gettraveler');
+                // // request.setEndpoint('https://46.30.169.234:8085/secured/dispatch/customers/globalblue/gettraveler');
+                // //test global blu 28/07
+                // // request.setEndpoint('https://devesb.dev.brunellocucinelli.it:8085/secured/dispatch/customers/globalblue/gettraveler');
+
+                // request.setEndpoint('https://putsreq.com/wYqdH8dSlNQZKw0DaBda');
+                // // request.setClientCertificateName('srvesb');
+                // // request.setClientCertificate('MIIDpzCCAo+gAwIBAgIESroAhzANBgkqhkiG9w0BAQsFADCBgzELMAkGA1UEBhMC' +
+                // //                             'SVQxEDAOBgNVBAgTB1BlcnVnaWExEDAOBgNVBAcTB1NvbG9tZW8xIjAgBgNVBAoT' +
+                // //                             'GUJydW5lbGxvIEN1Y2luZWxsaSBzLnAuYS4xDzANBgNVBAsTBnNydmVzYjEbMBkG' +
+                // //                             'A1UEAxMSQnJ1bmVsbG8gQ3VjaW5lbGxpMB4XDTE2MDkxNDEwMDM0NVoXDTIyMDMw' +
+                // //                             'NzEwMDM0NVowgYMxCzAJBgNVBAYTAklUMRAwDgYDVQQIEwdQZXJ1Z2lhMRAwDgYD' +
+                // //                             'VQQHEwdTb2xvbWVvMSIwIAYDVQQKExlCcnVuZWxsbyBDdWNpbmVsbGkgcy5wLmEu' +
+                // //                             'MQ8wDQYDVQQLEwZzcnZlc2IxGzAZBgNVBAMTEkJydW5lbGxvIEN1Y2luZWxsaTCC' +
+                // //                             'ASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAI4ULaux7juiK6T+Mp/I6VQS' +
+                // //                             'X/LDoX3ZBM9jqeVms2pqMb39kzDcPu87NE/Mjdl01QvOUVShxx49HGo/A55OKnRs' +
+                // //                             'Inw7STTiECojikKbFGTYNg9BVzxx2ki8LtSPrxJFJv+iH8DrxdezehrxkVmEDlwy' +
+                // //                             'hsQICe2EyTFbVx1ItRthDKkBkxsmyViUiYUhq148QHlsO7mVzh6852NiNnW0WEaq' +
+                // //                             '3LqBU4F+UXG8pcSvV+gAQPaDrEbDCZvW1qdjlKTLioBtOe3pJxCpYRMe4IqYvhNx' +
+                // //                             'chMWVDvurhY6X1OoCqt12ei5SDiHj+SS8RsTlEfeKyWScjxlampmyX4/4XaiwiUC' +
+                // //                             'AwEAAaMhMB8wHQYDVR0OBBYEFJ1NfFx7vWVDVOyDUnY4bS/31NPcMA0GCSqGSIb3' +
+                // //                             'DQEBCwUAA4IBAQAcI8eRYuQjg40YQemY9FUOywkzppc0bH9KYyT94Na2Z/Yhr7o8' +
+                // //                             'IUf1x1Z9orKma/iurVHUQxumu2gUoHUCAJro0Was//ynHEypDCGOjgprdYdOtICm' +
+                // //                             '+q9N9xUfRKn7zGmuHoIBo5k0ZTNWQqKmqXyxCgdAT3Uo2eAb9DhBE0ZtFw6CEF9g' +
+                // //                             'gWt4m2f7KIbfSy1YCyY72lI2I0eCTtj1k4TOR2gPhdRZLCsD/o15EKgWhH03gvcP' +
+                // //                             'bhxnuUMua1G6S3f9I9DVvtbnIuuBvEN2GD2AuJVBjZIpcXwvYMuocazqf2fTNE+n' +
+                // //                             'e3Q8jmMmZNwF5GbomwOffWtQbF5pDz+QGG/p','DaInserireLaChiave');
+                // request.setMethod('POST');
+                // request.setHeader('Content-Type', 'application/json'); //;charset=UTF-8
+                // request.setHeader('Content-Length', '<calculated when request is sent>');
+                // request.setHeader('Host', '<calculated when request is sent>');
+                // // Set the body as a JSON object
+                // request.setBody('{"passportNumber__c":"'+passportNumber+'","countryCode__c":"'+countryIso+'"}');
+                // system.debug('Request : ' + request);
+                // HttpResponse response = http.send(request);
+                // // Parse the JSON response
+                // System.debug();
+                // if (response.getStatusCode() != 201) {
+                //     System.debug('The status code returned was not expected: ' +
+                //                  response.getStatusCode() + ' ' + response.getStatus());
+                // } else {
+                //     System.debug(response.getBody());
+                // }
+
+                    String jsonString  = '{ "countryCode__c" : "US", "passportNumber__c": "US5555" }';
+
+                HttpRequest req = new HttpRequest();                            
+            // req.setEndpoint(endPointIntegrazioneInfoStore);
+            // req.setEndpoint('https://putsreq.com/wYqdH8dSlNQZKw0DaBda'); // https://salesforce-test.warranthub.it/api/test   
+            req.setEndpoint('https://devesb.dev.brunellocucinelli.it:8085/secured/dispatch/customers/globalblue/gettraveler');
+
+            req.setMethod('POST');
+            req.setHeader('Content-type', 'application/json');
+            // req.setHeader('Content-Length', '<calculated when request is sent>');
+            // req.setHeader('Host', '<calculated when request is sent>');
+            req.setBody(jsonString);
+
+            //Execute web service call here 
+            Http http = new Http();               
+            HTTPResponse res = http.send(req);
+
+            //Helpful debug messages 
+            System.debug(res.toString()); 
+            System.debug('STATUS: '+res.getStatus()); 
+            System.debug('STATUS_CODE: '+res.getStatusCode()); 
+            System.debug ('HTTPResponse Body: '+ res.getBody());
+
+            Map<String, Object> resBody = (Map<String, Object>) JSON.deserializeUntyped(res.getBody());
             }
             
         }Catch(Exception ex){
@@ -886,11 +938,16 @@ insert cDe;
         
         if(regexMatcher.find() || regexMatcher_1.find()) {
             system.debug('Akshay@ oriental characters (true)');
+            // acc.Indirizzo_UTF_8__c = acc.PersonMailingStreet;
+            // acc.Citta_UTF_8__c  =   acc.PersonMailingCity + acc.PersonMailingState;
             acc.Indirizzo_UTF_8__c = acc.PersonMailingStreet;
-            acc.Citta_UTF_8__c  =   acc.PersonMailingCity + acc.PersonMailingState;
+            acc.Citta_UTF_8__c = acc.PersonMailingCity;
+            acc.Province_UTF_8__c = acc.PersonMailingState;
+            acc.Zip_Code_UTF_8__c = acc.PersonMailingPostalCode;
             acc.PersonMailingStreet = '';
             acc.PersonMailingCity  = '';
             acc.PersonMailingState = '';
+            acc.PersonMailingPostalCode= '';
         }
         else{
             system.debug('Akshay@ No oriental characters (false)');

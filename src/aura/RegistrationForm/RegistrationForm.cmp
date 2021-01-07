@@ -203,7 +203,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <aura:if isTrue="{!(v.locale == 'JP'|| v.locale == 'CN' || v.locale == 'RU' || v.locale == 'HK' || v.locale == 'MO' || v.truncLanguage == 'ja'|| v.truncLanguage == 'zh' || v.truncLanguage == 'ru' )}">
+                            <aura:if isTrue="{!(v.locale == 'JP'|| v.locale == 'CN' || v.locale == 'RU' || v.locale == 'HK' || v.locale == 'MO' || v.truncLanguage == 'ja'|| v.truncLanguage == 'zhs' || v.truncLanguage == 'zh' || v.truncLanguage == 'ru' )}">
                                 <!-- JP/CN -->
                                 <div class="slds-col slds-size_5-of-12 slds-large-size_5-of-12">
                                     <div class="slds-form-element">
@@ -242,7 +242,7 @@
                                 </aura:set>    
                             </aura:if>
                         </div>
-                        <aura:if isTrue="{!(v.locale == 'JP'|| v.locale == 'CN' || v.locale == 'RU' || v.locale == 'HK' || v.locale == 'MO' || v.truncLanguage == 'ja'|| v.truncLanguage == 'zh' || v.truncLanguage == 'ru' )}">
+                        <aura:if isTrue="{!(v.locale == 'JP'|| v.locale == 'CN' || v.locale == 'RU' || v.locale == 'HK' || v.locale == 'MO' || v.truncLanguage == 'ja'|| v.truncLanguage == 'zhs' || v.truncLanguage == 'zh' || v.truncLanguage == 'ru' )}">
                             <div class="slds-grid slds-wrap row">
                                 <div class="slds-col slds-size_6-of-12 slds-large-size_6-of-12">
                                     <div class="slds-form-element">
@@ -692,7 +692,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <aura:if isTrue="{!(v.locale == 'CN' &amp;&amp; v.truncLanguage == 'zh') || (v.locale == 'CN' &amp;&amp; v.truncLanguage == 'en') || (v.locale == 'HK' &amp;&amp; v.truncLanguage == 'en') || (v.locale == 'MO' &amp;&amp; v.truncLanguage == 'en')}">
+                            <aura:if isTrue="{!(v.locale == 'CN' &amp;&amp; v.truncLanguage == 'zhs') || (v.locale == 'CN' &amp;&amp; v.truncLanguage == 'zh') || (v.locale == 'CN' &amp;&amp; v.truncLanguage == 'en') || (v.locale == 'HK' &amp;&amp; v.truncLanguage == 'en') || (v.locale == 'MO' &amp;&amp; v.truncLanguage == 'en')}">
                             <div class="slds-col slds-size_4-of-12 slds-medium-size_4-of-12">
                                 <div class="slds-form-element">
                                     <label class="slds-form-element__label" for="input-id-01">{!v.translatorValue.We_Chat_ID_Label__c}</label>
@@ -851,7 +851,7 @@
                                 <div class="slds-combobox  slds-combobox-lookup slds-dropdown-trigger slds-dropdown-trigger_click " aura:id="searchLookupHobby"
                                 aria-expanded="false" aria-haspopup="listbox" role="combobox">
                                     <aura:if isTrue="{!(v.customPicklistHobby != undefined)}">
-                                        <c:lwcMultiSelect aura:id="lwcMultiSelect" label="Hobby" options="{!v.customPicklistHobbyBU}" onvaluechange="{!c.getValueFromLwc}" oldvalue="{!v.newItem.Hobby__c}"></c:lwcMultiSelect>
+                                        <c:lwcMultiSelect aura:id="lwcMultiSelect" label="{!v.translatorValue.Hobby_Label__c}" options="{!v.customPicklistHobbyBU}" onvaluechange="{!c.getValueFromLwc}" oldvalue="{!v.newItem.Hobby__c}"></c:lwcMultiSelect>
                                     </aura:if>
                                     
                                 </div>
@@ -979,7 +979,7 @@
                         
                         <aura:if isTrue="{!v.locale == 'DE'}">
                             <!-- DE -->
-                            <div class="slds-wrap privacy-police">
+                            <!--<div class="slds-wrap privacy-police">
                                 <div class="slds-col slds-size_12-0f-12 slds-large-size_12-of-12">
                                     <div class="slds-form-element slds-text-align_left privacy-police-title">
                                         <span>{!v.translatorValue.Privacy_Header_Before_Link_Label__c}&ensp;</span>
@@ -1040,7 +1040,7 @@
                                         <label class="slds-checkbox__label">{!v.translatorValue.Privacy_Footer_Label__c}</label>
                                     </div>
                                 </div>      
-                            </div>
+                            </div>-->
                             <aura:set attribute="else">
                                 <!-- ALL OTHERS -->
                                 <div class="slds-wrap privacy-police">
@@ -1064,44 +1064,49 @@
                                                     </span>
                                                     <div>
                                                         <label aura:id="checkbox_1_label" class="slds-checkbox__label">
-                                                            {!v.translatorValue.Privacy_1_Label__c}                            
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </fieldset>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="slds-col slds-size_12-of-12 slds-large-size_12-of-12">
-                                        <div class="slds-form-element">
-                                            <fieldset aura:id="checkbox2" class="slds-form-element border-bottom">
-                                                <div class="slds-form-element__control">
-                                                    <span class="slds-checkbox">
-                                                        <lightning:input type="checkbox" aura:id="checkbox_2_yes" class="text-bold" label="{!v.translatorValue.Privacy_Yes_Label__c}" name="checkbox_2_yes" value="" checked="{!v.newItem.Privacy2__c}" onchange="{!c.verifyCheckQuestion}" disabled="{!v.afterPrinting}" />
-                                                    </span>
-                                                    <span class="slds-checkbox">
-                                                        <lightning:input type="checkbox" aura:id="checkbox_2_no" class="text-bold" label="{!v.translatorValue.Privacy_No_Label__c}" name="checkbox_2_no" value="" checked="{! (v.newItem.Privacy2__c == false)}" onchange="{!c.verifyCheckQuestion}" disabled="{!v.afterPrinting}" />
-                                                    </span>
-                                                    <div>
-                                                        <label aura:id="checkbox_2_label" class="slds-checkbox__label">
-                                                            <aura:if isTrue="{!v.user.Canale_di_Vendita__c == 'Department'}">
-                                                                {!v.translatorValue.Privacy_2_Label_Department__c}  
+                                                            <aura:if isTrue="{!(and(v.user.Canale_di_Vendita__c == 'Department',v.locale == 'JP'))}">
+                                                                {!v.translatorValue.Privacy_1_Label_Department__c}
                                                                 <aura:set attribute="else">
-                                                                    <aura:if isTrue="{!v.user.Canale_di_Vendita__c == 'Monobrand'}">
-                                                                        {!v.translatorValue.Privacy_2_Label__c}
-                                                                        <aura:set attribute="else">
-                                                                        {!v.translatorValue.Privacy_2_Label__c}  
-                                                                        </aura:set>
-                                                                    </aura:if>
-                                                                </aura:set>
-                                                            </aura:if>                                  
+                                                                {!v.translatorValue.Privacy_1_Label__c}  
+                                                                </aura:set>    
+                                                            </aura:if>
                                                         </label>
                                                     </div>
                                                 </div>
                                             </fieldset>
                                         </div>
                                     </div>
-                                    
+                                    <aura:if isTrue="{!(and(v.user.Canale_di_Vendita__c == 'Department',v.locale == 'JP'))}">    
+                                        <div class="slds-col slds-size_12-of-12 slds-large-size_12-of-12">
+                                            <div class="slds-form-element">
+                                                <fieldset aura:id="checkbox2" class="slds-form-element border-bottom">
+                                                    <div class="slds-form-element__control">
+                                                        <span class="slds-checkbox">
+                                                            <lightning:input type="checkbox" aura:id="checkbox_2_yes" class="text-bold" label="{!v.translatorValue.Privacy_Yes_Label__c}" name="checkbox_2_yes" value="" checked="{!v.newItem.Privacy2__c}" onchange="{!c.verifyCheckQuestion}" disabled="{!v.afterPrinting}" />
+                                                        </span>
+                                                        <span class="slds-checkbox">
+                                                            <lightning:input type="checkbox" aura:id="checkbox_2_no" class="text-bold" label="{!v.translatorValue.Privacy_No_Label__c}" name="checkbox_2_no" value="" checked="{! (v.newItem.Privacy2__c == false)}" onchange="{!c.verifyCheckQuestion}" disabled="{!v.afterPrinting}" />
+                                                        </span>
+                                                        <div>
+                                                            <label aura:id="checkbox_2_label" class="slds-checkbox__label">
+                                                                
+                                                                    {!v.translatorValue.Privacy_2_Label_Department__c}  
+                                                                    <!-- <aura:set attribute="else">
+                                                                        <aura:if isTrue="{!v.user.Canale_di_Vendita__c == 'Monobrand'}">
+                                                                            {!v.translatorValue.Privacy_2_Label__c}
+                                                                            <aura:set attribute="else">
+                                                                            {!v.translatorValue.Privacy_2_Label__c}  
+                                                                            </aura:set>
+                                                                        </aura:if>
+                                                                    </aura:set> -->
+                                                                                                
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </fieldset>
+                                            </div>
+                                        </div>
+                                    </aura:if>
                                     <div class="slds-col slds-size_12-of-12 slds-large-size_12-of-12">
                                         <div class="slds-form-element">
                                             <fieldset class="slds-form-element">

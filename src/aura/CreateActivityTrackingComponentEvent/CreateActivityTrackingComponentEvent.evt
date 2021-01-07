@@ -1,0 +1,17 @@
+<aura:event type="COMPONENT"
+            description="Event template">
+	<aura:attribute name="categoria"
+					type="String" />
+	<aura:attribute name="tipo"
+	                type="String" />
+	<aura:attribute name="canale"
+	                type="String" />
+	<aura:attribute name="step"
+	                type="Integer" />
+	<aura:attribute name="newActivityTracking"
+	                type="Activity_tracking__c" />
+	<aura:attribute name="locationVisibility"
+	                type="Integer" />
+	<aura:attribute name="giftType"
+	                type="String" />
+</aura:event>

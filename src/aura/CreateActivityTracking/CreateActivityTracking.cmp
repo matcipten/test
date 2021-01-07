@@ -1,0 +1,310 @@
+<aura:component controller="CreateActivityTrackingController"
+				implements="force:lightningQuickAction,lightning:isUrlAddressable"
+				access="global">
+
+	<aura:attribute name="labels"
+					type="Object"></aura:attribute>
+	<aura:attribute name="rtLabels"
+					type="Object"></aura:attribute>
+	<aura:attribute name="picklistLabelsCanaleC"
+					type="Object"></aura:attribute>
+
+
+	<aura:attribute name="step"
+					type="Integer"
+					default="0"></aura:attribute>
+
+	<aura:attribute name="tipoName"
+					type="String"
+					default=""></aura:attribute>
+
+	<aura:attribute name="tipi"
+					type="List"
+					default="[]"></aura:attribute>
+
+
+	<aura:attribute name="EVCategorie"
+					type="List"
+					default="[]"></aura:attribute>
+	<aura:attribute name="MACategorie"
+					type="List"
+					default="[]"></aura:attribute>
+	<aura:attribute name="OTCategorie"
+					type="List"
+					default="[]"></aura:attribute>
+	<aura:attribute name="BCCategorie"
+					type="List"
+					default="[]"></aura:attribute>
+	<aura:attribute name="canale"
+					type="Object"></aura:attribute>
+	<aura:attribute name="categoria"
+					type="String"></aura:attribute>
+	<aura:attribute name="tipo"
+					type="String"></aura:attribute>
+	<aura:attribute name="tipoDevName"
+					type="String"
+					access="GLOBAL" />
+
+	<!-- <aura:attribute name="events"
+	                type="List"
+	                default="[]" /> -->
+
+	<aura:attribute name="newActivityTracking"
+					type="Activity_tracking__c"
+					default="{'sobjectType':'Activity_tracking__c'}" />
+
+
+	<!-- <aura:attribute name="step2Area"
+	                type="Aura.Component[]" />
+	<aura:attribute name="step1Area"
+	                type="Aura.Component[]" /> -->
+
+	<aura:attribute name="activityTrackingId"
+					type="String"
+					default="" />
+
+
+	<aura:attribute name="giftId"
+					type="String"
+					default="" />
+	
+	<aura:attribute name="booleanBC"
+					type="Boolean"
+					/>
+
+	<aura:attribute name="locationVisibility"
+					type="Integer"
+					default="0"></aura:attribute>
+
+	<aura:handler name="init"
+				  value="{!this}"
+				  action="{!c.doInit}" />
+
+	<aura:attribute name="accountId"
+					type="String"
+					access="GLOBAL"></aura:attribute>
+	<aura:attribute name="tipoActivity"
+					type="String"
+					access="GLOBAL"></aura:attribute>
+
+	<aura:attribute name="loggedUser"
+					type="Object"
+					access="private"></aura:attribute>
+
+	<aura:attribute name="images"
+					type="Object"></aura:attribute>
+
+	<aura:handler name="change"
+				  value="{!v.pageReference}"
+				  action="{!c.refreshCmp}" />
+
+	<aura:handler name="typeChosenEvent"
+				  event="c:CreateActivityTrackingComponentEvent"
+				  action="{!c.getTypeChosen}" />
+
+	<aura:handler name="categoryChosenEvent"
+				  event="c:CreateActivityTrackingComponentEvent"
+				  action="{!c.getCategoryChosen}" />
+
+	<aura:handler name="channelChosenEvent"
+				  event="c:CreateActivityTrackingComponentEvent"
+				  action="{!c.getChannelChosen}" />
+
+	<aura:handler name="goToPreviousStepEvent"
+				  event="c:CreateActivityTrackingComponentEvent"
+				  action="{!c.changeStep}" />
+
+	<aura:handler name="saveActivityTrackingEvent"
+				  event="c:CreateActivityTrackingComponentEventDml"
+				  action="{!c.saveNewActivityTracking}" />
+
+	<aura:handler name="showSpinner"
+				  event="c:CreateActivityTrackingComponentEvent"
+				  action="{!c.showSpinner}" />
+
+	<aura:handler name="hideSpinner"
+				  event="c:CreateActivityTrackingComponentEvent"
+				  action="{!c.hideSpinner}" />
+
+	<aura:handler event="aura:locationChange"
+				  action="{!c.refreshCmp}" />
+
+	<lightning:spinner alternativeText="Loading"
+					   aura:id="mySpinner"
+					   size="large"
+					   class="slds-hide slds-is-fixed" />
+
+	<!-- <aura:if isTrue="{!v.step != 2 &amp;&amp; v.step != 3}">
+		<h1 style="font-size:20px">Tracking Contatto</h1>
+	</aura:if>
+	<aura:if isTrue="{!v.step == 3}">
+		<h1 style="font-size:20px">Aggiunta Costo</h1>
+	</aura:if> -->
+
+	<aura:if isTrue="{!v.booleanBC}">
+		<lightning:layout class="slds-m-top_large slds-m-bottom_large cstm-main-wizard-wrapper">
+			<lightning:layoutItem size="12">
+				<lightning:progressBar value="{!v.step * 25}"
+									size="x-small"
+									class="cstm-main-wizard-progress-bar" />
+				<div class="cstm-main-wizard-items">
+					<div class="{!v.step == 0 ? 'cstm-main-wizard-item active' : 'cstm-main-wizard-item'}">
+						<div class="cstm-main-wizard-dot"></div>
+						<div class="cstm-main-wizard-label">Activity choice</div>
+					</div>
+					<div class="{!v.step == 1 ? 'cstm-main-wizard-item active' : 'cstm-main-wizard-item'}">
+						<div class="cstm-main-wizard-dot"></div>
+						<div class="cstm-main-wizard-label">{!$Label.c.Channel_Choice}</div>
+					</div>
+					<div class="{!v.step == 2 ? 'cstm-main-wizard-item active' : 'cstm-main-wizard-item'}">
+						<div class="cstm-main-wizard-dot"></div>
+						<div class="cstm-main-wizard-label">{!$Label.c.Category_Choice}</div>
+					</div>
+					<div class="{!(v.step == 3 || v.step == 10) ? 'cstm-main-wizard-item active' : 'cstm-main-wizard-item'}">
+						<div class="cstm-main-wizard-dot"></div>
+						<div class="cstm-main-wizard-label">{!$Label.c.Activity_Tracking_Creation}</div>
+					</div>
+					<div class="{!v.step == 4 ? 'cstm-main-wizard-item active' : 'cstm-main-wizard-item'}">
+						<div class="cstm-main-wizard-dot"></div>
+						<div class="cstm-main-wizard-label">{!$Label.c.Add_Costs}</div>
+					</div>
+					<!-- <div class="cstm-main-wizard-item">
+						<div class="cstm-main-wizard-dot"></div>
+						<div class="cstm-main-wizard-label"></div>
+					</div> -->
+				</div>
+			</lightning:layoutItem>
+		</lightning:layout>
+		<aura:set attribute="else">
+			<lightning:layout class="slds-m-top_large slds-m-bottom_large cstm-main-wizard-wrapper">
+				<lightning:layoutItem size="12">
+					<lightning:progressBar value="{!(v.step-1) * 33.333333333}"
+										size="x-small"
+										class="cstm-main-wizard-progress-bar2" />
+					<div class="cstm-main-wizard-items">
+						<!-- <div class="{!v.step == 0 ? 'cstm-main-wizard-item active' : 'cstm-main-wizard-item'}">
+							<div class="cstm-main-wizard-dot"></div>
+							<div class="cstm-main-wizard-label">Activity choice</div>
+						</div> -->
+						<div class="{!v.step == 1 ? 'cstm-main-wizard-item2 active' : 'cstm-main-wizard-item2'}">
+							<div class="cstm-main-wizard-dot2"></div>
+							<div class="cstm-main-wizard-label2">{!$Label.c.Channel_Choice}</div>
+						</div>
+						<div class="{!v.step == 2 ? 'cstm-main-wizard-item2 active' : 'cstm-main-wizard-item2'}">
+							<div class="cstm-main-wizard-dot2"></div>
+							<div class="cstm-main-wizard-label2">{!$Label.c.Category_Choice}</div>
+						</div>
+						<div class="{!(v.step == 3 || v.step == 10) ? 'cstm-main-wizard-item2 active' : 'cstm-main-wizard-item2'}">
+							<div class="cstm-main-wizard-dot2"></div>
+							<div class="cstm-main-wizard-label2">{!$Label.c.Activity_Tracking_Creation}</div>
+						</div>
+						<div class="{!v.step == 4 ? 'cstm-main-wizard-item2 active' : 'cstm-main-wizard-item2'}">
+							<div class="cstm-main-wizard-dot2"></div>
+							<div class="cstm-main-wizard-label2">{!$Label.c.Add_Costs}</div>
+						</div>
+						<!-- <div class="cstm-main-wizard-item">
+							<div class="cstm-main-wizard-dot"></div>
+							<div class="cstm-main-wizard-label"></div>
+						</div> -->
+					</div>
+				</lightning:layoutItem>
+			</lightning:layout>
+		</aura:set>
+	</aura:if>
+	
+	<aura:if isTrue="{!v.step == 0}">
+		<c:CreateActivityTracking_ChoiceType images="{! v.images }"/>
+	</aura:if>
+
+	<aura:if isTrue="{!v.step == 1}">
+		<c:CreateActivityTracking_ChoiceChannel labels="{!v.labels}"
+												picklistLabelsCanaleC="{!v.picklistLabelsCanaleC}"
+												canale="{!v.canale}" 
+												images="{!v.images}"/>
+	</aura:if>
+
+	<aura:if isTrue="{!v.step == 2}">
+		<!-- {!v.step2Area} -->
+
+		<c:CreateActivityTracking_ChoiceCategory labels="{!v.labels}"
+												 rtLabels="{!v.rtLabels}"
+												 EVCategorie="{!v.EVCategorie}"
+												 OTCategorie="{!v.OTCategorie}"
+												 MACategorie="{!v.MACategorie}"
+												 BCCategorie="{!v.BCCategorie}"
+												 categoria="{!v.categoria}" 
+												 tipo="{!v.tipoActivity}"/>
+
+		<lightning:layout>
+			<lightning:layoutItem size="5"
+								  padding="around-medium"></lightning:layoutItem>
+			<lightning:layoutItem size="2"
+								  padding="around-medium">
+
+				<lightning:button class="{!v.canale != null &amp;&amp; v.categoria != null ? 'slds-m-top_small' : 'slds-m-top_small slds-hide'}"
+								  variant="brand"
+								  type="button"
+								  name="continua"
+								  label="{!$Label.c.Next}"
+								  onclick="{!c.goToForm}">
+				</lightning:button>
+			</lightning:layoutItem>
+			<lightning:layoutItem size="5"
+								  padding="around-medium"></lightning:layoutItem>
+		</lightning:layout>
+
+
+	</aura:if>
+	<aura:if isTrue="{!v.step == 3}">
+		<c:CreateActivityTracking_Form labels="{!v.labels}"
+									   newActivityTracking="{!v.newActivityTracking}"
+									   tipo="{!v.tipo}"
+									   accountId="{!v.accountId}"
+									   tipoDevName="{!v.tipoDevName}"
+									   tipoName="{!v.tipoName}"
+									   canaleName="{!v.canale.label}"
+									   EVCategorie="{!v.EVCategorie}"
+									   OTCategorie="{!v.OTCategorie}"
+									   MACategorie="{!v.MACategorie}" 
+									   BCCategorie="{!v.BCCategorie}" 
+									   loggedUser="{!v.loggedUser}"/>
+	</aura:if>
+
+	<aura:if isTrue="{!v.step == 4}">
+		<c:CreateEventActivities campaignId="{!v.newActivityTracking.Campagna__c}"
+								 recordId="{!v.activityTrackingId}"
+                                 activityTracking="{!v.newActivityTracking}"
+                                 tipoDevName="{!v.tipoDevName}"/>
+	</aura:if>
+
+
+
+	<aura:if isTrue="{!v.step == 10}">
+		<div style="height:80%"
+			 class="slds-align_absolute-center">
+			<lightning:layout multipleRows="true">
+				<lightning:layoutItem size="12"
+									  padding="around-large">
+					<div style="text-align:center;display:block;">
+						<lightning:fileUpload label="{!$Label.c.Add_image_to_attach_to_the_gift}"
+											  name="fileUploader"
+											  multiple="false"
+											  accept=".jpg, .jpeg, .gif, .png"
+											  recordId="{!v.giftId}"
+											  onuploadfinished="{!c.handleAggiungiImmagineGift}" />
+					</div>
+				</lightning:layoutItem>
+				<lightning:layoutItem size="12"
+									  padding="around-large">
+					<div style="text-align:center;display:block;">
+						<lightning:button title="{!$Label.c.Continue_without_uploading_image}"
+										  label="{!$Label.c.Continue_without_uploading_image}"
+										  variant="brand"
+										  onclick="{!c.goToStep3}" />
+					</div>
+				</lightning:layoutItem>
+			</lightning:layout>
+		</div>
+	</aura:if>
+
+</aura:component>

@@ -76,6 +76,18 @@
         <type>Lookup</type>
     </fields>
     <fields>
+        <fullName>Client_Name_templ__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(NOT(ISNULL(Cliente__r.FirstName)),Cliente__r.FirstName+&apos; &apos;+Cliente__r.LastName,Cliente__r.LastName)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Client Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Cliente__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <externalId>false</externalId>
@@ -150,6 +162,18 @@
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Formula__c</fullName>
+        <externalId>false</externalId>
+        <formula>Dettaglio_Transazione__r.Product__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Formula</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Gift__c</fullName>
@@ -266,14 +290,24 @@
                     <label>Cake</label>
                 </value>
                 <value>
+                    <fullName>Wine</fullName>
+                    <default>false</default>
+                    <label>Wine</label>
+                </value>
+                <value>
                     <fullName>Olive oil</fullName>
                     <default>false</default>
                     <label>Olive oil</label>
                 </value>
                 <value>
-                    <fullName>Wine</fullName>
+                    <fullName>BC Food Hamper</fullName>
                     <default>false</default>
-                    <label>Wine</label>
+                    <label>BC Food Hamper</label>
+                </value>
+                <value>
+                    <fullName>Other food (specify in Note)</fullName>
+                    <default>false</default>
+                    <label>Other food (specify in Note)</label>
                 </value>
                 <value>
                     <fullName>Tickets</fullName>
@@ -443,6 +477,10 @@
         <picklistValues>
             <picklist>Tipologia_Attivit_picklist__c</picklist>
             <values>
+                <fullName>BC Food Hamper</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Cake</fullName>
                 <default>false</default>
             </values>
@@ -468,6 +506,10 @@
             </values>
             <values>
                 <fullName>Other books %28specify in Note%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other food %28specify in Note%29</fullName>
                 <default>false</default>
             </values>
             <values>

@@ -230,7 +230,8 @@
             if (response.getState() == "SUCCESS") {
                 var usr = response.getReturnValue();
                 // console.log(usr.Nation_Contact_Card__c);
-                var locale = (usr.Nation_Contact_Card__c != null || usr.Nation_Contact_Card__c != undefined) ?  usr.Nation_Contact_Card__c : 'US' ;
+                // var locale = (usr.Nation_Contact_Card__c != null || usr.Nation_Contact_Card__c != undefined) ?  usr.Nation_Contact_Card__c : 'US' ;
+                var locale = (usr.Area_Contact_Card__c != null || usr.Area_Contact_Card__c != undefined) ?  usr.Area_Contact_Card__c : 'US' ;
                 var prefer_language = usr.Language_Contact_Card__c;
                 var action = component.get('c.getTranslatorForm');
                 action.setParams({
@@ -355,9 +356,38 @@
                         var optsDay = [];
                         var optsMonth = [];
                         var optsYear = [];
-                        //Days
-                        optsDay.push({class: "optionClass firstSelectOption",label: "Day",value: "",selected: "selected"});
+                        var selectedDay;
+                        var selectedMonth;
+                        var selectedYear;
+                        if (component.get("v.locale") == 'JP'){
+                            selectedDay = component.find("InputSelectDayJP").get("v.value");
+                            selectedMonth = component.find("InputSelectMonthJP").get("v.value");
+                            selectedYear = component.find("InputSelectYearJP").get("v.value");
+                        }else{
+                            selectedDay = component.find("InputSelectDay").get("v.value");
+                            selectedMonth = component.find("InputSelectMonth").get("v.value");
+                            selectedYear = component.find("InputSelectYear").get("v.value");
+                        }
+console.log('Selected: '+selectedDay);
+console.log('Selected: '+selectedMonth);
+console.log('Selected: '+selectedYear);
+                        if(usr_translation.DateBirthday_Label__c!=null  && (selectedDay == null && selectedMonth == null && selectedYear == null && selectedDay == undefined && selectedMonth == undefined && selectedYear == undefined)){
+                            var arrDate= usr_translation.DateBirthday_Label__c.split('|');
+                            console.log('VS giorno mese anno');
+                            optsDay.push(selectedDay != null || selectedDay != undefined ? {class: "optionClass firstSelectOption",label: arrDate[0],value: ""} : {class: "optionClass firstSelectOption",label: arrDate[0],value: "",selected: "selected"});
+                            optsMonth.push(selectedMonth != null || selectedMonth != undefined ? {class: "optionClass firstSelectOption",label: arrDate[1],value: ""} : {class: "optionClass firstSelectOption",label: arrDate[1],value: "",selected: "selected"});
+                            optsYear.push(selectedYear != null || selectedYear != undefined ? {class: "optionClass firstSelectOption",label: arrDate[2],value: ""} : {class: "optionClass firstSelectOption",label: arrDate[2],value: "",selected: "selected"});  
+                        }else{
+                            console.log('VS giorno mese anno2222');
+                            optsDay.push(selectedDay != null || selectedDay != undefined ? {class: "optionClass firstSelectOption",label: "Day",value: ""} : {class: "optionClass firstSelectOption",label: "Day",value: "",selected: "selected"});
+                            optsMonth.push(selectedMonth != null || selectedMonth != undefined ? {class: "optionClass firstSelectOption",label: "Month",value: ""} : {class: "optionClass firstSelectOption",label: "Month",value: "",selected: "selected"});
+                            optsYear.push(selectedYear != null || selectedYear != undefined ? {class: "optionClass firstSelectOption",label: "Year",value: ""} : {class: "optionClass firstSelectOption",label: "Year",value: "",selected: "selected"}); 
+
+                        }
+                        
+                        
                         for(var i=1;i < 32;i++){
+                            
                             optsDay.push({class: "optionClass",label: i.toString(),value: i.toString()});
                         }
                         if (component.get("v.locale") == 'JP')
@@ -365,12 +395,13 @@
                         else
                             component.find("InputSelectDay").set("v.options",optsDay);
                         //Months
-                        optsMonth.push({class: "optionClass firstSelectOption",label: "Month",value:"",selected: "selected"});
-                        var months = [$A.get("$Label.c.January"),$A.get("$Label.c.February"),$A.get("$Label.c.March"),$A.get("$Label.c.April"),
-                                        $A.get("$Label.c.May"),$A.get("$Label.c.June"),$A.get("$Label.c.July"),
-                                        $A.get("$Label.c.August"),$A.get("$Label.c.September"),$A.get("$Label.c.October"),
-                                        $A.get("$Label.c.November"),$A.get("$Label.c.December")];
-                
+                        var months;
+                        if(usr_translation.Month_Label__c!=null){
+                            months=usr_translation.Month_Label__c.split('|');
+                        }else{
+                            months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+                        }
                         for(var i = 0;i < 12;i++){
                             optsMonth.push({class: "optionClass firstSelectOption",label: months[i],value: (i+1).toString()});
                         }
@@ -379,7 +410,6 @@
                         else
                             component.find("InputSelectMonth").set("v.options",optsMonth);
                         //Years
-                        optsYear.push({class: "optionClass firstSelectOption",label: "Year",value: "",selected: "selected"}); 
                         for(var i = 1940;i <= (new Date()).getFullYear();i++){
                             optsYear.push({class: "optionClass",label: i.toString(),value: i.toString()});
                            // optsYear.push({class: "optionClass",label: i,value: i});
@@ -806,7 +836,88 @@
                 );
                 
             }});}
-        
+            var optsDay = [];
+            var optsMonth = [];
+            var optsYear = [];
+            var selectedDay;
+            var selectedMonth;
+            var selectedYear;
+            if (component.get("v.locale") == 'JP'){
+                selectedDay = component.find("InputSelectDayJP").get("v.value");
+                selectedMonth = component.find("InputSelectMonthJP").get("v.value");
+                selectedYear = component.find("InputSelectYearJP").get("v.value");
+            }else{
+                selectedDay = component.find("InputSelectDay").get("v.value");
+                selectedMonth = component.find("InputSelectMonth").get("v.value");
+                selectedYear = component.find("InputSelectYear").get("v.value");
+            }
+            console.log('Selected: '+selectedDay);
+            console.log('Selected: '+selectedMonth);
+            console.log('Selected: '+selectedYear);
+            if(usr_translation.DateBirthday_Label__c!=null){
+                var arrDate= usr_translation.DateBirthday_Label__c.split('|');
+                console.log('VS giorno mese anno');
+                optsDay.push(selectedDay != '' ? {class: "optionClass firstSelectOption",label: arrDate[0],value: ""} : {class: "optionClass firstSelectOption",label: arrDate[0],value: "",selected: "selected"});
+                optsMonth.push(selectedMonth != '' ? {class: "optionClass firstSelectOption",label: arrDate[1],value: ""} : {class: "optionClass firstSelectOption",label: arrDate[1],value: "",selected: "selected"});
+                optsYear.push(selectedYear != '' ? {class: "optionClass firstSelectOption",label: arrDate[2],value: ""} : {class: "optionClass firstSelectOption",label: arrDate[2],value: "",selected: "selected"});  
+            }else{
+                console.log('VS giorno mese anno2222');
+                optsDay.push(selectedDay != '' ? {class: "optionClass firstSelectOption",label: "Day",value: ""} : {class: "optionClass firstSelectOption",label: "Day",value: "",selected: "selected"});
+                optsMonth.push(selectedMonth != '' ? {class: "optionClass firstSelectOption",label: "Month",value: ""} : {class: "optionClass firstSelectOption",label: "Month",value: "",selected: "selected"});
+                optsYear.push(selectedYear != '' ? {class: "optionClass firstSelectOption",label: "Year",value: ""} : {class: "optionClass firstSelectOption",label: "Year",value: "",selected: "selected"}); 
+
+            }
+            
+            
+            for(var i=1;i < 32;i++){
+                if(i==selectedDay){
+                    optsDay.push({class: "optionClass",label: i.toString(),value: i.toString(),selected: "selected"});
+                }else{
+                    optsDay.push({class: "optionClass",label: i.toString(),value: i.toString()});
+                }
+                
+            }
+            if (component.get("v.locale") == 'JP')
+                component.find("InputSelectDayJP").set("v.options",optsDay);
+            else
+                component.find("InputSelectDay").set("v.options",optsDay);
+            //Months
+            var months;
+            if(usr_translation.Month_Label__c!=null){
+                months=usr_translation.Month_Label__c.split('|');
+            }else{
+                months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+            }
+            for(var i = 0;i < 12;i++){
+                if(i+1==selectedMonth){
+                    optsMonth.push({class: "optionClass firstSelectOption",label: months[i],value: (i+1).toString(),selected: "selected"});
+                }else{
+                    optsMonth.push({class: "optionClass firstSelectOption",label: months[i],value: (i+1).toString()});
+                }
+                
+            }
+            if (component.get("v.locale") == 'JP')
+                component.find("InputSelectMonthJP").set("v.options",optsMonth);
+            else
+                component.find("InputSelectMonth").set("v.options",optsMonth);
+            //Years
+            for(var i = 1940;i <= (new Date()).getFullYear();i++){
+                if(i==selectedYear){
+                    optsYear.push({class: "optionClass",label: i.toString(),value: i.toString(),selected: "selected"});
+                }else{
+                    optsYear.push({class: "optionClass",label: i.toString(),value: i.toString()});
+                }
+              
+            // optsYear.push({class: "optionClass",label: i,value: i});
+            }
+            if (component.get("v.locale") == 'JP')
+                component.find("InputSelectYearJP").set("v.options",optsYear);
+            else
+                component.find("InputSelectYear").set("v.options",optsYear);
+            // var spinner = component.find("mySpinner");
+            // $A.util.addClass(spinner, "slds-hide");
+
 
     },
 
@@ -902,7 +1013,9 @@
                 var usr = response.getReturnValue();
                 //  console.log(usr);
                 component.set("v.user", usr);
-                var locale = (usr.Nation_Contact_Card__c != null || usr.Nation_Contact_Card__c != undefined) ?  usr.Nation_Contact_Card__c : 'US' ;
+                // var locale = (usr.Nation_Contact_Card__c != null || usr.Nation_Contact_Card__c != undefined) ?  usr.Nation_Contact_Card__c : 'US' ;
+                var locale = (usr.Area_Contact_Card__c != null || usr.Area_Contact_Card__c != undefined) ?  usr.Area_Contact_Card__c : 'US' ;
+
                 var truncLanguage = usr.Language_Contact_Card__c;
                 component.set("v.locale",locale);
                 component.set("v.truncLanguage",truncLanguage);
@@ -997,8 +1110,9 @@
         var filteredOpt =[];
         var s;
         if(f=="PreferredLanguage" || f=="Profession"){
-            
+            console.log('searchString: '+searchString);
             s = searchString.substring(0,1).toUpperCase() + searchString.substring(1).toLowerCase();
+            console.log('searchString: '+s);
         }
         else{
             s =searchString.toUpperCase();
@@ -1006,10 +1120,13 @@
 
        
         if(searchString!= null|| searchString!=''){
-            for (let i=0; i < arr.length; i++) {
+            for (let i=1; i < arr.length; i++) {
                 const element = arr[i].label;
-                if(element.startsWith(s)){
-                    filteredOpt.push(arr[i]);
+                console.log('element: '+element);
+                if(element!= undefined || element!= null){
+                    if(element.startsWith(s)){
+                        filteredOpt.push(arr[i]);
+                    }
                 }
             }
             if(filteredOpt.length==0){

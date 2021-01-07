@@ -79,6 +79,18 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Boutique_Name_templ__c</fullName>
+        <externalId>false</externalId>
+        <formula>Location__r.Name</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Boutique Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Citta_Fatturazione__c</fullName>
         <externalId>false</externalId>
         <label>Città Fatturazione</label>
@@ -105,6 +117,18 @@
         <externalId>false</externalId>
         <label>Client Advisor Endless aisle</label>
         <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Client_Name_templ__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(NOT(ISNULL(Account__r.FirstName)),Account__r.FirstName+&apos; &apos;+Account__r.LastName,Account__r.LastName)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Client Name</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>

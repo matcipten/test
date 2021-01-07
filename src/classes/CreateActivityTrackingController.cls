@@ -116,20 +116,23 @@ public with sharing class CreateActivityTrackingController {
 	public static String createNewActivityTracking(Activity_tracking__c newActivityTracking){
 		system.debug(newActivityTracking);
 		
-		//Akshay Start 
-		Schema.DescribeFieldResult fieldResult = Campaign.Categoria__c.getDescribe();
-		List<Schema.PicklistEntry> ple = fieldResult.getPicklistValues();
-		for( Schema.PicklistEntry pickListVal : ple){
-			System.debug('Akshay : ' + pickListVal.getValue() + pickListVal.getValue().split('_')[1].equals(newActivityTracking.Categoria__c));
-			
-			if(pickListVal.getValue().split('_')[1].equals(newActivityTracking.Categoria__c.split('_')[1])){
-				if(pickListVal.getValue().split('_')[0].contains(newActivityTracking.Categoria__c.split('_')[0])){
-					newActivityTracking.Categoria__c = pickListVal.getValue();
-					break;
-				}
+		//Akshay Start
+		//VS - Skip for BC's Contact 
+		if(!newActivityTracking.Categoria__c.startsWith('BC_')){
+			Schema.DescribeFieldResult fieldResult = Campaign.Categoria__c.getDescribe();
+			List<Schema.PicklistEntry> ple = fieldResult.getPicklistValues();
+			for( Schema.PicklistEntry pickListVal : ple){
+				System.debug('Akshay : ' + pickListVal.getValue() + pickListVal.getValue().split('_')[1].equals(newActivityTracking.Categoria__c));
 				
+				if(pickListVal.getValue().split('_')[1].equals(newActivityTracking.Categoria__c.split('_')[1])){
+					if(pickListVal.getValue().split('_')[0].contains(newActivityTracking.Categoria__c.split('_')[0])){
+						newActivityTracking.Categoria__c = pickListVal.getValue();
+						break;
+					}
+					
+				}
 			}
-		}    
+		}
 		System.debug('categoriaValue1 : ' + newActivityTracking.Categoria__c);
 
 		//Akshay End
@@ -344,10 +347,26 @@ public with sharing class CreateActivityTrackingController {
 	@AuraEnabled
 	public static Boolean getUserCheckProfile(){
 		User u = [SELECT Id,name, profile.Name	FROM User WHERE ID=: UserInfo.getUserId()];
-		if(u.profile.Name=='BC - CRM Local' || u.profile.Name=='System Administrator'|| u.profile.Name=='BC - Customer Care 1° Level'|| u.profile.Name=='BC - Customer Care 1° Level US')
+		if(u.profile.Name=='BC - CRM Local' || u.profile.Name=='System Administrator' || u.profile.Name=='BC - Customer Care 1° Level'|| u.profile.Name=='BC - Customer Care 1° Level US')
 			return true;
 		else
 			return false;
+	}
+
+	@AuraEnabled
+	public static Activity_Tracking_s_Icons__c getValueFromStaticResource(){
+		return Activity_Tracking_s_Icons__c.getInstance();
+	}
+
+	@AuraEnabled
+	public static Boolean getBCUSerInfo(){
+		Map<Id, User> m = new Map<Id, User>([SELECT id, name
+											FROM user 
+											WHERE id in 
+												(SELECT userorgroupid FROM groupmember WHERE group.DeveloperName = 'User_BC_s_Contact')]);
+
+		return m.containsKey(UserInfo.getUserId());
+		
 	}
 
 	public class WrapperValues{

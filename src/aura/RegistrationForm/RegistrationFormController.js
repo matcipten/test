@@ -72,7 +72,11 @@
         var evntsource = event.getSource();
         var picklistValue = evntsource.get("v.value");
         component.set('v.language', picklistValue);
+        if(picklistValue.length==6){
+            component.set('v.truncLanguage',picklistValue.substring(0,3));
+        }else{
         component.set('v.truncLanguage',picklistValue.substring(0,2));
+        }
         helper.setTranslationInPicklist(component);
     },
     
@@ -86,7 +90,12 @@
     },
     
     validateAndRegistration: function(cmp, event, helper){
-        cmp.set("v.newItem.SignedLanguage__c",cmp.get("v.language").substring(0,2));
+        var langsl = cmp.get("v.language");
+        if(langsl.length==6){
+            cmp.set("v.newItem.SignedLanguage__c",langsl.substring(0,3));
+        }else{
+            cmp.set("v.newItem.SignedLanguage__c",langsl.substring(0,2));
+        }
         //cmp.set("v.buttonDisable",true);
         
         var sign = cmp.find("canvas").getElement();
@@ -103,8 +112,12 @@
         // Id_location__c --> User.Codice_Boutique__c
         var locale = cmp.get("v.locale");
         var truncateLanguage = cmp.get("v.truncLanguage");
-        //console.log('locale: ' + locale);
+        console.log('locale+truncateLanguage: ' + locale+' + '+truncateLanguage);
         var item = cmp.get("v.newItem");
+        var user=cmp.get('v.user');
+        
+
+        
         //console.log('item: ' + item);
         var errors = [];
         var validitem = true;
@@ -112,7 +125,7 @@
         var cmpTarget = cmp.find('errors-container');
         $A.util.removeClass(cmpTarget, 'uiInputDefaultError');
         
-        if(locale == 'JP' || locale == 'CN'  || locale == 'RU' ||  locale == 'HK' ||  locale == 'MO' || truncateLanguage == 'ja'|| truncateLanguage == 'zh' || truncateLanguage == 'ru'){
+        if(locale == 'JP' || locale == 'CN'  || locale == 'RU' ||  locale == 'HK' ||  locale == 'MO' || truncateLanguage == 'ja'|| truncateLanguage == 'zhs' || truncateLanguage == 'zh' || truncateLanguage == 'ru'){
             var nameFieldJp = cmp.find("itemNameJC");
             if(item.FirstName == null || item.FirstName == ''){
                 validitem = false;
@@ -668,10 +681,22 @@
             var check3_yes = cmp.find("checkbox_3_yes");
             var check3_no  = cmp.find("checkbox_3_no");
             var check3_label = cmp.find('checkbox_3_label');
-        if (!isAnUpdate){
-            if(locale != 'DE'){
+        
+            if(!(locale == 'JP' && user.Canale_di_Vendita__c == 'Department')){
+            console.log('VS check change privacy');
+            item.Privacy2__c=item.Privacy1__c;
+            console.log("VS item.Privacy1__c "+item.Privacy1__c);
+                        console.log("VS item.Privacy2__c "+item.Privacy2__c);
+                        console.log("VS item.Privacy3__c "+item.Privacy3__c);
+        }
+        // if (!isAnUpdate){
+            // if(locale != 'DE'){
                 if(item.Privacy1__c == null || item.Privacy2__c == null || item.Privacy3__c == null){
                         validitem = false;
+                        console.log("VS ERRORE");
+                        console.log("VS item.Privacy1__c "+item.Privacy1__c);
+                        console.log("VS item.Privacy2__c "+item.Privacy2__c);
+                        console.log("VS item.Privacy3__c "+item.Privacy3__c);
                         errors.push('You must specify whether you give your consent or not to privacy');
                             if(item.Privacy1__c == null){
                                 $A.util.addClass(check1_label, 'changeMeLabel');
@@ -693,8 +718,8 @@
                     $A.util.removeClass(check2_label, 'changeMeLabel');
                     $A.util.removeClass(check3_label, 'changeMeLabel');
                 }
-            }     
-        }
+            // }     
+        // }
         
         /*CONTROL FOR PRIVACY
 
