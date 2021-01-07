@@ -5,14 +5,14 @@ public class TransactionDetialListViewControllerTest {
         User usr = AllDataFactory.create_User();
         insert usr;
         
-        Profile__c profileSettings = AllDataFactory.create_TriggerSetting(usr.ProfileId);
-        insert profileSettings;
+        
         
         
         
         System.runAs(usr){
             
-            
+            Profile__c profileSettings = AllDataFactory.create_TriggerSetting(usr.ProfileId);
+        insert profileSettings;
             Account acc =  AllDataFactory.create_Account();
             insert acc;
             

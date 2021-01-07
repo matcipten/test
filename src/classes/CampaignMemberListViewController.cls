@@ -3,7 +3,7 @@ public with sharing class CampaignMemberListViewController {
 public static Boolean verifyUser(){
 	Boolean verifyUserProfile = true;
 	User user = [SELECT Id, LastName, Codice_Boutique__c, Id_Store_Manager__c, Codice_Associate__c, Nome_Profilo__c FROM User WHERE Id=:UserInfo.getUserId()];
-	if(user.Nome_Profilo__c == 'BC - Associate' || user.Nome_Profilo__c == 'BC - Boutique') {
+	if(user.Nome_Profilo__c == 'BC - Associate' || user.Nome_Profilo__c == 'BC - Boutique' || user.Nome_Profilo__c == 'BC - CRM Local') {
 		verifyUserProfile = false;
 	}
 	system.debug('verifyUserProfile :' + verifyUserProfile );
@@ -51,7 +51,7 @@ public static List<CampaignMember> getCampaignMembers(Id campaignId, integer off
 
 		}else{
 			campMemList = [SELECT Id,type,Status, FirstName, LastName, Title,CompanyOrAccount,campaign.Name, ContactId,Contact.Account.Name,Contact.Account.Privacy3__c,Contact.Account.Privacy1__c,Contact.Account.Privacy2__c,
-			               Contact.Account.Associate__r.Name, Contact.Account.Data_Ultimo_Acquisto__c, Contact.Account.Importo_Acquisti_Totale__c, Contact.Account.Marketing_FRM__c
+			               Contact.Account.Associate__r.Name, Contact.Account.Data_Ultimo_Acquisto__c, Contact.Account.Importo_Acquisti_Totale__c, Contact.Account.Marketing_FRM__c, Contact.Account.Segmentation_Name__c,Notes__c, Check_in_Time__c
 			               FROM CampaignMember
 			               WHERE CampaignId =: campaignId
 			                                  LIMIT 20 OFFSET :offset];
@@ -98,7 +98,7 @@ public static List<CampaignMember> getAllCampaignMembers(Id campaignId){
 
 		}else{
 			campMemList = [SELECT Id,type,Status, FirstName, LastName, Title,CompanyOrAccount,campaign.Name, ContactId,Contact.Account.Name,Contact.Account.Privacy3__c,Contact.Account.Privacy1__c,Contact.Account.Privacy2__c,
-			               Contact.Account.Associate__r.Name, Contact.Account.Data_Ultimo_Acquisto__c, Contact.Account.Importo_Acquisti_Totale__c, Contact.Account.Marketing_FRM__c
+			               Contact.Account.Associate__r.Name, Contact.Account.Data_Ultimo_Acquisto__c, Contact.Account.Importo_Acquisti_Totale__c, Contact.Account.Marketing_FRM__c,Notes__c, Check_in_Time__c,Contact.Account.Segmentation_Name__c
 			               FROM CampaignMember
 			               WHERE CampaignId =: campaignId LIMIT 9999];
 		}
@@ -186,7 +186,7 @@ public static List<CampaignMember> searchCamapaignMembers(Id campaignId, String 
 
 		}else{
 			campMemList = [SELECT Id,type,Status, FirstName, LastName, Title,CompanyOrAccount,campaign.Name, ContactId,Contact.Account.Name,Contact.Account.Privacy3__c,Contact.Account.Privacy1__c,Contact.Account.Privacy2__c,
-			               Contact.Account.Associate__r.Name, Contact.Account.Data_Ultimo_Acquisto__c, Contact.Account.Importo_Acquisti_Totale__c, Contact.Account.Marketing_FRM__c
+			               Contact.Account.Associate__r.Name, Contact.Account.Data_Ultimo_Acquisto__c, Contact.Account.Importo_Acquisti_Totale__c, Contact.Account.Marketing_FRM__c,Notes__c, Check_in_Time__c
 			               FROM CampaignMember
 			               WHERE CampaignId =: campaignId
 			                                  AND Name LIKE :key
@@ -240,7 +240,7 @@ public static List<Contact> searchContact(String searchText,List<String> contact
 			system.debug(contList.size());
 
 		}else{
-			contList = [SELECT Id,Name,Account.Name, Phone, Email, Owner.Name
+			contList = [SELECT Id,Name,Account.Name, Phone, Email, Owner.Name, Marketing_FRM__c,Account.Segmentation_Name__c,Account.Data_Ultimo_Acquisto__c, Account.Importo_Acquisti_Totale__c
 			            FROM Contact
 			            WHERE Name LIKE :key LIMIT 50];
 		}
@@ -284,7 +284,7 @@ public static List<Contact> getContacts(Integer offset){
 			system.debug(contList.size());
 
 		}else{
-			contList = [SELECT Id,Name,Account.Name, Phone, Email, Owner.Name , Marketing_FRM__c
+			contList = [SELECT Id,Name,Account.Name, Phone, Email, Owner.Name , Marketing_FRM__c,Account.Segmentation_Name__c,Account.Privacy3__c
 			            FROM Contact
 			            LIMIT 20 OFFSET :offset];
 		}
@@ -329,7 +329,7 @@ public static List<Contact> getAllContacts(){
 			system.debug(contList.size());
 
 		}else{
-			contList = [SELECT Id,Name,Account.Name, Phone, Email, Owner.Name
+			contList = [SELECT Id,Name,Account.Name, Phone, Email, Owner.Name,Account.Data_Ultimo_Acquisto__c, Account.Importo_Acquisti_Totale__c,Marketing_FRM__c,Account.Segmentation_Name__c,Account.Privacy3__c
 			            FROM Contact LIMIT 99];
 		}
 		system.debug(contList.size());
@@ -478,7 +478,7 @@ public static void deleteCampaignMembers(List<Id> campMemIds){
 public static List<CampaignMember> queryCampaignMember(Id campaignId, List<Id> contactIds,Integer offset){
 
 	List<CampaignMember> campList = [SELECT Id,type,Status, FirstName, LastName, Title,CompanyOrAccount,campaign.Name, ContactId,Contact.Account.Name,Contact.Account.Privacy3__c,Contact.Account.Privacy1__c,Contact.Account.Privacy2__c,
-	                                 Contact.Account.Associate__r.Name, Contact.Account.Data_Ultimo_Acquisto__c, Contact.Account.Importo_Acquisti_Totale__c, Contact.Account.Marketing_FRM__c
+	                                 Contact.Account.Associate__r.Name, Contact.Account.Data_Ultimo_Acquisto__c, Contact.Account.Importo_Acquisti_Totale__c, Contact.Account.Marketing_FRM__c,Contact.Account.Segmentation_Name__c,Notes__c, Check_in_Time__c
 	                                 FROM CampaignMember
 	                                 WHERE CampaignId =: campaignId
 	                                                    AND ContactId IN :contactIds
@@ -491,7 +491,7 @@ public static List<CampaignMember> queryCampaignMember(Id campaignId, List<Id> c
 public static List<CampaignMember> queryAllCampaignMember(Id campaignId, List<Id> contactIds){
 
 	List<CampaignMember> campList = [SELECT Id,type,Status, FirstName, LastName, Title,CompanyOrAccount,campaign.Name, ContactId,Contact.Account.Name,Contact.Account.Privacy3__c,Contact.Account.Privacy1__c,Contact.Account.Privacy2__c,
-	                                 Contact.Account.Associate__r.Name, Contact.Account.Data_Ultimo_Acquisto__c, Contact.Account.Importo_Acquisti_Totale__c, Contact.Account.Marketing_FRM__c
+	                                 Contact.Account.Associate__r.Name, Contact.Account.Data_Ultimo_Acquisto__c, Contact.Account.Importo_Acquisti_Totale__c, Contact.Account.Marketing_FRM__c,Notes__c, Check_in_Time__c
 	                                 FROM CampaignMember
 	                                 WHERE CampaignId =: campaignId
 	                                                    AND ContactId IN :contactIds
@@ -517,7 +517,7 @@ public static Integer queryTotalCampaignMember(Id campaignId, List<Id> contactId
 public static List<CampaignMember> queryCampaignMember(Id campaignId, List<Id> contactIds, String key){
 
 	List<CampaignMember> campList = [SELECT Id,type,Status, FirstName, LastName, Title,CompanyOrAccount,campaign.Name, ContactId,Contact.Account.Name,Contact.Account.Privacy3__c,Contact.Account.Privacy1__c,Contact.Account.Privacy2__c,
-	                                 Contact.Account.Associate__r.Name, Contact.Account.Data_Ultimo_Acquisto__c, Contact.Account.Importo_Acquisti_Totale__c, Contact.Account.Marketing_FRM__c
+	                                 Contact.Account.Associate__r.Name, Contact.Account.Data_Ultimo_Acquisto__c, Contact.Account.Importo_Acquisti_Totale__c, Contact.Account.Marketing_FRM__c, Contact.Account.Segmentation__c,Notes__c, Check_in_Time__c
 	                                 FROM CampaignMember
 	                                 WHERE CampaignId =: campaignId
 	                                                    AND ContactId IN :contactIds
@@ -527,7 +527,7 @@ public static List<CampaignMember> queryCampaignMember(Id campaignId, List<Id> c
 }
 public static List<Contact> queryContacts(List<Id> contactIds, Integer offset){
 
-	List<Contact> contList = [SELECT Id,Name,Account.Name, Phone, Email, Owner.Name , Marketing_FRM__c
+	List<Contact> contList = [SELECT Id,Name,Account.Name, Phone, Email, Owner.Name , Marketing_FRM__c,Account.Segmentation_Name__c,Account.Data_Ultimo_Acquisto__c, Account.Importo_Acquisti_Totale__c
 	                          FROM Contact
 	                          WHERE Id IN :contactIds
 	                          LIMIT 20 OFFSET :Integer.valueOf(offset)
@@ -536,7 +536,7 @@ public static List<Contact> queryContacts(List<Id> contactIds, Integer offset){
 }
 public static List<Contact> queryAllContacts(List<Id> contactIds){
 
-	List<Contact> contList = [SELECT Id,Name,Account.Name, Phone, Email, Owner.Name
+	List<Contact> contList = [SELECT Id,Name,Account.Name, Phone, Email, Owner.Name,Account.Segmentation_Name__c,Account.Data_Ultimo_Acquisto__c, Account.Importo_Acquisti_Totale__c,Marketing_FRM__c
 	                          FROM Contact
 	                          WHERE Id IN :contactIds
 	                          LIMIT 9999
@@ -553,7 +553,7 @@ public static Integer queryTotalContacts(List<Id> contactIds){
 }
 public static List<Contact> queryContacts(List<Id> contactIds, String key){
 
-	List<Contact> contList = [SELECT Id,Name,Account.Name, Phone, Email, Owner.Name
+	List<Contact> contList = [SELECT Id,Name,Account.Name, Phone, Email, Owner.Name,Marketing_FRM__c,Account.Segmentation_Name__c,Account.Data_Ultimo_Acquisto__c, Account.Importo_Acquisti_Totale__c
 	                          FROM Contact
 	                          WHERE Id IN :contactIds
 	                          AND Name Like :key
@@ -583,5 +583,22 @@ public static User getUserInfo(){
 	return myUser;
 }
 
+@AuraEnabled
+public static CampaignMemberListView__mdt getTabValue(){
+	
 
+	User u =  [SELECT Id, Name, Profile.Name FROM User  WHERE Id =: UserInfo.getUserId()];
+	String profileName= u.Profile.Name;
+	CampaignMemberListView__mdt c;
+	if(profileName!='BC - Boutique' && profileName!='BC - CRM Local'){
+		c = [SELECT Id, TabellaUno__c, TabellaDue__c
+									FROM CampaignMemberListView__mdt
+									WHERE Label =: 'Altro'];
+	}else{
+		c = [SELECT Id, TabellaUno__c, TabellaDue__c
+										FROM CampaignMemberListView__mdt
+										WHERE Label =: profileName];
+	}
+	return c;
+}
 }

@@ -5,7 +5,7 @@
             { label: 'Edit', name: 'Edit' },
             { label: 'Delete', name: 'delete' }
         ];
-        /*component.set('v.columns', [
+        /*component.set('v.columnsContacts', [
             {
                 label: 'Type', fieldName: 'linkType', type: 'url',
                 typeAttributes: { label: { fieldName: 'Type' }, target: '_blank' }
@@ -30,33 +30,16 @@
 
             helper.getUserInfo(component, event, helper).then(
                 function(myUser) {
-                    let profileName = myUser.Nome_Profilo__c;
-                    console.log(profileName);
-                    if (profileName == 'BC - Boutique') {
-                        component.set('v.columns', [
-                            { label: 'Account Name', fieldName: 'Contact_Account_Name', type: 'text' },
-                            { label: 'Status', fieldName: 'Status', type: 'text' },
-                            //{ label: 'Account Profiling', fieldName: 'Contact_Account_Profiling', type: 'boolean' },
-                            //{ label: 'Account Marketing', fieldName: 'Contact_Account_Marketing', type: 'boolean' },
-                            { label: 'Allocated CA', fieldName: 'Account_Allocated_Client_Advisor', type: 'text' },
-                            { label: 'Last Purchase Date', fieldName: 'Account_Last_Purchase_Date', type: 'date' },
-                            { label: 'Total Purchase Amount', fieldName: 'Account_Total_Purchase_Amount', type: 'number' },
-                            { label: 'Marketing', fieldName: 'Account_Marketing', type: 'boolean' },
-                            { type: 'action', typeAttributes: { rowActions: actions } }
-                        ]);
-                    }
-                    else {
-                        component.set('v.columns', [
-                            { label: 'Account Name', fieldName: 'Contact_Account_Name', type: 'text' },
-                            { label: 'Status', fieldName: 'Status', type: 'text' },
-                            // { label: 'Account Profiling', fieldName: 'Contact_Account_Profiling', type: 'boolean' },
-                            // { label: 'Account Marketing', fieldName: 'Contact_Account_Marketing', type: 'boolean' },
-                            { label: 'Last Purchase Date', fieldName: 'Account_Last_Purchase_Date', type: 'date' },
-                            { label: 'Total Purchase Amount', fieldName: 'Account_Total_Purchase_Amount', type: 'number' },
-                            { label: 'Marketing', fieldName: 'Account_Marketing', type: 'boolean' },
-                            { type: 'action', typeAttributes: { rowActions: actions } }
-                        ]);
-                    }
+                    let profileId = myUser.ProfileId;
+                    console.log('VS my user: '+JSON.stringify(myUser));
+                    helper.getTabValue(component,profileId);
+                    // console.log(profileName);
+                    // if (profileName == 'BC - Boutique') {
+                    //     component.set('v.columns', );
+                    // }
+                    // else {
+                    //     component.set('v.columns', );
+                    // }
                 }
             )
         );
@@ -155,14 +138,17 @@
         helper.showSpinner(component);
         component.set("v.showAddContact", true);
         component.set("v.showCampaignMembers", false);
-        component.set('v.columnsContacts', [
-            { label: 'Name', fieldName: 'Name', type: 'text' },
-            { label: 'CustomerName', fieldName: 'accountName', type: 'text' },
-            { label: 'Phone', fieldName: 'Phone', type: 'text' },
-            { label: 'Email', fieldName: 'Email', type: 'text' },
-            { label: 'Contact Owner Alias', fieldName: 'Owner.Name', type: 'text' },
-            { label: 'Marketing', fieldName: 'Marketing_FRM__c', type: 'boolean' },
-        ]);
+        // component.set('v.columnsContacts', [
+        //     { label: 'Name', fieldName: 'Name', type: 'text' },
+        //     // { label: 'CustomerName', fieldName: 'accountName', type: 'text' },
+        //     { label: 'Phone', fieldName: 'Phone', type: 'text' },
+        //     { label: 'Email', fieldName: 'Email', type: 'text' },
+        //     // { label: 'Contact Owner Alias', fieldName: 'Owner.Name', type: 'text' },
+        //     { label: 'Marketing', fieldName: 'Marketing_FRM__c', type: 'boolean' },
+        //     { label: 'Segmentation', fieldName: 'Segmentation_Name__c', type: 'text' },
+        //     { label: 'Last Purchase date', fieldName: 'Data_Ultimo_Acquisto__c', type: 'text' },
+        //     { label: 'Total purchase amount (incl. VAT)', fieldName: 'Importo_Acquisti_Totale__c', type: 'text' },
+        // ]);
         helper.getContactsFromApex(component, event, helper);
 
     },
@@ -207,6 +193,39 @@
         $A.enqueueAction(action);
         //helper.campaignMembersToBeDeleted(component, selectedPosters,  null);
 
+    },
+
+    openFilter: function(component, event, helper){
+        var filterbooleand = component.get("v.showFilter");
+        component.set("v.showFilter", !filterbooleand);
+    },
+    handleChangeFilter: function(component, event, helper){
+        var str = component.get("v.SegmentationValue");
+        console.log('VS v.SegmentationValue'+str);
+    },
+    applyFilter: function(component, event, helper){
+        var arrSeg = component.get("v.SegmentationValue");
+        console.log('vs arrSeg: '+arrSeg);
+        if(arrSeg.length==0){
+            alert('non hai selezionato nessun valore');
+            return;
+        }
+        var arrDataBU = component.get("v.dataBU");
+        var arrOutput =[];
+        if(arrSeg.length!=0 && arrDataBU.length!=0){
+            arrDataBU.forEach(element => {if(arrSeg.includes(element.Segmentation_Name__c)){
+                arrOutput.push(element);
+            }});
+            console.log('filter segmentation: '+arrOutput.length);
+        }
+    
+        if(arrSeg.length!=0 && arrOutput.length!=0){
+            component.set("v.data",arrOutput);
+            component.set("v.NodataFound",false);
+        }else{
+            component.set("v.data",arrOutput);
+            component.set("v.NodataFound",true);
+        }
     },
 
     handleItemRemove: function(component, event) {
@@ -464,18 +483,28 @@
                         item.linkFirstName = '/lightning/r/CampaignMember/' + item.Id + '/view';
                         item.linkLastName = '/lightning/r/CampaignMember/' + item.Id + '/view';
                         item.linkType = '/lightning/r/CampaignMember/' + item.ContactId + '/view';
+                        // if (item.Contact.Account.Name != null) item.Contact_Account_Name = item.Contact.Account.Name;
+                        // if (item.Contact.Account.Name != null) item.Contact_Account_Profiling = item.Contact.Account.Privacy3__c;
+                        // if (item.Contact.Account.Name != null) item.Contact_Account_Marketing = (item.Contact.Account.Privacy1__c || item.Contact.Account.Privacy2__c);
+                        // if (item.Contact.Account.Associate__c != null) item.Account_Allocated_Client_Advisor = item.Contact.Account.Associate__r.Name;
+                        // if (item.Contact.Account.Data_Ultimo_Acquisto__c != null) item.Account_Last_Purchase_Date = item.Contact.Account.Data_Ultimo_Acquisto__c;
+                        // if (item.Contact.Account.Last_contact_category__c != null) item.Account_Last_Activity_Category = item.Contact.Account.Last_contact_category__c;
+                        // if (item.Contact.Account.Importo_Acquisti_Totale__c != null) item.Account_Total_Purchase_Amount = item.Contact.Account.Importo_Acquisti_Totale__c;
+                        // if (item.Contact.Account.Marketing_FRM__c != null) item.Account_Marketing = item.Contact.Account.Marketing_FRM__c;
+                        // if (item.Contact.Account.Contact_Preferences__c != null) {
+                        //     console.log(item.Contact.Account.Contact_Preferences__c);
+                        //     item.Account_Contact_Preferences = item.Contact.Account.Contact_Preferences__c.replace('<','\<').replace('>','\>');
+                        // }
+                        if (item.FirstName != null) item.linkFirstName = '/lightning/r/CampaignMember/' + item.Id + '/view';
+                        if (item.LastName != null) item.linkLastName = '/lightning/r/CampaignMember/' + item.Id + '/view';
                         if (item.Contact.Account.Name != null) item.Contact_Account_Name = item.Contact.Account.Name;
                         if (item.Contact.Account.Name != null) item.Contact_Account_Profiling = item.Contact.Account.Privacy3__c;
                         if (item.Contact.Account.Name != null) item.Contact_Account_Marketing = (item.Contact.Account.Privacy1__c || item.Contact.Account.Privacy2__c);
-                        if (item.Contact.Account.Associate__c != null) item.Account_Allocated_Client_Advisor = item.Contact.Account.Associate__r.Name;
+                        if (item.Contact.Account.Associate__c != null) item.Account_Allocated_Client_Advisor = item.Contact.Account.Associate__r.Name
                         if (item.Contact.Account.Data_Ultimo_Acquisto__c != null) item.Account_Last_Purchase_Date = item.Contact.Account.Data_Ultimo_Acquisto__c;
-                        if (item.Contact.Account.Last_contact_category__c != null) item.Account_Last_Activity_Category = item.Contact.Account.Last_contact_category__c;
                         if (item.Contact.Account.Importo_Acquisti_Totale__c != null) item.Account_Total_Purchase_Amount = item.Contact.Account.Importo_Acquisti_Totale__c;
                         if (item.Contact.Account.Marketing_FRM__c != null) item.Account_Marketing = item.Contact.Account.Marketing_FRM__c;
-                        if (item.Contact.Account.Contact_Preferences__c != null) {
-                            console.log(item.Contact.Account.Contact_Preferences__c);
-                            item.Account_Contact_Preferences = item.Contact.Account.Contact_Preferences__c.replace('<','\<').replace('>','\>');
-                        }
+                        if (item.Contact.Account.Segmentation_Name__c != null) item.Segmentation_Name__c = item.Contact.Account.Segmentation_Name__c;
                     });
 
                     var currentData = component.get('v.data');
@@ -531,14 +560,15 @@
                         if (item.Contact.Account.Associate__c != null) item.Account_Allocated_Client_Advisor = item.Contact.Account.Associate__r.Name;
                         if (item.Contact.Account.Data_Ultimo_Acquisto__c != null) item.Account_Last_Purchase_Date = item.Contact.Account.Data_Ultimo_Acquisto__c;
                         if (item.Contact.Account.Last_contact_category__c != null) item.Account_Last_Activity_Category = item.Contact.Account.Last_contact_category__c;
-                        if (item.Contact.Account.Importo_Acquisti_Totale__c != null) item.Account_Total_Purchase_Amount = item.Contact.Account.Importo_Acquisti_Totale__c;
-                        if (item.Contact.Account.Marketing_FRM__c != null) item.Account_Marketing = item.Contact.Account.Marketing_FRM__c;
                         if (item.Contact.Account.Contact_Preferences__c != null) {
                             console.log(item.Contact.Account.Contact_Preferences__c);
                             item.Account_Contact_Preferences = item.Contact.Account.Contact_Preferences__c.replace('<','\<').replace('>','\>');
                         }
+                        if (item.Contact.Account.Importo_Acquisti_Totale__c != null) item.Account_Total_Purchase_Amount = item.Contact.Account.Importo_Acquisti_Totale__c;
+                        if (item.Contact.Account.Marketing_FRM__c != null) item.Account_Marketing = item.Contact.Account.Marketing_FRM__c;
+                        if (item.Contact.Account.Segmentation_Name__c != null) item.Segmentation_Name__c = item.Contact.Account.Segmentation_Name__c;
                     });
-                    console.log("VS result: "+JSON.stringify(result));
+
                     component.set("v.data", result);
                     if (component.get("v.totalCampaignMems") > component.get("v.data").length) {
                         component.set("v.showLoadCM", true);
@@ -578,6 +608,14 @@
 
                 console.log(result);
                 if (result != null) {
+                    result.forEach(function(item) {
+                        if (item.Account.Data_Ultimo_Acquisto__c != null) item.Data_Ultimo_Acquisto__c = item.Account.Data_Ultimo_Acquisto__c;
+                        if (item.Account.Importo_Acquisti_Totale__c != null) item.Account_Total_Purchase_Amount = item.Account.Importo_Acquisti_Totale__c;
+                        if (item.Account.Marketing_FRM__c != null) item.Account_Marketing = item.Account.Marketing_FRM__c;
+                        if (item.Account.Segmentation_Name__c != null) item.Segmentation_Name__c = item.Account.Segmentation_Name__c;   
+                        if (item.Account.Privacy3__c != null) item.Contact_Account_Profiling = item.Account.Privacy3__c;
+
+                    });
                     component.set("v.dataContacts", result);
                     if (component.get("v.totalContacts") > component.get("v.dataContacts").length) {
                         component.set("v.showLoadCont", true);
@@ -616,6 +654,14 @@
                 console.log(result);
                 if (result != null) {
                     var currentData = component.get('v.dataContacts');
+                    result.forEach(function(item) {
+                        if (item.Account.Data_Ultimo_Acquisto__c != null) item.Data_Ultimo_Acquisto__c = item.Account.Data_Ultimo_Acquisto__c;
+                        if (item.Account.Importo_Acquisti_Totale__c != null) item.Account_Total_Purchase_Amount = item.Account.Importo_Acquisti_Totale__c;
+                        if (item.Account.Marketing_FRM__c != null) item.Account_Marketing = item.Account.Marketing_FRM__c;
+                        if (item.Account.Segmentation_Name__c != null) item.Segmentation_Name__c = item.Account.Segmentation_Name__c;   
+                        if (item.Account.Privacy3__c != null) item.Contact_Account_Profiling = item.Account.Privacy3__c;
+
+                    });
                     var newData = currentData.concat(result);
                     component.set('v.dataContacts', newData);
                     if (component.get("v.totalContacts") > component.get("v.dataContacts").length) {

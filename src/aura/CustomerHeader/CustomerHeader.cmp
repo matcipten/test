@@ -20,19 +20,25 @@
          </div>              
         <div class="slds-grid slds-m-left_medium">
             <div class="slds-col slds-size_1-of-2">
-               <lightning:outputField fieldName="marketing_spa_icon__c" />
+               <div class='custom-text'>
+                  Marketing
+               </div>
+               <lightning:outputField fieldName="marketing_spa_icon__c" variant = "label-hidden"/>
             </div>
-            <div class="slds-col slds-size_1-of-2">
+            <!-- <div class="slds-col slds-size_1-of-2">
                <lightning:outputField fieldName="marketing_group_icon__c" />
+            </div> -->
+            <div class="slds-col slds-size_1-of-2">
+               <lightning:outputField fieldName="Data_Ultimo_Aggiornamento_Privacy__c" />
             </div>
    	 	</div>
         <div class="slds-grid slds-m-left_medium">
             <div class="slds-col slds-size_1-of-2">
                <lightning:outputField fieldName="Profiling__c" />
             </div>
-            <div class="slds-col slds-size_1-of-2">
+            <!-- <div class="slds-col slds-size_1-of-2">
                <lightning:outputField fieldName="Data_Ultimo_Aggiornamento_Privacy__c" />
-            </div>
+            </div> -->
    	 	</div>
         </lightning:card>
         

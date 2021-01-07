@@ -65,19 +65,22 @@
                                     if (item.Contact.Account.Data_Ultimo_Acquisto__c != null) item.Account_Last_Purchase_Date = item.Contact.Account.Data_Ultimo_Acquisto__c;
                                     if (item.Contact.Account.Importo_Acquisti_Totale__c != null) item.Account_Total_Purchase_Amount = item.Contact.Account.Importo_Acquisti_Totale__c;
                                     if (item.Contact.Account.Marketing_FRM__c != null) item.Account_Marketing = item.Contact.Account.Marketing_FRM__c;
-                                    
+                                    if (item.Contact.Account.Segmentation_Name__c != null) item.Segmentation_Name__c = item.Contact.Account.Segmentation_Name__c;
                                     item.linkType = '/lightning/r/CampaignMember/' + item.ContactId + '/view';
                                 });
 
                                 component.set("v.data", result);
+                                component.set("v.dataBU", result);
                                 console.log(component.get("v.totalCampaignMems"));
                                 console.log(component.get("v.data").length);
+                                console.log('VS BU length: '+component.get("v.dataBU").length);
                                 if (component.get("v.totalCampaignMems") > component.get("v.data").length) {
                                     component.set("v.showLoadCM", true);
 
                                 }
 
                             } else {
+                                console.log('VS no result');
                                 component.set("v.NodataFound", true);
                                 component.set("v.showLoadCM", false);
                             }
@@ -112,10 +115,20 @@
         action.setCallback(this, function(response) {
             var state = response.getState();
             var result = response.getReturnValue();
+            console.log('VS getContactsFromApex '+ JSON.stringify(result));
             if (state === "SUCCESS") {
                 if (result != null) {
                     console.log(result.length);
-                    component.set("v.dataContacts", response.getReturnValue());
+                    result.forEach(function(item) {
+                        
+                        if (item.Account.Data_Ultimo_Acquisto__c != null) item.Data_Ultimo_Acquisto__c = item.Account.Data_Ultimo_Acquisto__c;
+                        if (item.Account.Importo_Acquisti_Totale__c != null) item.Account_Total_Purchase_Amount = item.Account.Importo_Acquisti_Totale__c;
+                        if (item.Account.Marketing_FRM__c != null) item.Account_Marketing = item.Account.Marketing_FRM__c;
+                        if (item.Account.Segmentation_Name__c != null) item.Segmentation_Name__c = item.Account.Segmentation_Name__c;   
+                        if (item.Account.Privacy3__c != null) item.Contact_Account_Profiling = item.Account.Privacy3__c;
+
+                    });
+                    component.set("v.dataContacts", result);
                     if (component.get("v.totalContacts") > component.get("v.dataContacts").length) {
                         component.set("v.showLoadCont", true);
                     } else {
@@ -247,7 +260,18 @@
             console.log('aksh : ' + state);
             var result = response.getReturnValue();
             if (state === "SUCCESS") {
-                component.set("v.dataContacts", response.getReturnValue());
+                if (result != null) {
+                    result.forEach(function(item) {
+                        // if (item.Contact.Account.Associate__c != null) item.Account_Allocated_Client_Advisor = item.Contact.Account.Associate__r.Name
+                        if (item.Account.Importo_Acquisti_Totale__c != null) item.Account_Total_Purchase_Amount = item.Account.Importo_Acquisti_Totale__c;
+                        if (item.Account.Marketing_FRM__c != null) item.Account_Marketing = item.Account.Marketing_FRM__c;
+                        if (item.Account.Segmentation_Name__c != null) item.Segmentation_Name__c = item.Account.Segmentation_Name__c;
+                        item.linkType = '/lightning/r/CampaignMember/' + item.ContactId + '/view';
+                    });
+                    component.set("v.dataContacts", result);
+                }
+                
+                // component.set("v.dataContacts", response.getReturnValue());
                 if (searchValue == '' || searchValue == null) {
 
                     if (result != null && (component.get("v.totalContacts") > component.get("v.dataContacts").length)) {
@@ -376,6 +400,31 @@
                     resolve(myUser);
                 }
                 else {
+                    reject();
+                }
+            });
+            $A.enqueueAction(getUserInfoAction);
+        }));
+    },
+
+    getTabValue: function(component, profile) {
+        return new Promise($A.getCallback(function(resolve, reject) {
+            let getUserInfoAction = component.get('c.getTabValue');
+            getUserInfoAction.setCallback(this, function(response) {
+                var state = response.getState();
+                console.log('dentro getTabValue');
+                if (state === "SUCCESS") {
+                    let tabelle = response.getReturnValue();
+                    var tab1=JSON.parse(tabelle.TabellaUno__c.toString());
+                    var tab2=JSON.parse(tabelle.TabellaDue__c.toString());
+                    component.set('v.columns', tab1);
+                    component.set('v.columnsContacts', tab2);
+                    console.log('dentro getTabValue 1');
+
+                    resolve();
+                }
+                else {
+                    console.log('dentro getTabValue 2');
                     reject();
                 }
             });
