@@ -686,4 +686,115 @@
     },
 
 
+
+    updateStatus: function(component, event, helper) {
+        var selected =component.get("v.selectedRows")
+        console.log('size: '+selected.length)
+        component.set("v.memberSelectedSize",selected.length)
+        component.set("v.isOneSelected",selected.length==1?true:false)
+        if(selected.length==0){
+            var toastEvent = $A.get("e.force:showToast");
+            toastEvent.setParams({
+                
+                "duration": 5000,
+                "type": "error",
+                "message": "Select at least one record and try again."
+
+            });
+            toastEvent.fire();
+        }else{
+            
+            var action = component.get("c.getPicklistVal");
+            var list=[];
+            
+            action.setCallback(this, function(response) {
+                var state = response.getState();
+                if (state === "SUCCESS") {
+                    var arr=response.getReturnValue();
+                    for(var i=0; i<arr.length;i++){
+                        var x = arr[i].split('---');
+                        var y 
+                        if(i==0){
+                            y={value: x[0],label:x[1],selected: true} 
+                            component.find('status').set("v.value",x[0]);
+                            
+                        }else{ 
+                            y={value: x[0],label:x[1]} 
+                        } 
+                        list.push(y);
+                    }
+                    component.set("v.optionsMember",list);
+                    var cmpTarget = component.find('Modalbox');
+                    var cmpBack = component.find('Modalbackdrop');
+                    $A.util.addClass(cmpTarget, 'slds-fade-in-open');
+                    $A.util.addClass(cmpBack, 'slds-backdrop--open');
+                }
+            });
+            $A.enqueueAction(action);
+            
+        }
+
+        
+    },
+
+    doUpdate:function(component,event,helper){   
+        var selectedMember =component.get("v.selectedRows")
+        var valueSelected =component.find('status').get("v.value");
+        var arrData = component.get('v.data');
+        var str  = selectedMember.length==1 ? ('1 campaign member successfully updated to status "'+valueSelected+'"') : (selectedMember.length+' campaign members successfully updated to status "'+valueSelected+'"');
+        for(var k=0; k<arrData.length;k++){
+            for(var h=0; h<selectedMember.length;h++){
+                if(arrData[k].Id==selectedMember[h].Id){
+                    console.log('Fatto update');
+                    arrData[k].Status=valueSelected
+                    selectedMember[h].Status=valueSelected
+                }
+                
+             }
+        }
+        console.log('arrData: '+JSON.stringify(arrData));
+        console.log('selectedMember: '+JSON.stringify(selectedMember));
+        component.set("v.data",arrData)
+        var action = component.get("c.setStatus");
+        action.setParams({
+            'str': JSON.stringify(selectedMember)
+        });
+        action.setCallback(this, function(response) {
+            var state = response.getState();
+            if (state === "SUCCESS") {
+                var cmpTarget = component.find('Modalbox');
+                var cmpBack = component.find('Modalbackdrop');
+                $A.util.removeClass(cmpBack,'slds-backdrop--open');
+                $A.util.removeClass(cmpTarget, 'slds-fade-in-open'); 
+                // $A.get('e.force:refreshView').fire();
+                var toastEvent = $A.get("e.force:showToast");
+                toastEvent.setParams({
+                    
+                    "duration": 5000,
+                    "type": "success",
+                    "message": str
+
+                });
+                toastEvent.fire();
+                var blanklist=[];
+                component.set("v.selectedRows",blanklist);
+                $A.get('e.force:refreshView').fire();
+
+            }
+        });
+        $A.enqueueAction(action);
+            
+        
+
+         
+        
+    },
+    
+    closeModal:function(component,event,helper){    
+        var cmpTarget = component.find('Modalbox');
+        var cmpBack = component.find('Modalbackdrop');
+        $A.util.removeClass(cmpBack,'slds-backdrop--open');
+        $A.util.removeClass(cmpTarget, 'slds-fade-in-open'); 
+    },
+
 })

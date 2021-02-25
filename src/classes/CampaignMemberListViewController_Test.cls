@@ -6,17 +6,17 @@ public class CampaignMemberListViewController_Test {
         User usr = AllDataFactory.create_User();
         insert usr;
         
-        Profile__c profileSettings = AllDataFactory.create_TriggerSetting(usr.ProfileId);
-        insert profileSettings;
+        
         
         Test.startTest();
         System.runAs(usr){
-            
+            Profile__c profileSettings = AllDataFactory.create_TriggerSetting(usr.ProfileId);
+            insert profileSettings;
             Account customer = new Account();
             customer.LastName = 'Brambilla';
             insert customer;
             
-        }
+        
         Contact cont =  AllDataFactory.create_Contact();
         insert cont;
         
@@ -74,7 +74,7 @@ public class CampaignMemberListViewController_Test {
         
         
         
-        
+    }
         Test.stopTest();
         
     }
@@ -85,12 +85,13 @@ public class CampaignMemberListViewController_Test {
         User newUser = AllDataFactory.create_User(); 
         newUser.ProfileId = prof.Id;
         insert newUser;
-        Profile__c profileSettings = AllDataFactory.create_TriggerSetting(newUser.ProfileId);
-        insert profileSettings;
+        
         
         Test.startTest();
         System.runAs(newUser){
-            
+        
+            Profile__c profileSettings = AllDataFactory.create_TriggerSetting(newUser.ProfileId);
+            insert profileSettings;
             Account customer = new Account();
             customer.LastName = 'Brambilla';
             insert customer;
@@ -164,12 +165,12 @@ public class CampaignMemberListViewController_Test {
         User newUser = AllDataFactory.create_User(); 
         newUser.ProfileId = prof.Id;
         insert newUser;
-        Profile__c profileSettings = AllDataFactory.create_TriggerSetting(newUser.ProfileId);
-        insert profileSettings;
+        
         
         Test.startTest();
         System.runAs(newUser){
-            
+            Profile__c profileSettings = AllDataFactory.create_TriggerSetting(newUser.ProfileId);
+            insert profileSettings;
             Account customer = new Account();
             customer.LastName = 'Brambilla';
             insert customer;

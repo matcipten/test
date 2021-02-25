@@ -57,7 +57,27 @@ public class AllDataFactory {
 
         return result;
     }
+    public static List<Account> create_BulkAccount(){
+        List<Account> accList =  new List<Account>();
+        RecordType personAccountRecordType =  [SELECT Id FROM RecordType where SobjectType='Account' and Developername='PersonAccount'];
 
+        
+        for(integer i = 0; i < 100; i++){
+            Account result = new Account(
+            FirstName = 'TestName',
+            LastName = 'TestSurname'+1,
+            Sesso__c = 'M',
+            PersonEmail =  'personalEmail@gmail.com',
+            Phone = '12345679',
+            PersonMobilePhone = '16844838',
+            SignedLanguage__c = 'en',
+            RecordTypeId = personAccountRecordType.Id
+            );
+            accList.add(result);
+        }
+    
+        return accList;
+    }
 
     public static Product__c create_Product() {
         //PN added LIMIT 1
@@ -162,6 +182,32 @@ public class AllDataFactory {
 
         Translate__c result = new Translate__c(
             Name = 'en_US',
+            Subheader_Label__c = 'subheader',
+            Privacy_Yes_Label__c = 'Privacy_Yes_Label__c',
+            Privacy_No_Label__c= 'Privacy_No_Label__c',First_Name_Label__c='First_Name_Label__c' ,Last_Name_Label__c='Last_Name_Label__c' ,
+            Street_Label__c= 'Address', City_Label__c= 'City' , CAP_Label__c= 'CAP_Label__c', Country_Label__c= 'Country',
+            Phone_Label__c= 'Phone contact (with international prefix)', Nationality_Label__c='Nationality_Label__c' , 
+            Birthdate_Label__c='Birthdate_Label__c' , Gender_Label__c='Gender_Label__c' , Profession_Label__c= 'Profession_Label__c',
+            Hobby_Label__c='Hobby_Label__c' , Preferred_Language_Label__c='Preferred_Language_Label__c' , 
+            Contact_Preferences_Label__c= 'Contact_Preferences_Label__c' , Privacy_1_Label__c= 'Privacy_1_Label__c', Privacy_2_Label__c= 'Privacy_2_Label__c' , Privacy_3_Label__c= 'Privacy_3_Label__c', Date_Label__c= 'Date', Signature_Label__c= 'Signature',
+            Language_Label__c= 'Language_Label__c', Email_Label__c= 'Email', Salutation_Label__c='Salutation_Label__c' ,
+            Passport_Section_Label__c= 'Passport_Section_Label__c', Numero_Passaporto_Label__c='Numero_Passaporto_Label__c' , Paese_di_emissione_passaporto_Label__c='Paese_di_emissione_passaporto_Label__c' ,
+            Data_di_emissione_passaporto_Label__c= 'Data_di_emissione_passaporto_Label__c',Ente_di_emissione_passaporto_Label__c='Ente_di_emissione_passaporto_Label__c' ,
+            State_Label__c='State_Label__c' ,Local_First_Name_Label__c= 'Local_First_Name_Label__c',Local_Last_Name_Label__c= 'Local_Last_Name_Label__c',
+            We_Chat_ID_Label__c='We_Chat_ID_Label__c' ,Checkbox_Phone_Label__c='Checkbox_Phone_Label__c' ,Checkbox_Email_Label__c= 'Checkbox_Email_Label__c',
+            Checkbox_WeChat_Label__c= 'Checkbox_WeChat_Label__c',Checkbox_Mail_Label__c='Checkbox_Mail_Label__c' ,
+            Checkbox_Messaging_Label__c='Checkbox_Messaging_Label__c' ,Privacy_Header_Before_Link_Label__c= 'Privacy_Header_Before_Link_Label__c',
+            Privacy_Header_Link_Label__c='Privacy_Header_Link_Label__c' ,Privacy_Header_After_Link_Label__c= 'Privacy_Header_After_Link_Label__c',State_Contact_Address_Label__c='State_Contact_Address_Label__c'
+            );
+
+        return result;
+    }
+
+    public static Translate__c create_Translator2() {
+
+
+        Translate__c result = new Translate__c(
+            Name = 'en_JP',
             Subheader_Label__c = 'subheader',
             Privacy_Yes_Label__c = 'Privacy_Yes_Label__c',
             Privacy_No_Label__c= 'Privacy_No_Label__c',First_Name_Label__c='First_Name_Label__c' ,Last_Name_Label__c='Last_Name_Label__c' ,

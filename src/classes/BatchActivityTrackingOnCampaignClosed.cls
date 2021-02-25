@@ -25,11 +25,11 @@ global class BatchActivityTrackingOnCampaignClosed implements Database.Batchable
 	global BatchActivityTrackingOnCampaignClosed ( List<String>  campaignsIdParam )
 	{
 		campaignsId = campaignsIdParam;
-		query = 'SELECT Campaign.RecordTypeId, Campaign.Channel__c, Campaign.Categoria__c, '+
-		        ' Campaign.Location__c, Contact.AccountId, '+
-		        ' CampaignId , Campaign.Location_Instore__c, '+
-		        ' Campaign.Location_Out_of_store__c, Status, Campaign.Event_Date__c, Campaign.Description '+
-		        ' FROM CampaignMember '+
+			query = 'SELECT Id, Campaign.RecordTypeId, Campaign.Channel__c, Campaign.Categoria__c, Campaign.Gift_Type__c,'+
+					' Campaign.Location__c, Contact.AccountId, '+
+					' CampaignId , Campaign.Location_Instore__c, '+
+					' Campaign.Location_Out_of_store__c, Status, Campaign.Event_Date__c, Campaign.Description '+
+					' FROM CampaignMember '+
 		        ' WHERE Campaign.Id IN :campaignsId';
 
 		system.debug(query);
@@ -51,7 +51,8 @@ global class BatchActivityTrackingOnCampaignClosed implements Database.Batchable
 		Map<String, Schema.RecordTypeInfo> campaignRecordTypes = Schema.SObjectType.Campaign.getRecordTypeInfosByDeveloperName();
 		Map<String, Schema.RecordTypeInfo> activityTrackingRecordTypes = Schema.SObjectType.Activity_Tracking__c.getRecordTypeInfosByDeveloperName();
 
-        Map<String,String> recordsTypeMapping = new Map<String,String>();
+		Map<String,String> recordsTypeMapping = new Map<String,String>();
+		Map<String,Attivita_Marketing__c> giftMap = new Map<String,Attivita_Marketing__c>();
         
         for(String campaignRtName : campaignRecordTypes.keySet()){
             RecordTypeInfo activityTrackingRt = activityTrackingRecordTypes.get(campaignRtName);
@@ -90,7 +91,21 @@ global class BatchActivityTrackingOnCampaignClosed implements Database.Batchable
 
 			//cms.add(cm);
 
+			// VS Salesforce-1038
+			if(cm.Campaign.Categoria__c== 'OT_Gifting' &&  cm.Campaign.Gift_Type__c!= null){
+				System.debug('VS creazione gift');
+				Attivita_Marketing__c gift = new Attivita_Marketing__c(Tipologia_Attivit_picklist__c=cm.Campaign.Gift_Type__c,
+																		Cliente__c=cm.Contact.AccountId,
+																		Data__c=cm.Campaign.Event_Date__c,
+																		Note__c= cm.Campaign.Description);
+				giftMap.put(cm.Contact.AccountId,gift);
+			}
 		}
+
+		// if(!giftMap.isEmpty()){
+		// 	System.debug('VS insert gift');
+		// 	insert giftMap.values();
+		// }
 
 
 		system.debug('accountPerCampaign size: '+accountPerCampaign.size());
@@ -120,14 +135,20 @@ global class BatchActivityTrackingOnCampaignClosed implements Database.Batchable
 			system.debug(queryAT);
 			if(queryAT.contains('WHERE ()'))
 			{
-
+				if(!giftMap.isEmpty()){
+					System.debug('VS insert gift');
+					insert giftMap.values();
+				}
 				for(sObject obj : scope)
 				{
 					system.debug('WHERE ()');
 					CampaignMember myCm = (CampaignMember) obj;
 
 					Activity_tracking__c newActivityTracking = CreateNewActivityTracking(myCm,recordsTypeMapping);
-
+					if(myCm.Campaign.Categoria__c== 'OT_Gifting' && myCm.Campaign.Gift_Type__c!= null){
+						System.debug('VS insert gift in activity tracking caso 1');
+						newActivityTracking.Gift__c = giftMap.get(myCm.Contact.AccountId).Id;
+					}
 					ListOfActivityTrackingToCreate.add(newActivityTracking);
 				}
 			}
@@ -135,8 +156,21 @@ global class BatchActivityTrackingOnCampaignClosed implements Database.Batchable
 			{
 				system.debug('cut');
 				List<Activity_tracking__c> ListOfActivityTrackingExisting = (List<Activity_tracking__c>) Database.query(queryAT);
-
-
+				Map<String,Attivita_Marketing__c> giftMap2 = new Map<String,Attivita_Marketing__c>();
+				for(Activity_tracking__c track :ListOfActivityTrackingExisting ){
+					
+					if(!giftMap.isEmpty()){
+						if(giftMap.containsKey(track.Customer_Name__c)){
+							Attivita_Marketing__c am= giftMap.get(track.Customer_Name__c);
+							giftMap2.put(am.Cliente__c,am);
+							// giftMap2.remove(track.Customer_Name__c);
+						}
+					}
+				}
+				if(!giftMap2.isEmpty()){
+					System.debug('VS insert gift');
+					insert giftMap2.values();
+				}
 				system.debug('ListOfActivityTrackingExisting size: '+ListOfActivityTrackingExisting.size());
 				system.debug(JSON.serializePretty(ListOfActivityTrackingExisting));
 
@@ -169,7 +203,10 @@ global class BatchActivityTrackingOnCampaignClosed implements Database.Batchable
 					   || (campaignsPerAccountFromExistingActivityTracking.get(myCm.Contact.AccountId) != null && !campaignsPerAccountFromExistingActivityTracking.get(myCm.Contact.AccountId).contains(myCm.CampaignId)))
 					{
 						Activity_tracking__c newActivityTracking = CreateNewActivityTracking(myCm,recordsTypeMapping);
-
+						if(myCm.Campaign.Categoria__c== 'OT_Gifting' &&  myCm.Campaign.Gift_Type__c!= null){
+							System.debug('VS insert gift in activity tracking caso 2');
+							newActivityTracking.Gift__c = giftMap2.get(myCm.Contact.AccountId).Id;
+						}
 						ListOfActivityTrackingToCreate.add(newActivityTracking);
 					}
 				}

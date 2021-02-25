@@ -19,7 +19,7 @@ public with sharing class TransactionDetialListViewController {
 		                                         Transaction__c
 		                                         FROM Transaction_Detail__c
 		                                         WHERE Gift__c = false
-		                                                         AND AccountId__c  =:accId AND Transaction__r.Stato_ordine_Ecommerce__c!= 'CANCELLED'
+		                                                         AND AccountId__c  =:accId AND Transaction__r.Stato_ordine_Ecommerce__c!= 'CANCELLED' AND Status__c!='CANCELLED'
 		                                                                             //AND Product_Image_Reference__c != null
 		                                                                             Order By Data_Scontrino__c Desc
 		                                                                             LIMIT 5];
@@ -50,7 +50,7 @@ public with sharing class TransactionDetialListViewController {
 		                                         Transaction__c
 		                                         FROM Transaction_Detail__c
 		                                         WHERE Gift__c = false
-		                                                         AND AccountId__c =:accId AND Transaction__r.Stato_ordine_Ecommerce__c!= 'CANCELLED' 
+		                                                         AND AccountId__c =:accId AND Transaction__r.Stato_ordine_Ecommerce__c!= 'CANCELLED' AND Status__c!='CANCELLED'
 		                                                                            //AND Product_Image_Reference__c != null
 		                                                                            Order By Data_Scontrino__c Desc
 		];
@@ -67,7 +67,7 @@ public with sharing class TransactionDetialListViewController {
 
 		Integer tDetails =  [SELECT count()
 		                     FROM Transaction_Detail__c
-		                     WHERE Gift__c = false AND Transaction__r.Stato_ordine_Ecommerce__c!= 'CANCELLED'
+		                     WHERE Gift__c = false AND Transaction__r.Stato_ordine_Ecommerce__c!= 'CANCELLED' AND Status__c!='CANCELLED'
 		                                     AND AccountId__c =:accId
 		];
 

@@ -643,6 +643,14 @@
                                 </div>
                             </div>
                             <div class="slds-col slds-size_4-of-12 slds-large-size_4-of-12">
+                                <div class="slds-form-element">
+                                    <label class="slds-form-element__label textSizeMobile" for="input-id-01">{!v.translatorValue.Other_Phone_Label__c }</label>
+                                    <div class="slds-form-element__control">
+                                        <ui:inputText aura:id="itemPersonOtherPhone" class="slds-input" placeholder="{!v.translatorValue.Phone_Placeholder__c}" value="{!v.newItem.PersonOtherPhone}" onError="{!c.handleError}" onClearErrors="{!c.handleClearError}" disabled="{!v.afterPrinting}" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slds-col slds-size_4-of-12 slds-large-size_4-of-12">
                                 <!-- <div class="slds-form-element">
                                     <label class="slds-form-element__label" for="InputSelectDynamicNationality">{!v.translatorValue.Nationality_Label__c}</label>
                                     <div class="slds-form-element__control">
@@ -663,7 +671,7 @@
                                     <ui:inputText aura:id="itemPersonMobilePhone" class="slds-input" placeholder="{!v.translatorValue.Mobile_Placeholder__c}" value="{!v.newItem.PersonMobilePhone}" onError="{!c.handleError}" onClearErrors="{!c.handleClearError}" disabled="{!v.afterPrinting}" />
                                 </div-->
                                 <!-- VS - 20/04/2020 ISSUE 745 -->
-                                <div class="slds-combobox  slds-combobox-lookup slds-dropdown-trigger slds-dropdown-trigger_click " aura:id="searchLookupNationality"
+                                <div class="nationality-height slds-combobox  slds-combobox-lookup slds-dropdown-trigger slds-dropdown-trigger_click " aura:id="searchLookupNationality"
                                     aria-expanded="false" aria-haspopup="listbox" role="combobox">
                                     <lightning:input aura:id="inputNationality" label="{!v.translatorValue.Nationality_Label__c}" onfocus="{!c.onFocusPickList}" onchange="{!c.onChangePickList}" onblur="{!c.onBlurPickList}" value="{!v.newItem.Nazionalita__c}"/>
                                     <div role="listbox">                   

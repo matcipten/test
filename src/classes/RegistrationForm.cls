@@ -21,7 +21,7 @@ public class RegistrationForm {
                                         PersonEmail__c, PersonBirthdate__c, Sesso__c, Professione__c, Hobby__c, Privacy1__c,Privacy2__c,Privacy3__c, CreatedDate, Numero_Passaporto__c,
                                         Paese_di_emissione_passaporto__c,Data_di_emissione_passaporto__c,Ente_di_emissione_passaporto__c,PersonMailingState__c,Nome_UTF_8__c,Cognome_UTF_8__c,
                                         We_Chat_ID__c,Telefono__c,Email__c,WeChat__c,Posta__c,Messaging__c,Versione_DCC__c,PrivacyHeaderSignedText__c,LegalNoteSignedText1__c,LegalNoteSignedText2__c,LegalNoteSignedText3__c,
-                                        Informativa_Body_SignedText__c,SignedLanguage__c,Informativa_Header_Label__c,
+                                        Informativa_Body_SignedText__c,SignedLanguage__c,Informativa_Header_Label__c,Other_Phone__c,
                                         //PALUMBO (START)
                                         BillingStreet__c,BillingState__c,BillingCity__c,BillingPostalCode__c,BillingCountry__c,OtherStreet__c,OtherState__c,OtherCity__c,
                                         OtherPostalCode__c,OtherCountry__c
@@ -68,7 +68,7 @@ public class RegistrationForm {
                                               Button_Add_Address_Label__c, Billing_Address_Section_Label__c, Contact_Address_Section_Label__c, Other_Address_Section_Label__c,
                                               Street_Contact_Address_Label__c, City_Contact_Address_Label__c, CAP_Contact_Address_Label__c, Country_Contact_Address_Label__c,
                                               Street_Other_Address_Label__c, City_Other_Address_Label__c, State_Other_Address_Label__c, CAP_Other_Address_Label__c, 
-                                              Country_Other_Address_Label__c, DateBirthday_Label__c, Month_Label__c,State_Contact_Address_Label__c
+                                              Country_Other_Address_Label__c, DateBirthday_Label__c, Month_Label__c,State_Contact_Address_Label__c,Other_Phone_Label__c
                                              FROM Translate__c WHERE Name LIKE :HelpForLike];
             system.debug('TRAN:::: '+Translation);
             system.debug('cc::: '+cc);
@@ -105,8 +105,8 @@ public class RegistrationForm {
 
             // CONTACT ADDRESS
             if (locale == 'JP'){
-				PDFDatas = PDFDatas.replace('ContactAddressPlaceHolder','<label>'+ Translation[0].CAP_Contact_Address_Label__c+' :  '+'</label><br>' +cc[0].BillingPostalCode__c); 
-				PDFDatas = PDFDatas.replace('ContactCityPlaceHolder','<label>'+ Translation[0].State_Contact_Address_Label__c+' :  '+'</label><br>' +cc[0].BillingState__c);
+        PDFDatas = PDFDatas.replace('ContactAddressPlaceHolder','<label>'+ Translation[0].CAP_Contact_Address_Label__c+' :  '+'</label><br>' +cc[0].BillingPostalCode__c); 
+        PDFDatas = PDFDatas.replace('ContactCityPlaceHolder','<label>'+ Translation[0].State_Contact_Address_Label__c+' :  '+'</label><br>' +cc[0].BillingState__c);
                 PDFDatas = PDFDatas.replace('ContactPostalStatePlaceHolder','<label>'+ Translation[0].City_Contact_Address_Label__c+' :  ' +'</label><br>'+cc[0].BillingCity__c);
 
             }
@@ -119,7 +119,7 @@ public class RegistrationForm {
             if (locale == 'US')
                 PDFDatas = PDFDatas.replace('ContactPostalStatePlaceHolder','<label>'+ Translation[0].State_Contact_Address_Label__c+' :  '+'</label><br>' +cc[0].BillingState__c);
             else if (locale == 'JP'){
-				PDFDatas = PDFDatas.replace('ContactPostalCodePlaceHolder','<label>'+ Translation[0].Street_Contact_Address_Label__c+' :  '+'</label><br>' +cc[0].BillingStreet__c);
+        PDFDatas = PDFDatas.replace('ContactPostalCodePlaceHolder','<label>'+ Translation[0].Street_Contact_Address_Label__c+' :  '+'</label><br>' +cc[0].BillingStreet__c);
 
             }
             else{
@@ -131,8 +131,8 @@ public class RegistrationForm {
             
             // OTHER CONTACT
             if (locale == 'JP'){
-				PDFDatas = PDFDatas.replace('OtherAddressPlaceHolder','<label>'+ Translation[0].CAP_Other_Address_Label__c+' :  '+'</label><br>' +cc[0].OtherPostalCode__c); 
-				PDFDatas = PDFDatas.replace('OtherCityPlaceHolder','<label>'+ Translation[0].State_Other_Address_Label__c+' :  '+'</label><br>' +cc[0].OtherState__c);
+        PDFDatas = PDFDatas.replace('OtherAddressPlaceHolder','<label>'+ Translation[0].CAP_Other_Address_Label__c+' :  '+'</label><br>' +cc[0].OtherPostalCode__c); 
+        PDFDatas = PDFDatas.replace('OtherCityPlaceHolder','<label>'+ Translation[0].State_Other_Address_Label__c+' :  '+'</label><br>' +cc[0].OtherState__c);
                 PDFDatas = PDFDatas.replace('OtherPostalStatePlaceHolder','<label>'+ Translation[0].City_Other_Address_Label__c+' :  ' +'</label><br>'+cc[0].OtherCity__c);
 
             }
@@ -145,7 +145,7 @@ public class RegistrationForm {
             if (locale == 'US')
                 PDFDatas = PDFDatas.replace('OtherPostalStatePlaceHolder','<label>'+ Translation[0].State_Other_Address_Label__c+' :  '+'</label><br>' +cc[0].OtherState__c);
             else if (locale == 'JP'){
-				PDFDatas = PDFDatas.replace('OtherPostalCodePlaceHolder','<label>'+ Translation[0].Street_Other_Address_Label__c+' :  '+'</label><br>' +cc[0].OtherStreet__c);
+        PDFDatas = PDFDatas.replace('OtherPostalCodePlaceHolder','<label>'+ Translation[0].Street_Other_Address_Label__c+' :  '+'</label><br>' +cc[0].OtherStreet__c);
 
             }
             else{
@@ -157,8 +157,8 @@ public class RegistrationForm {
 
             // BILLING ADDRESS
             if (locale == 'JP'){
-				PDFDatas = PDFDatas.replace('AddressPlaceHolder','<label>'+ Translation[0].CAP_Label__c+' :  '+'</label><br>' +cc[0].PersonMailingPostalCode__c); 
-				PDFDatas = PDFDatas.replace('CityPlaceHolder','<label>'+ Translation[0].State_Label__c+' :  '+'</label><br>' +cc[0].PersonMailingState__c);
+        PDFDatas = PDFDatas.replace('AddressPlaceHolder','<label>'+ Translation[0].CAP_Label__c+' :  '+'</label><br>' +cc[0].PersonMailingPostalCode__c); 
+        PDFDatas = PDFDatas.replace('CityPlaceHolder','<label>'+ Translation[0].State_Label__c+' :  '+'</label><br>' +cc[0].PersonMailingState__c);
                 PDFDatas = PDFDatas.replace('PostalStatePlaceHolder','<label>'+ Translation[0].City_Label__c+' :  ' +'</label><br>'+cc[0].PersonMailingCity__c);
 
             }
@@ -171,7 +171,7 @@ public class RegistrationForm {
             if (locale == 'US')
                 PDFDatas = PDFDatas.replace('PostalStatePlaceHolder','<label>'+ Translation[0].State_Label__c+' :  '+'</label><br>' +cc[0].PersonMailingState__c);
             else if (locale == 'JP'){
-				PDFDatas = PDFDatas.replace('PostalCodePlaceHolder','<label>'+ Translation[0].Street_Label__c+' :  '+'</label><br>' +cc[0].PersonMailingStreet__c);
+        PDFDatas = PDFDatas.replace('PostalCodePlaceHolder','<label>'+ Translation[0].Street_Label__c+' :  '+'</label><br>' +cc[0].PersonMailingStreet__c);
 
             }
             else{
@@ -223,6 +223,7 @@ public class RegistrationForm {
             
             
             PDFDatas = PDFDatas.replace('PhonePlaceHolder','<label>'+ Translation[0].Phone_Label__c.substringBefore('(')+' :  '+'</label><br>' +cc[0].Phone__c);
+            PDFDatas = PDFDatas.replace('PhoneOtherPlaceHolder','<label>'+ Translation[0].Other_Phone_Label__c+' :  '+'</label><br>' +cc[0].Other_Phone__c);
             PDFDatas = PDFDatas.replace('NationalityPlaceHolder','<label>'+ Translation[0].Nationality_Label__c+' :  '+'</label><br>' +cc[0].Nazionalita__c);
             PDFDatas = PDFDatas.replace('EmailPlaceHolder','<label>'+ Translation[0].Email_Label__c+' :  '+'</label><br>' +cc[0].PersonEmail__c);
             if (locale == 'CN' || cc[0].Lingua__c == 'zh')
@@ -240,8 +241,8 @@ public class RegistrationForm {
             PDFDatas = PDFDatas.replace('HobbyPlaceHolder', '<label>'+Translation[0].Hobby_Label__c+' :  '+'</label><br>' +cc[0].Hobby__c);
             //PDFDatas = PDFDatas.replace(Translation[0].Passport_Section_Label__c, '');
             // VS - 11/05/2020
-            // PDFDatas = PDFDatas.replace('PassportNumberPlaceHolder', '<label>'+Translation[0].Numero_Passaporto_Label__c+' :  '+'</label><br>' +cc[0].Numero_Passaporto__c);
-            // PDFDatas = PDFDatas.replace('PassportCPlaceHolder', '<label>'+Translation[0].Paese_di_emissione_passaporto_Label__c+' :  '+'</label><br>' +cc[0].Paese_di_emissione_passaporto__c);
+            PDFDatas = PDFDatas.replace('PassportNumberPlaceHolder', '<label>'+Translation[0].Numero_Passaporto_Label__c+' :  '+'</label><br>' +cc[0].Numero_Passaporto__c);
+            PDFDatas = PDFDatas.replace('PassportCPlaceHolder', '<label>'+Translation[0].Paese_di_emissione_passaporto_Label__c+' :  '+'</label><br>' +cc[0].Paese_di_emissione_passaporto__c);
             if (locale == 'RU'){
                 PDFDatas = PDFDatas.replace('PassportIssuedFromPlaceHolder', '<label>'+Translation[0].Ente_di_emissione_passaporto_Label__c+' :  '+'</label><br>' +cc[0].Ente_di_emissione_passaporto__c);
                 PDFDatas = PDFDatas.replace('PassportIssuedDPlaceHolder', '<label>'+Translation[0].Data_di_emissione_passaporto_Label__c+' :  '+'</label><br>' +cc[0].Data_di_emissione_passaporto__c);
@@ -320,7 +321,7 @@ public class RegistrationForm {
                                 Button_Add_Address_Label__c, Billing_Address_Section_Label__c, Contact_Address_Section_Label__c, Other_Address_Section_Label__c,
                                 Street_Contact_Address_Label__c, City_Contact_Address_Label__c, CAP_Contact_Address_Label__c, Country_Contact_Address_Label__c,
                                 Street_Other_Address_Label__c, City_Other_Address_Label__c, State_Other_Address_Label__c, CAP_Other_Address_Label__c, 
-                                Country_Other_Address_Label__c,State_Contact_Address_Label__c, DateBirthday_Label__c, Month_Label__c
+                                Country_Other_Address_Label__c,State_Contact_Address_Label__c, DateBirthday_Label__c, Month_Label__c,Other_Phone_Label__c
                                 //PALUMBO (END)
                                 FROM Translate__c WHERE Country_FRM__c = :locale]) {
                                     Mymap.put(obj.Name, obj );
@@ -443,10 +444,10 @@ return 'false';
             
             if(AccountId != null ) {
                 acc =  [SELECT Id, Salutation, FirstName, LastName, PersonMailingStreet, PersonMailingCountry, PersonMailingPostalCode, PersonMailingCity, PersonMailingState,
-                        Nome_UTF_8__c,Cognome_UTF_8__c,Indirizzo_UTF_8__c,Citta_UTF_8__c,Messaging__c,Numero_Passaporto__c,
+                        Nome_UTF_8__c,Cognome_UTF_8__c,Indirizzo_UTF_8__c,Citta_UTF_8__c,Messaging__c,Numero_Passaporto__c,Zip_Code_UTF_8__c,Province_UTF_8__c,
                         PersonEmail, We_Chat_ID__c, Phone, PersonMobilePhone, PersonBirthdate, Sesso__c, Nazionalita__c, Lingua__c, Telefono__c, Email__c, WeChat__c, Posta__c,
                         Other__c, Other_text__c, Privacy1__c, Privacy2__c, Privacy3__c,Professione__c, Hobby__c,Paese_di_emissione_passaporto__c,Versione_DCC__c,DCC__c,Ente_di_emissione_passaporto__c,
-                        Data_di_emissione_passaporto__c,SignedLanguage__c,
+                        Data_di_emissione_passaporto__c,SignedLanguage__c,PersonOtherPhone,
                         // PALUMBO (START)
                         BillingStreet, BillingCountry,BillingPostalCode,BillingCity,BillingState,PersonOtherStreet,PersonOtherCity,PersonOtherState,PersonOtherPostalCode,
                         PersonOtherCountry, BillingAddress, PersonOtherAddress
@@ -501,7 +502,7 @@ return 'false';
                 ass = [SELECT Id, Id_Associate__c FROM Associated__c WHERE Id_Associate__c =: user.Codice_Associate__c AND Id_Location_Micros__c =: user.Codice_Boutique__c];
             }
         }
-        system.debug('VS fuori if campi user');
+        System.debug('VS fuori if campi user');
         // VS - 08/06/2020 -  SALESFORCE-868
         returnData ret = new returnData();
         ret.success = true;
@@ -535,7 +536,7 @@ return 'false';
             }else{
                 newPersonAccount.Associate_Registrazione_ID__c= user.Codice_Associate__c;
             }
-            newPersonAccount.customer_origin__c	= 'DCC customer';
+            newPersonAccount.customer_origin__c  = 'DCC customer';
             
             if(user.Nome_Profilo__c == 'BC - Associate') {
                 List<User> userLeader = [SELECT Id, Codice_Boutique__c FROM User WHERE Nome_Profilo__c = 'BC - Boutique' AND Codice_Boutique__c =: user.Codice_Boutique__c];
@@ -618,11 +619,11 @@ return 'false';
     
     public static Decimal getVersionFromTranslate(String country){
         List<Translate__c> translate = [SELECT Id,N_versione__c FROM Translate__c WHERE Country_FRM__c = :country];
-        return translate[0].N_versione__c;	
+        return translate[0].N_versione__c;  
     }
     public static String getVersionNoteFromTranslate(String country){
         List<Translate__c> translate = [SELECT Id,Note_versionamento__c FROM Translate__c WHERE Country_FRM__c = :country];
-        return translate[0].Note_versionamento__c;	
+        return translate[0].Note_versionamento__c;  
     }
     public static Translate__c getCurrentTranslate(String name){
         // VS - 11/05/2020 scommentare query e cancellare quella dopo in quanto non presente il campo Rich_Text_Registration__c,Cancel_Heading__c 
@@ -645,7 +646,7 @@ return 'false';
                                           Data_di_emissione_passaporto_Label__c,Ente_di_emissione_passaporto_Label__c, Country_FRM__c,State_Label__c,Local_First_Name_Label__c,Local_Last_Name_Label__c,
                                           We_Chat_ID_Label__c,Checkbox_Phone_Label__c,Checkbox_Email_Label__c,Checkbox_WeChat_Label__c,Checkbox_Mail_Label__c,
                                           Checkbox_Messaging_Label__c,Privacy_Header_Before_Link_Label__c,Privacy_Header_Link_Label__c,Privacy_Header_After_Link_Label__c,Informativa_Body_Rich_Label__c,Informativa_Header_Label__c,
-                                          Privacy_2_Label_Department__c,Informativa_Body_Rich_Label_Department__c,Salutation__c
+                                          Privacy_2_Label_Department__c,Informativa_Body_Rich_Label_Department__c,Salutation__c,Other_Phone_Label__c 
                                           FROM Translate__c WHERE Name LIKE :name];
         return Translation[0];
     }
@@ -679,6 +680,7 @@ return 'false';
         Contact_Card__c newContactCard = new Contact_Card__c();
         try{
             User userRecord = getUserInformation();
+            System.debug('lang: '+acc.SignedLanguage__c+'_'+userRecord.Area_Contact_Card__c);
             Translate__c currentTranslate = getCurrentTranslate(acc.SignedLanguage__c+'_'+userRecord.Area_Contact_Card__c);
             newContactCard.Customer_ID__c               = Id;
             newContactCard.Salutation__c                = acc.Salutation;
@@ -692,6 +694,7 @@ return 'false';
             newContactCard.PersonEmail__c               = acc.PersonEmail;
             newContactCard.We_Chat_ID__c                = acc.We_Chat_ID__c;
             newContactCard.Phone__c                     = acc.Phone;
+            newContactCard.Other_Phone__c              = acc.PersonOtherPhone;
             newContactCard.PersonMobilePhone__c         = acc.PersonMobilePhone;
             newContactCard.PersonBirthdate__c           = acc.PersonBirthdate;
             newContactCard.Sesso__c                     = acc.Sesso__c;
@@ -712,12 +715,12 @@ return 'false';
             newContactCard.Privacy3__c                  = acc.Privacy3__c;
             newContactCard.Messaging__c                  = acc.Messaging__c;
             newContactCard.Professione__c               = acc.Professione__c;
-            newContactCard.Hobby__c                 		= acc.Hobby__c;
+            newContactCard.Hobby__c                     = acc.Hobby__c;
             newContactCard.Paese_di_emissione_passaporto__c = acc.Paese_di_emissione_passaporto__c;
-            newContactCard.Numero_Passaporto__c  			= acc.Numero_Passaporto__c;
+            newContactCard.Numero_Passaporto__c        = acc.Numero_Passaporto__c;
             newContactCard.Privacy_Registration_Date__c = Date.today();
             newContactCard.Versione_DCC__c = acc.Versione_DCC__c;
-            newContactCard.Nome_UTF_8__c	= acc.Nome_UTF_8__c;
+            newContactCard.Nome_UTF_8__c  = acc.Nome_UTF_8__c;
             newContactCard.Cognome_UTF_8__c = acc.Cognome_UTF_8__c;
             newContactCard.Ente_di_emissione_passaporto__c = acc.Ente_di_emissione_passaporto__c;
             newContactCard.Data_di_emissione_passaporto__c = acc.Data_di_emissione_passaporto__c;
@@ -747,12 +750,12 @@ return 'false';
                 newContactCard.LegalNoteSignedText3__c = '' + currentTranslate.Privacy_no_label__c+''+' '+currentTranslate.Privacy_3_Label__c;
             
             if (userRecord.Canale_di_Vendita__c == 'Department')
-            	newContactCard.Informativa_Body_SignedText__c = currentTranslate.Informativa_Body_Rich_Label_Department__c;
+              newContactCard.Informativa_Body_SignedText__c = currentTranslate.Informativa_Body_Rich_Label_Department__c;
             else
-            	newContactCard.Informativa_Body_SignedText__c = currentTranslate.Informativa_Body_Rich_Label__c;
+              newContactCard.Informativa_Body_SignedText__c = currentTranslate.Informativa_Body_Rich_Label__c;
                 
             newContactCard.SignedLanguage__c = acc.SignedLanguage__c;
-			newContactCard.Informativa_Header_Label__c = currentTranslate.Informativa_Header_Label__c;
+      newContactCard.Informativa_Header_Label__c = currentTranslate.Informativa_Header_Label__c;
             }
 
             //PALUMBO (START)

@@ -1,10 +1,11 @@
 public with sharing class OnAccountTriggerHandler {
     
-    
+    // public static Set<Id> accountIDSet= new Set<Id>();
     public static Set<Id> SetOfIDs = new Set<Id>();
     private static boolean run = true;
+    public static Map<ID,Boolean> mapOfAccounts = new Map<ID,Boolean>();
+
     public static void CreateSlaveAssociation(list<Account> oldAccount){
- 
         set<string> AccountIds                  = new set<string>();
         map<string, Account> MapAccount         = new map<string, Account>();
         list<Slave_Data__c> ListSlave           = new list<Slave_Data__c>();
@@ -26,6 +27,8 @@ public with sharing class OnAccountTriggerHandler {
                                                     Account__c 
                                             from Map_Slave__c 
                                             where Id_Account__c IN:AccountIds];
+
+        String profile_name = [SELECT Id, name FROM Profile WHERE Id =: UserInfo.getProfileId()].Name;
 
         for(Map_Slave__c m:listMapSlave){
         
@@ -85,16 +88,20 @@ public with sharing class OnAccountTriggerHandler {
                 sd.Master_Slave__c                      = MapAccount.get(m.Id_Account__c).Master_Slave__c;
                 sd.Contact_ID__c                        = MapAccount.get(m.Id_Account__c).Contact_ID__pc;
                 sd.Id_Cliente_MDM__c                        = MapAccount.get(m.Id_Account__c).Id_Cliente_MDM__c;
+                
+                //VS - problema dedup da mdm
+                if(profile_name == 'BC - Mulesoft EE (API only)'){
+                    sd.Deduplica_Mulesoft__c = true;
+                }
+
                 ListSlave.add(sd);
                 ListMapSlaveToDelete.add(m);                
                 MasterAccountIds.add(m.Account__c);
-            
             }
         
         }
         
         system.debug('SV');
-       
         if(ListSlave.size()>0){         
             // inserisco i dati degli slave
             insert ListSlave;
@@ -599,15 +606,29 @@ public with sharing class OnAccountTriggerHandler {
         return result;
     }
     
-    
+    // String id
     public static boolean runOnce(){
-    if(run){
-     run=false;
-     return true;
-    }else{
-        return run;
+        // if(!SetOfAccounts.contains(id)){
+        //     SetOfAccounts.add(id);
+            if(run){
+                run=false;
+                return true;
+            }else{
+                return run;
+            }
+        
+
+        // if(!mapOfAccounts.containsKey(id)){
+        //     mapOfAccounts.put(id,false);
+        // }else{
+        //     mapOfAccounts.put(id,true);
+        // }
+        // System.debug('Id: '+id);
+        // System.debug('Map: '+mapOfAccounts);
+        // System.debug('Map value: '+mapOfAccounts.get(id));
+        // return mapOfAccounts.get(id);
     }
-    }
+    
     
  
 	

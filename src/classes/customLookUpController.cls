@@ -28,14 +28,15 @@ public with sharing class customLookUpController {
 	   }*/
 
 	@AuraEnabled
-	public static List < sObject > fetchLookUpValues(String searchKeyWord, String ObjectName, String searchObjectKey,String searchObjectValue, String filter) {
+	public static List < sObject > fetchLookUpValues(String searchKeyWord, String ObjectName, String searchObjectKey,String searchObjectValue, String filter, String idLocMicros) {
 		system.debug('ObjectName-->' + ObjectName);
 		system.debug('searchKeyWord-->' + searchKeyWord);
 		system.debug('searchObjectKey-->' + searchObjectKey);
 		system.debug('searchObjectValue-->' + searchObjectValue);
 		system.debug('filter-->' + filter);
 		String searchKey = '%' + searchKeyWord + '%';
-
+		user u = [SELECT Id, Name, Nation_Contact_Card__c, Language_Contact_Card__c, Department__c, Codice_Boutique__c, Canale_di_Vendita__c, Profile.Name  FROM User WHERE Id =: UserInfo.getuserid() ];
+		System.debug('VS user: '+u);
 		List < sObject > returnList = new List < sObject > ();
 
 		Map <String, Schema.SObjectField> fieldsMap = Schema.getGlobalDescribe().get(ObjectName).getDescribe().fields.getMap();
@@ -80,14 +81,29 @@ public with sharing class customLookUpController {
 				searchObjectValue = '\'' + searchObjectValue + '\'';
 			}
 			// sQuery +=  'FROM ' +ObjectName + ' WHERE Name LIKE: searchKey AND '+searchObjectKey+' = \''+searchObjectValue+'\' ORDER BY createdDate DESC LIMIT 5';
-			sQuery +=  'FROM ' +ObjectName + ' WHERE Name LIKE: searchKey AND '+searchObjectKey+' = '+searchObjectValue;
-
+			if(u.Profile.Name=='BC - Boutique'|| u.Profile.Name=='BC - Boutique SG TW' ||u.Profile.Name=='BC - Associate'){
+				sQuery +=  'FROM ' +ObjectName + ' WHERE Name LIKE: searchKey AND '+searchObjectKey+' = '+searchObjectValue;
+			}else {
+				sQuery +=  'FROM ' +ObjectName + ' WHERE Name LIKE: searchKey';
+			}
+	
 		}
+
+		
 
 		if(filter != null && filter != ''){
 			sQuery += ' ' + filter;
 		}
-
+		System.debug('VS CHECK1');
+		if(idLocMicros != null && idLocMicros != ''){
+			// sQuery += ' AND Id_Location_Micros__c='+idLocMicros;
+			Location__c loc= [SELECT name, Id_Location_Micros__c
+							FROM 	Location__c 
+							WHERE id=:idLocMicros];
+			
+			sQuery +=  ' AND Id_Location_Micros__c=\''+loc.Id_Location_Micros__c+'\'';
+			System.debug('VS CHECK2');
+		}
 
 		//AK
 		sQUery += ' ORDER BY createdDate DESC LIMIT 5';

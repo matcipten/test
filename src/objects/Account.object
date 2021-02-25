@@ -1656,8 +1656,7 @@ IF (OUT_BIRTHDATE_CODE1__c =2 &amp;&amp; OUT_BIRTHDATE_CODE2__c  =2, IMAGE(&apos
     <fields>
         <fullName>Boutique_Disattiva__c</fullName>
         <externalId>false</externalId>
-        <formula>IF(OR(Location__r.Data_Chiusura_Negozio__c &lt;= NOW(), AND(ISBLANK(Location__c), ISBLANK(First_Location__c)),
-AND(ISBLANK(Location__r.Data_Chiusura_Negozio__c),NOT(ISBLANK(Location__r.Boutique_reallocated_transactions__c)))), true, false)</formula>
+        <formula>IF(OR(Location__r.Data_Chiusura_Negozio__c &lt;= NOW(), AND(ISBLANK(Location__c), ISBLANK(First_Location__c)), NOT(ISBLANK(Location__r.Boutique_reallocated_transactions__c))), true, false)</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Boutique Disattiva</label>
         <trackHistory>false</trackHistory>
@@ -2291,9 +2290,9 @@ IF( Email__c = true &amp;&amp; NOT(ISBLANK(PersonEmail)) , IMAGE(&apos;/resource
 
 IF( Email__c = false &amp;&amp;  NOT(ISBLANK(PersonEmail)), IMAGE(&apos;/resource/ChiocciolaGrigia&apos;,&apos;&apos;,25,25)+&apos; &apos;,&apos;&apos;) +
 
-IF(Posta__c = true &amp;&amp; NOT(ISBLANK(PersonMailingAddress) ),IMAGE(&apos;/resource/emailVerde&apos;,&apos;&apos;,25,25)+&apos; &apos;,&apos;&apos;) +
+IF(Posta__c = true &amp;&amp; NOT(ISBLANK(PersonMailingStreet)) &amp;&amp; NOT(ISBLANK(PersonMailingCity)) &amp;&amp; NOT(ISBLANK(PersonMailingCountry)),IMAGE(&apos;/resource/emailVerde&apos;,&apos;&apos;,25,25)+&apos; &apos;,&apos;&apos;) +
 
-IF( Posta__c = false &amp;&amp; NOT(ISBLANK(PersonMailingAddress)), IMAGE(&apos;/resource/emailGrigia&apos;,&apos;&apos;,25,25)+&apos; &apos;,&apos;&apos;) +
+IF( Posta__c = false &amp;&amp; NOT(ISBLANK(PersonMailingStreet)) &amp;&amp; NOT(ISBLANK(PersonMailingCity)) &amp;&amp; NOT(ISBLANK(PersonMailingCountry)), IMAGE(&apos;/resource/emailGrigia&apos;,&apos;&apos;,25,25)+&apos; &apos;,&apos;&apos;) +
 
 IF( WeChat__c = true &amp;&amp; NOT(ISBLANK(We_Chat_ID__c)), IMAGE(&apos;/resource/sharePostVerde&apos;,&apos;&apos;,25,25),&apos;&apos;) +
 
@@ -2383,294 +2382,7 @@ IF (!ISBLANK(TEXT(Country_Newsletter__c)), TEXT(Country_Newsletter__c), PersonMa
         <type>Picklist</type>
         <valueSet>
             <restricted>true</restricted>
-            <valueSetDefinition>
-                <sorted>true</sorted>
-                <value>
-                    <fullName>AE</fullName>
-                    <default>false</default>
-                    <label>AE</label>
-                </value>
-                <value>
-                    <fullName>AR</fullName>
-                    <default>false</default>
-                    <label>AR</label>
-                </value>
-                <value>
-                    <fullName>AT</fullName>
-                    <default>false</default>
-                    <label>AT</label>
-                </value>
-                <value>
-                    <fullName>AU</fullName>
-                    <default>false</default>
-                    <label>AU</label>
-                </value>
-                <value>
-                    <fullName>BE</fullName>
-                    <default>false</default>
-                    <label>BE</label>
-                </value>
-                <value>
-                    <fullName>BG</fullName>
-                    <default>false</default>
-                    <label>BG</label>
-                </value>
-                <value>
-                    <fullName>BH</fullName>
-                    <default>false</default>
-                    <label>BH</label>
-                </value>
-                <value>
-                    <fullName>CA</fullName>
-                    <default>false</default>
-                    <label>CA</label>
-                </value>
-                <value>
-                    <fullName>CH</fullName>
-                    <default>false</default>
-                    <label>CH</label>
-                </value>
-                <value>
-                    <fullName>CL</fullName>
-                    <default>false</default>
-                    <label>CL</label>
-                </value>
-                <value>
-                    <fullName>CN</fullName>
-                    <default>false</default>
-                    <label>CN</label>
-                </value>
-                <value>
-                    <fullName>CZ</fullName>
-                    <default>false</default>
-                    <label>CZ</label>
-                </value>
-                <value>
-                    <fullName>DE</fullName>
-                    <default>false</default>
-                    <label>DE</label>
-                </value>
-                <value>
-                    <fullName>DK</fullName>
-                    <default>false</default>
-                    <label>DK</label>
-                </value>
-                <value>
-                    <fullName>EE</fullName>
-                    <default>false</default>
-                    <label>EE</label>
-                </value>
-                <value>
-                    <fullName>ES</fullName>
-                    <default>false</default>
-                    <label>ES</label>
-                </value>
-                <value>
-                    <fullName>FI</fullName>
-                    <default>false</default>
-                    <label>FI</label>
-                </value>
-                <value>
-                    <fullName>FR</fullName>
-                    <default>false</default>
-                    <label>FR</label>
-                </value>
-                <value>
-                    <fullName>GB</fullName>
-                    <default>false</default>
-                    <label>GB</label>
-                </value>
-                <value>
-                    <fullName>GR</fullName>
-                    <default>false</default>
-                    <label>GR</label>
-                </value>
-                <value>
-                    <fullName>HK</fullName>
-                    <default>false</default>
-                    <label>HK</label>
-                </value>
-                <value>
-                    <fullName>HU</fullName>
-                    <default>false</default>
-                    <label>HU</label>
-                </value>
-                <value>
-                    <fullName>IE</fullName>
-                    <default>false</default>
-                    <label>IE</label>
-                </value>
-                <value>
-                    <fullName>IL</fullName>
-                    <default>false</default>
-                    <label>IL</label>
-                </value>
-                <value>
-                    <fullName>IN</fullName>
-                    <default>false</default>
-                    <label>IN</label>
-                </value>
-                <value>
-                    <fullName>IT</fullName>
-                    <default>false</default>
-                    <label>IT</label>
-                </value>
-                <value>
-                    <fullName>JP</fullName>
-                    <default>false</default>
-                    <label>JP</label>
-                </value>
-                <value>
-                    <fullName>KR</fullName>
-                    <default>false</default>
-                    <label>KR</label>
-                </value>
-                <value>
-                    <fullName>KW</fullName>
-                    <default>false</default>
-                    <label>KW</label>
-                </value>
-                <value>
-                    <fullName>KZ</fullName>
-                    <default>false</default>
-                    <label>KZ</label>
-                </value>
-                <value>
-                    <fullName>LT</fullName>
-                    <default>false</default>
-                    <label>LT</label>
-                </value>
-                <value>
-                    <fullName>LU</fullName>
-                    <default>false</default>
-                    <label>LU</label>
-                </value>
-                <value>
-                    <fullName>LV</fullName>
-                    <default>false</default>
-                    <label>LV</label>
-                </value>
-                <value>
-                    <fullName>MC</fullName>
-                    <default>false</default>
-                    <label>MC</label>
-                </value>
-                <value>
-                    <fullName>MO</fullName>
-                    <default>false</default>
-                    <label>MO</label>
-                </value>
-                <value>
-                    <fullName>MY</fullName>
-                    <default>false</default>
-                    <label>MY</label>
-                </value>
-                <value>
-                    <fullName>NL</fullName>
-                    <default>false</default>
-                    <label>NL</label>
-                </value>
-                <value>
-                    <fullName>NO</fullName>
-                    <default>false</default>
-                    <label>NO</label>
-                </value>
-                <value>
-                    <fullName>NZ</fullName>
-                    <default>false</default>
-                    <label>NZ</label>
-                </value>
-                <value>
-                    <fullName>OM</fullName>
-                    <default>false</default>
-                    <label>OM</label>
-                </value>
-                <value>
-                    <fullName>PL</fullName>
-                    <default>false</default>
-                    <label>PL</label>
-                </value>
-                <value>
-                    <fullName>PT</fullName>
-                    <default>false</default>
-                    <label>PT</label>
-                </value>
-                <value>
-                    <fullName>QA</fullName>
-                    <default>false</default>
-                    <label>QA</label>
-                </value>
-                <value>
-                    <fullName>RO</fullName>
-                    <default>false</default>
-                    <label>RO</label>
-                </value>
-                <value>
-                    <fullName>RU</fullName>
-                    <default>false</default>
-                    <label>RU</label>
-                </value>
-                <value>
-                    <fullName>SA</fullName>
-                    <default>false</default>
-                    <label>SA</label>
-                </value>
-                <value>
-                    <fullName>SE</fullName>
-                    <default>false</default>
-                    <label>SE</label>
-                </value>
-                <value>
-                    <fullName>SG</fullName>
-                    <default>false</default>
-                    <label>SG</label>
-                </value>
-                <value>
-                    <fullName>SI</fullName>
-                    <default>false</default>
-                    <label>SI</label>
-                </value>
-                <value>
-                    <fullName>SK</fullName>
-                    <default>false</default>
-                    <label>SK</label>
-                </value>
-                <value>
-                    <fullName>TH</fullName>
-                    <default>false</default>
-                    <label>TH</label>
-                </value>
-                <value>
-                    <fullName>TN</fullName>
-                    <default>false</default>
-                    <label>TN</label>
-                </value>
-                <value>
-                    <fullName>TR</fullName>
-                    <default>false</default>
-                    <label>TR</label>
-                </value>
-                <value>
-                    <fullName>TW</fullName>
-                    <default>false</default>
-                    <label>TW</label>
-                </value>
-                <value>
-                    <fullName>UA</fullName>
-                    <default>false</default>
-                    <label>UA</label>
-                </value>
-                <value>
-                    <fullName>US</fullName>
-                    <default>false</default>
-                    <label>US</label>
-                </value>
-                <value>
-                    <fullName>ZA</fullName>
-                    <default>false</default>
-                    <label>ZA</label>
-                </value>
-            </valueSetDefinition>
+            <valueSetName>Country_Newsletter</valueSetName>
         </valueSet>
     </fields>
     <fields>
@@ -3298,9 +3010,36 @@ YEAR(TODAY())-YEAR(PersonBirthdate),
                     <default>false</default>
                     <label>Casino games</label>
                 </value>
+                <value>
+                    <fullName>Pet Lover</fullName>
+                    <default>false</default>
+                    <label>Pet Lover</label>
+                </value>
             </valueSetDefinition>
         </valueSet>
         <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>ID_ClienteSingapore__c</fullName>
+        <externalId>false</externalId>
+        <label>ID_ClienteSingapore</label>
+        <length>100</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ID_ClienteTaiwan__c</fullName>
+        <externalId>false</externalId>
+        <label>ID_ClienteTaiwan</label>
+        <length>100</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Id_Associate_Registrazione__c</fullName>
@@ -5066,6 +4805,15 @@ Email o Numero di telefono (almeno uno)</inlineHelpText>
         <type>DateTime</type>
     </fields>
     <fields>
+        <fullName>Last_Opt_Out_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Last Opt-Out Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
         <fullName>Last_contact_bc_s_category__c</fullName>
         <externalId>false</externalId>
         <label>Last bc&apos;s activity category</label>
@@ -5716,6 +5464,15 @@ IF (AND (Privacy_1__c = true,Privacy1__c = false,Privacy2__c = false,ISBLANK(Dat
                 </value>
             </valueSetDefinition>
         </valueSet>
+    </fields>
+    <fields>
+        <fullName>Merge_ETL__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Merge ETL</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>Messaging__c</fullName>
@@ -9616,7 +9373,7 @@ Ground R: / M: 0</inlineHelpText>
     <fields>
         <fullName>Titolare_Boutique__c</fullName>
         <externalId>false</externalId>
-        <formula>IF (AND ($User.ProfileId = $Setup.Profile__c.Id_Boutique__c,
+        <formula>IF (AND (OR($User.ProfileId = $Setup.Profile__c.Id_Boutique__c,$User.ProfileId = $Setup.Profile__c.Id_Boutique_SG_TW__c),
 !ISNULL(Id_Location__c),
 Id_Location__c = $User.Codice_Boutique__c), true, false)</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
@@ -9627,10 +9384,10 @@ Id_Location__c = $User.Codice_Boutique__c), true, false)</formula>
     <fields>
         <fullName>Titolare_Client_Advisor_Boutique__c</fullName>
         <externalId>false</externalId>
-        <formula>IF ( $User.ProfileId =  $Setup.Profile__c.Id_Associate__c,
-     IF (AND (Id_Associate__c = $User.Codice_Associate__c, !ISNULL(Id_Associate__c)) , true, false),
-     IF ($User.ProfileId =  $Setup.Profile__c.Id_Boutique__c,
-         IF (AND (Id_Location__c = $User.Codice_Boutique__c, !ISNULL(Id_Location__c)) , true, false),false))</formula>
+        <formula>IF ( $User.ProfileId = $Setup.Profile__c.Id_Associate__c,
+IF (AND (Id_Associate__c = $User.Codice_Associate__c, !ISNULL(Id_Associate__c)) , true, false),
+IF (OR($User.ProfileId = $Setup.Profile__c.Id_Boutique__c,$User.ProfileId = $Setup.Profile__c.Id_Boutique_SG_TW__c),
+IF (AND (Id_Location__c = $User.Codice_Boutique__c, !ISNULL(Id_Location__c)) , true, false),false))</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Titolare Client Advisor / Boutique</label>
         <trackHistory>false</trackHistory>
@@ -9640,9 +9397,9 @@ Id_Location__c = $User.Codice_Boutique__c), true, false)</formula>
         <fullName>Titolare_Client_Advisor__c</fullName>
         <externalId>false</externalId>
         <formula>IF (AND(
-OR($User.ProfileId = $Setup.Profile__c.Id_Associate__c,$User.ProfileId = $Setup.Profile__c.Id_Boutique__c), 
+OR($User.ProfileId = $Setup.Profile__c.Id_Associate__c,$User.ProfileId = $Setup.Profile__c.Id_Boutique__c,$User.ProfileId = $Setup.Profile__c.Id_Boutique_SG_TW__c),
 !ISNULL(Id_Associate__c), !ISBLANK(Id_Associate__c), Id_Associate__c &lt;&gt; &apos;&apos;,
-Id_Associate__c = $User.Codice_Associate__c), 
+Id_Associate__c = $User.Codice_Associate__c),
 true, false)</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Titolare Client Advisor</label>
@@ -10186,11 +9943,6 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
         <columns>Contact_Preferences__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
-            <field>Last_Boutique__c</field>
-            <operation>contains</operation>
-            <value>london,londra,bicester,harrods</value>
-        </filters>
-        <filters>
             <field>Last_purchase_store_is_my_store__c</field>
             <operation>equals</operation>
             <value>1</value>
@@ -10212,49 +9964,24 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
         </filters>
         <label>Clients purchased in my store yesterday</label>
         <sharedTo>
+            <group>Admin_TEN</group>
+            <role>BOUTIQUE_AUSTRIA_Marcato</role>
+            <role>BOUTIQUE_BELGIUM_Miele</role>
+            <role>BOUTIQUE_CANNES_Miele</role>
+            <role>BOUTIQUE_DENMARK_Marcato</role>
+            <role>BOUTIQUE_DEUTSCHLAND_Meyer</role>
+            <role>BOUTIQUE_FRANCE_Marcato</role>
+            <role>BOUTIQUE_FRANCE_Miele</role>
+            <role>BOUTIQUE_HELLAS_Marcato</role>
+            <role>BOUTIQUE_ITALIA_Marcato</role>
+            <role>BOUTIQUE_ITALIA_Miele</role>
             <role>BOUTIQUE_LONDON</role>
+            <role>BOUTIQUE_MONACO_Meyer</role>
+            <role>BOUTIQUE_MONTECARLO_Miele</role>
+            <role>BOUTIQUE_NETHERLANDS_Miele</role>
+            <role>BOUTIQUE_SPAIN_Miele</role>
+            <role>BOUTIQUE_SUISSE_Brassart</role>
             <role>BOUTIQUE_UK_Marcato</role>
-        </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>Clients_purchased_in_my_store_yesterday_FR</fullName>
-        <columns>ACCOUNT.NAME</columns>
-        <columns>Last_contact_date__c</columns>
-        <columns>Categoria_Cliente__c</columns>
-        <columns>Importo_Acquisti_Totale__c</columns>
-        <columns>Marketing__c</columns>
-        <columns>Profiling__c</columns>
-        <columns>Contact_Preferences__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Last_Boutique__c</field>
-            <operation>contains</operation>
-            <value>paris,parigi,lafayette,galeries</value>
-        </filters>
-        <filters>
-            <field>Last_purchase_store_is_my_store__c</field>
-            <operation>equals</operation>
-            <value>1</value>
-        </filters>
-        <filters>
-            <field>Data_Ultimo_Acquisto__c</field>
-            <operation>equals</operation>
-            <value>YESTERDAY</value>
-        </filters>
-        <filters>
-            <field>ACCOUNT.NAME</field>
-            <operation>notContain</operation>
-            <value>generic</value>
-        </filters>
-        <filters>
-            <field>ACCOUNT.NAME</field>
-            <operation>notContain</operation>
-            <value>generico</value>
-        </filters>
-        <label>Clients purchased in my store yesterday</label>
-        <sharedTo>
-            <roleAndSubordinates>BOUTIQUE_FRANCE_Marcato</roleAndSubordinates>
-            <roleAndSubordinates>BOUTIQUE_FRANCE_Miele</roleAndSubordinates>
         </sharedTo>
     </listViews>
     <listViews>
@@ -12200,6 +11927,10 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
                 <default>false</default>
             </values>
             <values>
+                <fullName>EV_Virtual Event</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>MA_Catalogues</fullName>
                 <default>false</default>
             </values>
@@ -12304,6 +12035,10 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
             </values>
             <values>
                 <fullName>EV_VIP Event Solomeo</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EV_Virtual Event</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -13050,6 +12785,10 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
                 <default>false</default>
             </values>
             <values>
+                <fullName>EV_Virtual Event</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>MA_Catalogues</fullName>
                 <default>false</default>
             </values>
@@ -13154,6 +12893,10 @@ Importo_Acquisti_no_resi_e_gift_valuta__c/
             </values>
             <values>
                 <fullName>EV_VIP Event Solomeo</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EV_Virtual Event</fullName>
                 <default>false</default>
             </values>
             <values>

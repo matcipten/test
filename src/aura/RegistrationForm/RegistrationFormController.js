@@ -259,19 +259,51 @@
         
         var phoneField  = cmp.find("itemPhone");
         //var mobileField = cmp.find("itemPersonMobilePhone");
+        var otherPhoneField = cmp.find("itemPersonOtherPhone");
+
         if(item.Telefono__c){
-            if((item.Phone == null || item.Phone == '')){
-                validitem = false;
+            // if((item.Phone == null || item.Phone == '')){
+            //     validitem = false;
+            //     phoneField.set("v.errors", [{message:"phone"}]);
+            //     //mobileField.set("v.errors", [{message:"mobile"}]);
+            //     // otherPhoneField.set("v.errors", [{message:"mobile"}]);
+            //     errors.push('If you want to be contacted by phone, enter a phone');
+            // } else {
+            //     phoneField.set("v.errors", null);
+            //     //mobileField.set("v.errors", null);
+            //     otherPhoneField.set("v.errors", null);
+            // }
+            
+
+            var checkPhone ;
+            var checkOtherPhone;
+            if(item.Phone == null || item.Phone == ''){
                 phoneField.set("v.errors", [{message:"phone"}]);
-                //mobileField.set("v.errors", [{message:"mobile"}]);
+                checkPhone =false;
+                
+            }else{
+                checkPhone =true;
+            }
+            if(item.PersonOtherPhone == null || item.PersonOtherPhone == ''){
+                otherPhoneField.set("v.errors", [{message:"mobile"}]);
+                checkOtherPhone =false;
+            }else{
+                checkOtherPhone =true;
+            }
+            if(!(checkPhone || checkOtherPhone)){
+                validitem = false;
+
                 errors.push('If you want to be contacted by phone, enter a phone');
-            } else {
+            }
+            else {
                 phoneField.set("v.errors", null);
                 //mobileField.set("v.errors", null);
+                otherPhoneField.set("v.errors", null);
             }
         } else {
             phoneField.set("v.errors", null);
             //mobileField.set("v.errors", null);
+            otherPhoneField.set("v.errors", null);
         }
         
         var emailField  = cmp.find("itemPersonEmail");

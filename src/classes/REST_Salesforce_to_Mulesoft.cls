@@ -5,7 +5,7 @@ public class REST_Salesforce_to_Mulesoft {
 
     @Future(callout=true)
     public static void doPost(String body){
-        Mulesoft_Endpoint__c mce = Mulesoft_Endpoint__c.getInstance();
+        Mulesoft_Endpoint__c mce = Mulesoft_Endpoint__c.getOrgDefaults();
        
         SV_Log__c log= new SV_Log__c();
         String regex            = '(?<=sobjects\\/Account\\/)(.*)(?="},")';
@@ -103,7 +103,7 @@ public class REST_Salesforce_to_Mulesoft {
     
     @Future(callout=true)
     public static void doPut(String body){
-        Mulesoft_Endpoint__c mce = Mulesoft_Endpoint__c.getInstance();
+        Mulesoft_Endpoint__c mce = Mulesoft_Endpoint__c.getOrgDefaults();
         SV_Log__c log= new SV_Log__c();
         Map<String, Object> mbody = (Map<String, Object>) JSON.deserializeUntyped(body);       
         
@@ -183,7 +183,7 @@ public class REST_Salesforce_to_Mulesoft {
 
     }
     public static void doPostSync(String body){
-        Mulesoft_Endpoint__c mce = Mulesoft_Endpoint__c.getInstance();
+        Mulesoft_Endpoint__c mce = Mulesoft_Endpoint__c.getOrgDefaults();
        
         SV_Log__c log= new SV_Log__c();
         String regex            = '(?<=sobjects\\/Account\\/)(.*)(?="},")';
@@ -263,7 +263,7 @@ public class REST_Salesforce_to_Mulesoft {
     }
     
     public static void doPutSync(String body){
-        Mulesoft_Endpoint__c mce = Mulesoft_Endpoint__c.getInstance();
+        Mulesoft_Endpoint__c mce = Mulesoft_Endpoint__c.getOrgDefaults();
         SV_Log__c log= new SV_Log__c();
         Map<String, Object> mbody = (Map<String, Object>) JSON.deserializeUntyped(body);       
         
@@ -365,7 +365,8 @@ public class REST_Salesforce_to_Mulesoft {
                             Id_Associate__c, Id_Cliente_Salesforce__c, RecordTypeID, Salutation, customer_origin__c, Hobby__c, Numero_Passaporto__c, Data_di_emissione_passaporto__c, 
                             Ente_di_emissione_passaporto__c, Paese_di_emissione_passaporto__c, Privacy1__c, Privacy2__c, Privacy3__c, Data_Ultimo_Aggiornamento_Privacy__c, PersonHasOptedOutOfEmail, 
                             Registrazione_Al_Sito__c, Telefono__c, Email__c, Posta__c, Messaging__c, WeChat__c, Newsletter__c, Country_Newsletter__c, Stato_Newsletter__c, Preferenza_newsletter__c, 
-                            Lingua__c, First_ID_Location__c, First_Location__c, Associate_di_registrazione__c, Associate_Registrazione_ID__c, Cellulare__c, Social__c, Telefono_Lavoro__c,Zip_Code_UTF_8__c, Province_UTF_8__c,Motivazione_Richiesta_Sconto__c
+                            Lingua__c, First_ID_Location__c, First_Location__c, Associate_di_registrazione__c, Associate_Registrazione_ID__c, Cellulare__c, Social__c, Telefono_Lavoro__c,Zip_Code_UTF_8__c, 
+                            Province_UTF_8__c,Motivazione_Richiesta_Sconto__c,Contatto_BC__c,ID_ClienteSingapore__c, ID_ClienteTaiwan__c,Last_Opt_Out_Date__c
                             FROM Account
                             WHERE Id =: id];
                             
@@ -467,10 +468,14 @@ public class REST_Salesforce_to_Mulesoft {
                                         '"Zip_Code_UTF_8__c" : ' + (acc.Zip_Code_UTF_8__c!= null ? '"'+acc.Zip_Code_UTF_8__c+'"': null) + ',' +
                                         '"Province_UTF_8__c" : ' + (acc.Province_UTF_8__c!= null ? '"'+acc.Province_UTF_8__c+'"': null) + ',' +
                                         '"Motivazione_Richiesta_Sconto__c" : ' + (acc.Motivazione_Richiesta_Sconto__c!= null ? '"'+acc.Motivazione_Richiesta_Sconto__c+'"': null) + ',' +
-                                        '"Telefono_Lavoro__c" : ' + acc.Telefono_Lavoro__c + ''+
-                                        
+                                        '"Telefono_Lavoro__c" : ' + acc.Telefono_Lavoro__c + ','+
+                                        '"Contatto_BC__c" : '+acc.Contatto_BC__c+','+
+                                        '"ID_ClienteSingapore__c" : ' + (acc.ID_ClienteSingapore__c!= null ? '"'+acc.ID_ClienteSingapore__c+'"': null) + ',' +
+                                        '"ID_ClienteTaiwan__c" : ' + (acc.ID_ClienteTaiwan__c!= null ? '"'+acc.ID_ClienteTaiwan__c+'"': null) + ',' +
+                                        '"Last_Opt_Out_Date__c" : ' + (acc.Last_Opt_Out_Date__c!=null? JSON.serialize(DateTime.newInstanceGMT(acc.Last_Opt_Out_Date__c.year(), acc.Last_Opt_Out_Date__c.month(), acc.Last_Opt_Out_Date__c.day(),0,0,0)) : null)+ '' +
+
                                         '}'+
-                                    '}';
+                                    '}';   
                                     // System.debug('VS:'+acc.Motivazione_Richiesta_Sconto__c);
                                     // System.debug('VS:'+acc.Name);
       return str;

@@ -153,10 +153,13 @@ trigger onAccountTrigger on Account (after insert, after delete, after update, b
                         continue;
                     }
                     // if (!OnAccountTriggerHandler.SetOfIDs.contains(acc.id) && pf.Name=='System Administrator') {
+                    System.debug('prima check runonce');
                     if(OnAccountTriggerHandler.runOnce() && acc.Id_Cliente_MDM__c!= null){
+                        System.debug('dentro check runonce');
                         String body= REST_Salesforce_to_Mulesoft.buildPayload(acc.Id);
                         REST_Salesforce_to_Mulesoft.doPut(body);
                     }
+                    System.debug('dopo check runonce');
                 }
             }
 

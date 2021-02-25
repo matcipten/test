@@ -223,7 +223,7 @@ public with sharing class CreateActivityTrackingController {
 		try{
 
 			try{
-				if(mySelf.Profile.Name == 'BC - Boutique') {
+				if(mySelf.Profile.Name == 'BC - Boutique' || mySelf.Profile.Name == 'BC - Boutique SG TW') {
 					List<Location__c> locations = [SELECT Id,Id_Store_Manager__c,Id_Location_Micros__c FROM Location__c WHERE Id_Location_Micros__c  = :mySelf.Codice_Boutique__c];
 					if(locations != null && locations.size() > 0) {
 						String storeManagerId = locations[0].Id_Store_Manager__c;
