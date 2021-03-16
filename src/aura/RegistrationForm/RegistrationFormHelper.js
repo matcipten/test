@@ -156,6 +156,9 @@
                 }else{
                     var x = "v.customPicklist"+label;
                     var y = "v.customPicklist"+label+"BU";
+                    if(label=='Country'){
+                        component.set("v.customPicklistCountryBUComp", opts);
+                    }
                     // console.log("Vs opts2: "+JSON.stringify(opts));
                     component.set(x, opts);
                     component.set(y, opts);  
@@ -923,8 +926,9 @@ console.log('Selected: '+selectedYear);
 
     getAccountFields: function (component, id) {
         console.log('ID: ' + id);
-        // component.set("v.GBBool",false);
-        // component.set("v.DCCBool",true);
+        component.set("v.GBBool",false);
+        component.set("v.DCCBool",true);
+        console.log('DCCBool a true dentro getAccountFields')
         var action = component.get("c.getAccount");
         action.setParams({
             "AccountId": id
@@ -1008,6 +1012,7 @@ console.log('Selected: '+selectedYear);
 
     getUserInfo: function (component) {
         var action = component.get("c.getUserInformation");
+        var accId= component.get('v.accId');
         action.setCallback(this, function (response) {
             if (response.getState() == "SUCCESS") {
                 var usr = response.getReturnValue();
@@ -1018,20 +1023,35 @@ console.log('Selected: '+selectedYear);
 
                 var truncLanguage = usr.Language_Contact_Card__c;
                 component.set("v.locale",locale);
+                component.set("v.userNation",usr.Nation_Contact_Card__c);
                 component.set("v.truncLanguage",truncLanguage);
                 //PALUMBO (START)
                 // VS - 11/05/2020
-                // var nationAction = component.get("c.checkNationUser");
-                // nationAction.setParams({nation: usr.Nation_Contact_Card__c});
-                // nationAction.setCallback(this, function (response) {
-                //     if (response.getState() == "SUCCESS") {
-                //         var check = response.getReturnValue();
-                //         if (!check){
-                //             component.set("v.DCCBool",true);
-                //         }
-                //     }
-                // });
-                // $A.enqueueAction(nationAction);
+                var nationAction = component.get("c.checkNationUser");
+                nationAction.setParams({nation: usr.Nation_Contact_Card__c});
+                nationAction.setCallback(this, function (response) {
+                    if (response.getState() == "SUCCESS") {
+                        var check = response.getReturnValue();
+                        console.log('VS dentro chiamata checkNationUSer');
+                        if (check){
+                            component.set("v.DCCBool",false);
+                            // console.log('DCCBool a true dentro getuserInfo1')
+                            // if (acc.hasOwnProperty("Id")){
+                            //     console.log('dento condizione che mi serve');
+                            // }
+                            if (accId!=undefined || accId != null){
+                                console.log('dento condizione che mi serve22');
+                                component.set("v.DCCBool",true);
+                            }
+                            
+                        }else {
+                            component.set("v.DCCBool",true);
+                            console.log('DCCBool a true dentro getuserInfo2')
+                            
+                        }
+                    }
+                });
+                $A.enqueueAction(nationAction);
                 //PALUMBO (END)
             } else {
                 component.set("v.user", null);
@@ -1156,6 +1176,8 @@ console.log('Selected: '+selectedYear);
     },
     
     makeCalloutWithTaxFreeInfo : function(component,event,payload){
+        
+        component.set("v.hideBody",true);
         var action = component.get("c.makeCalloutForTaxFree");
         action.setParams({
             passportNumber : payload.passport ,
@@ -1165,28 +1187,108 @@ console.log('Selected: '+selectedYear);
        
         action.setCallback(this, function(response) {
             var state = response.getState();
-            if (state === "SUCCESS") {
+            var returnValue =response.getReturnValue();
+            if (state === "SUCCESS" && returnValue!='Error') {
                 component.set("v.initializeModal", false);
-                var result = response.getReturnValue();
+                console.log('response.getReturnValue(): '+response.getReturnValue());
+                var result = JSON.parse(response.getReturnValue());
                 //TODO: popolare il form con la risposta del servizio
-                // sovrascrivere oggetto newItem
-                component.set("v.DCCBool",true);
-            }
-            else if (state === "INCOMPLETE") {
-                component.set("v.initializeModal", false);
-            }
-            else if (state === "ERROR") {
-                component.set("v.initializeModal", false);
-                var errors = response.getError();
-                if (errors) {
-                    if (errors[0] && errors[0].message) {
-                        console.log("Error message: " + 
-                                 errors[0].message);
-                    }
-                } else {
-                    console.log("Unknown error");
+                console.log('VS set account on dcc');
+                var oldACC= component.get("v.newItem");
+                console.log('VS set account result: '+result.customer);
+                var acc =result.customer;
+                // campi ignorati
+                acc.Numero_Passaporto__c = payload.passport;
+                acc.Paese_di_emissione_passaporto__c = payload.country;
+                acc.Id_Location__c = null;
+                acc.Location__c = null;
+                acc.Id_Associate__c = null;
+                acc.Newsletter__c = null;
+                acc.Privacy1__c = null;
+                acc.Privacy2__c = null;
+                acc.Privacy3__c = null;
+                // if(acc.PersonMailingCountry== null){
+                //     if(acc.Nazionalita__c!= null){
+                //         acc.PersonMailingCountry=acc.Nazionalita__c;
+                //     }
+                // }
+                component.set("v.isexpanded",true);
+                if(acc.PersonMailingCountry== null){
+                    acc.PersonMailingCountry = oldACC.PersonMailingCountry
+                    this.searchValuePicklist(component,acc.PersonMailingCountry, "Country", "validate");
                 }
-            }            
+
+                var userNation =component.get("v.userNation");
+                if(acc.PersonMailingCountry!= userNation){
+                    
+                    acc.BillingCountry = acc.PersonMailingCountry
+                    acc.PersonOtherCountry = acc.PersonMailingCountry
+                }
+
+                // if(acc.PersonMailingCountry== null){
+                //     acc.PersonMailingCountry = oldACC.PersonMailingCountry
+                // }
+                
+
+                if(acc.Lingua__c== null){
+                    acc.Lingua__c= oldACC.Lingua__c;
+                }
+
+                // sovrascrivere oggetto newItem
+                component.set("v.newItem",acc);
+                // campi data
+                var dataBirth =new Date(acc.PersonBirthdate);
+                console.log(typeof dataBirth);
+                component.set("v.dayBirthdate",(dataBirth.getDate()).toString());
+                component.set("v.monthBirthdate",(dataBirth.getMonth()+1).toString());
+                component.set("v.yearBirthdate",(dataBirth.getFullYear().toString()));
+
+                
+                // campi picklist
+                this.searchValuePicklist(component,acc.PersonMailingCountry, "Country", "loadAcc");
+                this.searchValuePicklist(component,acc.BillingCountry, 'CountryContact', "loadAcc");
+                this.searchValuePicklist(component,acc.PersonOtherCountry, 'CountryOther', "loadAcc");
+                this.searchValuePicklist(component,acc.Nazionalita__c, 'Nationality', "loadAcc");
+                // this.searchValuePicklist(component,acc.Professione__c, 'Profession', "loadAcc");
+                this.searchValuePicklist(component,acc.Lingua__c, 'PreferredLanguage', "loadAcc");
+                this.searchValuePicklist(component,acc.Paese_di_emissione_passaporto__c, 'PassportCountry', "loadAcc");
+
+                component.set("v.DCCBool",true);
+                        console.log('DCCBool a true dentro makeCalloutWithTaxFreeInfo1')
+
+            }else{
+                component.set("v.DCCBool",true);
+                console.log('DCCBool a true dentro makeCalloutWithTaxFreeInfo2')
+                var oldACC= component.get("v.newItem");
+            
+                oldACC.Numero_Passaporto__c = payload.passport;
+                oldACC.Paese_di_emissione_passaporto__c = payload.country;
+                component.set("v.newItem",oldACC);
+                component.set("v.isexpanded",true);
+                this.searchValuePicklist(component,oldACC.PersonMailingCountry, "Country", "loadAcc");
+                this.searchValuePicklist(component,oldACC.BillingCountry, 'CountryContact', "loadAcc");
+                this.searchValuePicklist(component,oldACC.PersonOtherCountry, 'CountryOther', "loadAcc");
+                this.searchValuePicklist(component,oldACC.Nazionalita__c, 'Nationality', "loadAcc");
+                // this.searchValuePicklist(component,oldACC.Professione__c, 'Profession', "loadAcc");
+                this.searchValuePicklist(component,oldACC.Lingua__c, 'PreferredLanguage', "loadAcc");
+                this.searchValuePicklist(component,oldACC.Paese_di_emissione_passaporto__c, 'PassportCountry', "loadAcc");
+            }
+            // else if (state === "INCOMPLETE") {
+            //     component.set("v.initializeModal", false);
+            // }
+            // else if (state === "ERROR") {
+            //     component.set("v.initializeModal", false);
+            //     var errors = response.getError();
+            //     if (errors) {
+            //         if (errors[0] && errors[0].message) {
+            //             console.log("Error message: " + 
+            //                      errors[0].message);
+            //         }
+            //     } else {
+            //         console.log("Unknown error");
+            //     }
+            // }
+             component.set("v.hideBody",false);           
         });
         $A.enqueueAction(action);
     },
@@ -1251,6 +1353,8 @@ console.log('Selected: '+selectedYear);
             
           }
         //   console.log("VS fieldOnItem: "+fieldOnItem);
+        console.log("VS fieldOnItem value: "+component.get(fieldOnItem));
+        
         return component.get(fieldOnItem);
     },
 

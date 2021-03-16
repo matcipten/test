@@ -3,6 +3,13 @@
     doInit : function(component, event, helper) {
         console.log("INIT CONTROLLER");  
         component.set("v.newItem","{'sobjectType':'Account'}");
+        var myPageRef = component.get("v.pageReference");
+        var accId;
+        if(myPageRef){
+
+            accId = myPageRef.state.c__recordId;
+            component.set('v.accId',accId);
+        }
         var today = new Date();
         helper.getUserInfo(component);
         component.set('v.myDateTime', today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate());
@@ -28,13 +35,17 @@
         helper.fetchPickListVal2(component, 'Nazionalita__c', 'InputSelectDynamicContactCountry', "CountryOther");
         helper.fetchPickListVal2(component, 'Nazionalita__c', 'InputSelectDynamicOtherCountry', "CountryContact");
         helper.fetchPickListVal2(component, 'Nazionalita__c', 'InputSelectDynamicPassportCountry',"PassportCountry");
-        var myPageRef = component.get("v.pageReference");
+        
         if(myPageRef){
-            var accId = myPageRef.state.c__recordId;
+
+            // var accId = myPageRef.state.c__recordId;
+            // component.set('v.accId',accId);
+            console.log('VS accId: '+accId);
             helper.getAccountFields(component, accId);   
             //PALUMBO (START)
             if (accId !=undefined){
                 component.set("v.DCCBool",true);
+                console.log('DCCBool a true dentro do init');
             }            
             //PALUMBO (END)        
         }else{
@@ -1223,6 +1234,7 @@
         var payload = event.getParam("payload");
         if (message == 'showDCC'){
             component.set("v.DCCBool",true);
+            console.log('DCCBool a true dentro handleComponentEvent');
         } else if (message == 'makeCallout'){
             helper.makeCalloutWithTaxFreeInfo(component,event,payload);
         }

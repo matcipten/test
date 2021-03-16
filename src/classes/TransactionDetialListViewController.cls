@@ -19,7 +19,12 @@ public with sharing class TransactionDetialListViewController {
 		                                         Transaction__c
 		                                         FROM Transaction_Detail__c
 		                                         WHERE Gift__c = false
-		                                                         AND AccountId__c  =:accId AND Transaction__r.Stato_ordine_Ecommerce__c!= 'CANCELLED' AND Status__c!='CANCELLED'
+		                                                         AND AccountId__c  =:accId AND Transaction__r.Stato_ordine_Ecommerce__c!= 'CANCELLED' AND Status__c!='CANCELLED' 
+																 AND Product__r.Linea_di_vendita__c != '7B'
+																 AND Product__r.Linea_di_vendita__c != 'AB'
+																 AND Product__r.Linea_di_vendita__c != 'BB'
+																 AND Product__r.Linea_di_vendita__c != 'EB'
+																 AND Product__r.Linea_di_vendita__c != 'VB'
 		                                                                             //AND Product_Image_Reference__c != null
 		                                                                             Order By Data_Scontrino__c Desc
 		                                                                             LIMIT 5];
@@ -51,6 +56,11 @@ public with sharing class TransactionDetialListViewController {
 		                                         FROM Transaction_Detail__c
 		                                         WHERE Gift__c = false
 		                                                         AND AccountId__c =:accId AND Transaction__r.Stato_ordine_Ecommerce__c!= 'CANCELLED' AND Status__c!='CANCELLED'
+																 AND Product__r.Linea_di_vendita__c != '7B'
+																 AND Product__r.Linea_di_vendita__c != 'AB'
+																 AND Product__r.Linea_di_vendita__c != 'BB'
+																 AND Product__r.Linea_di_vendita__c != 'EB'
+																 AND Product__r.Linea_di_vendita__c != 'VB'
 		                                                                            //AND Product_Image_Reference__c != null
 		                                                                            Order By Data_Scontrino__c Desc
 		];
@@ -68,6 +78,11 @@ public with sharing class TransactionDetialListViewController {
 		Integer tDetails =  [SELECT count()
 		                     FROM Transaction_Detail__c
 		                     WHERE Gift__c = false AND Transaction__r.Stato_ordine_Ecommerce__c!= 'CANCELLED' AND Status__c!='CANCELLED'
+							 AND Product__r.Linea_di_vendita__c != '7B'
+							 AND Product__r.Linea_di_vendita__c != 'AB'
+							 AND Product__r.Linea_di_vendita__c != 'BB'
+							 AND Product__r.Linea_di_vendita__c != 'EB'
+							 AND Product__r.Linea_di_vendita__c != 'VB'
 		                                     AND AccountId__c =:accId
 		];
 

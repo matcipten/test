@@ -54,6 +54,17 @@
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>ReadWrite</externalSharingModel>
     <fields>
+        <fullName>Area__c</fullName>
+        <externalId>false</externalId>
+        <label>Area</label>
+        <length>200</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Billing_Address_Section_Label__c</fullName>
         <externalId>false</externalId>
         <label>Billing Address Section Label</label>
@@ -177,6 +188,17 @@
         <fullName>CAP_Placeholder__c</fullName>
         <externalId>false</externalId>
         <label>CAP_Placeholder</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Cancel_Heading__c</fullName>
+        <externalId>false</externalId>
+        <label>Cancel_Heading</label>
         <length>255</length>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -394,9 +416,42 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Create_Customer_Button__c</fullName>
+        <externalId>false</externalId>
+        <label>Create_Customer_Button</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Create_Customer_Heading__c</fullName>
+        <externalId>false</externalId>
+        <label>Create_Customer_Heading</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Data_di_emissione_passaporto_Label__c</fullName>
         <externalId>false</externalId>
         <label>Data_di_emissione_passaporto_Label</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DateBirthday_Label__c</fullName>
+        <externalId>false</externalId>
+        <label>DateBirthday_Label</label>
         <length>255</length>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -564,6 +619,17 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Label_Section_Passport__c</fullName>
+        <externalId>false</externalId>
+        <label>Label_Section_Passport</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Language_Label__c</fullName>
         <externalId>false</externalId>
         <label>Language_Label</label>
@@ -663,6 +729,16 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Month_Label__c</fullName>
+        <externalId>false</externalId>
+        <label>Month_Label</label>
+        <length>1000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
         <fullName>N_versione__c</fullName>
         <defaultValue>0</defaultValue>
         <externalId>false</externalId>
@@ -737,6 +813,17 @@
         <visibleLines>3</visibleLines>
     </fields>
     <fields>
+        <fullName>Other_Phone_Label__c</fullName>
+        <externalId>false</externalId>
+        <label>Other_Phone_Label</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Paese_di_emissione_passaporto_Label__c</fullName>
         <externalId>false</externalId>
         <label>Paese_di_emissione_passaporto_Label</label>
@@ -789,6 +876,16 @@
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Privacy_1_Label_Department__c</fullName>
+        <externalId>false</externalId>
+        <label>Privacy_1_Label_Department</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
     </fields>
     <fields>
         <fullName>Privacy_1_Label__c</fullName>
@@ -923,6 +1020,16 @@
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
         <visibleLines>2</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Rich_Text_Registration__c</fullName>
+        <externalId>false</externalId>
+        <label>Rich_Text_Registration</label>
+        <length>5000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
     </fields>
     <fields>
         <fullName>Richiedi_Firma__c</fullName>
@@ -1098,6 +1205,17 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Submit_Button__c</fullName>
+        <externalId>false</externalId>
+        <label>Submit_Button</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Success_Message_Label__c</fullName>
         <externalId>false</externalId>
         <label>Success_Message_Label</label>
@@ -1110,7 +1228,7 @@
     <fields>
         <fullName>Versione_DCC__c</fullName>
         <externalId>false</externalId>
-        <formula>text(N_versione__c) &amp; &quot;.&quot; &amp; text($User.Nation_Contact_Card__c) &amp; &quot;.&quot; &amp; text($User.Canale_di_Vendita__c)</formula>
+        <formula>text(N_versione__c)  &amp; &quot;.&quot; &amp;  text($User.Area_Contact_Card__c)  &amp; &quot;.&quot; &amp;  text($User.Nation_Contact_Card__c)  &amp; &quot;.&quot; &amp;  text($User.Canale_di_Vendita__c)</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Versione DCC</label>
         <required>false</required>

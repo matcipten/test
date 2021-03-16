@@ -30,6 +30,7 @@
     <aura:attribute name="days" type="Integer[]"/>
     <aura:attribute name="months" type="Integer[]"/>
 
+    <aura:attribute name="userNation" type="String"/>
 
     <aura:attribute name="sid" type="String"/>
     
@@ -59,7 +60,8 @@
     
     <aura:attribute name="Id" type="String" />
     
-    
+    <aura:attribute name="accId" type="String" />
+
    
     <aura:attribute name="isexpanded" type="boolean" default="false"/>
        
@@ -79,7 +81,7 @@
     <!-- VS - 20/04/2020 ISSUE 745 -->
     <aura:attribute name="customPicklistCountry" type="Object" />
     <aura:attribute name="customPicklistCountryBU" type="Object" />
-
+    <aura:attribute name="customPicklistCountryBUComp" type="Object" />
     <aura:attribute name="customPicklistNationality" type="Object" />
     <aura:attribute name="customPicklistNationalityBU" type="Object" />
 
@@ -116,7 +118,7 @@
     <aura:attribute name="optSesso" type="Object" />
     <aura:attribute name="optLang" type="Object" />
     <!-- VS 11/05/2020 -->
-    <!-- <aura:handler name="registrationFormEvent" event="c:registrationFormEvent" action="{!c.handleComponentEvent}"/> -->
+    <aura:handler name="registrationFormEvent" event="c:registrationFormEvent" action="{!c.handleComponentEvent}"/>
 
     <aura:attribute name="hideBody" type="Boolean" default="true"/>
 
@@ -128,7 +130,7 @@
 
         <!-- REGISTRATION WITH TAX FREE -->
         <!-- VS 11/05/2020 -->
-        <!-- <c:createCustomerTaxFreeComponent translations="{!v.translatorValue}" show="{!!v.DCCBool}" country="{!v.customPicklistCountry}"/> -->
+        <c:createCustomerTaxFreeComponent translations="{!v.translatorValue}" show="{!!v.DCCBool}" country="{!v.customPicklistCountryBUComp}"/>
 
         <!-- STANDARD CUSTOMER FORM -->
         <aura:renderIf isTrue="{!v.DCCBool}">

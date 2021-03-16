@@ -21,6 +21,9 @@
 .THIS .forceChatterBasePublisher :not(.PHONE) .cuf-content{
     padding: 0;
 }
+.THIS .nationality-height{
+    padding-top: 2px;
+}
 
 .THIS .header {
     text-align: center;

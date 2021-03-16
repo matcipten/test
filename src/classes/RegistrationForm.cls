@@ -321,7 +321,8 @@ public class RegistrationForm {
                                 Button_Add_Address_Label__c, Billing_Address_Section_Label__c, Contact_Address_Section_Label__c, Other_Address_Section_Label__c,
                                 Street_Contact_Address_Label__c, City_Contact_Address_Label__c, CAP_Contact_Address_Label__c, Country_Contact_Address_Label__c,
                                 Street_Other_Address_Label__c, City_Other_Address_Label__c, State_Other_Address_Label__c, CAP_Other_Address_Label__c, 
-                                Country_Other_Address_Label__c,State_Contact_Address_Label__c, DateBirthday_Label__c, Month_Label__c,Other_Phone_Label__c
+                                Country_Other_Address_Label__c,State_Contact_Address_Label__c, DateBirthday_Label__c, Month_Label__c,Other_Phone_Label__c,
+                                Cancel_Heading__c, Create_Customer_Heading__c, Rich_Text_Registration__c, Create_Customer_Button__c, Label_Section_Passport__c, Submit_Button__c
                                 //PALUMBO (END)
                                 FROM Translate__c WHERE Country_FRM__c = :locale]) {
                                     Mymap.put(obj.Name, obj );
@@ -502,7 +503,7 @@ return 'false';
                 ass = [SELECT Id, Id_Associate__c FROM Associated__c WHERE Id_Associate__c =: user.Codice_Associate__c AND Id_Location_Micros__c =: user.Codice_Boutique__c];
             }
         }
-        System.debug('VS fuori if campi user');
+        system.debug('VS fuori if campi user');
         // VS - 08/06/2020 -  SALESFORCE-868
         returnData ret = new returnData();
         ret.success = true;
@@ -552,7 +553,6 @@ return 'false';
             newPersonAccount.Data_Di_Registrazione__c             = Date.today();
             newPersonAccount.Versione_DCC__c = getDCCVersion();
             CheckAddressOrientalCharacters(newPersonAccount);
-            
             insert newPersonAccount;
             
             system.debug('newPersonAccount: ' + newPersonAccount);
@@ -680,7 +680,6 @@ return 'false';
         Contact_Card__c newContactCard = new Contact_Card__c();
         try{
             User userRecord = getUserInformation();
-            System.debug('lang: '+acc.SignedLanguage__c+'_'+userRecord.Area_Contact_Card__c);
             Translate__c currentTranslate = getCurrentTranslate(acc.SignedLanguage__c+'_'+userRecord.Area_Contact_Card__c);
             newContactCard.Customer_ID__c               = Id;
             newContactCard.Salutation__c                = acc.Salutation;
@@ -833,7 +832,7 @@ insert cDe;
     }
 
     //AT 12/02/2020 web service callout for TaX free
-    @AuraEnabled
+    /*@AuraEnabled
     public static void makeCalloutForTaxFree(String passportNumber, String countryIso){
          system.debug('Akshay@ passportNumber  : ' + passportNumber);
          system.debug('Akshay@ countryIso  : ' + countryIso);
@@ -918,6 +917,67 @@ insert cDe;
         }
         
 
+    }*/
+    @AuraEnabled
+    public static String makeCalloutForTaxFree(String passportNumber, String countryIso){
+         system.debug('Akshay@ passportNumber  : ' + passportNumber);
+         system.debug('Akshay@ countryIso  : ' + countryIso);
+         GlobalBlue_Endpoint__c GB_cs = GlobalBlue_Endpoint__c.getInstance();
+        try{
+            if(passportNumber !='' && countryIso != ''){
+                Http http = new Http();
+                HttpRequest request = new HttpRequest();   
+                // makeCalloutForTaxFreerequest.setEndpoint('https://46.30.169.235:8085/secured/dispatch/customers/globalblue/gettraveler');
+                // request.setEndpoint('https://172.16.3.135:8085/secured/dispatch/customers/globalblue/gettraveler');
+                request.setEndpoint(GB_cs.Endpoint__c);
+                //request.setClientCertificateName('srvesb');
+                 /*request.setClientCertificate('MIIDpzCCAo+gAwIBAgIESroAhzANBgkqhkiG9w0BAQsFADCBgzELMAkGA1UEBhMC' +
+                                             'SVQxEDAOBgNVBAgTB1BlcnVnaWExEDAOBgNVBAcTB1NvbG9tZW8xIjAgBgNVBAoT' +
+                                             'GUJydW5lbGxvIEN1Y2luZWxsaSBzLnAuYS4xDzANBgNVBAsTBnNydmVzYjEbMBkG' +
+                                             'A1UEAxMSQnJ1bmVsbG8gQ3VjaW5lbGxpMB4XDTE2MDkxNDEwMDM0NVoXDTIyMDMw' +
+                                             'NzEwMDM0NVowgYMxCzAJBgNVBAYTAklUMRAwDgYDVQQIEwdQZXJ1Z2lhMRAwDgYD' +
+                                             'VQQHEwdTb2xvbWVvMSIwIAYDVQQKExlCcnVuZWxsbyBDdWNpbmVsbGkgcy5wLmEu' +
+                                             'MQ8wDQYDVQQLEwZzcnZlc2IxGzAZBgNVBAMTEkJydW5lbGxvIEN1Y2luZWxsaTCC' +
+                                             'ASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAI4ULaux7juiK6T+Mp/I6VQS' +
+                                             'X/LDoX3ZBM9jqeVms2pqMb39kzDcPu87NE/Mjdl01QvOUVShxx49HGo/A55OKnRs' +
+                                             'Inw7STTiECojikKbFGTYNg9BVzxx2ki8LtSPrxJFJv+iH8DrxdezehrxkVmEDlwy' +
+                                             'hsQICe2EyTFbVx1ItRthDKkBkxsmyViUiYUhq148QHlsO7mVzh6852NiNnW0WEaq' +
+                                             '3LqBU4F+UXG8pcSvV+gAQPaDrEbDCZvW1qdjlKTLioBtOe3pJxCpYRMe4IqYvhNx' +
+                                             'chMWVDvurhY6X1OoCqt12ei5SDiHj+SS8RsTlEfeKyWScjxlampmyX4/4XaiwiUC' +
+                                             'AwEAAaMhMB8wHQYDVR0OBBYEFJ1NfFx7vWVDVOyDUnY4bS/31NPcMA0GCSqGSIb3' +
+                                             'DQEBCwUAA4IBAQAcI8eRYuQjg40YQemY9FUOywkzppc0bH9KYyT94Na2Z/Yhr7o8' +
+                                             'IUf1x1Z9orKma/iurVHUQxumu2gUoHUCAJro0Was//ynHEypDCGOjgprdYdOtICm' +
+                                             '+q9N9xUfRKn7zGmuHoIBo5k0ZTNWQqKmqXyxCgdAT3Uo2eAb9DhBE0ZtFw6CEF9g' +
+                                             'gWt4m2f7KIbfSy1YCyY72lI2I0eCTtj1k4TOR2gPhdRZLCsD/o15EKgWhH03gvcP' +
+                                             'bhxnuUMua1G6S3f9I9DVvtbnIuuBvEN2GD2AuJVBjZIpcXwvYMuocazqf2fTNE+n' +
+                                             'e3Q8jmMmZNwF5GbomwOffWtQbF5pDz+QGG/p','srvesb');*/
+                request.setMethod('POST');
+                request.setHeader('Content-Type', 'application/json;charset=UTF-8');
+                request.setTimeout(120000);
+                // Set the body as a JSON object
+                request.setBody('{"passportNumber__c":"'+passportNumber+'","countryCode__c":"'+countryIso+'"}');
+                system.debug('Request : ' + request);
+                HttpResponse response = http.send(request);
+
+                system.debug('response : ' + response.getBody());
+                // Parse the JSON response
+                if (response.getStatusCode() != 200) {
+                    System.debug('The status code returned was not expected: ' +
+                                 response.getStatusCode() + ' ' + response.getStatus());
+                                 throw new CalloutException('Error');
+                } else {
+                    System.debug(response.getBody());
+                    return response.getBody();
+                }
+            }
+            
+        }Catch(Exception ex){
+            system.debug('Exception : ' + ex.getMessage());
+            system.debug('Exception : ' + ex.getLineNumber());
+            return ex.getMessage();
+        }
+        
+        return '';
     }
     
     
@@ -960,11 +1020,11 @@ insert cDe;
     // Akshay@
 
     //PALUMBO (START)
-    // @AuraEnabled
-    // public static Boolean checkNationUser(String nation){
-    //     List<DCC_Visibility__mdt> dccVisibility = [SELECT Label, IsValid__c FROM DCC_Visibility__mdt WHERE IsValid__c = true AND Label =: nation];
-    //     return dccVisibility.size() > 0;
-    // }
+    @AuraEnabled
+    public static Boolean checkNationUser(String nation){
+        List<DCC_Visibility__mdt> dccVisibility = [SELECT Label, IsValid__c FROM DCC_Visibility__mdt WHERE IsValid__c = true AND Label =: nation];
+        return dccVisibility.size() > 0;
+    }
     //PALUMBO (END)
     
     @AuraEnabled

@@ -59,7 +59,7 @@
     <enableBulkApi>true</enableBulkApi>
     <enableChangeDataCapture>false</enableChangeDataCapture>
     <enableEnhancedLookup>true</enableEnhancedLookup>
-    <enableFeeds>false</enableFeeds>
+    <enableFeeds>true</enableFeeds>
     <enableHistory>true</enableHistory>
     <enableReports>true</enableReports>
     <enableSearch>true</enableSearch>
@@ -67,10 +67,105 @@
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Read</externalSharingModel>
     <fields>
+        <fullName>Activity_Category_templ__c</fullName>
+        <externalId>false</externalId>
+        <formula>CASE( Categoria__c ,
+&apos;OT_Proposte di stile&apos;,&apos;Proposte di stile&apos;,
+&apos;OT_Sartoria Solomeo&apos;,&apos;Sartoria Solomeo&apos;,
+&apos;OT_Trunk Show&apos;,&apos;Trunk Show&apos;,
+&apos;OT_Product Home Delivery&apos;,&apos;Consegna a domicilio&apos;,
+&apos;OT_Repair follow-up&apos;,&apos;Follow up di riparazione&apos;,
+&apos;OT_Follow-up after store visit&apos;,&apos;Follow up dopo visita in negozio&apos;,
+&apos;OT_Thank you note&apos;,&apos;Note di ringraziamento&apos;,
+&apos;OT_Eating out/Vip dinner or lunch&apos;,&apos;Pranzo/Cena fuori con il cliente&apos;,
+&apos;OT_Spend time with clients&apos;,&apos;Attività ricreative con il cliente&apos;,
+&apos;OT_Solomeo Experience&apos;,&apos;Solomeo Experience&apos;,
+&apos;OT_Tour Visit&apos;,&apos;Tour Visit&apos;,
+&apos;OT_Attending Corporate Event&apos;,&apos;Partecipazione ad un evento corporate&apos;,
+&apos;OT_Greetings&apos;,&apos;Auguri&apos;,
+&apos;OT_Gifting&apos;,&apos;Gifting&apos;,
+&apos;OT_Preview&apos;,&apos;Preview&apos;,
+&apos;OT_Keep in Touch&apos;,&apos;Keep in Touch&apos;,
+&apos;EV_In store animation/Event&apos;,&apos;Evento in negozio&apos;,
+&apos;EV_Out of store Event&apos;,&apos;Evento fuori dal negozio&apos;,
+&apos;EV_Store opening/Pop-up&apos;,&apos;Apertura negozio/pop-up&apos;,
+&apos;EV_VIP Event Solomeo&apos;,&apos;VIP Event Solomeo&apos;,
+&apos;EV_Networking - Charity&apos;,&apos;Networking - Charity&apos;,
+&apos;EV_Private Sales&apos;,&apos;Saldi privati&apos;,
+&apos;EV_Virtual Event&apos;,&apos;Eventi Digitali&apos;,
+&apos;EVMA_Seasonal opening&apos;,&apos;Seasonal opening&apos;,
+&apos;MA_Catalogues&apos;,&apos;Cataloghi&apos;,
+&apos;MA_Lookbooks&apos;,&apos;Lookbooks&apos;,
+&apos;MA_Direct Emailing&apos;,&apos;Direct Emailing&apos;,
+&apos;BC_BC_s Call&apos;,&apos;BC’s Call&apos;,
+&apos;BC_BC_s Event&apos;,&apos;BC’s Event&apos;,
+&apos;BC_BC_s Mailing&apos;,&apos;BC’s Mailing&apos;,
+&apos;BC_BC_s Note&apos;,&apos;BC’s Note&apos;,
+&apos;BC_BC_s Gift&apos;,&apos;BC’s Gift&apos;,
+&apos;BC_BC_s Meeting&apos;,&apos;BC’s Meeting&apos;,
+&apos;BC_Client to Brunello&apos;,&apos;Client to Brunello&apos;,
+&apos;&apos;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Activity Category templ</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Activity_Category_templ_eng__c</fullName>
+        <externalId>false</externalId>
+        <formula>CASE( Categoria__c ,
+&apos;OT_Proposte di stile&apos;,&apos;Proposte di stile&apos;,
+&apos;OT_Sartoria Solomeo&apos;,&apos;Sartoria Solomeo&apos;,
+&apos;OT_Trunk Show&apos;,&apos;Trunk Show&apos;,
+&apos;OT_Product Home Delivery&apos;,&apos;Product Home Delivery&apos;,
+&apos;OT_Repair follow-up&apos;,&apos;Repair follow-up&apos;,
+&apos;OT_Follow-up after store visit&apos;,&apos;Follow-up after store visit&apos;,
+&apos;OT_Thank you note&apos;,&apos;Thank you note&apos;,
+&apos;OT_Eating out/Vip dinner or lunch&apos;,&apos;Eating out/Vip dinner or lunch&apos;,
+&apos;OT_Spend time with clients&apos;,&apos;Spend time with clients&apos;,
+&apos;OT_Solomeo Experience&apos;,&apos;Solomeo Experience&apos;,
+&apos;OT_Tour Visit&apos;,&apos;Tour Visit&apos;,
+&apos;OT_Attending Corporate Event&apos;,&apos;Attending Corporate Event&apos;,
+&apos;OT_Greetings&apos;,&apos;Greetings&apos;,
+&apos;OT_Gifting&apos;,&apos;Gifting&apos;,
+&apos;OT_Preview&apos;,&apos;Preview&apos;,
+&apos;OT_Keep in Touch&apos;,&apos;Keep in Touch&apos;,
+&apos;EV_In store animation/Event&apos;,&apos;In store animation/Event&apos;,
+&apos;EV_Out of store Event&apos;,&apos;Out of store Event&apos;,
+&apos;EV_Store opening/Pop-up&apos;,&apos;Store opening/Pop-up&apos;,
+&apos;EV_VIP Event Solomeo&apos;,&apos;VIP Event Solomeo&apos;,
+&apos;EV_Networking - Charity&apos;,&apos;Networking - Charity&apos;,
+&apos;EV_Private Sales&apos;,&apos;Private Sales&apos;,
+&apos;EV_Virtual Event&apos;,&apos;Virtual Event&apos;,
+&apos;EVMA_Seasonal opening&apos;,&apos;Seasonal opening&apos;,
+&apos;MA_Catalogues&apos;,&apos;Catalogues&apos;,
+&apos;MA_Lookbooks&apos;,&apos;Lookbooks&apos;,
+&apos;MA_Direct Emailing&apos;,&apos;Direct Emailing&apos;,
+&apos;BC_BC_s Call&apos;,&apos;BC’s Call&apos;,
+&apos;BC_BC_s Event&apos;,&apos;BC’s Event&apos;,
+&apos;BC_BC_s Mailing&apos;,&apos;BC’s Mailing&apos;,
+&apos;BC_BC_s Note&apos;,&apos;BC’s Note&apos;,
+&apos;BC_BC_s Gift&apos;,&apos;BC’s Gift&apos;,
+&apos;BC_BC_s Meeting&apos;,&apos;BC’s Meeting&apos;,
+&apos;BC_Client to Brunello&apos;,&apos;Client to Brunello&apos;,
+&apos;&apos;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Activity Category templ eng</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Activity_Date__c</fullName>
         <externalId>false</externalId>
         <label>Activity Date</label>
         <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Date</type>
@@ -99,6 +194,7 @@
         <relationshipLabel>Activity tracking</relationshipLabel>
         <relationshipName>Activity_tracking</relationshipName>
         <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
@@ -108,6 +204,7 @@
         <externalId>false</externalId>
         <label>Channel</label>
         <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
@@ -121,6 +218,7 @@
         <externalId>false</externalId>
         <label>Activity category</label>
         <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
@@ -150,6 +248,7 @@
         <relationshipLabel>Activity tracking</relationshipLabel>
         <relationshipName>Activity_tracking</relationshipName>
         <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
@@ -174,6 +273,7 @@
         <relationshipLabel>Activity tracking</relationshipLabel>
         <relationshipName>Activity_tracking</relationshipName>
         <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
@@ -198,7 +298,8 @@
         <label>Image Reference</label>
         <length>255</length>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -212,6 +313,7 @@
         <relationshipLabel>Activity tracking</relationshipLabel>
         <relationshipName>Activity_tracking</relationshipName>
         <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
@@ -222,6 +324,7 @@
         <label>Where (out of store)</label>
         <length>255</length>
         <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
@@ -232,6 +335,7 @@
         <externalId>false</externalId>
         <label>Location</label>
         <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
@@ -257,6 +361,7 @@
         <externalId>false</externalId>
         <label>Activity notes</label>
         <length>32768</length>
+        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
@@ -267,7 +372,8 @@
         <externalId>false</externalId>
         <label>Status Campaign Member</label>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -339,6 +445,7 @@
         <precision>18</precision>
         <required>false</required>
         <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Number</type>
@@ -353,7 +460,8 @@
         <relationshipLabel>Activity tracking (Allocated Boutique)</relationshipLabel>
         <relationshipName>Activity_tracking1</relationshipName>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -375,7 +483,8 @@
         <relationshipLabel>Activity tracking</relationshipLabel>
         <relationshipName>Activity_tracking</relationshipName>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -401,10 +510,12 @@
     <nameField>
         <displayFormat>{00000}</displayFormat>
         <label>Activity Tracking Name</label>
+        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Activity tracking</pluralLabel>
+    <recordTypeTrackFeedHistory>false</recordTypeTrackFeedHistory>
     <recordTypeTrackHistory>true</recordTypeTrackHistory>
     <recordTypes>
         <fullName>Brunello_s_Contact</fullName>
@@ -587,6 +698,10 @@
             </values>
             <values>
                 <fullName>EV_VIP Event Solomeo</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EV_Virtual Event</fullName>
                 <default>false</default>
             </values>
         </picklistValues>

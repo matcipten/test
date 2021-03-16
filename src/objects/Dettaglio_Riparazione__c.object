@@ -75,6 +75,28 @@
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Read</externalSharingModel>
     <fields>
+        <fullName>Address_boutique_templ__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(OR(
+ISNULL(Associate__r.Location__r.Indirizzo__c),
+ISBLANK(Associate__r.Location__r.Indirizzo__c),
+ISNULL(Associate__r.Location__r.Citta__c),
+ISBLANK(Associate__r.Location__r.Citta__c),
+ISNULL(Associate__r.Location__r.Nazione__c),
+ISBLANK(Associate__r.Location__r.Nazione__c),
+ISNULL(Associate__r.Location__r.Codice_Postale__c),
+ISBLANK(Associate__r.Location__r.Codice_Postale__c)),&quot;Viale Parco dell&apos;&quot; &amp; &quot;Industria, 5&quot;,
+Associate__r.Location__r.Nome_legal_entity__c &amp; BR() &amp; 
+Associate__r.Location__r.Indirizzo__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Address boutique</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Affidato_a__c</fullName>
         <externalId>false</externalId>
         <label>Affidato a</label>
@@ -161,12 +183,12 @@
             <filterItems>
                 <field>$Profile.Name</field>
                 <operation>equals</operation>
-                <value>BC - Associate, BC - Boutique</value>
+                <value>BC - Associate, BC - Boutique, BC - Boutique SG TW</value>
             </filterItems>
             <filterItems>
                 <field>$Profile.Name</field>
                 <operation>notEqual</operation>
-                <value>BC - Associate, BC - Boutique</value>
+                <value>BC - Associate, BC - Boutique, BC - Boutique SG TW</value>
             </filterItems>
             <filterItems>
                 <field>Associated__c.IsActive__c</field>
@@ -916,21 +938,16 @@
         <valueSet>
             <restricted>true</restricted>
             <valueSetDefinition>
-                <sorted>false</sorted>
+                <sorted>true</sorted>
                 <value>
-                    <fullName>Outerwear</fullName>
+                    <fullName>Bag</fullName>
                     <default>false</default>
-                    <label>Outerwear</label>
+                    <label>Bag</label>
                 </value>
                 <value>
-                    <fullName>Fur</fullName>
+                    <fullName>Belts</fullName>
                     <default>false</default>
-                    <label>Fur</label>
-                </value>
-                <value>
-                    <fullName>Leather Jacket</fullName>
-                    <default>false</default>
-                    <label>Leather Jacket</label>
+                    <label>Belts</label>
                 </value>
                 <value>
                     <fullName>Blazer</fullName>
@@ -938,9 +955,14 @@
                     <label>Blazer</label>
                 </value>
                 <value>
-                    <fullName>Knitwear</fullName>
+                    <fullName>Candle</fullName>
                     <default>false</default>
-                    <label>Knitwear</label>
+                    <label>Candle</label>
+                </value>
+                <value>
+                    <fullName>Cushion</fullName>
+                    <default>false</default>
+                    <label>Cushion</label>
                 </value>
                 <value>
                     <fullName>Dresses / Suits</fullName>
@@ -948,34 +970,64 @@
                     <label>Dresses / Suits</label>
                 </value>
                 <value>
-                    <fullName>T-shirt / Shirt</fullName>
+                    <fullName>Free time</fullName>
                     <default>false</default>
-                    <label>T-shirt / Shirt</label>
+                    <label>Free time</label>
                 </value>
                 <value>
-                    <fullName>Skirt</fullName>
+                    <fullName>Fur</fullName>
                     <default>false</default>
-                    <label>Skirt</label>
+                    <label>Fur</label>
                 </value>
                 <value>
-                    <fullName>Trousers</fullName>
+                    <fullName>Gloves</fullName>
                     <default>false</default>
-                    <label>Trousers</label>
+                    <label>Gloves</label>
                 </value>
                 <value>
-                    <fullName>Travelwear</fullName>
+                    <fullName>Gold jewelry</fullName>
                     <default>false</default>
-                    <label>Travelwear</label>
+                    <label>Gold jewelry</label>
                 </value>
                 <value>
-                    <fullName>Bag</fullName>
+                    <fullName>Hats</fullName>
                     <default>false</default>
-                    <label>Bag</label>
+                    <label>Hats</label>
                 </value>
                 <value>
-                    <fullName>Shoes</fullName>
+                    <fullName>Jewelry creations</fullName>
                     <default>false</default>
-                    <label>Shoes</label>
+                    <label>Jewelry creations</label>
+                </value>
+                <value>
+                    <fullName>Knitwear</fullName>
+                    <default>false</default>
+                    <label>Knitwear</label>
+                </value>
+                <value>
+                    <fullName>Leather Jacket</fullName>
+                    <default>false</default>
+                    <label>Leather Jacket</label>
+                </value>
+                <value>
+                    <fullName>Objects</fullName>
+                    <default>false</default>
+                    <label>Objects</label>
+                </value>
+                <value>
+                    <fullName>Other (specify in note)</fullName>
+                    <default>false</default>
+                    <label>Other (specify in note)</label>
+                </value>
+                <value>
+                    <fullName>Outerwear</fullName>
+                    <default>false</default>
+                    <label>Outerwear</label>
+                </value>
+                <value>
+                    <fullName>Pocket square</fullName>
+                    <default>false</default>
+                    <label>Pocket square</label>
                 </value>
                 <value>
                     <fullName>Scarf</fullName>
@@ -983,9 +1035,59 @@
                     <label>Scarf</label>
                 </value>
                 <value>
-                    <fullName>Other (specify in note)</fullName>
+                    <fullName>Shoes</fullName>
                     <default>false</default>
-                    <label>Other (specify in note)</label>
+                    <label>Shoes</label>
+                </value>
+                <value>
+                    <fullName>Skirt</fullName>
+                    <default>false</default>
+                    <label>Skirt</label>
+                </value>
+                <value>
+                    <fullName>Skullcap</fullName>
+                    <default>false</default>
+                    <label>Skullcap</label>
+                </value>
+                <value>
+                    <fullName>Small leather goods</fullName>
+                    <default>false</default>
+                    <label>Small leather goods</label>
+                </value>
+                <value>
+                    <fullName>Socks</fullName>
+                    <default>false</default>
+                    <label>Socks</label>
+                </value>
+                <value>
+                    <fullName>Teddies</fullName>
+                    <default>false</default>
+                    <label>Teddies</label>
+                </value>
+                <value>
+                    <fullName>Throw</fullName>
+                    <default>false</default>
+                    <label>Throw</label>
+                </value>
+                <value>
+                    <fullName>Ties</fullName>
+                    <default>false</default>
+                    <label>Ties</label>
+                </value>
+                <value>
+                    <fullName>Travelwear</fullName>
+                    <default>false</default>
+                    <label>Travelwear</label>
+                </value>
+                <value>
+                    <fullName>Trousers</fullName>
+                    <default>false</default>
+                    <label>Trousers</label>
+                </value>
+                <value>
+                    <fullName>T-shirt / Shirt</fullName>
+                    <default>false</default>
+                    <label>T-shirt / Shirt</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -1015,6 +1117,51 @@
                 </value>
             </valueSetDefinition>
         </valueSet>
+    </fields>
+    <fields>
+        <fullName>City_boutique_templ__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(OR(
+ISNULL(Associate__r.Location__r.Indirizzo__c),
+ISBLANK(Associate__r.Location__r.Indirizzo__c),
+ISNULL(Associate__r.Location__r.Citta__c),
+ISBLANK(Associate__r.Location__r.Citta__c),
+ISNULL(Associate__r.Location__r.Nazione__c),
+ISBLANK(Associate__r.Location__r.Nazione__c),
+ISNULL(Associate__r.Location__r.Codice_Postale__c),
+ISBLANK(Associate__r.Location__r.Codice_Postale__c)),&quot;06073 Solomeo (Perugia) - IT&quot;,
+Associate__r.Location__r.Codice_Postale__c &amp;&apos; &apos;&amp; Associate__r.Location__r.Citta__c &amp; &apos; - &apos;&amp; Associate__r.Location__r.Nazione__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>City boutique</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Client_Advisor_Name_templ__c</fullName>
+        <externalId>false</externalId>
+        <formula>Associate__r.Nome__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Client Advisor Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Client_Advisor_templ__c</fullName>
+        <externalId>false</externalId>
+        <formula>Associate__r.Name</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Client Advisor</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Client__c</fullName>
@@ -1459,6 +1606,17 @@
         <visibleLines>2</visibleLines>
     </fields>
     <fields>
+        <fullName>Email_Cliente_input__c</fullName>
+        <externalId>false</externalId>
+        <label>Customer e-mail (input)</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Email_Responsabile_Sede__c</fullName>
         <externalId>false</externalId>
         <label>Email Responsabile Sede</label>
@@ -1467,6 +1625,18 @@
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Email_boutique_templ__c</fullName>
+        <externalId>false</externalId>
+        <formula>Associate__r.Location__r.Email__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Email boutique</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
         <unique>false</unique>
     </fields>
     <fields>
@@ -1644,6 +1814,11 @@
                     <default>false</default>
                     <label>Lifestyle Danneggiato</label>
                 </value>
+                <value>
+                    <fullName>Neverending Stories</fullName>
+                    <default>false</default>
+                    <label>Neverending Stories</label>
+                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
@@ -1653,6 +1828,63 @@
         <formula>Articolo__r.Modello__c</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Modello</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Motivazione_Insoddisfazione__c</fullName>
+        <externalId>false</externalId>
+        <label>Motivazione Insoddisfazione</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Tempistiche</fullName>
+                    <default>false</default>
+                    <label>Tempistiche</label>
+                </value>
+                <value>
+                    <fullName>Capo non riparato</fullName>
+                    <default>false</default>
+                    <label>Capo non riparato</label>
+                </value>
+                <value>
+                    <fullName>Riparazione non soddisfacente</fullName>
+                    <default>false</default>
+                    <label>Riparazione non soddisfacente</label>
+                </value>
+                <value>
+                    <fullName>Altro</fullName>
+                    <default>false</default>
+                    <label>Altro (specifica in note)</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Name_boutique_templ__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(OR(
+ISNULL(Associate__r.Location__r.Indirizzo__c),
+ISBLANK(Associate__r.Location__r.Indirizzo__c),
+ISNULL(Associate__r.Location__r.Citta__c),
+ISBLANK(Associate__r.Location__r.Citta__c),
+ISNULL(Associate__r.Location__r.Nazione__c),
+ISBLANK(Associate__r.Location__r.Nazione__c),
+ISNULL(Associate__r.Location__r.Codice_Postale__c),
+ISBLANK(Associate__r.Location__r.Codice_Postale__c)),&quot;Brunello Cucinelli&quot;,
+&apos;Boutique &apos;&amp; Associate__r.Location__r.Name)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Name boutique</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -1717,6 +1949,17 @@
         <visibleLines>3</visibleLines>
     </fields>
     <fields>
+        <fullName>Note_insoddisfazione__c</fullName>
+        <externalId>false</externalId>
+        <label>Note insoddisfazione</label>
+        <length>1000</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
         <fullName>Note_sollecito__c</fullName>
         <externalId>false</externalId>
         <label>Note sollecito</label>
@@ -1759,6 +2002,18 @@
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Phone_boutique_templ__c</fullName>
+        <externalId>false</externalId>
+        <formula>Associate__r.Location__r.Telefono__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Phone boutique</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -1871,21 +2126,16 @@
         <valueSet>
             <restricted>true</restricted>
             <valueSetDefinition>
-                <sorted>false</sorted>
+                <sorted>true</sorted>
                 <value>
-                    <fullName>Outerwear</fullName>
+                    <fullName>Bag</fullName>
                     <default>false</default>
-                    <label>Outerwear</label>
+                    <label>Bag</label>
                 </value>
                 <value>
-                    <fullName>Fur</fullName>
+                    <fullName>Belts</fullName>
                     <default>false</default>
-                    <label>Fur</label>
-                </value>
-                <value>
-                    <fullName>Leather Jacket</fullName>
-                    <default>false</default>
-                    <label>Leather Jacket</label>
+                    <label>Belts</label>
                 </value>
                 <value>
                     <fullName>Blazer</fullName>
@@ -1893,9 +2143,14 @@
                     <label>Blazer</label>
                 </value>
                 <value>
-                    <fullName>Knitwear</fullName>
+                    <fullName>Candle</fullName>
                     <default>false</default>
-                    <label>Knitwear</label>
+                    <label>Candle</label>
+                </value>
+                <value>
+                    <fullName>Cushion</fullName>
+                    <default>false</default>
+                    <label>Cushion</label>
                 </value>
                 <value>
                     <fullName>Dresses / Suits</fullName>
@@ -1903,34 +2158,64 @@
                     <label>Dresses / Suits</label>
                 </value>
                 <value>
-                    <fullName>T-shirt / Shirt</fullName>
+                    <fullName>Free time</fullName>
                     <default>false</default>
-                    <label>T-shirt / Shirt</label>
+                    <label>Free time</label>
                 </value>
                 <value>
-                    <fullName>Skirt</fullName>
+                    <fullName>Fur</fullName>
                     <default>false</default>
-                    <label>Skirt</label>
+                    <label>Fur</label>
                 </value>
                 <value>
-                    <fullName>Trousers</fullName>
+                    <fullName>Gloves</fullName>
                     <default>false</default>
-                    <label>Trousers</label>
+                    <label>Gloves</label>
                 </value>
                 <value>
-                    <fullName>Travelwear</fullName>
+                    <fullName>Gold jewelry</fullName>
                     <default>false</default>
-                    <label>Travelwear</label>
+                    <label>Gold jewelry</label>
                 </value>
                 <value>
-                    <fullName>Bag</fullName>
+                    <fullName>Hats</fullName>
                     <default>false</default>
-                    <label>Bag</label>
+                    <label>Hats</label>
                 </value>
                 <value>
-                    <fullName>Shoes</fullName>
+                    <fullName>Jewelry creations</fullName>
                     <default>false</default>
-                    <label>Shoes</label>
+                    <label>Jewelry creations</label>
+                </value>
+                <value>
+                    <fullName>Knitwear</fullName>
+                    <default>false</default>
+                    <label>Knitwear</label>
+                </value>
+                <value>
+                    <fullName>Leather Jacket</fullName>
+                    <default>false</default>
+                    <label>Leather Jacket</label>
+                </value>
+                <value>
+                    <fullName>Objects</fullName>
+                    <default>false</default>
+                    <label>Objects</label>
+                </value>
+                <value>
+                    <fullName>Other (specify in note)</fullName>
+                    <default>false</default>
+                    <label>Other (specify in note)</label>
+                </value>
+                <value>
+                    <fullName>Outerwear</fullName>
+                    <default>false</default>
+                    <label>Outerwear</label>
+                </value>
+                <value>
+                    <fullName>Pocket square</fullName>
+                    <default>false</default>
+                    <label>Pocket square</label>
                 </value>
                 <value>
                     <fullName>Scarf</fullName>
@@ -1938,9 +2223,59 @@
                     <label>Scarf</label>
                 </value>
                 <value>
-                    <fullName>Other (specify in note)</fullName>
+                    <fullName>Shoes</fullName>
                     <default>false</default>
-                    <label>Other (specify in note)</label>
+                    <label>Shoes</label>
+                </value>
+                <value>
+                    <fullName>Skirt</fullName>
+                    <default>false</default>
+                    <label>Skirt</label>
+                </value>
+                <value>
+                    <fullName>Skullcap</fullName>
+                    <default>false</default>
+                    <label>Skullcap</label>
+                </value>
+                <value>
+                    <fullName>Small leather goods</fullName>
+                    <default>false</default>
+                    <label>Small leather goods</label>
+                </value>
+                <value>
+                    <fullName>Socks</fullName>
+                    <default>false</default>
+                    <label>Socks</label>
+                </value>
+                <value>
+                    <fullName>Teddies</fullName>
+                    <default>false</default>
+                    <label>Teddies</label>
+                </value>
+                <value>
+                    <fullName>Throw</fullName>
+                    <default>false</default>
+                    <label>Throw</label>
+                </value>
+                <value>
+                    <fullName>Ties</fullName>
+                    <default>false</default>
+                    <label>Ties</label>
+                </value>
+                <value>
+                    <fullName>Travelwear</fullName>
+                    <default>false</default>
+                    <label>Travelwear</label>
+                </value>
+                <value>
+                    <fullName>Trousers</fullName>
+                    <default>false</default>
+                    <label>Trousers</label>
+                </value>
+                <value>
+                    <fullName>T-shirt / Shirt</fullName>
+                    <default>false</default>
+                    <label>T-shirt / Shirt</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -1956,6 +2291,29 @@
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Repair_Client_Name__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(NOT(ISNULL(Client__r.FirstName)),Client__r.FirstName+&apos; &apos;+Client__r.LastName,Client__r.LastName)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Repair Client Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Repair_Start_Date__c</fullName>
+        <externalId>false</externalId>
+        <formula>CreatedDate</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Repair Start Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
     </fields>
     <fields>
         <fullName>Riparazione_Richiesta__c</fullName>
@@ -2345,6 +2703,16 @@
         </valueSet>
     </fields>
     <fields>
+        <fullName>Send_email_to_client__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Send email to client</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>Stagione__c</fullName>
         <externalId>false</externalId>
         <formula>Articolo__r.Stagione__c</formula>
@@ -2569,7 +2937,7 @@
     <fields>
         <fullName>Titolare_Boutique__c</fullName>
         <externalId>false</externalId>
-        <formula>IF (AND ($User.ProfileId = $Setup.Profile__c.Id_Boutique__c,
+        <formula>IF (AND (OR($User.ProfileId = $Setup.Profile__c.Id_Boutique__c,$User.ProfileId = $Setup.Profile__c.Id_Associate__c,$User.ProfileId = $Setup.Profile__c.Id_Boutique_SG_TW__c),
 !ISNULL(Id_Location__c),
 Id_Location__c = $User.Codice_Boutique__c), true, false)</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
@@ -2582,7 +2950,7 @@ Id_Location__c = $User.Codice_Boutique__c), true, false)</formula>
         <fullName>Titolare_Client_Advisor__c</fullName>
         <externalId>false</externalId>
         <formula>IF (AND(
-OR($User.ProfileId = $Setup.Profile__c.Id_Associate__c,$User.ProfileId = $Setup.Profile__c.Id_Boutique__c),
+OR($User.ProfileId = $Setup.Profile__c.Id_Associate__c,$User.ProfileId = $Setup.Profile__c.Id_Boutique__c,$User.ProfileId = $Setup.Profile__c.Id_Boutique_SG_TW__c),
 !ISNULL(Id_Associate__c), !ISBLANK(Id_Associate__c), Id_Associate__c &lt;&gt; &apos;&apos;,
 Id_Associate__c = $User.Codice_Associate__c),
 true, false)</formula>
@@ -2803,6 +3171,32 @@ true, false)</formula>
         </sharedTo>
     </listViews>
     <listViews>
+        <fullName>Repairs_in_progress_Boutique</fullName>
+        <columns>NAME</columns>
+        <columns>Associate__c</columns>
+        <columns>Status__c</columns>
+        <columns>Client__c</columns>
+        <columns>Articolo__c</columns>
+        <columns>Causa_difetto_riscontrato__c</columns>
+        <columns>RECORDTYPE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Status__c</field>
+            <operation>notEqual</operation>
+            <value>Chiuso</value>
+        </filters>
+        <filters>
+            <field>Titolare_Boutique__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>Repairs in progress - Boutique</label>
+        <sharedTo>
+            <group>Associates</group>
+            <group>Boutiques</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
         <fullName>Riparazioni_da_autorizzare</fullName>
         <columns>NAME</columns>
         <columns>CREATED_DATE</columns>
@@ -2906,6 +3300,7 @@ true, false)</formula>
         <columns>Data_riparazione_prevista_modificata__c</columns>
         <columns>Prodotto_riparato__c</columns>
         <columns>Riparazione_completata_Note__c</columns>
+        <columns>RECORDTYPE</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>RECORDTYPE</field>
@@ -2915,7 +3310,7 @@ true, false)</formula>
         <filters>
             <field>Status__c</field>
             <operation>equals</operation>
-            <value>Riparazione effettuata</value>
+            <value>Riparazione effettuata,Prodotto Riparato</value>
         </filters>
         <label>Riparazioni in progress</label>
         <sharedTo>
@@ -3505,7 +3900,19 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Belts</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Blazer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Candle</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cushion</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -3513,7 +3920,27 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Free time</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Fur</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gloves</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gold jewelry</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hats</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Jewelry creations</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -3525,11 +3952,19 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Objects</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Other %28specify in note%29</fullName>
                 <default>false</default>
             </values>
             <values>
                 <fullName>Outerwear</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pocket square</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -3545,7 +3980,31 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Skullcap</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Small leather goods</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Socks</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>T-shirt %2F Shirt</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Teddies</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Throw</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Ties</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -3795,7 +4254,30 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Neverending Stories</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Riparazione Di Cortesia</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Motivazione_Insoddisfazione__c</picklist>
+            <values>
+                <fullName>Altro</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Capo non riparato</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Riparazione non soddisfacente</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tempistiche</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -3862,7 +4344,19 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Belts</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Blazer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Candle</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cushion</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -3870,7 +4364,27 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Free time</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Fur</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gloves</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gold jewelry</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hats</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Jewelry creations</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -3882,11 +4396,19 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Objects</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Other %28specify in note%29</fullName>
                 <default>false</default>
             </values>
             <values>
                 <fullName>Outerwear</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pocket square</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -3902,7 +4424,31 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Skullcap</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Small leather goods</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Socks</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>T-shirt %2F Shirt</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Teddies</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Throw</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Ties</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -4670,7 +5216,19 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Belts</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Blazer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Candle</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cushion</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -4678,7 +5236,27 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Free time</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Fur</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gloves</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gold jewelry</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hats</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Jewelry creations</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -4690,11 +5268,19 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Objects</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Other %28specify in note%29</fullName>
                 <default>false</default>
             </values>
             <values>
                 <fullName>Outerwear</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pocket square</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -4710,7 +5296,31 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Skullcap</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Small leather goods</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Socks</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>T-shirt %2F Shirt</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Teddies</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Throw</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Ties</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -4960,7 +5570,30 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Neverending Stories</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Riparazione Di Cortesia</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Motivazione_Insoddisfazione__c</picklist>
+            <values>
+                <fullName>Altro</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Capo non riparato</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Riparazione non soddisfacente</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tempistiche</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -5027,7 +5660,19 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Belts</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Blazer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Candle</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cushion</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -5035,7 +5680,27 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Free time</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Fur</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gloves</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gold jewelry</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hats</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Jewelry creations</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -5047,11 +5712,19 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Objects</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Other %28specify in note%29</fullName>
                 <default>false</default>
             </values>
             <values>
                 <fullName>Outerwear</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pocket square</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -5067,7 +5740,31 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Skullcap</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Small leather goods</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Socks</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>T-shirt %2F Shirt</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Teddies</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Throw</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Ties</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -5827,7 +6524,19 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Belts</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Blazer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Candle</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cushion</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -5835,7 +6544,27 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Free time</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Fur</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gloves</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gold jewelry</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hats</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Jewelry creations</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -5847,11 +6576,19 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Objects</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Other %28specify in note%29</fullName>
                 <default>false</default>
             </values>
             <values>
                 <fullName>Outerwear</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pocket square</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -5867,7 +6604,31 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Skullcap</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Small leather goods</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Socks</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>T-shirt %2F Shirt</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Teddies</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Throw</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Ties</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -6117,7 +6878,30 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Neverending Stories</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Riparazione Di Cortesia</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Motivazione_Insoddisfazione__c</picklist>
+            <values>
+                <fullName>Altro</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Capo non riparato</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Riparazione non soddisfacente</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tempistiche</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -6184,7 +6968,19 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Belts</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Blazer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Candle</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cushion</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -6192,7 +6988,27 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Free time</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Fur</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gloves</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gold jewelry</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hats</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Jewelry creations</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -6204,11 +7020,19 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Objects</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Other %28specify in note%29</fullName>
                 <default>false</default>
             </values>
             <values>
                 <fullName>Outerwear</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pocket square</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -6224,7 +7048,31 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Skullcap</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Small leather goods</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Socks</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>T-shirt %2F Shirt</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Teddies</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Throw</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Ties</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -6984,7 +7832,19 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Belts</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Blazer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Candle</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cushion</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -6992,7 +7852,27 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Free time</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Fur</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gloves</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gold jewelry</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hats</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Jewelry creations</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -7004,11 +7884,19 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Objects</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Other %28specify in note%29</fullName>
                 <default>false</default>
             </values>
             <values>
                 <fullName>Outerwear</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pocket square</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -7024,7 +7912,31 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Skullcap</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Small leather goods</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Socks</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>T-shirt %2F Shirt</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Teddies</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Throw</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Ties</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -7274,7 +8186,30 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Neverending Stories</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Riparazione Di Cortesia</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Motivazione_Insoddisfazione__c</picklist>
+            <values>
+                <fullName>Altro</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Capo non riparato</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Riparazione non soddisfacente</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tempistiche</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -7341,7 +8276,19 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Belts</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Blazer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Candle</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cushion</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -7349,7 +8296,27 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Free time</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Fur</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gloves</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gold jewelry</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hats</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Jewelry creations</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -7361,11 +8328,19 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Objects</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Other %28specify in note%29</fullName>
                 <default>false</default>
             </values>
             <values>
                 <fullName>Outerwear</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pocket square</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -7381,7 +8356,31 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Skullcap</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Small leather goods</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Socks</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>T-shirt %2F Shirt</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Teddies</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Throw</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Ties</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -8141,7 +9140,19 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Belts</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Blazer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Candle</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cushion</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -8149,7 +9160,27 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Free time</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Fur</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gloves</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gold jewelry</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hats</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Jewelry creations</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -8161,11 +9192,19 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Objects</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Other %28specify in note%29</fullName>
                 <default>false</default>
             </values>
             <values>
                 <fullName>Outerwear</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pocket square</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -8181,7 +9220,31 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Skullcap</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Small leather goods</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Socks</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>T-shirt %2F Shirt</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Teddies</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Throw</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Ties</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -8431,7 +9494,30 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Neverending Stories</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Riparazione Di Cortesia</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Motivazione_Insoddisfazione__c</picklist>
+            <values>
+                <fullName>Altro</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Capo non riparato</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Riparazione non soddisfacente</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tempistiche</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -8498,7 +9584,19 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Belts</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Blazer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Candle</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cushion</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -8506,7 +9604,27 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Free time</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Fur</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gloves</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gold jewelry</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hats</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Jewelry creations</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -8518,11 +9636,19 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Objects</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Other %28specify in note%29</fullName>
                 <default>false</default>
             </values>
             <values>
                 <fullName>Outerwear</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pocket square</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -8538,7 +9664,31 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Skullcap</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Small leather goods</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Socks</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>T-shirt %2F Shirt</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Teddies</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Throw</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Ties</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -9298,7 +10448,19 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Belts</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Blazer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Candle</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cushion</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -9306,7 +10468,27 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Free time</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Fur</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gloves</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gold jewelry</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hats</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Jewelry creations</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -9318,11 +10500,19 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Objects</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Other %28specify in note%29</fullName>
                 <default>false</default>
             </values>
             <values>
                 <fullName>Outerwear</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pocket square</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -9338,7 +10528,31 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Skullcap</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Small leather goods</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Socks</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>T-shirt %2F Shirt</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Teddies</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Throw</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Ties</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -9588,7 +10802,30 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Neverending Stories</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Riparazione Di Cortesia</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Motivazione_Insoddisfazione__c</picklist>
+            <values>
+                <fullName>Altro</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Capo non riparato</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Riparazione non soddisfacente</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tempistiche</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -9655,7 +10892,19 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Belts</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Blazer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Candle</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cushion</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -9663,7 +10912,27 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Free time</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Fur</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gloves</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gold jewelry</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hats</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Jewelry creations</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -9675,11 +10944,19 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Objects</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Other %28specify in note%29</fullName>
                 <default>false</default>
             </values>
             <values>
                 <fullName>Outerwear</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pocket square</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -9695,7 +10972,31 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Skullcap</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Small leather goods</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Socks</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>T-shirt %2F Shirt</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Teddies</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Throw</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Ties</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -10472,7 +11773,19 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Belts</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Blazer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Candle</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cushion</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -10480,7 +11793,27 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Free time</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Fur</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gloves</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gold jewelry</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hats</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Jewelry creations</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -10492,11 +11825,19 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Objects</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Other %28specify in note%29</fullName>
                 <default>false</default>
             </values>
             <values>
                 <fullName>Outerwear</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pocket square</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -10512,7 +11853,31 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Skullcap</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Small leather goods</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Socks</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>T-shirt %2F Shirt</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Teddies</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Throw</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Ties</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -10762,7 +12127,30 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Neverending Stories</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Riparazione Di Cortesia</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Motivazione_Insoddisfazione__c</picklist>
+            <values>
+                <fullName>Altro</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Capo non riparato</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Riparazione non soddisfacente</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tempistiche</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -10829,7 +12217,19 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Belts</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Blazer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Candle</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cushion</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -10837,7 +12237,27 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Free time</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Fur</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gloves</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gold jewelry</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hats</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Jewelry creations</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -10849,11 +12269,19 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Objects</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Other %28specify in note%29</fullName>
                 <default>false</default>
             </values>
             <values>
                 <fullName>Outerwear</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pocket square</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -10869,7 +12297,31 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Skullcap</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Small leather goods</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Socks</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>T-shirt %2F Shirt</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Teddies</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Throw</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Ties</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -11645,7 +13097,19 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Belts</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Blazer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Candle</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cushion</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -11653,7 +13117,27 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Free time</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Fur</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gloves</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gold jewelry</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hats</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Jewelry creations</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -11665,11 +13149,19 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Objects</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Other %28specify in note%29</fullName>
                 <default>false</default>
             </values>
             <values>
                 <fullName>Outerwear</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pocket square</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -11685,7 +13177,31 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Skullcap</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Small leather goods</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Socks</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>T-shirt %2F Shirt</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Teddies</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Throw</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Ties</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -11935,7 +13451,30 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Neverending Stories</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Riparazione Di Cortesia</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Motivazione_Insoddisfazione__c</picklist>
+            <values>
+                <fullName>Altro</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Capo non riparato</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Riparazione non soddisfacente</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tempistiche</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -12002,7 +13541,19 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Belts</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Blazer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Candle</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cushion</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -12010,7 +13561,27 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Free time</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Fur</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gloves</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gold jewelry</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hats</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Jewelry creations</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -12022,11 +13593,19 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Objects</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Other %28specify in note%29</fullName>
                 <default>false</default>
             </values>
             <values>
                 <fullName>Outerwear</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pocket square</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -12042,7 +13621,31 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Skullcap</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Small leather goods</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Socks</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>T-shirt %2F Shirt</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Teddies</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Throw</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Ties</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -12814,7 +14417,19 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Belts</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Blazer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Candle</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cushion</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -12822,7 +14437,27 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Free time</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Fur</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gloves</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gold jewelry</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hats</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Jewelry creations</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -12834,11 +14469,19 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Objects</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Other %28specify in note%29</fullName>
                 <default>false</default>
             </values>
             <values>
                 <fullName>Outerwear</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pocket square</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -12854,7 +14497,31 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Skullcap</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Small leather goods</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Socks</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>T-shirt %2F Shirt</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Teddies</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Throw</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Ties</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -13104,7 +14771,30 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Neverending Stories</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Riparazione Di Cortesia</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Motivazione_Insoddisfazione__c</picklist>
+            <values>
+                <fullName>Altro</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Capo non riparato</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Riparazione non soddisfacente</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tempistiche</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -13171,7 +14861,19 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Belts</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Blazer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Candle</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cushion</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -13179,7 +14881,27 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Free time</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Fur</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gloves</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gold jewelry</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hats</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Jewelry creations</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -13191,11 +14913,19 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Objects</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Other %28specify in note%29</fullName>
                 <default>false</default>
             </values>
             <values>
                 <fullName>Outerwear</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pocket square</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -13211,7 +14941,31 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Skullcap</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Small leather goods</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Socks</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>T-shirt %2F Shirt</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Teddies</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Throw</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Ties</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -13983,7 +15737,19 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Belts</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Blazer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Candle</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cushion</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -13991,7 +15757,27 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Free time</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Fur</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gloves</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gold jewelry</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hats</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Jewelry creations</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -14003,11 +15789,19 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Objects</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Other %28specify in note%29</fullName>
                 <default>false</default>
             </values>
             <values>
                 <fullName>Outerwear</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pocket square</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -14023,7 +15817,31 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Skullcap</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Small leather goods</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Socks</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>T-shirt %2F Shirt</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Teddies</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Throw</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Ties</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -14273,7 +16091,30 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Neverending Stories</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Riparazione Di Cortesia</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Motivazione_Insoddisfazione__c</picklist>
+            <values>
+                <fullName>Altro</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Capo non riparato</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Riparazione non soddisfacente</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tempistiche</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -14340,7 +16181,19 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Belts</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Blazer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Candle</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cushion</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -14348,7 +16201,27 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Free time</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Fur</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gloves</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gold jewelry</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hats</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Jewelry creations</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -14360,11 +16233,19 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Objects</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Other %28specify in note%29</fullName>
                 <default>false</default>
             </values>
             <values>
                 <fullName>Outerwear</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pocket square</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -14380,7 +16261,31 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Skullcap</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Small leather goods</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Socks</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>T-shirt %2F Shirt</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Teddies</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Throw</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Ties</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -15140,7 +17045,19 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Belts</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Blazer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Candle</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cushion</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -15148,7 +17065,27 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Free time</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Fur</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gloves</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gold jewelry</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hats</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Jewelry creations</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -15160,11 +17097,19 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Objects</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Other %28specify in note%29</fullName>
                 <default>false</default>
             </values>
             <values>
                 <fullName>Outerwear</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pocket square</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -15180,7 +17125,31 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Skullcap</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Small leather goods</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Socks</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>T-shirt %2F Shirt</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Teddies</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Throw</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Ties</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -15430,7 +17399,30 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Neverending Stories</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Riparazione Di Cortesia</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Motivazione_Insoddisfazione__c</picklist>
+            <values>
+                <fullName>Altro</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Capo non riparato</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Riparazione non soddisfacente</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tempistiche</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -15497,7 +17489,19 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Belts</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Blazer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Candle</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cushion</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -15505,7 +17509,27 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Free time</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Fur</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gloves</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gold jewelry</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hats</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Jewelry creations</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -15517,11 +17541,19 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Objects</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Other %28specify in note%29</fullName>
                 <default>false</default>
             </values>
             <values>
                 <fullName>Outerwear</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pocket square</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -15537,7 +17569,31 @@ true, false)</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Skullcap</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Small leather goods</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Socks</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>T-shirt %2F Shirt</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Teddies</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Throw</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Ties</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -15784,6 +17840,16 @@ RecordType.DeveloperName = &quot;Riparazione_Boutique_External_Service&quot;
         <errorMessage>A operazione conclusa è necessario aggiungere una nota riguardante l&apos;avvenuta riconsegna, il costo, la valuta e il fornitore della riparazione</errorMessage>
     </validationRules>
     <validationRules>
+        <fullName>Check_Email_Customer</fullName>
+        <active>true</active>
+        <description>Controllo su email customer presente con flag Send email a true</description>
+        <errorConditionFormula>AND(
+Send_email_to_client__c,
+OR(ISNULL (Client__r.PersonEmail),ISBLANK(Client__r.PersonEmail))
+)</errorConditionFormula>
+        <errorMessage>It is not possible to send an email to the selected customer as there isn&apos;t any email registered.</errorMessage>
+    </validationRules>
+    <validationRules>
         <fullName>Invio_capo_verso_sede_CC</fullName>
         <active>true</active>
         <errorConditionFormula>AND (OR(RecordType.DeveloperName = &quot;Riparazione_Customer_Care&quot;,RecordType.DeveloperName = &quot;Customer_Care_US&quot;),
@@ -15814,6 +17880,26 @@ $Profile.Id = $Setup.Profile__c.Id_Associate__c)</errorConditionFormula>
         <errorMessage>Lo step selezionato non è in carico al negozio</errorMessage>
     </validationRules>
     <validationRules>
+        <fullName>Motivazione_Insoddisfazione</fullName>
+        <active>true</active>
+        <errorConditionFormula>OR(
+AND(
+ISCHANGED(Motivazione_Insoddisfazione__c),
+ISBLANK(TEXT(Note_Avvenuta_Riconsegna__c))),
+
+AND(
+ISPICKVAL(Note_Avvenuta_Riconsegna__c, &apos;Soddisfatto&apos;),
+NOT(ISBLANK(TEXT(Motivazione_Insoddisfazione__c)))),
+
+AND(
+ISBLANK(TEXT(Motivazione_Insoddisfazione__c)),
+NOT(ISBLANK(TEXT(Note_Avvenuta_Riconsegna__c))),
+NOT(ISPICKVAL(Note_Avvenuta_Riconsegna__c, &apos;Soddisfatto&apos;))
+))</errorConditionFormula>
+        <errorDisplayField>Motivazione_Insoddisfazione__c</errorDisplayField>
+        <errorMessage>E&apos; possibile inserire la motivazione solo in caso di cliente non soddisfatto</errorMessage>
+    </validationRules>
+    <validationRules>
         <fullName>Note_Avvenuta_Riconsegna</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(
@@ -15827,6 +17913,29 @@ $Profile.Id = $Setup.Profile__c.Id_Associate__c)</errorConditionFormula>
 	TEXT(Status__c) &lt;&gt; &quot;Prodotto riconsegnato&quot; &amp;&amp;
 	RecordType.Name &lt;&gt; &apos;Riparazione - Customer Care US&apos;</errorConditionFormula>
         <errorMessage>Possono essere inserite note di avvenuta riconsegna solo al momento dell&apos;effettiva riconsegna al cliente del capo riparato</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Note_Insoddisfazione</fullName>
+        <active>true</active>
+        <errorConditionFormula>OR(
+AND(
+ISCHANGED(Note_insoddisfazione__c),
+ISBLANK(TEXT(Note_Avvenuta_Riconsegna__c))),
+
+AND(
+ISCHANGED(Motivazione_Insoddisfazione__c),
+NOT(ISBLANK(TEXT(Note_Avvenuta_Riconsegna__c))),
+NOT(ISPICKVAL(Note_Avvenuta_Riconsegna__c, &apos;Soddisfatto&apos;)),
+ISPICKVAL(Motivazione_Insoddisfazione__c, &apos;Altro&apos;),
+ISBLANK(Note_insoddisfazione__c)),
+
+AND(
+NOT(ISBLANK(TEXT(Motivazione_Insoddisfazione__c))),
+NOT(ISPICKVAL(Motivazione_Insoddisfazione__c, &apos;Altro&apos;)),
+NOT(ISBLANK(Note_insoddisfazione__c))
+))</errorConditionFormula>
+        <errorDisplayField>Note_insoddisfazione__c</errorDisplayField>
+        <errorMessage>Specificare note solo per motivazione uguale ad Altro</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Numero_di_autorizzazione_inserito</fullName>
